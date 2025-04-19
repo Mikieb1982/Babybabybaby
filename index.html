@@ -53,18 +53,12 @@
 <body class="bg-soft-beige p-8 text-dark-text">
 
     <header class="text-center mb-8">
-        <svg class="mx-auto h-16 w-16 text-dark-text mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l.888.888M15.75 4.5l-.888.888M8.25 9l.888.888M15.75 9l-.888.888M12 1.5c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zM5.25 7.5A6.75 6.75 0 0112 3.75v16.5A6.75 6.75 0 015.25 16.5V7.5z" />
-           <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 7.5c0 4.97-4.03 9-9 9" />
-           <path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75c-1.68 0-3.14-.87-4.03-2.25M12 12.75c1.68 0 3.14-.87 4.03-2.25" />
-           <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 17.25h3" />
-           <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 V 21 M15 15 V 21 M 7 15 H 17" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 5 C 10 5, 9 7, 9 9 C 9 13, 12 15, 12 15 C 12 15, 15 13, 15 9 C 15 7, 14 5, 12 5 Z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7 A 2 2 0 0 1 18 9 A 2 2 0 0 1 16 11 A 2 2 0 0 1 14 9 A 2 2 0 0 1 16 7 Z M 16 5 L 16 7" />
-        </svg>
-
-        <h1 class="text-4xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
+        <img
+            src="assets/stork.png"
+            alt="Minimalist stork logo"
+            class="mx-auto h-16 w-16 object-contain mb-4"
+            onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';"
+            > <h1 class="text-4xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
         <p class="text-lg text-medium-gray mt-2">Explore names from around the world</p>
     </header>
     <hr class="border-t border-gray-400 max-w-4xl mx-auto mb-12">
@@ -166,6 +160,7 @@
                 </div>
             `;
             // TODO: Implement actual name generation logic
+            // Placeholder for actual data fetching and display
             setTimeout(() => {
                  let styleCategory = 'Balanced';
                  if (selectedStyle < 25) styleCategory = 'Very Traditional';
@@ -173,21 +168,27 @@
                  else if (selectedStyle > 75) styleCategory = 'Very Unique';
                  else if (selectedStyle > 55) styleCategory = 'Unique';
 
+                 // Simulate fetching a name and info
+                 const exampleName = "ExampleName"; // Replace with actual generated name
+                 const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`; // Replace with actual info
+
                  nameOutput.innerHTML = `
-                    <h3 class="text-3xl font-bold text-dark-text mb-2">Example Name</h3> {/* Name uses dark-text */}
-                    <p class="text-dark-text">This is where the name origin and meaning would go for the generated name in <span class="font-semibold">${selectedLanguage.charAt(0).toUpperCase() + selectedLanguage.slice(1)}</span>.</p>
+                    <h3 class="text-3xl font-bold text-dark-text mb-2">${exampleName}</h3>
+                    <p class="text-dark-text">${exampleInfo}</p>
                     <p class="text-sm text-medium-gray mt-1">(Style preference: ${styleCategory})</p>
                  `;
-            }, 1500);
+            }, 1500); // Simulate network request delay
         });
 
         // --- Initial State ---
         document.addEventListener('DOMContentLoaded', () => {
+            // Set the default language button to active
             const defaultButton = languageButtonsContainer.querySelector(`[data-lang="${selectedLanguage}"]`);
             if (defaultButton) {
                 defaultButton.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-dark-text');
                 defaultButton.classList.add('bg-button-active', 'hover:bg-button-active-hover', 'text-white');
             }
+             // Set the initial message in the name output area
              nameOutput.innerHTML = `<p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>`;
         });
     </script>
