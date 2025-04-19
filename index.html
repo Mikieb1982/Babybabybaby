@@ -9,40 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Apply Inter font to the whole page */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Custom style for the slider thumb */
+        body { font-family: 'Inter', sans-serif; }
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #4B5563; /* dark-text color */
-            border-radius: 50%;
-            cursor: pointer;
+            -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+            background: #4B5563; border-radius: 50%; cursor: pointer;
         }
         input[type=range]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #4B5563; /* dark-text color */
-            border-radius: 50%;
-            cursor: pointer;
-            border: none;
+            width: 20px; height: 20px; background: #4B5563;
+            border-radius: 50%; cursor: pointer; border: none;
         }
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out forwards;
-        }
-        /* Ensure initial state is hidden for animation */
-        #name-output > *:not(.italic) { /* Target generated content, not initial message */
-             opacity: 0;
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        #name-output > *:not(.italic) { opacity: 0; }
     </style>
     <script>
       tailwind.config = {
@@ -51,10 +29,12 @@
             colors: {
               'soft-beige': '#F5F5DC',
               'dark-text': '#374151',
-              'medium-gray': '#6B7280',
-              'light-gray-border': '#D1D5DB',
-              'button-active': '#60A5FA',
+              'medium-gray': '#6B7280', // Used for borders and inactive outlined button text/border
+              'light-gray-border': '#D1D5DB', // Kept for reference, but using medium-gray more
+              'button-active': '#60A5FA', // Blue for active language button fill
               'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', // Very light gray for outlined button hover background
+              'button-inactive-hover-border': '#4B5563', // Darker border on hover for outlined buttons
             }
           }
         }
@@ -76,7 +56,7 @@
     <hr class="border-t border-gray-400 max-w-4xl mx-auto mb-12">
 
 
-    <main class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md border border-light-gray-border">
+    <main class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md border border-medium-gray">
 
         <section id="language-selection" class="mb-10">
             <h2 class="text-2xl font-semibold text-dark-text mb-5">Choose a Language/Country:</h2>
@@ -84,19 +64,21 @@
                 <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
                     English
                 </button>
-                 <button data-lang="german" class="lang-button bg-gray-200 hover:bg-gray-300 text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="german" class="lang-button bg-white text-medium-gray border border-medium-gray hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border hover:text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
                     German
                 </button>
-                 <button data-lang="italian" class="lang-button bg-gray-200 hover:bg-gray-300 text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="italian" class="lang-button bg-white text-medium-gray border border-medium-gray hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border hover:text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
                     Italian
                 </button>
-                 <button data-lang="spanish" class="lang-button bg-gray-200 hover:bg-gray-300 text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="spanish" class="lang-button bg-white text-medium-gray border border-medium-gray hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border hover:text-dark-text font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
                     Spanish
                 </button>
                 </div>
         </section>
 
-        <hr class="border-t border-light-gray-border my-10"> <section id="style-slider" class="mb-10">
+        <hr class="border-t border-medium-gray my-10">
+
+        <section id="style-slider" class="mb-10">
             <h2 class="text-2xl font-semibold text-dark-text mb-5">Select Name Style:</h2>
             <div class="flex items-center justify-between text-medium-gray mb-3">
                 <span>Traditional</span>
@@ -105,12 +87,17 @@
             <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
         </section>
 
-        <hr class="border-t border-light-gray-border my-10"> <section id="generate-button-section" class="text-center my-10">
-             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105"> Generate Name
+        <hr class="border-t border-medium-gray my-10">
+
+         <section id="generate-button-section" class="text-center my-10">
+             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105">
+                Generate Name
             </button>
          </section>
 
-        <hr class="border-t border-light-gray-border my-10"> <section id="name-display" class="bg-gray-50 p-6 rounded-lg border border-light-gray-border min-h-[150px]">
+        <hr class="border-t border-medium-gray my-10">
+
+        <section id="name-display" class="bg-gray-50 p-6 rounded-lg border border-medium-gray min-h-[150px]">
              <h2 class="text-2xl font-semibold text-dark-text mb-5">Generated Name:</h2>
             <div id="name-output" class="text-center">
                 <p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>
@@ -120,7 +107,8 @@
     </main>
 
      <hr class="border-t border-gray-400 max-w-4xl mx-auto mt-12 mb-8">
-    <footer class="text-center text-medium-gray text-sm space-y-2"> <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
+    <footer class="text-center text-medium-gray text-sm space-y-2">
+        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
     </footer>
 
@@ -136,18 +124,23 @@
         let selectedLanguage = 'english';
         let selectedStyle = 50;
 
+        // --- CSS Classes for Button States ---
+        const activeClasses = ['bg-button-active', 'hover:bg-button-active-hover', 'text-white', 'border-transparent']; // Added border-transparent for consistency
+        const inactiveClasses = ['bg-white', 'text-medium-gray', 'border', 'border-medium-gray', 'hover:bg-button-inactive-hover-bg', 'hover:border-button-inactive-hover-border', 'hover:text-dark-text'];
+
         // --- Language Button Interaction ---
         languageButtonsContainer.addEventListener('click', (event) => {
-            if (event.target.classList.contains('lang-button')) {
+            const clickedButton = event.target.closest('.lang-button'); // Handle clicks inside button
+            if (clickedButton) {
                 // Update button styles
                 languageButtons.forEach(button => {
-                    button.classList.remove('bg-button-active', 'hover:bg-button-active-hover', 'text-white');
-                    button.classList.add('bg-gray-200', 'hover:bg-gray-300', 'text-dark-text');
+                    button.classList.remove(...activeClasses);
+                    button.classList.add(...inactiveClasses);
                 });
-                event.target.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-dark-text');
-                event.target.classList.add('bg-button-active', 'hover:bg-button-active-hover', 'text-white');
+                clickedButton.classList.remove(...inactiveClasses);
+                clickedButton.classList.add(...activeClasses);
                 // Update selected language state
-                selectedLanguage = event.target.dataset.lang;
+                selectedLanguage = clickedButton.dataset.lang;
                 console.log('Selected Language:', selectedLanguage);
             }
         });
@@ -161,7 +154,6 @@
         // --- Generate Button Interaction ---
         generateBtn.addEventListener('click', () => {
             console.log(`Generating name for language: ${selectedLanguage}, style: ${selectedStyle}`);
-            // Show loading state immediately
             nameOutput.innerHTML = `
                 <div class="flex justify-center items-center h-full">
                     <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div>
@@ -169,30 +161,25 @@
                 </div>
             `;
 
-            // --- Placeholder for actual data fetching ---
-            // TODO: Replace this setTimeout with actual data fetching and name generation logic
+            // TODO: Replace this setTimeout with actual data fetching
             setTimeout(() => {
-                 // Determine style category based on slider value
                  let styleCategory = 'Balanced';
                  if (selectedStyle < 25) styleCategory = 'Very Traditional';
                  else if (selectedStyle < 45) styleCategory = 'Traditional';
                  else if (selectedStyle > 75) styleCategory = 'Very Unique';
                  else if (selectedStyle > 55) styleCategory = 'Unique';
 
-                 // Simulate fetching a name and info
-                 const exampleName = "ExampleName"; // Replace with actual generated name
-                 const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`; // Replace with actual info
+                 const exampleName = "ExampleName";
+                 const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`;
 
-                 // Update the output area with the generated name and info
-                 // Wrap content in a div to apply fade-in animation
                  nameOutput.innerHTML = `
-                    <div class="fade-in"> {/* Apply fade-in class here */}
+                    <div class="fade-in">
                         <h3 class="text-3xl font-bold text-dark-text mb-2">${exampleName}</h3>
                         <p class="text-dark-text">${exampleInfo}</p>
                         <p class="text-sm text-medium-gray mt-1">(Style preference: ${styleCategory})</p>
                     </div>
                  `;
-            }, 1500); // Simulate network request delay
+            }, 1500);
         });
 
         // --- Initial Page Load Setup ---
@@ -200,14 +187,21 @@
             // Set the default language button to active style
             const defaultButton = languageButtonsContainer.querySelector(`[data-lang="${selectedLanguage}"]`);
             if (defaultButton) {
-                defaultButton.classList.remove('bg-gray-200', 'hover:bg-gray-300', 'text-dark-text');
-                defaultButton.classList.add('bg-button-active', 'hover:bg-button-active-hover', 'text-white');
+                 // First ensure all buttons have inactive styles applied initially
+                 languageButtons.forEach(button => {
+                    button.classList.remove(...activeClasses); // Remove just in case
+                    // Apply all inactive classes EXCEPT the ones that might already be on the default active button
+                    const classesToAdd = inactiveClasses.filter(cls => !defaultButton.classList.contains(cls));
+                    button.classList.add(...classesToAdd);
+                 });
+                 // Then apply active styles to the default button
+                defaultButton.classList.remove(...inactiveClasses);
+                defaultButton.classList.add(...activeClasses);
             }
-             // Set the initial message in the name output area
+             // Set the initial message
              nameOutput.innerHTML = `<p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>`;
         });
     </script>
 
 </body>
 </html>
-
