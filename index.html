@@ -5,55 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Name Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    {/* Switched font to Architects Daughter */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <style>
         body {
+            /* Using Architects Daughter font */
             font-family: 'Architects Daughter', cursive;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #374151;
+            background-color: #F5F5DC; /* soft-beige */
+            font-size: 1.1rem; /* Adjusted base size for Architects Daughter */
+            line-height: 1.7; /* Adjusted line height */
+            color: #374151; /* dark-text */
         }
+        /* Base Input Styles */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1.1rem; width: 100%; outline: none;
+             font-size: 1.1rem; /* Adjusted input font size */ width: 100%; outline: none;
              transition: border-color 0.2s ease, box-shadow 0.2s ease;
-             font-family: 'Architects Daughter', cursive;
+             font-family: 'Architects Daughter', cursive; /* Ensure inputs use the font */
         }
         input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
         input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Slider thumb */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        /* Radio buttons */
         input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
         input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #475569; }
         input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        /* Dropdown arrow */
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
+        /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-        /* Adjusted result item style for single display */
-        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; }
+        /* Result & Favorite Item Styling */
+        .result-item, .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
+        .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        /* Button Base Styles */
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; /* Adjusted font weight */ text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; /* Adjusted button font size */ }
         .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
         .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
+        /* Favorites List Styling */
         #favorites-section { display: none; }
         #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; }
+        /* Loading Spinner */
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
      <script>
-      tailwind.config = {
+      // Tailwind config
+      tailwind.config = { /* ... colors defined as before ... */ }
+       tailwind.config = {
         theme: {
           extend: {
             colors: {
@@ -72,10 +84,11 @@
 </head>
 <body class="p-4 md:p-8">
 
-    <header class="text-center mb-10 relative">
+    <header class="text-center mb-10">
         <a href="index.html" title="Back to Name Generator">
             <img src="assets/stork.png" alt="Minimalist stork drawing" class="mx-auto h-20 w-20 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';">
         </a>
+        {/* Adjusted heading sizes for new font */}
         <h1 class="text-5xl md:text-6xl text-dark-text">
              <a href="index.html" class="hover:text-medium-gray transition-colors">Baby Name Generator</a>
         </h1>
@@ -85,13 +98,17 @@
         </button>
     </header>
 
+    {/* Dashed Divider */}
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
+    {/* Main Content Area */}
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
+        {/* Form Controls Area */}
         <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
 
+            {/* Gender Selection - Adjusted sizes */}
              <section id="gender-selection">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Gender:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
@@ -101,6 +118,7 @@
                 </div>
             </section>
 
+            {/* Combined Language & Letter Filter Row - Adjusted sizes */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
                     <label for="language-select" class="block text-2xl md:text-3xl text-dark-text mb-3">Language/Origin:</label>
@@ -112,267 +130,10 @@
                 </section>
             </div>
 
+             {/* Name Length Filter - Adjusted sizes */}
             <section id="length-filter">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Name Length:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-xl md:text-2xl cursor-pointer">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-xl md:text-2xl cursor-pointer">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-xl md:text-2xl cursor-pointer">Long (9+)</label> </div>
-                </div>
-            </section>
-
-            <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto">Generate Name</button> {/* Changed Button Text */}
-            </div>
-        </fieldset>
-
-        <section id="results-section" class="mt-10">
-            <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Name</h2> {/* Changed Heading */}
-            <div id="loading-indicator" class="loader" style="display: none;"></div>
-            {/* Changed ID and structure for single result */}
-            <div id="result-display" class="text-center min-h-[6rem]"> {/* Added min-height */}
-                <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Name" to see a result.</p>
-                {/* Generated name will appear here */}
-            </div>
-             <p id="results-message" class="text-center text-medium-gray mt-4" style="display: none;"></p>
-        </section>
-
-    </main>
-
-    <aside id="favorites-section" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
-        <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
-            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
-            </button>
-            <h2 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Favorite Names</h2>
-            <div id="favorites-list" class="space-y-6">
-                <p id="favorites-placeholder" class="text-center text-medium-gray text-xl italic">No favorites saved yet.</p>
-            </div>
-        </div>
-    </aside>
-
-    <script>
-        const generatorControls = document.getElementById('generator-controls');
-        const languageSelect = document.getElementById('language-select');
-        const firstLetterInput = document.getElementById('first-letter-input');
-        const generateBtn = document.getElementById('generate-btn');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const resultDisplay = document.getElementById('result-display'); // Changed variable name
-        const resultsPlaceholder = document.getElementById('results-placeholder');
-        const resultsMessage = document.getElementById('results-message');
-        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
-        const favoritesSection = document.getElementById('favorites-section');
-        const closeFavoritesBtn = document.getElementById('close-favorites-btn');
-        const favoritesList = document.getElementById('favorites-list');
-        const favoritesPlaceholder = document.getElementById('favorites-placeholder');
-
-        let languages = [];
-        let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || [];
-        let currentDisplayedName = null; // Keep track of the currently displayed name
-
-        async function fetchLanguages() {
-            console.log("Fetching languages...");
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            languages = [
-                { code: 'en', name: 'English' }, { code: 'de', name: 'German' },
-                { code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' },
-                { code: 'it', name: 'Italian' }, { code: 'jp', name: 'Japanese' },
-            ];
-            populateLanguageDropdown();
-            generatorControls.disabled = false;
-            console.log("Languages loaded.");
-        }
-
-        function populateLanguageDropdown() {
-            languageSelect.innerHTML = '<option value="any">Any Language</option>';
-            languages.sort((a, b) => a.name.localeCompare(b.name)).forEach(lang => {
-                const option = document.createElement('option');
-                option.value = lang.code;
-                option.textContent = lang.name;
-                languageSelect.appendChild(option);
-            });
-        }
-
-        async function generateNames() {
-            console.log("Generating name...");
-            resultsPlaceholder.style.display = 'none';
-            resultsMessage.style.display = 'none';
-            resultDisplay.innerHTML = ''; // Clear previous result display area
-            loadingIndicator.style.display = 'block';
-            generatorControls.disabled = true;
-            currentDisplayedName = null; // Reset currently displayed name
-
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-            const language = languageSelect.value;
-            const firstLetter = firstLetterInput.value.trim().toUpperCase();
-            const lengthFilter = document.querySelector('input[name="length"]:checked').value;
-
-            console.log("Filters:", { gender, language, firstLetter, lengthFilter });
-
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate generation time
-            const generatedNames = [ // Example pool of names
-                { name: "Astrid", origin: "Norse", gender: "girl" },
-                { name: "Leif", origin: "Norse", gender: "boy" },
-                { name: "Clara", origin: "Latin", gender: "girl" },
-                { name: "Felix", origin: "Latin", gender: "boy" },
-                { name: "Kenji", origin: "Japanese", gender: "boy" },
-                { name: "Yuna", origin: "Japanese", gender: "girl" },
-                { name: "Matteo", origin: "Italian", gender: "boy" },
-                { name: "Sofia", origin: "Greek", gender: "girl" },
-                { name: "Liam", origin: "Irish", gender: "boy" },
-                { name: "Olivia", origin: "Latin", gender: "girl" },
-                { name: "Noah", origin: "Hebrew", gender: "boy" },
-                { name: "Emma", origin: "German", gender: "girl" },
-            ];
-
-            loadingIndicator.style.display = 'none';
-            generatorControls.disabled = false;
-
-            const filteredNames = generatedNames.filter(name => {
-                let match = true;
-                if (gender !== 'any' && name.gender !== gender) match = false;
-                // Add language filter logic if API doesn't handle it
-                if (firstLetter && !name.name.toUpperCase().startsWith(firstLetter)) match = false;
-                const len = name.name.length;
-                if (lengthFilter === 'short' && (len < 3 || len > 5)) match = false;
-                if (lengthFilter === 'medium' && (len < 6 || len > 8)) match = false;
-                if (lengthFilter === 'long' && len < 9) match = false;
-                return match;
-            });
-
-            let selectedName = null;
-            if (filteredNames.length > 0) {
-                // Select one random name from the filtered list
-                const randomIndex = Math.floor(Math.random() * filteredNames.length);
-                selectedName = filteredNames[randomIndex];
-            }
-
-            if (selectedName) {
-                displayResult(selectedName); // Display the single selected name
-            } else {
-                resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
-                resultsMessage.style.display = 'block';
-                resultsPlaceholder.style.display = 'none';
-                resultDisplay.innerHTML = ''; // Ensure display area is empty
-            }
-            console.log("Name generation complete.");
-        }
-
-        // Function modified to display a single result
-        function displayResult(nameData) {
-            resultDisplay.innerHTML = ''; // Clear previous content
-            currentDisplayedName = nameData; // Store the currently displayed name
-
-            const div = document.createElement('div');
-            // Removed result-item class border, adjust styling as needed for single item
-            div.className = 'flex justify-between items-center fade-in px-4'; // Added padding
-
-            const nameSpan = document.createElement('span');
-            nameSpan.className = 'text-2xl md:text-3xl'; // Slightly larger text for single display
-            nameSpan.textContent = `${nameData.name} (${nameData.origin})`;
-
-            const button = document.createElement('button');
-            const isFavorite = favorites.some(fav => fav.name === nameData.name && fav.origin === nameData.origin);
-            button.innerHTML = isFavorite ?
-                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` :
-                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-            button.className = 'btn-icon p-1 rounded-full hover:bg-accent-muted-light transition';
-            button.title = isFavorite ? 'Remove from Favorites' : 'Add to Favorites';
-            button.onclick = () => toggleFavorite(nameData, button);
-
-            div.appendChild(nameSpan);
-            div.appendChild(button);
-            resultDisplay.appendChild(div); // Append to the dedicated display area
-        }
-
-        function toggleFavorite(nameData, button) {
-            const index = favorites.findIndex(fav => fav.name === nameData.name && fav.origin === nameData.origin);
-            if (index > -1) {
-                favorites.splice(index, 1);
-                // Update button only if it's the currently displayed name's button
-                if (button && button.innerHTML && nameData === currentDisplayedName) {
-                    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-                    button.title = 'Add to Favorites';
-                }
-            } else {
-                favorites.push(nameData);
-                 // Update button only if it's the currently displayed name's button
-                 if (button && button.innerHTML && nameData === currentDisplayedName) {
-                     button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`;
-                     button.title = 'Remove from Favorites';
-                 }
-            }
-            saveFavorites();
-            displayFavorites(); // Update favorites list regardless
-        }
-
-        function saveFavorites() {
-            localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
-        }
-
-        function displayFavorites() {
-            favoritesList.innerHTML = '';
-            if (favorites.length === 0) {
-                favoritesPlaceholder.style.display = 'block';
-            } else {
-                favoritesPlaceholder.style.display = 'none';
-                favorites.sort((a, b) => a.name.localeCompare(b.name)).forEach((fav, index) => {
-                    const div = document.createElement('div');
-                    div.className = 'favorite-item flex justify-between items-center fade-in';
-                    div.style.animationDelay = `${index * 0.05}s`;
-
-                    const nameSpan = document.createElement('span');
-                    nameSpan.className = 'text-xl md:text-2xl';
-                    nameSpan.textContent = `${fav.name} (${fav.origin})`;
-
-                    const removeBtn = document.createElement('button');
-                    removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-remove-button hover:text-remove-button-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>`;
-                    removeBtn.className = 'btn-icon p-1 rounded-full hover:bg-red-100 transition';
-                    removeBtn.title = 'Remove Favorite';
-                    removeBtn.onclick = () => {
-                        toggleFavorite(fav, null); // Pass null as button is not the main display one
-                        displayFavorites();
-                        // Update the heart icon in the main result if it's currently displayed
-                        if (currentDisplayedName && currentDisplayedName.name === fav.name && currentDisplayedName.origin === fav.origin) {
-                            const resultButton = resultDisplay.querySelector('button');
-                            if (resultButton) {
-                                 resultButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-                                 resultButton.title = 'Add to Favorites';
-                            }
-                        }
-                    };
-
-                    div.appendChild(nameSpan);
-                    div.appendChild(removeBtn);
-                    favoritesList.appendChild(div);
-                });
-            }
-        }
-
-        // Removed findResultButton as it's simpler with only one result displayed
-
-        generateBtn.addEventListener('click', generateNames);
-        viewFavoritesBtn.addEventListener('click', () => {
-            displayFavorites();
-            favoritesSection.classList.add('active');
-        });
-        closeFavoritesBtn.addEventListener('click', () => {
-            favoritesSection.classList.remove('active');
-        });
-        favoritesSection.addEventListener('click', (e) => {
-            if (e.target === favoritesSection) {
-                 favoritesSection.classList.remove('active');
-            }
-        });
-         favoritesSection.querySelector('.max-w-2xl').addEventListener('click', (e) => {
-             e.stopPropagation();
-         });
-
-        fetchLanguages();
-
-    </script>
-
-</body>
-</html>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value
 
