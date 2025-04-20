@@ -16,38 +16,24 @@
             background-color: #F5F5DC; /* soft-beige */
             font-size: 1.1rem;
         }
-        /* Slider thumb style */
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
-            background: #374151; border-radius: 50%; cursor: pointer;
-        }
-        input[type=range]::-moz-range-thumb {
-            width: 20px; height: 20px; background: #374151;
-            border-radius: 50%; cursor: pointer; border: none;
-        }
-        /* Minimal radio button styling */
-        input[type="radio"] {
-            -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0;
-            font: inherit; color: currentColor; width: 1.15em; height: 1.15em;
-            border: 2px solid #374151; border-radius: 50%;
-            transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer;
-        }
-        input[type="radio"]::before {
-            content: ""; width: 0.65em; height: 0.65em; border-radius: 50%;
-            transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #374151;
-        }
+        /* Slider thumb */
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #374151; border-radius: 50%; cursor: pointer; }
+        input[type=range]::-moz-range-thumb { width: 20px; height: 20px; background: #374151; border-radius: 50%; cursor: pointer; border: none; }
+        /* Radio buttons */
+        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.15em; height: 1.15em; border: 2px solid #374151; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; }
+        input[type="radio"]::before { content: ""; width: 0.65em; height: 0.65em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #374151; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:focus { outline: max(2px, 0.15em) solid #60A5FA; outline-offset: max(2px, 0.15em); }
-        /* Minimal dropdown styling */
-        select {
-            appearance: none;
-            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23374151%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
-            background-repeat: no-repeat; background-position: right 0.7em top 50%; background-size: 0.65em auto; cursor: pointer;
-        }
+        /* Dropdown arrow */
+        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23374151%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.7em top 50%; background-size: 0.65em auto; cursor: pointer; }
         /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
-        #name-output > *:not(.italic):not(.error-message) { opacity: 0; } /* Exclude error message from initial hide */
+        #name-output > *:not(.italic):not(.error-message) { opacity: 0; }
+        /* Favorites List Styling */
+        #favorites-section { display: none; /* Hidden by default */ }
+        #favorites-section.active { display: block; }
+        .favorite-item { border-bottom: 1px dashed #6B7280; /* medium-gray */ } /* Dashed line separator */
     </style>
     <script>
       tailwind.config = {
@@ -61,40 +47,50 @@
               'button-active-hover': '#3B82F6',
               'button-inactive-hover-bg': '#F9FAFB',
               'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', // For error messages
+              'error-red': '#EF4444',
+              'save-button': '#34D399', // Greenish for Save
+              'save-button-hover': '#059669',
+              'remove-button': '#F87171', // Reddish for Remove
+              'remove-button-hover': '#DC2626',
             }
           }
         }
       }
     </script>
 </head>
-<body class="p-4 md:p-8 text-dark-text"> {/* Adjusted padding for smaller screens */}
+<body class="p-4 md:p-8 text-dark-text">
 
-    <header class="text-center mb-8">
+    <header class="text-center mb-8 relative"> {/* Added relative positioning for favorites button */}
         <img
             src="assets/stork.png"
             alt="Minimalist stork drawing"
             class="mx-auto h-20 w-20 object-contain mb-4"
             onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';"
             >
-        <h1 class="text-4xl md:text-5xl font-bold text-dark-text">Find the Perfect Baby Name</h1> {/* Adjusted text size */}
-        <p class="text-lg md:text-xl text-medium-gray mt-2">Explore names from around the world</p> {/* Adjusted text size */}
+        <h1 class="text-4xl md:text-5xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
+        <p class="text-lg md:text-xl text-medium-gray mt-2">Explore names from around the world</p>
+
+        {/* View Favorites Button */}
+        <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-gray-200 transition">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+        </button>
     </header>
 
-    <div class="text-center my-8 md:my-12 text-dark-text"> {/* Adjusted margin */}
-        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-        </svg>
+    <div class="text-center my-8 md:my-12 text-dark-text">
+        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> </svg>
     </div>
 
 
-    <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text"> {/* Adjusted padding */}
+    <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text">
 
-        <div class="space-y-6 md:space-y-8 mb-10"> {/* Adjusted spacing */}
+        <div class="space-y-6 md:space-y-8 mb-10">
 
-            <section id="gender-selection">
-                <label class="block text-xl md:text-2xl font-semibold text-dark-text mb-3 md:mb-4">Select Gender:</label> {/* Adjusted size/margin */}
-                <div class="flex flex-wrap gap-x-6 gap-y-3"> {/* Adjusted gap */}
+            <section id="gender-selection"> /* ... (no changes needed here) ... */ </section>
+             <section id="gender-selection">
+                <label class="block text-xl md:text-2xl font-semibold text-dark-text mb-3 md:mb-4">Select Gender:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-3">
                     <div class="flex items-center">
                         <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2">
                         <label for="gender-any" class="text-lg cursor-pointer">Any</label>
@@ -110,8 +106,9 @@
                 </div>
             </section>
 
+            <section id="language-selection"> /* ... (no changes needed here) ... */ </section>
             <section id="language-selection">
-                <label for="language-select" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Select Language/Origin:</label> {/* Adjusted size/margin */}
+                <label for="language-select" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Select Language/Origin:</label>
                 <select id="language-select" name="language" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
                     <option value="english">English</option>
                     <option value="german">German</option>
@@ -119,16 +116,22 @@
                     <option value="spanish">Spanish</option>
                     <option value="french">French</option>
                     <option value="japanese">Japanese</option>
-                    </select>
+                    {/* Add more languages here and in the nameData below */}
+                </select>
             </section>
 
-            <section id="style-slider">
+            <section id="letter-filter">
+                <label for="first-letter-input" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Starts with (Optional):</label>
+                <input type="text" id="first-letter-input" maxlength="1" placeholder="Enter first letter" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
+            </section>
+
+            <section id="style-slider"> /* ... (no changes needed here) ... */ </section>
+             <section id="style-slider">
                 <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-xl md:text-2xl font-semibold text-dark-text">Select Name Style:</h2> {/* Adjusted size */}
-                    {/* Slider Feedback Span */}
+                    <h2 class="text-xl md:text-2xl font-semibold text-dark-text">Select Name Style:</h2>
                     <span id="slider-feedback" class="text-medium-gray text-base md:text-lg font-semibold">Balanced</span>
                 </div>
-                <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg"> {/* Adjusted size */}
+                <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
                     <span>Traditional</span>
                     <span>Unique</span>
                 </div>
@@ -137,207 +140,341 @@
 
         </div> {/* End Form Controls Area */}
 
-        <section id="generate-button-section" class="text-center my-8 md:my-10"> {/* Adjusted margin */}
+        <section id="generate-button-section" class="text-center my-8 md:my-10"> /* ... (no changes needed here) ... */ </section>
+          <section id="generate-button-section" class="text-center my-8 md:my-10">
              <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
                 Generate Name
             </button>
          </section>
 
-        <div class="text-center my-8 md:my-10 text-dark-text"> {/* Adjusted margin */}
+        <div class="text-center my-8 md:my-10 text-dark-text"> /* ... (no changes needed here) ... */ </div>
+          <div class="text-center my-8 md:my-10 text-dark-text">
              <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
-        <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px]">
-             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-4 md:mb-5">Generated Name:</h2> {/* Adjusted size/margin */}
+        <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px] relative"> {/* Added relative for save button positioning */}
+             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-4 md:mb-5">Generated Name:</h2>
             <div id="name-output" class="text-center text-lg">
                 <p class="text-medium-gray italic">Select options and click "Generate Name"!</p>
+            </div>
+             {/* Save Button Placeholder (will be added dynamically) */}
+             <div id="save-button-container" class="absolute top-2 right-2"></div>
+        </section>
+
+         <section id="favorites-section" class="mt-10 p-6 border-2 border-dark-text rounded-lg bg-gray-50">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text">Saved Favorites</h2>
+                <button id="clear-favorites-btn" class="text-sm text-remove-button hover:underline">Clear All</button>
+            </div>
+            <div id="favorites-list" class="space-y-3">
+                {/* Favorite items will be injected here by JavaScript */}
+                <p id="no-favorites-message" class="text-medium-gray italic">You haven't saved any names yet.</p>
             </div>
         </section>
 
     </main>
 
-     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text"> {/* Adjusted margin */}
+     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text"> /* ... (no changes needed here) ... */ </div>
+      <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text">
          <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
         </svg>
     </div>
 
-    <footer class="text-center text-medium-gray text-base space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2"> /* ... (no changes needed here) ... */ </footer>
+     <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
     </footer>
 
     <script>
         // --- DATA SOURCE ---
-        // Sample data - replace with a much larger and more accurate dataset!
-        // styleScore: 0 = Very Traditional, 50 = Balanced, 100 = Very Unique
+        // Sample data - NEEDS SIGNIFICANT EXPANSION!
         const nameData = [
             // English
-            { name: "William", language: "english", gender: "boy", meaning: "Resolute protector", styleScore: 10 },
-            { name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree", styleScore: 20 },
-            { name: "Arthur", language: "english", gender: "boy", meaning: "Bear man, noble strength", styleScore: 5 },
-            { name: "Isla", language: "english", gender: "girl", meaning: "Island", styleScore: 40 },
-            { name: "Ezra", language: "english", gender: "boy", meaning: "Help", styleScore: 60 },
-            { name: "Luna", language: "english", gender: "girl", meaning: "Moon", styleScore: 70 },
-            { name: "Caspian", language: "english", gender: "boy", meaning: "From Qazvin (geographical)", styleScore: 85 },
-            { name: "Seraphina", language: "english", gender: "girl", meaning: "Fiery ones (angelic)", styleScore: 90 },
-            { name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead", styleScore: 55 },
+            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector; a classic royal name.", styleScore: 10 },
+            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree; symbol of peace.", styleScore: 20 },
+            { id: 'en3', name: "Arthur", language: "english", gender: "boy", meaning: "Bear man, noble strength; legendary king.", styleScore: 5 },
+            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island; Scottish river name.", styleScore: 40 },
+            { id: 'en5', name: "Ezra", language: "english", gender: "boy", meaning: "Help; a biblical prophet.", styleScore: 60 },
+            { id: 'en6', name: "Luna", language: "english", gender: "girl", meaning: "Moon; Roman goddess.", styleScore: 70 },
+            { id: 'en7', name: "Caspian", language: "english", gender: "boy", meaning: "From Qazvin (geographical); literary link.", styleScore: 85 },
+            { id: 'en8', name: "Seraphina", language: "english", gender: "girl", meaning: "Fiery ones (angelic); elegant and rare.", styleScore: 90 },
+            { id: 'en9', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead; nature-inspired.", styleScore: 55 },
             // German
-            { name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest", styleScore: 25 },
-            { name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom", styleScore: 15 },
-            { name: "Leon", language: "german", gender: "boy", meaning: "Lion", styleScore: 35 },
-            { name: "Emilia", language: "german", gender: "girl", meaning: "Rival", styleScore: 30 },
-            { name: "Felix", language: "german", gender: "boy", meaning: "Lucky, successful", styleScore: 45 },
-            { name: "Leni", language: "german", gender: "girl", meaning: "Light, torch", styleScore: 65 },
-            { name: "Anselm", language: "german", gender: "boy", meaning: "God's helmet", styleScore: 75 },
-            { name: "Cosima", language: "german", gender: "girl", meaning: "Order, decency", styleScore: 80 },
+            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest; strong and traditional.", styleScore: 25 },
+            { id: 'de2', name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom; internationally popular.", styleScore: 15 },
+            { id: 'de3', name: "Leon", language: "german", gender: "boy", meaning: "Lion; short and strong.", styleScore: 35 },
+            { id: 'de4', name: "Emilia", language: "german", gender: "girl", meaning: "Rival; classic and charming.", styleScore: 30 },
+            { id: 'de5', name: "Felix", language: "german", gender: "boy", meaning: "Lucky, successful; cheerful vibe.", styleScore: 45 },
+            { id: 'de6', name: "Leni", language: "german", gender: "girl", meaning: "Light, torch; short form gaining popularity.", styleScore: 65 },
+            { id: 'de7', name: "Anselm", language: "german", gender: "boy", meaning: "God's helmet; distinguished and uncommon.", styleScore: 75 },
+            { id: 'de8', name: "Cosima", language: "german", gender: "girl", meaning: "Order, decency; sophisticated and rare.", styleScore: 80 },
             // Italian
-            { name: "Leonardo", language: "italian", gender: "boy", meaning: "Brave lion", styleScore: 20 },
-            { name: "Sofia", language: "italian", gender: "girl", meaning: "Wisdom", styleScore: 10 },
-            { name: "Alessandro", language: "italian", gender: "boy", meaning: "Defending warrior", styleScore: 15 },
-            { name: "Giulia", language: "italian", gender: "girl", meaning: "Youthful", styleScore: 5 },
-            { name: "Lorenzo", language: "italian", gender: "boy", meaning: "From Laurentum", styleScore: 25 },
-            { name: "Aurora", language: "italian", gender: "girl", meaning: "Dawn", styleScore: 50 },
-            { name: "Elio", language: "italian", gender: "boy", meaning: "Sun", styleScore: 70 },
-            { name: "Allegra", language: "italian", gender: "girl", meaning: "Joyful, lively", styleScore: 85 },
+            { id: 'it1', name: "Leonardo", language: "italian", gender: "boy", meaning: "Brave lion; artistic namesake.", styleScore: 20 },
+            { id: 'it2', name: "Sofia", language: "italian", gender: "girl", meaning: "Wisdom; popular worldwide.", styleScore: 10 },
+            { id: 'it3', name: "Alessandro", language: "italian", gender: "boy", meaning: "Defending warrior; strong and classic.", styleScore: 15 },
+            { id: 'it4', name: "Giulia", language: "italian", gender: "girl", meaning: "Youthful; Italian form of Julia.", styleScore: 5 },
+            { id: 'it5', name: "Lorenzo", language: "italian", gender: "boy", meaning: "From Laurentum; romantic sound.", styleScore: 25 },
+            { id: 'it6', name: "Aurora", language: "italian", gender: "girl", meaning: "Dawn; Roman goddess, magical feel.", styleScore: 50 },
+            { id: 'it7', name: "Elio", language: "italian", gender: "boy", meaning: "Sun; short and bright.", styleScore: 70 },
+            { id: 'it8', name: "Allegra", language: "italian", gender: "girl", meaning: "Joyful, lively; musical connection.", styleScore: 85 },
             // Spanish
-            { name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God", styleScore: 30 },
-            { name: "Lucia", language: "spanish", gender: "girl", meaning: "Light", styleScore: 20 },
-            { name: "Hugo", language: "spanish", gender: "boy", meaning: "Mind, intellect", styleScore: 25 },
-            { name: "Martina", language: "spanish", gender: "girl", meaning: "Warlike (from Mars)", styleScore: 15 },
-            { name: "Javier", language: "spanish", gender: "boy", meaning: "New house", styleScore: 40 },
-            { name: "Valentina", language: "spanish", gender: "girl", meaning: "Strong, healthy", styleScore: 35 },
-            { name: "Thiago", language: "spanish", gender: "boy", meaning: "Supplanter", styleScore: 60 },
-            { name: "Ximena", language: "spanish", gender: "girl", meaning: "Listener", styleScore: 75 },
+            { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God; popular Hispanic name.", styleScore: 30 },
+            { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light; classic and beautiful.", styleScore: 20 },
+            { id: 'es3', name: "Hugo", language: "spanish", gender: "boy", meaning: "Mind, intellect; short and strong.", styleScore: 25 },
+            { id: 'es4', name: "Martina", language: "spanish", gender: "girl", meaning: "Warlike (from Mars); traditional.", styleScore: 15 },
+            { id: 'es5', name: "Javier", language: "spanish", gender: "boy", meaning: "New house; distinctively Spanish.", styleScore: 40 },
+            { id: 'es6', name: "Valentina", language: "spanish", gender: "girl", meaning: "Strong, healthy; popular internationally.", styleScore: 35 },
+            { id: 'es7', name: "Thiago", language: "spanish", gender: "boy", meaning: "Supplanter; variant of James/Jacob.", styleScore: 60 },
+            { id: 'es8', name: "Ximena", language: "spanish", gender: "girl", meaning: "Listener; historical roots.", styleScore: 75 },
              // French
-            { name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior", styleScore: 10 },
-            { name: "Camille", language: "french", gender: "any", meaning: "Temple servant", styleScore: 40 },
-            { name: "Jules", language: "french", gender: "boy", meaning: "Youthful", styleScore: 30 },
-            { name: "Margot", language: "french", gender: "girl", meaning: "Pearl", styleScore: 25 },
-            { name: "Rémy", language: "french", gender: "boy", meaning: "Oarsman", styleScore: 60 },
-            { name: "Anaïs", language: "french", gender: "girl", meaning: "Grace", styleScore: 55 },
-             // Japanese (Meanings can vary greatly with Kanji)
-            { name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / soar", styleScore: 30 },
-            { name: "Yui", language: "japanese", gender: "girl", meaning: "Tie, bind / clothing", styleScore: 20 },
-            { name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / love", styleScore: 50 },
-            { name: "Akira", language: "japanese", gender: "any", meaning: "Bright, clear", styleScore: 45 },
-            { name: "Kenji", language: "japanese", gender: "boy", meaning: "Strong, healthy second son", styleScore: 15 },
-            { name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom", styleScore: 10 },
-            { name: "Kaito", language: "japanese", gender: "boy", meaning: "Ocean flying / soar", styleScore: 70 },
-            { name: "Hana", language: "japanese", gender: "girl", meaning: "Flower", styleScore: 5 },
+            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior; royal name.", styleScore: 10 },
+            { id: 'fr2', name: "Camille", language: "french", gender: "any", meaning: "Temple servant; elegant and unisex.", styleScore: 40 },
+            { id: 'fr3', name: "Jules", language: "french", gender: "boy", meaning: "Youthful; classic French choice.", styleScore: 30 },
+            { id: 'fr4', name: "Margot", language: "french", gender: "girl", meaning: "Pearl; chic and vintage.", styleScore: 25 },
+            { id: 'fr5', name: "Rémy", language: "french", gender: "boy", meaning: "Oarsman; charming sound.", styleScore: 60 },
+            { id: 'fr6', name: "Anaïs", language: "french", gender: "girl", meaning: "Grace; sophisticated.", styleScore: 55 },
+             // Japanese (Meanings depend heavily on Kanji)
+            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", styleScore: 30 },
+            { id: 'jp2', name: "Yui", language: "japanese", gender: "girl", meaning: "Tie, bind / Superior garment", styleScore: 20 },
+            { id: 'jp3', name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / Love", styleScore: 50 },
+            { id: 'jp4', name: "Akira", language: "japanese", gender: "any", meaning: "Bright, clear / Intelligent", styleScore: 45 },
+            { id: 'jp5', name: "Kenji", language: "japanese", gender: "boy", meaning: "Strong, healthy second son", styleScore: 15 },
+            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom; iconic.", styleScore: 10 },
+            { id: 'jp7', name: "Kaito", language: "japanese", gender: "boy", meaning: "Ocean flying / Supportive person", styleScore: 70 },
+            { id: 'jp8', name: "Hana", language: "japanese", gender: "girl", meaning: "Flower; simple and beautiful.", styleScore: 5 },
         ];
 
         // --- DOM Elements ---
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
+        const firstLetterInput = document.getElementById('first-letter-input'); // New input
         const styleSlider = document.getElementById('style-range');
         const generateBtn = document.getElementById('generate-btn');
         const nameOutput = document.getElementById('name-output');
-        const sliderFeedback = document.getElementById('slider-feedback'); // Get the feedback span
+        const sliderFeedback = document.getElementById('slider-feedback');
+        const saveButtonContainer = document.getElementById('save-button-container'); // Container for save button
+        const viewFavoritesBtn = document.getElementById('view-favorites-btn'); // Button to view list
+        const favoritesSection = document.getElementById('favorites-section'); // The whole favorites section
+        const favoritesListDiv = document.getElementById('favorites-list'); // The div to list favorites
+        const noFavoritesMessage = document.getElementById('no-favorites-message'); // Message when list is empty
+        const clearFavoritesBtn = document.getElementById('clear-favorites-btn'); // Button to clear list
 
         // --- State Variables ---
         let selectedGender = 'any';
         let selectedLanguage = languageSelect.value;
-        let selectedStyle = parseInt(styleSlider.value); // Ensure style is a number
+        let selectedFirstLetter = ''; // New state for first letter
+        let selectedStyle = parseInt(styleSlider.value);
+        let currentDisplayedName = null; // Store the currently displayed name object
+        let favorites = []; // Array to hold favorite name objects
 
         // --- Helper Functions ---
-        // Function to get style category from slider value
+        function getStyleCategory(value) { /* ... (no changes) ... */ }
         function getStyleCategory(value) {
             if (value < 34) return 'Traditional';
             if (value < 67) return 'Balanced';
             return 'Unique';
         }
-
-        // Function to update slider feedback text
+        function updateSliderFeedback() { /* ... (no changes) ... */ }
         function updateSliderFeedback() {
             sliderFeedback.textContent = getStyleCategory(selectedStyle);
         }
 
+        // --- Favorites Functions (localStorage) ---
+        function loadFavorites() {
+            const storedFavorites = localStorage.getItem('babyNameFavorites');
+            if (storedFavorites) {
+                favorites = JSON.parse(storedFavorites);
+            } else {
+                favorites = [];
+            }
+            console.log('Favorites loaded:', favorites);
+            // Initially hide the favorites section until viewed
+            favoritesSection.classList.remove('active');
+        }
+
+        function saveFavorites() {
+            localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
+            console.log('Favorites saved:', favorites);
+        }
+
+        function isFavorite(nameObj) {
+             // Check if a name with the same ID is already in favorites
+             return favorites.some(fav => fav.id === nameObj.id);
+        }
+
+        function addToFavorites(nameObj) {
+            if (nameObj && !isFavorite(nameObj)) {
+                favorites.push(nameObj);
+                saveFavorites();
+                updateSaveButton(true); // Update button to show 'Saved' state
+                displayFavorites(); // Update the list view immediately
+                console.log('Added to favorites:', nameObj);
+            } else {
+                 console.log('Already in favorites or no name object:', nameObj);
+            }
+        }
+
+         function removeFromFavorites(nameId) {
+            favorites = favorites.filter(fav => fav.id !== nameId);
+            saveFavorites();
+            displayFavorites(); // Refresh the list display
+             // If the removed item is the currently displayed one, update its save button
+            if (currentDisplayedName && currentDisplayedName.id === nameId) {
+                 updateSaveButton(false);
+            }
+            console.log('Removed favorite with ID:', nameId);
+        }
+
+        function displayFavorites() {
+            favoritesListDiv.innerHTML = ''; // Clear current list
+            if (favorites.length === 0) {
+                noFavoritesMessage.style.display = 'block'; // Show 'no favorites' message
+            } else {
+                noFavoritesMessage.style.display = 'none'; // Hide 'no favorites' message
+                favorites.forEach(fav => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'favorite-item flex justify-between items-center py-2'; // Added flex for layout
+
+                    const textSpan = document.createElement('span');
+                    textSpan.innerHTML = `<strong class="text-lg">${fav.name}</strong> <span class="text-sm text-medium-gray">(${fav.language}, ${fav.meaning})</span>`;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.textContent = 'Remove';
+                    removeBtn.className = 'text-sm text-remove-button hover:underline ml-4 px-2 py-1'; // Added padding
+                    removeBtn.dataset.id = fav.id; // Store ID on button for removal
+
+                    itemDiv.appendChild(textSpan);
+                    itemDiv.appendChild(removeBtn);
+                    favoritesListDiv.appendChild(itemDiv);
+                });
+            }
+        }
+
+        function toggleFavoritesView() {
+            if (favoritesSection.classList.contains('active')) {
+                favoritesSection.classList.remove('active');
+            } else {
+                displayFavorites(); // Ensure list is up-to-date before showing
+                favoritesSection.classList.add('active');
+            }
+        }
+
+        function updateSaveButton(isSaved) {
+             saveButtonContainer.innerHTML = ''; // Clear previous button
+             if (!currentDisplayedName) return; // Don't show button if no name is displayed
+
+             const saveBtn = document.createElement('button');
+             saveBtn.title = isSaved ? 'Name is saved' : 'Save this name';
+             saveBtn.disabled = isSaved; // Disable if already saved
+             saveBtn.className = `p-1 rounded-full transition ${
+                isSaved
+                ? 'text-save-button cursor-not-allowed' // Saved state: green check, disabled
+                : 'text-medium-gray hover:text-save-button hover:bg-gray-100' // Unsaved state: gray heart, hover effect
+             }`;
+
+             saveBtn.innerHTML = isSaved
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` // Checkmark icon
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart icon
+
+             if (!isSaved) {
+                 saveBtn.onclick = () => addToFavorites(currentDisplayedName);
+             }
+
+             saveButtonContainer.appendChild(saveBtn);
+        }
+
+
         // --- Event Listeners ---
-        genderRadios.forEach(radio => {
-            radio.addEventListener('change', (event) => {
-                selectedGender = event.target.value;
-                console.log('Selected Gender:', selectedGender);
-            });
-        });
+        genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
+        languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
+        firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); }); // Update first letter state
+        styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
 
-        languageSelect.addEventListener('change', (event) => {
-            selectedLanguage = event.target.value;
-            console.log('Selected Language:', selectedLanguage);
-        });
-
-        styleSlider.addEventListener('input', (event) => {
-            selectedStyle = parseInt(event.target.value); // Update style state
-            updateSliderFeedback(); // Update feedback text
-            console.log('Selected Style Value:', selectedStyle);
-        });
-
-        // --- Generate Button Interaction (Main Logic) ---
+        // Generate Button Click
         generateBtn.addEventListener('click', () => {
-            console.log(`Generating name for gender: ${selectedGender}, language: ${selectedLanguage}, style value: ${selectedStyle}`);
-
-            // Show loading state
+            console.log(`Generating name for gender: ${selectedGender}, language: ${selectedLanguage}, first letter: '${selectedFirstLetter}', style value: ${selectedStyle}`);
             nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`;
+            saveButtonContainer.innerHTML = ''; // Clear save button while generating
+            currentDisplayedName = null; // Clear current name
 
-            // Determine target style category
             const targetStyleCategory = getStyleCategory(selectedStyle);
-            console.log('Target Style Category:', targetStyleCategory);
 
-            // Filter names based on selections
+            // Filter names
             const filteredNames = nameData.filter(item => {
-                // Match language
                 const languageMatch = item.language === selectedLanguage;
-                // Match gender ('any' matches all, or specific match)
                 const genderMatch = selectedGender === 'any' || item.gender === selectedGender || item.gender === 'any';
-                // Match style category
                 const itemStyleCategory = getStyleCategory(item.styleScore);
                 const styleMatch = itemStyleCategory === targetStyleCategory;
+                // Add first letter filter (only if input is not empty)
+                const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
 
-                return languageMatch && genderMatch && styleMatch;
+                return languageMatch && genderMatch && styleMatch && letterMatch;
             });
 
             console.log('Filtered Names Count:', filteredNames.length);
 
-            // Display result after a short delay
+            // Display result
             setTimeout(() => {
                 if (filteredNames.length > 0) {
-                    // Select a random name from the filtered list
                     const randomIndex = Math.floor(Math.random() * filteredNames.length);
-                    const selectedName = filteredNames[randomIndex];
+                    currentDisplayedName = filteredNames[randomIndex]; // Store the selected name object
 
-                    console.log('Selected Name:', selectedName);
-
-                    // Display the selected name and info
+                    console.log('Selected Name:', currentDisplayedName);
                     nameOutput.innerHTML = `
                         <div class="fade-in">
-                            <h3 class="text-4xl font-bold text-dark-text mb-2">${selectedName.name}</h3>
-                            <p class="text-lg text-dark-text">${selectedName.meaning || 'Meaning not available.'}</p>
+                            <h3 class="text-4xl font-bold text-dark-text mb-2">${currentDisplayedName.name}</h3>
+                            <p class="text-lg text-dark-text">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
                             <p class="text-base text-medium-gray mt-1">
-                                (Origin: ${selectedName.language.charAt(0).toUpperCase() + selectedName.language.slice(1)},
+                                (Origin: ${currentDisplayedName.language.charAt(0).toUpperCase() + currentDisplayedName.language.slice(1)},
                                 Style: ${targetStyleCategory})
                             </p>
                         </div>
                     `;
+                    // Show save button, checking if it's already a favorite
+                    updateSaveButton(isFavorite(currentDisplayedName));
                 } else {
-                    // Display error message if no names found
                     console.log('No names found matching criteria.');
-                    nameOutput.innerHTML = `
-                        <p class="text-error-red italic error-message text-lg">
-                            Couldn't find a name matching your selections. Try different options!
-                        </p>
-                    `;
+                    nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg">Couldn't find a name matching your selections. Try different options!</p>`;
+                    saveButtonContainer.innerHTML = ''; // Ensure no save button on error
+                    currentDisplayedName = null;
                 }
-            }, 500); // Shorter delay now that it's 'real'
+            }, 500);
         });
+
+        // Favorites List Interaction (Event Delegation)
+        favoritesListDiv.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON' && event.target.dataset.id) {
+                removeFromFavorites(event.target.dataset.id);
+            }
+        });
+
+        // View/Hide Favorites Button
+        viewFavoritesBtn.addEventListener('click', toggleFavoritesView);
+
+        // Clear All Favorites Button
+        clearFavoritesBtn.addEventListener('click', () => {
+             if (confirm('Are you sure you want to clear all saved favorites?')) {
+                 favorites = [];
+                 saveFavorites();
+                 displayFavorites();
+                  // Update save button for currently displayed name if it exists
+                 if (currentDisplayedName) {
+                     updateSaveButton(false);
+                 }
+             }
+        });
+
 
         // --- Initial Page Load Setup ---
         document.addEventListener('DOMContentLoaded', () => {
-             // Set initial slider feedback text
+             loadFavorites(); // Load favorites from localStorage
              updateSliderFeedback();
-             // Set the initial placeholder message
              nameOutput.innerHTML = `<p class="text-medium-gray italic text-lg">Select options and click "Generate Name"!</p>`;
+             favoritesSection.classList.remove('active'); // Ensure favorites list is hidden initially
         });
     </script>
 
