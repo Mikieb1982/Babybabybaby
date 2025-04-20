@@ -13,9 +13,7 @@
             font-family: 'Inter', sans-serif;
             /* Apply paper texture background */
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            /* Ensure the texture covers the whole page */
             background-repeat: repeat;
-            /* Set base background color that shows through/behind texture */
             background-color: #F5F5DC; /* soft-beige */
         }
         /* Slider thumb style */
@@ -55,9 +53,9 @@
     <header class="text-center mb-8">
         <img
             src="assets/stork.png"
-            alt="Minimalist stork logo"
-            class="mx-auto h-16 w-16 object-contain mb-4"
-            onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';"
+            alt="Minimalist stork drawing"
+            class="mx-auto h-12 w-12 object-contain mb-4" /* Adjusted size to h-12 w-12 */
+            onerror="this.onerror=null; this.src='https://placehold.co/48x48/F5F5DC/374151?text=Stork';" /* Updated placeholder size */
             >
         <h1 class="text-4xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
         <p class="text-lg text-medium-gray mt-2">Explore names from around the world</p>
@@ -70,7 +68,7 @@
         <section id="language-selection" class="mb-10">
             <h2 class="text-2xl font-semibold text-dark-text mb-5">Choose a Language/Country:</h2>
             <div class="flex flex-wrap gap-4" id="language-buttons">
-                <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out border-2 border-transparent"> {/* Added transparent border for layout consistency */}
+                <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out border-2 border-transparent">
                     English
                 </button>
                  <button data-lang="german" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
@@ -99,7 +97,7 @@
         <hr class="border-t-2 border-dark-text my-10">
 
          <section id="generate-button-section" class="text-center my-10">
-             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text"> {/* Added border for consistency */}
+             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
                 Generate Name
             </button>
          </section>
@@ -122,7 +120,7 @@
     </footer>
 
     <script>
-        // DOM Elements & State Variables (as before)
+        // DOM Elements & State Variables
         const languageButtons = document.querySelectorAll('.lang-button');
         const styleSlider = document.getElementById('style-range');
         const generateBtn = document.getElementById('generate-btn');
@@ -131,24 +129,18 @@
         let selectedLanguage = 'english';
         let selectedStyle = 50;
 
-        // --- CSS Classes for Button States (Updated for border-2, border-dark-text) ---
-        const activeClasses = ['bg-button-active', 'hover:bg-button-active-hover', 'text-white', 'border-transparent']; // Keeps transparent border for layout
-        const inactiveClasses = ['bg-white', 'text-dark-text', 'border-2', 'border-dark-text', 'hover:bg-button-inactive-hover-bg', 'hover:border-button-inactive-hover-border']; // Uses dark-text border/text
+        // CSS Classes for Button States
+        const activeClasses = ['bg-button-active', 'hover:bg-button-active-hover', 'text-white', 'border-transparent'];
+        const inactiveClasses = ['bg-white', 'text-dark-text', 'border-2', 'border-dark-text', 'hover:bg-button-inactive-hover-bg', 'hover:border-button-inactive-hover-border'];
 
-        // --- Language Button Interaction (Updated class logic) ---
+        // Language Button Interaction
         languageButtonsContainer.addEventListener('click', (event) => {
             const clickedButton = event.target.closest('.lang-button');
             if (clickedButton) {
                 languageButtons.forEach(button => {
                     button.classList.remove(...activeClasses);
-                    // Ensure all inactive classes are present before adding potentially new ones
-                    inactiveClasses.forEach(cls => {
-                        if (!button.classList.contains(cls)) {
-                            button.classList.add(cls);
-                        }
-                    });
-                     // Remove classes that might conflict (like text-medium-gray if it was there before)
-                     button.classList.remove('text-medium-gray');
+                    inactiveClasses.forEach(cls => { if (!button.classList.contains(cls)) button.classList.add(cls); });
+                    button.classList.remove('text-medium-gray');
                 });
                 clickedButton.classList.remove(...inactiveClasses);
                 clickedButton.classList.add(...activeClasses);
@@ -157,21 +149,16 @@
             }
         });
 
-        // --- Slider Interaction (No changes needed) ---
+        // Slider Interaction
         styleSlider.addEventListener('input', (event) => {
             selectedStyle = event.target.value;
             console.log('Selected Style Value:', selectedStyle);
         });
 
-        // --- Generate Button Interaction (No changes needed) ---
+        // Generate Button Interaction
         generateBtn.addEventListener('click', () => {
             console.log(`Generating name for language: ${selectedLanguage}, style: ${selectedStyle}`);
-            nameOutput.innerHTML = `
-                <div class="flex justify-center items-center h-full">
-                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div>
-                    <p class="text-dark-text ml-3">Generating...</p>
-                </div>
-            `;
+            nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3">Generating...</p></div>`;
             setTimeout(() => {
                  let styleCategory = 'Balanced';
                  if (selectedStyle < 25) styleCategory = 'Very Traditional';
@@ -180,31 +167,19 @@
                  else if (selectedStyle > 55) styleCategory = 'Unique';
                  const exampleName = "ExampleName";
                  const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`;
-                 nameOutput.innerHTML = `
-                    <div class="fade-in">
-                        <h3 class="text-3xl font-bold text-dark-text mb-2">${exampleName}</h3>
-                        <p class="text-dark-text">${exampleInfo}</p>
-                        <p class="text-sm text-medium-gray mt-1">(Style preference: ${styleCategory})</p>
-                    </div>
-                 `;
+                 nameOutput.innerHTML = `<div class="fade-in"><h3 class="text-3xl font-bold text-dark-text mb-2">${exampleName}</h3><p class="text-dark-text">${exampleInfo}</p><p class="text-sm text-medium-gray mt-1">(Style preference: ${styleCategory})</p></div>`;
             }, 1500);
         });
 
-        // --- Initial Page Load Setup (Updated class logic) ---
+        // Initial Page Load Setup
         document.addEventListener('DOMContentLoaded', () => {
             const defaultButton = languageButtonsContainer.querySelector(`[data-lang="${selectedLanguage}"]`);
             if (defaultButton) {
                  languageButtons.forEach(button => {
                     button.classList.remove(...activeClasses);
-                     // Apply all inactive classes initially
-                    inactiveClasses.forEach(cls => {
-                        if (!button.classList.contains(cls)) {
-                            button.classList.add(cls);
-                        }
-                    });
-                    button.classList.remove('text-medium-gray'); // Clean up old class if present
+                    inactiveClasses.forEach(cls => { if (!button.classList.contains(cls)) button.classList.add(cls); });
+                    button.classList.remove('text-medium-gray');
                  });
-                 // Activate the default button
                 defaultButton.classList.remove(...inactiveClasses);
                 defaultButton.classList.add(...activeClasses);
             }
