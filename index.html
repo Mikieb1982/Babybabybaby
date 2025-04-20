@@ -11,7 +11,6 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Apply paper texture background */
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
@@ -28,20 +27,20 @@
         /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
-        #name-output > *:not(.italic) { opacity: 0; } /* Hide generated content initially */
+        #name-output > *:not(.italic) { opacity: 0; }
     </style>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'soft-beige': '#F5F5DC', // Base color behind texture
-              'dark-text': '#374151', // Ink color for text, borders
-              'medium-gray': '#6B7280', // Secondary text
-              'button-active': '#60A5FA', // Active language button fill
+              'soft-beige': '#F5F5DC',
+              'dark-text': '#374151',
+              'medium-gray': '#6B7280',
+              'button-active': '#60A5FA',
               'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', // Hover for outlined buttons
-              'button-inactive-hover-border': '#1F2937', // Darker hover border for outlined
+              'button-inactive-hover-bg': '#F9FAFB',
+              'button-inactive-hover-border': '#1F2937',
             }
           }
         }
@@ -54,13 +53,18 @@
         <img
             src="assets/stork.png"
             alt="Minimalist stork drawing"
-            class="mx-auto h-12 w-12 object-contain mb-4" /* Adjusted size to h-12 w-12 */
-            onerror="this.onerror=null; this.src='https://placehold.co/48x48/F5F5DC/374151?text=Stork';" /* Updated placeholder size */
+            class="mx-auto h-16 w-16 object-contain mb-4" /* Size back to h-16 w-16 */
+            onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Stork';" /* Updated placeholder size */
             >
         <h1 class="text-4xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
         <p class="text-lg text-medium-gray mt-2">Explore names from around the world</p>
     </header>
-    <hr class="border-t-2 border-dark-text max-w-4xl mx-auto mb-12">
+
+    <div class="text-center my-12 text-dark-text">
+        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
 
 
     <main class="max-w-3xl mx-auto bg-white p-8 rounded-lg border-2 border-dark-text">
@@ -83,7 +87,11 @@
             </div>
         </section>
 
-        <hr class="border-t-2 border-dark-text my-10">
+        <div class="text-center my-10 text-dark-text">
+             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
 
         <section id="style-slider" class="mb-10">
             <h2 class="text-2xl font-semibold text-dark-text mb-5">Select Name Style:</h2>
@@ -94,7 +102,11 @@
             <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
         </section>
 
-        <hr class="border-t-2 border-dark-text my-10">
+        <div class="text-center my-10 text-dark-text">
+             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
 
          <section id="generate-button-section" class="text-center my-10">
              <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
@@ -102,7 +114,11 @@
             </button>
          </section>
 
-        <hr class="border-t-2 border-dark-text my-10">
+        <div class="text-center my-10 text-dark-text">
+             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
 
         <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px]">
              <h2 class="text-2xl font-semibold text-dark-text mb-5">Generated Name:</h2>
@@ -113,7 +129,12 @@
 
     </main>
 
-     <hr class="border-t-2 border-dark-text max-w-4xl mx-auto mt-12 mb-8">
+     <div class="text-center mt-12 mb-8 text-dark-text">
+         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </div>
+
     <footer class="text-center text-medium-gray text-sm space-y-2">
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
