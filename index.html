@@ -40,7 +40,7 @@
         .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         /* Simple Button Feedback */
         .btn-feedback { transition: transform 0.1s ease-out; }
-        .btn-feedback:active:not(:disabled) { transform: scale(0.95); } /* Only apply active scale if not disabled */
+        .btn-feedback:active:not(:disabled) { transform: scale(0.95); }
         /* Favorites List Styling */
         #favorites-section { display: none; }
         #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; }
@@ -49,26 +49,17 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
      <script>
-      // Tailwind config (colors defined for JS usage if needed, but primarily used via classes)
-      tailwind.config = { /* ... (colors defined as before) ... */ }
-       tailwind.config = {
+      // Tailwind config
+      tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'soft-beige': '#F5F5DC',
-              'dark-text': '#374151',
-              'medium-gray': '#6B7280',
-              'button-active': '#60A5FA',
-              'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB',
-              'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444',
-              'save-button': '#34D399',
-              'save-button-hover': '#059669',
-              'remove-button': '#F87171',
-              'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF',
-              'copy-button-hover': '#4B5563',
+              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
+              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
+              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
             }
           }
         }
@@ -90,8 +81,8 @@
 
     <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text">
 
-        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled> {/* Disable controls until data loads */}
-             <legend class="sr-only">Name Generation Controls</legend> {/* Accessibility */}
+        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled>
+             <legend class="sr-only">Name Generation Controls</legend>
 
             <section id="gender-selection">
                 <label class="block text-xl md:text-2xl font-semibold text-dark-text mb-3 md:mb-4">Select Gender:</label>
@@ -105,7 +96,6 @@
             <section id="language-selection">
                 <label for="language-select" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Select Language/Origin:</label>
                 <select id="language-select" name="language">
-                    {/* Options will be populated by JS after data load */}
                     <option value="">Loading Languages...</option>
                 </select>
             </section>
@@ -140,7 +130,7 @@
         </fieldset> {/* End Form Controls Area */}
 
         <section id="generate-button-section" class="text-center my-8 md:my-10">
-             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text btn-feedback" disabled> {/* Disable button until data loads */}
+             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text btn-feedback" disabled>
                 Generate Name
             </button>
          </section>
@@ -152,12 +142,7 @@
         <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px]">
              <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-4 md:mb-5">Generated Name:</h2>
             <div id="name-output" class="text-left space-y-4 text-lg relative">
-                 {/* Initial Loading Message */}
-                <div id="loading-message" class="text-center text-medium-gray italic">
-                    <div class="loader"></div>
-                    Loading names...
-                </div>
-                 {/* Result will be injected here */}
+                <div id="loading-message" class="text-center text-medium-gray italic"> <div class="loader"></div> Loading names... </div>
             </div>
         </section>
 
@@ -182,17 +167,18 @@
 
     <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
-        <p><a href="#" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p> {/* Placeholder */}
+        {/* Updated Blog Link */}
+        <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
     </footer>
 
     <script>
         // ===========================================
         // DATA SOURCE (Now loaded from names.json)
         // ===========================================
-        let nameDatabase = []; // Will hold names loaded from JSON
+        let nameDatabase = [];
 
         // ===========================================
-        // DOM Elements
+        // DOM Elements (Assume all elements exist)
         // ===========================================
         const controlsFieldset = document.getElementById('generator-controls');
         const genderRadios = document.querySelectorAll('input[name="gender"]');
@@ -215,84 +201,50 @@
         // State Variables
         // ===========================================
         let selectedGender = 'any';
-        let selectedLanguage = ''; // Will be set after languages load
+        let selectedLanguage = '';
         let selectedLength = 'any';
         let selectedFirstLetter = '';
-        let selectedStyle = parseInt(styleSlider.value);
+        let selectedStyle = 50; // Keep initial value consistent with HTML
         let currentDisplayedName = null;
         let favorites = [];
         let favoritesSortAsc = true;
-        let dataLoaded = false; // Flag to track if data is loaded
+        let dataLoaded = false;
 
         // ===========================================
         // Helper Functions
         // ===========================================
-        // Updated for 5 categories
-        function getStyleCategory(value) {
-            if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional';
-            if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique';
-        }
+        function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
         function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
-
-        // Copy to Clipboard with feedback
-        function copyToClipboard(text, buttonElement) { /* ... (no changes) ... */ }
+        function copyToClipboard(text, buttonElement) { /* ... (as before) ... */ }
          function copyToClipboard(text, buttonElement) {
             navigator.clipboard.writeText(text).then(() => {
-                const originalHTML = buttonElement.innerHTML;
-                 buttonElement.innerHTML = 'Copied!'; buttonElement.disabled = true;
+                const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Copied!'; buttonElement.disabled = true;
                 setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.disabled = false; }, 1500);
                 console.log('Copied to clipboard:', text);
             }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                 const originalHTML = buttonElement.innerHTML;
-                 buttonElement.innerHTML = 'Error';
+                console.error('Failed to copy text: ', err); const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Error';
                  setTimeout(() => { buttonElement.innerHTML = originalHTML; }, 1500);
             });
         }
-        // Get length category
-        function getLengthCategory(name) { /* ... (no changes) ... */ }
-         function getLengthCategory(name) {
-            const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long';
-        }
+        function getLengthCategory(name) { /* ... (as before) ... */ }
+         function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
 
         // ===========================================
         // Favorites Functions (localStorage)
         // ===========================================
-        function loadFavorites() { /* ... (no changes) ... */ }
-         function loadFavorites() {
-            const storedFavorites = localStorage.getItem('babyNameFavorites');
-            if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; }
-            console.log('Favorites loaded:', favorites);
-            favoritesSection.classList.remove('active');
-        }
-        function saveFavorites() { /* ... (no changes) ... */ }
-         function saveFavorites() {
-            localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
-            console.log('Favorites saved:', favorites);
-        }
+        function loadFavorites() { /* ... (as before) ... */ }
+         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); favoritesSection.classList.remove('active'); }
+        function saveFavorites() { /* ... (as before) ... */ }
+         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
         function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
-        function addToFavorites(nameObj) { /* ... (no changes, uses renderSaveButton) ... */ }
-         function addToFavorites(nameObj) {
-            if (nameObj && !isFavorite(nameObj)) {
-                favorites.push(nameObj); saveFavorites();
-                renderSaveButton(document.getElementById(`save-btn-container-${nameObj.id}`), nameObj, true);
-                displayFavorites(); console.log('Added to favorites:', nameObj);
-            } else { console.log('Already in favorites or no name object:', nameObj); }
-        }
-        function removeFromFavorites(nameId) { /* ... (no changes, uses renderSaveButton) ... */ }
-         function removeFromFavorites(nameId) {
-            favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavorites();
-             if (currentDisplayedName && currentDisplayedName.id === nameId) {
-                 renderSaveButton(document.getElementById(`save-btn-container-${nameId}`), currentDisplayedName, false);
-             }
-            console.log('Removed favorite with ID:', nameId);
-        }
-        // Updated displayFavorites for new fields and copy button
-        function displayFavorites() { /* ... (sorting, display logic, copy button as before) ... */ }
+        function addToFavorites(nameObj) { /* ... (as before) ... */ }
+         function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); renderSaveButton(document.getElementById(`save-btn-container-${nameObj.id}`), nameObj, true); displayFavorites(); console.log('Added to favorites:', nameObj); } else { console.log('Already in favorites or no name object:', nameObj); } }
+        function removeFromFavorites(nameId) { /* ... (as before) ... */ }
+         function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavorites(); if (currentDisplayedName && currentDisplayedName.id === nameId) { renderSaveButton(document.getElementById(`save-btn-container-${nameId}`), currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
+        function displayFavorites() { /* ... (as before, displays new fields) ... */ }
          function displayFavorites() {
             favorites.sort((a, b) => { const nameA = a.name.toLowerCase(); const nameB = b.name.toLowerCase(); if (nameA < nameB) return favoritesSortAsc ? -1 : 1; if (nameA > nameB) return favoritesSortAsc ? 1 : -1; return 0; });
-            favoritesListDiv.innerHTML = '';
-            noFavoritesMessage.style.display = favorites.length === 0 ? 'block' : 'none';
+            favoritesListDiv.innerHTML = ''; noFavoritesMessage.style.display = favorites.length === 0 ? 'block' : 'none';
             favorites.forEach(fav => {
                 const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-3 gap-2';
                 const textDiv = document.createElement('div');
@@ -305,57 +257,45 @@
                 buttonsDiv.appendChild(copyBtn); buttonsDiv.appendChild(removeBtn); itemDiv.appendChild(textDiv); itemDiv.appendChild(buttonsDiv); favoritesListDiv.appendChild(itemDiv);
             });
         }
-        function toggleFavoritesView() { /* ... (no changes) ... */ }
-         function toggleFavoritesView() {
-            if (favoritesSection.classList.contains('active')) { favoritesSection.classList.remove('active'); }
-            else { displayFavorites(); favoritesSection.classList.add('active'); }
-        }
-        // Renders save button
-        function renderSaveButton(container, nameObj, isSaved) { /* ... (no changes) ... */ }
-         function renderSaveButton(container, nameObj, isSaved) {
-            if (!container) return; container.innerHTML = ''; const saveBtn = document.createElement('button'); saveBtn.title = isSaved ? 'Name is saved' : 'Save this name'; saveBtn.disabled = isSaved;
-            saveBtn.className = `save-btn p-1 rounded-full transition btn-feedback ${ isSaved ? 'text-save-button cursor-not-allowed' : 'text-medium-gray hover:text-save-button hover:bg-gray-100' }`;
-            saveBtn.dataset.id = nameObj.id;
-            saveBtn.innerHTML = isSaved ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-            if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
-        }
+        function toggleFavoritesView() { /* ... (as before) ... */ }
+         function toggleFavoritesView() { if (favoritesSection.classList.contains('active')) { favoritesSection.classList.remove('active'); } else { displayFavorites(); favoritesSection.classList.add('active'); } }
+        function renderSaveButton(container, nameObj, isSaved) { /* ... (as before) ... */ }
+         function renderSaveButton(container, nameObj, isSaved) { if (!container) return; container.innerHTML = ''; const saveBtn = document.createElement('button'); saveBtn.title = isSaved ? 'Name is saved' : 'Save this name'; saveBtn.disabled = isSaved; saveBtn.className = `save-btn p-1 rounded-full transition btn-feedback ${ isSaved ? 'text-save-button cursor-not-allowed' : 'text-medium-gray hover:text-save-button hover:bg-gray-100' }`; saveBtn.dataset.id = nameObj.id; saveBtn.innerHTML = isSaved ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn); }
 
         // ===========================================
         // Data Loading Function
         // ===========================================
-        async function loadNameData() {
+        async function loadNameData() { /* ... (as before, fetches names.json) ... */ }
+         async function loadNameData() {
             try {
-                const response = await fetch('names.json'); // Attempt to fetch the external file
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                // IMPORTANT: Replace 'names.json' with the actual path if needed
+                const response = await fetch('names.json');
+                if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
                 nameDatabase = await response.json();
                 console.log('Name data loaded successfully:', nameDatabase.length, 'names');
 
-                // Populate language dropdown dynamically
-                const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
-                languageSelect.innerHTML = ''; // Clear loading message
-                languages.forEach(lang => {
-                    const option = document.createElement('option');
-                    option.value = lang;
-                    option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); // Capitalize
-                    languageSelect.appendChild(option);
-                });
-                selectedLanguage = languageSelect.value; // Set initial language state
+                // Add lengthCategory to data if missing (for robustness)
+                 nameDatabase.forEach(item => {
+                     if (!item.lengthCategory) {
+                         item.lengthCategory = getLengthCategory(item.name);
+                     }
+                 });
 
-                // Enable controls now that data is loaded
-                controlsFieldset.disabled = false;
-                generateBtn.disabled = false;
-                dataLoaded = true;
-                loadingMessage.style.display = 'none'; // Hide loading message
-                 nameOutput.innerHTML = `<p class="text-medium-gray italic text-center text-lg">Select options and click "Generate Name"!</p>`; // Set initial prompt
+                // Populate language dropdown
+                const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
+                languageSelect.innerHTML = '';
+                languages.forEach(lang => { const option = document.createElement('option'); option.value = lang; option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); languageSelect.appendChild(option); });
+                selectedLanguage = languageSelect.value;
+
+                // Enable controls
+                controlsFieldset.disabled = false; generateBtn.disabled = false; dataLoaded = true;
+                loadingMessage.style.display = 'none';
+                 nameOutput.innerHTML = `<p class="text-medium-gray italic text-center text-lg">Ready! Select options and click "Generate Name".</p>`; // Update initial message
 
             } catch (error) {
                 console.error('Error loading name data:', error);
-                // Display error message to the user
-                 nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">Error loading name data. Please try refreshing the page. (${error.message})</p>`;
+                 nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">Error loading name data. Please try refreshing. (${error.message})</p>`;
                  loadingMessage.style.display = 'none';
-                 // Keep controls disabled
             }
         }
 
@@ -370,13 +310,12 @@
             styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
 
             // Generate Button Click
-            generateBtn.addEventListener('click', () => {
-                if (!dataLoaded) return; // Prevent generation if data hasn't loaded
-
+            generateBtn.addEventListener('click', () => { /* ... (logic as before, including length filter) ... */ });
+             generateBtn.addEventListener('click', () => {
+                if (!dataLoaded) return;
                 console.log(`Generating name: G=${selectedGender}, L=${selectedLanguage}, Len=${selectedLength}, FL='${selectedFirstLetter}', Sty=${selectedStyle}`);
-                nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`; // Use loader class
+                nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`;
                 currentDisplayedName = null;
-
                 const targetStyleCategory = getStyleCategory(selectedStyle);
 
                 // Filter names
@@ -386,182 +325,63 @@
                     const itemStyleCategory = getStyleCategory(item.styleScore);
                     const styleMatch = itemStyleCategory === targetStyleCategory;
                     const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
-                    const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
+                    const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength; // Use pre-calculated category
                     return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
                 });
-
                 console.log('Filtered Names Count:', filteredNames.length);
 
                 // Display single result
-                setTimeout(() => { // Keep timeout for perceived action
-                    nameOutput.innerHTML = ''; // Clear loading
+                setTimeout(() => {
+                    nameOutput.innerHTML = '';
                     if (filteredNames.length > 0) {
                         const randomIndex = Math.floor(Math.random() * filteredNames.length);
                         currentDisplayedName = filteredNames[randomIndex];
-
                         console.log('Selected Name:', currentDisplayedName);
 
-                        const resultDiv = document.createElement('div');
-                        resultDiv.className = 'result-item fade-in relative';
-
+                        const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
-                        textDiv.innerHTML = `
-                            <h3 class="text-4xl font-bold text-dark-text mb-1">${currentDisplayedName.name}</h3>
-                            <p class="text-base text-dark-text">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
-                            <p class="text-sm text-medium-gray mt-1">
-                                Origin: ${currentDisplayedName.originNotes || currentDisplayedName.language} |
-                                Pronunciation: ${currentDisplayedName.pronunciation || 'N/A'} |
-                                Popularity: ${currentDisplayedName.popularity || 'N/A'}
-                            </p>
-                            <p class="text-xs text-gray-500"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>
-                        `;
-
-                        const buttonsDiv = document.createElement('div');
-                        buttonsDiv.className = 'absolute top-0 right-0 flex items-center gap-2';
-
-                        const saveBtnContainer = document.createElement('div');
-                        saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`;
-                        renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
-
-                        const copyBtn = document.createElement('button');
-                        copyBtn.title = 'Copy Info';
-                        copyBtn.className = 'text-copy-button hover:text-copy-button-hover p-1 btn-feedback';
+                        textDiv.innerHTML = `<h3 class="text-4xl font-bold text-dark-text mb-1">${currentDisplayedName.name}</h3> <p class="text-base text-dark-text">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-sm text-medium-gray mt-1"> Origin: ${currentDisplayedName.originNotes || currentDisplayedName.language} | Pronunciation: ${currentDisplayedName.pronunciation || 'N/A'} | Popularity: ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-xs text-gray-500"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
+                        const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-0 right-0 flex items-center gap-2';
+                        const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
+                        const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'text-copy-button hover:text-copy-button-hover p-1 btn-feedback';
                         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                        copyBtn.onclick = (e) => {
-                             const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`;
-                             copyToClipboard(textToCopy, e.currentTarget);
-                        };
-
-                        buttonsDiv.appendChild(saveBtnContainer);
-                        buttonsDiv.appendChild(copyBtn);
-                        resultDiv.appendChild(textDiv);
-                        resultDiv.appendChild(buttonsDiv);
-                        nameOutput.appendChild(resultDiv);
-
+                        copyBtn.onclick = (e) => { const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
+                        buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
                         console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found! Try adjusting the filters, especially Style or First Letter.</p>`; // More specific empty message
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try different filter settings?</p>`; // Updated empty message
                         currentDisplayedName = null;
                     }
-                }, 300); // Shorter delay
+                }, 300);
             });
 
             // Favorites List Interaction (Remove Button)
-            favoritesListDiv.addEventListener('click', (event) => { /* ... (no changes) ... */ });
-             favoritesListDiv.addEventListener('click', (event) => {
-                const removeButton = event.target.closest('button');
-                if (removeButton && removeButton.dataset.id && removeButton.textContent === 'Remove') { removeFromFavorites(removeButton.dataset.id); }
-            });
-
+            favoritesListDiv.addEventListener('click', (event) => { /* ... (as before) ... */ });
+             favoritesListDiv.addEventListener('click', (event) => { const removeButton = event.target.closest('button'); if (removeButton && removeButton.dataset.id && removeButton.textContent === 'Remove') { removeFromFavorites(removeButton.dataset.id); } });
             // View/Hide Favorites Button
             viewFavoritesBtn.addEventListener('click', toggleFavoritesView);
-
             // Clear All Favorites Button
-            clearFavoritesBtn.addEventListener('click', () => { /* ... (no changes) ... */ });
-              clearFavoritesBtn.addEventListener('click', () => {
-                 if (confirm('Are you sure you want to clear all saved favorites?')) {
-                     favorites = []; saveFavorites(); displayFavorites();
-                     if (currentDisplayedName) { renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); }
-                 }
-            });
-
+            clearFavoritesBtn.addEventListener('click', () => { /* ... (as before) ... */ });
+             clearFavoritesBtn.addEventListener('click', () => { if (confirm('Are you sure you want to clear all saved favorites?')) { favorites = []; saveFavorites(); displayFavorites(); if (currentDisplayedName) { renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } } });
             // Sort Favorites Button
-            sortFavoritesBtn.addEventListener('click', () => { /* ... (no changes) ... */ });
-              sortFavoritesBtn.addEventListener('click', () => {
-                favoritesSortAsc = !favoritesSortAsc; sortFavoritesBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavorites();
-            });
+            sortFavoritesBtn.addEventListener('click', () => { /* ... (as before) ... */ });
+             sortFavoritesBtn.addEventListener('click', () => { favoritesSortAsc = !favoritesSortAsc; sortFavoritesBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavorites(); });
         }
 
         // ===========================================
-        // Initial Page Load Setup
+        // Initial Page Load
         // ===========================================
         document.addEventListener('DOMContentLoaded', () => {
-             loadFavorites(); // Load favorites first
-             loadNameData(); // Load name data from JSON
-             updateSliderFeedback(); // Set initial slider text
-             setupEventListeners(); // Setup listeners after elements exist
-             favoritesSection.classList.remove('active'); // Ensure favorites hidden initially
-             // Initial message is now handled within loadNameData success/error
+             loadFavorites();
+             loadNameData(); // Load name data from JSON (will enable controls on success)
+             updateSliderFeedback();
+             setupEventListeners();
+             favoritesSection.classList.remove('active');
+             // Initial message shown during/after loading
         });
     </script>
 
 </body>
 </html>
 
-And here is the conceptual structure for the names.json file you would need to create and place in the same directory as your HTML file. Remember to populate this file with thousands of entries.
-[
-  {
-    "id": "en1",
-    "name": "William",
-    "language": "english",
-    "gender": "boy",
-    "meaning": "Resolute protector.",
-    "originNotes": "Germanic roots, English royalty",
-    "pronunciation": "WIL-ee-əm",
-    "popularity": "Classic",
-    "lengthCategory": "medium",
-    "styleScore": 10
-  },
-  {
-    "id": "en2",
-    "name": "Olivia",
-    "language": "english",
-    "gender": "girl",
-    "meaning": "Olive tree.",
-    "originNotes": "Latin origin, popularised by Shakespeare",
-    "pronunciation": "oh-LIV-ee-ə",
-    "popularity": "Top 100",
-    "lengthCategory": "medium",
-    "styleScore": 20
-  },
-  {
-    "id": "en4",
-    "name": "Isla",
-    "language": "english",
-    "gender": "girl",
-    "meaning": "Island.",
-    "originNotes": "Scottish river/island name",
-    "pronunciation": "EYE-lə",
-    "popularity": "Rising Trend",
-    "lengthCategory": "short",
-    "styleScore": 40
-  },
-  {
-    "id": "de1",
-    "name": "Maximilian",
-    "language": "german",
-    "gender": "boy",
-    "meaning": "Greatest.",
-    "originNotes": "Latin origin, popular in Germany",
-    "pronunciation": "mak-see-MEE-lee-ahn",
-    "popularity": "Classic",
-    "lengthCategory": "long",
-    "styleScore": 25
-  },
-  {
-    "id": "fr1",
-    "name": "Louis",
-    "language": "french",
-    "gender": "boy",
-    "meaning": "Famous warrior.",
-    "originNotes": "Germanic roots, French royalty",
-    "pronunciation": "LOO-ee / LWEE",
-    "popularity": "Classic",
-    "lengthCategory": "short",
-    "styleScore": 10
-  },
-  {
-    "id": "jp1",
-    "name": "Haruto",
-    "language": "japanese",
-    "gender": "boy",
-    "meaning": "Sun flying / Clear weather person",
-    "originNotes": "Kanji dependent meaning",
-    "pronunciation": "ha-ROO-toh",
-    "popularity": "Popular (Japan)",
-    "lengthCategory": "medium",
-    "styleScore": 30
-  }
-  // ... Add thousands more entries here
-]
-
+This version integrates the external data loading structure (fetch), adds the name length filter, displays popularity tags, and includes the other requested refinements. Remember to create the names.json file and populate it extensively!
