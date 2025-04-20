@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Name Generator - Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-repeat: repeat;
+            background-color: #F5F5DC; /* soft-beige */
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        /* Style links to fit the theme */
+        a {
+            color: #60A5FA; /* button-active blue */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #3B82F6; /* button-active-hover blue */
+            text-decoration: underline;
+        }
+        /* Ensure main content links use dark text */
+        main a {
+             color: #374151; /* dark-text */
+        }
+         main a:hover {
+             color: #6B7280; /* medium-gray */
+        }
+
+    </style>
+    <script>
+      // Tailwind config copied for color consistency
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'soft-beige': '#F5F5DC',
+              'dark-text': '#374151',
+              'medium-gray': '#6B7280',
+              'button-active': '#60A5FA',
+              'button-active-hover': '#3B82F6',
+              // Other colors not strictly needed for static blog page but kept for consistency
+              'button-inactive-hover-bg': '#F9FAFB',
+              'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444',
+              'save-button': '#34D399',
+              'save-button-hover': '#059669',
+              'remove-button': '#F87171',
+              'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF',
+              'copy-button-hover': '#4B5563',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="p-4 md:p-8 text-dark-text">
+
+    <header class="text-center mb-8 relative">
+        {/* Link back to the main generator page (assuming it's index.html) */}
+        <a href="index.html" title="Back to Name Generator">
+            <img
+                src="assets/stork.png"
+                alt="Minimalist stork drawing"
+                class="mx-auto h-16 w-16 object-contain mb-2" /* Slightly smaller for blog header */
+                onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';"
+                >
+        </a>
+        {/* Main site title linking back */}
+        <h1 class="text-3xl md:text-4xl font-bold text-dark-text">
+             <a href="index.html">Baby Name Generator</a>
+        </h1>
+        {/* Blog specific subtitle */}
+        <p class="text-lg md:text-xl text-medium-gray mt-1">Naming Tips & Ideas Blog</p>
+    </header>
+
+    <div class="text-center my-8 md:my-12 text-dark-text">
+        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text space-y-8">
+
+        {/* Blog Post Entry 1 (Placeholder) */}
+        <article class="blog-post-summary">
+            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+                {/* Link to the actual post file */}
+                <a href="post-placeholder-1.html">Choosing the Perfect Middle Name</a>
+            </h2>
+            <p class="text-sm text-medium-gray mb-3">Published: April 20, 2025 (Placeholder)</p>
+            <p class="text-lg text-dark-text leading-relaxed">
+                Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition. We look at classic pairings and unique ideas... (Read More)
+            </p>
+        </article>
+
+        {/* Divider between posts */}
+         <div class="text-center my-6 text-dark-text">
+             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+         {/* Blog Post Entry 2 (Placeholder) */}
+        <article class="blog-post-summary">
+            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+                 <a href="post-placeholder-2.html">Popular German Baby Names in 2025</a>
+            </h2>
+            <p class="text-sm text-medium-gray mb-3">Published: April 15, 2025 (Placeholder)</p>
+            <p class="text-lg text-dark-text leading-relaxed">
+                Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts in Germany this year... (Read More)
+            </p>
+        </article>
+
+         {/* Divider between posts */}
+         <div class="text-center my-6 text-dark-text">
+             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+         {/* Blog Post Entry 3 (Placeholder) */}
+        <article class="blog-post-summary">
+            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+                 <a href="post-placeholder-3.html">Unique & Uncommon English Name Ideas</a>
+            </h2>
+            <p class="text-sm text-medium-gray mb-3">Published: April 10, 2025 (Placeholder)</p>
+            <p class="text-lg text-dark-text leading-relaxed">
+                Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration beyond the top 100... (Read More)
+            </p>
+        </article>
+
+        {/* Add more article summaries here as you write them */}
+
+    </main>
+
+     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text">
+         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+         </svg>
+     </div>
+
+    <footer class="text-center text-medium-gray text-base space-y-2">
+        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
+        {/* Link back to the main generator page */}
+        <p><a href="index.html" class="hover:text-dark-text underline">Back to Name Generator</a></p>
+    </footer>
+
+    {/* No complex JavaScript needed for this static blog index page */}
+    <script>
+        // Minimal JS if needed in the future, currently empty.
+    </script>
+
+</body>
+</html>
+
