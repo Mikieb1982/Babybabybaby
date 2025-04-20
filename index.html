@@ -7,10 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            /* Updated font-family to Patrick Hand */
+            font-family: 'Patrick Hand', cursive;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
@@ -53,16 +54,16 @@
         <img
             src="assets/stork.png"
             alt="Minimalist stork drawing"
-            class="mx-auto h-20 w-20 object-contain mb-4" /* Size increased to h-20 w-20 */
-            onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';" /* Updated placeholder size */
+            class="mx-auto h-20 w-20 object-contain mb-4"
+            onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';"
             >
-        <h1 class="text-4xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
-        <p class="text-lg text-medium-gray mt-2">Explore names from around the world</p>
+        <h1 class="text-5xl font-bold text-dark-text">Find the Perfect Baby Name</h1>
+        <p class="text-xl text-medium-gray mt-2">Explore names from around the world</p>
     </header>
 
     <div class="text-center my-12 text-dark-text">
         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> {/* stroke-width changed to 1 */}
+            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
         </svg>
     </div>
 
@@ -70,18 +71,18 @@
     <main class="max-w-3xl mx-auto bg-white p-8 rounded-lg border-2 border-dark-text">
 
         <section id="language-selection" class="mb-10">
-            <h2 class="text-2xl font-semibold text-dark-text mb-5">Choose a Language/Country:</h2>
+             <h2 class="text-3xl font-semibold text-dark-text mb-5">Choose a Language/Country:</h2>
             <div class="flex flex-wrap gap-4" id="language-buttons">
-                <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out border-2 border-transparent">
+                 <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out border-2 border-transparent text-lg"> {/* Increased text size slightly */}
                     English
                 </button>
-                 <button data-lang="german" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="german" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
                     German
                 </button>
-                 <button data-lang="italian" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="italian" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
                     Italian
                 </button>
-                 <button data-lang="spanish" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out">
+                 <button data-lang="spanish" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
                     Spanish
                 </button>
             </div>
@@ -89,13 +90,13 @@
 
         <div class="text-center my-10 text-dark-text">
              <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> {/* stroke-width changed to 1 */}
+                <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
         <section id="style-slider" class="mb-10">
-            <h2 class="text-2xl font-semibold text-dark-text mb-5">Select Name Style:</h2>
-            <div class="flex items-center justify-between text-medium-gray mb-3">
+             <h2 class="text-3xl font-semibold text-dark-text mb-5">Select Name Style:</h2>
+            <div class="flex items-center justify-between text-medium-gray mb-3 text-lg"> {/* Increased text size */}
                 <span>Traditional</span>
                 <span>Unique</span>
             </div>
@@ -104,38 +105,38 @@
 
         <div class="text-center my-10 text-dark-text">
              <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> {/* stroke-width changed to 1 */}
+                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
          <section id="generate-button-section" class="text-center my-10">
-             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-lg transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
+             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text"> {/* Increased text size */}
                 Generate Name
             </button>
          </section>
 
         <div class="text-center my-10 text-dark-text">
              <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> {/* stroke-width changed to 1 */}
+                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
         <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px]">
-             <h2 class="text-2xl font-semibold text-dark-text mb-5">Generated Name:</h2>
-            <div id="name-output" class="text-center">
+             <h2 class="text-3xl font-semibold text-dark-text mb-5">Generated Name:</h2>
+            <div id="name-output" class="text-center text-lg"> {/* Increased base text size */}
                 <p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>
-            </div>
+                 </div>
         </section>
 
     </main>
 
      <div class="text-center mt-12 mb-8 text-dark-text">
          <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> {/* stroke-width changed to 1 */}
+             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
         </svg>
     </div>
 
-    <footer class="text-center text-medium-gray text-sm space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Increased text size */}
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
     </footer>
@@ -179,7 +180,7 @@
         // Generate Button Interaction
         generateBtn.addEventListener('click', () => {
             console.log(`Generating name for language: ${selectedLanguage}, style: ${selectedStyle}`);
-            nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3">Generating...</p></div>`;
+            nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`; // Adjusted text size
             setTimeout(() => {
                  let styleCategory = 'Balanced';
                  if (selectedStyle < 25) styleCategory = 'Very Traditional';
@@ -188,7 +189,8 @@
                  else if (selectedStyle > 55) styleCategory = 'Unique';
                  const exampleName = "ExampleName";
                  const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`;
-                 nameOutput.innerHTML = `<div class="fade-in"><h3 class="text-3xl font-bold text-dark-text mb-2">${exampleName}</h3><p class="text-dark-text">${exampleInfo}</p><p class="text-sm text-medium-gray mt-1">(Style preference: ${styleCategory})</p></div>`;
+                 // Adjusted text sizes in output
+                 nameOutput.innerHTML = `<div class="fade-in"><h3 class="text-4xl font-bold text-dark-text mb-2">${exampleName}</h3><p class="text-lg text-dark-text">${exampleInfo}</p><p class="text-base text-medium-gray mt-1">(Style preference: ${styleCategory})</p></div>`;
             }, 1500);
         });
 
@@ -204,7 +206,8 @@
                 defaultButton.classList.remove(...inactiveClasses);
                 defaultButton.classList.add(...activeClasses);
             }
-             nameOutput.innerHTML = `<p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>`;
+             // Adjusted text size
+             nameOutput.innerHTML = `<p class="text-medium-gray italic text-lg">Select a language and click "Generate Name"!</p>`;
         });
     </script>
 
