@@ -5,67 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Name Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    {/* Switched font to Architects Daughter */}
+    {/* Font setup */}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <style>
         body {
-            /* Using Architects Daughter font */
             font-family: 'Architects Daughter', cursive;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
-            font-size: 1.1rem; /* Adjusted base size for Architects Daughter */
-            line-height: 1.7; /* Adjusted line height */
+            font-size: 1.1rem;
+            line-height: 1.7;
             color: #374151; /* dark-text */
         }
         /* Base Input Styles */
         input[type="text"], select {
-             padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1.1rem; /* Adjusted input font size */ width: 100%; outline: none;
+             padding: 0.75rem; border: 1px solid #6B7280; /* medium-gray, thinner */
+             border-radius: 0.5rem; background-color: #fff;
+             font-size: 1.1rem; width: 100%; outline: none;
              transition: border-color 0.2s ease, box-shadow 0.2s ease;
              font-family: 'Architects Daughter', cursive; /* Ensure inputs use the font */
         }
-        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        input[type="text"]:focus, select:focus {
+             border-color: #60A5FA; /* button-active blue */
+             box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); /* Subtle focus ring */
+        }
         input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
 
         /* Slider thumb */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         /* Radio buttons */
-        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
-        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
+        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; /* Thinner border */ border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
+        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; /* Muted slate fill */ }
         input[type="radio"]:checked::before { transform: scale(1); }
-        input[type="radio"]:checked { border-color: #475569; }
+        input[type="radio"]:checked { border-color: #475569; /* Muted slate border when checked */ }
         input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
         /* Dropdown arrow */
-        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
+        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; /* Ensure space for arrow */ }
         /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
         /* Result & Favorite Item Styling */
-        .result-item, .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; } /* Adjusted for single result */
+        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
+        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         /* Button Base Styles */
-        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; /* Adjusted font weight */ text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; /* Adjusted button font size */ }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; }
         .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
         .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
-        /* Favorites List Styling */
-        #favorites-section { display: none; }
-        #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; }
+        /* Favorites Section Styling */
+        #favorites-section {
+            position: fixed; inset: 0; background-color: rgba(245, 245, 220, 0.9); /* soft-beige with opacity */
+            backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.3s ease-out;
+        }
+        #favorites-section.active { display: block; }
+
         /* Loading Spinner */
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
      <script>
-      // Tailwind config
-      tailwind.config = { /* ... colors defined as before ... */ }
-       tailwind.config = {
+      // Tailwind config (colors defined for reference)
+      tailwind.config = {
         theme: {
           extend: {
             colors: {
@@ -84,11 +93,10 @@
 </head>
 <body class="p-4 md:p-8">
 
-    <header class="text-center mb-10">
+    <header class="text-center mb-10 relative">
         <a href="index.html" title="Back to Name Generator">
             <img src="assets/stork.png" alt="Minimalist stork drawing" class="mx-auto h-20 w-20 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';">
         </a>
-        {/* Adjusted heading sizes for new font */}
         <h1 class="text-5xl md:text-6xl text-dark-text">
              <a href="index.html" class="hover:text-medium-gray transition-colors">Baby Name Generator</a>
         </h1>
@@ -98,17 +106,13 @@
         </button>
     </header>
 
-    {/* Dashed Divider */}
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    {/* Main Content Area */}
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
-        {/* Form Controls Area */}
         <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
 
-            {/* Gender Selection - Adjusted sizes */}
              <section id="gender-selection">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Gender:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
@@ -118,7 +122,6 @@
                 </div>
             </section>
 
-            {/* Combined Language & Letter Filter Row - Adjusted sizes */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
                     <label for="language-select" class="block text-2xl md:text-3xl text-dark-text mb-3">Language/Origin:</label>
@@ -130,10 +133,299 @@
                 </section>
             </div>
 
-             {/* Name Length Filter - Adjusted sizes */}
             <section id="length-filter">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Name Length:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-xl md:text-2xl cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-xl md:text-2xl cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-xl md:text-2xl cursor-pointer">Long (9+)</label> </div>
+                </div>
+            </section>
 
+             {/* Generate Button moved inside fieldset for logical grouping */}
+            <div class="text-center pt-4">
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-2xl md:text-3xl shadow-sm" disabled>Generate Name</button>
+            </div>
+        </fieldset>
+
+        {/* Results Section - Updated */}
+        <section id="results-section" class="mt-10">
+             <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10"> {/* Divider added */}
+            <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Name</h2>
+            <div id="loading-indicator" class="loader" style="display: none;"></div>
+            <div id="result-display" class="text-center min-h-[6rem]">
+                <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Name" to see a result.</p>
+                {/* Generated name content will be injected here */}
+            </div>
+             <p id="results-message" class="text-center text-medium-gray mt-4" style="display: none;"></p>
+        </section>
+
+    </main>
+
+    {/* Favorites Modal/Panel */}
+    <aside id="favorites-section">
+        <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
+            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+            </button>
+            <h2 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Favorite Names</h2>
+            <div id="favorites-list" class="space-y-6">
+                <p id="favorites-placeholder" class="text-center text-medium-gray text-xl italic">No favorites saved yet.</p>
+                 {/* Favorite items will be injected here */}
+            </div>
+        </div>
+    </aside>
+
+    {/* Footer Added Here */}
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <footer class="text-center text-medium-gray text-lg space-y-2">
+        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
+        <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
+    </footer>
+
+    <script>
+        // DOM Element References
+        const generatorControls = document.getElementById('generator-controls');
+        const languageSelect = document.getElementById('language-select');
+        const firstLetterInput = document.getElementById('first-letter-input');
+        const generateBtn = document.getElementById('generate-btn');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const resultDisplay = document.getElementById('result-display');
+        const resultsPlaceholder = document.getElementById('results-placeholder');
+        const resultsMessage = document.getElementById('results-message');
+        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
+        const favoritesSection = document.getElementById('favorites-section');
+        const closeFavoritesBtn = document.getElementById('close-favorites-btn');
+        const favoritesList = document.getElementById('favorites-list');
+        const favoritesPlaceholder = document.getElementById('favorites-placeholder');
+
+        // State
+        let languages = [];
+        let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || [];
+        let currentDisplayedName = null;
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchLanguages(); // Load languages first
+            displayFavorites(); // Initial display of favorites list (hidden)
+            setupEventListeners();
+            favoritesSection.style.display = 'none'; // Ensure hidden initially
+        });
+
+        // --- Fetch Languages ---
+        async function fetchLanguages() {
+            console.log("Fetching languages...");
+            // Simulate API call or load from a predefined list
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate delay
+            try {
+                 // Example language list - replace with actual data source if needed
+                languages = [
+                    { code: 'en', name: 'English' }, { code: 'de', name: 'German' },
+                    { code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' },
+                    { code: 'it', name: 'Italian' }, { code: 'jp', name: 'Japanese' },
+                    { code: 'nr', name: 'Norse'}, { code: 'la', name: 'Latin'},
+                    { code: 'ir', name: 'Irish'}, { code: 'hb', name: 'Hebrew'},
+                    // Add more languages as needed
+                ];
+                populateLanguageDropdown();
+                generatorControls.disabled = false; // Enable controls
+                console.log("Languages loaded.");
+            } catch (error) {
+                 console.error("Failed to load languages:", error);
+                 // Handle error - maybe show a message
+                 resultsPlaceholder.textContent = "Error loading languages. Please refresh.";
+                 resultsPlaceholder.style.display = 'block';
+                 loadingIndicator.style.display = 'none';
+            }
+        }
+
+        // --- Populate Language Dropdown ---
+        function populateLanguageDropdown() {
+            languageSelect.innerHTML = '<option value="any">Any Language</option>'; // Add 'Any' option
+            languages.sort((a, b) => a.name.localeCompare(b.name)).forEach(lang => {
+                const option = document.createElement('option');
+                option.value = lang.code;
+                option.textContent = lang.name;
+                languageSelect.appendChild(option);
+            });
+        }
+
+        // --- Generate Name Logic ---
+        async function generateNames() {
+            console.log("Generating name...");
+            resultsPlaceholder.style.display = 'none';
+            resultsMessage.style.display = 'none';
+            resultDisplay.innerHTML = '';
+            loadingIndicator.style.display = 'block';
+            generatorControls.disabled = true;
+            currentDisplayedName = null;
+
+            // Get filter values
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const language = languageSelect.value; // 'any' or specific code
+            const firstLetter = firstLetterInput.value.trim().toUpperCase();
+            const lengthFilter = document.querySelector('input[name="length"]:checked').value;
+
+            console.log("Filters:", { gender, language, firstLetter, lengthFilter });
+
+            // ** SIMULATED NAME FETCHING **
+            // Replace this section with actual API call or data filtering from names.json
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API/filtering time
+
+            const generatedNamesPool = [ // Example pool - REPLACE WITH ACTUAL DATA SOURCE/API
+                { name: "Astrid", origin: "Norse", gender: "girl" }, { name: "Leif", origin: "Norse", gender: "boy" },
+                { name: "Clara", origin: "Latin", gender: "girl" }, { name: "Felix", origin: "Latin", gender: "boy" },
+                { name: "Kenji", origin: "Japanese", gender: "boy" }, { name: "Yuna", origin: "Japanese", gender: "girl" },
+                { name: "Matteo", origin: "Italian", gender: "boy" }, { name: "Sofia", origin: "Greek", gender: "girl" },
+                { name: "Liam", origin: "Irish", gender: "boy" }, { name: "Olivia", origin: "Latin", gender: "girl" },
+                { name: "Noah", origin: "Hebrew", gender: "boy" }, { name: "Emma", origin: "German", gender: "girl" },
+                { name: "Freya", origin: "Norse", gender: "girl" }, { name: "Bjorn", origin: "Norse", gender: "boy" },
+                { name: "Aiko", origin: "Japanese", gender: "girl" }, { name: "Ren", origin: "Japanese", gender: "any" },
+                { name: "Chiara", origin: "Italian", gender: "girl"}, { name: "Lorenzo", origin: "Italian", gender: "boy"}
+            ];
+
+            // Apply filters (client-side simulation)
+            const filteredNames = generatedNamesPool.filter(name => {
+                let match = true;
+                if (gender !== 'any' && name.gender !== gender && name.gender !== 'any') match = false;
+                if (language !== 'any' && name.origin.toLowerCase() !== languages.find(l => l.code === language)?.name.toLowerCase()) {
+                   // Basic origin check - needs improvement if data structure changes
+                   // This assumes the 'origin' field matches the language name directly for simplicity
+                   // A real implementation might need more robust language/origin mapping
+                   if (!name.origin.toLowerCase().includes(languages.find(l => l.code === language)?.name.toLowerCase())) {
+                       // Allow partial matches like Greek origin for Italian language etc.
+                       // This part needs refinement based on actual data structure
+                   }
+                   // For now, let's allow if language is 'any'
+                   if (language !== 'any') match = false; // Simple filter for demo
+                }
+                if (firstLetter && !name.name.toUpperCase().startsWith(firstLetter)) match = false;
+                const len = name.name.length;
+                if (lengthFilter === 'short' && (len < 3 || len > 5)) match = false;
+                if (lengthFilter === 'medium' && (len < 6 || len > 8)) match = false;
+                if (lengthFilter === 'long' && len < 9) match = false;
+                return match;
+            });
+            // ** END SIMULATED FETCHING **
+
+
+            loadingIndicator.style.display = 'none';
+            generatorControls.disabled = false;
+
+            let selectedName = null;
+            if (filteredNames.length > 0) {
+                const randomIndex = Math.floor(Math.random() * filteredNames.length);
+                selectedName = filteredNames[randomIndex];
+            }
+
+            if (selectedName) {
+                displayResult(selectedName);
+            } else {
+                resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
+                resultsMessage.style.display = 'block';
+                resultsPlaceholder.style.display = 'none';
+                resultDisplay.innerHTML = '';
+            }
+            console.log("Name generation complete.");
+        }
+
+        // --- Display Single Result ---
+        function displayResult(nameData) {
+            resultDisplay.innerHTML = ''; // Clear placeholder or previous result
+            currentDisplayedName = nameData;
+
+            const div = document.createElement('div');
+            div.className = 'result-item flex flex-col sm:flex-row justify-between sm:items-center fade-in px-2 sm:px-4 py-2'; // Added padding
+
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'text-2xl md:text-3xl text-dark-text';
+            nameSpan.textContent = `${nameData.name} (${nameData.origin})`; // Display origin
+
+            const button = document.createElement('button');
+            const isFav = isFavorite(nameData);
+            button.innerHTML = isFav ?
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` : // Filled Heart
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart Outline
+            button.className = 'btn-icon p-1 rounded-full hover:bg-accent-muted-light transition btn-feedback flex-shrink-0'; // Added flex-shrink-0
+            button.title = isFav ? 'Remove from Favorites' : 'Add to Favorites';
+            button.onclick = () => toggleFavorite(nameData, button);
+
+            div.appendChild(nameSpan);
+            div.appendChild(button);
+            resultDisplay.appendChild(div);
+        }
+
+
+        // --- Favorites Logic ---
+        function toggleFavorite(nameData, button) {
+            const index = favorites.findIndex(fav => fav.name === nameData.name && fav.origin === nameData.origin);
+            if (index > -1) { // Is favorite, remove it
+                favorites.splice(index, 1);
+                button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+                button.title = 'Add to Favorites';
+            } else { // Not favorite, add it
+                favorites.push({ name: nameData.name, origin: nameData.origin, gender: nameData.gender }); // Store necessary info
+                button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`;
+                button.title = 'Remove from Favorites';
+            }
+            localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
+            displayFavorites(); // Update the list display
+        }
+
+        function isFavorite(nameData) {
+             return favorites.some(fav => fav.name === nameData.name && fav.origin === nameData.origin);
+        }
+
+        function displayFavorites() {
+            favoritesList.innerHTML = ''; // Clear current list
+            if (favorites.length === 0) {
+                favoritesPlaceholder.style.display = 'block';
+            } else {
+                favoritesPlaceholder.style.display = 'none';
+                favorites.forEach(fav => {
+                    const div = document.createElement('div');
+                    div.className = 'favorite-item flex justify-between items-center py-2';
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'text-xl';
+                    nameSpan.textContent = `${fav.name} (${fav.origin})`;
+                    const removeBtn = document.createElement('button');
+                    removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-remove-button hover:text-remove-button-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+                    removeBtn.className = 'btn-icon p-1 btn-feedback';
+                    removeBtn.title = 'Remove from Favorites';
+                    removeBtn.onclick = () => {
+                        toggleFavorite(fav, removeBtn); // Use toggleFavorite to remove
+                         // Also update the main display button if the removed favorite is currently shown
+                        if (currentDisplayedName && currentDisplayedName.name === fav.name && currentDisplayedName.origin === fav.origin) {
+                             const mainFavButton = resultDisplay.querySelector('button');
+                             if(mainFavButton) {
+                                mainFavButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+                                mainFavButton.title = 'Add to Favorites';
+                             }
+                        }
+                    };
+                    div.appendChild(nameSpan);
+                    div.appendChild(removeBtn);
+                    favoritesList.appendChild(div);
+                });
+            }
+        }
+
+        // --- Event Listeners Setup ---
+        function setupEventListeners() {
+            generateBtn.addEventListener('click', generateNames);
+            viewFavoritesBtn.addEventListener('click', () => {
+                displayFavorites(); // Ensure list is up-to-date
+                favoritesSection.style.display = 'block';
+            });
+            closeFavoritesBtn.addEventListener('click', () => {
+                favoritesSection.style.display = 'none';
+            });
+             // Add other listeners for filters if needed (e.g., if generation should happen automatically on change)
+        }
+
+    </script>
+</body>
+</html>
+
+I've added the footer section containing the copyright and the link to blog.html at the bottom of the HTML structure you provided.
