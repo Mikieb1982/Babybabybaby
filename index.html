@@ -36,8 +36,10 @@
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-        .result-item, .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        /* Adjusted result item style for single display */
+        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
+        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
+        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
         .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; }
         .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
@@ -121,15 +123,17 @@
             </section>
 
             <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto">Generate Names</button>
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto">Generate Name</button> {/* Changed Button Text */}
             </div>
         </fieldset>
 
         <section id="results-section" class="mt-10">
-            <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Names</h2>
+            <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Name</h2> {/* Changed Heading */}
             <div id="loading-indicator" class="loader" style="display: none;"></div>
-            <div id="results-list" class="space-y-6">
-                <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Names" to see results.</p>
+            {/* Changed ID and structure for single result */}
+            <div id="result-display" class="text-center min-h-[6rem]"> {/* Added min-height */}
+                <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Name" to see a result.</p>
+                {/* Generated name will appear here */}
             </div>
              <p id="results-message" class="text-center text-medium-gray mt-4" style="display: none;"></p>
         </section>
@@ -154,7 +158,7 @@
         const firstLetterInput = document.getElementById('first-letter-input');
         const generateBtn = document.getElementById('generate-btn');
         const loadingIndicator = document.getElementById('loading-indicator');
-        const resultsList = document.getElementById('results-list');
+        const resultDisplay = document.getElementById('result-display'); // Changed variable name
         const resultsPlaceholder = document.getElementById('results-placeholder');
         const resultsMessage = document.getElementById('results-message');
         const viewFavoritesBtn = document.getElementById('view-favorites-btn');
@@ -165,6 +169,7 @@
 
         let languages = [];
         let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || [];
+        let currentDisplayedName = null; // Keep track of the currently displayed name
 
         async function fetchLanguages() {
             console.log("Fetching languages...");
@@ -190,12 +195,13 @@
         }
 
         async function generateNames() {
-            console.log("Generating names...");
+            console.log("Generating name...");
             resultsPlaceholder.style.display = 'none';
             resultsMessage.style.display = 'none';
-            resultsList.innerHTML = '';
+            resultDisplay.innerHTML = ''; // Clear previous result display area
             loadingIndicator.style.display = 'block';
             generatorControls.disabled = true;
+            currentDisplayedName = null; // Reset currently displayed name
 
             const gender = document.querySelector('input[name="gender"]:checked').value;
             const language = languageSelect.value;
@@ -204,8 +210,8 @@
 
             console.log("Filters:", { gender, language, firstLetter, lengthFilter });
 
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            const generatedNames = [
+            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate generation time
+            const generatedNames = [ // Example pool of names
                 { name: "Astrid", origin: "Norse", gender: "girl" },
                 { name: "Leif", origin: "Norse", gender: "boy" },
                 { name: "Clara", origin: "Latin", gender: "girl" },
@@ -214,6 +220,10 @@
                 { name: "Yuna", origin: "Japanese", gender: "girl" },
                 { name: "Matteo", origin: "Italian", gender: "boy" },
                 { name: "Sofia", origin: "Greek", gender: "girl" },
+                { name: "Liam", origin: "Irish", gender: "boy" },
+                { name: "Olivia", origin: "Latin", gender: "girl" },
+                { name: "Noah", origin: "Hebrew", gender: "boy" },
+                { name: "Emma", origin: "German", gender: "girl" },
             ];
 
             loadingIndicator.style.display = 'none';
@@ -222,6 +232,7 @@
             const filteredNames = generatedNames.filter(name => {
                 let match = true;
                 if (gender !== 'any' && name.gender !== gender) match = false;
+                // Add language filter logic if API doesn't handle it
                 if (firstLetter && !name.name.toUpperCase().startsWith(firstLetter)) match = false;
                 const len = name.name.length;
                 if (lengthFilter === 'short' && (len < 3 || len > 5)) match = false;
@@ -230,60 +241,70 @@
                 return match;
             });
 
-
+            let selectedName = null;
             if (filteredNames.length > 0) {
-                displayResults(filteredNames);
+                // Select one random name from the filtered list
+                const randomIndex = Math.floor(Math.random() * filteredNames.length);
+                selectedName = filteredNames[randomIndex];
+            }
+
+            if (selectedName) {
+                displayResult(selectedName); // Display the single selected name
             } else {
                 resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
                 resultsMessage.style.display = 'block';
                 resultsPlaceholder.style.display = 'none';
+                resultDisplay.innerHTML = ''; // Ensure display area is empty
             }
             console.log("Name generation complete.");
         }
 
-        function displayResults(names) {
-            resultsList.innerHTML = '';
-             names.forEach((nameData, index) => {
-                const div = document.createElement('div');
-                div.className = 'result-item flex justify-between items-center fade-in';
-                div.style.animationDelay = `${index * 0.05}s`;
+        // Function modified to display a single result
+        function displayResult(nameData) {
+            resultDisplay.innerHTML = ''; // Clear previous content
+            currentDisplayedName = nameData; // Store the currently displayed name
 
-                const nameSpan = document.createElement('span');
-                nameSpan.className = 'text-xl md:text-2xl';
-                nameSpan.textContent = `${nameData.name} (${nameData.origin})`;
+            const div = document.createElement('div');
+            // Removed result-item class border, adjust styling as needed for single item
+            div.className = 'flex justify-between items-center fade-in px-4'; // Added padding
 
-                const button = document.createElement('button');
-                const isFavorite = favorites.some(fav => fav.name === nameData.name && fav.origin === nameData.origin);
-                button.innerHTML = isFavorite ?
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` :
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-                button.className = 'btn-icon p-1 rounded-full hover:bg-accent-muted-light transition';
-                button.title = isFavorite ? 'Remove from Favorites' : 'Add to Favorites';
-                button.onclick = () => toggleFavorite(nameData, button);
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'text-2xl md:text-3xl'; // Slightly larger text for single display
+            nameSpan.textContent = `${nameData.name} (${nameData.origin})`;
 
-                div.appendChild(nameSpan);
-                div.appendChild(button);
-                resultsList.appendChild(div);
-            });
+            const button = document.createElement('button');
+            const isFavorite = favorites.some(fav => fav.name === nameData.name && fav.origin === nameData.origin);
+            button.innerHTML = isFavorite ?
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` :
+                `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+            button.className = 'btn-icon p-1 rounded-full hover:bg-accent-muted-light transition';
+            button.title = isFavorite ? 'Remove from Favorites' : 'Add to Favorites';
+            button.onclick = () => toggleFavorite(nameData, button);
+
+            div.appendChild(nameSpan);
+            div.appendChild(button);
+            resultDisplay.appendChild(div); // Append to the dedicated display area
         }
 
         function toggleFavorite(nameData, button) {
             const index = favorites.findIndex(fav => fav.name === nameData.name && fav.origin === nameData.origin);
             if (index > -1) {
                 favorites.splice(index, 1);
-                if (button && button.innerHTML) { // Check if button exists and has innerHTML
+                // Update button only if it's the currently displayed name's button
+                if (button && button.innerHTML && nameData === currentDisplayedName) {
                     button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
                     button.title = 'Add to Favorites';
                 }
             } else {
                 favorites.push(nameData);
-                 if (button && button.innerHTML) { // Check if button exists and has innerHTML
+                 // Update button only if it's the currently displayed name's button
+                 if (button && button.innerHTML && nameData === currentDisplayedName) {
                      button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`;
                      button.title = 'Remove from Favorites';
                  }
             }
             saveFavorites();
-            displayFavorites();
+            displayFavorites(); // Update favorites list regardless
         }
 
         function saveFavorites() {
@@ -310,12 +331,15 @@
                     removeBtn.className = 'btn-icon p-1 rounded-full hover:bg-red-100 transition';
                     removeBtn.title = 'Remove Favorite';
                     removeBtn.onclick = () => {
-                        toggleFavorite(fav, {}); // Pass empty object as button is not needed here
+                        toggleFavorite(fav, null); // Pass null as button is not the main display one
                         displayFavorites();
-                        const resultItemButton = findResultButton(fav);
-                        if (resultItemButton) {
-                             resultItemButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-                             resultItemButton.title = 'Add to Favorites';
+                        // Update the heart icon in the main result if it's currently displayed
+                        if (currentDisplayedName && currentDisplayedName.name === fav.name && currentDisplayedName.origin === fav.origin) {
+                            const resultButton = resultDisplay.querySelector('button');
+                            if (resultButton) {
+                                 resultButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+                                 resultButton.title = 'Add to Favorites';
+                            }
                         }
                     };
 
@@ -326,16 +350,7 @@
             }
         }
 
-        function findResultButton(nameData) {
-            const resultsItems = resultsList.querySelectorAll('.result-item');
-            for (let item of resultsItems) {
-                const nameSpan = item.querySelector('span');
-                if (nameSpan && nameSpan.textContent === `${nameData.name} (${nameData.origin})`) {
-                    return item.querySelector('button');
-                }
-            }
-            return null;
-        }
+        // Removed findResultButton as it's simpler with only one result displayed
 
         generateBtn.addEventListener('click', generateNames);
         viewFavoritesBtn.addEventListener('click', () => {
