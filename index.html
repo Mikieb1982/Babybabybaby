@@ -10,90 +10,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <style>
         body {
-            /* Using Architects Daughter font */
             font-family: 'Architects Daughter', cursive;
-            /* Added background texture and color */
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            /* Adjusted base font size and line height for the font */
+            background-color: #F5F5DC;
             font-size: 1.1rem;
             line-height: 1.7;
-            color: #374151; /* dark-text */
+            color: #374151;
         }
-        /* Base Input Styles */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1.1rem; /* Adjusted input font size */ width: 100%; outline: none;
+             font-size: 1.1rem; width: 100%; outline: none;
              transition: border-color 0.2s ease, box-shadow 0.2s ease;
-             font-family: 'Architects Daughter', cursive; /* Ensure inputs use the font */
+             font-family: 'Architects Daughter', cursive;
         }
         input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
         input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        /* Slider thumb styling */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-
-        /* Custom Radio button styling */
         input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
-        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; /* Inner dot color */ }
+        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #475569; }
         input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-
-        /* Custom Dropdown arrow */
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
-
-        /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-
-        /* Result & Favorite Item Styling */
         .result-item, .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
         .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-        /* Button Base Styles */
-        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; /* Adjusted font weight for this font */ text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; /* Adjusted button font size */ }
-        .btn:active:not(:disabled) { transform: scale(0.97); } /* Click feedback */
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; }
+        .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
-        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; } /* Icon button style */
-
-        /* Favorites List Styling */
-        #favorites-section { display: none; /* Hidden by default */ }
+        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
+        #favorites-section { display: none; }
         #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; }
-
-        /* Loading Spinner */
-        .loader { border: 4px solid #e5e7eb; /* Light grey */ border-top: 4px solid #6b7280; /* Medium gray */ border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
+        .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
      <script>
-      // Tailwind config - defines custom colors
       tailwind.config = {
         theme: {
           extend: {
-            // Color palette definition
             colors: {
-              'soft-beige': '#F5F5DC',
-              'dark-text': '#374151',
-              'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', // Example active color
-              'button-active-hover': '#3B82F6', // Example active hover color
-              'button-inactive-hover-bg': '#F9FAFB', // Example inactive hover background
-              'button-inactive-hover-border': '#1F2937', // Example inactive hover border
-              'error-red': '#EF4444',
-              'save-button': '#34D399',
-              'save-button-hover': '#059669',
-              'remove-button': '#F87171',
-              'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF',
-              'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b',
-              'accent-muted-light': '#cbd5e1',
-              'off-white': '#f8fafc',
+              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
+              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
+              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
+              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
             }
           }
         }
@@ -102,66 +70,49 @@
 </head>
 <body class="p-4 md:p-8">
 
-    <header class="text-center mb-10 relative"> {/* Added relative positioning for absolute positioned button */}
-        {/* Link wrapping the image for navigation */}
+    <header class="text-center mb-10 relative">
         <a href="index.html" title="Back to Name Generator">
-            {/* Stork image with placeholder fallback */}
             <img src="assets/stork.png" alt="Minimalist stork drawing" class="mx-auto h-20 w-20 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';">
         </a>
-        {/* Main heading, adjusted sizes for the font */}
         <h1 class="text-5xl md:text-6xl text-dark-text">
              <a href="index.html" class="hover:text-medium-gray transition-colors">Baby Name Generator</a>
         </h1>
-        {/* Subheading */}
         <p class="text-2xl md:text-3xl text-medium-gray mt-2">Explore names from around the world</p>
-
-        {/* View Favorites Button - Positioned top-right */}
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-             {/* Heart Icon SVG */}
              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
         </button>
     </header>
 
-    {/* Dashed Divider */}
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    {/* Main Content Area with background and border */}
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
-        {/* Form Controls Area - Disabled initially */}
         <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
 
-            {/* Gender Selection - Adjusted sizes */}
              <section id="gender-selection">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Gender:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
-                    {/* Radio buttons for gender */}
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2.5"> <label for="gender-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
                     <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2.5"> <label for="gender-boy" class="text-xl md:text-2xl cursor-pointer">Boy</label> </div>
                     <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2.5"> <label for="gender-girl" class="text-xl md:text-2xl cursor-pointer">Girl</label> </div>
                 </div>
             </section>
 
-            {/* Combined Language & Letter Filter Row - Adjusted sizes */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
                     <label for="language-select" class="block text-2xl md:text-3xl text-dark-text mb-3">Language/Origin:</label>
-                    {/* Dropdown for language selection */}
                     <select id="language-select" name="language" class="text-xl"> <option value="">Loading Languages...</option> </select>
                 </section>
                 <section id="letter-filter">
                     <label for="first-letter-input" class="block text-2xl md:text-3xl text-dark-text mb-3">Starts with:</label>
-                    {/* Input for first letter filter */}
                     <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-xl">
                 </section>
             </div>
 
-             {/* Name Length Filter - Adjusted sizes */}
             <section id="length-filter">
                 <label class="block text-2xl md:text-3xl text-dark-text mb-4">Name Length:</label>
                 <div class="flex flex-wrap gap-x-8 gap-y-3">
-                     {/* Radio buttons for name length */}
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
                     <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-xl md:text-2xl cursor-pointer">Short (3-5)</label> </div>
                     <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-xl md:text-2xl cursor-pointer">Medium (6-8)</label> </div>
@@ -169,44 +120,35 @@
                 </div>
             </section>
 
-            {/* Generate Button */}
             <div class="text-center pt-4">
                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto">Generate Names</button>
             </div>
-        </fieldset> {/* Results Area */}
+        </fieldset>
+
         <section id="results-section" class="mt-10">
             <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Names</h2>
-            {/* Loading indicator */}
             <div id="loading-indicator" class="loader" style="display: none;"></div>
-            {/* Area to display results */}
             <div id="results-list" class="space-y-6">
-                {/* Generated names will appear here */}
                 <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Names" to see results.</p>
             </div>
-             {/* Message area for errors or info */}
              <p id="results-message" class="text-center text-medium-gray mt-4" style="display: none;"></p>
         </section>
 
     </main>
 
-    {/* Favorites Section (Initially Hidden) */}
     <aside id="favorites-section" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
         <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
-            {/* Close Button */}
             <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
             <h2 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Favorite Names</h2>
             <div id="favorites-list" class="space-y-6">
-                {/* Favorite names will appear here */}
                 <p id="favorites-placeholder" class="text-center text-medium-gray text-xl italic">No favorites saved yet.</p>
             </div>
         </div>
     </aside>
 
-    {/* Basic JavaScript Structure (Needs Implementation) */}
     <script>
-        // --- DOM Elements ---
         const generatorControls = document.getElementById('generator-controls');
         const languageSelect = document.getElementById('language-select');
         const firstLetterInput = document.getElementById('first-letter-input');
@@ -221,31 +163,24 @@
         const favoritesList = document.getElementById('favorites-list');
         const favoritesPlaceholder = document.getElementById('favorites-placeholder');
 
-        // --- State ---
-        let languages = []; // To store fetched languages
-        let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || []; // Load favorites from storage
+        let languages = [];
+        let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || [];
 
-        // --- Functions ---
-
-        // Function to fetch languages (Placeholder)
         async function fetchLanguages() {
             console.log("Fetching languages...");
-            // Replace with actual API call or data source
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
             languages = [
                 { code: 'en', name: 'English' }, { code: 'de', name: 'German' },
                 { code: 'fr', name: 'French' }, { code: 'es', name: 'Spanish' },
                 { code: 'it', name: 'Italian' }, { code: 'jp', name: 'Japanese' },
-                // Add more languages
             ];
             populateLanguageDropdown();
-            generatorControls.disabled = false; // Enable controls after loading
+            generatorControls.disabled = false;
             console.log("Languages loaded.");
         }
 
-        // Function to populate the language dropdown
         function populateLanguageDropdown() {
-            languageSelect.innerHTML = '<option value="any">Any Language</option>'; // Reset and add default
+            languageSelect.innerHTML = '<option value="any">Any Language</option>';
             languages.sort((a, b) => a.name.localeCompare(b.name)).forEach(lang => {
                 const option = document.createElement('option');
                 option.value = lang.code;
@@ -254,16 +189,14 @@
             });
         }
 
-        // Function to generate names (Placeholder)
         async function generateNames() {
             console.log("Generating names...");
             resultsPlaceholder.style.display = 'none';
             resultsMessage.style.display = 'none';
-            resultsList.innerHTML = ''; // Clear previous results
-            loadingIndicator.style.display = 'block'; // Show loader
-            generatorControls.disabled = true; // Disable form during generation
+            resultsList.innerHTML = '';
+            loadingIndicator.style.display = 'block';
+            generatorControls.disabled = true;
 
-            // Get selected options
             const gender = document.querySelector('input[name="gender"]:checked').value;
             const language = languageSelect.value;
             const firstLetter = firstLetterInput.value.trim().toUpperCase();
@@ -271,9 +204,8 @@
 
             console.log("Filters:", { gender, language, firstLetter, lengthFilter });
 
-            // --- Replace with actual name generation logic/API call ---
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate generation time
-            const generatedNames = [ // Example results
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            const generatedNames = [
                 { name: "Astrid", origin: "Norse", gender: "girl" },
                 { name: "Leif", origin: "Norse", gender: "boy" },
                 { name: "Clara", origin: "Latin", gender: "girl" },
@@ -283,18 +215,14 @@
                 { name: "Matteo", origin: "Italian", gender: "boy" },
                 { name: "Sofia", origin: "Greek", gender: "girl" },
             ];
-            // --- End of placeholder logic ---
 
-            loadingIndicator.style.display = 'none'; // Hide loader
-            generatorControls.disabled = false; // Re-enable form
+            loadingIndicator.style.display = 'none';
+            generatorControls.disabled = false;
 
-            // Filter names based on criteria (basic example)
             const filteredNames = generatedNames.filter(name => {
                 let match = true;
                 if (gender !== 'any' && name.gender !== gender) match = false;
-                // Add language filter logic if API doesn't handle it
                 if (firstLetter && !name.name.toUpperCase().startsWith(firstLetter)) match = false;
-                // Add length filter logic
                 const len = name.name.length;
                 if (lengthFilter === 'short' && (len < 3 || len > 5)) match = false;
                 if (lengthFilter === 'medium' && (len < 6 || len > 8)) match = false;
@@ -308,28 +236,27 @@
             } else {
                 resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
                 resultsMessage.style.display = 'block';
-                resultsPlaceholder.style.display = 'none'; // Keep placeholder hidden
+                resultsPlaceholder.style.display = 'none';
             }
             console.log("Name generation complete.");
         }
 
-        // Function to display results
         function displayResults(names) {
-            resultsList.innerHTML = ''; // Clear previous
+            resultsList.innerHTML = '';
              names.forEach((nameData, index) => {
                 const div = document.createElement('div');
                 div.className = 'result-item flex justify-between items-center fade-in';
-                div.style.animationDelay = `${index * 0.05}s`; // Stagger animation
+                div.style.animationDelay = `${index * 0.05}s`;
 
                 const nameSpan = document.createElement('span');
                 nameSpan.className = 'text-xl md:text-2xl';
-                nameSpan.textContent = `${nameData.name} (${nameData.origin})`; // Display name and origin
+                nameSpan.textContent = `${nameData.name} (${nameData.origin})`;
 
                 const button = document.createElement('button');
                 const isFavorite = favorites.some(fav => fav.name === nameData.name && fav.origin === nameData.origin);
                 button.innerHTML = isFavorite ?
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` : // Filled heart
-                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Outline heart
+                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>` :
+                    `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
                 button.className = 'btn-icon p-1 rounded-full hover:bg-accent-muted-light transition';
                 button.title = isFavorite ? 'Remove from Favorites' : 'Add to Favorites';
                 button.onclick = () => toggleFavorite(nameData, button);
@@ -340,32 +267,31 @@
             });
         }
 
-        // Function to toggle favorite status
         function toggleFavorite(nameData, button) {
             const index = favorites.findIndex(fav => fav.name === nameData.name && fav.origin === nameData.origin);
             if (index > -1) {
-                // Remove from favorites
                 favorites.splice(index, 1);
-                button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Outline heart
-                button.title = 'Add to Favorites';
+                if (button && button.innerHTML) { // Check if button exists and has innerHTML
+                    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+                    button.title = 'Add to Favorites';
+                }
             } else {
-                // Add to favorites
                 favorites.push(nameData);
-                 button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`; // Filled heart
-                button.title = 'Remove from Favorites';
+                 if (button && button.innerHTML) { // Check if button exists and has innerHTML
+                     button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg>`;
+                     button.title = 'Remove from Favorites';
+                 }
             }
             saveFavorites();
-            displayFavorites(); // Update favorites list if visible
+            displayFavorites();
         }
 
-        // Function to save favorites to Local Storage
         function saveFavorites() {
             localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
         }
 
-        // Function to display favorites in the side panel
         function displayFavorites() {
-            favoritesList.innerHTML = ''; // Clear current list
+            favoritesList.innerHTML = '';
             if (favorites.length === 0) {
                 favoritesPlaceholder.style.display = 'block';
             } else {
@@ -373,23 +299,22 @@
                 favorites.sort((a, b) => a.name.localeCompare(b.name)).forEach((fav, index) => {
                     const div = document.createElement('div');
                     div.className = 'favorite-item flex justify-between items-center fade-in';
-                    div.style.animationDelay = `${index * 0.05}s`; // Stagger animation
+                    div.style.animationDelay = `${index * 0.05}s`;
 
                     const nameSpan = document.createElement('span');
                     nameSpan.className = 'text-xl md:text-2xl';
                     nameSpan.textContent = `${fav.name} (${fav.origin})`;
 
                     const removeBtn = document.createElement('button');
-                    removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-remove-button hover:text-remove-button-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>`; // Trash icon
+                    removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-remove-button hover:text-remove-button-hover" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>`;
                     removeBtn.className = 'btn-icon p-1 rounded-full hover:bg-red-100 transition';
                     removeBtn.title = 'Remove Favorite';
                     removeBtn.onclick = () => {
-                        toggleFavorite(fav, {}); // Pass dummy button as it's not updated here
-                        displayFavorites(); // Re-render the list immediately
-                         // Also update the heart icon in the main results if the name is present there
+                        toggleFavorite(fav, {}); // Pass empty object as button is not needed here
+                        displayFavorites();
                         const resultItemButton = findResultButton(fav);
                         if (resultItemButton) {
-                             resultItemButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Outline heart
+                             resultItemButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-medium-gray hover:text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
                              resultItemButton.title = 'Add to Favorites';
                         }
                     };
@@ -401,7 +326,6 @@
             }
         }
 
-         // Helper to find the corresponding button in the results list
         function findResultButton(nameData) {
             const resultsItems = resultsList.querySelectorAll('.result-item');
             for (let item of resultsItems) {
@@ -413,28 +337,24 @@
             return null;
         }
 
-        // --- Event Listeners ---
         generateBtn.addEventListener('click', generateNames);
         viewFavoritesBtn.addEventListener('click', () => {
-            displayFavorites(); // Refresh list when opening
+            displayFavorites();
             favoritesSection.classList.add('active');
         });
         closeFavoritesBtn.addEventListener('click', () => {
             favoritesSection.classList.remove('active');
         });
-         // Optional: Close favorites when clicking outside the panel
         favoritesSection.addEventListener('click', (e) => {
-            if (e.target === favoritesSection) { // Check if the click is on the backdrop itself
+            if (e.target === favoritesSection) {
                  favoritesSection.classList.remove('active');
             }
         });
-         // Prevent closing when clicking inside the favorite content box
          favoritesSection.querySelector('.max-w-2xl').addEventListener('click', (e) => {
              e.stopPropagation();
          });
 
-        // --- Initial Load ---
-        fetchLanguages(); // Load languages when the page loads
+        fetchLanguages();
 
     </script>
 
