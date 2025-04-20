@@ -10,21 +10,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         body {
-            /* Updated font-family to Patrick Hand */
             font-family: 'Patrick Hand', cursive;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
+            /* Increase base font size slightly for Patrick Hand readability */
+            font-size: 1.1rem;
         }
         /* Slider thumb style */
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
-            background: #374151; /* dark-text */ border-radius: 50%; cursor: pointer;
+            background: #374151; border-radius: 50%; cursor: pointer;
         }
         input[type=range]::-moz-range-thumb {
-            width: 20px; height: 20px; background: #374151; /* dark-text */
+            width: 20px; height: 20px; background: #374151;
             border-radius: 50%; cursor: pointer; border: none;
         }
+        /* Minimal radio button styling */
+        input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: #fff;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 2px solid #374151; /* dark-text border */
+            border-radius: 50%;
+            transform: translateY(-0.075em);
+            display: inline-grid;
+            place-content: center;
+            cursor: pointer;
+        }
+        input[type="radio"]::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #374151; /* dark-text fill */
+        }
+        input[type="radio"]:checked::before {
+            transform: scale(1);
+        }
+        input[type="radio"]:focus {
+             outline: max(2px, 0.15em) solid #60A5FA; /* Use active blue for focus */
+             outline-offset: max(2px, 0.15em);
+        }
+        /* Minimal dropdown styling */
+        select {
+            appearance: none; /* Remove default arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23374151%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 0.7em top 50%;
+            background-size: 0.65em auto;
+            cursor: pointer;
+        }
+
         /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
@@ -38,7 +82,7 @@
               'soft-beige': '#F5F5DC',
               'dark-text': '#374151',
               'medium-gray': '#6B7280',
-              'button-active': '#60A5FA',
+              'button-active': '#60A5FA', // Used for radio focus, kept for potential future use
               'button-active-hover': '#3B82F6',
               'button-inactive-hover-bg': '#F9FAFB',
               'button-inactive-hover-border': '#1F2937',
@@ -70,47 +114,49 @@
 
     <main class="max-w-3xl mx-auto bg-white p-8 rounded-lg border-2 border-dark-text">
 
-        <section id="language-selection" class="mb-10">
-             <h2 class="text-3xl font-semibold text-dark-text mb-5">Choose a Language/Country:</h2>
-            <div class="flex flex-wrap gap-4" id="language-buttons">
-                 <button data-lang="english" class="lang-button bg-button-active hover:bg-button-active-hover text-white font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out border-2 border-transparent text-lg"> {/* Increased text size slightly */}
-                    English
-                </button>
-                 <button data-lang="german" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
-                    German
-                </button>
-                 <button data-lang="italian" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
-                    Italian
-                </button>
-                 <button data-lang="spanish" class="lang-button bg-white text-dark-text border-2 border-dark-text hover:bg-button-inactive-hover-bg hover:border-button-inactive-hover-border font-bold py-2 px-4 rounded-lg transition duration-150 ease-in-out text-lg">
-                    Spanish
-                </button>
-            </div>
-        </section>
+        <div class="space-y-8 mb-10"> {/* Added spacing between form elements */}
 
-        <div class="text-center my-10 text-dark-text">
-             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-        </div>
+            <section id="gender-selection">
+                <label class="block text-2xl font-semibold text-dark-text mb-4">Select Gender:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-2"> {/* Spacing for radio buttons */}
+                    <div class="flex items-center">
+                        <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2">
+                        <label for="gender-any" class="text-lg cursor-pointer">Any</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2">
+                        <label for="gender-boy" class="text-lg cursor-pointer">Boy</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2">
+                        <label for="gender-girl" class="text-lg cursor-pointer">Girl</label>
+                    </div>
+                </div>
+            </section>
 
-        <section id="style-slider" class="mb-10">
-             <h2 class="text-3xl font-semibold text-dark-text mb-5">Select Name Style:</h2>
-            <div class="flex items-center justify-between text-medium-gray mb-3 text-lg"> {/* Increased text size */}
-                <span>Traditional</span>
-                <span>Unique</span>
-            </div>
-            <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
-        </section>
+            <section id="language-selection">
+                <label for="language-select" class="block text-2xl font-semibold text-dark-text mb-3">Select Language/Origin:</label>
+                <select id="language-select" name="language" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
+                    <option value="english">English</option>
+                    <option value="german">German</option>
+                    <option value="italian">Italian</option>
+                    <option value="spanish">Spanish</option>
+                    </select>
+            </section>
 
-        <div class="text-center my-10 text-dark-text">
-             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-        </div>
+            <section id="style-slider">
+                <h2 class="text-2xl font-semibold text-dark-text mb-3">Select Name Style:</h2>
+                <div class="flex items-center justify-between text-medium-gray mb-3 text-lg">
+                    <span>Traditional</span>
+                    <span>Unique</span>
+                </div>
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+            </section>
 
-         <section id="generate-button-section" class="text-center my-10">
-             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text"> {/* Increased text size */}
+        </div> {/* End Form Controls Area */}
+
+        <section id="generate-button-section" class="text-center my-10">
+             <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
                 Generate Name
             </button>
          </section>
@@ -123,9 +169,9 @@
 
         <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px]">
              <h2 class="text-3xl font-semibold text-dark-text mb-5">Generated Name:</h2>
-            <div id="name-output" class="text-center text-lg"> {/* Increased base text size */}
-                <p class="text-medium-gray italic">Select a language and click "Generate Name"!</p>
-                 </div>
+            <div id="name-output" class="text-center text-lg">
+                <p class="text-medium-gray italic">Select options and click "Generate Name"!</p>
+            </div>
         </section>
 
     </main>
@@ -136,78 +182,78 @@
         </svg>
     </div>
 
-    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Increased text size */}
+    <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
     </footer>
 
     <script>
-        // DOM Elements & State Variables
-        const languageButtons = document.querySelectorAll('.lang-button');
+        // DOM Elements
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        const languageSelect = document.getElementById('language-select');
         const styleSlider = document.getElementById('style-range');
         const generateBtn = document.getElementById('generate-btn');
         const nameOutput = document.getElementById('name-output');
-        const languageButtonsContainer = document.getElementById('language-buttons');
-        let selectedLanguage = 'english';
-        let selectedStyle = 50;
 
-        // CSS Classes for Button States
-        const activeClasses = ['bg-button-active', 'hover:bg-button-active-hover', 'text-white', 'border-transparent'];
-        const inactiveClasses = ['bg-white', 'text-dark-text', 'border-2', 'border-dark-text', 'hover:bg-button-inactive-hover-bg', 'hover:border-button-inactive-hover-border'];
+        // State Variables
+        let selectedGender = 'any'; // Default gender
+        let selectedLanguage = languageSelect.value; // Default language from select
+        let selectedStyle = styleSlider.value; // Default slider value
 
-        // Language Button Interaction
-        languageButtonsContainer.addEventListener('click', (event) => {
-            const clickedButton = event.target.closest('.lang-button');
-            if (clickedButton) {
-                languageButtons.forEach(button => {
-                    button.classList.remove(...activeClasses);
-                    inactiveClasses.forEach(cls => { if (!button.classList.contains(cls)) button.classList.add(cls); });
-                    button.classList.remove('text-medium-gray');
-                });
-                clickedButton.classList.remove(...inactiveClasses);
-                clickedButton.classList.add(...activeClasses);
-                selectedLanguage = clickedButton.dataset.lang;
-                console.log('Selected Language:', selectedLanguage);
-            }
+        // --- Gender Selection Interaction ---
+        genderRadios.forEach(radio => {
+            radio.addEventListener('change', (event) => {
+                selectedGender = event.target.value;
+                console.log('Selected Gender:', selectedGender);
+            });
         });
 
-        // Slider Interaction
+        // --- Language Dropdown Interaction ---
+        languageSelect.addEventListener('change', (event) => {
+            selectedLanguage = event.target.value;
+            console.log('Selected Language:', selectedLanguage);
+        });
+
+        // --- Slider Interaction ---
         styleSlider.addEventListener('input', (event) => {
             selectedStyle = event.target.value;
             console.log('Selected Style Value:', selectedStyle);
         });
 
-        // Generate Button Interaction
+        // --- Generate Button Interaction ---
         generateBtn.addEventListener('click', () => {
-            console.log(`Generating name for language: ${selectedLanguage}, style: ${selectedStyle}`);
-            nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`; // Adjusted text size
+            // Log all selected options
+            console.log(`Generating name for gender: ${selectedGender}, language: ${selectedLanguage}, style: ${selectedStyle}`);
+
+            // Show loading state
+            nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`;
+
+            // --- Placeholder for actual data fetching ---
+            // TODO: Replace this setTimeout with actual data fetching and name generation logic
+            // This logic would now need to filter by selectedGender as well
             setTimeout(() => {
                  let styleCategory = 'Balanced';
                  if (selectedStyle < 25) styleCategory = 'Very Traditional';
                  else if (selectedStyle < 45) styleCategory = 'Traditional';
                  else if (selectedStyle > 75) styleCategory = 'Very Unique';
                  else if (selectedStyle > 55) styleCategory = 'Unique';
-                 const exampleName = "ExampleName";
-                 const exampleInfo = `This is placeholder information about the origin and meaning for ${exampleName}. It's associated with the ${selectedLanguage} language.`;
-                 // Adjusted text sizes in output
+
+                 // Simulate fetching a name and info (needs gender consideration now)
+                 const exampleName = `${selectedGender === 'boy' ? 'Adam' : selectedGender === 'girl' ? 'Eve' : 'Alex'}`; // Simple gender example
+                 const exampleInfo = `This is placeholder information for ${exampleName}. Origin: ${selectedLanguage}. Gender: ${selectedGender}.`;
+
                  nameOutput.innerHTML = `<div class="fade-in"><h3 class="text-4xl font-bold text-dark-text mb-2">${exampleName}</h3><p class="text-lg text-dark-text">${exampleInfo}</p><p class="text-base text-medium-gray mt-1">(Style preference: ${styleCategory})</p></div>`;
             }, 1500);
         });
 
-        // Initial Page Load Setup
+        // --- Initial Page Load Setup ---
         document.addEventListener('DOMContentLoaded', () => {
-            const defaultButton = languageButtonsContainer.querySelector(`[data-lang="${selectedLanguage}"]`);
-            if (defaultButton) {
-                 languageButtons.forEach(button => {
-                    button.classList.remove(...activeClasses);
-                    inactiveClasses.forEach(cls => { if (!button.classList.contains(cls)) button.classList.add(cls); });
-                    button.classList.remove('text-medium-gray');
-                 });
-                defaultButton.classList.remove(...inactiveClasses);
-                defaultButton.classList.add(...activeClasses);
-            }
-             // Adjusted text size
-             nameOutput.innerHTML = `<p class="text-medium-gray italic text-lg">Select a language and click "Generate Name"!</p>`;
+             // Set default language in state (already done above)
+             // Set default gender in state (already done above)
+             // Set default slider value (already done above)
+
+             // Set the initial message in the name output area
+             nameOutput.innerHTML = `<p class="text-medium-gray italic text-lg">Select options and click "Generate Name"!</p>`;
         });
     </script>
 
