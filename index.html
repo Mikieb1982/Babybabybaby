@@ -15,6 +15,7 @@
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
             font-size: 1.1rem;
+            line-height: 1.6; /* Improve readability for Patrick Hand */
         }
         /* Slider thumb */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #374151; border-radius: 50%; cursor: pointer; }
@@ -27,13 +28,20 @@
         /* Dropdown arrow */
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23374151%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 0.7em top 50%; background-size: 0.65em auto; cursor: pointer; }
         /* Fade-in animation */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
-        #name-output > *:not(.italic):not(.error-message) { opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; } /* Start hidden */
+        /* Result & Favorite Item Styling */
+        .result-item, .favorite-item { border-bottom: 1px dashed #6B7280; padding-bottom: 0.75rem; margin-bottom: 0.75rem; }
+        .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        /* Tooltip for Copy Button */
+        .tooltip { position: relative; display: inline-block; }
+        .tooltip .tooltiptext { visibility: hidden; width: 80px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px 0; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -40px; opacity: 0; transition: opacity 0.3s; font-size: 0.9rem; }
+        .tooltip .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent; }
+        .tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+
         /* Favorites List Styling */
         #favorites-section { display: none; /* Hidden by default */ }
-        #favorites-section.active { display: block; }
-        .favorite-item { border-bottom: 1px dashed #6B7280; /* medium-gray */ } /* Dashed line separator */
+        #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; } /* Add fade-in */
     </style>
     <script>
       tailwind.config = {
@@ -52,6 +60,8 @@
               'save-button-hover': '#059669',
               'remove-button': '#F87171', // Reddish for Remove
               'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', // Gray for Copy
+              'copy-button-hover': '#4B5563',
             }
           }
         }
@@ -60,7 +70,7 @@
 </head>
 <body class="p-4 md:p-8 text-dark-text">
 
-    <header class="text-center mb-8 relative"> {/* Added relative positioning for favorites button */}
+    <header class="text-center mb-8 relative">
         <img
             src="assets/stork.png"
             alt="Minimalist stork drawing"
@@ -72,41 +82,25 @@
 
         {/* View Favorites Button */}
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-gray-200 transition">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-            </svg>
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
         </button>
     </header>
 
-    <div class="text-center my-8 md:my-12 text-dark-text">
-        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> </svg>
-    </div>
-
+    <div class="text-center my-8 md:my-12 text-dark-text"> <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> </svg> </div>
 
     <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text">
 
         <div class="space-y-6 md:space-y-8 mb-10">
 
-            <section id="gender-selection"> /* ... (no changes needed here) ... */ </section>
-             <section id="gender-selection">
+            <section id="gender-selection">
                 <label class="block text-xl md:text-2xl font-semibold text-dark-text mb-3 md:mb-4">Select Gender:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-3">
-                    <div class="flex items-center">
-                        <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2">
-                        <label for="gender-any" class="text-lg cursor-pointer">Any</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2">
-                        <label for="gender-boy" class="text-lg cursor-pointer">Boy</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2">
-                        <label for="gender-girl" class="text-lg cursor-pointer">Girl</label>
-                    </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg cursor-pointer">Girl</label> </div>
                 </div>
             </section>
 
-            <section id="language-selection"> /* ... (no changes needed here) ... */ </section>
             <section id="language-selection">
                 <label for="language-select" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Select Language/Origin:</label>
                 <select id="language-select" name="language" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
@@ -122,13 +116,13 @@
 
             <section id="letter-filter">
                 <label for="first-letter-input" class="block text-xl md:text-2xl font-semibold text-dark-text mb-2 md:mb-3">Starts with (Optional):</label>
-                <input type="text" id="first-letter-input" maxlength="1" placeholder="Enter first letter" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
+                <input type="text" id="first-letter-input" maxlength="1" placeholder="Enter first letter (e.g., A)" class="w-full p-3 border-2 border-dark-text rounded-lg bg-white text-lg focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent">
             </section>
 
-            <section id="style-slider"> /* ... (no changes needed here) ... */ </section>
-             <section id="style-slider">
+            <section id="style-slider">
                 <div class="flex justify-between items-center mb-3">
                     <h2 class="text-xl md:text-2xl font-semibold text-dark-text">Select Name Style:</h2>
+                    {/* Slider Feedback Span - Updated for 5 categories */}
                     <span id="slider-feedback" class="text-medium-gray text-base md:text-lg font-semibold">Balanced</span>
                 </div>
                 <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
@@ -140,315 +134,335 @@
 
         </div> {/* End Form Controls Area */}
 
-        <section id="generate-button-section" class="text-center my-8 md:my-10"> /* ... (no changes needed here) ... */ </section>
-          <section id="generate-button-section" class="text-center my-8 md:my-10">
+        <section id="generate-button-section" class="text-center my-8 md:my-10">
              <button id="generate-btn" class="bg-dark-text hover:bg-medium-gray text-white font-bold py-3 px-6 rounded-lg text-xl transition duration-150 ease-in-out transform hover:scale-105 border-2 border-dark-text">
-                Generate Name
+                Generate Names
             </button>
          </section>
 
-        <div class="text-center my-8 md:my-10 text-dark-text"> /* ... (no changes needed here) ... */ </div>
-          <div class="text-center my-8 md:my-10 text-dark-text">
-             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
+        <div class="text-center my-8 md:my-10 text-dark-text">
+             <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> </svg>
         </div>
 
-        <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[150px] relative"> {/* Added relative for save button positioning */}
-             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-4 md:mb-5">Generated Name:</h2>
-            <div id="name-output" class="text-center text-lg">
-                <p class="text-medium-gray italic">Select options and click "Generate Name"!</p>
+        <section id="name-display" class="bg-gray-50 p-6 rounded-lg border-2 border-dark-text min-h-[200px]"> {/* Increased min height */}
+             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-4 md:mb-5">Generated Names:</h2>
+            <div id="name-output" class="text-left space-y-4 text-lg"> {/* Changed to text-left, added spacing */}
+                <p class="text-medium-gray italic text-center">Select options and click "Generate Names"!</p>
             </div>
-             {/* Save Button Placeholder (will be added dynamically) */}
-             <div id="save-button-container" class="absolute top-2 right-2"></div>
         </section>
 
          <section id="favorites-section" class="mt-10 p-6 border-2 border-dark-text rounded-lg bg-gray-50">
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-4"> {/* Added flex-wrap and gap */}
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text">Saved Favorites</h2>
-                <button id="clear-favorites-btn" class="text-sm text-remove-button hover:underline">Clear All</button>
+                <div class="flex items-center gap-4">
+                     {/* Sort Button */}
+                     <button id="sort-favorites-btn" class="text-sm text-dark-text hover:underline">Sort A-Z</button>
+                    <button id="clear-favorites-btn" class="text-sm text-remove-button hover:underline">Clear All</button>
+                </div>
             </div>
             <div id="favorites-list" class="space-y-3">
-                {/* Favorite items will be injected here by JavaScript */}
-                <p id="no-favorites-message" class="text-medium-gray italic">You haven't saved any names yet.</p>
+                <p id="no-favorites-message" class="text-medium-gray italic text-center">You haven't saved any names yet.</p>
             </div>
         </section>
 
     </main>
 
-     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text"> /* ... (no changes needed here) ... */ </div>
-      <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text">
-         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-        </svg>
-    </div>
+     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text">
+         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/> </svg>
+     </div>
 
-    <footer class="text-center text-medium-gray text-base space-y-2"> /* ... (no changes needed here) ... */ </footer>
-     <footer class="text-center text-medium-gray text-base space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
         <p><a href="#" class="hover:text-dark-text underline">Read Our Blog</a></p>
     </footer>
 
     <script>
         // --- DATA SOURCE ---
-        // Sample data - NEEDS SIGNIFICANT EXPANSION!
+        // Sample data - NEEDS SIGNIFICANT EXPANSION & BETTER INFO!
+        // styleScore: 0 = Very Trad, 25 = Trad, 50 = Balanced, 75 = Unique, 100 = Very Unique
         const nameData = [
-            // English
-            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector; a classic royal name.", styleScore: 10 },
-            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree; symbol of peace.", styleScore: 20 },
-            { id: 'en3', name: "Arthur", language: "english", gender: "boy", meaning: "Bear man, noble strength; legendary king.", styleScore: 5 },
-            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island; Scottish river name.", styleScore: 40 },
-            { id: 'en5', name: "Ezra", language: "english", gender: "boy", meaning: "Help; a biblical prophet.", styleScore: 60 },
-            { id: 'en6', name: "Luna", language: "english", gender: "girl", meaning: "Moon; Roman goddess.", styleScore: 70 },
-            { id: 'en7', name: "Caspian", language: "english", gender: "boy", meaning: "From Qazvin (geographical); literary link.", styleScore: 85 },
-            { id: 'en8', name: "Seraphina", language: "english", gender: "girl", meaning: "Fiery ones (angelic); elegant and rare.", styleScore: 90 },
-            { id: 'en9', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead; nature-inspired.", styleScore: 55 },
-            // German
-            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest; strong and traditional.", styleScore: 25 },
-            { id: 'de2', name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom; internationally popular.", styleScore: 15 },
-            { id: 'de3', name: "Leon", language: "german", gender: "boy", meaning: "Lion; short and strong.", styleScore: 35 },
-            { id: 'de4', name: "Emilia", language: "german", gender: "girl", meaning: "Rival; classic and charming.", styleScore: 30 },
-            { id: 'de5', name: "Felix", language: "german", gender: "boy", meaning: "Lucky, successful; cheerful vibe.", styleScore: 45 },
-            { id: 'de6', name: "Leni", language: "german", gender: "girl", meaning: "Light, torch; short form gaining popularity.", styleScore: 65 },
-            { id: 'de7', name: "Anselm", language: "german", gender: "boy", meaning: "God's helmet; distinguished and uncommon.", styleScore: 75 },
-            { id: 'de8', name: "Cosima", language: "german", gender: "girl", meaning: "Order, decency; sophisticated and rare.", styleScore: 80 },
-            // Italian
-            { id: 'it1', name: "Leonardo", language: "italian", gender: "boy", meaning: "Brave lion; artistic namesake.", styleScore: 20 },
-            { id: 'it2', name: "Sofia", language: "italian", gender: "girl", meaning: "Wisdom; popular worldwide.", styleScore: 10 },
-            { id: 'it3', name: "Alessandro", language: "italian", gender: "boy", meaning: "Defending warrior; strong and classic.", styleScore: 15 },
-            { id: 'it4', name: "Giulia", language: "italian", gender: "girl", meaning: "Youthful; Italian form of Julia.", styleScore: 5 },
-            { id: 'it5', name: "Lorenzo", language: "italian", gender: "boy", meaning: "From Laurentum; romantic sound.", styleScore: 25 },
-            { id: 'it6', name: "Aurora", language: "italian", gender: "girl", meaning: "Dawn; Roman goddess, magical feel.", styleScore: 50 },
-            { id: 'it7', name: "Elio", language: "italian", gender: "boy", meaning: "Sun; short and bright.", styleScore: 70 },
-            { id: 'it8', name: "Allegra", language: "italian", gender: "girl", meaning: "Joyful, lively; musical connection.", styleScore: 85 },
-            // Spanish
-            { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God; popular Hispanic name.", styleScore: 30 },
-            { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light; classic and beautiful.", styleScore: 20 },
-            { id: 'es3', name: "Hugo", language: "spanish", gender: "boy", meaning: "Mind, intellect; short and strong.", styleScore: 25 },
-            { id: 'es4', name: "Martina", language: "spanish", gender: "girl", meaning: "Warlike (from Mars); traditional.", styleScore: 15 },
-            { id: 'es5', name: "Javier", language: "spanish", gender: "boy", meaning: "New house; distinctively Spanish.", styleScore: 40 },
-            { id: 'es6', name: "Valentina", language: "spanish", gender: "girl", meaning: "Strong, healthy; popular internationally.", styleScore: 35 },
-            { id: 'es7', name: "Thiago", language: "spanish", gender: "boy", meaning: "Supplanter; variant of James/Jacob.", styleScore: 60 },
-            { id: 'es8', name: "Ximena", language: "spanish", gender: "girl", meaning: "Listener; historical roots.", styleScore: 75 },
-             // French
-            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior; royal name.", styleScore: 10 },
-            { id: 'fr2', name: "Camille", language: "french", gender: "any", meaning: "Temple servant; elegant and unisex.", styleScore: 40 },
-            { id: 'fr3', name: "Jules", language: "french", gender: "boy", meaning: "Youthful; classic French choice.", styleScore: 30 },
-            { id: 'fr4', name: "Margot", language: "french", gender: "girl", meaning: "Pearl; chic and vintage.", styleScore: 25 },
-            { id: 'fr5', name: "Rémy", language: "french", gender: "boy", meaning: "Oarsman; charming sound.", styleScore: 60 },
-            { id: 'fr6', name: "Anaïs", language: "french", gender: "girl", meaning: "Grace; sophisticated.", styleScore: 55 },
-             // Japanese (Meanings depend heavily on Kanji)
-            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", styleScore: 30 },
-            { id: 'jp2', name: "Yui", language: "japanese", gender: "girl", meaning: "Tie, bind / Superior garment", styleScore: 20 },
-            { id: 'jp3', name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / Love", styleScore: 50 },
-            { id: 'jp4', name: "Akira", language: "japanese", gender: "any", meaning: "Bright, clear / Intelligent", styleScore: 45 },
-            { id: 'jp5', name: "Kenji", language: "japanese", gender: "boy", meaning: "Strong, healthy second son", styleScore: 15 },
-            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom; iconic.", styleScore: 10 },
-            { id: 'jp7', name: "Kaito", language: "japanese", gender: "boy", meaning: "Ocean flying / Supportive person", styleScore: 70 },
-            { id: 'jp8', name: "Hana", language: "japanese", gender: "girl", meaning: "Flower; simple and beautiful.", styleScore: 5 },
+            // Added id, originNotes, pronunciation
+            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-əm", styleScore: 10 },
+            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, popularised by Shakespeare", pronunciation: "oh-LIV-ee-ə", styleScore: 20 },
+            { id: 'en3', name: "Arthur", language: "english", gender: "boy", meaning: "Bear man, noble strength.", originNotes: "Celtic/Roman roots, legendary king", pronunciation: "AR-thər", styleScore: 5 },
+            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-lə", styleScore: 40 },
+            { id: 'en5', name: "Ezra", language: "english", gender: "boy", meaning: "Help.", originNotes: "Hebrew origin, biblical prophet", pronunciation: "EZ-rə", styleScore: 60 },
+            { id: 'en6', name: "Luna", language: "english", gender: "girl", meaning: "Moon.", originNotes: "Latin origin, Roman goddess", pronunciation: "LOO-nə", styleScore: 70 },
+            { id: 'en7', name: "Caspian", language: "english", gender: "boy", meaning: "From Qazvin (geographical).", originNotes: "Place name (Caspian Sea)", pronunciation: "KAS-pee-ən", styleScore: 85 },
+            { id: 'en8', name: "Seraphina", language: "english", gender: "girl", meaning: "Fiery ones (angelic).", originNotes: "Hebrew origin", pronunciation: "seh-rə-FEE-nə", styleScore: 90 },
+            { id: 'en9', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-ən", styleScore: 55 },
+            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", styleScore: 25 },
+            { id: 'de2', name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom.", originNotes: "Greek origin", pronunciation: "ZO-fee", styleScore: 15 },
+            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", styleScore: 10 },
+            { id: 'fr2', name: "Camille", language: "french", gender: "any", meaning: "Temple servant.", originNotes: "Latin origin", pronunciation: "ka-MEEL", styleScore: 40 },
+            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", styleScore: 30 },
+            { id: 'jp2', name: "Yui", language: "japanese", gender: "girl", meaning: "Tie, bind / Superior garment", originNotes: "Kanji dependent meaning", pronunciation: "YOO-ee", styleScore: 20 },
+            { id: 'jp3', name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / Love", originNotes: "Kanji dependent meaning", pronunciation: "REN", styleScore: 50 },
+            // Add MANY more names here...
         ];
 
         // --- DOM Elements ---
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
-        const firstLetterInput = document.getElementById('first-letter-input'); // New input
+        const firstLetterInput = document.getElementById('first-letter-input');
         const styleSlider = document.getElementById('style-range');
         const generateBtn = document.getElementById('generate-btn');
         const nameOutput = document.getElementById('name-output');
         const sliderFeedback = document.getElementById('slider-feedback');
-        const saveButtonContainer = document.getElementById('save-button-container'); // Container for save button
-        const viewFavoritesBtn = document.getElementById('view-favorites-btn'); // Button to view list
-        const favoritesSection = document.getElementById('favorites-section'); // The whole favorites section
-        const favoritesListDiv = document.getElementById('favorites-list'); // The div to list favorites
-        const noFavoritesMessage = document.getElementById('no-favorites-message'); // Message when list is empty
-        const clearFavoritesBtn = document.getElementById('clear-favorites-btn'); // Button to clear list
+        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
+        const favoritesSection = document.getElementById('favorites-section');
+        const favoritesListDiv = document.getElementById('favorites-list');
+        const noFavoritesMessage = document.getElementById('no-favorites-message');
+        const clearFavoritesBtn = document.getElementById('clear-favorites-btn');
+        const sortFavoritesBtn = document.getElementById('sort-favorites-btn'); // Sort button
 
         // --- State Variables ---
         let selectedGender = 'any';
         let selectedLanguage = languageSelect.value;
-        let selectedFirstLetter = ''; // New state for first letter
+        let selectedFirstLetter = '';
         let selectedStyle = parseInt(styleSlider.value);
-        let currentDisplayedName = null; // Store the currently displayed name object
-        let favorites = []; // Array to hold favorite name objects
+        let currentDisplayedNames = []; // Store the currently displayed list of name objects
+        let favorites = [];
+        let favoritesSortAsc = true; // Keep track of sort direction
 
         // --- Helper Functions ---
-        function getStyleCategory(value) { /* ... (no changes) ... */ }
+        // Updated for 5 categories
         function getStyleCategory(value) {
-            if (value < 34) return 'Traditional';
-            if (value < 67) return 'Balanced';
-            return 'Unique';
+            if (value < 20) return 'Very Traditional'; // 0-19
+            if (value < 40) return 'Traditional';     // 20-39
+            if (value < 61) return 'Balanced';        // 40-60
+            if (value < 81) return 'Unique';          // 61-80
+            return 'Very Unique';                     // 81-100
         }
-        function updateSliderFeedback() { /* ... (no changes) ... */ }
-        function updateSliderFeedback() {
-            sliderFeedback.textContent = getStyleCategory(selectedStyle);
+        function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show tooltip feedback
+                const tooltip = buttonElement.querySelector('.tooltiptext');
+                if (tooltip) {
+                    tooltip.textContent = 'Copied!';
+                    setTimeout(() => { tooltip.textContent = 'Copy Info'; }, 1500); // Reset after 1.5s
+                }
+                console.log('Copied to clipboard:', text);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                const tooltip = buttonElement.querySelector('.tooltiptext');
+                 if (tooltip) { tooltip.textContent = 'Copy Failed'; } // Show error in tooltip
+            });
         }
 
-        // --- Favorites Functions (localStorage) ---
-        function loadFavorites() {
+        // --- Favorites Functions ---
+        function loadFavorites() { /* ... (no changes) ... */ }
+         function loadFavorites() {
             const storedFavorites = localStorage.getItem('babyNameFavorites');
-            if (storedFavorites) {
-                favorites = JSON.parse(storedFavorites);
-            } else {
-                favorites = [];
-            }
+            if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; }
             console.log('Favorites loaded:', favorites);
-            // Initially hide the favorites section until viewed
             favoritesSection.classList.remove('active');
         }
-
+        function saveFavorites() { /* ... (no changes) ... */ }
         function saveFavorites() {
             localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
             console.log('Favorites saved:', favorites);
         }
-
-        function isFavorite(nameObj) {
-             // Check if a name with the same ID is already in favorites
-             return favorites.some(fav => fav.id === nameObj.id);
-        }
-
-        function addToFavorites(nameObj) {
+        function isFavorite(nameObj) { return favorites.some(fav => fav.id === nameObj.id); }
+        function addToFavorites(nameObj) { /* ... (no changes, uses isFavorite) ... */ }
+         function addToFavorites(nameObj) {
             if (nameObj && !isFavorite(nameObj)) {
                 favorites.push(nameObj);
                 saveFavorites();
-                updateSaveButton(true); // Update button to show 'Saved' state
-                displayFavorites(); // Update the list view immediately
+                updateSaveButtonState(nameObj.id, true); // Update specific button
+                displayFavorites();
                 console.log('Added to favorites:', nameObj);
-            } else {
-                 console.log('Already in favorites or no name object:', nameObj);
-            }
+            } else { console.log('Already in favorites or no name object:', nameObj); }
         }
-
+        function removeFromFavorites(nameId) { /* ... (no changes) ... */ }
          function removeFromFavorites(nameId) {
             favorites = favorites.filter(fav => fav.id !== nameId);
             saveFavorites();
-            displayFavorites(); // Refresh the list display
-             // If the removed item is the currently displayed one, update its save button
-            if (currentDisplayedName && currentDisplayedName.id === nameId) {
-                 updateSaveButton(false);
-            }
+            displayFavorites();
+            updateSaveButtonState(nameId, false); // Update button if it was for the removed name
             console.log('Removed favorite with ID:', nameId);
         }
 
+        // Updated displayFavorites to show more info and add Copy button
         function displayFavorites() {
-            favoritesListDiv.innerHTML = ''; // Clear current list
-            if (favorites.length === 0) {
-                noFavoritesMessage.style.display = 'block'; // Show 'no favorites' message
-            } else {
-                noFavoritesMessage.style.display = 'none'; // Hide 'no favorites' message
-                favorites.forEach(fav => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'favorite-item flex justify-between items-center py-2'; // Added flex for layout
+            // Sort favorites based on current direction
+            favorites.sort((a, b) => {
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+                if (nameA < nameB) return favoritesSortAsc ? -1 : 1;
+                if (nameA > nameB) return favoritesSortAsc ? 1 : -1;
+                return 0;
+            });
 
-                    const textSpan = document.createElement('span');
-                    textSpan.innerHTML = `<strong class="text-lg">${fav.name}</strong> <span class="text-sm text-medium-gray">(${fav.language}, ${fav.meaning})</span>`;
+            favoritesListDiv.innerHTML = '';
+            noFavoritesMessage.style.display = favorites.length === 0 ? 'block' : 'none';
 
-                    const removeBtn = document.createElement('button');
-                    removeBtn.textContent = 'Remove';
-                    removeBtn.className = 'text-sm text-remove-button hover:underline ml-4 px-2 py-1'; // Added padding
-                    removeBtn.dataset.id = fav.id; // Store ID on button for removal
+            favorites.forEach(fav => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-center py-3 gap-2'; // Adjusted padding/gap
 
-                    itemDiv.appendChild(textSpan);
-                    itemDiv.appendChild(removeBtn);
-                    favoritesListDiv.appendChild(itemDiv);
-                });
-            }
+                const textDiv = document.createElement('div');
+                textDiv.innerHTML = `
+                    <strong class="text-lg block">${fav.name}</strong>
+                    <span class="text-sm text-medium-gray block">${fav.meaning || ''}</span>
+                    <span class="text-xs text-gray-500 block">Origin: ${fav.originNotes || fav.language} | Pronunciation: ${fav.pronunciation || 'N/A'}</span>
+                `;
+
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'flex items-center gap-2 mt-2 sm:mt-0 flex-shrink-0'; // Ensure buttons don't shrink wrap
+
+                // Copy Button for Favorite
+                const copyBtn = document.createElement('button');
+                copyBtn.title = 'Copy Info';
+                copyBtn.className = 'tooltip text-copy-button hover:text-copy-button-hover p-1';
+                copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg><span class="tooltiptext">Copy Info</span>`;
+                copyBtn.onclick = () => {
+                    const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language}\nPronunciation: ${fav.pronunciation || 'N/A'}`;
+                    copyToClipboard(textToCopy, copyBtn);
+                };
+
+                // Remove Button for Favorite
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Remove';
+                removeBtn.className = 'text-sm text-remove-button hover:underline px-2 py-1';
+                removeBtn.dataset.id = fav.id;
+
+                buttonsDiv.appendChild(copyBtn);
+                buttonsDiv.appendChild(removeBtn);
+                itemDiv.appendChild(textDiv);
+                itemDiv.appendChild(buttonsDiv);
+                favoritesListDiv.appendChild(itemDiv);
+            });
         }
 
+        function toggleFavoritesView() { /* ... (no changes) ... */ }
         function toggleFavoritesView() {
-            if (favoritesSection.classList.contains('active')) {
-                favoritesSection.classList.remove('active');
-            } else {
-                displayFavorites(); // Ensure list is up-to-date before showing
-                favoritesSection.classList.add('active');
-            }
+            if (favoritesSection.classList.contains('active')) { favoritesSection.classList.remove('active'); }
+            else { displayFavorites(); favoritesSection.classList.add('active'); }
         }
 
-        function updateSaveButton(isSaved) {
-             saveButtonContainer.innerHTML = ''; // Clear previous button
-             if (!currentDisplayedName) return; // Don't show button if no name is displayed
-
-             const saveBtn = document.createElement('button');
-             saveBtn.title = isSaved ? 'Name is saved' : 'Save this name';
-             saveBtn.disabled = isSaved; // Disable if already saved
-             saveBtn.className = `p-1 rounded-full transition ${
-                isSaved
-                ? 'text-save-button cursor-not-allowed' // Saved state: green check, disabled
-                : 'text-medium-gray hover:text-save-button hover:bg-gray-100' // Unsaved state: gray heart, hover effect
-             }`;
-
-             saveBtn.innerHTML = isSaved
-                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` // Checkmark icon
-                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart icon
-
-             if (!isSaved) {
-                 saveBtn.onclick = () => addToFavorites(currentDisplayedName);
+        // Update Save button state for a specific name ID
+        function updateSaveButtonState(nameId, isSaved) {
+             const buttonContainer = document.getElementById(`save-btn-container-${nameId}`);
+             if (buttonContainer) {
+                 const nameObj = currentDisplayedNames.find(n => n.id === nameId); // Find the name object
+                 if (nameObj) {
+                     renderSaveButton(buttonContainer, nameObj, isSaved);
+                 }
              }
+        }
 
-             saveButtonContainer.appendChild(saveBtn);
+        // Renders the save button for a given name object
+        function renderSaveButton(container, nameObj, isSaved) {
+            container.innerHTML = ''; // Clear previous
+            const saveBtn = document.createElement('button');
+            saveBtn.title = isSaved ? 'Name is saved' : 'Save this name';
+            saveBtn.disabled = isSaved;
+            saveBtn.className = `save-btn p-1 rounded-full transition ${
+                isSaved
+                ? 'text-save-button cursor-not-allowed'
+                : 'text-medium-gray hover:text-save-button hover:bg-gray-100'
+            }`;
+            saveBtn.dataset.id = nameObj.id; // Store ID
+
+            saveBtn.innerHTML = isSaved
+                ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>`
+                : `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+
+            if (!isSaved) {
+                saveBtn.onclick = () => addToFavorites(nameObj);
+            }
+            container.appendChild(saveBtn);
         }
 
 
         // --- Event Listeners ---
         genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
         languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
-        firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); }); // Update first letter state
+        firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); });
         styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
 
-        // Generate Button Click
+        // Generate Button Click - Updated for Multiple Results
         generateBtn.addEventListener('click', () => {
-            console.log(`Generating name for gender: ${selectedGender}, language: ${selectedLanguage}, first letter: '${selectedFirstLetter}', style value: ${selectedStyle}`);
+            console.log(`Generating names for gender: ${selectedGender}, language: ${selectedLanguage}, first letter: '${selectedFirstLetter}', style value: ${selectedStyle}`);
             nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="animate-spin rounded-full h-8 w-8 border-b-2 border-dark-text"></div><p class="text-dark-text ml-3 text-xl">Generating...</p></div>`;
-            saveButtonContainer.innerHTML = ''; // Clear save button while generating
-            currentDisplayedName = null; // Clear current name
+            currentDisplayedNames = []; // Clear previous results
 
             const targetStyleCategory = getStyleCategory(selectedStyle);
 
             // Filter names
-            const filteredNames = nameData.filter(item => {
+            let filteredNames = nameData.filter(item => {
                 const languageMatch = item.language === selectedLanguage;
                 const genderMatch = selectedGender === 'any' || item.gender === selectedGender || item.gender === 'any';
                 const itemStyleCategory = getStyleCategory(item.styleScore);
                 const styleMatch = itemStyleCategory === targetStyleCategory;
-                // Add first letter filter (only if input is not empty)
                 const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
-
                 return languageMatch && genderMatch && styleMatch && letterMatch;
             });
 
             console.log('Filtered Names Count:', filteredNames.length);
 
-            // Display result
-            setTimeout(() => {
-                if (filteredNames.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * filteredNames.length);
-                    currentDisplayedName = filteredNames[randomIndex]; // Store the selected name object
+            // Shuffle and pick up to 3 names
+            filteredNames.sort(() => 0.5 - Math.random()); // Shuffle array
+            currentDisplayedNames = filteredNames.slice(0, 3); // Get first 3 (or fewer)
 
-                    console.log('Selected Name:', currentDisplayedName);
-                    nameOutput.innerHTML = `
-                        <div class="fade-in">
-                            <h3 class="text-4xl font-bold text-dark-text mb-2">${currentDisplayedName.name}</h3>
-                            <p class="text-lg text-dark-text">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
-                            <p class="text-base text-medium-gray mt-1">
-                                (Origin: ${currentDisplayedName.language.charAt(0).toUpperCase() + currentDisplayedName.language.slice(1)},
-                                Style: ${targetStyleCategory})
+            // Display results
+            setTimeout(() => {
+                nameOutput.innerHTML = ''; // Clear loading message
+                if (currentDisplayedNames.length > 0) {
+                    currentDisplayedNames.forEach(nameObj => {
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'result-item fade-in flex flex-col sm:flex-row justify-between sm:items-start gap-2'; // Use flex for layout
+
+                        const textDiv = document.createElement('div'); // Div for text content
+                        textDiv.innerHTML = `
+                            <h3 class="text-3xl font-bold text-dark-text mb-1">${nameObj.name}</h3>
+                            <p class="text-base text-dark-text">${nameObj.meaning || 'Meaning not available.'}</p>
+                            <p class="text-sm text-medium-gray mt-1">
+                                Origin: ${nameObj.originNotes || nameObj.language} | Pronunciation: ${nameObj.pronunciation || 'N/A'}
                             </p>
-                        </div>
-                    `;
-                    // Show save button, checking if it's already a favorite
-                    updateSaveButton(isFavorite(currentDisplayedName));
+                            <p class="text-xs text-gray-500"> (Style: ${getStyleCategory(nameObj.styleScore)}) </p>
+                        `;
+
+                        const buttonsDiv = document.createElement('div'); // Div for buttons
+                        buttonsDiv.className = 'flex items-center gap-2 mt-2 sm:mt-0 flex-shrink-0'; // Buttons side-by-side
+
+                        // Container for Save button
+                        const saveBtnContainer = document.createElement('div');
+                        saveBtnContainer.id = `save-btn-container-${nameObj.id}`; // Unique ID for updating later
+                        renderSaveButton(saveBtnContainer, nameObj, isFavorite(nameObj)); // Render initial save button state
+
+                        // Copy Button for Result
+                        const copyBtn = document.createElement('button');
+                        copyBtn.title = 'Copy Info';
+                        copyBtn.className = 'tooltip text-copy-button hover:text-copy-button-hover p-1';
+                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg><span class="tooltiptext">Copy Info</span>`;
+                        copyBtn.onclick = () => {
+                             const textToCopy = `Name: ${nameObj.name}\nMeaning: ${nameObj.meaning || 'N/A'}\nOrigin: ${nameObj.originNotes || nameObj.language}\nPronunciation: ${nameObj.pronunciation || 'N/A'}`;
+                             copyToClipboard(textToCopy, copyBtn);
+                        };
+
+                        buttonsDiv.appendChild(saveBtnContainer);
+                        buttonsDiv.appendChild(copyBtn);
+                        resultDiv.appendChild(textDiv);
+                        resultDiv.appendChild(buttonsDiv);
+                        nameOutput.appendChild(resultDiv);
+                    });
                 } else {
                     console.log('No names found matching criteria.');
-                    nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg">Couldn't find a name matching your selections. Try different options!</p>`;
-                    saveButtonContainer.innerHTML = ''; // Ensure no save button on error
-                    currentDisplayedName = null;
+                    nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">Couldn't find any names matching your selections. Try different options!</p>`;
                 }
             }, 500);
         });
 
-        // Favorites List Interaction (Event Delegation)
+        // Favorites List Interaction (Remove Button)
         favoritesListDiv.addEventListener('click', (event) => {
-            if (event.target.tagName === 'BUTTON' && event.target.dataset.id) {
-                removeFromFavorites(event.target.dataset.id);
+            const removeButton = event.target.closest('button'); // Find the closest button
+            if (removeButton && removeButton.dataset.id && removeButton.textContent === 'Remove') { // Check if it's a remove button
+                removeFromFavorites(removeButton.dataset.id);
             }
         });
 
@@ -456,25 +470,29 @@
         viewFavoritesBtn.addEventListener('click', toggleFavoritesView);
 
         // Clear All Favorites Button
-        clearFavoritesBtn.addEventListener('click', () => {
+        clearFavoritesBtn.addEventListener('click', () => { /* ... (no changes) ... */ });
+         clearFavoritesBtn.addEventListener('click', () => {
              if (confirm('Are you sure you want to clear all saved favorites?')) {
-                 favorites = [];
-                 saveFavorites();
-                 displayFavorites();
-                  // Update save button for currently displayed name if it exists
-                 if (currentDisplayedName) {
-                     updateSaveButton(false);
-                 }
+                 favorites = []; saveFavorites(); displayFavorites();
+                 // Update save buttons for any currently displayed names
+                 currentDisplayedNames.forEach(nameObj => updateSaveButtonState(nameObj.id, false));
              }
+        });
+
+        // Sort Favorites Button
+        sortFavoritesBtn.addEventListener('click', () => {
+            favoritesSortAsc = !favoritesSortAsc; // Toggle sort direction
+            sortFavoritesBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; // Update button text
+            displayFavorites(); // Re-display sorted list
         });
 
 
         // --- Initial Page Load Setup ---
         document.addEventListener('DOMContentLoaded', () => {
-             loadFavorites(); // Load favorites from localStorage
+             loadFavorites();
              updateSliderFeedback();
-             nameOutput.innerHTML = `<p class="text-medium-gray italic text-lg">Select options and click "Generate Name"!</p>`;
-             favoritesSection.classList.remove('active'); // Ensure favorites list is hidden initially
+             nameOutput.innerHTML = `<p class="text-medium-gray italic text-center text-lg">Select options and click "Generate Names"!</p>`; // Centered initial message
+             favoritesSection.classList.remove('active');
         });
     </script>
 
