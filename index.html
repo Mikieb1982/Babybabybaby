@@ -3,447 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Name Generator</title>
+    <title>Interactive Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    {/* Switched font to Kalam */}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            /* Using Kalam font */
-            font-family: 'Kalam', cursive;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1.15rem; /* Slightly increased base size for Kalam */
-            line-height: 1.7; /* Increased line height for Kalam */
-            color: #374151; /* dark-text */
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Tailwind gray-100 */
         }
-        /* Base Input Styles - thinner border */
-        input[type="text"], select {
-             padding: 0.75rem; border: 1px solid #6B7280; /* medium-gray, thinner */
-             border-radius: 0.5rem; background-color: #fff;
-             font-size: 1rem; width: 100%; outline: none;
-             transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Added transitions */
-             font-family: 'Kalam', cursive; /* Ensure inputs use the font */
+        .form-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem; /* Rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Shadow */
         }
-        input[type="text"]:focus, select:focus {
-             border-color: #60A5FA; /* button-active blue */
-             box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); /* Subtle focus ring */
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500; /* Medium weight */
+            color: #374151; /* Tailwind gray-700 */
         }
-        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
-
-        /* Slider thumb */
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-
-        /* Radio buttons - slightly refined */
-        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; /* Thinner border */ border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
-        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; /* Muted slate fill */ }
-        input[type="radio"]:checked::before { transform: scale(1); }
-        input[type="radio"]:checked { border-color: #475569; /* Muted slate border when checked */ }
-        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-
-        /* Dropdown arrow - slightly refined */
-        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; /* Ensure space for arrow */ }
-
-        /* Fade-in animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-
-        /* Result & Favorite Item Styling */
-        .result-item, .favorite-item { border-bottom: 1px dashed #94a3b8; /* slate-400 dashed line */ padding-bottom: 1rem; margin-bottom: 1rem; }
-        .result-item:last-child, .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-        /* Button Base Styles */
-        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: bold; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-        .btn:active:not(:disabled) { transform: scale(0.97); }
-        .btn-primary { background-color: #374151; border-color: #374151; color: white; }
-        .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
-        .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
-        .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
-        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; } /* Base for icon buttons */
-
-        /* Favorites List Styling */
-        #favorites-section { display: none; }
-        #favorites-section.active { display: block; animation: fadeIn 0.3s ease-out; }
-        /* Loading Spinner */
-        .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db; /* Tailwind gray-300 */
+            border-radius: 0.375rem; /* Rounded corners */
+            margin-bottom: 1rem;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb; /* Tailwind blue-600 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Focus ring */
+        }
+        .form-checkbox-label, .form-radio-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: #374151; /* Tailwind gray-700 */
+        }
+        .form-checkbox, .form-radio {
+            margin-right: 0.5rem;
+            border-radius: 0.25rem; /* Rounded corners */
+            border-color: #d1d5db; /* Tailwind gray-300 */
+        }
+        .form-checkbox:checked, .form-radio:checked {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            border-color: #2563eb;
+        }
+        .form-button {
+            padding: 0.75rem 1.5rem;
+            background-color: #2563eb; /* Tailwind blue-600 */
+            color: white;
+            font-weight: 600; /* Semibold */
+            border: none;
+            border-radius: 0.375rem; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .form-button:hover {
+            background-color: #1d4ed8; /* Tailwind blue-700 */
+        }
+        .output-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            border-radius: 0.5rem; /* Rounded corners */
+            color: #1f2937; /* Tailwind gray-800 */
+            white-space: pre-wrap; /* Preserve formatting */
+            font-family: monospace;
+        }
+        .error-message {
+            color: #dc2626; /* Tailwind red-600 */
+            font-size: 0.875rem; /* Small text */
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
-     <script>
-      // Tailwind config (colors defined for reference, but classes used primarily)
-      tailwind.config = { /* ... colors ... */ }
-       tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', /* slate-500 for muted accents */
-              'accent-muted-light': '#cbd5e1', /* slate-300 */
-              'off-white': '#f8fafc', /* stone-50 for main bg */
-            }
-          }
-        }
-      }
-    </script>
 </head>
-<body class="p-4 md:p-8"> {/* Removed text-dark-text, inherited */}
+<body>
 
-    <header class="text-center mb-10"> {/* Increased margin */}
-        <a href="index.html" title="Back to Name Generator">
-            <img src="assets/stork.png" alt="Minimalist stork drawing" class="mx-auto h-20 w-20 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/80x80/F5F5DC/374151?text=Stork';">
-        </a>
-        <h1 class="text-5xl md:text-6xl font-bold text-dark-text"> {/* Increased size */}
-             <a href="index.html" class="hover:text-medium-gray transition-colors">Baby Name Generator</a>
-        </h1>
-        <p class="text-xl md:text-2xl text-medium-gray mt-2">Explore names from around the world</p> {/* Increased size */}
-        <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
-        </button>
-    </header>
+<div class="form-container">
+    <h1 class="text-2xl font-bold mb-6 text-center text-gray-800">Interactive User Form</h1>
 
-    {/* Dashed Divider */}
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <form id="interactiveForm">
+        <div>
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+            <div id="nameError" class="error-message"></div>
+        </div>
 
-    {/* Main Content Area - Off-white bg, subtle shadow */}
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
+        <div>
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+            <div id="emailError" class="error-message"></div>
+        </div>
 
-        {/* Form Controls Area */}
-        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-10" disabled>
-             <legend class="sr-only">Name Generation Controls</legend>
+        <div>
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" id="age" name="age" class="form-input" min="1" max="120">
+            <div id="ageError" class="error-message"></div>
+        </div>
 
-            <section id="gender-selection">
-                <label class="block text-2xl md:text-3xl font-semibold text-dark-text mb-4">Gender:</label> {/* Simplified label */}
-                <div class="flex flex-wrap gap-x-8 gap-y-3"> {/* Increased gap */}
-                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2.5"> <label for="gender-any" class="text-xl cursor-pointer">Any</label> </div> {/* Increased size */}
-                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2.5"> <label for="gender-boy" class="text-xl cursor-pointer">Boy</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2.5"> <label for="gender-girl" class="text-xl cursor-pointer">Girl</label> </div>
-                </div>
-            </section>
+        <div>
+            <label for="country" class="form-label">Country:</label>
+            <select id="country" name="country" class="form-select">
+                <option value="">Select a country</option>
+                <option value="Germany">Germany</option>
+                <option value="UK">United Kingdom</option>
+                <option value="USA">United States</option>
+                <option value="Canada">Canada</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
 
-            {/* Combined Language & Letter Filter Row */}
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <section id="language-selection">
-                    <label for="language-select" class="block text-2xl md:text-3xl font-semibold text-dark-text mb-3">Language/Origin:</label>
-                    <select id="language-select" name="language"> <option value="">Loading Languages...</option> </select>
-                </section>
-                <section id="letter-filter">
-                    <label for="first-letter-input" class="block text-2xl md:text-3xl font-semibold text-dark-text mb-3">Starts with:</label>
-                    <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter">
-                </section>
-            </div>
+        <fieldset class="mb-4">
+            <legend class="form-label">Interests:</legend>
+            <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="Woodworking" class="form-checkbox"> Woodworking
+            </label>
+            <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="Digital Art" class="form-checkbox"> Digital Art
+            </label>
+            <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="German Fluency" class="form-checkbox"> German Fluency
+            </label>
+            <label class="form-checkbox-label">
+                <input type="checkbox" name="interests" value="Health" class="form-checkbox"> Health & Wellness
+            </label>
+        </fieldset>
 
-             <section id="length-filter">
-                <label class="block text-2xl md:text-3xl font-semibold text-dark-text mb-4">Name Length:</label>
-                <div class="flex flex-wrap gap-x-8 gap-y-3"> {/* Increased gap */}
-                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-xl cursor-pointer">Short (&lt;5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-xl cursor-pointer">Medium (5-7)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-xl cursor-pointer">Long (&gt;7)</label> </div>
-                </div>
-            </section>
+        <fieldset class="mb-4">
+            <legend class="form-label">Preferred Contact Method:</legend>
+            <label class="form-radio-label">
+                <input type="radio" name="contactMethod" value="Email" class="form-radio" checked> Email
+            </label>
+            <label class="form-radio-label">
+                <input type="radio" name="contactMethod" value="Phone" class="form-radio"> Phone (if provided)
+            </label>
+        </fieldset>
 
-            <section id="style-slider">
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-2xl md:text-3xl font-semibold text-dark-text">Name Style:</h2>
-                    <span id="slider-feedback" class="text-medium-gray text-lg md:text-xl font-semibold">Balanced</span>
-                </div>
-                <div class="flex items-center justify-between text-medium-gray mb-4 text-lg md:text-xl">
-                    <span>Traditional</span>
-                    <span>Unique</span>
-                </div>
-                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer"> {/* Muted slider track */}
-            </section>
+        <div>
+            <label for="comments" class="form-label">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" class="form-textarea"></textarea>
+        </div>
 
-        </fieldset> {/* End Form Controls Area */}
+        <div class="text-center">
+            <button type="submit" class="form-button">Submit</button>
+        </div>
+    </form>
 
-        <section id="generate-button-section" class="text-center my-10 md:my-12">
-             <button id="generate-btn" class="btn btn-primary text-2xl shadow-sm" disabled> {/* Use button classes */}
-                Generate Name
-            </button>
-         </section>
+    <div id="output" class="output-section hidden">
+        <h2 class="text-xl font-semibold mb-3 text-gray-700">Form Submission Data:</h2>
+        <pre id="formData"></pre>
+    </div>
+</div>
 
-        <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
+<script>
+    const form = document.getElementById('interactiveForm');
+    const outputDiv = document.getElementById('output');
+    const formDataPre = document.getElementById('formData');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const ageInput = document.getElementById('age');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const ageError = document.getElementById('ageError');
 
-        <section id="name-display" class="bg-off-white p-6 rounded-lg border border-medium-gray min-h-[150px]"> {/* Thinner border, same bg */}
-             <h2 class="text-3xl md:text-4xl font-semibold text-dark-text mb-5">Generated Name:</h2>
-            <div id="name-output" class="text-left space-y-4 text-xl relative"> {/* Increased base text size */}
-                <div id="loading-message" class="text-center text-medium-gray italic"> <div class="loader"></div> Loading names... </div>
-            </div>
-        </section>
-
-         <section id="favorites-section" class="mt-10 p-6 border border-medium-gray rounded-lg bg-off-white"> {/* Thinner border */}
-            <div class="flex flex-wrap justify-between items-center gap-4 mb-5">
-                <h2 class="text-3xl md:text-4xl font-semibold text-dark-text">Saved Favorites</h2>
-                <div class="flex items-center gap-4">
-                     <button id="sort-favorites-btn" class="text-base text-dark-text hover:text-accent-muted transition-colors underline btn-feedback">Sort A-Z</button>
-                    <button id="clear-favorites-btn" class="text-base text-remove-button hover:text-remove-button-hover transition-colors underline btn-feedback">Clear All</button>
-                </div>
-            </div>
-            <div id="favorites-list" class="space-y-4"> {/* Increased spacing */}
-                <p id="no-favorites-message" class="text-medium-gray italic text-center text-lg">Your saved names will appear here!</p> {/* Friendlier empty message */}
-            </div>
-        </section>
-
-    </main>
-
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-
-    <footer class="text-center text-medium-gray text-lg space-y-2"> {/* Increased size */}
-        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
-        <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
-    </footer>
-
-    <script>
-        // ===========================================
-        // DATA SOURCE (Loaded from names.json)
-        // ===========================================
-        let nameDatabase = [];
-
-        // ===========================================
-        // DOM Elements (Assume all elements exist)
-        // ===========================================
-        const controlsFieldset = document.getElementById('generator-controls');
-        const genderRadios = document.querySelectorAll('input[name="gender"]');
-        const languageSelect = document.getElementById('language-select');
-        const lengthRadios = document.querySelectorAll('input[name="length"]');
-        const firstLetterInput = document.getElementById('first-letter-input');
-        const styleSlider = document.getElementById('style-range');
-        const generateBtn = document.getElementById('generate-btn');
-        const nameOutput = document.getElementById('name-output');
-        const sliderFeedback = document.getElementById('slider-feedback');
-        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
-        const favoritesSection = document.getElementById('favorites-section');
-        const favoritesListDiv = document.getElementById('favorites-list');
-        const noFavoritesMessage = document.getElementById('no-favorites-message');
-        const clearFavoritesBtn = document.getElementById('clear-favorites-btn');
-        const sortFavoritesBtn = document.getElementById('sort-favorites-btn');
-        const loadingMessage = document.getElementById('loading-message');
-
-        // ===========================================
-        // State Variables
-        // ===========================================
-        let selectedGender = 'any';
-        let selectedLanguage = '';
-        let selectedLength = 'any';
-        let selectedFirstLetter = '';
-        let selectedStyle = 50;
-        let currentDisplayedName = null;
-        let favorites = [];
-        let favoritesSortAsc = true;
-        let dataLoaded = false;
-
-        // ===========================================
-        // Helper Functions
-        // ===========================================
-        // Updated for 5 categories
-        function getStyleCategory(value) {
-            if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional';
-            if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique';
+    function validateName() {
+        if (nameInput.value.trim() === '') {
+            nameError.textContent = 'Name is required.';
+            nameInput.classList.add('border-red-500');
+            return false;
         }
-        function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
+        nameError.textContent = '';
+        nameInput.classList.remove('border-red-500');
+        return true;
+    }
 
-        // Copy to Clipboard with improved feedback
-        function copyToClipboard(text, buttonElement) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalHTML = buttonElement.innerHTML;
-                buttonElement.innerHTML = 'Copied!'; // Use text feedback
-                buttonElement.classList.add('text-save-button'); // Use save color for success
-                buttonElement.disabled = true;
-                setTimeout(() => {
-                    buttonElement.innerHTML = originalHTML;
-                    buttonElement.classList.remove('text-save-button');
-                    buttonElement.disabled = false;
-                 }, 1500);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                 const originalHTML = buttonElement.innerHTML;
-                 buttonElement.innerHTML = 'Error';
-                 buttonElement.classList.add('text-error-red');
-                 setTimeout(() => {
-                     buttonElement.innerHTML = originalHTML;
-                     buttonElement.classList.remove('text-error-red');
-                 }, 1500);
-            });
+    function validateEmail() {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailInput.classList.add('border-red-500');
+            return false;
         }
-        function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
+        emailError.textContent = '';
+        emailInput.classList.remove('border-red-500');
+        return true;
+    }
 
-        // ===========================================
-        // Favorites Functions (localStorage)
-        // ===========================================
-        function loadFavorites() { /* ... (no changes) ... */ }
-         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); favoritesSection.classList.remove('active'); }
-        function saveFavorites() { /* ... (no changes) ... */ }
-         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
-        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
-        function addToFavorites(nameObj) { /* ... (no changes) ... */ }
-         function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); renderSaveButton(document.getElementById(`save-btn-container-${nameObj.id}`), nameObj, true); displayFavorites(); console.log('Added to favorites:', nameObj); } else { console.log('Already in favorites or no name object:', nameObj); } }
-        function removeFromFavorites(nameId) { /* ... (no changes) ... */ }
-         function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavorites(); if (currentDisplayedName && currentDisplayedName.id === nameId) { renderSaveButton(document.getElementById(`save-btn-container-${nameId}`), currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
-        // Updated displayFavorites
-        function displayFavorites() {
-            favorites.sort((a, b) => { const nameA = a.name.toLowerCase(); const nameB = b.name.toLowerCase(); if (nameA < nameB) return favoritesSortAsc ? -1 : 1; if (nameA > nameB) return favoritesSortAsc ? 1 : -1; return 0; });
-            favoritesListDiv.innerHTML = '';
-            noFavoritesMessage.style.display = favorites.length === 0 ? 'block' : 'none';
-
-            favorites.forEach(fav => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3'; // Increased padding/gap
-
-                const textDiv = document.createElement('div');
-                textDiv.innerHTML = `
-                    <strong class="text-xl block">${fav.name}</strong>
-                    <span class="text-base text-medium-gray block">${fav.meaning || ''}</span>
-                    <span class="text-sm text-gray-500 block mt-1">
-                        Origin: ${fav.originNotes || fav.language} &bull; {/* Use bullet separator */}
-                        Pronunciation: ${fav.pronunciation || 'N/A'} &bull;
-                        Popularity: ${fav.popularity || 'N/A'}
-                    </span>
-                `;
-
-                const buttonsDiv = document.createElement('div');
-                buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0'; // Increased gap
-
-                // Copy Button
-                const copyBtn = document.createElement('button');
-                copyBtn.title = 'Copy Info';
-                copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
-                copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                copyBtn.onclick = (e) => { const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
-
-                // Remove Button
-                const removeBtn = document.createElement('button');
-                removeBtn.title = 'Remove from Favorites';
-                removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback';
-                removeBtn.dataset.id = fav.id;
-                 removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`; // X Circle icon
-
-                buttonsDiv.appendChild(copyBtn);
-                buttonsDiv.appendChild(removeBtn);
-                itemDiv.appendChild(textDiv);
-                itemDiv.appendChild(buttonsDiv);
-                favoritesListDiv.appendChild(itemDiv);
-            });
+    function validateAge() {
+        const age = parseInt(ageInput.value, 10);
+        if (ageInput.value !== '' && (isNaN(age) || age < 1 || age > 120)) {
+            ageError.textContent = 'Please enter a valid age between 1 and 120.';
+            ageInput.classList.add('border-red-500');
+            return false;
         }
-        function toggleFavoritesView() { /* ... (no changes) ... */ }
-         function toggleFavoritesView() { if (favoritesSection.classList.contains('active')) { favoritesSection.classList.remove('active'); } else { displayFavorites(); favoritesSection.classList.add('active'); } }
-        // Updated renderSaveButton
-        function renderSaveButton(container, nameObj, isSaved) {
-            if (!container) return; container.innerHTML = ''; const saveBtn = document.createElement('button');
-            saveBtn.title = isSaved ? 'Saved to Favorites' : 'Save to Favorites'; saveBtn.disabled = isSaved;
-            saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${ isSaved ? 'text-save-button cursor-not-allowed' : 'text-medium-gray hover:text-save-button' }`;
-            saveBtn.dataset.id = nameObj.id;
-            saveBtn.innerHTML = isSaved ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` // Check Circle
-                                        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart Outline
-            if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
+        ageError.textContent = '';
+        ageInput.classList.remove('border-red-500');
+        return true;
+    }
+
+    nameInput.addEventListener('input', validateName);
+    emailInput.addEventListener('input', validateEmail);
+    ageInput.addEventListener('input', validateAge);
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isAgeValid = validateAge();
+
+        if (!isNameValid || !isEmailValid || !isAgeValid) {
+            outputDiv.classList.add('hidden');
+            return;
         }
 
-        // ===========================================
-        // Data Loading Function
-        // ===========================================
-        async function loadNameData() { /* ... (as before) ... */ }
-         async function loadNameData() {
-            try {
-                const response = await fetch('names.json'); if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-                nameDatabase = await response.json(); console.log('Name data loaded successfully:', nameDatabase.length, 'names');
-                 nameDatabase.forEach(item => { if (!item.lengthCategory) { item.lengthCategory = getLengthCategory(item.name); } }); // Add length category if missing
-                const languages = [...new Set(nameDatabase.map(item => item.language))].sort(); languageSelect.innerHTML = '';
-                languages.forEach(lang => { const option = document.createElement('option'); option.value = lang; option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); languageSelect.appendChild(option); });
-                selectedLanguage = languageSelect.value;
-                controlsFieldset.disabled = false; generateBtn.disabled = false; dataLoaded = true; loadingMessage.style.display = 'none';
-                 nameOutput.innerHTML = `<p class="text-medium-gray italic text-center text-lg">Ready! Select options and click "Generate Name".</p>`;
-            } catch (error) {
-                console.error('Error loading name data:', error);
-                 nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">Whoops! Couldn't load the name data right now. Please check the console or try refreshing. (${error.message})</p>`; // Updated error message
-                 loadingMessage.style.display = 'none';
+        const formData = new FormData(form);
+        const data = {};
+        const interests = [];
+
+        formData.forEach((value, key) => {
+            if (key === 'interests') {
+                interests.push(value);
+            } else {
+                data[key] = value;
             }
-        }
-
-        // ===========================================
-        // Event Listeners Setup
-        // ===========================================
-        function setupEventListeners() {
-            genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
-            languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
-            lengthRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedLength = event.target.value; }); });
-            firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); });
-            styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
-
-            // Generate Button Click
-            generateBtn.addEventListener('click', () => { /* ... (logic as before, displays new fields) ... */ });
-             generateBtn.addEventListener('click', () => {
-                if (!dataLoaded) return;
-                console.log(`Generating name: G=${selectedGender}, L=${selectedLanguage}, Len=${selectedLength}, FL='${selectedFirstLetter}', Sty=${selectedStyle}`);
-                nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`; // Changed text
-                currentDisplayedName = null; const targetStyleCategory = getStyleCategory(selectedStyle);
-
-                // Filter names
-                const filteredNames = nameDatabase.filter(item => { const languageMatch = item.language === selectedLanguage; const genderMatch = selectedGender === 'any' || item.gender === selectedGender || item.gender === 'any'; const itemStyleCategory = getStyleCategory(item.styleScore); const styleMatch = itemStyleCategory === targetStyleCategory; const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase()); const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength; return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch; });
-                console.log('Filtered Names Count:', filteredNames.length);
-
-                // Display single result
-                setTimeout(() => {
-                    nameOutput.innerHTML = '';
-                    if (filteredNames.length > 0) {
-                        const randomIndex = Math.floor(Math.random() * filteredNames.length); currentDisplayedName = filteredNames[randomIndex]; console.log('Selected Name:', currentDisplayedName);
-                        const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
-                        const textDiv = document.createElement('div');
-                        textDiv.innerHTML = `<h3 class="text-4xl md:text-5xl font-bold text-dark-text mb-1">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-1"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
-                        const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2'; // Adjusted position slightly
-                        const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
-                        const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
-                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                        copyBtn.onclick = (e) => { const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
-                        buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
-                    } else {
-                        console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">Couldn't find a name with those exact settings! Maybe try adjusting the Style slider or removing the first letter?</p>`; // More helpful empty message
-                        currentDisplayedName = null;
-                    }
-                }, 300);
-            });
-
-            // Favorites List Interaction (Remove Button)
-            favoritesListDiv.addEventListener('click', (event) => { /* ... (uses delegation, updated button icon) ... */ });
-             favoritesListDiv.addEventListener('click', (event) => { const removeButton = event.target.closest('button'); if (removeButton && removeButton.dataset.id && removeButton.title === 'Remove from Favorites') { removeFromFavorites(removeButton.dataset.id); } }); // Check title or add specific class if needed
-            // View/Hide Favorites Button
-            viewFavoritesBtn.addEventListener('click', toggleFavoritesView);
-            // Clear All Favorites Button
-            clearFavoritesBtn.addEventListener('click', () => { /* ... (as before) ... */ });
-             clearFavoritesBtn.addEventListener('click', () => { if (confirm('Are you sure you want to clear all saved favorites?')) { favorites = []; saveFavorites(); displayFavorites(); if (currentDisplayedName) { renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } } });
-            // Sort Favorites Button
-            sortFavoritesBtn.addEventListener('click', () => { /* ... (as before) ... */ });
-             sortFavoritesBtn.addEventListener('click', () => { favoritesSortAsc = !favoritesSortAsc; sortFavoritesBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavorites(); });
-        }
-
-        // ===========================================
-        // Initial Page Load
-        // ===========================================
-        document.addEventListener('DOMContentLoaded', () => {
-             loadFavorites();
-             loadNameData(); // Load name data (enables controls on success)
-             updateSliderFeedback();
-             setupEventListeners();
-             favoritesSection.classList.remove('active');
         });
-    </script>
+
+        if (interests.length > 0) {
+            data['interests'] = interests;
+        } else {
+            data['interests'] = 'None selected';
+        }
+
+        formDataPre.textContent = JSON.stringify(data, null, 2);
+        outputDiv.classList.remove('hidden');
+
+    });
+</script>
 
 </body>
 </html>
 
-Summary of Aesthetic Changes:
- * Font: Changed to "Kalam" with adjusted base size and line height for better readability. Applied to inputs as well.
- * Backgrounds: Main content area uses a soft off-white (bg-off-white via stone-50) for subtle contrast with the body's paper texture. Results area matches this.
- * Borders: Main container keeps border-2, but internal elements (inputs, results box, buttons) use thinner border or specific border colors. Dashed lines used for dividers.
- * Shadows: Added shadow-sm to main container and primary button for subtle depth.
- * Controls: Slightly refined radio button appearance and dropdown arrow. Inputs have clearer focus states.
- * Spacing: Adjusted padding, margins, gaps, and text sizes throughout for better visual hierarchy and breathing room.
- * Buttons: Standardized button appearance using .btn classes, added subtle active state scaling. Used icons more consistently for Save/Remove/Copy actions.
-This version aims for a more refined, layered, and visually balanced take on the "paper and drawn" theme. Remember to create the names.json file and populate it!
