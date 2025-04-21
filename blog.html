@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Name Generator - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    {/* Font link removed - using standard Times New Roman */}
     <style>
         body {
-            font-family: 'Architects Daughter', cursive;
+            /* Changed font to Times New Roman */
+            font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
-            font-size: 1.1rem;
-            line-height: 1.7;
+            font-size: 1rem; /* Adjusted base size */
+            line-height: 1.6; /* Adjusted line height */
             color: #374151; /* dark-text */
         }
         a {
-            color: #60A5FA; /* button-active blue */
+            color: #60A5FA;
             text-decoration: none;
             transition: color 0.2s ease;
         }
         a:hover {
-            color: #3B82F6; /* button-active-hover blue */
+            color: #3B82F6;
             text-decoration: underline;
         }
         main a {
-             color: #374151; /* dark-text */
+             color: #374151;
         }
          main a:hover {
-             color: #6B7280; /* medium-gray */
+             color: #6B7280;
         }
-        h1, h2, h3 { font-weight: normal; }
-        ul { list-style: disc; padding-left: 2rem; margin-bottom: 1rem; }
+        /* Headings - standard weight for Times */
+        h1, h2, h3 { font-weight: bold; }
+        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
     </style>
     <script>
@@ -59,13 +59,13 @@
 
     <header class="text-center mb-10">
         <a href="index.html" title="Back to Name Generator">
-             {/* Updated logo path */}
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';">
         </a>
-        <h1 class="text-3xl md:text-4xl text-dark-text">
+         {/* Adjusted text sizes for Times New Roman */}
+        <h1 class="text-2xl md:text-3xl text-dark-text font-semibold">
              <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
         </h1>
-        <p class="text-lg md:text-xl text-medium-gray mt-1">
+        <p class="text-base md:text-lg text-medium-gray mt-1">
             <a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a>
         </p>
     </header>
@@ -74,44 +74,49 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
+        {/* Blog Post Entry 1 - Adjusted sizes */}
         <article class="blog-post-summary">
-            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+            <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                 <a href="middle.html">Choosing the Perfect Middle Name</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 21, 2025 (Placeholder)</p>
-            <p class="text-lg text-dark-text leading-relaxed">
+            <p class="text-base md:text-lg text-dark-text leading-relaxed">
                 Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition. We look at classic pairings and unique ideas... (Read More)
             </p>
         </article>
 
+        {/* Divider between posts */}
          <div class="text-center my-6 text-dark-text">
              <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
+         {/* Blog Post Entry 2 - Adjusted sizes */}
         <article class="blog-post-summary">
-            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+            <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                  <a href="post-placeholder-2.html">Popular German Baby Names in 2025</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 15, 2025 (Placeholder)</p>
-            <p class="text-lg text-dark-text leading-relaxed">
+            <p class="text-base md:text-lg text-dark-text leading-relaxed">
                 Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts in Germany this year... (Read More)
             </p>
         </article>
 
+         {/* Divider between posts */}
          <div class="text-center my-6 text-dark-text">
              <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
+         {/* Blog Post Entry 3 - Adjusted sizes */}
         <article class="blog-post-summary">
-            <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
+            <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                  <a href="post-placeholder-3.html">Unique & Uncommon English Name Ideas</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 10, 2025 (Placeholder)</p>
-            <p class="text-lg text-dark-text leading-relaxed">
+            <p class="text-base md:text-lg text-dark-text leading-relaxed">
                 Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration beyond the top 100... (Read More)
             </p>
         </article>
@@ -120,7 +125,7 @@
 
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <footer class="text-center text-medium-gray text-lg space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Kept footer size smaller */}
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
@@ -132,4 +137,3 @@
 </body>
 </html>
 
-The image source in the header of blog.html is now correctly set to assets/logo.png.
