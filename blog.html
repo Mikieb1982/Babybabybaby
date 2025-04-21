@@ -7,17 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Patrick Hand', cursive;
+            font-family: 'Architects Daughter', cursive;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
             background-color: #F5F5DC; /* soft-beige */
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #374151; /* dark-text */
         }
-        /* Style links to fit the theme */
         a {
             color: #60A5FA; /* button-active blue */
             text-decoration: none;
@@ -27,77 +27,59 @@
             color: #3B82F6; /* button-active-hover blue */
             text-decoration: underline;
         }
-        /* Ensure main content links use dark text */
         main a {
              color: #374151; /* dark-text */
         }
          main a:hover {
              color: #6B7280; /* medium-gray */
         }
-
+        h1, h2, h3 { font-weight: normal; }
+        ul { list-style: disc; padding-left: 2rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
     </style>
     <script>
-      // Tailwind config copied for color consistency
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'soft-beige': '#F5F5DC',
-              'dark-text': '#374151',
-              'medium-gray': '#6B7280',
-              'button-active': '#60A5FA',
-              'button-active-hover': '#3B82F6',
-              // Other colors not strictly needed for static blog page but kept for consistency
-              'button-inactive-hover-bg': '#F9FAFB',
-              'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444',
-              'save-button': '#34D399',
-              'save-button-hover': '#059669',
-              'remove-button': '#F87171',
-              'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF',
-              'copy-button-hover': '#4B5563',
+              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
+              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
+              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
+              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
             }
           }
         }
       }
     </script>
 </head>
-<body class="p-4 md:p-8 text-dark-text">
+<body class="p-4 md:p-8">
 
-    <header class="text-center mb-8 relative">
-        {/* Link back to the main generator page (assuming it's index.html) */}
+    <header class="text-center mb-10">
         <a href="index.html" title="Back to Name Generator">
-            <img
-                src="assets/stork.png"
-                alt="Minimalist stork drawing"
-                class="mx-auto h-16 w-16 object-contain mb-2" /* Slightly smaller for blog header */
-                onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';"
-                >
+            <img src="logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';">
         </a>
-        {/* Main site title linking back */}
-        <h1 class="text-3xl md:text-4xl font-bold text-dark-text">
-             <a href="index.html">Baby Name Generator</a>
+        <h1 class="text-3xl md:text-4xl text-dark-text">
+             <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
         </h1>
-        {/* Blog specific subtitle */}
-        <p class="text-lg md:text-xl text-medium-gray mt-1">Naming Tips & Ideas Blog</p>
+        <p class="text-lg md:text-xl text-medium-gray mt-1">
+            <a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a>
+        </p>
     </header>
 
-    <div class="text-center my-8 md:my-12 text-dark-text">
-        <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-        </svg>
-    </div>
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <main class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-lg border-2 border-dark-text space-y-8">
+    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
-        {/* Blog Post Entry 1 (Placeholder) */}
+        {/* Blog Post Entry 1 - Link Updated */}
         <article class="blog-post-summary">
             <h2 class="text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                {/* Link to the actual post file */}
-                <a href="post-placeholder-1.html">Choosing the Perfect Middle Name</a>
+                {/* Link updated to middle.html */}
+                <a href="middle.html">Choosing the Perfect Middle Name</a>
             </h2>
-            <p class="text-sm text-medium-gray mb-3">Published: April 20, 2025 (Placeholder)</p>
+            <p class="text-sm text-medium-gray mb-3">Published: April 21, 2025 (Placeholder)</p>
             <p class="text-lg text-dark-text leading-relaxed">
                 Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition. We look at classic pairings and unique ideas... (Read More)
             </p>
@@ -139,25 +121,17 @@
             </p>
         </article>
 
-        {/* Add more article summaries here as you write them */}
-
     </main>
 
-     <div class="text-center mt-8 md:mt-12 mb-8 text-dark-text">
-         <svg class="mx-auto h-8" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-         </svg>
-     </div>
+     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <footer class="text-center text-medium-gray text-base space-y-2">
-        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
-        {/* Link back to the main generator page */}
-        <p><a href="index.html" class="hover:text-dark-text underline">Back to Name Generator</a></p>
+    <footer class="text-center text-medium-gray text-lg space-y-2">
+        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
+        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
 
-    {/* No complex JavaScript needed for this static blog index page */}
     <script>
-        // Minimal JS if needed in the future, currently empty.
+        // No complex JavaScript needed for this static blog index page
     </script>
 
 </body>
