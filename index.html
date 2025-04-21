@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stork Name Drop - Baby Name Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    {/* Font link removed - using standard Times New Roman */}
     <style>
         body {
-            /* Changed font to Times New Roman */
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
@@ -17,7 +15,6 @@
             line-height: 1.6; /* Adjusted line height */
             color: #374151; /* dark-text */
         }
-        /* Base Input Styles - Adjusted font */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
              font-size: 1rem; /* Adjusted input font size */ width: 100%; outline: none;
@@ -84,11 +81,10 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
-        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled> {/* Adjusted spacing */}
+        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
 
              <section id="gender-selection">
-                 {/* Adjusted text sizes */}
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
@@ -99,19 +95,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
-                     {/* Adjusted text sizes */}
                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
                     <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select>
                 </section>
                 <section id="letter-filter">
-                     {/* Adjusted text sizes */}
                     <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
                     <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
                 </section>
             </div>
 
             <section id="length-filter">
-                 {/* Adjusted text sizes */}
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
@@ -122,7 +115,6 @@
             </section>
 
              <section id="style-slider">
-                 {/* Adjusted text sizes */}
                 <div class="flex justify-between items-center mb-2">
                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
                     <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span>
@@ -135,18 +127,15 @@
             </section>
 
             <div class="text-center pt-4">
-                 {/* Adjusted text size */}
                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
             </div>
         </fieldset>
 
         <section id="results-section" class="mt-10">
              <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
-              {/* Adjusted text sizes */}
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
             <div id="loading-indicator" class="loader" style="display: none;"></div>
             <div id="result-display" class="text-center min-h-[6rem]">
-                 {/* Adjusted text sizes */}
                 <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p>
             </div>
              <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p>
@@ -159,23 +148,20 @@
             <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
-             {/* Adjusted text sizes */}
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-8 text-center">Favorite Names</h2>
             <div id="favorites-panel-list" class="space-y-6">
-                 {/* Adjusted text sizes */}
                 <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p>
             </div>
         </div>
     </aside>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Kept footer smaller */}
+    <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
     </footer>
 
     <script>
-        // Embedded sample data for preview
         const nameData = [
             { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
             { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
@@ -189,7 +175,6 @@
         let nameDatabase = nameData;
         let dataLoaded = true;
 
-        // DOM Elements
         const controlsFieldset = document.getElementById('generator-controls');
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
@@ -208,7 +193,6 @@
         const closeFavoritesBtn = document.getElementById('close-favorites-btn');
         const loadingIndicator = document.getElementById('loading-indicator');
 
-        // State Variables
         let selectedGender = 'any';
         let selectedLanguage = '';
         let selectedLength = 'any';
@@ -218,13 +202,11 @@
         let favorites = [];
         let favoritesSortAsc = true;
 
-        // Helper Functions
         function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
         function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
         function copyToClipboard(text, buttonElement) { navigator.clipboard.writeText(text).then(() => { const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Copied!'; buttonElement.classList.add('text-save-button'); buttonElement.disabled = true; setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-save-button'); buttonElement.disabled = false; }, 1500); }).catch(err => { console.error('Failed to copy text: ', err); const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Error'; buttonElement.classList.add('text-error-red'); setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-error-red'); }, 1500); }); }
         function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
 
-        // Favorites Functions
         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
         function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
@@ -246,7 +228,6 @@
             favorites.forEach(fav => {
                 const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
                 const textDiv = document.createElement('div');
-                 // Adjusted text sizes
                 textDiv.innerHTML = `<strong class="text-xl block">${fav.name}</strong> <span class="text-base text-medium-gray block">${fav.meaning || ''}</span> <span class="text-sm text-gray-500 block mt-1"> Origin: ${fav.originNotes || fav.language} &bull; Pronunciation: ${fav.pronunciation || 'N/A'} &bull; Popularity: ${fav.popularity || 'N/A'} </span>`;
                 const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
                 const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
@@ -274,7 +255,6 @@
             if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
         }
 
-        // Data Loading Function (Using Embedded Data)
         function loadAndPrepareData() {
             console.log('Using embedded sample data for preview.');
             const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
@@ -288,7 +268,6 @@
             console.log("Data ready, controls enabled.");
         }
 
-        // Event Listeners Setup
         function setupEventListeners() {
             genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
             languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
@@ -325,7 +304,6 @@
 
                         const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
-                         // Adjusted text sizes for Times New Roman
                         textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
                         const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
                         const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
@@ -335,14 +313,13 @@
                         buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
                         console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`; // Adjusted size
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
                         currentDisplayedName = null;
                          if(initialMessage) initialMessage.style.display = 'none';
                     }
                 }, 300);
             });
 
-            // Favorites Panel Interaction
              favoritesPanelList.addEventListener('click', (event) => {
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
@@ -367,4 +344,4 @@
 </body>
 </html>
 
-The main generator page now uses "Times New Roman". I've removed the link to the "Architects Daughter" font and adjusted the font-family CSS rule. I also went through and modified various text size classes (e.g., text-xl, text-2xl, text-5xl) to better suit this more traditional font.
+The src attribute in the header's <img> tag is now assets/logo.png.
