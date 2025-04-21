@@ -70,9 +70,11 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
+        {/* Blog Post Entry 1 - Link Updated */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                <a href="middle.html">Choosing the Perfect Middle Name</a>
+                {/* Link updated to blog/middle.html */}
+                <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 21, 2025 (Placeholder)</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
@@ -89,8 +91,8 @@
          {/* Blog Post Entry 2 - Link Updated */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                 {/* Link updated to german2025.html */}
-                 <a href="german2025.html">Popular German Baby Names in 2025</a>
+                 {/* Link updated to blog/german2025.html */}
+                 <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 15, 2025 (Placeholder)</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
@@ -104,10 +106,11 @@
             </svg>
         </div>
 
-         {/* Blog Post Entry 3 (Placeholder) */}
+         {/* Blog Post Entry 3 - Link Updated */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                 <a href="post-placeholder-3.html">Unique & Uncommon English Name Ideas</a>
+                 {/* Link updated to blog/uniqueeng.html */}
+                 <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
             </h2>
             <p class="text-sm text-medium-gray mb-3">Published: April 10, 2025 (Placeholder)</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
@@ -130,5 +133,6 @@
 
 </body>
 </html>
+```
 
-The link for the second blog post summary, "Popular German Baby Names in 2025," now points to german2025.html.
+All the links to the individual blog posts now include the `blog/` path prefix (e.g., `blog/middle.html`, `blog/german2025.html`, `blog/uniqueeng.html`). Make sure your actual files are organized into a `blog` subfolder relative to `blog.html` for these links to work correct
