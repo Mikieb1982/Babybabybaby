@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Stork Name Drop - Baby Name Generator</title>
+    <title>The Stork Name Drop - Baby Name Generator & Ideas</title> {/* Added more keywords */}
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1rem; /* Adjusted base size */
-            line-height: 1.6; /* Adjusted line height */
-            color: #374151; /* dark-text */
+            background-color: #F5F5DC;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #374151;
         }
-        /* Base Input Styles */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
              font-size: 1rem; width: 100%; outline: none;
@@ -24,40 +23,45 @@
         }
         input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
         input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
-        /* Slider thumb */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        /* Radio buttons */
         input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
         input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #475569; }
         input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-        /* Dropdown arrow */
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
-        /* Fade-in animation */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-        /* Result & Favorite Item Styling */
         .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        /* Button Base Styles */
-        .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; /* Ensure button uses correct font */ }
+        .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; }
         .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
-        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; } /* Slightly larger CTA button */
+        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; }
         .btn-cta:hover:not(:disabled) { background-color: #374151; }
         .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
-        /* Favorites Panel Styling */
         #favorites-panel { position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50; display: none; animation: fadeIn 0.3s ease-out; }
         #favorites-panel.active { display: block; }
-        /* Loading Spinner */
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* Ad Placeholder Style */
+        .ad-placeholder {
+            min-height: 90px; /* Standard ad height */
+            background-color: #e5e7eb; /* Light gray background */
+            border: 1px dashed #9ca3af; /* Gray dashed border */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #6b7280; /* Medium gray text */
+            margin: 1.5rem auto; /* Centered margin */
+            max-width: 728px; /* Common ad width */
+        }
     </style>
      <script>
       tailwind.config = {
@@ -88,14 +92,17 @@
         </button>
     </header>
 
+    {/* Ad Slot Placeholder 1 */}
+    <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
+
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
         <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
-
-             <section id="gender-selection">
+             {/* Controls sections ... */}
+              <section id="gender-selection">
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
@@ -103,8 +110,7 @@
                     <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
                 </div>
             </section>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
                     <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select>
@@ -114,8 +120,7 @@
                     <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
                 </section>
             </div>
-
-            <section id="length-filter">
+             <section id="length-filter">
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
@@ -124,7 +129,6 @@
                     <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
                 </div>
             </section>
-
              <section id="style-slider">
                 <div class="flex justify-between items-center mb-2">
                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
@@ -136,8 +140,7 @@
                 </div>
                 <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
             </section>
-
-            <div class="text-center pt-4">
+             <div class="text-center pt-4">
                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
             </div>
         </fieldset>
@@ -154,17 +157,46 @@
 
     </main>
 
-     {/* Blog CTA Section - Added */}
-    <section id="blog-cta" class="my-10 md:my-14 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
-        <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-3">Looking for Inspiration?</h2>
-        <p class="text-base md:text-lg text-medium-gray mb-6">
-            Dive into our blog for naming tips, origin stories, and creative ideas to help you find the perfect name.
-        </p>
-        <a href="blog.html" class="btn btn-cta btn-feedback">Read The Blog</a>
-    </section>
+     {/* Ad Slot Placeholder 2 */}
+    <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
+
+     {/* Latest Blog Posts Section */}
+     <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
+         <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
+         <div class="space-y-6">
+             {/* Post 1 */}
+             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                 </h3>
+                 <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition...</p>
+             </div>
+              {/* Post 2 */}
+             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                 </h3>
+                 <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices...</p>
+             </div>
+              {/* Post 3 */}
+              <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                 </h3>
+                 <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings...</p>
+             </div>
+         </div>
+         <div class="text-center mt-6">
+              <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
+         </div>
+     </section>
 
     <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
-        <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
+        {/* Favorites Panel Content (no changes needed here) */}
+         <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
             <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
@@ -175,10 +207,15 @@
         </div>
     </aside>
 
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto mt-10 md:mt-14 mb-8"> {/* Added mb */}
-    <footer class="text-center text-medium-gray text-base space-y-2 pb-8"> {/* Added pb */}
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+        <p>
+            {/* Added placeholder links */}
+            <a href="#" class="hover:text-dark-text underline">About Us</a> |
+            <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
+            <a href="blog.html" class="hover:text-dark-text underline">Blog</a>
+        </p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-         {/* Blog link removed from here */}
     </footer>
 
     <script>
@@ -243,15 +280,18 @@
             favoritesPanelPlaceholder.style.display = favorites.length === 0 ? 'block' : 'none';
 
             if (favorites.length > 0) {
-                // Add Sort button (if needed, or assume static in HTML)
-                // const sortBtn = document.createElement('button'); ...
-                // Add Clear All button
+                 // Add Sort button (Assume static HTML or add dynamically)
+                 // Add Clear All button
                 const clearAllBtn = document.createElement('button');
                 clearAllBtn.textContent = 'Clear All Favorites';
                 clearAllBtn.className = 'block mx-auto text-lg text-remove-button hover:text-remove-button-hover transition-colors underline btn-feedback mb-6';
                 clearAllBtn.onclick = () => { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) { const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } }};
-                favoritesPanelList.appendChild(clearAllBtn);
+                favoritesPanelList.appendChild(clearAllBtn); // Append clear button first potentially
             }
+
+            // Sort favorites before displaying (assuming sort state `favoritesSortAsc` is managed elsewhere if button exists)
+             favorites.sort((a, b) => { const nameA = a.name.toLowerCase(); const nameB = b.name.toLowerCase(); if (nameA < nameB) return favoritesSortAsc ? -1 : 1; if (nameA > nameB) return favoritesSortAsc ? 1 : -1; return 0; });
+
 
             favorites.forEach(fav => {
                 const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
@@ -334,6 +374,7 @@
 
                         const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
+                         // Displaying new fields like Popularity
                         textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
                         const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
                         const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
@@ -343,7 +384,7 @@
                         buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
                         console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`; // Adjusted size
                         currentDisplayedName = null;
                          if(initialMessage) initialMessage.style.display = 'none';
                     }
@@ -355,11 +396,15 @@
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
                  const clearButton = event.target.closest('button');
+                 // Check text content for dynamically added button
                  if (clearButton && clearButton.textContent === 'Clear All Favorites') { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } }
              });
             viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
+            // Sort button listener example (assuming static button exists)
+            // const sortBtn = document.getElementById('sort-favorites-btn');
+            // if(sortBtn) { sortBtn.addEventListener('click', () => { favoritesSortAsc = !favoritesSortAsc; sortBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavoritesInPanel(); });}
         }
 
         // Initial Page Load
@@ -374,5 +419,6 @@
 
 </body>
 </html>
+```
 
-The logo path in the header is now assets/logo.png.
+I've added the new "Latest Blog Posts" section above the footer and included placeholder `div` elements styled with a dashed border to indicate potential ad slots below the header and below the main results area. I also added placeholder links for "About Us" and "Data Sources" in the footer and a placeholder for more info within the generated name display functi
