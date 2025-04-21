@@ -32,6 +32,9 @@
         h2 { margin-top: 2rem; margin-bottom: 1rem; }
         h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
         h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
+        .works-cited { font-size: 0.85rem; margin-top: 2rem; }
+        .works-cited p { margin-bottom: 0.25rem; }
+        .works-cited a { color: #60A5FA; } /* Style links in works cited */
     </style>
     <script>
         tailwind.config = {
@@ -64,14 +67,12 @@
 <body class="p-4 md:p-8">
 
     <header class="text-center mb-10">
-        <!-- Logo image -->
         <a href="index.html" title="Back to Name Generator">
-            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151'">
+            <img src="/assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151'">
         </a>
-        
-        <!-- Blog-specific image -->
-        <img src="assets/uniqueeng.png" alt="Unique English Names" class="mx-auto h-48 w-auto object-contain mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x300/F5F5DC/374151'">
-        
+
+        <img src="/assets/uniqueeng.png" alt="Unique English Names" class="mx-auto h-48 w-auto object-contain mb-4" onerror="this.onerror=null; this.src='https://placehold.co/600x300/F5F5DC/374151'">
+
         <h1 class="text-2xl md:text-3xl text-dark-text font-semibold">
             <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
         </h1>
@@ -83,13 +84,153 @@
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <!-- Blog article content -->
         <article>
             <h1 class="text-3xl md:text-4xl text-dark-text mb-2 text-center">Unique & Uncommon English Name Ideas</h1>
             <p class="text-center text-xl md:text-2xl text-medium-gray mb-8">Beyond the Top 10: Finding Your Perfectly Uncommon Name</p>
 
             <div class="space-y-4 text-base md:text-lg leading-relaxed">
-                <!-- Full article content remains unchanged -->
+                <p>Choosing a name for a new arrival is one of the most exciting, and sometimes daunting, parts of welcoming a child. It's a decision filled with hopes, dreams, and the desire to find something that feels just right. For many parents-to-be, the search extends beyond the familiar sounds heard echoing across playgrounds and listed at the top of popularity charts. Looking for a name that stands out from the crowd? This curated list explores unique English names, delving into their origins and meanings for inspiration beyond the most common choices. The journey to find a name less ordinary can be a wonderful adventure, uncovering hidden gems and stories waiting to be told. A unique name can be a special gift, a first chapter in a child's individual story.</p>
+                <p>The quest for uniqueness in naming reflects a broader cultural moment. Perhaps it's a desire for individuality in an increasingly connected world, a way to honor specific heritage, or simply the joy of discovering a beautiful name that isn't shared by several others in the same class. Whatever the motivation, this exploration serves as a guide on that exciting path, offering pathways to names that resonate with distinction and charm.</p>
+
+                <h2 class="text-2xl">What Does "Uncommon" Mean in a World of Olivias and Noahs?</h2>
+                <p>The idea of an "uncommon" name is, of course, relative. What feels rare in one community might be familiar in another. Thankfully, official statistics provide a useful map of the naming landscape. Government bodies like the Social Security Administration (SSA) in the United States, the Office for National Statistics (ONS) in the UK, Statistics Canada, and various state registries in Australia meticulously compile data on the names given to babies each year. These lists clearly show which names currently occupy the top spots. Certain names consistently appear at the very peak of popularity across major English-speaking nations. These form the "Top Tier" – names chosen frequently by parents year after year. Understanding this popular crowd helps define the territory of the truly uncommon.</p>
+
+                <h3 class="text-xl">Table 1: The Popular Crowd - Recent Top 5 Baby Names</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Country</th>
+                                <th>Rank</th>
+                                <th>Boy Name</th>
+                                <th>Girl Name</th>
+                                <th>Data Year</th>
+                                <th>Source(s)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>US</td><td>1</td><td>Liam</td><td>Olivia</td><td>2023</td><td>SSA</td></tr>
+                            <tr><td>US</td><td>2</td><td>Noah</td><td>Emma</td><td>2023</td><td>SSA</td></tr>
+                            <tr><td>US</td><td>3</td><td>Oliver</td><td>Charlotte</td><td>2023</td><td>SSA</td></tr>
+                            <tr><td>US</td><td>4</td><td>James</td><td>Amelia</td><td>2023</td><td>SSA</td></tr>
+                            <tr><td>US</td><td>5</td><td>Elijah</td><td>Sophia</td><td>2023</td><td>SSA</td></tr>
+                            <tr><td>UK (Eng/Wales)</td><td>1</td><td>Muhammad</td><td>Olivia</td><td>2023</td><td>ONS</td></tr>
+                            <tr><td>UK (Eng/Wales)</td><td>2</td><td>Noah</td><td>Amelia</td><td>2023</td><td>ONS</td></tr>
+                            <tr><td>UK (Eng/Wales)</td><td>3</td><td>Oliver</td><td>Isla</td><td>2023</td><td>ONS</td></tr>
+                            <tr><td>UK (Eng/Wales)</td><td>4</td><td>Leo</td><td>Lily</td><td>2023</td><td>ONS</td></tr>
+                            <tr><td>UK (Eng/Wales)</td><td>5</td><td>Arthur</td><td>Freya</td><td>2023</td><td>ONS</td></tr>
+                            <tr><td>Canada</td><td>1</td><td>Noah</td><td>Olivia</td><td>2023</td><td>StatsCan</td></tr>
+                            <tr><td>Canada</td><td>2</td><td>Liam</td><td>Emma</td><td>2023</td><td>StatsCan</td></tr>
+                            <tr><td>Canada</td><td>3</td><td>Oliver</td><td>Charlotte</td><td>2023</td><td>StatsCan</td></tr>
+                            <tr><td>Canada</td><td>4</td><td>Lucas</td><td>Amelia</td><td>2023</td><td>StatsCan</td></tr>
+                            <tr><td>Canada</td><td>5</td><td>William</td><td>Sophia</td><td>2023</td><td>StatsCan</td></tr>
+                            <tr><td>Australia (NSW)</td><td>1</td><td>Noah</td><td>Charlotte</td><td>2024</td><td>NSW Gov</td></tr>
+                            <tr><td>Australia (NSW)</td><td>2</td><td>Oliver</td><td>Amelia</td><td>2024</td><td>NSW Gov</td></tr>
+                            <tr><td>Australia (NSW)</td><td>3</td><td>Leo</td><td>Isla</td><td>2024</td><td>NSW Gov</td></tr>
+                            <tr><td>Australia (NSW)</td><td>4</td><td>William</td><td>Olivia</td><td>2024</td><td>NSW Gov</td></tr>
+                            <tr><td>Australia (NSW)</td><td>5</td><td>Theodore</td><td>Mia</td><td>2024</td><td>NSW Gov</td></tr>
+                            <tr><td>Australia (Vic)</td><td>1</td><td>Oliver</td><td>Isla</td><td>2024</td><td>Vic Gov</td></tr>
+                            <tr><td>Australia (Vic)</td><td>2</td><td>Noah</td><td>Charlotte</td><td>2024</td><td>Vic Gov</td></tr>
+                            <tr><td>Australia (Vic)</td><td>3</td><td>Leo</td><td>Amelia</td><td>2024</td><td>Vic Gov</td></tr>
+                            <tr><td>Australia (Vic)</td><td>4</td><td>Jack</td><td>Olivia</td><td>2024</td><td>Vic Gov</td></tr>
+                            <tr><td>Australia (Vic)</td><td>5</td><td>Henry</td><td>Mia</td><td>2024</td><td>Vic Gov</td></tr>
+                            <tr><td>Australia (WA)</td><td>1</td><td>Noah/Oliver (tie)</td><td>Charlotte/Isla (tie)</td><td>2024</td><td>WA Gov</td></tr>
+                            <tr><td>Australia (WA)</td><td>2</td><td>Leo</td><td>Amelia</td><td>2024</td><td>WA Gov</td></tr>
+                            <tr><td>Australia (WA)</td><td>3</td><td>Henry</td><td>Olivia</td><td>2024</td><td>WA Gov</td></tr>
+                            <tr><td>Australia (WA)</td><td>4</td><td>Luca</td><td>Harper</td><td>2024</td><td>WA Gov</td></tr>
+                            <tr><td>Australia (WA)</td><td>5</td><td>Jack</td><td>Mia</td><td>2024</td><td>WA Gov</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-sm text-medium-gray"><i>Note: Data reflects the most recent available year from sources, typically 2023 or early 2024 state/territory data for Australia. Rankings can shift slightly year to year. Sources abbreviated for clarity. Full sources in Works Cited.</i></p>
+                <p>This table visually establishes the baseline of "common" names, highlighting the dominance of choices like Olivia, Noah, Amelia, Liam, and Oliver across borders. It makes the contrast with the "uncommon" names explored later more impactful. Seeing these names repeated immediately defines the popular crowd this post aims to move beyond, justifying the search for uniqueness.</p>
+                <p>For the purposes of this exploration, "uncommon" generally refers to names found outside the Top 500 or even Top 1000 in these major English-speaking regions. Official statistics reveal a fascinating picture: while the top 1000 names in the US account for roughly 71 percent of births, this leaves nearly 30 percent named outside that popular group. This significant portion represents a vast landscape of potential uniqueness, demonstrating that finding an uncommon name is far from impossible. It's worth noting that popularity is fluid; names can rise or fall. Some names currently outside the top ranks might still feel familiar due to past popularity peaks or emerging trends. The focus here is on names offering genuine distinctiveness in the current naming climate.</p>
+
+                <h2 class="text-2xl">Spark Your Imagination: Where Unique Names Hide</h2>
+                <p>Unique names aren't just random collections of letters; they often emerge from rich and inspiring sources. Thinking about names in categories can be a wonderful way to brainstorm and discover options that resonate personally. Consider this section a series of treasure chests, each holding different styles of uncommon gems.</p>
+
+                <h3 class="text-xl">Echoes from the Attic: Charming Vintage Revivals</h3>
+                <p>There's a definite trend towards rediscovering names that might have belonged to grandparents or great-grandparents. These names possess a classic feel but sound fresh today precisely because they've skipped a generation or two. Sometimes dubbed "Croc Names" – like the once-unfashionable shoe making a comeback – these are vintage choices poised for a stylish return. The appeal often stems from a predictable cycle: names popular around a century ago, having fallen out of common use, are now being rediscovered. This distance lends them a feeling of being both reassuringly classic and refreshingly distinct. Consider names like Etta, Otto, Thaddeus, Linus, or Barnaby.</p>
+
+                <h3 class="text-xl">Wild & Wonderful: Inspired by Nature's Beauty</h3>
+                <p>Nature remains a powerful and enduring source of name inspiration. This category is vast, encompassing delicate botanicals, strong animal names, evocative geographical features, and even names related to the sky, weather, or seasons. The detailed categorization of nature and word names seen in naming resources suggests a broader shift towards names valued for their direct, evocative imagery and conceptual meaning, moving beyond traditional lineage alone. The sheer variety – from flowers and trees to minerals and landscapes – indicates this reflects a deep desire for tangible, meaningful connections. Examples include Lark, Briar, Sorrel, Cove, Arden, or Zephyr.</p>
+
+                <h3 class="text-xl">Storied & Special: Names from Myths, Legends & Literature</h3>
+                <p>Names drawn from mythology, classic literature, Arthurian legends, or significant historical figures carry an inherent romance and weight. Many names that sound truly unique today aren't new inventions but possess considerable historical or cultural significance. Their current rarity often belies a rich past, offering depth alongside distinctiveness. Choosing such a name connects a child to epic tales and enduring characters. Think of Avalon, Lysander, Oberon, Elspeth, Isolde, Evander, Calliope, or Caspian.</p>
+
+                <h3 class="text-xl">Words with Meaning: Unique Nouns & Concepts</h3>
+                <p>A growing trend involves using evocative "word names" – nouns or concepts chosen for their direct meaning and sound. These names often carry their meaning transparently, offering an immediate conceptual resonance that differs from traditional names where meanings might be historical or require looking up. This directness appeals to those seeking clarity and instant significance. Categories include virtues, abstract ideas, time or celestial events, and even musical or artistic terms. Consider Reverie, Sonnet, Valor, Candor, Solstice, Vesper, Meridian, or Zenith.</p>
+
+                <h3 class="text-xl">Family Ties & Formal Flair: Surname-Style Names</h3>
+                <p>Using surnames as first names is another popular avenue for finding distinctive options. These names often convey a sense of heritage, polish, or even gender neutrality. Their distinct character frequently derives from origins in lineage, occupation, or place, giving them a different feel – perhaps more grounded or formal – compared to traditional given names often rooted in religious figures, abstract qualities, or mythology. Examples include Ellison, Hollis, Fletcher, Bellamy, or Albion.</p>
+
+                <h2 class="text-2xl">A Curated Collection of Uncommon English Gems</h2>
+                <p>The following list offers a starting point, featuring names drawn from the categories above. These selections are generally found outside the most popular rankings in the US, UK, Canada, and Australia, chosen for their appeal, history, and relative rarity. They are treasures unearthed for consideration:</p>
+
+                <h4 class="text-lg">For Girls:</h4>
+                <ul>
+                    <li><strong>Araminta:</strong> (English) Likely a literary invention combining names like Arabella and Aminta, possibly suggesting meanings like "defender" or "lion". Elegant, aristocratic, and rare, it feels both fanciful and strong.</li>
+                    <li><strong>Avalon:</strong> (Welsh) "Island of apples". Steeped in Arthurian myth, it has an ethereal, legendary quality.</li>
+                    <li><strong>Briar:</strong> (British) "Thorny bush of wild roses; Brambles". A nature name connected to Sleeping Beauty (Briar Rose), it feels both beautiful and resilient. Usable for boys too.</li>
+                    <li><strong>Calliope:</strong> (Greek) "Beautiful-voiced". The name of the Muse of epic poetry, it has artistic flair.</li>
+                    <li><strong>Cassia:</strong> (Greek/Hebrew) "Cassia tree" (similar to cinnamon). A warm, spicy botanical name, less common than Cinnamon but with similar appeal.</li>
+                    <li><strong>Elspeth:</strong> (Scottish) Scottish form of Elizabeth, "Chosen by God". A traditional yet distinctly Scottish alternative.</li>
+                    <li><strong>Etta:</strong> (English) Diminutive of Henrietta/Harriet, "Ruler of the Home". A sassy, vintage nickname-name, feels strong, simple, and retro.</li>
+                    <li><strong>Isolde:</strong> (German/Brythonic) Meaning uncertain, possibly "ice battle" or "she who is gazed upon". A name of legendary romance from Tristan and Isolde, dramatic and hauntingly beautiful.</li>
+                    <li><strong>Lark:</strong> (British) "Songbird". A sweet, simple, and cheerful nature name.</li>
+                    <li><strong>Reverie:</strong> (French) "Daydream". An evocative word name suggesting imagination and whimsical beauty.</li>
+                    <li><strong>Sorrel:</strong> (German) "Reddish brown". A warm, earthy color and nature name. Gender-neutral.</li>
+                    <li><strong>Vesper:</strong> (Latin) "Evening star; Evening prayer". A sophisticated name with celestial and spiritual connotations. Gender-neutral.</li>
+                </ul>
+
+                <h4 class="text-lg">For Boys:</h4>
+                <ul>
+                    <li><strong>Albion:</strong> (Latin/English) "White land," ancient name for Great Britain. A stately, historical name linked to the White Cliffs of Dover.</li>
+                    <li><strong>Barnaby:</strong> (Aramaic/Saxon) "Son of consolation" or related to "young warrior". A charmingly old-fashioned English-feeling name with a friendly sound.</li>
+                    <li><strong>Caspian:</strong> (Place Name/Latin) Named after the Caspii people ("white") or the Caspian Sea. An adventurous, romantic name associated with C.S. Lewis's Prince Caspian.</li>
+                    <li><strong>Evander:</strong> (Greek/Gaelic) "Good man" or related to Ivor. A strong, classical name found in mythology.</li>
+                    <li><strong>Fletcher:</strong> (English/French) "Arrow-maker". A crisp, occupational surname-name that feels both traditional and energetic.</li>
+                    <li><strong>Linus:</strong> (Greek) "Flax". Combines classical roots with gentle familiarity (Peanuts character).</li>
+                    <li><strong>Lysander:</strong> (Greek) "Liberator". A heroic name from ancient Sparta and Shakespeare, suggesting freedom and romance.</li>
+                    <li><strong>Oberon:</strong> (Germanic/French) Meaning uncertain, possibly "noble bear". The King of the Fairies in literature, magical and regal.</li>
+                    <li><strong>Otto:</strong> (German) "Wealth, prosperity". A strong, simple, palindromic name borne by emperors. Vintage yet modern.</li>
+                    <li><strong>Peregrine:</strong> (Latin) "Wanderer, traveler". An adventurous, sophisticated name. Offers the nickname Perry.</li>
+                    <li><strong>Thaddeus:</strong> (Greek/Aramaic) "Praise" or "heart, courageous". An Apostle's name with a distinguished feel and friendly nicknames Thad or Tad.</li>
+                    <li><strong>Valor:</strong> (Latin) "Worthiness, bravery". A bold, modern-sounding virtue name. Gender-neutral.</li>
+                    <li><strong>Zephyr:</strong> (Greek) "West wind". A gentle, poetic nature name.</li>
+                 </ul>
+
+                <h4 class="text-lg">Gender Neutral:</h4>
+                <ul>
+                    <li><strong>Arden:</strong> (British/Celtic) "Great forest" or "Eagle valley". A smooth, grounded nature name with literary ties.</li>
+                    <li><strong>Bellamy:</strong> (French) "Handsome friend; Fine friend". A melodic surname-style name suggesting companionship and charm.</li>
+                    <li><strong>Candor:</strong> (Latin) "Forthrightness, fairness, brightness". A virtue name suggesting honesty and sincerity.</li>
+                    <li><strong>Cove:</strong> (British) "Small coastal inlet; Enclosed chamber". A sleek, modern-sounding nature name evoking the sea and tranquility.</li>
+                    <li><strong>Ellison:</strong> (English/Norwegian) "Son of Elias/Ellis". A polished surname-name, less common than Allison or Ellis.</li>
+                    <li><strong>Hollis:</strong> (English) "Dweller near the holly trees". A gentle, slightly preppy surname-style name with natural imagery.</li>
+                    <li><strong>Meridian:</strong> (Latin) "Midday, noon; South". A sophisticated geographical term suggesting a peak or central point.</li>
+                    <li><strong>Solstice:</strong> (Latin) "Sun standing still". A powerful celestial name marking the turning points of the seasons.</li>
+                    <li><strong>Zenith:</strong> (Arabic via French/Latin) "Highest point". A strong, aspirational name signifying the peak or culmination.</li>
+                </ul>
+
+                <h2 class="text-2xl">Why Choose the Road Less Traveled? The Joy of a Unique Name</h2>
+                <p>Choosing a name that isn't in the Top 100 (or even Top 1000) holds a special appeal. One practical benefit is avoiding confusion in classrooms. Beyond practicality, an uncommon name can serve as a unique identity marker. It can also be a conversation starter. This desire for distinction aligns with trends moving away from overly common names. There's an embrace of individuality through vintage revivals, nature names, global influences, or meaningful words. While creative spellings have had waves of popularity, there's a strong pull towards uniqueness found through rediscovering established names with rich histories. Pop culture can also unexpectedly elevate uncommon names.</p>
+                <p>Perhaps one of the most lovely aspects of choosing an uncommon name is that it often comes with a built-in story. Whether it's mythology, a word's meaning, or history, this narrative becomes part of the child's heritage.</p>
+
+                <h2 class="text-2xl">Finding Your One-of-a-Kind Treasure</h2>
+                <p>Ultimately, the "perfect" name resonates most deeply with a family. These categories and names are sparks for imagination. Trust individual instincts. Practical considerations: say the full name aloud, think about nicknames, and check for unintended associations. The process is significant and filled with possibility. May the search lead to that special, unique name. Which uncommon names have captured attention? The world of names is vast, and the journey is part of the magic.</p>
+
+                <div class="works-cited">
+                    <h3 class="text-lg">Works Cited</h3>
+                    <p><small>1. Popular Baby Names | SSA, accessed April 21, 2025, <a href="https://www.ssa.gov/oact/babynames/" target="_blank">https://www.ssa.gov/oact/babynames/</a></small> </p>
+                    <p><small>2. Baby names in England and Wales - Office for National Statistics, accessed April 21, 2025, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023" target="_blank">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023</a></small> </p>
+                    <p><small>3. The most popular baby names of 2023 - Statistics Canada, accessed April 21, 2025, <a href="https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023" target="_blank">https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023</a></small> </p>
+                    <p><small>4. Popular baby names | NSW Government, accessed April 21, 2025, <a href="https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names" target="_blank">https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names</a></small> </p>
+                    <p><small>5. 200 Unique Word Names You Won't Find Anywhere Else | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/truly-unique-word-names-for-babies" target="_blank">https://nameberry.com/blog/truly-unique-word-names-for-babies</a></small> </p>
+                    <p><small>6. Baby Name Trends 2025 | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/baby-name-trends-2025" target="_blank">https://nameberry.com/blog/baby-name-trends-2025</a></small> </p>
+                     <p><small>Vic Gov: Data referenced from Victorian Government registry (Specific URL not provided in source text)</small></p>
+                    <p><small>WA Gov: Data referenced from Western Australian Government registry (Specific URL not provided in source text)</small></p>
+               </div>
             </div>
 
             <div class="text-center mt-12">
@@ -103,7 +244,7 @@
     <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p>
-            <a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | 
+            <a href="index.html" class="hover:text-dark-text underline">Name Generator</a> |
             <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a>
         </p>
     </footer>
