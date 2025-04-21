@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Name Generator</title>
+    {/* Updated Title */}
+    <title>The Stork Name Drop - Baby Name Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,11 +79,12 @@
 
     <header class="text-center mb-10 relative">
         <a href="index.html" title="Back to Name Generator">
-            {/* Increased image size */}
-            <img src="assets/stork.png" alt="Minimalist stork drawing" class="mx-auto h-24 w-24 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/96x96/F5F5DC/374151?text=Stork';">
+             {/* Updated alt text */}
+            <img src="assets/stork.png" alt="The Stork Name Drop Logo - Minimalist stork drawing" class="mx-auto h-24 w-24 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/96x96/F5F5DC/374151?text=Stork';">
         </a>
+         {/* Updated H1 */}
         <h1 class="text-5xl md:text-6xl text-dark-text">
-             <a href="index.html" class="hover:text-medium-gray transition-colors">Baby Name Generator</a>
+             <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
         </h1>
         <p class="text-2xl md:text-3xl text-medium-gray mt-2">Explore names from around the world</p>
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
@@ -170,7 +172,8 @@
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
     <footer class="text-center text-medium-gray text-lg space-y-2">
-        <p>&copy; 2025 Baby Name Generator. All rights reserved.</p>
+         {/* Updated Copyright */}
+        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
     </footer>
 
@@ -197,8 +200,8 @@
         const firstLetterInput = document.getElementById('first-letter-input');
         const styleSlider = document.getElementById('style-range');
         const generateBtn = document.getElementById('generate-btn');
-        const nameOutput = document.getElementById('name-output'); // Changed from resultDisplay for consistency
-        const initialMessage = document.getElementById('results-placeholder'); // Use the placeholder ID
+        const nameOutput = document.getElementById('name-output');
+        const initialMessage = document.getElementById('results-placeholder');
         const resultsMessage = document.getElementById('results-message');
         const sliderFeedback = document.getElementById('slider-feedback');
         const viewFavoritesBtn = document.getElementById('view-favorites-btn');
@@ -206,7 +209,7 @@
         const favoritesPanelList = document.getElementById('favorites-panel-list');
         const favoritesPanelPlaceholder = document.getElementById('favorites-panel-placeholder');
         const closeFavoritesBtn = document.getElementById('close-favorites-btn');
-        const loadingIndicator = document.getElementById('loading-indicator'); // Added reference
+        const loadingIndicator = document.getElementById('loading-indicator');
 
         // State Variables
         let selectedGender = 'any';
@@ -216,7 +219,7 @@
         let selectedStyle = 50;
         let currentDisplayedName = null;
         let favorites = [];
-        let favoritesSortAsc = true; // Assuming sort/clear are inside the panel
+        let favoritesSortAsc = true;
 
         // Helper Functions
         function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
@@ -227,7 +230,7 @@
         // Favorites Functions
         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
-        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; } // Assumes nameObj has an ID
+        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; } // Use ID for checking
         function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); renderSaveButton(document.getElementById(`save-btn-container-${nameObj.id}`), nameObj, true); console.log('Added to favorites:', nameObj); } }
         function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName && currentDisplayedName.id === nameId) { renderSaveButton(document.getElementById(`save-btn-container-${nameId}`), currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
 
@@ -236,7 +239,6 @@
             favoritesPanelList.innerHTML = '';
             favoritesPanelPlaceholder.style.display = favorites.length === 0 ? 'block' : 'none';
 
-             // Add Clear All button dynamically if favorites exist
             if (favorites.length > 0) {
                 const clearAllBtn = document.createElement('button');
                 clearAllBtn.textContent = 'Clear All Favorites';
@@ -244,7 +246,6 @@
                 clearAllBtn.onclick = () => { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); }};
                 favoritesPanelList.appendChild(clearAllBtn);
             }
-
 
             favorites.forEach(fav => {
                 const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
@@ -289,7 +290,6 @@
             if(initialMessage) initialMessage.style.display = 'block';
             console.log("Data ready, controls enabled.");
         }
-
 
         // Event Listeners Setup
         function setupEventListeners() {
@@ -339,6 +339,7 @@
                         console.log('No names found matching criteria.');
                         nameOutput.innerHTML = `<p class="text-error-red italic error-message text-xl text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
                         currentDisplayedName = null;
+                         if(initialMessage) initialMessage.style.display = 'none'; // Ensure placeholder is hidden on error too
                     }
                 }, 300);
             });
@@ -349,17 +350,18 @@
                  if (removeButton && removeButton.dataset.id) {
                      removeFromFavorites(removeButton.dataset.id);
                  }
+                  const clearButton = event.target.closest('button'); // Check for clear button
+                 if (clearButton && clearButton.textContent === 'Clear All Favorites') {
+                    if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); }
+                 }
              });
             viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
-            // Add listener for Clear All if it's dynamically added
-             favoritesPanelList.addEventListener('click', (event) => {
-                 if (event.target.textContent === 'Clear All Favorites') { // Check button text
-                    if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); }
-                 }
-            });
-
+            // Sort button listener would go here if it were static HTML
+            // Example:
+            // const sortBtn = document.getElementById('sort-favorites-btn');
+            // if(sortBtn) { sortBtn.addEventListener('click', () => { favoritesSortAsc = !favoritesSortAsc; sortBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavoritesInPanel(); });}
         }
 
         // Initial Page Load
@@ -375,4 +377,4 @@
 </body>
 </html>
 
-I've increased the header image size classes to h-24 w-24 and updated the corresponding fallback placeholder URL in the onerror attribute to 96x96.
+I've updated the header image to use h-24 w-24 classes and adjusted the fallback placeholder URL accordingly.
