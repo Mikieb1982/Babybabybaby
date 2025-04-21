@@ -78,8 +78,8 @@
 
     <header class="text-center mb-10 relative">
         <a href="index.html" title="The Stork Name Drop Home">
-             {/* Updated image src back to logo.png (lowercase) */}
-            <img src="logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+             {/* Updated image src to include assets/ folder */}
+            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
@@ -347,8 +347,6 @@
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
             // Add Sort button listener if static
-             const sortBtn = document.getElementById('sort-favorites-btn'); // Assume it exists if needed
-             // if(sortBtn) { sortBtn.addEventListener('click', () => { favoritesSortAsc = !favoritesSortAsc; sortBtn.textContent = favoritesSortAsc ? 'Sort A-Z' : 'Sort Z-A'; displayFavoritesInPanel(); });}
         }
 
         // Initial Page Load
@@ -364,4 +362,4 @@
 </body>
 </html>
 
-I've changed the src attribute for the logo image back to logo.png (lowercase 'l').
+The src attribute for the logo image in the header is now set to logo.png.
