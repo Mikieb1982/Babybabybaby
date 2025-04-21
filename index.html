@@ -46,13 +46,13 @@
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
         .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
-        #favorites-section {
-            position: fixed; inset: 0; background-color: rgba(245, 245, 220, 0.9);
+        #favorites-panel { /* Changed from #favorites-section */
+            position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); /* off-white with opacity */
             backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50;
             display: none;
             animation: fadeIn 0.3s ease-out;
         }
-        #favorites-section.active { display: block; }
+        #favorites-panel.active { display: block; } /* Changed from #favorites-section */
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -77,12 +77,10 @@
 <body class="p-4 md:p-8">
 
     <header class="text-center mb-10 relative">
-        {/* Image only, linked to home, source changed, size doubled */}
         <a href="index.html" title="The Stork Name Drop Home">
-            <img src="logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+             {/* Updated image src to Logo.png */}
+            <img src="Logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
-        {/* Removed H1 and P tags */}
-        {/* Favorites button remains */}
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
         </button>
@@ -225,7 +223,7 @@
         // Favorites Functions
         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
-        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; } // Use ID
+        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
         function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); const btnContainer = document.getElementById(`save-btn-container-${nameObj.id}`); if(btnContainer) renderSaveButton(btnContainer, nameObj, true); console.log('Added to favorites:', nameObj); } }
         function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName && currentDisplayedName.id === nameId) { const btnContainer = document.getElementById(`save-btn-container-${nameId}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
 
@@ -348,7 +346,9 @@
             viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
-            // Sort button listener would go here if static
+            // Add Sort button listener if it exists statically in the panel HTML (it doesn't currently)
+            // const sortBtn = document.getElementById('sort-favorites-btn');
+            // if(sortBtn) { sortBtn.addEventListener('click', () => { ... }); }
         }
 
         // Initial Page Load
@@ -364,4 +364,4 @@
 </body>
 </html>
 
-The header now only contains the logo image (pointing to logo.png and doubled in size to h-48 w-48) and the favorites button. The text heading and tagline have been removed. Make sure you have a logo.png file in the same directory for this to display correctly.
+I've updated the src for the image to Logo.png, removed the <h1> and <p> tags that contained the site name and tagline, and increased the image size classes to h-48 w-48. Remember to ensure your actual image file is named Logo.png (case-sensitive).
