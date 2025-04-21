@@ -5,30 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stork Name Drop - Baby Name Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    {/* Font link removed - using standard Times New Roman */}
     <style>
         body {
-            font-family: 'Architects Daughter', cursive;
+            /* Changed font to Times New Roman */
+            font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #374151;
+            background-color: #F5F5DC; /* soft-beige */
+            font-size: 1rem; /* Adjusted base size */
+            line-height: 1.6; /* Adjusted line height */
+            color: #374151; /* dark-text */
         }
+        /* Base Input Styles - Adjusted font */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1.1rem; width: 100%; outline: none;
+             font-size: 1rem; /* Adjusted input font size */ width: 100%; outline: none;
              transition: border-color 0.2s ease, box-shadow 0.2s ease;
-             font-family: 'Architects Daughter', cursive;
+             font-family: 'Times New Roman', Times, serif; /* Ensure inputs use the font */
         }
         input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
         input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.2em; height: 1.2em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
+        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; /* Adjusted size slightly */ border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
         input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #475569; }
@@ -39,19 +39,14 @@
         .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1.2rem; }
+        .btn { padding: 0.6rem 1.2rem; /* Adjusted padding */ border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; /* Adjusted button font size */ }
         .btn:active:not(:disabled) { transform: scale(0.97); }
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
         .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
-        #favorites-panel {
-            position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50;
-            display: none;
-            animation: fadeIn 0.3s ease-out;
-        }
+        #favorites-panel { position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50; display: none; animation: fadeIn 0.3s ease-out; }
         #favorites-panel.active { display: block; }
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -78,7 +73,6 @@
 
     <header class="text-center mb-10 relative">
         <a href="index.html" title="The Stork Name Drop Home">
-             {/* Updated image src to include assets/ folder */}
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
         <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
@@ -90,45 +84,50 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
 
-        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-10" disabled>
+        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled> {/* Adjusted spacing */}
              <legend class="sr-only">Name Generation Controls</legend>
 
              <section id="gender-selection">
-                <label class="block text-2xl md:text-3xl text-dark-text mb-4">Gender:</label>
-                <div class="flex flex-wrap gap-x-8 gap-y-3">
-                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2.5"> <label for="gender-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2.5"> <label for="gender-boy" class="text-xl md:text-2xl cursor-pointer">Boy</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2.5"> <label for="gender-girl" class="text-xl md:text-2xl cursor-pointer">Girl</label> </div>
+                 {/* Adjusted text sizes */}
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
                 </div>
             </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <section id="language-selection">
-                    <label for="language-select" class="block text-2xl md:text-3xl text-dark-text mb-3">Language/Origin:</label>
-                    <select id="language-select" name="language" class="text-xl"> <option value="">Loading Languages...</option> </select>
+                     {/* Adjusted text sizes */}
+                    <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
+                    <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select>
                 </section>
                 <section id="letter-filter">
-                    <label for="first-letter-input" class="block text-2xl md:text-3xl text-dark-text mb-3">Starts with:</label>
-                    <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-xl">
+                     {/* Adjusted text sizes */}
+                    <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
+                    <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
                 </section>
             </div>
 
             <section id="length-filter">
-                <label class="block text-2xl md:text-3xl text-dark-text mb-4">Name Length:</label>
-                <div class="flex flex-wrap gap-x-8 gap-y-3">
-                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-xl md:text-2xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-xl md:text-2xl cursor-pointer">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-xl md:text-2xl cursor-pointer">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-xl md:text-2xl cursor-pointer">Long (9+)</label> </div>
+                 {/* Adjusted text sizes */}
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
                 </div>
             </section>
 
              <section id="style-slider">
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-2xl md:text-3xl text-dark-text">Name Style:</h2>
-                    <span id="slider-feedback" class="text-medium-gray text-lg md:text-xl">Balanced</span>
+                 {/* Adjusted text sizes */}
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span>
                 </div>
-                <div class="flex items-center justify-between text-medium-gray mb-4 text-lg md:text-xl">
+                <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
                     <span>Traditional</span>
                     <span>Unique</span>
                 </div>
@@ -136,18 +135,21 @@
             </section>
 
             <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-2xl md:text-3xl shadow-sm" disabled>Generate Name</button>
+                 {/* Adjusted text size */}
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
             </div>
         </fieldset>
 
         <section id="results-section" class="mt-10">
              <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
-            <h2 class="text-3xl md:text-4xl text-dark-text mb-6 text-center">Generated Name</h2>
+              {/* Adjusted text sizes */}
+            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
             <div id="loading-indicator" class="loader" style="display: none;"></div>
             <div id="result-display" class="text-center min-h-[6rem]">
-                <p id="results-placeholder" class="text-center text-medium-gray text-xl italic">Click "Generate Name" to see a result.</p>
+                 {/* Adjusted text sizes */}
+                <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p>
             </div>
-             <p id="results-message" class="text-center text-medium-gray mt-4" style="display: none;"></p>
+             <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p>
         </section>
 
     </main>
@@ -157,15 +159,17 @@
             <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
-            <h2 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Favorite Names</h2>
+             {/* Adjusted text sizes */}
+            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-8 text-center">Favorite Names</h2>
             <div id="favorites-panel-list" class="space-y-6">
-                <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-xl italic">No favorites saved yet.</p>
+                 {/* Adjusted text sizes */}
+                <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p>
             </div>
         </div>
     </aside>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-    <footer class="text-center text-medium-gray text-lg space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Kept footer smaller */}
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a></p>
     </footer>
@@ -242,7 +246,8 @@
             favorites.forEach(fav => {
                 const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
                 const textDiv = document.createElement('div');
-                textDiv.innerHTML = `<strong class="text-2xl block">${fav.name}</strong> <span class="text-lg text-medium-gray block">${fav.meaning || ''}</span> <span class="text-base text-gray-500 block mt-1"> Origin: ${fav.originNotes || fav.language} &bull; Pronunciation: ${fav.pronunciation || 'N/A'} &bull; Popularity: ${fav.popularity || 'N/A'} </span>`;
+                 // Adjusted text sizes
+                textDiv.innerHTML = `<strong class="text-xl block">${fav.name}</strong> <span class="text-base text-medium-gray block">${fav.meaning || ''}</span> <span class="text-sm text-gray-500 block mt-1"> Origin: ${fav.originNotes || fav.language} &bull; Pronunciation: ${fav.pronunciation || 'N/A'} &bull; Popularity: ${fav.popularity || 'N/A'} </span>`;
                 const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
                 const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
                 copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
@@ -320,7 +325,8 @@
 
                         const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
-                        textDiv.innerHTML = `<h3 class="text-5xl text-dark-text mb-2">${currentDisplayedName.name}</h3> <p class="text-xl text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-lg text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-base text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
+                         // Adjusted text sizes for Times New Roman
+                        textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
                         const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
                         const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
                         const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
@@ -329,7 +335,7 @@
                         buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
                         console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-xl text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`; // Adjusted size
                         currentDisplayedName = null;
                          if(initialMessage) initialMessage.style.display = 'none';
                     }
@@ -346,7 +352,6 @@
             viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
-            // Add Sort button listener if static
         }
 
         // Initial Page Load
@@ -362,4 +367,4 @@
 </body>
 </html>
 
-The src attribute for the logo image in the header is now set to logo.png.
+The main generator page now uses "Times New Roman". I've removed the link to the "Architects Daughter" font and adjusted the font-family CSS rule. I also went through and modified various text size classes (e.g., text-xl, text-2xl, text-5xl) to better suit this more traditional font.
