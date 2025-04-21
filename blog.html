@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Name Generator - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    {/* Font link removed - using standard Times New Roman */}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
         body {
             /* Changed font to Times New Roman */
@@ -18,19 +19,19 @@
             color: #374151; /* dark-text */
         }
         a {
-            color: #60A5FA;
+            color: #60A5FA; /* button-active blue */
             text-decoration: none;
             transition: color 0.2s ease;
         }
         a:hover {
-            color: #3B82F6;
+            color: #3B82F6; /* button-active-hover blue */
             text-decoration: underline;
         }
         main a {
-             color: #374151;
+             color: #374151; /* dark-text */
         }
          main a:hover {
-             color: #6B7280;
+             color: #6B7280; /* medium-gray */
         }
         /* Headings - standard weight for Times */
         h1, h2, h3 { font-weight: bold; }
@@ -61,7 +62,6 @@
         <a href="index.html" title="Back to Name Generator">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';">
         </a>
-         {/* Adjusted text sizes for Times New Roman */}
         <h1 class="text-2xl md:text-3xl text-dark-text font-semibold">
              <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
         </h1>
@@ -74,7 +74,6 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
-        {/* Blog Post Entry 1 - Adjusted sizes */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                 <a href="middle.html">Choosing the Perfect Middle Name</a>
@@ -85,14 +84,12 @@
             </p>
         </article>
 
-        {/* Divider between posts */}
          <div class="text-center my-6 text-dark-text">
              <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
-         {/* Blog Post Entry 2 - Adjusted sizes */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                  <a href="post-placeholder-2.html">Popular German Baby Names in 2025</a>
@@ -103,14 +100,12 @@
             </p>
         </article>
 
-         {/* Divider between posts */}
          <div class="text-center my-6 text-dark-text">
              <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
-         {/* Blog Post Entry 3 - Adjusted sizes */}
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                  <a href="post-placeholder-3.html">Unique & Uncommon English Name Ideas</a>
@@ -125,7 +120,7 @@
 
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <footer class="text-center text-medium-gray text-base space-y-2"> {/* Kept footer size smaller */}
+    <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
