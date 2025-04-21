@@ -15,323 +15,130 @@
             line-height: 1.6;
             color: #374151; /* dark-text */
         }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
-        h1, h2, h3 { font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
+        a {
+            color: #60A5FA;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #3B82F6;
+            text-decoration: underline;
+        }
+        main a {
+            color: #374151;
+        }
+        main a:hover {
+            color: #6B7280;
+        }
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+        ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
     </style>
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                    }
+                }
             }
-          }
         }
-      }
     </script>
 </head>
 <body class="p-4 md:p-8">
 
     <header class="text-center mb-10">
-        {/* Header now only contains the large logo linking home */}
         <a href="index.html" title="The Stork Name Drop Home">
-            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151'">
         </a>
-        {/* Removed H1 and P tags */}
     </header>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    {/* Added a specific heading for the blog index page */}
     <h1 class="text-3xl md:text-4xl text-dark-text font-semibold text-center mb-10">Naming Tips & Ideas Blog</h1>
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
-
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
                 <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
             </h2>
-            <p class="text-sm text-medium-gray mb-3">Published: April 21, 2025 (Placeholder)</p>
+            <p class="text-sm text-medium-gray mb-3">Published: April 21, 2025</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
-                Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition. We look at classic pairings and unique ideas... (Read More)
+                Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition. We look at classic pairings and unique ideas. 
             </p>
         </article>
 
-         <div class="text-center my-6 text-dark-text">
-             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <div class="text-center my-6 text-dark-text">
+            <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                 <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
             </h2>
-            <p class="text-sm text-medium-gray mb-3">Published: April 15, 2025 (Placeholder)</p>
+            <p class="text-sm text-medium-gray mb-3">Published: April 15, 2025</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
-                Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts in Germany this year... (Read More)
+                Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts in Germany this year.
             </p>
         </article>
 
-         <div class="text-center my-6 text-dark-text">
-             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        <div class="text-center my-6 text-dark-text">
+            <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
             </svg>
         </div>
 
         <article class="blog-post-summary">
             <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-2 hover:text-medium-gray transition">
-                 <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
             </h2>
-            <p class="text-sm text-medium-gray mb-3">Published: April 10, 2025 (Placeholder)</p>
+            <p class="text-sm text-medium-gray mb-3">Published: April 10, 2025</p>
             <p class="text-base md:text-lg text-dark-text leading-relaxed">
-                Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration beyond the top 100... (Read More)
+                Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration beyond the top 100.
             </p>
         </article>
-
     </main>
-
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-
-    <footer class="text-center text-medium-gray text-base space-y-2">
-        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
-    </footer>
-
-    <script>
-        // No complex JavaScript needed for this static blog index page
-    </script>
-
-</body>
-</html>
-```
-
-**2. Updated `middle.html` (Choosing Middle Name Post)**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choosing the Perfect Middle Name - The Stork Name Drop Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #374151; /* dark-text */
-        }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
-        h1, h2, h3, h4 { font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid #94a3b8; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: #f1f5f9; font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-    </style>
-     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
-            }
-          }
-        }
-      }
-    </script>
-</head>
-<body class="p-4 md:p-8">
-
-    <header class="text-center mb-10">
-         {/* Header now only contains the large logo linking home */}
-        <a href="index.html" title="The Stork Name Drop Home">
-            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-        </a>
-        {/* Removed H1 and P tags */}
-    </header>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Choosing the Perfect Middle Name: A Guide to Rhythm, Meaning, and Tradition</h1>
-            {/* Article Content from Document... */}
-            <div class="space-y-4 text-base md:text-lg leading-relaxed">
-                <h2 class="text-2xl md:text-3xl text-dark-text">1. Introduction: The Middle Name Quest</h2>
-                {/* ... Rest of the article content from previous version ... */}
-                 <p>The journey of choosing a name, particularly for a new baby, is often filled with excitement, anticipation, and perhaps a touch of overwhelm. While the first name frequently captures the most attention and deliberation, the middle name presents a unique and often cherished opportunity. It's more than just a space on a form; it's a chance to weave in layers of meaning, connection, and personal style.</p>
-                <p>Middle names serve a multitude of purposes...</p>
-                {/* ... Continue pasting the full article content here ... */}
-                 <p>...May the process of choosing be filled with discovery, connection, and confidence.</p>
-
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                 <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
-                     {/* ... List of citations ... */}
-                     <li>Why Do We Have Middle Names? The Real Reasons, Explained - Reader's Digest, https://www.rd.com/article/why-do-we-have-middle-names/</li>
-                     {/* ... etc ... */}
-                     <li>Thoughts on not giving your child a middle name? : r/namenerds - Reddit, https://www.reddit.com/r/namenerds/comments/7lb2c9/thoughts_on_not_giving_your_child_a_middle_name/</li>
-                 </ol>
-            </div>
-
-            <div class="text-center mt-12">
-                 <a href="blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
-            </div>
-        </article>
-    </main>
-
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-
     <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
+        <p>
+            <a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | 
+            <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a>
+        </p>
     </footer>
 
     <script>
-        // No JavaScript needed for this static blog post page
+        // No additional JavaScript is needed for this static blog index page.
     </script>
 
 </body>
 </html>
-```
-
-**3. Updated `german2025.html` (German Names Post)**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>German Baby Names 2025: Trends, Classics, and Rising Stars - The Stork Name Drop Blog</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #374151; /* dark-text */
-        }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
-        h1, h2, h3, h4 { font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid #94a3b8; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: #f1f5f9; font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-    </style>
-     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
-            }
-          }
-        }
-      }
-    </script>
-</head>
-<body class="p-4 md:p-8">
-
-    <header class="text-center mb-10">
-         {/* Header now only contains the large logo linking home */}
-        <a href="index.html" title="The Stork Name Drop Home">
-            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-        </a>
-         {/* Removed H1 and P tags */}
-    </header>
-
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-3 text-center">German Baby Names 2025: Trends, Classics, and Rising Stars</h1>
-            <p class="text-center text-sm text-medium-gray mb-8">Published: April 15, 2025</p>
-
-            {/* Article Content from Document... */}
-            <div class="space-y-4 text-base md:text-lg leading-relaxed">
-                <p>Choosing a name for a new arrival is one of the most exciting and personal decisions for expectant parents...</p>
-                {/* ... Rest of the article content ... */}
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                 <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
-                     {/* ... List of citations ... */}
-                     <li>Die beliebtesten Vornamen des Jahres 2025, https://www.beliebte-vornamen.de/jahrgang/j2025</li>
-                 </ol>
-            </div>
-
-            <div class="text-center mt-12">
-                 <a href="blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
-            </div>
-        </article>
-    </main>
-
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
-
-    <footer class="text-center text-medium-gray text-base space-y-2">
-        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
-    </footer>
-
-    <script>
-        // No JavaScript needed for this static blog post page
-    </script>
-
-</body>
-</html>
-```
-
-I've updated the headers in all three files (`blog.html`, `middle.html` represented by `blog_post_middle_names`, and `german2025.html` represented by `blog_post_german_names`) to feature only the large logo (`h-48 w-48`) linking back to `index.html`. The text titles/subtitles have been removed from the headers to match the main page's header style. I also added a main heading to the `blog.html` page content itself, since the header no longer contains text identifying it as the blog ind
