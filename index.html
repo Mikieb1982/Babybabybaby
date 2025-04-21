@@ -3,35 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choosing the Perfect Middle Name - The Stork Name Drop Blog</title>
+    <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
+            background-color: #F5F5DC;
             font-size: 1rem;
             line-height: 1.6;
-            color: #374151; /* dark-text */
+            color: #374151;
         }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
-        h1, h2, h3, h4 { font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid #94a3b8; padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: #f1f5f9; font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
+        input[type="text"], select {
+             padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
+             font-size: 1rem; width: 100%; outline: none;
+             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+             font-family: 'Times New Roman', Times, serif;
+        }
+        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
+        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
+        input[type="radio"]:checked::before { transform: scale(1); }
+        input[type="radio"]:checked { border-color: #475569; }
+        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
+        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
+        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
+        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; }
+        .btn:active:not(:disabled) { transform: scale(0.97); }
+        .btn-primary { background-color: #374151; border-color: #374151; color: white; }
+        .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
+        .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
+        .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
+        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; }
+        .btn-cta:hover:not(:disabled) { background-color: #374151; }
+        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
+        #favorites-panel { position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50; display: none; animation: fadeIn 0.3s ease-out; }
+        #favorites-panel.active { display: block; }
+        .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 1.5rem auto; max-width: 728px; }
     </style>
      <script>
       tailwind.config = {
@@ -45,7 +63,6 @@
               'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
               'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
               'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
             }
           }
         }
@@ -54,58 +71,328 @@
 </head>
 <body class="p-4 md:p-8">
 
-    <header class="text-center mb-10">
-        <a href="../index.html" title="The Stork Name Drop Home">
-            <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+    <header class="text-center mb-10 relative">
+        <a href="index.html" title="The Stork Name Drop Home">
+            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
+        <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
+        </button>
     </header>
+
+    <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-3 text-center">Choosing the Perfect Middle Name: A Guide to Rhythm, Meaning, and Tradition</h1>
-            <p class="text-center text-sm text-medium-gray mb-8">Published: April 21, 2025 (Placeholder)</p>
 
-            <img src="../assets/middle.png"
-                 alt="Illustration representing middle name choices"
-                 class="mx-auto my-8 rounded-lg shadow-sm w-full max-w-lg h-auto"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Middle+Name+Image';">
-
-            <div class="space-y-4 text-base md:text-lg leading-relaxed">
-
-                <h2 class="text-2xl md:text-3xl text-dark-text">1. Introduction: The Middle Name Quest</h2>
-                <p>The journey of choosing a name, particularly for a new baby, is often filled with excitement, anticipation, and perhaps a touch of overwhelm. While the first name frequently captures the most attention and deliberation, the middle name presents a unique and often cherished opportunity. It's more than just a space on a form; it's a chance to weave in layers of meaning, connection, and personal style.</p>
-                <p>Middle names serve a multitude of purposes. They can be a heartfelt tribute to beloved family members or friends, carrying forward a legacy of love and respect. They act as vessels for preserving cultural heritage, connecting an individual to their roots and ancestral stories. In an increasingly populated world, a middle name can add a layer of distinction, helping an individual stand out, especially if their first and last names are common. Furthermore, middle names offer a space for personal expression, reflecting parental hopes, values, or even creative flair. Sometimes, the choice is simply about finding a name that sounds beautiful, creating a harmonious flow between the first and last names. It's a space where meaning and melody can intersect, offering an extra chance for collaboration and significance in the naming process.</p>
-                <p>This guide aims to navigate the multifaceted world of middle names. We will delve into their fascinating history, explore how the sounds and rhythms of names interact, uncover the importance of meaning, and connect with the deep-rooted tradition of family ties. We'll examine the appeal of both classic and unique naming styles, and finally, provide practical tips and tools to help individuals confidently choose the perfect middle name.</p>
-
-                <h2 class="text-2xl md:text-3xl text-dark-text">2. More Than Just a Placeholder: The Story of Middle Names</h2>
-                 <p>Often overlooked, the middle name boasts a rich and complex history...</p>
-                 {/* ... (Include all sections and tables as formatted previously) ... */}
-
-                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                 <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
-                     <li>Why Do We Have Middle Names? The Real Reasons, Explained - Reader's Digest, https://www.rd.com/article/why-do-we-have-middle-names/</li>
-                     {/* ... etc ... */}
-                     <li>Thoughts on not giving your child a middle name? : r/namenerds - Reddit, https://www.reddit.com/r/namenerds/comments/7lb2c9/thoughts_on_not_giving_your_child_a_middle_name/</li>
-                 </ol>
+        <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled>
+             <legend class="sr-only">Name Generation Controls</legend>
+              <section id="gender-selection">
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
+                </div>
+            </section>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <section id="language-selection">
+                    <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
+                    <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select>
+                </section>
+                <section id="letter-filter">
+                    <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
+                    <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
+                </section>
             </div>
-
-            <div class="text-center mt-12">
-                 <a href="../blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
+             <section id="length-filter">
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
+                </div>
+            </section>
+             <section id="style-slider">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span>
+                </div>
+                <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
+                    <span>Traditional</span>
+                    <span>Unique</span>
+                </div>
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
+            </section>
+             <div class="text-center pt-4">
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
             </div>
+        </fieldset>
 
-        </article>
+        <section id="results-section" class="mt-10">
+             <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
+            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
+            <div id="loading-indicator" class="loader" style="display: none;"></div>
+            <div id="result-display" class="text-center min-h-[6rem]">
+                <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p>
+            </div>
+             <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p>
+        </section>
+
     </main>
 
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+     <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
-    <footer class="text-center text-medium-gray text-base space-y-2">
+     <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
+         <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
+         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6"> {/* Changed to grid layout */}
+             {/* Post 1 - Using Image */}
+             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm text-center">
+                 <a href="blog/middle.html" class="block hover:opacity-80 transition-opacity">
+                     <img src="assets/middle.png"
+                          alt="Choosing the Perfect Middle Name"
+                          class="w-full h-32 object-cover rounded-md mb-3 border border-accent-muted-light"
+                          onerror="this.onerror=null; this.src='https://placehold.co/300x200/f8fafc/6b7280?text=Blog+Image';">
+                     <h3 class="text-lg md:text-xl font-semibold text-dark-text link-hover">Choosing the Perfect Middle Name</h3>
+                 </a>
+                 <p class="text-xs text-medium-gray mt-1">April 21, 2025</p>
+             </div>
+              {/* Post 2 - Text Summary */}
+             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-lg md:text-xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                 </h3>
+                 <p class="text-xs text-medium-gray mb-2">April 15, 2025</p>
+                 <p class="text-sm text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics to newly popular choices...</p>
+             </div>
+              {/* Post 3 - Text Summary */}
+              <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-lg md:text-xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                 </h3>
+                 <p class="text-xs text-medium-gray mb-2">April 10, 2025</p>
+                 <p class="text-sm text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names...</p>
+             </div>
+         </div>
+         <div class="text-center mt-8">
+              <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
+         </div>
+     </section>
+
+    <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
+        <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
+            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+            </button>
+            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-8 text-center">Favorite Names</h2>
+            <div id="favorites-panel-list" class="space-y-6">
+                <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p>
+            </div>
+        </div>
+    </aside>
+
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto mt-10 md:mt-14 mb-8">
+    <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+        <p>
+            <a href="#" class="hover:text-dark-text underline">About Us</a> |
+            <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
+            <a href="blog.html" class="hover:text-dark-text underline">Blog</a>
+        </p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
 
     <script>
-        // No JavaScript needed for this static blog post page
+        // Embedded sample data for preview
+        const nameData = [
+            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40 },
+            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25 },
+            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
+            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
+            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 }
+        ];
+        nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
+        let nameDatabase = nameData;
+        let dataLoaded = true;
+
+        // DOM Elements
+        const controlsFieldset = document.getElementById('generator-controls');
+        const genderRadios = document.querySelectorAll('input[name="gender"]');
+        const languageSelect = document.getElementById('language-select');
+        const lengthRadios = document.querySelectorAll('input[name="length"]');
+        const firstLetterInput = document.getElementById('first-letter-input');
+        const styleSlider = document.getElementById('style-range');
+        const generateBtn = document.getElementById('generate-btn');
+        const nameOutput = document.getElementById('result-display');
+        const initialMessage = document.getElementById('results-placeholder');
+        const resultsMessage = document.getElementById('results-message');
+        const sliderFeedback = document.getElementById('slider-feedback');
+        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
+        const favoritesPanel = document.getElementById('favorites-panel');
+        const favoritesPanelList = document.getElementById('favorites-panel-list');
+        const favoritesPanelPlaceholder = document.getElementById('favorites-panel-placeholder');
+        const closeFavoritesBtn = document.getElementById('close-favorites-btn');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // State Variables
+        let selectedGender = 'any';
+        let selectedLanguage = '';
+        let selectedLength = 'any';
+        let selectedFirstLetter = '';
+        let selectedStyle = 50;
+        let currentDisplayedName = null;
+        let favorites = [];
+        let favoritesSortAsc = true;
+
+        // Helper Functions
+        function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
+        function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
+        function copyToClipboard(text, buttonElement) { navigator.clipboard.writeText(text).then(() => { const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Copied!'; buttonElement.classList.add('text-save-button'); buttonElement.disabled = true; setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-save-button'); buttonElement.disabled = false; }, 1500); }).catch(err => { console.error('Failed to copy text: ', err); const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Error'; buttonElement.classList.add('text-error-red'); setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-error-red'); }, 1500); }); }
+        function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
+
+        // Favorites Functions
+        function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
+        function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
+        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
+        function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); const btnContainer = document.getElementById(`save-btn-container-${nameObj.id}`); if(btnContainer) renderSaveButton(btnContainer, nameObj, true); console.log('Added to favorites:', nameObj); } }
+        function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName && currentDisplayedName.id === nameId) { const btnContainer = document.getElementById(`save-btn-container-${nameId}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
+
+        function displayFavoritesInPanel() {
+            favoritesPanelList.innerHTML = '';
+            favoritesPanelPlaceholder.style.display = favorites.length === 0 ? 'block' : 'none';
+
+            if (favorites.length > 0) {
+                const clearAllBtn = document.createElement('button');
+                clearAllBtn.textContent = 'Clear All Favorites';
+                clearAllBtn.className = 'block mx-auto text-lg text-remove-button hover:text-remove-button-hover transition-colors underline btn-feedback mb-6';
+                clearAllBtn.onclick = () => { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) { const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } }};
+                favoritesPanelList.appendChild(clearAllBtn);
+            }
+
+            favorites.forEach(fav => {
+                const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
+                const textDiv = document.createElement('div');
+                textDiv.innerHTML = `<strong class="text-xl block">${fav.name}</strong> <span class="text-base text-medium-gray block">${fav.meaning || ''}</span> <span class="text-sm text-gray-500 block mt-1"> Origin: ${fav.originNotes || fav.language} &bull; Pronunciation: ${fav.pronunciation || 'N/A'} &bull; Popularity: ${fav.popularity || 'N/A'} </span>`;
+                const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
+                const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+                copyBtn.onclick = (e) => { const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
+                const removeBtn = document.createElement('button'); removeBtn.title = 'Remove from Favorites'; removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback'; removeBtn.dataset.id = fav.id;
+                 removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+                 removeBtn.onclick = () => removeFromFavorites(fav.id);
+                buttonsDiv.appendChild(copyBtn); buttonsDiv.appendChild(removeBtn); itemDiv.appendChild(textDiv); itemDiv.appendChild(buttonsDiv); favoritesPanelList.appendChild(itemDiv);
+            });
+        }
+
+        function toggleFavoritesPanel() {
+             if (favoritesPanel.style.display === 'block') { favoritesPanel.style.display = 'none'; }
+             else { displayFavoritesInPanel(); favoritesPanel.style.display = 'block'; }
+         }
+
+        function renderSaveButton(container, nameObj, isSaved) {
+             if (!container) return; container.innerHTML = ''; const saveBtn = document.createElement('button');
+            saveBtn.title = isSaved ? 'Saved to Favorites' : 'Save to Favorites'; saveBtn.disabled = isSaved;
+            saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${ isSaved ? 'text-save-button cursor-not-allowed' : 'text-medium-gray hover:text-save-button' }`;
+            saveBtn.dataset.id = nameObj.id;
+            saveBtn.innerHTML = isSaved ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>`
+                                        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
+            if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
+        }
+
+        // Data Loading Function (Using Embedded Data)
+        function loadAndPrepareData() {
+            console.log('Using embedded sample data for preview.');
+            const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
+            languageSelect.innerHTML = '';
+             const anyOption = document.createElement('option'); anyOption.value = "any"; anyOption.textContent = "Any Language"; languageSelect.appendChild(anyOption);
+            languages.forEach(lang => { const option = document.createElement('option'); option.value = lang; option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); languageSelect.appendChild(option); });
+            selectedLanguage = languageSelect.value;
+            controlsFieldset.disabled = false; generateBtn.disabled = false; dataLoaded = true;
+            const loadingMsg = document.getElementById('loading-message'); if(loadingMsg) loadingMsg.remove();
+            if(initialMessage) initialMessage.style.display = 'block';
+            console.log("Data ready, controls enabled.");
+        }
+
+        // Event Listeners Setup
+        function setupEventListeners() {
+            genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
+            languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
+            lengthRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedLength = event.target.value; }); });
+            firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); });
+            styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
+
+            generateBtn.addEventListener('click', () => {
+                if (!dataLoaded) return;
+                console.log(`Generating name: G=${selectedGender}, L=${selectedLanguage}, Len=${selectedLength}, FL='${selectedFirstLetter}', Sty=${selectedStyle}`);
+                nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`;
+                currentDisplayedName = null;
+                if(initialMessage) initialMessage.style.display = 'none';
+
+                const targetStyleCategory = getStyleCategory(selectedStyle);
+
+                const filteredNames = nameDatabase.filter(item => {
+                    const languageMatch = selectedLanguage === 'any' || item.language === selectedLanguage;
+                    const genderMatch = selectedGender === 'any' || item.gender === selectedGender || item.gender === 'any';
+                    const itemStyleCategory = getStyleCategory(item.styleScore);
+                    const styleMatch = itemStyleCategory === targetStyleCategory;
+                    const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
+                    const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
+                    return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
+                });
+                console.log('Filtered Names Count:', filteredNames.length);
+
+                setTimeout(() => {
+                    nameOutput.innerHTML = '';
+                    if (filteredNames.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * filteredNames.length);
+                        currentDisplayedName = filteredNames[randomIndex];
+                        console.log('Selected Name:', currentDisplayedName);
+
+                        const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
+                        const textDiv = document.createElement('div');
+                         // Adjusted text sizes for Times New Roman
+                        textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
+                        const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
+                        const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
+                        const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
+                        copyBtn.onclick = (e) => { const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
+                        buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
+                    } else {
+                        console.log('No names found matching criteria.');
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`; // Adjusted size
+                        currentDisplayedName = null;
+                         if(initialMessage) initialMessage.style.display = 'none';
+                    }
+                }, 300);
+            });
+
+            // Favorites Panel Interaction
+             favoritesPanelList.addEventListener('click', (event) => {
+                 const removeButton = event.target.closest('button[title="Remove from Favorites"]');
+                 if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
+                 const clearButton = event.target.closest('button');
+                 if (clearButton && clearButton.textContent === 'Clear All Favorites') { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } }
+             });
+            viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+            closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+
+        }
+
+        // Initial Page Load
+        document.addEventListener('DOMContentLoaded', () => {
+             loadFavorites();
+             loadAndPrepareData();
+             updateSliderFeedback();
+             setupEventListeners();
+             favoritesPanel.style.display = 'none';
+        });
     </script>
 
+</body>
+</html>
+
+I've added the image assets/middle.png to the "Latest Blog Posts" section, replacing the text summary for that post. It's wrapped in a link pointing to
