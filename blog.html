@@ -24,25 +24,14 @@
         li { margin-bottom: 0.5rem; }
         .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
-        /* Hamburger Menu Styles - Ensure these are present and correct */
+        /* Hamburger Menu Styles */
         #mobile-menu {
-            position: fixed; /* Must be fixed */
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 16rem; /* w-64 */
-            background-color: #f8fafc; /* off-white */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            padding: 1.5rem; /* p-6 */
-            z-index: 40; /* Ensure it's above most content */
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%); /* Start hidden off-screen */
-            overflow: hidden;
-            isolation: isolate;
+            position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
+            background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out;
+            transform: translateX(100%); overflow: hidden; isolation: isolate;
         }
-        #mobile-menu.open {
-            transform: translateX(0); /* Slide into view */
-        }
+        #mobile-menu.open { transform: translateX(0); }
         #mobile-menu::before {
             content: ''; position: absolute; bottom: 10px; left: 50%;
             transform: translateX(-50%); width: 120px; height: 120px;
@@ -94,7 +83,6 @@
         </button>
     </header>
 
-    {/* Mobile Menu Panel HTML */}
     <div id="mobile-menu">
         <nav class="relative z-10 space-y-4 pt-8">
              <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
@@ -216,19 +204,16 @@
     </footer>
 
     <script>
-        // Ensure these IDs match the HTML elements
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        // Note: menuFavoritesBtn is not used on this page, but kept for consistency if needed later
+        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
         if (hamburgerBtn && mobileMenu) {
             hamburgerBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('open');
             });
 
-             // Close menu if clicking outside
              document.addEventListener('click', (event) => {
-                 // Check if the click is outside the menu AND outside the button
                  if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
                      mobileMenu.classList.remove('open');
                  }
@@ -238,8 +223,3 @@
 
 </body>
 </html>
-
-If the menu still isn't working after ensuring this code is correct, possible issues could be:
- * Caching: Your browser might be loading an old version of the CSS or JavaScript. Try clearing your browser's cache or doing a hard refresh (often Ctrl+Shift+R or Cmd+Shift+R).
- * JavaScript Errors: Open your browser's developer console (usually F12) and check for any errors reported in the "Console" tab. An unrelated JavaScript error earlier in the page could potentially stop the menu script from running.
- * File Path for Watermark: Double-check the background-image: url('assets/stork.png'); path in the CSS. Since blog.html is at the root, this path should be correct. If blog.html were inside the blog folder, the path would need to be ../assets/stork.png.
