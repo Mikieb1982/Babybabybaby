@@ -112,10 +112,13 @@
              <legend class="sr-only">Name Generation Controls</legend>
              <section id="gender-selection">
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
+                 {/* Updated flex container */}
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
                     <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
                     <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
+                    {/* Added Neutral Option */}
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
                 </div>
             </section>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -271,7 +274,8 @@
             { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
             { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
              { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
-             { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 }
+             { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+             { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 } // Added sample "any" gender name
         ];
         nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
         let nameDatabase = nameData;
@@ -406,7 +410,11 @@
 
                 const filteredNames = nameDatabase.filter(item => {
                     const languageMatch = selectedLanguage === 'any' || item.language === selectedLanguage;
-                    const genderMatch = selectedGender === 'any' || item.gender === selectedGender || item.gender === 'any';
+                    // Updated gender match logic
+                    const genderMatch = selectedGender === 'any' ||
+                                        item.gender === selectedGender ||
+                                        (selectedGender === 'neutral' && item.gender === 'any') || // Match "any" if "Neutral" is selected
+                                        item.gender === 'any'; // Always include "any" gender names if "Any" gender is selected
                     const itemStyleCategory = getStyleCategory(item.styleScore);
                     const styleMatch = itemStyleCategory === targetStyleCategory;
                     const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
@@ -473,3 +481,16 @@
 
 </body>
 </html>
+```
+
+**Key Changes:**
+
+1.  **HTML:** Added the "Neutral" radio button and label within the `gender-selection` section.
+2.  **Sample Data:** Added an example name (`Rowan`) with `gender: "any"` to the `nameData` array.
+3.  **JavaScript Filtering:** Updated the `genderMatch` condition within the `generateBtn` click listener:
+    * It still matches if "Any" is selected (`selectedGender === 'any'`).
+    * It still matches if the item's gender matches the selected gender (`item.gender === selectedGender`).
+    * It now *also* matches if "Neutral" is selected and the item's gender is "any" (`selectedGender === 'neutral' && item.gender === 'any'`).
+    * It also ensures that if "Any" is selected, items marked as "any" are still included (`item.gender === 'any'`).
+
+Now, when you select "Neutral", the generator should filter for names marked with `gender: "any"` in your da
