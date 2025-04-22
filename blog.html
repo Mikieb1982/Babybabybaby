@@ -24,6 +24,7 @@
         li { margin-bottom: 0.5rem; }
         .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
+        /* Hamburger Menu Styles */
         #mobile-menu {
             position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
             background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -40,6 +41,15 @@
         }
         #mobile-menu nav { position: relative; z-index: 2; }
         #hamburger-btn { z-index: 41; }
+
+        /* Hover effect for blog summary */
+        .blog-post-summary-container:hover {
+            background-color: #f9fafb; /* Slightly lighter off-white */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .blog-post-summary-container {
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
 
     </style>
     <script>
@@ -86,11 +96,14 @@
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <h1 class="text-3xl md:text-4xl text-dark-text font-semibold text-center mb-10">Naming Tips & Ideas Blog</h1>
+    <h1 class="text-3xl md:text-4xl text-dark-text font-semibold text-center mb-4">Naming Tips & Ideas Blog</h1>
+    {/* Added intro text */}
+    <p class="text-center text-lg text-medium-gray max-w-xl mx-auto mb-10">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
 
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
+    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-6"> {/* Reduced space-y */}
 
-        <article class="blog-post-summary">
+        {/* Added container div for hover effect and padding */}
+        <article class="blog-post-summary-container p-4 rounded-lg">
             <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
@@ -107,13 +120,10 @@
             </div>
         </article>
 
-         <div class="text-center my-6 text-dark-text">
-             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-        </div>
+         {/* Replaced SVG divider with simple HR */}
+         <hr class="border-t border-dashed border-accent-muted-light">
 
-        <article class="blog-post-summary">
+        <article class="blog-post-summary-container p-4 rounded-lg">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
@@ -130,13 +140,9 @@
             </div>
         </article>
 
-         <div class="text-center my-6 text-dark-text">
-             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-        </div>
+         <hr class="border-t border-dashed border-accent-muted-light">
 
-        <article class="blog-post-summary">
+        <article class="blog-post-summary-container p-4 rounded-lg">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
@@ -153,7 +159,7 @@
             </div>
         </article>
 
-        <article class="blog-post-summary">
+        <article class="blog-post-summary-container p-4 rounded-lg">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
@@ -199,3 +205,6 @@
 
 </body>
 </html>
+```
+
+The `blog.html` page should now look cleaner and more consistent, with the added introduction and hover effects making it slightly more engagi
