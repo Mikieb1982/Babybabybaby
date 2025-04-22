@@ -94,14 +94,15 @@
 
         {/* Blog Post Entry 1 - Layout Updated */}
         <article class="blog-post-summary">
-            <div class="flex items-start gap-4 mb-2"> {/* Flex container for image and title */}
+             {/* Flex container for title and image */}
+            <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> {/* Title takes available space */}
+                    <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                </h2>
                 <a href="blog/middle.html" class="flex-shrink-0 block"> {/* Image Link */}
                     {/* Image without border */}
                     <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Middle';">
                 </a>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1"> {/* Title slightly adjusted */}
-                    <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                </h2>
             </div>
             {/* Text Content below image/title */}
             <div>
@@ -120,14 +121,13 @@
 
          {/* Blog Post Entry 2 - Layout Updated */}
         <article class="blog-post-summary">
-             <div class="flex items-start gap-4 mb-2">
-                 <a href="blog/german2025.html" class="flex-shrink-0 block">
-                     {/* Image without border */}
-                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=German';">
-                </a>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                 </h2>
+                 <a href="blog/german2025.html" class="flex-shrink-0 block">
+                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=German';">
+                </a>
             </div>
             <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 15, 2025 (Placeholder)</p>
@@ -145,14 +145,13 @@
 
          {/* Blog Post Entry 3 - Layout Updated */}
         <article class="blog-post-summary">
-             <div class="flex items-start gap-4 mb-2">
-                 <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                     {/* Image without border */}
-                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Unique';">
-                </a>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                 </h2>
+                 <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
+                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Unique';">
+                </a>
             </div>
             <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 10, 2025 (Placeholder)</p>
@@ -164,14 +163,13 @@
 
          {/* Blog Post Entry 4 - Layout Updated */}
         <article class="blog-post-summary">
-             <div class="flex items-start gap-4 mb-2">
-                 <a href="blog/nickname.html" class="flex-shrink-0 block">
-                     {/* Image without border */}
-                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Nick';">
-                </a>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                      <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
                 </h2>
+                 <a href="blog/nickname.html" class="flex-shrink-0 block">
+                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Nick';">
+                </a>
             </div>
             <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 22, 2025 (Placeholder)</p>
@@ -214,4 +212,4 @@
 </html>
 ```
 
-The borders have been removed from the teaser images, and the layout within each `article` has been adjusted using Flexbox (`flex items-start gap-4`) to place the image link (`flex-shrink-0 block`) to the left of the `h2` title. The descriptive text and "Read More" link now naturally follow below the tit
+The layout for each blog post summary now uses `flex justify-between items-start` to place the title (with `flex-grow`) and the image side-by-side, with the image on the right. The descriptive text remains below this row. The borders have been removed from the `<img>` ta
