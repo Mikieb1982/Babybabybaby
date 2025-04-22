@@ -50,6 +50,8 @@
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 1.5rem auto; max-width: 728px; }
+        /* Featured Name Styling */
+        #featured-name-section { border: 1px solid #cbd5e1; /* accent-muted-light */ background-color: #f8fafc; /* off-white */ }
     </style>
      <script>
       tailwind.config = {
@@ -80,12 +82,10 @@
         </button>
     </header>
 
-    {/* Added Introduction Paragraph */}
     <p class="text-center text-lg md:text-xl max-w-2xl mx-auto mb-10 text-medium-gray">
         Welcome to The Stork Name Drop! Find the perfect baby name by exploring options from different languages and origins. Use our unique slider to choose between traditional and unique styles, filter by gender or length, and save your favorites.
     </p>
 
-    {/* Ad Slot Placeholder 1 */}
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
@@ -137,6 +137,16 @@
             </div>
         </fieldset>
 
+         {/* Featured Name Section - Added */}
+        <section id="featured-name-section" class="my-10 p-4 rounded-lg">
+             <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-center mb-4">Featured Name</h2>
+             <div id="featured-name-content" class="text-center">
+                 {/* Content injected by JS */}
+                 <p class="text-medium-gray italic">Loading featured name...</p>
+             </div>
+        </section>
+        {/* End Featured Name Section */}
+
         <section id="results-section" class="mt-10">
              <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
@@ -149,7 +159,7 @@
 
     </main>
 
-    <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
+     <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
      <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
@@ -236,6 +246,7 @@
         const favoritesPanelPlaceholder = document.getElementById('favorites-panel-placeholder');
         const closeFavoritesBtn = document.getElementById('close-favorites-btn');
         const loadingIndicator = document.getElementById('loading-indicator');
+        const featuredNameContent = document.getElementById('featured-name-content'); // Added
 
         // State Variables
         let selectedGender = 'any';
@@ -314,6 +325,30 @@
             const loadingMsg = document.getElementById('loading-message'); if(loadingMsg) loadingMsg.remove();
             if(initialMessage) initialMessage.style.display = 'block';
             console.log("Data ready, controls enabled.");
+
+            // Display initial featured name
+            displayFeaturedName();
+        }
+
+        // Function to display a featured name
+        function displayFeaturedName() {
+            if (!dataLoaded || nameDatabase.length === 0) {
+                featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
+                return;
+            }
+            // Select a random name from the database
+            const randomIndex = Math.floor(Math.random() * nameDatabase.length);
+            const featuredName = nameDatabase[randomIndex];
+
+            // Populate the featured name section
+            featuredNameContent.innerHTML = `
+                <h3 class="text-3xl text-dark-text font-semibold mb-1">${featuredName.name}</h3>
+                <p class="text-base text-dark-text italic mb-2">${featuredName.meaning || 'Meaning not available.'}</p>
+                <p class="text-sm text-medium-gray">
+                    Origin: ${featuredName.originNotes || featuredName.language} &bull;
+                    Popularity: ${featuredName.popularity || 'N/A'}
+                </p>
+            `;
         }
 
         // Event Listeners Setup
@@ -383,7 +418,7 @@
         // Initial Page Load
         document.addEventListener('DOMContentLoaded', () => {
              loadFavorites();
-             loadAndPrepareData();
+             loadAndPrepareData(); // Loads data and displays featured name
              updateSliderFeedback();
              setupEventListeners();
              favoritesPanel.style.display = 'none';
@@ -393,4 +428,13 @@
 </body>
 </html>
 
-The blog link is now more prominent in its own section above the footer, and the footer itself only contains the copyright and placeholder links for About/Data Sources.
+Changes Made:
+ * HTML: Added a new <section id="featured-name-section"> within the <main> container, placed after the controls <fieldset> and before the results <section>. It includes a heading and a div with the ID featured-name-content where the name details will be injected.
+ * CSS: Added basic styling for #featured-name-section to give it a subtle background and border, distinguishing it slightly.
+ * JavaScript:
+   * Added a new function displayFeaturedName().
+   * This function checks if dataLoaded is true and if nameDatabase has names.
+   * It picks a random name from nameDatabase.
+   * It populates the featured-name-content div with the selected name's details (Name, Meaning, Origin, Popularity).
+   * Called displayFeaturedName() at the end of the loadAndPrepareData() function, ensuring it runs only after the name data is available.
+Now, each time the page loads (and the sample data is processed), a different name from the list should appear in the "Featured Name" section.
