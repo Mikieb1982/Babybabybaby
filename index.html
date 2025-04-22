@@ -86,9 +86,7 @@
     </header>
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-40 transform translate-x-full">
-         {/* Updated image source and alt text */}
-         <img src="assets/stork.png" alt="Stork Menu Logo" class="h-16 w-16 mx-auto mb-6" onerror="this.onerror=null; this.src='https://placehold.co/64x64/f8fafc/374151?text=Stork';">
-        <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center border-b border-accent-muted-light pb-3">Menu</h3>
+        <h3 class="text-2xl font-semibold text-dark-text mb-6">Menu</h3>
         <nav class="space-y-4">
             <a href="index.html" class="block text-lg text-dark-text hover:underline">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline">Name Generator</a>
@@ -165,14 +163,16 @@
 
     </main>
 
-     <section id="featured-name-section-moved" class="my-10 md:my-14 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
+     {/* Featured Name Section - Moved below main content */}
+    <section id="featured-name-section-moved" class="my-10 md:my-14 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
          <div id="featured-name-content-moved" class="text-center">
              <p class="text-medium-gray italic">Loading featured name...</p>
          </div>
     </section>
 
-    <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
+     {/* Ad Slot Placeholder 2 - Moved below featured name */}
+    <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
      <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
@@ -227,6 +227,7 @@
     </footer>
 
     <script>
+        // --- Sample Data (Embedded for Preview) ---
         const nameData = [
             { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
             { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
@@ -240,6 +241,7 @@
         let nameDatabase = nameData;
         let dataLoaded = true;
 
+        // --- DOM Elements ---
         const controlsFieldset = document.getElementById('generator-controls');
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
@@ -261,6 +263,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
+        // --- State Variables ---
         let selectedGender = 'any';
         let selectedLanguage = '';
         let selectedLength = 'any';
@@ -270,11 +273,13 @@
         let favorites = [];
         let favoritesSortAsc = true;
 
+        // --- Helper Functions ---
         function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
         function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
         function copyToClipboard(text, buttonElement) { navigator.clipboard.writeText(text).then(() => { const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Copied!'; buttonElement.classList.add('text-save-button'); buttonElement.disabled = true; setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-save-button'); buttonElement.disabled = false; }, 1500); }).catch(err => { console.error('Failed to copy text: ', err); const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Error'; buttonElement.classList.add('text-error-red'); setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-error-red'); }, 1500); }); }
         function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
 
+        // --- Favorites Functions ---
         function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
         function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
         function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
@@ -323,6 +328,7 @@
             if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
         }
 
+        // Data Loading Function (Using Embedded Data)
         function loadAndPrepareData() {
             console.log('Using embedded sample data for preview.');
             const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
@@ -337,6 +343,7 @@
             displayFeaturedName();
         }
 
+        // Function to display a featured name
         function displayFeaturedName() {
             if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
                 if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
@@ -354,6 +361,7 @@
             `;
         }
 
+        // Event Listeners Setup
         function setupEventListeners() {
             genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
             languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
@@ -406,22 +414,25 @@
                 }, 300);
             });
 
+            // Hamburger Menu Toggle
             hamburgerBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('open');
             });
 
+            // Close menu if clicking outside (optional)
              document.addEventListener('click', (event) => {
                  if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
                      mobileMenu.classList.remove('open');
                  }
              });
 
+             // Menu Favorites Button
              menuFavoritesBtn.addEventListener('click', () => {
                  toggleFavoritesPanel();
-                 if (mobileMenu) mobileMenu.classList.remove('open');
+                 if (mobileMenu) mobileMenu.classList.remove('open'); // Close hamburger menu
              });
 
-
+            // Favorites Panel Interaction
              favoritesPanelList.addEventListener('click', (event) => {
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
@@ -432,6 +443,7 @@
 
         }
 
+        // Initial Page Load
         document.addEventListener('DOMContentLoaded', () => {
              loadFavorites();
              loadAndPrepareData();
@@ -443,6 +455,5 @@
 
 </body>
 </html>
-```
 
-The `<img>` tag inside the `#mobile-menu` div now points to `assets/stork.png` and has updated `alt` text. The JavaScript code has had its comments remov
+The Featured Name section is now outside the main content box, appearing between the </main> tag and the second ad placeholder.
