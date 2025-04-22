@@ -50,8 +50,16 @@
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 1.5rem auto; max-width: 728px; }
-        /* Featured Name Styling */
         #featured-name-section { border: 1px solid #cbd5e1; background-color: #f8fafc; }
+
+        /* Hamburger Menu Styles */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%); /* Start off-screen */
+        }
+        #mobile-menu.open {
+            transform: translateX(0); /* Slide in */
+        }
     </style>
      <script>
       tailwind.config = {
@@ -77,10 +85,25 @@
         <a href="index.html" title="The Stork Name Drop Home">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
-        <button id="view-favorites-btn" title="View Favorites" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /> </svg>
+        {/* Hamburger Menu Button - Replaces Favorites Button */}
+        <button id="hamburger-btn" title="Open Menu" class="absolute top-0 right-0 mt-2 mr-2 md:mt-4 md:mr-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback z-30">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+             </svg>
         </button>
     </header>
+
+     {/* Mobile Menu Panel (Initially Hidden) */}
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-20 transform translate-x-full">
+        <h3 class="text-2xl font-semibold text-dark-text mb-6">Menu</h3>
+        <nav class="space-y-4">
+            <a href="index.html" class="block text-lg text-dark-text hover:underline">Home</a>
+            <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline">Name Generator</a>
+            <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-left w-full">Favorites</button>
+            <a href="blog.html" class="block text-lg text-dark-text hover:underline">Blog</a>
+            <a href="#" class="block text-lg text-dark-text hover:underline">About Us</a>
+        </nav>
+    </div>
 
     <p class="text-center text-lg md:text-xl max-w-2xl mx-auto mb-10 text-medium-gray">
         Welcome to The Stork Name Drop! Find the perfect baby name by exploring options from different languages and origins. Use our unique slider to choose between traditional and unique styles, filter by gender or length, and save your favorites.
@@ -137,15 +160,6 @@
             </div>
         </fieldset>
 
-        {/* Featured Name Section - Moved outside fieldset, inside main */}
-        <section id="featured-name-section" class="my-10 p-4 rounded-lg">
-             <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-center mb-4">Featured Name</h2>
-             <div id="featured-name-content" class="text-center">
-                 <p class="text-medium-gray italic">Loading featured name...</p>
-             </div>
-        </section>
-        {/* End Featured Name Section */}
-
         <section id="results-section" class="mt-10">
              <hr class="border-t border-dashed border-accent-muted-light my-8 md:my-10">
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
@@ -156,19 +170,14 @@
              <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p>
         </section>
 
-    </main> {/* End Main Content Area */}
+    </main>
 
-     {/* Featured Name Section - MOVED HERE, below main content */}
-     {/* Note: Re-styling slightly to fit outside the main box */}
-    <section id="featured-name-section-moved" class="my-10 md:my-14 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
+     <section id="featured-name-section-moved" class="my-10 md:my-14 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
          <div id="featured-name-content-moved" class="text-center">
-             {/* Content injected by JS */}
              <p class="text-medium-gray italic">Loading featured name...</p>
          </div>
     </section>
-    {/* End Moved Featured Name Section */}
-
 
     <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
@@ -251,14 +260,16 @@
         const initialMessage = document.getElementById('results-placeholder');
         const resultsMessage = document.getElementById('results-message');
         const sliderFeedback = document.getElementById('slider-feedback');
-        const viewFavoritesBtn = document.getElementById('view-favorites-btn');
+        const viewFavoritesBtn = document.getElementById('view-favorites-btn'); // Removed, replaced by hamburger
         const favoritesPanel = document.getElementById('favorites-panel');
         const favoritesPanelList = document.getElementById('favorites-panel-list');
         const favoritesPanelPlaceholder = document.getElementById('favorites-panel-placeholder');
         const closeFavoritesBtn = document.getElementById('close-favorites-btn');
         const loadingIndicator = document.getElementById('loading-indicator');
-        // Updated ID for the moved featured name content div
         const featuredNameContent = document.getElementById('featured-name-content-moved');
+        const hamburgerBtn = document.getElementById('hamburger-btn'); // Added
+        const mobileMenu = document.getElementById('mobile-menu'); // Added
+        const menuFavoritesBtn = document.getElementById('menu-favorites-btn'); // Added
 
         // State Variables
         let selectedGender = 'any';
@@ -311,8 +322,13 @@
         }
 
         function toggleFavoritesPanel() {
-             if (favoritesPanel.style.display === 'block') { favoritesPanel.style.display = 'none'; }
-             else { displayFavoritesInPanel(); favoritesPanel.style.display = 'block'; }
+             if (favoritesPanel.style.display === 'block') {
+                 favoritesPanel.style.display = 'none';
+                 mobileMenu.classList.remove('open'); // Close mobile menu if favorites panel is closed
+             } else {
+                 displayFavoritesInPanel();
+                 favoritesPanel.style.display = 'block';
+             }
          }
 
         function renderSaveButton(container, nameObj, isSaved) {
@@ -337,20 +353,17 @@
             const loadingMsg = document.getElementById('loading-message'); if(loadingMsg) loadingMsg.remove();
             if(initialMessage) initialMessage.style.display = 'block';
             console.log("Data ready, controls enabled.");
-
-            // Display initial featured name
             displayFeaturedName();
         }
 
         // Function to display a featured name
         function displayFeaturedName() {
-            if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) { // Check if element exists
+            if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
                 if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
                 return;
             }
             const randomIndex = Math.floor(Math.random() * nameDatabase.length);
             const featuredName = nameDatabase[randomIndex];
-
             featuredNameContent.innerHTML = `
                 <h3 class="text-3xl text-dark-text font-semibold mb-1">${featuredName.name}</h3>
                 <p class="text-base text-dark-text italic mb-2">${featuredName.meaning || 'Meaning not available.'}</p>
@@ -414,13 +427,33 @@
                 }, 300);
             });
 
+            // Hamburger Menu Toggle
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+            // Close menu if clicking outside (optional)
+             document.addEventListener('click', (event) => {
+                 if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
+                     mobileMenu.classList.remove('open');
+                 }
+             });
+
+             // Menu Favorites Button
+             menuFavoritesBtn.addEventListener('click', () => {
+                 toggleFavoritesPanel();
+                 mobileMenu.classList.remove('open'); // Close hamburger menu when opening favorites
+             });
+
+
+            // Favorites Panel Interaction
              favoritesPanelList.addEventListener('click', (event) => {
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
                  const clearButton = event.target.closest('button');
                  if (clearButton && clearButton.textContent === 'Clear All Favorites') { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } }
              });
-            viewFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+            // Removed viewFavoritesBtn listener
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
         }
@@ -437,10 +470,21 @@
 
 </body>
 </html>
+```
 
-Changes Made:
- * Removed Featured Section from main: The <section id="featured-name-section"> was removed from inside the <main> element.
- * Added New Featured Section: A new <section id="featured-name-section-moved"> was added after the closing </main> tag.
- * Styling: This new section uses slightly different styling (more margin, its own background/border/shadow) to make it look like a separate box below the main generator area.
- * JavaScript Update: The featuredNameContent variable now points to the new div (featured-name-content-moved) within the relocated section. The displayFeaturedName function remains the same otherwise.
-The "Featured Name" should now appear in its own styled box below the main section containing the controls and the generated name result.
+**Summary of Changes:**
+
+1.  **HTML:**
+    * Replaced the `<button id="view-favorites-btn">...</button>` in the header with `<button id="hamburger-btn">...</button>` containing an SVG hamburger icon.
+    * Added a new `<div id="mobile-menu">...</div>` element after the header. This div is styled to be fixed, positioned off-screen to the right, and contains the navigation links (Home, Name Generator, Favorites, Blog, About Us).
+2.  **CSS:**
+    * Added basic styles for `#mobile-menu` to position it, style its appearance, and handle the `transform: translateX()` for sliding in/out.
+    * Added an `.open` class to trigger the visible state (`transform: translateX(0)`).
+3.  **JavaScript:**
+    * Added new DOM element references for `hamburgerBtn`, `mobileMenu`, and `menuFavoritesBtn`.
+    * Added an event listener to `hamburgerBtn` to toggle the `open` class on `mobileMenu`.
+    * Added an event listener to `menuFavoritesBtn` inside the menu. When clicked, it calls the existing `toggleFavoritesPanel()` function and also closes the hamburger menu itself for better UX.
+    * Removed the event listener for the old `viewFavoritesBtn`.
+    * Added an optional listener to close the menu if the user clicks outside of it.
+
+Now, clicking the hamburger icon should slide the menu in from the right, and clicking the "Favorites" link within that menu will open the favorites pan
