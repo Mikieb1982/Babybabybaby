@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Stork Name Drop - Blog</title> {/* Updated Title */}
+    <title>The Stork Name Drop - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC;
+            background-color: #F5F5DC; /* soft-beige */
             font-size: 1rem;
             line-height: 1.6;
-            color: #374151;
+            color: #374151; /* dark-text */
         }
         a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
         a:hover { color: #3B82F6; text-decoration: underline; }
@@ -22,50 +22,25 @@
         h1, h2, h3 { font-weight: bold; }
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
-        .blog-post-summary img { max-width: 100px; height: auto; }
+        /* Adjusted image size slightly */
+        .blog-post-summary img { max-width: 80px; height: auto; }
 
         /* Hamburger Menu Styles */
         #mobile-menu {
-            position: fixed; /* Ensure it's fixed */
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 16rem; /* w-64 */
-            background-color: #f8fafc; /* off-white */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            padding: 1.5rem; /* p-6 */
-            z-index: 40; /* Below favorites panel, above button */
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%); /* Start off-screen */
-            overflow: hidden; /* Hide overflow */
-            isolation: isolate; /* Create new stacking context */
+            position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
+            background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out;
+            transform: translateX(100%); overflow: hidden; isolation: isolate;
         }
-        #mobile-menu.open {
-            transform: translateX(0); /* Slide in */
-        }
-        /* Watermark Style */
+        #mobile-menu.open { transform: translateX(0); }
         #mobile-menu::before {
-            content: '';
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 120px;
-            background-image: url('assets/stork.png'); /* Path relative to blog.html? No, assets is at root */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.08;
-            z-index: 1;
-            pointer-events: none;
+            content: ''; position: absolute; bottom: 10px; left: 50%;
+            transform: translateX(-50%); width: 120px; height: 120px;
+            background-image: url('assets/stork.png'); background-repeat: no-repeat;
+            background-position: center; background-size: contain; opacity: 0.08;
+            z-index: 1; pointer-events: none;
         }
-         /* Ensure nav content is above watermark */
-        #mobile-menu nav {
-            position: relative;
-            z-index: 2;
-        }
-        /* Ensure button has high enough z-index */
+        #mobile-menu nav { position: relative; z-index: 2; }
         #hamburger-btn { z-index: 41; }
 
     </style>
@@ -90,11 +65,9 @@
 <body class="p-4 md:p-8">
 
     <header class="text-center mb-10 relative">
-        {/* Large Logo Header */}
         <a href="index.html" title="The Stork Name Drop Home">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
-        {/* Hamburger Menu Button */}
         <button id="hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -102,13 +75,11 @@
         </button>
     </header>
 
-    {/* Mobile Menu Panel */}
     <div id="mobile-menu">
         <nav class="relative z-10 space-y-4 pt-8">
              <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
             <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-            {/* Favorites link points back to index */}
             <a href="index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
             <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
             <a href="#" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
@@ -121,15 +92,19 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
-        {/* Blog Post Entry 1 */}
-        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
-            <a href="blog/middle.html" class="flex-shrink-0">
-                <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=Middle';">
-            </a>
-            <div>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+        {/* Blog Post Entry 1 - Layout Updated */}
+        <article class="blog-post-summary">
+            <div class="flex items-start gap-4 mb-2"> {/* Flex container for image and title */}
+                <a href="blog/middle.html" class="flex-shrink-0 block"> {/* Image Link */}
+                    {/* Image without border */}
+                    <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Middle';">
+                </a>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1"> {/* Title slightly adjusted */}
                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
                 </h2>
+            </div>
+            {/* Text Content below image/title */}
+            <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 21, 2025 (Placeholder)</p>
                 <p class="text-base md:text-lg text-dark-text leading-relaxed">
                     Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
@@ -143,15 +118,18 @@
             </svg>
         </div>
 
-         {/* Blog Post Entry 2 */}
-        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
-             <a href="blog/german2025.html" class="flex-shrink-0">
-                <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=German';">
-            </a>
-            <div>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+         {/* Blog Post Entry 2 - Layout Updated */}
+        <article class="blog-post-summary">
+             <div class="flex items-start gap-4 mb-2">
+                 <a href="blog/german2025.html" class="flex-shrink-0 block">
+                     {/* Image without border */}
+                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=German';">
+                </a>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                 </h2>
+            </div>
+            <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 15, 2025 (Placeholder)</p>
                 <p class="text-base md:text-lg text-dark-text leading-relaxed">
                     Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
@@ -165,15 +143,18 @@
             </svg>
         </div>
 
-         {/* Blog Post Entry 3 */}
-        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
-             <a href="blog/uniqueeng.html" class="flex-shrink-0">
-                <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=Unique';">
-            </a>
-            <div>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+         {/* Blog Post Entry 3 - Layout Updated */}
+        <article class="blog-post-summary">
+             <div class="flex items-start gap-4 mb-2">
+                 <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
+                     {/* Image without border */}
+                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Unique';">
+                </a>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
                      <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                 </h2>
+            </div>
+            <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 10, 2025 (Placeholder)</p>
                 <p class="text-base md:text-lg text-dark-text leading-relaxed">
                     Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
@@ -181,15 +162,18 @@
             </div>
         </article>
 
-         {/* Blog Post Entry 4 */}
-        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
-             <a href="blog/nickname.html" class="flex-shrink-0">
-                <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=Nick';">
-            </a>
-            <div>
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+         {/* Blog Post Entry 4 - Layout Updated */}
+        <article class="blog-post-summary">
+             <div class="flex items-start gap-4 mb-2">
+                 <a href="blog/nickname.html" class="flex-shrink-0 block">
+                     {/* Image without border */}
+                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Nick';">
+                </a>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1">
                      <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
                 </h2>
+            </div>
+            <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 22, 2025 (Placeholder)</p>
                 <p class="text-base md:text-lg text-dark-text leading-relaxed">
                     Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
@@ -210,14 +194,13 @@
         // JavaScript for Hamburger Menu
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuFavoritesBtn = document.getElementById('menu-favorites-btn'); // Get the button inside the menu
+        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
         if (hamburgerBtn && mobileMenu) {
             hamburgerBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('open');
             });
 
-             // Close menu if clicking outside (optional)
              document.addEventListener('click', (event) => {
                  if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
                      mobileMenu.classList.remove('open');
@@ -225,15 +208,10 @@
              });
         }
 
-        // Note: The favorites panel itself doesn't exist on this page,
-        // so the menu link just goes back to index.html.
-        // If you wanted the favorites panel on *this* page too,
-        // you'd need to copy its HTML and JS logic here as well.
-
     </script>
 
 </body>
 </html>
 ```
 
-Now, the `blog.html` page will also have the pinned hamburger menu in the top-right, providing consistent navigation across the main parts of your si
+The borders have been removed from the teaser images, and the layout within each `article` has been adjusted using Flexbox (`flex items-start gap-4`) to place the image link (`flex-shrink-0 block`) to the left of the `h2` title. The descriptive text and "Read More" link now naturally follow below the tit
