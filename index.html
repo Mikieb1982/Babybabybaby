@@ -80,6 +80,12 @@
         </button>
     </header>
 
+    {/* Added Introduction Paragraph */}
+    <p class="text-center text-lg md:text-xl max-w-2xl mx-auto mb-10 text-medium-gray">
+        Welcome to The Stork Name Drop! Find the perfect baby name by exploring options from different languages and origins. Use our unique slider to choose between traditional and unique styles, filter by gender or length, and save your favorites.
+    </p>
+
+    {/* Ad Slot Placeholder 1 */}
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
@@ -88,7 +94,7 @@
 
         <fieldset id="generator-controls" class="space-y-6 md:space-y-8 mb-10" disabled>
              <legend class="sr-only">Name Generation Controls</legend>
-              <section id="gender-selection">
+             <section id="gender-selection">
                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
                 <div class="flex flex-wrap gap-x-6 gap-y-2">
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
@@ -126,7 +132,7 @@
                 </div>
                 <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
             </section>
-             <div class="text-center pt-4">
+            <div class="text-center pt-4">
                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
             </div>
         </fieldset>
@@ -143,37 +149,34 @@
 
     </main>
 
-     <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
+    <div id="ad-slot-below-result" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
      <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6"> {/* Changed to grid layout */}
-             {/* Post 1 - Now Text Only */}
-             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm text-center">
-                 <a href="blog/middle.html" class="block hover:opacity-80 transition-opacity">
-                     <h3 class="text-lg md:text-xl font-semibold text-dark-text link-hover">Choosing the Perfect Middle Name</h3>
-                 </a>
-                 <p class="text-xs text-medium-gray mt-1">April 21, 2025</p>
-                 {/* Optional: Add a short text summary here if desired */}
-             </div>
-              {/* Post 2 - Text Summary */}
+         <div class="space-y-6">
              <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-lg md:text-xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                 </h3>
+                 <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition...</p>
+             </div>
+             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
                       <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                  </h3>
-                 <p class="text-xs text-medium-gray mb-2">April 15, 2025</p>
-                 <p class="text-sm text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics to newly popular choices...</p>
+                 <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices...</p>
              </div>
-              {/* Post 3 - Text Summary */}
               <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-lg md:text-xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
                      <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                  </h3>
-                 <p class="text-xs text-medium-gray mb-2">April 10, 2025</p>
-                 <p class="text-sm text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names...</p>
+                 <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
+                 <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings...</p>
              </div>
          </div>
-         <div class="text-center mt-8">
+         <div class="text-center mt-6">
               <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
          </div>
      </section>
@@ -350,7 +353,6 @@
 
                         const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
-                         // Adjusted text sizes for Times New Roman
                         textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
                         const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
                         const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
@@ -360,14 +362,13 @@
                         buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
                         console.log('No names found matching criteria.');
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`; // Adjusted size
+                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
                         currentDisplayedName = null;
                          if(initialMessage) initialMessage.style.display = 'none';
                     }
                 }, 300);
             });
 
-            // Favorites Panel Interaction
              favoritesPanelList.addEventListener('click', (event) => {
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
@@ -391,3 +392,5 @@
 
 </body>
 </html>
+
+The blog link is now more prominent in its own section above the footer, and the footer itself only contains the copyright and placeholder links for About/Data Sources.
