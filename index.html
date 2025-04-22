@@ -56,8 +56,7 @@
         #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; }
         #mobile-menu nav { position: relative; z-index: 2; }
         #hamburger-btn { z-index: 41; }
-        /* Blog Teaser Image Size */
-        .blog-teaser img { max-width: 96px; height: auto; } /* w-24 */
+        .blog-teaser img { max-width: 96px; height: auto; }
     </style>
      <script>
       tailwind.config = {
@@ -175,18 +174,15 @@
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
-     {/* Latest Blog Posts Section - Updated Layout */}
      <section id="latest-posts" class="my-12 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-         <div class="space-y-8"> {/* Increased spacing between posts */}
-             {/* Post 1 Teaser */}
+         <div class="space-y-8">
              <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
                  <div class="flex justify-between items-start gap-4 mb-2">
                      <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                          <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
                      </h3>
                      <a href="blog/middle.html" class="flex-shrink-0 block">
-                         {/* Image size updated, border removed */}
                          <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
                      </a>
                  </div>
@@ -195,14 +191,12 @@
                      <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
                  </div>
              </article>
-             {/* Post 2 Teaser */}
              <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
                   <div class="flex justify-between items-start gap-4 mb-2">
                      <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                           <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                      </h3>
                      <a href="blog/german2025.html" class="flex-shrink-0 block">
-                          {/* Image size updated, border removed */}
                          <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
                      </a>
                  </div>
@@ -211,14 +205,12 @@
                      <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
                  </div>
              </article>
-              {/* Post 3 Teaser */}
               <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
                    <div class="flex justify-between items-start gap-4 mb-2">
                      <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                          <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                      </h3>
                      <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                          {/* Image size updated, border removed */}
                          <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
                      </a>
                  </div>
@@ -227,14 +219,12 @@
                      <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
                  </div>
              </article>
-              {/* Post 4 Teaser */}
              <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
                   <div class="flex justify-between items-start gap-4 mb-2">
                      <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                          <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
                      </h3>
                      <a href="blog/nickname.html" class="flex-shrink-0 block">
-                          {/* Image size updated, border removed */}
                          <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
                      </a>
                  </div>
@@ -244,7 +234,7 @@
                  </div>
              </article>
          </div>
-         <div class="text-center mt-8"> {/* Increased margin */}
+         <div class="text-center mt-8">
               <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
          </div>
      </section>
