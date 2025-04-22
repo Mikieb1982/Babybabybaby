@@ -22,8 +22,8 @@
         h1, h2, h3 { font-weight: bold; }
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
-        /* Adjusted image size slightly */
-        .blog-post-summary img { max-width: 96px; height: auto; } /* Updated max-width */
+        /* Adjusted image size */
+        .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
         /* Hamburger Menu Styles */
         #mobile-menu {
@@ -92,7 +92,7 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
 
-        {/* Blog Post Entry 1 - Layout Updated */}
+        {/* Blog Post Entry 1 */}
         <article class="blog-post-summary">
             <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -117,7 +117,7 @@
             </svg>
         </div>
 
-         {/* Blog Post Entry 2 - Layout Updated */}
+         {/* Blog Post Entry 2 */}
         <article class="blog-post-summary">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -142,7 +142,7 @@
             </svg>
         </div>
 
-         {/* Blog Post Entry 3 - Layout Updated */}
+         {/* Blog Post Entry 3 */}
         <article class="blog-post-summary">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -161,7 +161,7 @@
             </div>
         </article>
 
-         {/* Blog Post Entry 4 - Layout Updated */}
+         {/* Blog Post Entry 4 */}
         <article class="blog-post-summary">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -190,10 +190,9 @@
     </footer>
 
     <script>
-        // JavaScript for Hamburger Menu
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuFavoritesBtn = document.getElementById('menu-favorites-btn'); // Although not used on this page
+        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
         if (hamburgerBtn && mobileMenu) {
             hamburgerBtn.addEventListener('click', () => {
@@ -206,11 +205,10 @@
                  }
              });
         }
-        // Removed comment
     </script>
 
 </body>
 </html>
 ```
 
-The images in the blog post summaries should now be larger (`w-24 h-24`), and the JavaScript comment at the end of the file has been remov
+The teaser images are now slightly larger (`w-24 h-24`), and the JavaScript comments have been remov
