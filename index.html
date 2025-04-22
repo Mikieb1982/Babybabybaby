@@ -86,8 +86,8 @@
     </header>
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-40 transform translate-x-full">
-         {/* Added Stork to Menu */}
-         <img src="assets/stork.png" alt="Menu Stork" class="h-16 w-16 mx-auto mb-6" onerror="this.onerror=null; this.src='https://placehold.co/64x64/f8fafc/374151?text=Logo';">
+         {/* Updated image source and alt text */}
+         <img src="assets/stork.png" alt="Stork Menu Logo" class="h-16 w-16 mx-auto mb-6" onerror="this.onerror=null; this.src='https://placehold.co/64x64/f8fafc/374151?text=Stork';">
         <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center border-b border-accent-muted-light pb-3">Menu</h3>
         <nav class="space-y-4">
             <a href="index.html" class="block text-lg text-dark-text hover:underline">Home</a>
@@ -406,20 +406,32 @@
                 }, 300);
             });
 
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+
+             document.addEventListener('click', (event) => {
+                 if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
+                     mobileMenu.classList.remove('open');
+                 }
+             });
+
+             menuFavoritesBtn.addEventListener('click', () => {
+                 toggleFavoritesPanel();
+                 if (mobileMenu) mobileMenu.classList.remove('open');
+             });
+
+
              favoritesPanelList.addEventListener('click', (event) => {
                  const removeButton = event.target.closest('button[title="Remove from Favorites"]');
                  if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
                  const clearButton = event.target.closest('button');
                  if (clearButton && clearButton.textContent === 'Clear All Favorites') { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } }
              });
-            hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
-             document.addEventListener('click', (event) => { if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) { mobileMenu.classList.remove('open'); } });
-             menuFavoritesBtn.addEventListener('click', () => { toggleFavoritesPanel(); if (mobileMenu) mobileMenu.classList.remove('open'); });
             closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
 
         }
 
-        // Initial Page Load
         document.addEventListener('DOMContentLoaded', () => {
              loadFavorites();
              loadAndPrepareData();
@@ -433,4 +445,4 @@
 </html>
 ```
 
-The logo image path in the `german2025.html` header is now `../assets/logo.png`, and the full article content is includ
+The `<img>` tag inside the `#mobile-menu` div now points to `assets/stork.png` and has updated `alt` text. The JavaScript code has had its comments remov
