@@ -3,6 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Name Generator - Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-repeat: repeat;
+            background-color: #F5F5DC; /* soft-beige */
+            font-size: 1rem; /* Adjusted base size */
+            line-height: 1.6; /* Adjusted line height */
+            color: #374151; /* dark-text */
+        }
+        a {
+            color: #60A5FA; /* button-active blue */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #3B82F6; /* button-active-hover blue */
+            text-decoration: underline;
+        }
+        main a {
+             color: #374151; /* dark-text */
+        }
+         main a:hover {
+             color: #6B7280; /* medium-gray */
+        }
+        h1, h2, h3 { font-weight: bold; }
+        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        /* Ensure images within summaries don't overflow */
+        .blog-post-summary img { max-width: 100px; height: auto; }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
+              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
+              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
+              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="text-center mb-10">
+        <a href="index.html" title="Back to Name Generator">
+            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-16 w-16 object-contain mb-2" onerror="this.onerror=null; this.src='https://placehold.co/64x64/F5F5DC/374151?text=Logo';">
+        </a>
+        <h1 class="text-2xl md:text-3xl text-dark-text font-semibold">
+             <a href="index.html" class="hover:text-medium-gray transition-colors">The Stork Name Drop</a>
+        </h1>
+        <p class="text-base md:text-lg text-medium-gray mt-1">
+            <a href="blog.html" class="hover:text-dark-text underline">Naming Tips & Ideas Blog</a>
+        </p>
+    </header>
+
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+
+    <h1 class="text-3xl md:text-4xl text-dark-text font-semibold text-center mb-10">Naming Tips & Ideas Blog</h1>
+
+    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-8">
+
+        {/* Blog Post Entry 1 */}
+        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
+            {/* Image Teaser */}
+            <a href="blog/middle.html" class="flex-shrink-0">
+                <img src="../assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=Middle';">
+            </a>
+            {/* Text Content */}
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                    <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                </h2>
+                <p class="text-sm text-medium-gray mb-2">Published: April 21, 2025 (Placeholder)</p>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <div class="text-center my-6 text-dark-text">
+             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 0, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+         {/* Blog Post Entry 2 */}
+        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
+             {/* Image Teaser */}
+             <a href="blog/german2025.html" class="flex-shrink-0">
+                <img src="../assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=German';">
+            </a>
+             {/* Text Content */}
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                </h2>
+                <p class="text-sm text-medium-gray mb-2">Published: April 15, 2025 (Placeholder)</p>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <div class="text-center my-6 text-dark-text">
+             <svg class="mx-auto h-6" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M5 10 Q 25 20, 50 10 T 95 10" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+         {/* Blog Post Entry 3 */}
+        <article class="blog-post-summary flex flex-col sm:flex-row items-start gap-4">
+             {/* Image Teaser (Placeholder) */}
+             <a href="blog/uniqueeng.html" class="flex-shrink-0">
+                <img src="../assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/100x100/f8fafc/6b7280?text=Unique';">
+            </a>
+             {/* Text Content */}
+            <div>
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                </h2>
+                <p class="text-sm text-medium-gray mb-2">Published: April 10, 2025 (Placeholder)</p>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+
+    <footer class="text-center text-medium-gray text-base space-y-2">
+        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
+        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
+    </footer>
+
+    <script>
+        // No complex JavaScript needed for this static blog index page
+    </script>
+
+</body>
+</html>
+```
+
+**2. Updated `index.html` (Main Generator Page)**
+
+I'll modify the `baby_generator_with_footer` immersive to include the images in the "Latest Blog Posts" section.
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -51,49 +216,12 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 1.5rem auto; max-width: 728px; }
         #featured-name-section { border: 1px solid #cbd5e1; background-color: #f8fafc; }
-
-        /* Hamburger Menu Styles */
-        #mobile-menu {
-            position: fixed; /* Ensure it's fixed */
-            top: 0;
-            right: 0;
-            height: 100%;
-            width: 16rem; /* w-64 */
-            background-color: #f8fafc; /* off-white */
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            padding: 1.5rem; /* p-6 */
-            z-index: 40; /* Below favorites panel, above button */
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%); /* Start off-screen */
-            overflow: hidden; /* Hide overflow */
-            isolation: isolate; /* Create new stacking context */
-        }
-        #mobile-menu.open {
-            transform: translateX(0); /* Slide in */
-        }
-        /* Watermark Style */
-        #mobile-menu::before {
-            content: '';
-            position: absolute;
-            bottom: 10px; /* Position near bottom */
-            left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
-            width: 120px; /* Adjust size as needed */
-            height: 120px; /* Adjust size as needed */
-            background-image: url('assets/stork.png'); /* Assumes stork.png */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.08; /* Adjust transparency */
-            z-index: 1; /* Behind content */
-            pointer-events: none; /* Allow clicks through */
-        }
-         /* Ensure nav content is above watermark */
-        #mobile-menu nav {
-            position: relative;
-            z-index: 2;
-        }
-
+        #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 16rem; background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1); padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out; transform: translateX(100%); overflow: hidden; isolation: isolate; }
+        #mobile-menu.open { transform: translateX(0); }
+        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; }
+        #mobile-menu nav { position: relative; z-index: 2; }
+        /* Ensure images within blog teasers don't overflow */
+        .blog-teaser img { max-width: 80px; height: auto; }
     </style>
      <script>
       tailwind.config = {
@@ -126,11 +254,9 @@
         </button>
     </header>
 
-     {/* Mobile Menu Panel (Initially Hidden) - Added ::before pseudo-element via CSS */}
     <div id="mobile-menu">
-        {/* Added relative z-10 to nav to ensure it's above the watermark */}
-        <nav class="relative z-10 space-y-4 pt-8"> {/* Added padding-top */}
-             <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3> {/* Centered title */}
+        <nav class="relative z-10 space-y-4 pt-8">
+             <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
             <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
@@ -215,29 +341,48 @@
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
+     {/* Latest Blog Posts Section - Updated with Images */}
      <section id="latest-posts" class="my-10 md:my-14 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
          <div class="space-y-6">
-             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition...</p>
+             {/* Post 1 Teaser */}
+             <div class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm flex flex-col sm:flex-row items-start gap-4">
+                 <a href="blog/middle.html" class="flex-shrink-0">
+                     <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-20 h-20 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Middle';">
+                 </a>
+                 <div>
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                         <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                     </h3>
+                     <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                 </div>
              </div>
-             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices...</p>
+             {/* Post 2 Teaser */}
+             <div class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm flex flex-col sm:flex-row items-start gap-4">
+                 <a href="blog/german2025.html" class="flex-shrink-0">
+                     <img src="assets/german2025.png" alt="German flag or related concept image" class="w-20 h-20 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=German';">
+                 </a>
+                 <div>
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                          <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                     </h3>
+                     <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices...</p>
+                 </div>
              </div>
-              <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings...</p>
+              {/* Post 3 Teaser */}
+              <div class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm flex flex-col sm:flex-row items-start gap-4">
+                 <a href="blog/uniqueeng.html" class="flex-shrink-0">
+                     <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-20 h-20 object-cover rounded-md border border-accent-muted-light" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Unique';">
+                 </a>
+                  <div>
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
+                         <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                     </h3>
+                     <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings...</p>
+                 </div>
              </div>
          </div>
          <div class="text-center mt-6">
@@ -497,6 +642,3 @@
 
 </body>
 </html>
-```
-
-The `<img>` tag within the header now correctly references `../assets/logo.png`, assuming `german2025.html` is inside a `blog` folder and `assets` is at the root lev
