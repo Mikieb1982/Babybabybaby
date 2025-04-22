@@ -24,7 +24,6 @@
         li { margin-bottom: 0.5rem; }
         .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
-        /* Hamburger Menu Styles */
         #mobile-menu {
             position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
             background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -35,13 +34,12 @@
         #mobile-menu::before {
             content: ''; position: absolute; bottom: 10px; left: 50%;
             transform: translateX(-50%); width: 120px; height: 120px;
-            background-image: url('assets/stork.png'); /* Path relative to blog.html */
-            background-repeat: no-repeat;
+            background-image: url('assets/stork.png'); background-repeat: no-repeat;
             background-position: center; background-size: contain; opacity: 0.08;
             z-index: 1; pointer-events: none;
         }
         #mobile-menu nav { position: relative; z-index: 2; }
-        #hamburger-btn { z-index: 41; } /* Ensure button is above closed menu */
+        #hamburger-btn { z-index: 41; }
 
         .blog-post-summary-container:hover {
             background-color: #f9fafb;
