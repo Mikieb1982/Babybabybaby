@@ -96,7 +96,6 @@
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
             <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-            {/* Updated About Us link */}
             <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
         </nav>
     </div>
@@ -255,7 +254,6 @@
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto mt-12 mb-8">
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
         <p>
-            {/* Updated About Us link */}
             <a href="aboutus.html" class="hover:text-dark-text underline">About Us</a> |
             <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
             <a href="blog.html" class="hover:text-dark-text underline">Blog</a>
@@ -271,7 +269,9 @@
             { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25 },
             { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
             { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
-            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 }
+            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+             { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
+             { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 }
         ];
         nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
         let nameDatabase = nameData;
