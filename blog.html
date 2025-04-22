@@ -23,7 +23,7 @@
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
         /* Adjusted image size slightly */
-        .blog-post-summary img { max-width: 80px; height: auto; }
+        .blog-post-summary img { max-width: 96px; height: auto; } /* Updated max-width */
 
         /* Hamburger Menu Styles */
         #mobile-menu {
@@ -94,17 +94,15 @@
 
         {/* Blog Post Entry 1 - Layout Updated */}
         <article class="blog-post-summary">
-             {/* Flex container for title and image */}
             <div class="flex justify-between items-start gap-4 mb-2">
-                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> {/* Title takes available space */}
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
                 </h2>
-                <a href="blog/middle.html" class="flex-shrink-0 block"> {/* Image Link */}
-                    {/* Image without border */}
-                    <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Middle';">
+                <a href="blog/middle.html" class="flex-shrink-0 block">
+                    {/* Updated image size and placeholder */}
+                    <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
                 </a>
             </div>
-            {/* Text Content below image/title */}
             <div>
                 <p class="text-sm text-medium-gray mb-2">Published: April 21, 2025 (Placeholder)</p>
                 <p class="text-base md:text-lg text-dark-text leading-relaxed">
@@ -126,7 +124,8 @@
                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                 </h2>
                  <a href="blog/german2025.html" class="flex-shrink-0 block">
-                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=German';">
+                     {/* Updated image size and placeholder */}
+                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
                 </a>
             </div>
             <div>
@@ -150,7 +149,8 @@
                      <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                 </h2>
                  <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Unique';">
+                     {/* Updated image size and placeholder */}
+                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
                 </a>
             </div>
             <div>
@@ -168,7 +168,8 @@
                      <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
                 </h2>
                  <a href="blog/nickname.html" class="flex-shrink-0 block">
-                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-20 h-20 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/80x80/f8fafc/6b7280?text=Nick';">
+                     {/* Updated image size and placeholder */}
+                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
                 </a>
             </div>
             <div>
@@ -192,7 +193,7 @@
         // JavaScript for Hamburger Menu
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
+        const menuFavoritesBtn = document.getElementById('menu-favorites-btn'); // Although not used on this page
 
         if (hamburgerBtn && mobileMenu) {
             hamburgerBtn.addEventListener('click', () => {
@@ -205,11 +206,11 @@
                  }
              });
         }
-
+        // Removed comment
     </script>
 
 </body>
 </html>
 ```
 
-The layout for each blog post summary now uses `flex justify-between items-start` to place the title (with `flex-grow`) and the image side-by-side, with the image on the right. The descriptive text remains below this row. The borders have been removed from the `<img>` ta
+The images in the blog post summaries should now be larger (`w-24 h-24`), and the JavaScript comment at the end of the file has been remov
