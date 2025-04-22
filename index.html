@@ -51,8 +51,13 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 2rem auto; max-width: 728px; }
         #featured-name-section-moved { border: 1px solid #cbd5e1; background-color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-        #mobile-menu { transition: transform 0.3s ease-in-out; transform: translateX(100%); }
+        #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 16rem; background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1); padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out; transform: translateX(100%); overflow: hidden; isolation: isolate; }
         #mobile-menu.open { transform: translateX(0); }
+        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; }
+        #mobile-menu nav { position: relative; z-index: 2; }
+        #hamburger-btn { z-index: 41; }
+        /* Blog Teaser Image Size */
+        .blog-teaser img { max-width: 96px; height: auto; } /* w-24 */
     </style>
      <script>
       tailwind.config = {
@@ -86,8 +91,8 @@
     </header>
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-40 transform translate-x-full">
-        <h3 class="text-2xl font-semibold text-dark-text mb-6">Menu</h3>
-        <nav class="space-y-4">
+        <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
+        <nav class="relative z-10 space-y-4 pt-8">
             <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
@@ -170,32 +175,76 @@
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
+     {/* Latest Blog Posts Section - Updated Layout */}
      <section id="latest-posts" class="my-12 max-w-3xl mx-auto">
          <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-         <div class="space-y-6">
-             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                     <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition...</p>
-             </div>
-             <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                      <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices...</p>
-             </div>
-              <div class="bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <h3 class="text-xl md:text-2xl font-semibold text-dark-text mb-1 hover:text-medium-gray transition">
-                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
-                 </h3>
-                 <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
-                 <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings...</p>
-             </div>
+         <div class="space-y-8"> {/* Increased spacing between posts */}
+             {/* Post 1 Teaser */}
+             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                 <div class="flex justify-between items-start gap-4 mb-2">
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                         <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                     </h3>
+                     <a href="blog/middle.html" class="flex-shrink-0 block">
+                         {/* Image size updated, border removed */}
+                         <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
+                     </a>
+                 </div>
+                 <div>
+                     <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                 </div>
+             </article>
+             {/* Post 2 Teaser */}
+             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                  <div class="flex justify-between items-start gap-4 mb-2">
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                          <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                     </h3>
+                     <a href="blog/german2025.html" class="flex-shrink-0 block">
+                          {/* Image size updated, border removed */}
+                         <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
+                     </a>
+                 </div>
+                 <div>
+                     <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                 </div>
+             </article>
+              {/* Post 3 Teaser */}
+              <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                   <div class="flex justify-between items-start gap-4 mb-2">
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                         <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                     </h3>
+                     <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
+                          {/* Image size updated, border removed */}
+                         <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                     </a>
+                 </div>
+                  <div>
+                     <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                 </div>
+             </article>
+              {/* Post 4 Teaser */}
+             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                  <div class="flex justify-between items-start gap-4 mb-2">
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                         <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
+                     </h3>
+                     <a href="blog/nickname.html" class="flex-shrink-0 block">
+                          {/* Image size updated, border removed */}
+                         <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
+                     </a>
+                 </div>
+                 <div>
+                     <p class="text-sm text-medium-gray mb-2">April 22, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                 </div>
+             </article>
          </div>
-         <div class="text-center mt-6">
+         <div class="text-center mt-8"> {/* Increased margin */}
               <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
          </div>
      </section>
@@ -320,7 +369,6 @@
         }
 
         function loadAndPrepareData() {
-            console.log('Using embedded sample data for preview.');
             const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
             languageSelect.innerHTML = '';
              const anyOption = document.createElement('option'); anyOption.value = "any"; anyOption.textContent = "Any Language"; languageSelect.appendChild(anyOption);
@@ -329,7 +377,6 @@
             controlsFieldset.disabled = false; generateBtn.disabled = false; dataLoaded = true;
             const loadingMsg = document.getElementById('loading-message'); if(loadingMsg) loadingMsg.remove();
             if(initialMessage) initialMessage.style.display = 'block';
-            console.log("Data ready, controls enabled.");
             displayFeaturedName();
         }
 
@@ -359,7 +406,6 @@
 
             generateBtn.addEventListener('click', () => {
                 if (!dataLoaded) return;
-                console.log(`Generating name: G=${selectedGender}, L=${selectedLanguage}, Len=${selectedLength}, FL='${selectedFirstLetter}', Sty=${selectedStyle}`);
                 nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`;
                 currentDisplayedName = null;
                 if(initialMessage) initialMessage.style.display = 'none';
@@ -375,14 +421,12 @@
                     const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
                     return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
                 });
-                console.log('Filtered Names Count:', filteredNames.length);
 
                 setTimeout(() => {
                     nameOutput.innerHTML = '';
                     if (filteredNames.length > 0) {
                         const randomIndex = Math.floor(Math.random() * filteredNames.length);
                         currentDisplayedName = filteredNames[randomIndex];
-                        console.log('Selected Name:', currentDisplayedName);
 
                         const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
                         const textDiv = document.createElement('div');
@@ -394,7 +438,6 @@
                         copyBtn.onclick = (e) => { const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
                         buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
                     } else {
-                        console.log('No names found matching criteria.');
                         nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
                         currentDisplayedName = null;
                          if(initialMessage) initialMessage.style.display = 'none';
