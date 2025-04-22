@@ -88,7 +88,7 @@
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <a href="index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
             <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-            <a href="#" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+            <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
         </nav>
     </div>
 
@@ -154,6 +154,8 @@
             </div>
         </article>
 
+         <hr class="border-t border-dashed border-accent-muted-light">
+
         <article class="blog-post-summary-container p-4 rounded-lg">
              <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -171,11 +173,33 @@
             </div>
         </article>
 
+        {/* Added New Blog Post Entry for Song Names */}
+        <hr class="border-t border-dashed border-accent-muted-light">
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     {/* Link to song.html */}
+                     <a href="blog/song.html">What's in a Song Name? Musical Monikers</a>
+                </h2>
+                 <a href="blog/song.html" class="flex-shrink-0 block">
+                     {/* Image for song.html */}
+                    <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
+                </a>
+            </div>
+            <div>
+                {/* Placeholder Date */}
+                <p class="text-sm text-medium-gray mb-2">Published: April 23, 2025</p>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
     </main>
 
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <footer class="text-center text-medium-gray text-base space-y-2">
+    <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
         <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
@@ -200,3 +224,6 @@
 
 </body>
 </html>
+```
+
+The new blog post "What's in a Song Name? Musical Monikers" is now listed on your `blog.html` page with its teaser image (`assets/song.png`) and a link to `blog/song.htm
