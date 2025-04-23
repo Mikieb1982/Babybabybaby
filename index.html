@@ -6,59 +6,87 @@
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Basic Styling & Custom Properties */
         body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            font-family: 'Times New Roman', Times, serif; /* Classic font */
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png'); /* Subtle paper texture */
             background-repeat: repeat;
-            background-color: #F5F5DC;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #374151;
+            background-color: #F5F5DC; /* Soft beige background */
+            font-size: 1rem; /* Base font size */
+            line-height: 1.6; /* Readable line spacing */
+            color: #374151; /* Dark gray text for contrast */
         }
+
+        /* Input & Select Styling */
         input[type="text"], select {
              padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
              font-size: 1rem; width: 100%; outline: none;
-             transition: border-color 0.2s ease, box-shadow 0.2s ease;
-             font-family: 'Times New Roman', Times, serif;
+             transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth focus transition */
+             font-family: 'Times New Roman', Times, serif; /* Consistent font */
         }
-        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
+        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); } /* Focus state */
+        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; } /* Disabled state */
+
+        /* Range Slider Thumb Styling */
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
         input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+        /* Custom Radio Button Styling */
         input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
         input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #475569; }
-        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
+        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); } /* Focus state for accessibility */
+
+        /* Custom Select Arrow */
         select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
+
+        /* Fade-in Animation */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
+
+        /* Result & Favorite Item Styling */
         .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
         .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        /* Button Styling */
         .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; }
-        .btn:active:not(:disabled) { transform: scale(0.97); }
+        .btn:active:not(:disabled) { transform: scale(0.97); } /* Click feedback */
         .btn-primary { background-color: #374151; border-color: #374151; color: white; }
         .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
         .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
         .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
-        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; }
+        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; } /* Call to action button */
         .btn-cta:hover:not(:disabled) { background-color: #374151; }
-        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; }
+        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; } /* Icon button base style */
+
+        /* Favorites Panel Styling */
         #favorites-panel { position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50; display: none; animation: fadeIn 0.3s ease-out; }
         #favorites-panel.active { display: block; }
+
+        /* Loading Indicator */
         .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Ad Placeholder Styling */
         .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 2rem auto; max-width: 728px; }
+
+        /* Featured Name Section Styling */
         #featured-name-section-moved { border: 1px solid #cbd5e1; background-color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+
+        /* Mobile Menu Styling */
         #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 16rem; background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1); padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out; transform: translateX(100%); overflow: hidden; isolation: isolate; }
         #mobile-menu.open { transform: translateX(0); }
-        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; }
+        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; } /* Decorative stork image */
         #mobile-menu nav { position: relative; z-index: 2; }
-        #hamburger-btn { z-index: 41; }
+        #hamburger-btn { z-index: 41; } /* Ensure hamburger is above menu initially */
+
+        /* Blog Teaser Image Styling */
         .blog-teaser img { max-width: 96px; height: auto; }
     </style>
      <script>
+      // Configure Tailwind CSS theme extensions
       tailwind.config = {
         theme: {
           extend: {
@@ -75,6 +103,43 @@
         }
       }
     </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      // IMPORTANT: Replace these placeholder values with your actual Firebase project config!
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY", // Replace with your actual API Key
+        authDomain: "YOUR_AUTH_DOMAIN", // e.g., your-project-id.firebaseapp.com
+        projectId: "YOUR_PROJECT_ID", // Replace with your actual Project ID
+        storageBucket: "YOUR_STORAGE_BUCKET", // e.g., your-project-id.appspot.com
+        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        appId: "YOUR_APP_ID", // e.g., 1:senderId:web:appId
+        measurementId: "YOUR_MEASUREMENT_ID" // Optional: e.g., G-XXXXXXXXXX
+      };
+
+      // Initialize Firebase
+      try {
+        const app = initializeApp(firebaseConfig);
+        // Check if measurementId exists before initializing Analytics
+        if (firebaseConfig.measurementId) {
+            const analytics = getAnalytics(app);
+            console.log("Firebase Analytics initialized.");
+        } else {
+            console.log("Firebase initialized (Analytics skipped - no measurementId).");
+        }
+      } catch (error) {
+        console.error("Error initializing Firebase:", error);
+        // Optionally display an error message to the user
+      }
+    </script>
+
 </head>
 <body class="p-4 md:p-8">
 
@@ -91,7 +156,6 @@
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-40 transform translate-x-full">
         <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
-        {/* Updated Menu Order */}
         <nav class="relative z-10 space-y-4 pt-8">
             <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
@@ -100,7 +164,7 @@
             <a href="affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
             <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
         </nav>
-    </div>
+        </div>
 
     <p class="text-center text-lg md:text-xl max-w-2xl mx-auto mb-12 text-medium-gray">
         Welcome to The Stork Name Drop! Find the perfect baby name by exploring options from different languages and origins. Use our unique slider to choose between traditional and unique styles, filter by gender or length, and save your favorites.
@@ -110,161 +174,153 @@
 
     <main class="max-w-3xl mx-auto bg-off-white p-8 md:p-12 rounded-lg border-2 border-dark-text shadow-md my-12">
 
-        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
-             <legend class="sr-only">Name Generation Controls</legend>
-             <section id="gender-selection">
-                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
-                <div class="flex flex-wrap gap-x-6 gap-y-2">
-                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
-                </div>
-            </section>
+        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled> <legend class="sr-only">Name Generation Controls</legend> <section id="gender-selection">
+                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
+                 <div class="flex flex-wrap gap-x-6 gap-y-2">
+                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
+                 </div>
+             </section>
+
              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <section id="language-selection">
-                    <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
-                    <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select>
-                </section>
-                <section id="letter-filter">
-                    <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
-                    <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
-                </section>
-            </div>
+                 <section id="language-selection">
+                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
+                     <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select> </section>
+                 <section id="letter-filter">
+                     <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
+                     <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
+                 </section>
+             </div>
+
              <section id="length-filter">
-                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
-                <div class="flex flex-wrap gap-x-6 gap-y-2">
-                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
-                </div>
-            </section>
+                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
+                 <div class="flex flex-wrap gap-x-6 gap-y-2">
+                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
+                     <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
+                 </div>
+             </section>
+
              <section id="style-slider">
-                <div class="flex justify-between items-center mb-2">
-                    <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
-                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span>
-                </div>
-                <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
-                    <span>Traditional</span>
-                    <span>Unique</span>
-                </div>
-                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
-            </section>
-            <div class="text-center pt-6">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button>
-            </div>
+                 <div class="flex justify-between items-center mb-2">
+                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
+                     <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span> </div>
+                 <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
+                     <span>Traditional</span>
+                     <span>Unique</span>
+                 </div>
+                 <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
+             </section>
+
+             <div class="text-center pt-6">
+                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button> </div>
         </fieldset>
 
         <section id="results-section" class="mt-12">
              <hr class="border-t border-dashed border-accent-muted-light my-10">
-            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
-            <div id="loading-indicator" class="loader" style="display: none;"></div>
-            <div id="result-display" class="text-center min-h-[6rem]">
-                <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p>
-            </div>
-             <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p>
-        </section>
+             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
+             <div id="loading-indicator" class="loader" style="display: none;"></div> <div id="result-display" class="text-center min-h-[6rem]"> <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p> </div>
+             <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p> </section>
 
     </main>
 
-     <section id="featured-name-section-moved" class="my-12 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
-         <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
-         <div id="featured-name-content-moved" class="text-center">
-             <p class="text-medium-gray italic">Loading featured name...</p>
-         </div>
+    <section id="featured-name-section-moved" class="my-12 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
+       <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
+       <div id="featured-name-content-moved" class="text-center">
+            <p class="text-medium-gray italic">Loading featured name...</p> </div>
     </section>
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
 
-     <section id="latest-posts" class="my-12 max-w-3xl mx-auto">
-         <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-         <div class="space-y-8">
-             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                 <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                     </h3>
-                     <a href="blog/middle.html" class="flex-shrink-0 block">
-                         <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
-                     </a>
-                 </div>
-                 <div>
-                     <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-                 </div>
-             </article>
-             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                  <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                          <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
-                     </h3>
-                     <a href="blog/german2025.html" class="flex-shrink-0 block">
-                         <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
-                     </a>
-                 </div>
-                 <div>
-                     <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-                 </div>
-             </article>
-              <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                   <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
-                     </h3>
-                     <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                         <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
-                     </a>
-                 </div>
-                  <div>
-                     <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-                 </div>
-             </article>
-             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                  <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
-                     </h3>
-                     <a href="blog/nickname.html" class="flex-shrink-0 block">
-                         <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
-                     </a>
-                 </div>
-                 <div>
-                     <p class="text-sm text-medium-gray mb-2">April 22, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-                 </div>
-             </article>
-             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                  <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/song.html">What's in a Song Name? Musical Monikers</a>
-                     </h3>
-                     <a href="blog/song.html" class="flex-shrink-0 block">
-                         <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
-                     </a>
-                 </div>
-                 <div>
-                     <p class="text-sm text-medium-gray mb-2">April 23, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-                 </div>
-             </article>
-         </div>
-         <div class="text-center mt-8">
-              <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
-         </div>
-     </section>
+    <section id="latest-posts" class="my-12 max-w-3xl mx-auto">
+       <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
+       <div class="space-y-8">
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+               <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                    </h3>
+                    <a href="blog/middle.html" class="flex-shrink-0 block">
+                        <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
+                    </a>
+               </div>
+               <div>
+                    <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+               </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                         <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                    </h3>
+                    <a href="blog/german2025.html" class="flex-shrink-0 block">
+                        <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
+                    </a>
+               </div>
+               <div>
+                    <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+               </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                    </h3>
+                    <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
+                        <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                    </a>
+               </div>
+               <div>
+                    <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+               </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
+                    </h3>
+                    <a href="blog/nickname.html" class="flex-shrink-0 block">
+                        <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
+                    </a>
+               </div>
+               <div>
+                    <p class="text-sm text-medium-gray mb-2">April 22, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+               </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/song.html">What's in a Song Name? Musical Monikers</a>
+                    </h3>
+                    <a href="blog/song.html" class="flex-shrink-0 block">
+                        <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
+                    </a>
+               </div>
+               <div>
+                    <p class="text-sm text-medium-gray mb-2">April 23, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+               </div>
+           </article>
+       </div>
+       <div class="text-center mt-8">
+            <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
+       </div>
+    </section>
 
     <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
         <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
             <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-8 text-center">Favorite Names</h2>
-            <div id="favorites-panel-list" class="space-y-6">
-                <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p>
-            </div>
+            <div id="favorites-panel-list" class="space-y-6"> <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p> </div>
         </div>
     </aside>
 
@@ -274,13 +330,14 @@
             <a href="aboutus.html" class="hover:text-dark-text underline">About Us</a> |
             <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
             <a href="blog.html" class="hover:text-dark-text underline">Blog</a> |
-            {/* Updated Footer Link */}
             <a href="affiliate.html" class="hover:text-dark-text underline">Recommendations</a>
         </p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
     </footer>
 
     <script>
+        // --- Data Setup ---
+        // Initial sample data (replace or fetch from backend/Firebase later)
         const nameData = [
             { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
             { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
@@ -289,14 +346,17 @@
             { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
             { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
             { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
-             { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
-             { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
-             { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
+            { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
+            { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+            { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
+            // Add many more names here...
         ];
+        // Calculate length category for each name
         nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
-        let nameDatabase = nameData;
-        let dataLoaded = true;
+        let nameDatabase = nameData; // Use this as the primary data source
+        let dataLoaded = true; // Assume data is loaded for this static example
 
+        // --- DOM Element References ---
         const controlsFieldset = document.getElementById('generator-controls');
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
@@ -318,180 +378,442 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
+        // --- Application State ---
         let selectedGender = 'any';
-        let selectedLanguage = '';
+        let selectedLanguage = ''; // Set after languages load
         let selectedLength = 'any';
         let selectedFirstLetter = '';
         let selectedStyle = 50;
-        let currentDisplayedName = null;
-        let favorites = [];
-        let favoritesSortAsc = true;
+        let currentDisplayedName = null; // Stores the currently shown name object
+        let favorites = []; // Array to hold favorite name objects
+        let favoritesSortAsc = true; // Sorting direction for favorites (future use)
 
-        function getStyleCategory(value) { if (value < 20) return 'Very Traditional'; if (value < 40) return 'Traditional'; if (value < 61) return 'Balanced'; if (value < 81) return 'Unique'; return 'Very Unique'; }
-        function updateSliderFeedback() { sliderFeedback.textContent = getStyleCategory(selectedStyle); }
-        function copyToClipboard(text, buttonElement) { navigator.clipboard.writeText(text).then(() => { const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Copied!'; buttonElement.classList.add('text-save-button'); buttonElement.disabled = true; setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-save-button'); buttonElement.disabled = false; }, 1500); }).catch(err => { console.error('Failed to copy text: ', err); const originalHTML = buttonElement.innerHTML; buttonElement.innerHTML = 'Error'; buttonElement.classList.add('text-error-red'); setTimeout(() => { buttonElement.innerHTML = originalHTML; buttonElement.classList.remove('text-error-red'); }, 1500); }); }
-        function getLengthCategory(name) { const len = name.length; if (len < 5) return 'short'; if (len <= 7) return 'medium'; return 'long'; }
+        // --- Utility Functions ---
 
-        function loadFavorites() { const storedFavorites = localStorage.getItem('babyNameFavorites'); if (storedFavorites) { favorites = JSON.parse(storedFavorites); } else { favorites = []; } console.log('Favorites loaded:', favorites); }
-        function saveFavorites() { localStorage.setItem('babyNameFavorites', JSON.stringify(favorites)); console.log('Favorites saved:', favorites); }
-        function isFavorite(nameObj) { return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false; }
-        function addToFavorites(nameObj) { if (nameObj && !isFavorite(nameObj)) { favorites.push(nameObj); saveFavorites(); const btnContainer = document.getElementById(`save-btn-container-${nameObj.id}`); if(btnContainer) renderSaveButton(btnContainer, nameObj, true); console.log('Added to favorites:', nameObj); } }
-        function removeFromFavorites(nameId) { favorites = favorites.filter(fav => fav.id !== nameId); saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName && currentDisplayedName.id === nameId) { const btnContainer = document.getElementById(`save-btn-container-${nameId}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } console.log('Removed favorite with ID:', nameId); }
+        /** Calculates a descriptive style category based on a numeric score (0-100). */
+        function getStyleCategory(value) {
+            if (value < 20) return 'Very Traditional';
+            if (value < 40) return 'Traditional';
+            if (value < 61) return 'Balanced';
+            if (value < 81) return 'Unique';
+            return 'Very Unique';
+        }
 
+        /** Updates the text feedback next to the style slider. */
+        function updateSliderFeedback() {
+            if (sliderFeedback) {
+                sliderFeedback.textContent = getStyleCategory(selectedStyle);
+            }
+        }
+
+        /** Copies provided text to the clipboard and gives feedback on the button. */
+        function copyToClipboard(text, buttonElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHTML = buttonElement.innerHTML;
+                buttonElement.innerHTML = 'Copied!';
+                buttonElement.classList.add('text-save-button'); // Use save color for success
+                buttonElement.disabled = true;
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalHTML;
+                    buttonElement.classList.remove('text-save-button');
+                    buttonElement.disabled = false;
+                }, 1500); // Revert after 1.5 seconds
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                const originalHTML = buttonElement.innerHTML;
+                buttonElement.innerHTML = 'Error';
+                buttonElement.classList.add('text-error-red'); // Use error color
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalHTML;
+                    buttonElement.classList.remove('text-error-red');
+                }, 1500);
+            });
+        }
+
+        /** Determines the length category ('short', 'medium', 'long') of a name. */
+        function getLengthCategory(name) {
+            const len = name.length;
+            if (len <= 5) return 'short'; // Adjusted boundary
+            if (len <= 8) return 'medium'; // Adjusted boundary
+            return 'long';
+        }
+
+        // --- Favorites Management ---
+
+        /** Loads favorites from localStorage. */
+        function loadFavorites() {
+            const storedFavorites = localStorage.getItem('babyNameFavorites');
+            if (storedFavorites) {
+                try {
+                    favorites = JSON.parse(storedFavorites);
+                } catch (e) {
+                    console.error("Error parsing favorites from localStorage:", e);
+                    favorites = []; // Reset if parsing fails
+                }
+            } else {
+                favorites = [];
+            }
+            console.log('Favorites loaded:', favorites);
+        }
+
+        /** Saves the current favorites array to localStorage. */
+        function saveFavorites() {
+            try {
+                localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
+                console.log('Favorites saved:', favorites);
+            } catch (e) {
+                console.error("Error saving favorites to localStorage:", e);
+            }
+        }
+
+        /** Checks if a given name object (by ID) is in the favorites list. */
+        function isFavorite(nameObj) {
+            return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false;
+        }
+
+        /** Adds a name object to favorites if it's not already there. */
+        function addToFavorites(nameObj) {
+            if (nameObj && !isFavorite(nameObj)) {
+                favorites.push(nameObj);
+                saveFavorites();
+                // Update the save button in the main display if it's showing this name
+                const btnContainer = document.getElementById(`save-btn-container-${nameObj.id}`);
+                if(btnContainer) renderSaveButton(btnContainer, nameObj, true);
+                console.log('Added to favorites:', nameObj);
+            }
+        }
+
+        /** Removes a name from favorites by its ID. */
+        function removeFromFavorites(nameId) {
+            favorites = favorites.filter(fav => fav.id !== nameId);
+            saveFavorites();
+            displayFavoritesInPanel(); // Refresh the panel view
+            // Update the save button in the main display if it was showing the removed name
+            if (currentDisplayedName && currentDisplayedName.id === nameId) {
+                const btnContainer = document.getElementById(`save-btn-container-${nameId}`);
+                if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false);
+            }
+            console.log('Removed favorite with ID:', nameId);
+        }
+
+        /** Renders the list of favorite names in the side panel. */
         function displayFavoritesInPanel() {
-            favoritesPanelList.innerHTML = '';
+            if (!favoritesPanelList || !favoritesPanelPlaceholder) return;
+
+            favoritesPanelList.innerHTML = ''; // Clear previous list
             favoritesPanelPlaceholder.style.display = favorites.length === 0 ? 'block' : 'none';
 
+            // Add "Clear All" button if there are favorites
             if (favorites.length > 0) {
                 const clearAllBtn = document.createElement('button');
                 clearAllBtn.textContent = 'Clear All Favorites';
                 clearAllBtn.className = 'block mx-auto text-lg text-remove-button hover:text-remove-button-hover transition-colors underline btn-feedback mb-6';
-                clearAllBtn.onclick = () => { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) { const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`); if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false); } }};
+                clearAllBtn.onclick = () => {
+                    if (confirm('Are you sure you want to remove all favorite names?')) {
+                        favorites = [];
+                        saveFavorites();
+                        displayFavoritesInPanel(); // Refresh panel
+                        // Update save button if a name is currently displayed
+                        if (currentDisplayedName) {
+                            const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`);
+                            if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false);
+                        }
+                    }
+                };
                 favoritesPanelList.appendChild(clearAllBtn);
             }
 
+            // Create list items for each favorite
             favorites.forEach(fav => {
-                const itemDiv = document.createElement('div'); itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
+
                 const textDiv = document.createElement('div');
-                textDiv.innerHTML = `<strong class="text-xl block">${fav.name}</strong> <span class="text-base text-medium-gray block">${fav.meaning || ''}</span> <span class="text-sm text-gray-500 block mt-1"> Origin: ${fav.originNotes || fav.language} &bull; Pronunciation: ${fav.pronunciation || 'N/A'} &bull; Popularity: ${fav.popularity || 'N/A'} </span>`;
-                const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
-                const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                textDiv.innerHTML = `
+                    <strong class="text-xl block">${fav.name}</strong>
+                    <span class="text-base text-medium-gray block">${fav.meaning || 'Meaning not available.'}</span>
+                    <span class="text-sm text-gray-500 block mt-1">
+                        Origin: ${fav.originNotes || fav.language || 'N/A'} &bull;
+                        Pronunciation: ${fav.pronunciation || 'N/A'} &bull;
+                        Popularity: ${fav.popularity || 'N/A'}
+                    </span>`;
+
+                const buttonsDiv = document.createElement('div');
+                buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
+
+                // Copy button for favorite item
+                const copyBtn = document.createElement('button');
+                copyBtn.title = 'Copy Info';
+                copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
                 copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                copyBtn.onclick = (e) => { const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
-                const removeBtn = document.createElement('button'); removeBtn.title = 'Remove from Favorites'; removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback'; removeBtn.dataset.id = fav.id;
-                 removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
-                 removeBtn.onclick = () => removeFromFavorites(fav.id);
-                buttonsDiv.appendChild(copyBtn); buttonsDiv.appendChild(removeBtn); itemDiv.appendChild(textDiv); itemDiv.appendChild(buttonsDiv); favoritesPanelList.appendChild(itemDiv);
+                copyBtn.onclick = (e) => {
+                    const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language || 'N/A'}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`;
+                    copyToClipboard(textToCopy, e.currentTarget);
+                };
+
+                // Remove button for favorite item
+                const removeBtn = document.createElement('button');
+                removeBtn.title = 'Remove from Favorites';
+                removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback';
+                removeBtn.dataset.id = fav.id; // Store ID for removal
+                removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
+                removeBtn.onclick = () => removeFromFavorites(fav.id);
+
+                buttonsDiv.appendChild(copyBtn);
+                buttonsDiv.appendChild(removeBtn);
+                itemDiv.appendChild(textDiv);
+                itemDiv.appendChild(buttonsDiv);
+                favoritesPanelList.appendChild(itemDiv);
             });
         }
 
+        /** Toggles the visibility of the favorites panel. */
         function toggleFavoritesPanel() {
-             if (favoritesPanel.style.display === 'block') { favoritesPanel.style.display = 'none'; }
-             else { displayFavoritesInPanel(); favoritesPanel.style.display = 'block'; }
+             if (!favoritesPanel) return;
+             if (favoritesPanel.style.display === 'block') {
+                 favoritesPanel.style.display = 'none';
+             } else {
+                 displayFavoritesInPanel(); // Refresh content before showing
+                 favoritesPanel.style.display = 'block';
+             }
          }
 
+        // --- UI Rendering ---
+
+        /** Renders the Save/Saved button for a name result. */
         function renderSaveButton(container, nameObj, isSaved) {
-             if (!container) return; container.innerHTML = ''; const saveBtn = document.createElement('button');
-            saveBtn.title = isSaved ? 'Saved to Favorites' : 'Save to Favorites'; saveBtn.disabled = isSaved;
-            saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${ isSaved ? 'text-save-button cursor-not-allowed' : 'text-medium-gray hover:text-save-button' }`;
-            saveBtn.dataset.id = nameObj.id;
-            saveBtn.innerHTML = isSaved ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>`
-                                        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`;
-            if (!isSaved) { saveBtn.onclick = () => { addToFavorites(nameObj); }; } container.appendChild(saveBtn);
-        }
+             if (!container) return;
+             container.innerHTML = ''; // Clear previous button
+             const saveBtn = document.createElement('button');
+             saveBtn.title = isSaved ? 'Saved to Favorites (Click to Remove in Panel)' : 'Save to Favorites';
+             saveBtn.disabled = isSaved; // Disable if already saved
+             saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${
+                 isSaved ? 'text-save-button cursor-default' : 'text-medium-gray hover:text-save-button' // Different style/cursor if saved
+             }`;
+             saveBtn.dataset.id = nameObj.id; // Store name ID
 
+             // Set icon based on saved state
+             saveBtn.innerHTML = isSaved
+                 ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` // Checkmark icon
+                 : `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart icon
+
+             // Add click listener only if not already saved
+             if (!isSaved) {
+                 saveBtn.onclick = () => { addToFavorites(nameObj); };
+             }
+
+             container.appendChild(saveBtn);
+         }
+
+        /** Populates the language dropdown and enables controls. */
         function loadAndPrepareData() {
+            if (!languageSelect || !controlsFieldset || !generateBtn) return;
+
+            // Get unique languages from the database and sort them
             const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
-            languageSelect.innerHTML = '';
-             const anyOption = document.createElement('option'); anyOption.value = "any"; anyOption.textContent = "Any Language"; languageSelect.appendChild(anyOption);
-            languages.forEach(lang => { const option = document.createElement('option'); option.value = lang; option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); languageSelect.appendChild(option); });
-            selectedLanguage = languageSelect.value;
-            controlsFieldset.disabled = false; generateBtn.disabled = false; dataLoaded = true;
-            const loadingMsg = document.getElementById('loading-message'); if(loadingMsg) loadingMsg.remove();
+            languageSelect.innerHTML = ''; // Clear existing options
+
+            // Add "Any Language" option first
+            const anyOption = document.createElement('option');
+            anyOption.value = "any"; // Use 'any' or '' consistently
+            anyOption.textContent = "Any Language";
+            languageSelect.appendChild(anyOption);
+
+            // Add options for each unique language
+            languages.forEach(lang => {
+                const option = document.createElement('option');
+                option.value = lang;
+                option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); // Capitalize
+                languageSelect.appendChild(option);
+            });
+
+            selectedLanguage = languageSelect.value; // Set initial selected language state
+
+            // Enable controls now that data is ready
+            controlsFieldset.disabled = false;
+            generateBtn.disabled = false;
+            dataLoaded = true;
+
+            // Hide loading message and show initial placeholder if they exist
+            const loadingMsg = document.getElementById('loading-message');
+            if(loadingMsg) loadingMsg.remove();
             if(initialMessage) initialMessage.style.display = 'block';
-            displayFeaturedName();
+
+            displayFeaturedName(); // Show a featured name
         }
 
+        /** Displays a random name in the featured section. */
         function displayFeaturedName() {
-            if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
-                if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
-                return;
-            }
-            const randomIndex = Math.floor(Math.random() * nameDatabase.length);
-            const featuredName = nameDatabase[randomIndex];
-            featuredNameContent.innerHTML = `
-                <h3 class="text-3xl text-dark-text font-semibold mb-1">${featuredName.name}</h3>
-                <p class="text-base text-dark-text italic mb-2">${featuredName.meaning || 'Meaning not available.'}</p>
-                <p class="text-sm text-medium-gray">
-                    Origin: ${featuredName.originNotes || featuredName.language} &bull;
-                    Popularity: ${featuredName.popularity || 'N/A'}
-                </p>
-            `;
-        }
+             if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
+                 if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
+                 return;
+             }
+             // Select a random name from the database
+             const randomIndex = Math.floor(Math.random() * nameDatabase.length);
+             const featuredName = nameDatabase[randomIndex];
 
+             // Update the featured name section content
+             featuredNameContent.innerHTML = `
+                 <h3 class="text-3xl text-dark-text font-semibold mb-1">${featuredName.name}</h3>
+                 <p class="text-base text-dark-text italic mb-2">${featuredName.meaning || 'Meaning not available.'}</p>
+                 <p class="text-sm text-medium-gray">
+                     Origin: ${featuredName.originNotes || featuredName.language || 'N/A'} &bull;
+                     Popularity: ${featuredName.popularity || 'N/A'}
+                 </p>
+             `;
+         }
+
+        // --- Event Listeners Setup ---
         function setupEventListeners() {
+            // Update state when generator controls change
             genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
             languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
             lengthRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedLength = event.target.value; }); });
-            firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim(); });
+            firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim().toUpperCase(); event.target.value = selectedFirstLetter; }); // Force uppercase
             styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
 
+            // Generate Name Button Click
             generateBtn.addEventListener('click', () => {
-                if (!dataLoaded) return;
-                nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`;
-                currentDisplayedName = null;
-                if(initialMessage) initialMessage.style.display = 'none';
+                if (!dataLoaded) return; // Don't run if data isn't ready
 
+                // Show loading indicator
+                if(nameOutput) nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`;
+                currentDisplayedName = null; // Reset current name
+                if(initialMessage) initialMessage.style.display = 'none'; // Hide placeholder
+                if(resultsMessage) resultsMessage.style.display = 'none'; // Hide previous messages
+
+                // Determine the target style category based on the slider
                 const targetStyleCategory = getStyleCategory(selectedStyle);
 
+                // Filter the database based on current selections
                 const filteredNames = nameDatabase.filter(item => {
                     const languageMatch = selectedLanguage === 'any' || item.language === selectedLanguage;
+                    // Gender matching logic (handles 'any', specific genders, and 'neutral' mapping to 'any')
                     const genderMatch = selectedGender === 'any' ||
                                         item.gender === selectedGender ||
-                                        (selectedGender === 'neutral' && item.gender === 'any') ||
-                                        item.gender === 'any';
+                                        (selectedGender === 'neutral' && item.gender === 'any') || // Treat 'neutral' request as 'any' gender in data
+                                        item.gender === 'any'; // Names marked 'any' match all gender requests
                     const itemStyleCategory = getStyleCategory(item.styleScore);
-                    const styleMatch = itemStyleCategory === targetStyleCategory;
-                    const letterMatch = selectedFirstLetter === '' || item.name.toLowerCase().startsWith(selectedFirstLetter.toLowerCase());
+                    const styleMatch = itemStyleCategory === targetStyleCategory; // Match exact style category
+                    const letterMatch = selectedFirstLetter === '' || item.name.toUpperCase().startsWith(selectedFirstLetter);
                     const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
+
                     return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
                 });
 
+                // Simulate network delay/processing time
                 setTimeout(() => {
-                    nameOutput.innerHTML = '';
+                    if (!nameOutput) return;
+                    nameOutput.innerHTML = ''; // Clear loading indicator
+
                     if (filteredNames.length > 0) {
+                        // Pick a random name from the filtered list
                         const randomIndex = Math.floor(Math.random() * filteredNames.length);
                         currentDisplayedName = filteredNames[randomIndex];
 
-                        const resultDiv = document.createElement('div'); resultDiv.className = 'result-item fade-in relative';
+                        // Create the result display elements
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'result-item fade-in relative p-4 rounded-md bg-gray-50'; // Added padding/bg
+
                         const textDiv = document.createElement('div');
-                        textDiv.innerHTML = `<h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3> <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p> <p class="text-base text-medium-gray mt-2"> <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language} <br> <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br> <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'} </p> <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>`;
-                        const buttonsDiv = document.createElement('div'); buttonsDiv.className = 'absolute top-1 right-1 flex items-center gap-2';
-                        const saveBtnContainer = document.createElement('div'); saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
-                        const copyBtn = document.createElement('button'); copyBtn.title = 'Copy Info'; copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                        textDiv.innerHTML = `
+                            <h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3>
+                            <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
+                            <p class="text-base text-medium-gray mt-2">
+                                <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'} <br>
+                                <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br>
+                                <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'}
+                            </p>
+                            <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>
+                        `;
+
+                        // Create container for action buttons (Save, Copy)
+                        const buttonsDiv = document.createElement('div');
+                        buttonsDiv.className = 'absolute top-2 right-2 flex items-center gap-2'; // Position buttons top-right
+
+                        // Save button container (rendered by function)
+                        const saveBtnContainer = document.createElement('div');
+                        saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; // Unique ID for updating
+                        renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
+
+                        // Copy button
+                        const copyBtn = document.createElement('button');
+                        copyBtn.title = 'Copy Info';
+                        copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
                         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                        copyBtn.onclick = (e) => { const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`; copyToClipboard(textToCopy, e.currentTarget); };
-                        buttonsDiv.appendChild(saveBtnContainer); buttonsDiv.appendChild(copyBtn); resultDiv.appendChild(textDiv); resultDiv.appendChild(buttonsDiv); nameOutput.appendChild(resultDiv);
+                        copyBtn.onclick = (e) => {
+                            const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`;
+                            copyToClipboard(textToCopy, e.currentTarget);
+                        };
+
+                        buttonsDiv.appendChild(saveBtnContainer);
+                        buttonsDiv.appendChild(copyBtn);
+                        resultDiv.appendChild(textDiv);
+                        resultDiv.appendChild(buttonsDiv);
+                        nameOutput.appendChild(resultDiv);
+
                     } else {
-                        nameOutput.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or removing the first letter?</p>`;
+                        // No names found message
+                        if(resultsMessage) {
+                            resultsMessage.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or other filters?</p>`;
+                            resultsMessage.style.display = 'block';
+                        }
                         currentDisplayedName = null;
-                         if(initialMessage) initialMessage.style.display = 'none';
+                        if(initialMessage) initialMessage.style.display = 'none'; // Keep placeholder hidden
                     }
-                }, 300);
+                }, 300); // Simulate delay
             });
 
-            hamburgerBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('open');
-            });
+            // Hamburger Menu Toggle
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                });
+            }
 
-             document.addEventListener('click', (event) => {
+            // Close Mobile Menu when clicking outside
+            document.addEventListener('click', (event) => {
                  if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
                      mobileMenu.classList.remove('open');
                  }
              });
 
-             menuFavoritesBtn.addEventListener('click', () => {
-                 toggleFavoritesPanel();
-                 if (mobileMenu) mobileMenu.classList.remove('open');
-             });
+            // Open Favorites from Mobile Menu
+            if (menuFavoritesBtn) {
+                menuFavoritesBtn.addEventListener('click', () => {
+                     toggleFavoritesPanel();
+                     if (mobileMenu) mobileMenu.classList.remove('open'); // Close mobile menu
+                 });
+            }
 
-             favoritesPanelList.addEventListener('click', (event) => {
-                 const removeButton = event.target.closest('button[title="Remove from Favorites"]');
-                 if (removeButton && removeButton.dataset.id) { removeFromFavorites(removeButton.dataset.id); }
-                 const clearButton = event.target.closest('button');
-                 if (clearButton && clearButton.textContent === 'Clear All Favorites') { if (confirm('Are you sure?')) { favorites = []; saveFavorites(); displayFavoritesInPanel(); if (currentDisplayedName) renderSaveButton(document.getElementById(`save-btn-container-${currentDisplayedName.id}`), currentDisplayedName, false); } }
-             });
-            closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+            // Event delegation for removing favorites from the panel
+            if (favoritesPanelList) {
+                favoritesPanelList.addEventListener('click', (event) => {
+                    // Check if the click was on a remove button
+                    const removeButton = event.target.closest('button[title="Remove from Favorites"]');
+                    if (removeButton && removeButton.dataset.id) {
+                        removeFromFavorites(removeButton.dataset.id);
+                    }
+                    // Check if the click was on the "Clear All" button (handled within displayFavoritesInPanel now)
+                });
+            }
 
+            // Close Favorites Panel Button
+            if (closeFavoritesBtn) {
+                closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+            }
         }
 
+        // --- Initialization ---
+        // Run setup when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
-             loadFavorites();
-             loadAndPrepareData();
-             updateSliderFeedback();
-             setupEventListeners();
-             if(favoritesPanel) favoritesPanel.style.display = 'none';
-        });
+             loadFavorites();        // Load saved favorites first
+             loadAndPrepareData();   // Populate dropdowns, enable controls
+             updateSliderFeedback(); // Set initial slider text
+             setupEventListeners();  // Attach all event listeners
+             if(favoritesPanel) favoritesPanel.style.display = 'none'; // Ensure panel is hidden initially
+         });
+
     </script>
 
 </body>
