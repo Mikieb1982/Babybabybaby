@@ -24,7 +24,6 @@
         li { margin-bottom: 0.5rem; }
         .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
-        /* Hamburger Menu Styles */
         #mobile-menu {
             position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
             background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -44,35 +43,33 @@
 
         .blog-post-summary-container:hover {
             background-color: #f9fafb;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07); /* Slightly stronger shadow */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
         }
         .blog-post-summary-container {
             transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            position: relative; /* Needed for absolute positioning of badge */
+            position: relative;
         }
 
-        /* Tag Styling */
         .tag {
             display: inline-block;
-            background-color: #e0e7ff; /* Indigo-100 */
-            color: #4338ca; /* Indigo-700 */
-            font-size: 0.75rem; /* text-xs */
+            background-color: #e0e7ff;
+            color: #4338ca;
+            font-size: 0.75rem;
             font-weight: 500;
             padding: 0.1rem 0.6rem;
-            border-radius: 9999px; /* rounded-full */
+            border-radius: 9999px;
             margin-right: 0.3rem;
             margin-bottom: 0.3rem;
         }
-        /* Featured Post Styling */
         .featured-post {
-             background-color: #fef3c7; /* Amber-100 */
-             border-top: 3px solid #f59e0b; /* Amber-500 */
+             background-color: #fef3c7;
+             border-top: 3px solid #f59e0b;
         }
         .featured-badge {
             position: absolute;
             top: -10px;
             left: -10px;
-            background-color: #f59e0b; /* Amber-500 */
+            background-color: #f59e0b;
             color: white;
             font-size: 0.7rem;
             font-weight: bold;
@@ -94,8 +91,8 @@
               'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
               'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
               'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'indigo-100': '#e0e7ff', 'indigo-700': '#4338ca', /* Tag colors */
-              'amber-100': '#fef3c7', 'amber-500': '#f59e0b' /* Featured colors */
+              'indigo-100': '#e0e7ff', 'indigo-700': '#4338ca',
+              'amber-100': '#fef3c7', 'amber-500': '#f59e0b'
             }
           }
         }
@@ -128,18 +125,15 @@
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    {/* Blog Title Image */}
     <img src="assets/blog.png" alt="Naming Tips & Ideas Blog Title Image" class="mx-auto mb-4 w-full max-w-3xl h-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/768x150/F5F5DC/374151?text=Blog+Title';">
     <p class="text-center text-lg text-medium-gray max-w-xl mx-auto mb-6">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
 
-    {/* Search Bar */}
     <div class="max-w-xl mx-auto mb-10">
         <input type="search" id="blog-search" placeholder="Search blog posts..." class="w-full p-3 border border-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent" style="font-family: 'Times New Roman', Times, serif;">
     </div>
 
     <main id="blog-list-container" class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-6">
 
-        {/* Featured Post - Song Names */}
         <article class="blog-post-summary-container p-4 rounded-lg featured-post">
              <div class="featured-badge">Featured</div>
              <div class="flex justify-between items-start gap-4 mb-2">
@@ -165,7 +159,6 @@
 
          <hr class="border-t border-dashed border-accent-muted-light">
 
-        {/* Middle Name Post */}
         <article class="blog-post-summary-container p-4 rounded-lg">
             <div class="flex justify-between items-start gap-4 mb-2">
                 <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
@@ -336,5 +329,3 @@
 
 </body>
 </html>
-
-The blog.png image is now used as the main title graphic, and the "Song Names" post is highlighted as the featured article at the top of the list.
