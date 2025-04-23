@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - The Stork Name Drop</title>
+    <title>The Stork Name Drop - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -22,12 +22,8 @@
         h1, h2, h3 { font-weight: bold; }
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
-        /* Hamburger Menu Styles */
         #mobile-menu {
             position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
             background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
@@ -45,6 +41,43 @@
         #mobile-menu nav { position: relative; z-index: 2; }
         #hamburger-btn { z-index: 41; }
 
+        .blog-post-summary-container:hover {
+            background-color: #f9fafb;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+        .blog-post-summary-container {
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #4338ca;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.1rem 0.6rem;
+            border-radius: 9999px;
+            margin-right: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .featured-post {
+             background-color: #fef3c7;
+             border-top: 3px solid #f59e0b;
+        }
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background-color: #f59e0b;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transform: rotate(-5deg);
+        }
+
     </style>
     <script>
       tailwind.config = {
@@ -58,6 +91,8 @@
               'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
               'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
               'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
+              'indigo-100': '#e0e7ff', 'indigo-700': '#4338ca',
+              'amber-100': '#fef3c7', 'amber-500': '#f59e0b'
             }
           }
         }
@@ -90,48 +125,153 @@
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">About The Stork Name Drop</h1>
+    <img src="assets/blog.png" alt="Naming Tips & Ideas Blog Title Image" class="mx-auto mb-4 w-full max-w-3xl h-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/768x150/F5F5DC/374151?text=Blog+Title';">
+    <p class="text-center text-lg text-medium-gray max-w-xl mx-auto mb-6">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
 
-            <div class="space-y-4 text-base md:text-lg leading-relaxed">
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-4 mb-3">Our Mission</h2>
-                <p>
-                    Welcome to The Stork Name Drop! We believe finding the perfect name for your baby should be an inspiring and enjoyable process. Our mission is to provide a comprehensive and easy-to-use tool that helps parents-to-be explore a world of names, discover meanings and origins, and find a name that truly resonates.
-                </p>
+    <div class="max-w-xl mx-auto mb-10">
+        <input type="search" id="blog-search" placeholder="Search blog posts..." class="w-full p-3 border border-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent" style="font-family: 'Times New Roman', Times, serif;">
+    </div>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-4 mb-3">How It Works</h2>
-                <p>
-                    Our name generator allows you to filter names by language/origin, gender preference, name length, and even stylistic preference – from timeless classics to unique modern choices. Save your favorites as you go and explore our blog for tips, trends, and naming inspiration.
-                </p>
-                 {/* Placeholder paragraph removed */}
+    <main id="blog-list-container" class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-6">
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-4 mb-3">Get In Touch</h2>
-                 <p>
-                    Have questions, suggestions, or just want to say hello? We'd love to hear from you! You can reach us at:
-                    <a href="mailto:thestorknamedrop@gmail.com" class="text-button-active hover:text-button-active-hover font-semibold">thestorknamedrop@gmail.com</a>
-                </p>
-
+        <article class="blog-post-summary-container p-4 rounded-lg featured-post">
+             <div class="featured-badge">Featured</div>
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/song.html">What's in a Song Name? Musical Monikers</a>
+                </h2>
+                 <a href="blog/song.html" class="flex-shrink-0 block">
+                    <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
+                </a>
             </div>
-
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: April 23, 2025</p>
+                 <div class="mb-3">
+                    <span class="tag">Trends</span>
+                    <span class="tag">Unique</span>
+                    <span class="tag">Ideas</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
         </article>
+
+         <hr class="border-t border-dashed border-accent-muted-light">
+
+        <article class="blog-post-summary-container p-4 rounded-lg">
+            <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                    <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                </h2>
+                <a href="blog/middle.html" class="flex-shrink-0 block">
+                    <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: April 21, 2025</p>
+                <div class="mb-3">
+                    <span class="tag">Tips</span>
+                    <span class="tag">Meanings</span>
+                    <span class="tag">Tradition</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <hr class="border-t border-dashed border-accent-muted-light">
+
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                </h2>
+                 <a href="blog/german2025.html" class="flex-shrink-0 block">
+                    <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: April 15, 2025</p>
+                 <div class="mb-3">
+                    <span class="tag">Trends</span>
+                    <span class="tag">German</span>
+                    <span class="tag">Popular</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices, see what names are topping the charts... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <hr class="border-t border-dashed border-accent-muted-light">
+
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
+                </h2>
+                 <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
+                    <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: April 10, 2025</p>
+                 <div class="mb-3">
+                    <span class="tag">Unique</span>
+                    <span class="tag">English</span>
+                    <span class="tag">Ideas</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Looking for a name that stands out from the crowd? Dive into a curated list of unique English names, exploring their origins and meanings for inspiration... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <hr class="border-t border-dashed border-accent-muted-light">
+
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
+                </h2>
+                 <a href="blog/nickname.html" class="flex-shrink-0 block">
+                    <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: April 22, 2025</p>
+                 <div class="mb-3">
+                    <span class="tag">Tips</span>
+                    <span class="tag">Nicknames</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+        <div id="no-results-message" class="text-center text-medium-gray italic py-6 hidden">
+            No blog posts match your search.
+        </div>
+
     </main>
 
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
-         <p>
-            <a href="aboutus.html" class="hover:text-dark-text underline">About Us</a> |
-            <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
-            <a href="blog.html" class="hover:text-dark-text underline">Blog</a>
-        </p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
+        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
 
     <script>
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
+        const blogSearchInput = document.getElementById('blog-search');
+        const blogListContainer = document.getElementById('blog-list-container');
+        const blogPosts = blogListContainer.querySelectorAll('.blog-post-summary-container');
+        const noResultsMessage = document.getElementById('no-results-message');
 
         if (hamburgerBtn && mobileMenu) {
             hamburgerBtn.addEventListener('click', () => {
@@ -145,6 +285,46 @@
              });
         }
 
+        if (blogSearchInput && blogPosts.length > 0) {
+            blogSearchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value.toLowerCase().trim();
+                let postsFound = false;
+
+                blogPosts.forEach(post => {
+                    const titleElement = post.querySelector('h2 a');
+                    const summaryElement = post.querySelector('p:last-of-type');
+                    const tags = Array.from(post.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+
+                    const postTitle = titleElement ? titleElement.textContent.toLowerCase() : '';
+                    const postSummary = summaryElement ? summaryElement.textContent.toLowerCase() : '';
+                    const postText = postTitle + ' ' + postSummary + ' ' + tags;
+
+                    if (postText.includes(searchTerm)) {
+                        post.style.display = 'block';
+                        const hr = post.previousElementSibling;
+                        if(hr && hr.tagName === 'HR') hr.style.display = 'block';
+                        postsFound = true;
+                    } else {
+                        post.style.display = 'none';
+                        const hr = post.previousElementSibling;
+                        if(hr && hr.tagName === 'HR') hr.style.display = 'none';
+                    }
+                });
+
+                if (noResultsMessage) {
+                    noResultsMessage.style.display = postsFound ? 'none' : 'block';
+                }
+
+                 const firstVisiblePost = blogListContainer.querySelector('.blog-post-summary-container:not([style*="display: none"])');
+                 if (firstVisiblePost) {
+                     const firstVisibleHr = firstVisiblePost.previousElementSibling;
+                     if(firstVisibleHr && firstVisibleHr.tagName === 'HR') {
+                         firstVisibleHr.style.display = 'none';
+                     }
+                 }
+
+            });
+        }
     </script>
 
 </body>
