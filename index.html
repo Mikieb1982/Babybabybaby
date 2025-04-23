@@ -142,12 +142,23 @@
         .result-item {
             padding-bottom: 1rem; /* 16px */
             margin-bottom: 1rem; /* 16px */
-            /* Add border if needed: border-bottom: 1px solid #E5E7EB; */
+            /* Add a subtle bottom border */
+            border-bottom: 1px solid #E5E7EB; /* Gray 200 */
         }
+         /* Remove border from the last result item */
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
         .favorite-item {
             border-bottom: 1px dashed #94a3b8; /* Slate 400 dashed border */
             padding-bottom: 1rem; /* 16px */
             margin-bottom: 1rem; /* 16px */
+            display: flex; /* Use flexbox for alignment */
+            justify-content: space-between; /* Space out name and button */
+            align-items: center; /* Vertically align items */
         }
         /* Remove border from the last favorite item */
         .favorite-item:last-child {
@@ -176,16 +187,326 @@
             transform: scale(0.98); /* Slightly shrink */
             box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Inner shadow */
         }
-        /* --- End of provided style snippet --- */
+        /* Specific styles for primary button */
+        .btn-primary {
+            background-color: #475569; /* Slate 600 */
+            color: white;
+            border-color: #475569;
+        }
+        .btn-primary:hover:not(:disabled) {
+            background-color: #334155; /* Slate 700 */
+        }
+        /* Specific styles for secondary/outline button */
+        .btn-secondary {
+            background-color: white;
+            color: #475569; /* Slate 600 */
+            border-color: #94a3b8; /* Slate 400 */
+        }
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #f8fafc; /* Slate 50 */
+            border-color: #475569; /* Slate 600 */
+        }
+         /* Specific styles for small danger button (like remove) */
+        .btn-danger-sm {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            background-color: #fef2f2; /* Red 50 */
+            color: #dc2626; /* Red 600 */
+            border-color: #fecaca; /* Red 300 */
+            border-radius: 0.375rem; /* 6px */
+        }
+        .btn-danger-sm:hover:not(:disabled) {
+             background-color: #fee2e2; /* Red 100 */
+             color: #b91c1c; /* Red 700 */
+             border-color: #fca5a5; /* Red 400 */
+        }
 
     </style>
 </head>
-<body class="p-4 md:p-8"> <h1 class="text-2xl font-semibold mb-6 text-center">The Stork Name Drop</h1>
+<body class="p-4 md:p-8"> <div class="max-w-4xl mx-auto bg-white/90 p-6 md:p-8 rounded-lg shadow-lg">
 
-    <div class="max-w-4xl mx-auto bg-white/80 p-6 rounded-lg shadow-md">
-        <p class="text-center text-gray-600">Generator controls and results will appear here.</p>
-        </div>
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-semibold text-slate-700">The Stork Name Drop</h1>
+            <p class="text-slate-500 mt-1">Baby Name Generator &amp; Ideas</p>
+        </header>
 
-    </body>
+        <form id="name-generator-form" class="mb-8 space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Gender:</label>
+                    <div class="flex items-center space-x-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="any" checked class="mr-2"> Any
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="boy" class="mr-2"> Boy
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="gender" value="girl" class="mr-2"> Girl
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="starting-letter" class="block text-sm font-medium text-gray-700 mb-1">Starting Letter (Optional):</label>
+                    <input type="text" id="starting-letter" name="starting-letter" maxlength="1" placeholder="e.g., A" class="uppercase">
+                     <p class="text-xs text-gray-500 mt-1">Enter a single letter.</p>
+                </div>
+
+                <div>
+                     <label for="name-style" class="block text-sm font-medium text-gray-700 mb-1">Name Style (Example):</label>
+                     <select id="name-style" name="name-style">
+                        <option value="any">Any Style</option>
+                        <option value="classic">Classic</option>
+                        <option value="modern">Modern</option>
+                        <option value="nature">Nature</option>
+                        <option value="unique">Unique</option>
+                     </select>
+                </div>
+
+                 <div>
+                    <label for="num-names" class="block text-sm font-medium text-gray-700 mb-1">Number of Names:</label>
+                    <input type="range" id="num-names" name="num-names" min="1" max="20" value="5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    <div class="text-center text-sm text-gray-600 mt-1">
+                        Generate <span id="num-names-value" class="font-semibold">5</span> names
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-4">
+                <button type="submit" id="generate-btn" class="btn btn-primary">
+                    Generate Names
+                </button>
+            </div>
+        </form>
+
+        <section id="results-section" class="mb-8">
+            <h2 class="text-xl font-semibold text-slate-600 mb-4 border-b pb-2">Generated Names</h2>
+            <div id="results-list" class="space-y-3">
+                <p class="text-slate-500 italic">Click "Generate Names" to see suggestions.</p>
+            </div>
+            <div id="loading-indicator" class="text-center py-4 hidden">
+                <p class="text-slate-500">Generating names...</p>
+                </div>
+        </section>
+
+        <section id="favorites-section">
+            <h2 class="text-xl font-semibold text-slate-600 mb-4 border-b pb-2">My Favorites</h2>
+            <div id="favorites-list" class="space-y-3">
+                <p id="no-favorites-msg" class="text-slate-500 italic">You haven't added any favorites yet.</p>
+            </div>
+        </section>
+
+    </div> <script>
+        // --- DOM Element References ---
+        const form = document.getElementById('name-generator-form');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultsList = document.getElementById('results-list');
+        const favoritesList = document.getElementById('favorites-list');
+        const noFavoritesMsg = document.getElementById('no-favorites-msg');
+        const startingLetterInput = document.getElementById('starting-letter');
+        const numNamesSlider = document.getElementById('num-names');
+        const numNamesValue = document.getElementById('num-names-value');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // --- Placeholder Name Data (Replace with actual data source/API) ---
+        const placeholderNames = {
+            boy: ["Liam", "Noah", "Oliver", "Elijah", "James", "William", "Benjamin", "Lucas", "Henry", "Theodore", "Arthur", "Leo", "Oscar", "Felix", "Jasper", "Milo", "August", "Finn", "Levi", "Ethan"],
+            girl: ["Olivia", "Emma", "Ava", "Charlotte", "Sophia", "Amelia", "Isabella", "Mia", "Evelyn", "Harper", "Luna", "Camila", "Gianna", "Elizabeth", "Eleanor", "Violet", "Aurora", "Hazel", "Chloe", "Penelope"],
+        };
+
+        // --- State ---
+        let favorites = JSON.parse(localStorage.getItem('babyNameFavorites')) || [];
+
+        // --- Functions ---
+
+        /**
+         * Generates a list of names based on form criteria.
+         * Uses placeholder data. Replace with real logic.
+         * @param {object} criteria - The user's selected criteria.
+         * @returns {string[]} An array of generated names.
+         */
+        function generateNames(criteria) {
+            console.log("Generating names with criteria:", criteria);
+            let possibleNames = [];
+            if (criteria.gender === 'boy' || criteria.gender === 'any') {
+                possibleNames = possibleNames.concat(placeholderNames.boy);
+            }
+            if (criteria.gender === 'girl' || criteria.gender === 'any') {
+                possibleNames = possibleNames.concat(placeholderNames.girl);
+            }
+
+            // Filter by starting letter (if provided)
+            if (criteria.startingLetter) {
+                possibleNames = possibleNames.filter(name => name.toUpperCase().startsWith(criteria.startingLetter));
+            }
+
+            // Filter by style (example - needs real implementation)
+            if (criteria.style !== 'any') {
+                // Placeholder: just show a message if a style is selected
+                console.log(`Filtering by style: ${criteria.style} (not implemented)`);
+                // In a real app, you'd filter based on tags associated with names
+            }
+
+            // Shuffle the array (simple Fisher-Yates shuffle)
+            for (let i = possibleNames.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [possibleNames[i], possibleNames[j]] = [possibleNames[j], possibleNames[i]];
+            }
+
+            // Return the requested number of names
+            return possibleNames.slice(0, criteria.numNames);
+        }
+
+        /**
+         * Displays the generated names in the results list.
+         * @param {string[]} names - Array of names to display.
+         */
+        function displayResults(names) {
+            resultsList.innerHTML = ''; // Clear previous results
+            if (names.length === 0) {
+                resultsList.innerHTML = '<p class="text-slate-500 italic">No names found matching your criteria.</p>';
+                return;
+            }
+
+            names.forEach((name, index) => {
+                const isFavorited = favorites.includes(name);
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'result-item flex justify-between items-center fade-in';
+                // Add a delay for staggered animation effect
+                resultDiv.style.animationDelay = `${index * 0.05}s`;
+
+                resultDiv.innerHTML = `
+                    <span class="text-lg">${name}</span>
+                    <button class="btn btn-secondary btn-sm add-favorite-btn ${isFavorited ? 'opacity-50 cursor-not-allowed' : ''}" data-name="${name}" ${isFavorited ? 'disabled' : ''}>
+                        ${isFavorited ? 'Favorited' : '♡ Favorite'}
+                    </button>
+                `;
+                resultsList.appendChild(resultDiv);
+            });
+
+             // Add event listeners to the newly created favorite buttons
+            document.querySelectorAll('.add-favorite-btn').forEach(button => {
+                button.addEventListener('click', handleAddFavorite);
+            });
+        }
+
+         /**
+         * Displays the list of favorited names.
+         */
+        function displayFavorites() {
+            favoritesList.innerHTML = ''; // Clear previous list
+            if (favorites.length === 0) {
+                noFavoritesMsg.style.display = 'block'; // Show the 'no favorites' message
+            } else {
+                noFavoritesMsg.style.display = 'none'; // Hide the message
+                favorites.forEach(name => {
+                    const favDiv = document.createElement('div');
+                    favDiv.className = 'favorite-item fade-in';
+                    favDiv.innerHTML = `
+                        <span class="text-lg">${name}</span>
+                        <button class="btn btn-danger-sm remove-favorite-btn" data-name="${name}">
+                            Remove
+                        </button>
+                    `;
+                    favoritesList.appendChild(favDiv);
+                });
+
+                 // Add event listeners to the newly created remove buttons
+                document.querySelectorAll('.remove-favorite-btn').forEach(button => {
+                    button.addEventListener('click', handleRemoveFavorite);
+                });
+            }
+        }
+
+        /**
+         * Saves the favorites list to local storage.
+         */
+        function saveFavorites() {
+            localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
+        }
+
+        /**
+         * Handles adding a name to the favorites list.
+         * @param {Event} event - The click event object.
+         */
+        function handleAddFavorite(event) {
+            const button = event.target;
+            const name = button.dataset.name;
+            if (name && !favorites.includes(name)) {
+                favorites.push(name);
+                saveFavorites();
+                displayFavorites(); // Update the favorites list display
+                // Disable the button and change text
+                button.disabled = true;
+                button.textContent = 'Favorited';
+                button.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+         /**
+         * Handles removing a name from the favorites list.
+         * @param {Event} event - The click event object.
+         */
+        function handleRemoveFavorite(event) {
+            const nameToRemove = event.target.dataset.name;
+            favorites = favorites.filter(name => name !== nameToRemove);
+            saveFavorites();
+            displayFavorites(); // Update the favorites list display
+            // Re-enable the corresponding 'Add Favorite' button in the results if it exists
+            const addButton = resultsList.querySelector(`.add-favorite-btn[data-name="${nameToRemove}"]`);
+            if (addButton) {
+                 addButton.disabled = false;
+                 addButton.textContent = '♡ Favorite';
+                 addButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+
+        // --- Event Listeners ---
+
+        // Handle form submission
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+            loadingIndicator.classList.remove('hidden'); // Show loading
+            resultsList.innerHTML = ''; // Clear previous results immediately
+            generateBtn.disabled = true; // Disable button during generation
+
+            // Simulate network delay/processing time
+            setTimeout(() => {
+                const formData = new FormData(form);
+                const criteria = {
+                    gender: formData.get('gender'),
+                    startingLetter: formData.get('starting-letter').toUpperCase(),
+                    style: formData.get('name-style'),
+                    numNames: parseInt(formData.get('num-names'), 10)
+                };
+
+                const generated = generateNames(criteria);
+                displayResults(generated);
+                loadingIndicator.classList.add('hidden'); // Hide loading
+                generateBtn.disabled = false; // Re-enable button
+            }, 300); // 300ms delay
+        });
+
+        // Validate starting letter input (only allow letters)
+        startingLetterInput.addEventListener('input', (event) => {
+            event.target.value = event.target.value.replace(/[^a-zA-Z]/g, '').toUpperCase();
+        });
+
+        // Update the number display when slider changes
+        numNamesSlider.addEventListener('input', (event) => {
+            numNamesValue.textContent = event.target.value;
+        });
+
+        // --- Initial Setup ---
+        // Display initial favorites on page load
+        displayFavorites();
+        // Set initial slider value display
+        numNamesValue.textContent = numNamesSlider.value;
+
+    </script>
+
+</body>
 </html>
 
