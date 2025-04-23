@@ -42,7 +42,7 @@
         #hamburger-btn { z-index: 41; }
 
         .blog-post-summary-container:hover {
-            background-color: #f9fafc;
+            background-color: #f9fafb;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .blog-post-summary-container {
@@ -94,8 +94,8 @@
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    {/* Replaced H1 text with blog.png image */}
-    <img src="assets/blog.png" alt="Naming Tips & Ideas Blog Title Image" class="mx-auto mb-4 h-24 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/400x100/F5F5DC/374151?text=Blog+Title';">
+    {/* Updated blog title image styling */}
+    <img src="assets/blog.png" alt="Naming Tips & Ideas Blog Title Image" class="mx-auto mb-4 w-full max-w-3xl h-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/768x150/F5F5DC/374151?text=Blog+Title';">
     <p class="text-center text-lg text-medium-gray max-w-xl mx-auto mb-10">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
 
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-6">
@@ -223,4 +223,4 @@
 </body>
 </html>
 
-The <h1> heading has been replaced with an <img> tag pointing to assets/blog.png. I've given it some basic styling (mx-auto mb-4 h-24 object-contain) to center it and control its size – you might need to adjust the height (h-24) depending on the actual dimensions and desired look of your blog.png image.
+The blog.png image now has w-full max-w-3xl h-auto classes, making it stretch to the width of the main content container while maintaining its aspect ratio.
