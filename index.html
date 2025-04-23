@@ -6,36 +6,186 @@
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* --- Base Body Styling --- */
         body {
+            /* Set default font */
             font-family: 'Times New Roman', Times, serif;
+            /* Add a subtle paper texture background */
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC;
-            font-size: 1rem;
+            /* Fallback background color */
+            background-color: #F5F5DC; /* Beige */
+            /* Base font size */
+            font-size: 1rem; /* 16px */
+            /* Line height for readability */
             line-height: 1.6;
-            color: #374151;
+            /* Default text color */
+            color: #374151; /* Cool Gray 700 */
         }
+
+        /* --- Form Element Styling --- */
         input[type="text"], select {
-             padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1rem; width: 100%; outline: none;
+             padding: 0.75rem; /* 12px */
+             border: 1px solid #6B7280; /* Gray 500 */
+             border-radius: 0.5rem; /* 8px */
+             background-color: #fff; /* White */
+             font-size: 1rem; /* 16px */
+             width: 100%;
+             outline: none; /* Remove default focus outline */
+             /* Smooth transitions for border and shadow */
              transition: border-color 0.2s ease, box-shadow 0.2s ease;
+             /* Ensure form elements use the same font */
              font-family: 'Times New Roman', Times, serif;
         }
-        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
-        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
-        input[type="radio"]:checked::before { transform: scale(1); }
-        input[type="radio"]:checked { border-color: #475569; }
-        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); }
-        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; }
-        .btn:active:not(:disabled) { transform: scale
+        /* Style for focused input/select */
+        input[type="text"]:focus, select:focus {
+            border-color: #60A5FA; /* Blue 400 */
+            box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); /* Blue focus ring */
+        }
+        /* Style for disabled elements */
+        input:disabled, select:disabled, button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* --- Range Input Styling --- */
+        /* Style the thumb (slider handle) for Webkit browsers (Chrome, Safari) */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Remove default appearance */
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #374151; /* Cool Gray 700 */
+            border-radius: 50%; /* Make it circular */
+            cursor: pointer;
+            border: 2px solid #FFF; /* White border */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Subtle shadow */
+        }
+        /* Style the thumb for Firefox */
+        input[type=range]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            background: #374151; /* Cool Gray 700 */
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #FFF;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* --- Radio Button Styling --- */
+        input[type="radio"] {
+            -webkit-appearance: none; /* Remove default appearance */
+            appearance: none;
+            background-color: #fff; /* White background */
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.1em;
+            height: 1.1em;
+            border: 1px solid #6B7280; /* Gray 500 */
+            border-radius: 50%; /* Circular */
+            transform: translateY(-0.075em); /* Align vertically */
+            display: inline-grid;
+            place-content: center; /* Center the inner dot */
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+        }
+        /* Inner dot for the radio button */
+        input[type="radio"]::before {
+            content: "";
+            width: 0.6em;
+            height: 0.6em;
+            border-radius: 50%;
+            transform: scale(0); /* Hidden by default */
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em #475569; /* Slate 600 color for the dot */
+        }
+        /* Show inner dot when checked */
+        input[type="radio"]:checked::before {
+            transform: scale(1);
+        }
+        /* Change border when checked */
+        input[type="radio"]:checked {
+            border-color: #475569; /* Slate 600 */
+        }
+        /* Focus style for radio buttons */
+        input[type="radio"]:focus {
+            outline: none;
+            border-color: #60A5FA; /* Blue 400 */
+            box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); /* Blue focus ring */
+        }
+
+        /* --- Select Dropdown Styling --- */
+        select {
+            appearance: none; /* Remove default dropdown arrow */
+            /* Custom dropdown arrow using SVG */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E');
+            background-repeat: no-repeat;
+            background-position: right 0.9em top 50%; /* Position arrow */
+            background-size: 0.7em auto; /* Size arrow */
+            cursor: pointer;
+            padding-right: 2.5em; /* Add space for the arrow */
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Class to apply the fade-in animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0; /* Start transparent */
+        }
+
+        /* --- Result & Favorite List Styling --- */
+        .result-item {
+            padding-bottom: 1rem; /* 16px */
+            margin-bottom: 1rem; /* 16px */
+            /* Add border if needed: border-bottom: 1px solid #E5E7EB; */
+        }
+        .favorite-item {
+            border-bottom: 1px dashed #94a3b8; /* Slate 400 dashed border */
+            padding-bottom: 1rem; /* 16px */
+            margin-bottom: 1rem; /* 16px */
+        }
+        /* Remove border from the last favorite item */
+        .favorite-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* --- Button Styling --- */
+        .btn {
+            padding: 0.6rem 1.2rem; /* Adjust padding */
+            border-radius: 0.5rem; /* 8px */
+            font-weight: normal; /* Changed from bold */
+            text-align: center;
+            /* Smooth transitions for interaction */
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            border-width: 1px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Subtle shadow */
+            font-size: 1rem; /* 16px */
+            /* Ensure buttons use the same font */
+            font-family: 'Times New Roman', Times, serif;
+        }
+        /* Style for button when pressed */
+        .btn:active:not(:disabled) {
+            transform: scale(0.98); /* Slightly shrink */
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Inner shadow */
+        }
+        /* --- End of provided style snippet --- */
+
+    </style>
+</head>
+<body class="p-4 md:p-8"> <h1 class="text-2xl font-semibold mb-6 text-center">The Stork Name Drop</h1>
+
+    <div class="max-w-4xl mx-auto bg-white/80 p-6 rounded-lg shadow-md">
+        <p class="text-center text-gray-600">Generator controls and results will appear here.</p>
+        </div>
+
+    </body>
+</html>
 
