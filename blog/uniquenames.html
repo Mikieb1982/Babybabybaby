@@ -1,65 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        /* Variables */
-        :root {
-            --soft-beige: #F5F5DC;
-            --dark-text: #374151;
-            --medium-gray: #6B7280;
-            --button-active: #60A5FA;
-            --button-active-hover: #3B82F6;
-            --button-inactive-hover-bg: #F9FAFB;
-            --button-inactive-hover-border: #1F2937;
-            --error-red: #EF4444;
-            --save-button: #34D399;
-            --save-button-hover: #059669;
-            --remove-button: #F87171;
-            --remove-button-hover: #DC2626;
-            --copy-button: #9CA3AF;
-            --copy-button-hover: #4B5563;
-            --accent-muted: #64748b;
-            --accent-muted-light: #cbd5e1;
-            --off-white: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-400: #94a3b8;
-        }
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: var(--soft-beige);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--dark-text);
-        }
-        /* Links */
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--button-active-hover); text-decoration: underline; }
-        main a { color: var(--dark-text); }
-        main a:hover { color: var(--medium-gray); }
-        /* Headings */
-        h1, h2, h3, h4 { font-weight: bold; }
-        /* Lists */
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: var(--slate-100); font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        /* Paragraphs */
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exploring Unique and Uncommon Names</title>
-    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Tailwind config copied for color consistency
+        tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
+              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
+              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
+              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
+              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
+              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
+            }
+          }
+        }
+      }
+    </script>
+        <style>
+        body {\n        font-family: 'Times New Roman', Times, serif; /* Replace with your preferred font */\n        background-image: url('https://www.transparenttextures.com/patterns/paper.png');\n        background-repeat: repeat;\n        background-color: var(--soft-beige);\n        font-size: 1rem;\n        line-height: 1.6;\n        color: var(--dark-text);\n    }\n    /* Links */\n    a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }\n    a:hover { color: var(--button-active-hover); text-decoration: underline; }\n    main a { color: var(--dark-text); }\n    main a:hover { color: var(--medium-gray); }\n    /* Headings */\n    h1, h2, h3, h4 { font-weight: bold; }\n    /* Lists */\n    ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }\n    ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }\n    li { margin-bottom: 0.5rem; }\n    /* Tables */\n    table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }\n    th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }\n    th { background-color: var(--slate-100); font-weight: bold; }\n    .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }\n    /* Paragraphs */\n    p { margin-bottom: 1rem; }\n    h1 { margin-bottom: 0.75rem; }\n    h2 { margin-top: 2rem; margin-bottom: 1rem; }\n    h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }\n    h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }\n</style>\n</head>\n<body class=\"p-4 md:p-8\">\n\n    <header class=\"text-center mb-10\">\n        <a href=\"../index.html\" title=\"The Stork Name Drop Home\">\n            <img src=\"../assets/logo.png\" alt=\"The Stork Name Drop Logo\" class=\"mx-auto h-48 w-48 object-contain mb-3\" onerror=\"this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';\">\n        </a>\n    </header>\n\n    <hr class=\"border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14\">\n\n    <main class=\"max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm\">\n        <article>\n            <h1 class=\"text-3xl md:text-4xl text-dark-text mb-8 text-center\">Exploring Unique and Uncommon Names</h1>\n            <section id=\"introduction\" class=\"mb-8\">\n                <h2 class=\"text-2xl md:text-3xl text-dark-text mb-4\">Introduction</h2>\n                <p class=\"text-base md:text-lg leading-relaxed\">\n                    In a world full of traditional and common names, many parents are seeking something different for their children. Unique and uncommon names have risen in popularity as parents aim to give their children a name that stands out, reflects their individuality, and makes them feel special. This blog post explores the phenomenon of unique names and what it means to choose a name less traveled.\n                </p>\n            </section>\n\n            <section id=\"what-makes-unique\" class=\"mb-8\">\n                <h2 class=\"text-2xl md:text-3xl text-dark-text mb-4\">What Makes a Name Unique?</h2>\n                <p class=\"text-base md:text-lg leading-relaxed\">\n                    Uniqueness in a name can come from various aspects. It could be a name that is rarely heard, one with an unusual spelling, or one that comes from a lesser-known culture or language. Sometimes, it's a name that has been newly created or a vintage name that is experiencing a resurgence. A unique name often breaks away from mainstream trends and has a certain distinctiveness that sets it apart from the rest.\n                </p>\n            </section>\n\n            <section id=\"popular-unique-names\" class=\"mb-8\">\n                <h2 class=\"text-2xl md:text-3xl text-dark-text mb-4\">Popular Unique Names</h2>\n                <p class=\"text-base md:text-lg leading-relaxed\">\n                    While the term \"unique\" suggests rarity, there are names that have become increasingly popular while still maintaining a unique feel. Names like:\n                </p>\n                <ul class=\"list-disc list-inside text-base md:text-lg\">\n                    <li><b>Arlo</b>: A vintage name with a modern feel.</li>\n                    <li><b>Indigo</b>: A color name that is both beautiful and uncommon.</li>\n                    <li><b>Maverick</b>: A name that suggests independence and individuality.</li>\n                    <li><b>Juniper</b>: A nature name that is growing in popularity.</li>\n                </ul>\n            </section>\n\n            <section id=\"tips-for-choosing-unique\" class=\"mb-8\">\n                <h2 class=\"text-2xl md:text-3xl text-dark-text mb-4\">Tips for Choosing a Unique Name</h2>\n                <p class=\"text-base md:text-lg leading-relaxed\">\n                    Choosing a unique name can be exciting, but it's also important to consider certain aspects:\n                </p>\n                <ul class=\"list-disc list-inside text-base md:text-lg\">\n                    <li><b>Meaning</b>: Look up the meaning of the name to ensure it resonates with you.</li>\n                    <li><b>Pronunciation</b>: Make sure the name is easy to pronounce or that you're comfortable correcting people.</li>\n                    <li><b>Spelling</b>: Be aware that an unusual spelling may require constant correction.</li>\n                    <li><b>Flow</b>: Say the full name out loud to make sure it flows well.</li>\n                    <li><b>Initials</b>: Check that the initials don't spell out something inappropriate.</li>\n                    <li><b>Nicknames</b>: Consider possible nicknames, both positive and negative.</li>\n                    <li><b>Future</b>: Think about how the name will sound on a child, a teenager, and an adult.</li>\n                </ul>\n            </section>\n            <section id=\"social-sharing\" class=\"mt-8\">\n                <h2 class=\"text-2xl md:text-3xl text-dark-text mb-4\">Share This Post</h2>\n                <p class=\"text-base text-dark-text leading-relaxed mb-4\">Share this post!</p>\n                <div class=\"flex space-x-4\">\n                    <a href=\"https://www.facebook.com/sharer/sharer.php?u=[URL-TO-POST]\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Share on Facebook\" class=\"hover:text-button-active-hover transition-colors\">\n                        <svg class=\"h-8 w-8 text-button-active\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill-rule=\"evenodd\" d=\"M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z\" clip-rule=\"evenodd\" /></svg>\n                    </a>\n                    <a href=\"https://twitter.com/intent/tweet?url=[URL-TO-POST]&text=[POST-TITLE]\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Share on Twitter\" class=\"hover:text-button-active-hover transition-colors\">\n                        <svg class=\"h-8 w-8 text-button-active\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.34a11.616 11.616 0 006.29 1.84\" /></svg>\n                    </a>\n                    <a href=\"mailto:?subject=[POST-TITLE]&body=Check out this post: [URL-TO-POST]\" target=\"_blank\" rel=\"noopener noreferrer\" title=\"Share by Email\" class=\"hover:text-button-active-hover transition-colors\">\n                        <svg class=\"h-8 w-8 text-button-active\" fill=\"currentColor\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z\" /><path d=\"M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z\" /></svg>\n                    </a>\n                </div>\n            </section>\n             <div class=\"text-center mt-12\">\n                 <a href=\"../blog.html\" class=\"text-lg hover:text-dark-text underline\">&larr; Back to Blog Index</a>\n            </div>\n        </article>\n    </main>\n        <hr class=\"border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14\">\n        <footer class=\"text-center text-medium-gray text-base space-y-2 pb-8\">\n        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>\n        <p>\n            <a href=\"../index.html\" class=\"hover:text-dark-text underline\">Name Generator</a> |\n            <a href=\"../aboutus.html\" class=\"hover:text-dark-text underline\">About Us</a> |\n            <a href=\"../datasources.html\" class=\"hover:text-dark-text underline\">Data Sources</a> |\n            <a href=\"../blog.html\" class=\"hover:text-dark-text underline\">Blog</a> |\n            <a href=\"../affiliate.html\" class=\"hover:text-dark-text underline\">Recommendations</a>\n        </p>\n    </footer>\n</body>\n</html>
 </head>
 <body class="">
      
