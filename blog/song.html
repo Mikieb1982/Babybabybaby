@@ -1,119 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Metadata -->
     <meta charset="UTF-8">
-    <style>
-        /* Variables */
-        :root {
-            --soft-beige: #F5F5DC;
-            --dark-text: #374151;
-            --medium-gray: #6B7280;
-            --button-active: #60A5FA;
-            --button-active-hover: #3B82F6;
-            --button-inactive-hover-bg: #F9FAFB;
-            --button-inactive-hover-border: #1F2937;
-            --error-red: #EF4444;
-            --save-button: #34D399;
-            --save-button-hover: #059669;
-            --remove-button: #F87171;
-            --remove-button-hover: #DC2626;
-            --copy-button: #9CA3AF;
-            --copy-button-hover: #4B5563;
-            --accent-muted: #64748b;
-            --accent-muted-light: #cbd5e1;
-            --off-white: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-400: #94a3b8;
-        }
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: var(--soft-beige);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--dark-text);
-        }
-        /* Links */
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--button-active-hover); text-decoration: underline; }
-        main a { color: var(--dark-text); }
-        main a:hover { color: var(--medium-gray); }
-        /* Headings */
-        h1, h2, h3, h4 { font-weight: bold; }
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What's in a Song Name? Musical Monikers - The Stork Name Drop Blog</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Custom Styles -->
-        /* Lists */
-    <style>
-        /* Base styles */
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            /* Corrected background path */
-    
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #374151; /* dark-text */
-        }
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../style.css">
+        <style>
+            /* Variables */
+            :root {
+                --soft-beige: #F5F5DC;
+                --dark-text: #374151;
+                --medium-gray: #6B7280;
+                --button-active: #60A5FA;
+                --button-active-hover: #3B82F6;
+                --button-inactive-hover-bg: #F9FAFB;
+                --button-inactive-hover-border: #1F2937;
+                --error-red: #EF4444;
+                --save-button: #34D399;
+                --save-button-hover: #059669;
+                --remove-button: #F87171;
+                --remove-button-hover: #DC2626;
+                --copy-button: #9CA3AF;
+                --copy-button-hover: #4B5563;
+                --accent-muted: #64748b;
+                --accent-muted-light: #cbd5e1;
+                --off-white: #f8fafc;
+                --slate-100: #f1f5f9;
+                --slate-400: #94a3b8;
+            }
+            body {
+                font-family: 'Times New Roman', Times, serif;
+                background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+                background-repeat: repeat;
+                background-color: var(--soft-beige);
+                font-size: 1rem;
+                line-height: 1.6;
+                color: var(--dark-text);
+            }
+            /* Links */
+            a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: var(--button-active-hover); text-decoration: underline; }
+            main a { color: var(--dark-text); }
+            main a:hover { color: var(--medium-gray); }
+            /* Headings */
+            h1, h2, h3, h4 { font-weight: bold; }
+        </style>
 
-        /* Links */
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
 
-        /* Headings */
-        h1, h2, h3, h4 { font-weight: bold; }
-
-        /* Lists */
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid #94a3b8; /* slate-400 */ padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: #f1f5f9; /* slate-100 */ font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: var(--slate-100); font-weight: bold; }
-
-        /* Responsive table */
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-
-        /* Margins */
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-
-        /* Hamburger Menu Styles */
-        #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
-                       background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-                       padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out;
-                       transform: translateX(100%); overflow: hidden; isolation: isolate; }
-        #mobile-menu.open { transform: translateX(0); } /* Open class */
-        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%;
-                               transform: translateX(-50%); width: 120px; height: 120px;
-                               background-image: url('../assets/stork.png');
-                               background-repeat: no-repeat; background-position: center;
-                               background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; }
-        #mobile-menu nav { position: relative; z-index: 2; } /* Navigation */
-        #hamburger-btn { z-index: 41; } /* Hamburger button */
-    </style>
 
     <!-- Tailwind config for color consistency -->
     <script>
@@ -146,8 +84,10 @@
         }
     </script>
 </head>
+
 <body class="p-4 md:p-8">
 
+    <!-- --- Header --- -->
     <header class="text-center mb-10 relative">
         <a href="../index.html" title="The Stork Name Drop Home">
             <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
@@ -159,21 +99,22 @@
                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
              </svg>
         </button>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu">
-        <nav class="relative z-10 space-y-4 pt-8">
-             <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>             
-             <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
-             <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-             <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-             <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-             <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
-        </nav>
-    </div>
-
-
+    
+        <!-- Mobile Menu Content (Hidden by default) -->
+        <div id="mobile-menu-content" class="hidden">
+          <nav class="relative z-10 space-y-4 pt-8">
+            <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
+            <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
+            <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+            <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
+            <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+            <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+            <a href="../affiliate.html"
+               class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+          </nav>
+        </div>
+      </header>
+      
     <!-- Separator -->
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
@@ -181,7 +122,7 @@
     <!-- Main Content -->
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
         <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">What's in a Song Name? Tuning Into Musical Monikers for Your Mini-Me</h1>
+            <h1 class="text-3xl md:text-4xl text-dark-text mb-2 text-center">What's in a Song Name? Tuning Into Musical Monikers for Your Mini-Me</h1>
 
             <img src="../assets/song.png"
                  alt="Illustration depicting a musical note and a baby's block, representing the connection between music and baby names"
@@ -307,14 +248,13 @@
             <!-- Social Sharing Section -->
             <section class="mt-12">
                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Share This Post</h2>
-                <p>Share this post!</p>
-                <div class="flex space-x-4 mt-2">
-                    <a href="#" class="flex items-center space-x-2 hover:underline">
-                        <img src="../assets/facebook.png" alt="Facebook" class="h-6 w-6">
+                <div class="flex justify-center space-x-4 mt-2">
+                    <a href="#" class="flex items-center space-x-2 hover:underline hover:text-dark-text">
+                        <img src="../assets/facebook.png" alt="Facebook" class="h-6 w-6 object-contain">
                         <span>Facebook</span>
                     </a>
-                    <a href="#" class="flex items-center space-x-2 hover:underline">
-                        <img src="../assets/twitter.png" alt="Twitter" class="h-6 w-6">
+                    <a href="#" class="flex items-center space-x-2 hover:underline hover:text-dark-text">
+                        <img src="../assets/twitter.png" alt="Twitter" class="h-6 w-6 object-contain">
                         <span>Twitter</span>
                     </a>
                     <a href="#" class="flex items-center space-x-2 hover:underline">
@@ -330,15 +270,13 @@
         </article>        
     </main>
 
-
-    <!-- Separator -->
+    <!-- --- Footer Separator --- -->
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-
-    <!-- Footer -->
+    <!-- --- Footer --- -->
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
         <p>
-            <a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> |
+            <a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> |            
             <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> |
             <a href="../blog.html" class="hover:text-dark-text underline">Blog</a> |
             <a href="../affiliate.html" class="hover:text-dark-text underline">Recommendations</a>
@@ -347,23 +285,24 @@
     </footer>
 
 
-    <!-- Script -->
+    <!-- --- JavaScript --- -->
     <script>
-        // --- DOM Element References ---\
-        const hamburgerBtn = document.getElementById('hamburger-btn'); /* Mobile button */
-        const mobileMenu = document.getElementById('mobile-menu'); /* Mobile Menu */
-
-        // Hamburger Menu Toggle
-        if (hamburgerBtn && mobileMenu) {            
-            hamburgerBtn.addEventListener('click', () => {                
-                mobileMenu.classList.toggle('open');                
-            });
-
-             document.addEventListener('click', (event) => {                
-                 if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
-                     mobileMenu.classList.remove('open');
-                 }
-             });
+        // --- DOM Elements ---\
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
+    
+        // --- Mobile Menu Toggle ---\
+        if (hamburgerBtn && mobileMenu) {
+          hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+          });
+    
+          // --- Close Mobile Menu on Outside Click ---\
+          document.addEventListener('click', (event) => {
+            if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+            }
+          });
         }
     </script>
 
