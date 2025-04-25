@@ -1,6 +1,6 @@
-v 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -19,13 +19,13 @@ v
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
-          apiKey: "AIzaSyDJaAq0xNhnU8eyP4iGZ6MqRRwnGxxx7tQ",
-          authDomain: "the-stork-name-drop.firebaseapp.com",
-          projectId: "the-stork-name-drop",
-          storageBucket: "the-stork-name-drop.firebasestorage.app",
-          messagingSenderId: "616266125527",
-          appId: "1:616266125527:web:b05f995e65909c5ddfa092",
-          measurementId: "G-4XRWLH02JP"
+            apiKey: "AIzaSyDJaAq0xNhnU8eyP4iGZ6MqRRwnGxxx7tQ",
+            authDomain: "the-stork-name-drop.firebaseapp.com",
+            projectId: "the-stork-name-drop",
+            storageBucket: "the-stork-name-drop.firebasestorage.app",
+            messagingSenderId: "616266125527",
+            appId: "1:616266125527:web:b05f995e65909c5ddfa092",
+            measurementId: "G-4XRWLH02JP"
         };
 
         // Initialize Firebase
@@ -46,32 +46,46 @@ v
     </script>
 
 </head>
-<body >
 
-<div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-[#f8fafc] shadow-lg p-6 z-40 transform translate-x-full">
-    <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
-    <nav class="relative z-10 space-y-4 pt-8" aria-label="Mobile Menu">
-        <a href="index.html" class="block text-lg text-dark-text hover:underline text-center" aria-label="Home">Home</a>
-        <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-        <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
-        <a href="blog/middlenames.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-        <a href="affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-        <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
-    </nav>
-  </div>
+<body>
 
-   <header class="text-center mb-4 relative mt-12 container mx-auto">
-       <!-- Large Logo in Header -->
-       <div class="w-full mx-auto p-4 md:p-8 flex justify-center items-center">
-           <a href="index.html" title="The Stork Name Drop Home" class="flex items-center"> <img src="assets/logo.png" alt="The Stork Name Drop Logo - A stylized stork carrying a name tag" class="h-48 w-48 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';"> </a>
-       </div>
-       <!-- Mobile Hamburger Button (duplicated from nav for sticky positioning) -->
-       <button id="header-hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-[#cbd5e1] transition btn-feedback z-30 bg-[#f8fafc]/75 backdrop-blur-sm shadow" aria-label="Open Menu">
-           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#374151]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-           </svg>
-       </button>
-   </header>    
+    <div id="mobile-menu"
+        class="fixed top-0 right-0 h-full w-64 bg-[#f8fafc] shadow-lg p-6 z-40 transform translate-x-full">
+        <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
+        <nav class="relative z-10 space-y-4 pt-8" aria-label="Mobile Menu">
+            <a href="index.html" class="block text-lg text-dark-text hover:underline text-center"
+                aria-label="Home">Home</a>
+            <a href="index.html#generator-controls"
+                class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+            <button id="menu-favorites-btn"
+                class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
+            <a href="blog/middlenames.html"
+                class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+            <a href="affiliate.html"
+                class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+            <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+        </nav>
+    </div>
+
+    <header class="text-center mb-4 relative mt-12 container mx-auto">
+        <!-- Large Logo in Header -->
+        <div class="w-full mx-auto p-4 md:p-8 flex justify-center items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="flex items-center"> <img src="assets/logo.png"
+                    alt="The Stork Name Drop Logo - A stylized stork carrying a name tag"
+                    class="h-48 w-48 object-contain"
+                    onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+            </a>
+        </div>
+        <!-- Mobile Hamburger Button (duplicated from nav for sticky positioning) -->
+        <button id="header-hamburger-btn" title="Open Menu"
+            class="fixed top-4 right-4 p-2 rounded-md hover:bg-[#cbd5e1] transition btn-feedback z-30 bg-[#f8fafc]/75 backdrop-blur-sm shadow"
+            aria-label="Open Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#374151]" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+    </header>
 
     <section id="showcase" class="container mx-auto py-12 text-center">
         <h1 class="text-4xl md:text-5xl font-bold text-[#374151] mb-4">Find the ideal name</h1>
@@ -87,60 +101,85 @@ v
         <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
             <legend class="sr-only">Name Generation Controls</legend>
             <section id="gender-selection">
-                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
-                 <div >
-                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
-                 </div>
-             </section>
-
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <section id="language-selection">
-                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Language/Origin:</label>
-                     <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select> </section>
-                 <section id="letter-filter">
-                     <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Starts with:</label>
-                     <div id="first-letter-inputs" class="flex space-x-2 flex-wrap"></div>
-                </section>
-             </div>
-
-             <section id="length-filter">
-                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
-                 <div >
-                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                   <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
+                <div>
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any"
+                            checked class="mr-2"> <label for="gender-any"
+                            class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy"
+                            class="mr-2"> <label for="gender-boy"
+                            class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl"
+                            class="mr-2"> <label for="gender-girl"
+                            class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender"
+                            value="neutral" class="mr-2"> <label for="gender-neutral"
+                            class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
                 </div>
-             </section>
+            </section>
 
-             <section id="style-slider">
-                 <div class="flex justify-between items-center mb-2">
-                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-[#374151]">Name Style:</h2>
-                     <span id="slider-feedback" class="text-[#6B7280] text-base md:text-lg">Balanced</span> </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <section id="language-selection">
+                    <label for="language-select"
+                        class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Language/Origin:</label>
+                    <select id="language-select" name="language" class="text-base">
+                        <option value="">Loading Languages...</option>
+                    </select> </section>
+                <section id="letter-filter">
+                    <label for="first-letter-input"
+                        class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Starts
+                        with:</label>
+                    <div id="first-letter-inputs" class="flex space-x-2 flex-wrap"></div>
+                </section>
+            </div>
+
+            <section id="length-filter">
+                <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
+                <div>
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any"
+                            checked class="mr-2"> <label for="length-any"
+                            class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short"
+                            class="mr-2"> <label for="length-short"
+                            class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length"
+                            value="medium" class="mr-2"> <label for="length-medium"
+                            class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long"
+                            class="mr-2"> <label for="length-long"
+                            class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
+                </div>
+            </section>
+
+            <section id="style-slider">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-[#374151]">Name Style:</h2>
+                    <span id="slider-feedback" class="text-[#6B7280] text-base md:text-lg">Balanced</span>
+                </div>
                 <div class="flex items-center justify-between text-[#6B7280] mb-3 text-base md:text-lg">
                     <span>Traditional</span>
-                     <span>Unique</span>
-                 </div>
-                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-[#cbd5e1] rounded-lg appearance-none cursor-pointer">
-             </section>
+                    <span>Unique</span>
+                </div>
+                <input id="style-range" type="range" min="0" max="100" value="50"
+                    class="w-full h-2 bg-[#cbd5e1] rounded-lg appearance-none cursor-pointer">
+            </section>
 
-             <div class="text-center pt-6">
-                 <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button> </div>
+            <div class="text-center pt-6">
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm"
+                    disabled>Generate Name</button> </div>
         </fieldset>
 
         <section id="sort-filter">
-            <label for="sort-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Sort by:</label>
+            <label for="sort-select"
+                class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Sort by:</label>
             <select id="sort-select" name="sort" class="text-base">
                 <option value="date-added">Date Added</option>
                 <option value="name-asc">Name (A-Z)</option>
                 <option value="name-desc">Name (Z-A)</option>
                 <option value="style">Style</option>
-             </select>
+            </select>
         </section>
-                
+
         <section id="filter-names-section" class="mt-12">
             <hr class="border-t border-dashed border-[#cbd5e1] my-10">
             <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Filter Names</h2>
@@ -152,16 +191,24 @@ v
         </section>
 
 
-        <section id="results-section" class="mt-12"> <hr class="border-t border-dashed border-[#cbd5e1] my-10"> <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Generated Name</h2>
-            <div id="results-container"> <div id="result-display" class="content-area text-[#374151] font-base text-base px-4 py-4 rounded-lg border-[#374151] border-2 shadow-md mt-4"> <p id="results-placeholder" class="text-center text-[#6B7280] text-lg italic">Click "Generate Name" to see a result.</p> </div>
-              <p id="results-message" class="text-center text-[#6B7280] mt-4 text-lg" style="display: none;"></p> 
-              <div id="loading-indicator" class="loader" style="display: none;"></div> </div>
+        <section id="results-section" class="mt-12">
+            <hr class="border-t border-dashed border-[#cbd5e1] my-10">
+            <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Generated Name</h2>
+            <div id="results-container">
+                <div id="result-display"
+                    class="content-area text-[#374151] font-base text-base px-4 py-4 rounded-lg border-[#374151] border-2 shadow-md mt-4">
+                    <p id="results-placeholder" class="text-center text-[#6B7280] text-lg italic">Click "Generate Name"
+                        to see a result.</p>
+                </div>
+                <p id="results-message" class="text-center text-[#6B7280] mt-4 text-lg" style="display: none;"></p>
+                <div id="loading-indicator" class="loader" style="display: none;"></div>
+            </div>
         </section>
         <section id="related-names-section" class="mt-12">
             <hr class="border-t border-dashed border-[#cbd5e1] my-10">
             <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Related Names</h2>
             <div id="related-names-container">
-                
+
             </div>
         </section>
 
@@ -169,115 +216,203 @@ v
             <hr class="border-t border-dashed border-[#cbd5e1] my-10">
             <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Famous Namesakes</h2>
             <div id="famous-namesakes-container">
-                
+
             </div>
         </section>
     </main>
     <div class="pt-12 w-full mx-auto border-b-2 border-[#374151]"></div>
 
 
-    <section id="featured-name-section-moved" class="my-12 max-w-xl mx-auto text-center bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-md">
-       <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
-       <div id="featured-name-content-moved" class="text-center">
-            <p class="text-[#6B7280] italic">Loading featured name...</p> </div>
-    </section>    
+    <section id="featured-name-section-moved"
+        class="my-12 max-w-xl mx-auto text-center bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-md">
+        <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
+        <div id="featured-name-content-moved" class="text-center">
+            <p class="text-[#6B7280] italic">Loading featured name...</p>
+        </div>
+    </section>
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
     <section id="latest-posts" class="my-12 max-w-4xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
+        <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
         <div class="space-y-8">
             <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                <div class="flex justify-between items-start gap-4 mb-2"> 
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/uniquenames.html" class="hover:text-[#6B7280]">Exploring Unique and Uncommon Names</a>
-                     </h3>
-                     <a href="blog/uniquenames.html" class="flex-shrink-0 block"> <img src="assets/uniquenames.png" alt="Choosing unique names concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';"> </a>
-               </div>
-                <div>
-                     <p class="text-sm text-[#6B7280] mb-2">May 10, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Looking for a distinctive name? Explore the beauty of unique and uncommon names, and find the perfect one for your baby... <a href="blog/uniquenames.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/uniquenames.html" class="hover:text-[#6B7280]">Exploring Unique and Uncommon
+                            Names</a>
+                    </h3>
+                    <a href="blog/uniquenames.html" class="flex-shrink-0 block"> <img src="assets/uniquenames.png"
+                            alt="Choosing unique names concept image" class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                    </a>
                 </div>
-           </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
-                <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> <a href="blog/middle.html">Choosing the Perfect Middle Name</a> </h3>
+                <div>
+                    <p class="text-sm text-[#6B7280] mb-2">May 10, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Looking for a distinctive name? Explore the beauty
+                        of unique and uncommon names, and find the perfect one for your baby... <a
+                            href="blog/uniquenames.html"
+                            class="text-button-active hover:text-button-active-hover font-semibold">Read More
+                            &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
+                    </h3>
                     <a href="blog/middle.html" class="flex-shrink-0 block">
-                        <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
-                   </a>
-               </div>
-               <div>
-                    <p class="text-sm text-[#6B7280] mb-2">April 21, 2025</p>
-                    <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-               </div>
-           </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
-                <div class="flex justify-between items-start gap-4 mb-2">
-                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> <a href="blog/genderneutral.html">Exploring Gender-Neutral Names</a> </h3>
-                     <a href="blog/genderneutral.html" class="flex-shrink-0 block"> <img src="assets/genderneutral.png" alt="Choosing gender-neutral names concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';"> </a>
-               </div>
-                <div>
-                     <p class="text-sm text-medium-gray mb-2">May 1, 2025</p>
-                     <p class="text-base text-dark-text leading-snug">Dive into the world of gender-neutral names, exploring their versatility, meanings, and why they're becoming increasingly popular... <a href="blog/genderneutral.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
+                        <img src="assets/middle.png" alt="Choosing middle name concept image"
+                            class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
+                    </a>
                 </div>
-           </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
+                <div>
+                    <p class="text-sm text-[#6B7280] mb-2">April 21, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well?
+                        Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a
+                            href="blog/middle.html"
+                            class="text-button-active hover:text-button-active-hover font-semibold">Read More
+                            &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
                 <div class="flex justify-between items-start gap-4 mb-2">
-                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                         <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/genderneutral.html">Exploring Gender-Neutral Names</a>
+                    </h3>
+                    <a href="blog/genderneutral.html" class="flex-shrink-0 block"> <img src="assets/genderneutral.png"
+                            alt="Choosing gender-neutral names concept image"
+                            class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';">
+                    </a>
+                </div>
+                <div>
+                    <p class="text-sm text-medium-gray mb-2">May 1, 2025</p>
+                    <p class="text-base text-dark-text leading-snug">Dive into the world of gender-neutral names,
+                        exploring their versatility, meanings, and why they're becoming increasingly popular... <a
+                            href="blog/genderneutral.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read
+                            More &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                        <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                     </h3>
                     <a href="blog/german2025.html" class="flex-shrink-0 block">
-                        <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
-                   </a>
-               </div>
-               <div>
+                        <img src="assets/german2025.png" alt="German flag or related concept image"
+                            class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
+                    </a>
+                </div>
+                <div>
                     <p class="text-sm text-[#6B7280] mb-2">April 15, 2025</p>
-                    <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-               </div>
-           </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
+                    <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names.
+                        From timeless classics making a comeback to newly popular choices... <a
+                            href="blog/german2025.html"
+                            class="text-button-active hover:text-button-active-hover font-semibold">Read More
+                            &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
                 <div class="flex justify-between items-start gap-4 mb-2">
-                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                         <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                     </h3>
                     <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                        <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
-                   </a>
-               </div>
-               <div>
-                    <p class="text-sm text-[#6B7280] mb-2">April 10, 2025</p> 
-                    <p class="text-base text-[#374151] leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
-               </div>
-           </article>
-           <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow"> <a href="blog/nickname.html" class="hover:text-[#6B7280]">Nicknames: Fun, Affectionate & Practical</a> </h3> <a href="blog/nickname.html" class="flex-shrink-0 block"> <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';"> </a> </div> <div> <p class="text-sm text-[#6B7280] mb-2">April 22, 2025</p> <p class="text-base text-[#374151] leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
-              </div> </article>
-           <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow"> <a href="blog/song.html" class="hover:text-[#6B7280]">What's in a Song Name? Musical Monikers</a> </h3> <a href="blog/song.html" class="flex-shrink-0 block"> <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';"> </a> </div> <div> <p class="text-sm text-[#6B7280] mb-2">April 23, 2025</p> <p class="text-base text-[#374151] leading-snug">Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
-               </div>
-           </article>
+                        <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas"
+                            class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                    </a>
+                </div>
+                <div>
+                    <p class="text-sm text-[#6B7280] mb-2">April 10, 2025</p>
+                    <p class="text-base text-[#374151] leading-snug">Looking for a name that stands out? Dive into a
+                        curated list of unique English names, exploring their origins and meanings... <a
+                            href="blog/uniqueeng.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More
+                            &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow">
+                        <a href="blog/nickname.html" class="hover:text-[#6B7280]">Nicknames: Fun, Affectionate &
+                            Practical</a>
+                    </h3>
+                    <a href="blog/nickname.html" class="flex-shrink-0 block"> <img src="assets/nickname.png"
+                            alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
+                    </a>
+                </div>
+                <div>
+                    <p class="text-sm text-[#6B7280] mb-2">April 22, 2025</p>
+                    <p class="text-base text-[#374151] leading-snug">Beyond the formal first name, nicknames add warmth
+                        and familiarity. Explore the world of nicknames, from common diminutives to unique terms of
+                        endearment... <a href="blog/nickname.html"
+                            class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
+                </div>
+            </article>
+            <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2">
+                    <h3
+                        class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow">
+                        <a href="blog/song.html" class="hover:text-[#6B7280]">What's in a Song Name? Musical
+                            Monikers</a>
+                    </h3>
+                    <a href="blog/song.html" class="flex-shrink-0 block"> <img src="assets/song.png"
+                            alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
+                    </a>
+                </div>
+                <div>
+                    <p class="text-sm text-[#6B7280] mb-2">April 23, 2025</p>
+                    <p class="text-base text-[#374151] leading-snug">Music has power, and so do names! Explore the
+                        trend of naming babies after beloved songs, the stories behind iconic musical names, and the
+                        pros and cons... <a href="blog/song.html"
+                            class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
+                </div>
+            </article>
         </div>
         <div class="text-center mt-8">
-        <a href="blog/middlenames.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
-      </div>
+            <a href="blog/middlenames.html" class="text-lg hover:text-dark-text underline">More Blog Posts
+                &rarr;</a>
+        </div>
     </section>
     <section id="newsletter-signup" class="my-12 max-w-3xl mx-auto text-center">
         <h2 class="text-2xl md:text-3xl font-semibold text-[#374151] mb-4">Stay Updated</h2>
         <p class="text-lg text-[#6B7280] mb-6">Get the latest name trends and tips straight to your inbox!</p>
         <div class="mx-auto">
-            <input type="email" placeholder="Enter your email" class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3">
+            <input type="email" placeholder="Enter your email"
+                class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3">
             <button class="btn btn-primary">Subscribe</button>
-      </div>
+        </div>
     </section>
 
-    <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
+    <aside id="favorites-panel" style="display: none;"
+        class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
         <div class="max-w-2xl mx-auto bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-lg relative">
-            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-[#cbd5e1] transition btn-feedback">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#374151]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+            <button id="close-favorites-btn" title="Close Favorites"
+                class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-[#cbd5e1] transition btn-feedback">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#374151]" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
             </button>
-        <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-8 text-center">Favorite Names</h2>
-            <div id="favorites-panel-list" class="space-y-6"> <p id="favorites-panel-placeholder" class="text-center text-[#6B7280] text-lg italic">No favorites saved yet.</p> </div>
+            <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-8 text-center">Favorite Names</h2>
+            <div id="favorites-panel-list" class="space-y-6">
+                <p id="favorites-panel-placeholder" class="text-center text-[#6B7280] text-lg italic">No favorites saved
+                    yet.</p>
+            </div>
         </div>
     </aside>
-    
-    <hr class="border-t border-dashed border-[#cbd5e1] max-w-4xl mx-auto mt-12 mb-8"> 
+
+    <hr class="border-t border-dashed border-[#cbd5e1] max-w-4xl mx-auto mt-12 mb-8">
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
 
         <!-- Footer Links -->
@@ -316,596 +451,3 @@ v
         let dataLoaded = true; // Assume data is loaded for this static example
         dataLoaded = false;
         // ------------------------------------------------------------------------------------------------------------------------ //
-        const controlsFieldset = document.getElementById('generator-controls');
-        const genderRadios = document.querySelectorAll('input[name="gender"]');
-        const languageSelect = document.getElementById('language-select');
-        const lengthRadios = document.querySelectorAll('input[name="length"]');
-        const firstLetterInput = document.getElementById('first-letter-input');
-        const styleSlider = document.getElementById('style-range');
-        const generateBtn = document.getElementById('generate-btn');
-        const nameOutput = document.getElementById('result-display');
-        const initialMessage = document.getElementById('results-placeholder');
-        const resultsMessage = document.getElementById('results-message');
-        const sliderFeedback = document.getElementById('slider-feedback');
-        const favoritesPanel = document.getElementById('favorites-panel');
-        const favoritesPanelList = document.getElementById('favorites-panel-list');
-        const favoritesPanelPlaceholder = document.getElementById('favorites-panel-placeholder');
-        const closeFavoritesBtn = document.getElementById('close-favorites-btn');
-        const loadingIndicator = document.getElementById('loading-indicator');
-        const featuredNameContent = document.getElementById('featured-name-content-moved');
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const headerHamburgerBtn = document.getElementById('header-hamburger-btn');
-        const favoritesBtn = document.getElementById('favorites-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const sortSelect = document.getElementById('sort-select');
-        const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
-
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        // --- Application State ---
-        let selectedGender       = 'any';
-        let selectedLanguage     = ''; // Set after languages load
-        let selectedLength       = 'any';
-        let selectedFirstLetter  = '';
-        let selectedStyle        = 50;
-        let selectedSort = 'none';
-        let currentDisplayedName = null;    // Stores the currently shown name object
-        let displayedNamesCounter = 0;
-        let filteredNames = [];
-        let favorites            = [];      // Array to hold favorite name objects
-        let favoritesSortAsc     = true;    // Sorting direction for favorites (future use)
-        // ------------------------------------------------------------------------------------------------------------------------ //
-
-        // --- Utility Functions ---
-
-        /** Calculates a descriptive style category based on a numeric score (0-100). */
-        function getStyleCategory(value) {
-            if (value < 20) return 'Very Traditional';
-            if (value < 40) return 'Traditional';
-            if (value < 61) return 'Balanced';
-            if (value < 81) return 'Unique';
-            return 'Very Unique';
-        }
-
-        /** Updates the text feedback next to the style slider. */
-        function updateSliderFeedback() {
-            if (sliderFeedback) {
-                sliderFeedback.textContent = getStyleCategory(selectedStyle);
-            }
-        }
-
-        /** Copies provided text to the clipboard and gives feedback on the button. */
-        function copyToClipboard(text, buttonElement) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalHTML = buttonElement.innerHTML;
-                buttonElement.innerHTML = 'Copied!';
-                buttonElement.classList.add('text-save-button'); // Use save color for success
-                buttonElement.disabled = true;
-                setTimeout(() => {
-                    buttonElement.innerHTML = originalHTML; 
-                    buttonElement.classList.remove('text-save-button');
-                    buttonElement.disabled = false;
-                }, 1500); // Revert after 1.5 seconds
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                const originalHTML = buttonElement.innerHTML;
-                buttonElement.innerHTML = 'Error';
-                buttonElement.classList.add('text-error-red'); // Use error color
-                setTimeout(() => {
-                    buttonElement.innerHTML = originalHTML;
-                    buttonElement.classList.remove('text-error-red');
-                }, 1500);
-            });
-        }   
-
-        /** Determines the length category ('short', 'medium', 'long') of a name. */
-        function getLengthCategory(name) {
-            const len = name.length;
-            if (len <= 5) return 'short'; // Adjusted boundary
-            if (len <= 8) return 'medium'; // Adjusted boundary
-            return 'long';
-        }
-
-        /** Adds a new input field for an additional starting letter to the name filter. */
-        function addLetterInput() {
-            const container = document.getElementById('first-letter-inputs');
-            const newInput = document.createElement('input');
-            newInput.type = 'text';
-
-            newInput.id = "first-letter-input";
-            newInput.maxLength = 1;
-            newInput.placeholder = 'Letter';
-            newInput.className = 'text-base border border-gray-300 rounded-md px-2 py-1';
-            newInput.addEventListener('input', (event) => event.target.value = event.target.value.trim().toUpperCase());
-            container.appendChild(newInput);
-        }
-
-        // ------------------------------------------------------------------------------------------------------------------------ //
-
-        /** Loads favorites from localStorage. */
-        function loadFavorites() {
-            const storedFavorites = localStorage.getItem('babyNameFavorites');
-            if (storedFavorites) {
-                try {
-                    favorites = JSON.parse(storedFavorites);
-                } catch (e) {
-                    console.error("Error parsing favorites from localStorage:", e);
-                    favorites = []; // Reset if parsing fails
-                }
-            } else {
-                favorites = [];
-            }
-            console.log('Favorites loaded:', favorites);
-        }
-
-        /** Saves the current favorites array to localStorage. */
-        function saveFavorites() {
-            try {
-                localStorage.setItem('babyNameFavorites', JSON.stringify(favorites));
-                console.log('Favorites saved:', favorites);
-            } catch (e) {
-                console.error("Error saving favorites to localStorage:", e);
-            }
-        }
-
-        /** Checks if a given name object (by ID) is in the favorites list. */
-        function isFavorite(nameObj) {
-            return nameObj ? favorites.some(fav => fav.id === nameObj.id) : false;
-        }
-
-        /** Adds a name object to favorites if it's not already there. */
-        function addToFavorites(nameObj) {
-            if (nameObj && !isFavorite(nameObj)) {
-                favorites.push(nameObj);
-                saveFavorites();
-                // Update the save button in the main display if it's showing this name
-                const btnContainer = document.getElementById(`save-btn-container-${nameObj.id}`);
-                if(btnContainer) renderSaveButton(btnContainer, nameObj, true);
-                console.log('Added to favorites:', nameObj);
-            }
-        }
-
-        /** Removes a name from favorites by its ID. */
-        function removeFromFavorites(nameId) {
-            favorites = favorites.filter(fav => fav.id !== nameId);
-            saveFavorites();
-            displayFavoritesInPanel(); // Refresh the panel view
-            // Update the save button in the main display if it was showing the removed name
-            if (currentDisplayedName && currentDisplayedName.id === nameId) {
-                const btnContainer = document.getElementById(`save-btn-container-${nameId}`);
-                if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false);
-            }
-            console.log('Removed favorite with ID:', nameId);
-        }
-
-        /** Renders the list of favorite names in the side panel. */
-        function displayFavoritesInPanel() {
-            if (!favoritesPanelList || !favoritesPanelPlaceholder) return;
-
-            favoritesPanelList.innerHTML = ''; // Clear previous list
-            favoritesPanelPlaceholder.style.display = favorites.length === 0 ? 'block' : 'none';
-
-            // Add "Clear All" button if there are favorites
-            if (favorites.length > 0) {
-                const clearAllBtn = document.createElement('button');
-                clearAllBtn.textContent = 'Clear All Favorites';
-                clearAllBtn.className = 'block mx-auto text-lg text-[#F87171] hover:text-[#DC2626] transition-colors underline btn-feedback mb-6';
-                clearAllBtn.onclick = () => { 
-                    if (confirm('Are you sure you want to remove all favorite names?')) {
-                        favorites = [];
-                        saveFavorites();
-                        displayFavoritesInPanel(); // Refresh panel
-                       // Update save button if a name is currently displayed
-                        if (currentDisplayedName) {
-                            const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`); 
-                            if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false);
-                        }
-                    }
-                };
-                favoritesPanelList.appendChild(clearAllBtn);
-            }
-
-            // Create list items for each favorite
-            favorites.forEach(fav => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'favorite-item flex flex-col sm:flex-row justify-between sm:items-start py-4 gap-3';
-
-                const textDiv = document.createElement('div');
-                textDiv.innerHTML = `
-                    <strong class="text-xl block">${fav.name}</strong>
-                    <span class="text-base text-[#6B7280] block">${fav.meaning || 'Meaning not available.'}</span>
-                    <span class="text-sm text-gray-500 block mt-1">
-                        Origin: ${fav.originNotes || fav.language || 'N/A'} &bull; 
-                        Pronunciation: ${fav.pronunciation || 'N/A'} &bull;
-                        Popularity: ${fav.popularity || 'N/A'}
-                    </span>`;
-
-                const buttonsDiv = document.createElement('div');
-                buttonsDiv.className = 'flex items-center gap-3 mt-2 sm:mt-0 flex-shrink-0';
-
-                // Copy button for favorite item
-                const copyBtn = document.createElement('button');
-                copyBtn.title = 'Copy Info';
-                copyBtn.className = 'btn-icon text-[#9CA3AF] hover:text-[#4B5563] transition-colors btn-feedback';
-                copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                copyBtn.onclick = (e) => {
-                    const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language || 'N/A'}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`;
-                    copyToClipboard(textToCopy, e.currentTarget);
-                }; 
-
-                // Remove button for favorite item
-                const removeBtn = document.createElement('button');
-                removeBtn.title = 'Remove from Favorites';     
-                removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback';
-                removeBtn.dataset.id = fav.id; // Store ID for removal
-                removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
-                removeBtn.onclick = () => removeFromFavorites(fav.id);
-
-                buttonsDiv.appendChild(copyBtn);
-                buttonsDiv.appendChild(removeBtn);
-                itemDiv.appendChild(textDiv);
-                itemDiv.appendChild(buttonsDiv);
-                favoritesPanelList.appendChild(itemDiv);
-            });
-        }
-
-        /** Toggles the visibility of the favorites panel.*/
-        function toggleFavoritesPanel() {
-             if (!favoritesPanel) return;
-             if (favoritesPanel.style.display === 'block') {
-                 favoritesPanel.style.display = 'none';
-             } else {
-                 displayFavoritesInPanel(); // Refresh content before showing
-                 favoritesPanel.style.display = 'block';
-             }
-         }
-
-        // ------------------------------------------------------------------------------------------------------------------------ //
-
-        /** Renders the Save/Saved button for a name result. */
-        function renderSaveButton(container, nameObj, isSaved) {
-             if (!container) return;
-             container.innerHTML = ''; // Clear previous button
-             const saveBtn = document.createElement('button');
-             saveBtn.title = isSaved ? 'Saved to Favorites (Click to Remove in Panel)' : 'Save to Favorites';
-             saveBtn.disabled = isSaved; // Disable if already saved    
-             saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${
-                 isSaved ? 'text-save-button cursor-default' : 'text-medium-gray hover:text-save-button' // Different style/cursor if saved
-            }`;
-             saveBtn.dataset.id = nameObj.id; // Store name ID
-
-             // Set icon based on saved state
-             saveBtn.innerHTML = isSaved
-                 ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>` // Checkmark icon
-                 : `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`; // Heart icon
-
-             // Add click listener only if not already saved
-             if (!isSaved) {
-                 saveBtn.onclick = () => { addToFavorites(nameObj); };
-             }
-
-             container.appendChild(saveBtn);
-         }
-
-        /** Populates the language dropdown and enables controls. */
-        window.loadAndPrepareData = function () {
-            return new Promise((resolve, reject) => {
-                generateBtn.disabled = false;
-                if (!languageSelect || !controlsFieldset || !generateBtn) return;   
-                // Get unique languages from the database and sort them
-                const languages = [...new Set(nameDatabase.map(item => item.language))].sort();                
-                languageSelect.innerHTML = ''; // Clear existing options  
-
-                // Add "Any Language" option first
-                const anyOption = document.createElement('option'); anyOption.value = "any"; // Use 'any' or '' consistently
-                anyOption.textContent = "Any Language";  
-                languageSelect.appendChild(anyOption);
-
-                // Add options for each unique language
-                languages.forEach(lang => {
-                    const option = document.createElement('option');
-                    option.value = lang;
-                    option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); // Capitalize
-                    languageSelect.appendChild(option);  
-                });
-
-                selectedLanguage = languageSelect.value; // Set initial selected language state
-
-                // Enable controls now that data is ready
-                controlsFieldset.disabled = false;        
-                // Hide loading message and show initial placeholder if they exist
-                const loadingMsg = document.getElementById('loading-message');
-                if (loadingMsg) loadingMsg.remove();
-                if (initialMessage) initialMessage.style.display = 'block';
-                displayFeaturedName();                
-                
-                window.dataLoaded = true;
-                dataLoaded = true;
-                resolve(); // Resolve the promise after the data is prepared
-            });           
-        }
-
-        /** Displays a random name in the featured section. */
-        function displayFeaturedName() {
-             if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
-                 if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
-                 return; 
-             }
-             // Select a random name from the database
-             const randomIndex = Math.floor(Math.random() * nameDatabase.length);   // Select a random name from the database
-             const featuredName = nameDatabase[randomIndex];
-
-             // Update the featured name section content
-             featuredNameContent.innerHTML = `
-                 <h3 class="text-3xl text-dark-text font-semibold mb-1">${featuredName.name}</h3>
-                 <p class="text-base text-dark-text italic mb-2">${featuredName.meaning || 'Meaning not available.'}</p>
-                 <p class="text-sm text-medium-gray">
-                     Origin: ${featuredName.originNotes || featuredName.language || 'N/A'} &bull;
-                     Popularity: ${featuredName.popularity || 'N/A'}
-                 </p>
-             `;
-         } 
-
-        // ------------------------------------------------------------------------------------------------------------------------ //
-        function setupEventListeners() {
-            // ------------------------------------------------------------------------------------------------------------------------ //
-            // Update state when generator controls change
-            genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
-            languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
-            lengthRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedLength = event.target.value; }); });
-            styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
-             //firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim().toUpperCase(); event.target.value = selectedFirstLetter; }); // Force uppercase  
-            sortSelect.addEventListener('change', (event) => { selectedSort = event.target.value; });
-            
-            // ------------------------------------------------------------------------------------------------------------------------ //       
-            // Generate Name Button Click
-            // ------------------------------------------------------------------------------------------------------------------------ //
-            generateBtn.addEventListener('click', () => {
-                if (!dataLoaded) return; // Don't run if data isn't ready
-
-                // Show loading indicator
-                if(nameOutput) nameOutput.innerHTML = `<div class="flex justify-center items-center h-full"><div class="loader"></div><p class="text-dark-text ml-3 text-xl">Thinking...</p></div>`;
-                currentDisplayedName = null; // Reset current name
-                if(initialMessage) initialMessage.style.display = 'none'; // Hide placeholder
-                if(resultsMessage) resultsMessage.style.display = 'none'; // Hide previous messages
-
-                // Determine the target style category based on the slider
-                const targetStyleCategory = getStyleCategory(selectedStyle);
-
-                // Filter the database based on current selections
-                let filteredNames = nameDatabase.filter(item => {
-                    const languageMatch = selectedLanguage === 'any' || item.language === selectedLanguage;
-                    // Gender matching logic (handles 'any', specific genders, and 'neutral' mapping to 'any')
-                    const genderMatch = selectedGender === 'any' ||
-
-                                        item.gender === selectedGender ||
-                                        (selectedGender === 'neutral' && item.gender === 'any') || // Treat 'neutral' request as 'any' gender in data
-                                        item.gender === 'any'; // Names marked 'any' match all gender requests
-                    const itemStyleCategory = getStyleCategory(item.styleScore);
-                    const styleMatch = itemStyleCategory === targetStyleCategory; // Match exact style category
-                    // letter Match
-                    const letterInputs = document.querySelectorAll('#first-letter-inputs input');
-                    let letterMatch = false;
-                    if (letterInputs.length === 0) {
-                        letterMatch = true; // No letter specified, all names match
-                    } else {
-                        for (let i = 0; i < letterInputs.length; i++) {
-                            if(letterInputs[i].value.trim() != "" && item.name.toUpperCase().startsWith(letterInputs[i].value.trim().toUpperCase())){
-                                letterMatch = true; //Name starts with one of the input letters
-                            }
-                        }
-                    }
-                    const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
-                    
-                    return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
-                    });
-
-                // Sort the filtered names
-                if (selectedSort !== 'none') {
-                    filteredNames.sort((a, b) => { 
-                        if (selectedSort === 'name-asc') {
-                            return a.name.localeCompare(b.name);
-                        } else if (selectedSort === 'name-desc') {
-                            return b.name.localeCompare(a.name);
-                        } else if (selectedSort === 'style') {
-                            return a.styleScore - b.styleScore;
-                        } else {
-                            return 0;
-                        }
-                    });
-                }
-
-                
-                displayedNamesCounter = 0;
-                const loadMoreBtn = document.createElement('button');
-                loadMoreBtn.id = "load-more-button";
-                loadMoreBtn.className = "btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm mt-4";
-                loadMoreBtn.textContent = "Load More";
-
-                document.getElementById("results-container").appendChild(loadMoreBtn);
-
-                // Simulate network delay/processing time
-                setTimeout(() => {
-                    if (!nameOutput) return;
-                    nameOutput.innerHTML = ''; // Clear loading indicator
-
-                    if (filteredNames.length > 0) {
-                        displayNextName(filteredNames);
-                    } else {
-                         // No names found message
-                        if(resultsMessage) {
-                            resultsMessage.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or other filters?</p>`;
-                            resultsMessage.style.display = 'block';
-                        } 
-                        currentDisplayedName = null;
-                        // Create the result display elements
-                        const resultDiv = document.createElement('div');
-                        resultDiv.className = 'result-item fade-in relative p-4 rounded-md bg-gray-50'; // Added padding/bg
-
-                        const textDiv = document.createElement('div');
-                        textDiv.innerHTML = `
-                            <h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3>
-                            <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
-                            <p class="text-base text-medium-gray mt-2">
-                                <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'} <br> 
-                                <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br>
-                                <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'}
-                            </p>
-                            <p class="text-sm text-gray-500 mt-2"> (Style: ${getStyleCategory(currentDisplayedName.styleScore)}) </p>
-                        `;
-
-                        // Create container for action buttons (Save, Copy)
-                        const buttonsDiv = document.createElement('div'); 
-                        buttonsDiv.className = 'absolute top-2 right-2 flex items-center gap-2'; // Position buttons top-right
-
-                        // Save button container (rendered by function)
-                        const saveBtnContainer = document.createElement('div');
-                        saveBtnContainer.id = `save-btn-container-${currentDisplayedName.id}`; // Unique ID for updating
-                        renderSaveButton(saveBtnContainer, currentDisplayedName, isFavorite(currentDisplayedName));
-
-                        // Copy button
-                        const copyBtn = document.createElement('button');
-                        copyBtn.title = 'Copy Info';
-                        copyBtn.className = 'btn-icon text-[#9CA3AF] hover:text-[#4B5563] transition-colors btn-feedback';
-                        copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
-                        copyBtn.onclick = (e) => {
-                            const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`;
-                            copyToClipboard(textToCopy, e.currentTarget);
-                        };
-                        
-                        buttonsDiv.appendChild(saveBtnContainer);
-                        buttonsDiv.appendChild(copyBtn);
-                        resultDiv.appendChild(textDiv);   
-                        resultDiv.appendChild(buttonsDiv);
-                        nameOutput.appendChild(resultDiv); 
-
-                    
-                    const loadMoreButton = document.getElementById("load-more-button");      
-                    if (loadMoreButton){
-                         loadMoreButton.addEventListener("click", () => {
-                            displayNextName(filteredNames) 
-                        });
-                    }
-
-                    if (displayedNamesCounter >= filteredNames.length){
-                        const loadMoreBtn = document.getElementById('load-more-button');
-                        if (loadMoreBtn){
-                             loadMoreBtn.style.display = 'none';
-                        }
-                    } 
-               
-                }, 300); // Simulate delay
-
-
-            });
-
-
-            function displayNextName(filteredNames){
-                if (filteredNames.length > displayedNamesCounter){ 
-                    currentDisplayedName = filteredNames[displayedNamesCounter];
-                        displayedNamesCounter++
-                        const resultDiv = document.createElement('div');
-                        resultDiv.className = 'result-item fade-in relative p-4 rounded-md bg-gray-50'; // Added padding/bg
-                        document.getElementById("result-display").appendChild(resultDiv);
-                    }
-            }
-              // ------------------------------------------------------------------------------------------------------------------------ //
-            // Hamburger Menu Toggle
-            if (hamburgerBtn && mobileMenu) {
-                hamburgerBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('open');
-                }); 
-            }
-
-             // Open Favorites from the top-right button
-            if (favoritesBtn) {
-                favoritesBtn.addEventListener('click', toggleFavoritesPanel);
-            }
-
-               // Hamburger Menu Toggle (from header button)
-            if (headerHamburgerBtn && mobileMenu) {
-                headerHamburgerBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('open');
-                });
-            }
-
-
-            // Close Mobile Menu when clicking outside
-            document.addEventListener('click', (event) => {
-                 if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
-                     mobileMenu.classList.remove('open');
-                 }
-             }); 
-            // ------------------------------------------------------------------------------------------------------------------------ //
-
-            // Open Favorites from Mobile Menu
-            if (menuFavoritesBtn) {
-                menuFavoritesBtn.addEventListener('click', () => {
-                     toggleFavoritesPanel();
-                     if (mobileMenu) mobileMenu.classList.remove('open'); // Close mobile menu
-                });
-            }
-
-            // Event delegation for removing favorites from the panel  
-            if (favoritesPanelList) {
-                favoritesPanelList.addEventListener('click', (event) => {
-                    // Check if the click was on a remove button
-                    const removeButton = event.target.closest('button[title="Remove from Favorites"]');
-                    if (removeButton && removeButton.dataset.id) {
-                        removeFromFavorites(removeButton.dataset.id);
-                    }
-                     // Check if the click was on the "Clear All" button (handled within displayFavoritesInPanel now)
-                });
-            }
-
-            // Close Favorites Panel Button
-            if (closeFavoritesBtn) {
-                //Add a new input for the starting letter
-                for (let i = 0; i < 3; i++) {
-
-
-                    addLetterInput();
-                }
-                closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel); 
-            }
-        }
-        //dark mode code
-        function toggleDarkMode() {
-            const body = document.body;
-            const darkModeIcon = document.getElementById('dark-mode-icon');
-        
-            body.classList.toggle('dark');
-            
-            // Toggle icons
-            if (body.classList.contains('dark')) {
-                darkModeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
-            } else {
-                darkModeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
-            }
-            }
-        
-            if(darkModeToggle){
-                darkModeToggle.addEventListener('click', toggleDarkMode);
-            }
-            
-        
-        
-        
-        
-
-        // ------------------------------------------------------------------------------------------------------------------------ //
-        // Initialization
-        // Run setup when the DOM is fully loaded
-        // ------------------------------------------------------------------------------------------------------------------------ //
-        document.addEventListener('DOMContentLoaded', () => {
-             loadFavorites();        // Load saved favorites first
-             updateSliderFeedback(); // Set initial slider text
-             setupEventListeners();  // Attach all event listeners
-             if(favoritesPanel) favoritesPanel.style.display = 'none'; // Ensure panel is hidden initially   
-             loadAndPrepareData().then(()=>{});   // Populate dropdowns, enable controls
-         });
-
-
-  </script>
-
-</body>
-</html>
