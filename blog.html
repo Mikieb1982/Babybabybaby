@@ -5,84 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stork Name Drop - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #374151; /* dark-text */
-        }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
-        h1, h2, h3 { font-weight: bold; }
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        .blog-post-summary img { max-width: 96px; height: auto; } /* w-24 */
 
-        /* Hamburger Menu Styles */
-        #mobile-menu {
-            position: fixed; top: 0; right: 0; height: 100%; width: 16rem;
-            background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out;
-            transform: translateX(100%); overflow: hidden; isolation: isolate;
-        }
-        #mobile-menu.open { transform: translateX(0); }
-        #mobile-menu::before {
-            content: ''; position: absolute; bottom: 10px; left: 50%;
-            transform: translateX(-50%); width: 120px; height: 120px;
-            background-image: url('assets/stork.png'); background-repeat: no-repeat;
-            background-position: center; background-size: contain; opacity: 0.08;
-            z-index: 1; pointer-events: none;
-        }
-        #mobile-menu nav { position: relative; z-index: 2; }
-        #hamburger-btn { z-index: 41; }
+    <!-- Link to custom stylesheet -->
+    <link rel="stylesheet" href="style.css" />
 
-        /* Updated Hover Effect */
-        .blog-post-summary-container:hover {
-            background-color: #f9fafb;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07); /* Slightly stronger shadow */
-        }
-        .blog-post-summary-container {
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            position: relative; /* Needed for absolute positioning of badge */
-        }
-
-        /* Tag Styling */
-        .tag {
-            display: inline-block;
-            background-color: #e0e7ff; /* Indigo-100 */
-            color: #4338ca; /* Indigo-700 */
-            font-size: 0.75rem; /* text-xs */
-            font-weight: 500;
-            padding: 0.1rem 0.6rem;
-            border-radius: 9999px; /* rounded-full */
-            margin-right: 0.3rem;
-            margin-bottom: 0.3rem;
-        }
-        /* Featured Post Styling */
-        .featured-post {
-             background-color: #fef3c7; /* Amber-100 */
-             border-top: 3px solid #f59e0b; /* Amber-500 */
-        }
-        .featured-badge {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            background-color: #f59e0b; /* Amber-500 */
-            color: white;
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 4px;
-            transform: rotate(-5deg);
-        }
-
-    </style>
+    
     <script>
       tailwind.config = {
         theme: {
@@ -103,11 +30,16 @@
       }
     </script>
 </head>
+
+<!-- Main Body -->
 <body class="p-4 md:p-8">
 
+    <!-- Header Section -->
     <header class="text-center mb-10 relative">
+        <!-- Logo -->
         <a href="index.html" title="The Stork Name Drop Home">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+            <!-- Hamburger button -->
         </a>
         <button id="hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -116,17 +48,19 @@
         </button>
     </header>
 
+    <!-- Mobile Menu -->
     <div id="mobile-menu">
         <nav class="relative z-10 space-y-4 pt-8">
              <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
             <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
             <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <a href="index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-            <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+            <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a> 
             <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
         </nav>
     </div>
 
+    <!-- Divider -->
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <img src="assets/blog.png" alt="Naming Tips & Ideas Blog Title Image" class="mx-auto mb-4 w-full max-w-3xl h-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/768x150/F5F5DC/374151?text=Blog+Title';">
@@ -137,6 +71,7 @@
         <input type="search" id="blog-search" placeholder="Search blog posts..." class="w-full p-3 border border-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-button-active focus:border-transparent" style="font-family: 'Times New Roman', Times, serif;">
     </div>
 
+    <!-- Main Content Area -->
     <main id="blog-list-container" class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm space-y-6">
 
         {/* Featured Post - Song Names */}
@@ -163,6 +98,83 @@
             </div>
         </article>
 
+         <!-- Divider -->
+         <hr class="border-t border-dashed border-accent-muted-light">
+
+         <!-- Gender Neutral Post -->
+         <article class="blog-post-summary-container p-4 rounded-lg">
+            <div class="flex justify-between items-start gap-4 mb-2">
+               <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                    <a href="blog/genderneutral.html">Exploring Gender-Neutral Names</a>
+               </h2>
+                <a href="blog/genderneutral.html" class="flex-shrink-0 block">
+                   <img src="assets/genderneutral.png" alt="Illustration related to gender-neutral names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';">
+               </a>
+           </div>
+           <div>
+               <p class="text-sm text-medium-gray mb-2">Published: Today</p>
+                <div class="mb-3">
+                   <span class="tag">Trends</span>
+                   <span class="tag">Neutral</span>
+                   <span class="tag">Ideas</span>
+               </div>
+               <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Discover the rise of gender-neutral names. This post includes popular options, unique ideas, and tips for choosing the right name... <a href="blog/genderneutral.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+               </p>
+           </div>
+       </article>
+
+        <!-- Divider -->
+        <hr class="border-t border-dashed border-accent-muted-light">
+
+         <!-- Middle Names Post -->
+        <article class="blog-post-summary-container p-4 rounded-lg">
+            <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                    <a href="blog/middlenames.html">Choosing the Perfect Middle Name</a>
+                </h2>
+                <a href="blog/middlenames.html" class="flex-shrink-0 block">
+                    <img src="assets/middlenames.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: Today</p>
+                <div class="mb-3">
+                    <span class="tag">Tips</span>
+                    <span class="tag">Meanings</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Explore tips for choosing a middle name, including traditional and unique options... <a href="blog/middlenames.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+
+         <!-- Divider -->
+        <hr class="border-t border-dashed border-accent-muted-light">
+
+        <!-- Unique Names Post -->
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/unique.html">Exploring Unique and Uncommon Names</a>
+                </h2>
+                 <a href="blog/unique.html" class="flex-shrink-0 block">
+                    <img src="assets/unique.png" alt="Illustration related to unique names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: Today</p>
+                 <div class="mb-3">
+                    <span class="tag">Unique</span>
+                    <span class="tag">Ideas</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Why do parents choose unique names? What makes a name unique? Discover some tips and popular options... <a href="blog/uniquenames.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+               </p>
+            </div>
+        </article>
+
+         <!-- Divider -->
          <hr class="border-t border-dashed border-accent-muted-light">
 
         {/* Middle Name Post */}
@@ -188,6 +200,7 @@
             </div>
         </article>
 
+         <!-- Divider -->
          <hr class="border-t border-dashed border-accent-muted-light">
 
         <article class="blog-post-summary-container p-4 rounded-lg">
@@ -212,6 +225,7 @@
             </div>
         </article>
 
+         <!-- Divider -->
          <hr class="border-t border-dashed border-accent-muted-light">
 
         <article class="blog-post-summary-container p-4 rounded-lg">
@@ -236,6 +250,7 @@
             </div>
         </article>
 
+         <!-- Divider -->
          <hr class="border-t border-dashed border-accent-muted-light">
 
         <article class="blog-post-summary-container p-4 rounded-lg">
@@ -259,19 +274,47 @@
             </div>
         </article>
 
+        <!-- Divider -->
+         <hr class="border-t border-dashed border-accent-muted-light">
+        <!-- New Unique Names Post -->
+        <article class="blog-post-summary-container p-4 rounded-lg">
+             <div class="flex justify-between items-start gap-4 mb-2">
+                <h2 class="text-2xl md:text-3xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                     <a href="blog/unique.html">Exploring Unique and Uncommon Names</a>
+                </h2>
+                 <a href="blog/unique.html" class="flex-shrink-0 block">
+                    <img src="assets/unique.png" alt="Illustration related to unique names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
+                </a>
+            </div>
+            <div>
+                <p class="text-sm text-medium-gray mb-2">Published: Today</p>
+                 <div class="mb-3">
+                    <span class="tag">Unique</span>
+                    <span class="tag">Ideas</span>
+                    <span class="tag">Meanings</span>
+                </div>
+                <p class="text-base md:text-lg text-dark-text leading-relaxed">
+                    Why do parents choose unique names? What makes a name unique? Discover some tips and popular options... <a href="blog/unique.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a>
+                </p>
+            </div>
+        </article>
+        <!-- No Results Message -->
         <div id="no-results-message" class="text-center text-medium-gray italic py-6 hidden">
             No blog posts match your search.
         </div>
 
     </main>
 
+    <!-- Divider -->
      <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
-    <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+    <!-- Footer -->
+       <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+        <p><a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> | <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog</a> | <a href="../affiliate.html" class="hover:text-dark-text underline">Recommendations</a></p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
 
+    <!-- Scripts -->
     <script>
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -328,7 +371,7 @@
                      if(firstVisibleHr && firstVisibleHr.tagName === 'HR') {
                          firstVisibleHr.style.display = 'none';
                      }
-                 }
+                 } 
 
             });
         }

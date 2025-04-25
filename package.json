@@ -1,0 +1,28 @@
+{
+  "name": "the-stork-name-drop",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "live-server --port=8000 --watch=\"./\"",
+    "init-tailwind": "tailwindcss init",
+    "build-css": "node ./node_modules/tailwindcss/dist/lib.js -i ./style.css -o ./style.css --watch",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "live-server": "^1.2.2",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
+  },
+  "dependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

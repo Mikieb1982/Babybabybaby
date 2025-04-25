@@ -1,55 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
     <title>German Baby Names 2025: Trends, Classics, and Rising Stars - The Stork Name Drop Blog</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
     <style>
+        /* Variables */
+        :root {
+            --soft-beige: #F5F5DC;
+            --dark-text: #374151;
+            --medium-gray: #6B7280;
+            --button-active: #60A5FA;
+            --button-active-hover: #3B82F6;
+            --button-inactive-hover-bg: #F9FAFB;
+            --button-inactive-hover-border: #1F2937;
+            --error-red: #EF4444;
+            --save-button: #34D399;
+            --save-button-hover: #059669;
+            --remove-button: #F87171;
+            --remove-button-hover: #DC2626;
+            --copy-button: #9CA3AF;
+            --copy-button-hover: #4B5563;
+            --accent-muted: #64748b;
+            --accent-muted-light: #cbd5e1;
+            --off-white: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-400: #94a3b8;
+        }
         body {
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
-            background-color: #F5F5DC; /* soft-beige */
+            background-color: var(--soft-beige);
             font-size: 1rem;
             line-height: 1.6;
-            color: #374151; /* dark-text */
+            color: var(--dark-text);
         }
-        a { color: #60A5FA; text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: #3B82F6; text-decoration: underline; }
-        main a { color: #374151; }
-        main a:hover { color: #6B7280; }
+        /* Links */
+        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--button-active-hover); text-decoration: underline; }
+        main a { color: var(--dark-text); }
+        main a:hover { color: var(--medium-gray); }
+        /* Headings */
         h1, h2, h3, h4 { font-weight: bold; }
+        /* Lists */
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
-        /* Basic Table Styling */
+        /* Tables */
         table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid #94a3b8; /* slate-400 */ padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: #f1f5f9; /* slate-100 */ font-weight: bold; }
-        /* Responsive table wrapper */
+        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: var(--slate-100); font-weight: bold; }
         .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
+        /* Paragraphs */
         p { margin-bottom: 1rem; }
         h1 { margin-bottom: 0.75rem; }
         h2 { margin-top: 2rem; margin-bottom: 1rem; }
         h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
         h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
     </style>
-     <script>
-      // Tailwind config copied for color consistency
+    <!-- Tailwind CSS Configuration -->
+    <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
               'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
               'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
+              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937', 
               'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
               'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
               'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
               'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
               'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
-            }
+            },
           }
         }
       }
@@ -57,27 +89,29 @@
 </head>
 <body class="p-4 md:p-8">
 
+    <!-- Header -->
     <header class="text-center mb-10">
         <a href="../index.html" title="The Stork Name Drop Home">
             <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
         </a>
     </header>
 
+    <!-- Separator Line -->
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
+    <!-- Main Content -->
     <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
         <article>
             <h1 class="text-3xl md:text-4xl text-dark-text mb-3 text-center">German Baby Names 2025: Trends, Classics, and Rising Stars</h1>
             <p class="text-center text-sm text-medium-gray mb-8">Published: April 15, 2025</p>
 
             <img src="../assets/german2025.png"
-                 alt="Illustration related to German baby names"
+                 alt="Collage of the most popular german baby names"
                  class="mx-auto my-8 rounded-lg shadow-sm w-full max-w-lg h-auto"
                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=German+Names+Image';">
-
-            
+                
+            <!-- Content -->
             <div class="space-y-4 text-base md:text-lg leading-relaxed">
-
                 <p>Choosing a name for a new arrival is one of the most exciting and personal decisions for expectant parents. It's a choice filled with hope, tradition, and a touch of trend-watching. As we look towards 2025, the landscape of German baby names presents a fascinating mix of enduring favorites, surprising comebacks, and emerging contenders. Whether you're drawn to timeless elegance, modern simplicity, or names with deep roots, understanding the currents shaping German naming preferences can offer inspiration. This report delves into the latest statistics, decodes the trends, rediscovers returning classics, spotlights the names gaining momentum, explores their meanings, and navigates the unique regional nuances across Germany.</p>
 
                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">The Reigning Champions: Germany's Most Popular Baby Names</h2>
@@ -89,6 +123,7 @@
                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 1: Top 30 German Baby Names (Nationwide, 2024 - Knud Bielefeld)</h3>
                 <div class="table-wrapper">
                     <table>
+                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -96,6 +131,7 @@
                                 <th>Boys</th>
                             </tr>
                         </thead>
+                        <!-- Table Data -->
                         <tbody>
                             <tr><td>1</td><td>Emilia</td><td>Noah</td></tr>
                             <tr><td>2</td><td>Sophia</td><td>Matteo</td></tr>
@@ -155,6 +191,7 @@
                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 2: Top 10 German Baby Names: Then (2014 & 2004) vs. Now (2023 - GfdS)</h3>
                  <div class="table-wrapper">
                     <table>
+                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -166,6 +203,7 @@
                                 <th>Boys 2004</th>
                             </tr>
                         </thead>
+                        <!-- Table Data -->
                         <tbody>
                             <tr><td>1</td><td>Sophia/Sofia</td><td>Noah</td><td>Sophie/Sofie</td><td>Maximilian</td><td>Marie</td><td>Maximilian</td></tr>
                             <tr><td>2</td><td>Emilia</td><td>Matt(h)eo/Mat(h)eo</td><td>Marie</td><td>Alexander</td><td>Sophie</td><td>Alexander</td></tr>
@@ -191,6 +229,7 @@
                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 3: Rising Star German Baby Names 2024/2025</h3>
                  <div class="table-wrapper">
                     <table>
+                         <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -198,6 +237,7 @@
                                 <th>Boys</th>
                             </tr>
                         </thead>
+                        <!-- Table Data -->
                         <tbody>
                             <tr><td>GfdS 2023 Top 10 Newcomers</td><td>Lia/Liah</td><td>Liam</td></tr>
                             <tr><td>Bielefeld 2024 Top 500 Newcomers</td><td>Elodie, Rüya, Erika, Liora, Rania, Gerda, Nami, Estelle, Hava, Lima</td><td>Troi, Sultan, Marek, Alaz, Said, Dian, Lior, Aziz, Quinn, Tamino</td></tr>
@@ -245,6 +285,7 @@
                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 4: Regional Top Names Snapshot (Germany 2024)</h3>
                  <div class="table-wrapper">
                     <table>
+                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Region/State</th>
@@ -252,6 +293,7 @@
                                 <th>Top Boys' Names (Examples)</th>
                             </tr>
                         </thead>
+                         <!-- Table Data -->
                         <tbody>
                             <tr><td>Norddeutschland</td><td>1. Emilia, 2. Ella, 3. Emma</td><td>1. Matteo, 2. Noah, 3. Finn</td></tr>
                             <tr><td>Lower Saxony (2023)</td><td>1. Ella</td><td>1. Noah</td></tr>
@@ -284,13 +326,22 @@
                 <p>For parents-to-be embarking on the wonderful journey of choosing a name, this information offers a wealth of inspiration. Consider the trends, explore the meanings and origins that resonate with you, and perhaps even glance at the regional charts. However, remember that statistics and trends are just guides. Pay attention to how a name sounds with your surname, think about potential nicknames, and ultimately, choose a name that you love and that feels right for your child. Trends may come and go, but the perfect name is timeless.</p>
 
                 {/* Works Cited Section */}
-                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                 <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
+                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
+                <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
                     <li>Beliebte Vornamen 2024: Emilia und Noah, Mohammed und Gerda - ZDFheute, https://www.zdf.de/nachrichten/panorama/beliebte-vornamen-2024-emilia-noah-100.html</li>
                     <li>Die beliebtesten Vornamen des Jahres 2024 - beliebte-Vornamen.de, https://www.beliebte-vornamen.de/jahrgang/j2024</li>
-                    {/* ... Add all other citations here ... */}
+                    <!-- ... Add all other citations here ... -->
                     <li>Die beliebtesten Vornamen des Jahres 2025, https://www.beliebte-vornamen.de/jahrgang/j2025</li>
-                 </ol>
+                </ol>
+            </div>
+            <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Share This Post</h2>
+            <p>Share this post!</p>
+            <div>
+              <ul>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank">Facebook</a></li>
+                <li><a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=YOUR_TEXT" target="_blank">Twitter</a></li>
+                <li><a href="mailto:?subject=Check%20out%20this%20post&body=YOUR_URL" target="_blank">Email</a></li>
+              </ul>
             </div>
 
             {/* Back link */}
@@ -301,17 +352,20 @@
         </article>
     </main>
 
-     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <!-- Separator Line -->
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
+    <!-- Footer -->
     <footer class="text-center text-medium-gray text-base space-y-2">
+        <!-- Copyright -->
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
+        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html" class="hover:text-dark-text underline">Blog Index</a> | <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a></p>
     </footer>
 
+    <!-- Script (none needed for this file) -->
     <script>
         // No JavaScript needed for this static blog post page
     </script>
-
 </body>
 </html>
 ```

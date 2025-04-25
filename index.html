@@ -1,342 +1,298 @@
+v 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Basic Styling & Custom Properties */
-        body {
-            font-family: 'Times New Roman', Times, serif; /* Classic font */
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png'); /* Subtle paper texture */
-            background-repeat: repeat;
-            background-color: #F5F5DC; /* Soft beige background */
-            font-size: 1rem; /* Base font size */
-            line-height: 1.6; /* Readable line spacing */
-            color: #374151; /* Dark gray text for contrast */
-        }
 
-        /* Input & Select Styling */
-        input[type="text"], select {
-             padding: 0.75rem; border: 1px solid #6B7280; border-radius: 0.5rem; background-color: #fff;
-             font-size: 1rem; width: 100%; outline: none;
-             transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth focus transition */
-             font-family: 'Times New Roman', Times, serif; /* Consistent font */
-        }
-        input[type="text"]:focus, select:focus { border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); } /* Focus state */
-        input:disabled, select:disabled, button:disabled { opacity: 0.6; cursor: not-allowed; } /* Disabled state */
+    <link rel="stylesheet" href="style.css">
 
-        /* Range Slider Thumb Styling */
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-        input[type=range]::-moz-range-thumb { width: 22px; height: 22px; background: #374151; border-radius: 50%; cursor: pointer; border: 2px solid #FFF; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-
-        /* Custom Radio Button Styling */
-        input[type="radio"] { -webkit-appearance: none; appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.1em; height: 1.1em; border: 1px solid #6B7280; border-radius: 50%; transform: translateY(-0.075em); display: inline-grid; place-content: center; cursor: pointer; transition: border-color 0.2s ease; }
-        input[type="radio"]::before { content: ""; width: 0.6em; height: 0.6em; border-radius: 50%; transform: scale(0); transition: 120ms transform ease-in-out; box-shadow: inset 1em 1em #475569; }
-        input[type="radio"]:checked::before { transform: scale(1); }
-        input[type="radio"]:checked { border-color: #475569; }
-        input[type="radio"]:focus { outline: none; border-color: #60A5FA; box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3); } /* Focus state for accessibility */
-
-        /* Custom Select Arrow */
-        select { appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 5" fill="%236B7280"%3E%3Cpath d="M0 0l5 5 5-5H0z"/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.9em top 50%; background-size: 0.7em auto; cursor: pointer; padding-right: 2.5em; }
-
-        /* Fade-in Animation */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; opacity: 0; }
-
-        /* Result & Favorite Item Styling */
-        .result-item { padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item { border-bottom: 1px dashed #94a3b8; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .favorite-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-        /* Button Styling */
-        .btn { padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: normal; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; cursor: pointer; border-width: 1px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); font-size: 1rem; font-family: 'Times New Roman', Times, serif; }
-        .btn:active:not(:disabled) { transform: scale(0.97); } /* Click feedback */
-        .btn-primary { background-color: #374151; border-color: #374151; color: white; }
-        .btn-primary:hover:not(:disabled) { background-color: #4b5563; }
-        .btn-secondary { background-color: white; border-color: #6B7280; color: #374151; }
-        .btn-secondary:hover:not(:disabled) { background-color: #f9fafb; border-color: #4b5563; }
-        .btn-cta { background-color: #4b5563; border-color: #4b5563; color: white; font-size: 1.1rem; padding: 0.8rem 1.8rem; } /* Call to action button */
-        .btn-cta:hover:not(:disabled) { background-color: #374151; }
-        .btn-icon { padding: 0.5rem; line-height: 1; border: none; background: none; box-shadow: none; } /* Icon button base style */
-
-        /* Favorites Panel Styling */
-        #favorites-panel { position: fixed; inset: 0; background-color: rgba(248, 250, 252, 0.9); backdrop-filter: blur(4px); padding: 1.5rem; overflow-y: auto; z-index: 50; display: none; animation: fadeIn 0.3s ease-out; }
-        #favorites-panel.active { display: block; }
-
-        /* Loading Indicator */
-        .loader { border: 4px solid #e5e7eb; border-top: 4px solid #6b7280; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 1rem auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* Ad Placeholder Styling */
-        .ad-placeholder { min-height: 90px; background-color: #e5e7eb; border: 1px dashed #9ca3af; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; color: #6b7280; margin: 2rem auto; max-width: 728px; }
-
-        /* Featured Name Section Styling */
-        #featured-name-section-moved { border: 1px solid #cbd5e1; background-color: #f8fafc; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-
-        /* Mobile Menu Styling */
-        #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 16rem; background-color: #f8fafc; box-shadow: -2px 0 5px rgba(0,0,0,0.1); padding: 1.5rem; z-index: 40; transition: transform 0.3s ease-in-out; transform: translateX(100%); overflow: hidden; isolation: isolate; }
-        #mobile-menu.open { transform: translateX(0); }
-        #mobile-menu::before { content: ''; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 120px; height: 120px; background-image: url('assets/stork.png'); background-repeat: no-repeat; background-position: center; background-size: contain; opacity: 0.08; z-index: 1; pointer-events: none; } /* Decorative stork image */
-        #mobile-menu nav { position: relative; z-index: 2; }
-        #hamburger-btn { z-index: 41; } /* Ensure hamburger is above menu initially */
-
-        /* Blog Teaser Image Styling */
-        .blog-teaser img { max-width: 96px; height: auto; }
-    </style>
-     <script>
-      // Configure Tailwind CSS theme extensions
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-            }
-          }
-        }
-      }
-    </script>
-
+    <!-- Firebase Setup -->
     <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
 
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      // IMPORTANT: Replace these placeholder values with your actual Firebase project config!
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY", // Replace with your actual API Key
-        authDomain: "YOUR_AUTH_DOMAIN", // e.g., your-project-id.firebaseapp.com
-        projectId: "YOUR_PROJECT_ID", // Replace with your actual Project ID
-        storageBucket: "YOUR_STORAGE_BUCKET", // e.g., your-project-id.appspot.com
-        messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        appId: "YOUR_APP_ID", // e.g., 1:senderId:web:appId
-        measurementId: "YOUR_MEASUREMENT_ID" // Optional: e.g., G-XXXXXXXXXX
-      };
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Initialize Firebase
-      try {
-        const app = initializeApp(firebaseConfig);
-        // Check if measurementId exists before initializing Analytics
-        if (firebaseConfig.measurementId) {
-            const analytics = getAnalytics(app);
-            console.log("Firebase Analytics initialized.");
-        } else {
-            console.log("Firebase initialized (Analytics skipped - no measurementId).");
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDJaAq0xNhnU8eyP4iGZ6MqRRwnGxxx7tQ",
+          authDomain: "the-stork-name-drop.firebaseapp.com",
+          projectId: "the-stork-name-drop",
+          storageBucket: "the-stork-name-drop.firebasestorage.app",
+          messagingSenderId: "616266125527",
+          appId: "1:616266125527:web:b05f995e65909c5ddfa092",
+          measurementId: "G-4XRWLH02JP"
+        };
+
+        // Initialize Firebase
+        try {
+            const app = initializeApp(firebaseConfig);
+
+            // Check if measurementId exists before initializing Analytics
+            if (firebaseConfig.measurementId) {
+                const analytics = getAnalytics(app);
+                console.log("Firebase Analytics initialized.");
+            } else {
+                console.log("Firebase initialized (Analytics skipped - no measurementId).");
+            }
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+            // Optionally display an error message to the user
         }
-      } catch (error) {
-        console.error("Error initializing Firebase:", error);
-        // Optionally display an error message to the user
-      }
     </script>
 
 </head>
-<body class="p-4 md:p-8">
+<body >
 
-    <header class="text-center mb-12 relative">
-        <a href="index.html" title="The Stork Name Drop Home">
-            <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-4" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-        </a>
-        <button id="hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback z-30 bg-off-white/75 backdrop-blur-sm shadow">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-             </svg>
-        </button>
-    </header>
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-[#f8fafc] shadow-lg p-6 z-40 transform translate-x-full">
+    <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
+    <nav class="relative z-10 space-y-4 pt-8" aria-label="Mobile Menu">
+        <a href="index.html" class="block text-lg text-dark-text hover:underline text-center" aria-label="Home">Home</a>
+        <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+        <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
+        <a href="blog/middlenames.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+        <a href="affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+        <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+    </nav>
+  </div>
 
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-off-white shadow-lg p-6 z-40 transform translate-x-full">
-        <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
-        <nav class="relative z-10 space-y-4 pt-8">
-            <a href="index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
-            <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-            <button id="menu-favorites-btn" class="block text-lg text-dark-text hover:underline text-center w-full">Favorites</button>
-            <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-            <a href="affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-            <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
-        </nav>
-        </div>
+   <header class="text-center mb-4 relative mt-12 container mx-auto">
+       <!-- Large Logo in Header -->
+       <div class="w-full mx-auto p-4 md:p-8 flex justify-center items-center">
+           <a href="index.html" title="The Stork Name Drop Home" class="flex items-center"> <img src="assets/logo.png" alt="The Stork Name Drop Logo - A stylized stork carrying a name tag" class="h-48 w-48 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';"> </a>
+       </div>
+       <!-- Mobile Hamburger Button (duplicated from nav for sticky positioning) -->
+       <button id="header-hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-[#cbd5e1] transition btn-feedback z-30 bg-[#f8fafc]/75 backdrop-blur-sm shadow" aria-label="Open Menu">
+           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#374151]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+           </svg>
+       </button>
+   </header>    
 
-    <p class="text-center text-lg md:text-xl max-w-2xl mx-auto mb-12 text-medium-gray">
-        Welcome to The Stork Name Drop! Find the perfect baby name by exploring options from different languages and origins. Use our unique slider to choose between traditional and unique styles, filter by gender or length, and save your favorites.
-    </p>
+    <section id="showcase" class="container mx-auto py-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-[#374151] mb-4">Find the ideal name</h1>
+        <p class="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto px-4">
+            Discover the perfect name for your child or pet.
+        </p>
+    </section>
 
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
 
-    <main class="max-w-3xl mx-auto bg-off-white p-8 md:p-12 rounded-lg border-2 border-dark-text shadow-md my-12">
+    <main class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12">
 
-        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled> <legend class="sr-only">Name Generation Controls</legend> <section id="gender-selection">
-                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Gender:</label>
-                 <div class="flex flex-wrap gap-x-6 gap-y-2">
-                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
+        <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
+            <legend class="sr-only">Name Generation Controls</legend>
+            <section id="gender-selection">
+                 <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
+                 <div >
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
                  </div>
              </section>
 
              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                 <section id="language-selection">
-                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Language/Origin:</label>
+                <section id="language-selection">
+                     <label for="language-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Language/Origin:</label>
                      <select id="language-select" name="language" class="text-base"> <option value="">Loading Languages...</option> </select> </section>
                  <section id="letter-filter">
-                     <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2">Starts with:</label>
-                     <input type="text" id="first-letter-input" maxlength="1" placeholder="Any Letter" class="text-base">
-                 </section>
+                     <label for="first-letter-input" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Starts with:</label>
+                     <div id="first-letter-inputs" class="flex space-x-2 flex-wrap"></div>
+                </section>
              </div>
 
              <section id="length-filter">
                  <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
-                 <div class="flex flex-wrap gap-x-6 gap-y-2">
+                 <div >
                      <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
-                     <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
-                 </div>
+                   <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
+                </div>
              </section>
 
              <section id="style-slider">
                  <div class="flex justify-between items-center mb-2">
-                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold">Name Style:</h2>
-                     <span id="slider-feedback" class="text-medium-gray text-base md:text-lg">Balanced</span> </div>
-                 <div class="flex items-center justify-between text-medium-gray mb-3 text-base md:text-lg">
-                     <span>Traditional</span>
+                     <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-[#374151]">Name Style:</h2>
+                     <span id="slider-feedback" class="text-[#6B7280] text-base md:text-lg">Balanced</span> </div>
+                <div class="flex items-center justify-between text-[#6B7280] mb-3 text-base md:text-lg">
+                    <span>Traditional</span>
                      <span>Unique</span>
                  </div>
-                 <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-accent-muted-light rounded-lg appearance-none cursor-pointer">
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-[#cbd5e1] rounded-lg appearance-none cursor-pointer">
              </section>
 
              <div class="text-center pt-6">
                  <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm" disabled>Generate Name</button> </div>
         </fieldset>
 
-        <section id="results-section" class="mt-12">
-             <hr class="border-t border-dashed border-accent-muted-light my-10">
-             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-6 text-center">Generated Name</h2>
-             <div id="loading-indicator" class="loader" style="display: none;"></div> <div id="result-display" class="text-center min-h-[6rem]"> <p id="results-placeholder" class="text-center text-medium-gray text-lg italic">Click "Generate Name" to see a result.</p> </div>
-             <p id="results-message" class="text-center text-medium-gray mt-4 text-lg" style="display: none;"></p> </section>
+        <section id="sort-filter">
+            <label for="sort-select" class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Sort by:</label>
+            <select id="sort-select" name="sort" class="text-base">
+                <option value="date-added">Date Added</option>
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="style">Style</option>
+             </select>
+        </section>
+                
+        <section id="filter-names-section" class="mt-12">
+            <hr class="border-t border-dashed border-[#cbd5e1] my-10">
+            <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Filter Names</h2>
+            <div id="filter-names-container" class="flex justify-around">
+                <button class="btn btn-primary">Filter by Origin</button>
+                <button class="btn btn-primary">Filter by Meaning</button>
+                <button class="btn btn-primary">Filter by Syllables</button>
+            </div>
+        </section>
 
+
+        <section id="results-section" class="mt-12"> <hr class="border-t border-dashed border-[#cbd5e1] my-10"> <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Generated Name</h2>
+            <div id="results-container"> <div id="result-display" class="content-area text-[#374151] font-base text-base px-4 py-4 rounded-lg border-[#374151] border-2 shadow-md mt-4"> <p id="results-placeholder" class="text-center text-[#6B7280] text-lg italic">Click "Generate Name" to see a result.</p> </div>
+              <p id="results-message" class="text-center text-[#6B7280] mt-4 text-lg" style="display: none;"></p> 
+              <div id="loading-indicator" class="loader" style="display: none;"></div> </div>
+        </section>
+        <section id="related-names-section" class="mt-12">
+            <hr class="border-t border-dashed border-[#cbd5e1] my-10">
+            <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Related Names</h2>
+            <div id="related-names-container">
+                
+            </div>
+        </section>
+
+        <section id="famous-namesakes-section" class="mt-12">
+            <hr class="border-t border-dashed border-[#cbd5e1] my-10">
+            <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Famous Namesakes</h2>
+            <div id="famous-namesakes-container">
+                
+            </div>
+        </section>
     </main>
+    <div class="pt-12 w-full mx-auto border-b-2 border-[#374151]"></div>
 
-    <section id="featured-name-section-moved" class="my-12 max-w-xl mx-auto text-center bg-off-white p-6 md:p-8 rounded-lg border border-accent-muted-light shadow-sm">
+
+    <section id="featured-name-section-moved" class="my-12 max-w-xl mx-auto text-center bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-md">
        <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
        <div id="featured-name-content-moved" class="text-center">
-            <p class="text-medium-gray italic">Loading featured name...</p> </div>
-    </section>
+            <p class="text-[#6B7280] italic">Loading featured name...</p> </div>
+    </section>    
 
     <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
-
-    <section id="latest-posts" class="my-12 max-w-3xl mx-auto">
-       <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-       <div class="space-y-8">
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-               <div class="flex justify-between items-start gap-4 mb-2">
-                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                        <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                    </h3>
+    <section id="latest-posts" class="my-12 max-w-4xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
+        <div class="space-y-8">
+            <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2"> 
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
+                         <a href="blog/uniquenames.html" class="hover:text-[#6B7280]">Exploring Unique and Uncommon Names</a>
+                     </h3>
+                     <a href="blog/uniquenames.html" class="flex-shrink-0 block"> <img src="assets/uniquenames.png" alt="Choosing unique names concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';"> </a>
+               </div>
+                <div>
+                     <p class="text-sm text-[#6B7280] mb-2">May 10, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Looking for a distinctive name? Explore the beauty of unique and uncommon names, and find the perfect one for your baby... <a href="blog/uniquenames.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
+                <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> <a href="blog/middle.html">Choosing the Perfect Middle Name</a> </h3>
                     <a href="blog/middle.html" class="flex-shrink-0 block">
                         <img src="assets/middle.png" alt="Choosing middle name concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
-                    </a>
+                   </a>
                </div>
                <div>
-                    <p class="text-sm text-medium-gray mb-2">April 21, 2025</p>
+                    <p class="text-sm text-[#6B7280] mb-2">April 21, 2025</p>
                     <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows well? Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a href="blog/middle.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
                </div>
            </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
+                <div class="flex justify-between items-start gap-4 mb-2">
+                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow"> <a href="blog/genderneutral.html">Exploring Gender-Neutral Names</a> </h3>
+                     <a href="blog/genderneutral.html" class="flex-shrink-0 block"> <img src="assets/genderneutral.png" alt="Choosing gender-neutral names concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';"> </a>
+               </div>
+                <div>
+                     <p class="text-sm text-medium-gray mb-2">May 1, 2025</p>
+                     <p class="text-base text-dark-text leading-snug">Dive into the world of gender-neutral names, exploring their versatility, meanings, and why they're becoming increasingly popular... <a href="blog/genderneutral.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
+                </div>
+           </article>
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
                 <div class="flex justify-between items-start gap-4 mb-2">
                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                          <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
                     </h3>
                     <a href="blog/german2025.html" class="flex-shrink-0 block">
                         <img src="assets/german2025.png" alt="German flag or related concept image" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
-                    </a>
+                   </a>
                </div>
                <div>
-                    <p class="text-sm text-medium-gray mb-2">April 15, 2025</p>
+                    <p class="text-sm text-[#6B7280] mb-2">April 15, 2025</p>
                     <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names. From timeless classics making a comeback to newly popular choices... <a href="blog/german2025.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
                </div>
            </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
+           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> 
                 <div class="flex justify-between items-start gap-4 mb-2">
                     <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
                         <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
                     </h3>
                     <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
                         <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
-                    </a>
+                   </a>
                </div>
                <div>
-                    <p class="text-sm text-medium-gray mb-2">April 10, 2025</p>
-                    <p class="text-base text-dark-text leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+                    <p class="text-sm text-[#6B7280] mb-2">April 10, 2025</p> 
+                    <p class="text-base text-[#374151] leading-snug">Looking for a name that stands out? Dive into a curated list of unique English names, exploring their origins and meanings... <a href="blog/uniqueeng.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
                </div>
            </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                <div class="flex justify-between items-start gap-4 mb-2">
-                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                        <a href="blog/nickname.html">Nicknames: Fun, Affectionate & Practical</a>
-                    </h3>
-                    <a href="blog/nickname.html" class="flex-shrink-0 block">
-                        <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
-                    </a>
-               </div>
-               <div>
-                    <p class="text-sm text-medium-gray mb-2">April 22, 2025</p>
-                    <p class="text-base text-dark-text leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
+           <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm"> <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow"> <a href="blog/nickname.html" class="hover:text-[#6B7280]">Nicknames: Fun, Affectionate & Practical</a> </h3> <a href="blog/nickname.html" class="flex-shrink-0 block"> <img src="assets/nickname.png" alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';"> </a> </div> <div> <p class="text-sm text-[#6B7280] mb-2">April 22, 2025</p> <p class="text-base text-[#374151] leading-snug">Beyond the formal first name, nicknames add warmth and familiarity. Explore the world of nicknames, from common diminutives to unique terms of endearment... <a href="blog/nickname.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
+              </div> </article>
+           <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
+                <div class="flex justify-between items-start gap-4 mb-2"> <h3 class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow"> <a href="blog/song.html" class="hover:text-[#6B7280]">What's in a Song Name? Musical Monikers</a> </h3> <a href="blog/song.html" class="flex-shrink-0 block"> <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';"> </a> </div> <div> <p class="text-sm text-[#6B7280] mb-2">April 23, 2025</p> <p class="text-base text-[#374151] leading-snug">Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
                </div>
            </article>
-           <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                <div class="flex justify-between items-start gap-4 mb-2">
-                    <h3 class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                        <a href="blog/song.html">What's in a Song Name? Musical Monikers</a>
-                    </h3>
-                    <a href="blog/song.html" class="flex-shrink-0 block">
-                        <img src="assets/song.png" alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md" onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
-                    </a>
-               </div>
-               <div>
-                    <p class="text-sm text-medium-gray mb-2">April 23, 2025</p>
-                    <p class="text-base text-dark-text leading-snug">Music has power, and so do names! Explore the trend of naming babies after beloved songs, the stories behind iconic musical names, and the pros and cons... <a href="blog/song.html" class="text-button-active hover:text-button-active-hover font-semibold">Read More &rarr;</a></p>
-               </div>
-           </article>
-       </div>
-       <div class="text-center mt-8">
-            <a href="blog.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
-       </div>
+        </div>
+        <div class="text-center mt-8">
+        <a href="blog/middlenames.html" class="text-lg hover:text-dark-text underline">More Blog Posts &rarr;</a>
+      </div>
+    </section>
+    <section id="newsletter-signup" class="my-12 max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[#374151] mb-4">Stay Updated</h2>
+        <p class="text-lg text-[#6B7280] mb-6">Get the latest name trends and tips straight to your inbox!</p>
+        <div class="mx-auto">
+            <input type="email" placeholder="Enter your email" class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3">
+            <button class="btn btn-primary">Subscribe</button>
+      </div>
     </section>
 
-    <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-soft-beige bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
-        <div class="max-w-2xl mx-auto bg-off-white p-6 md:p-8 rounded-lg border-2 border-dark-text shadow-lg relative">
-            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-accent-muted-light transition btn-feedback">
-                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+    <aside id="favorites-panel" style="display: none;" class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
+        <div class="max-w-2xl mx-auto bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-lg relative">
+            <button id="close-favorites-btn" title="Close Favorites" class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-[#cbd5e1] transition btn-feedback">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#374151]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
             </button>
-            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-8 text-center">Favorite Names</h2>
-            <div id="favorites-panel-list" class="space-y-6"> <p id="favorites-panel-placeholder" class="text-center text-medium-gray text-lg italic">No favorites saved yet.</p> </div>
+        <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-8 text-center">Favorite Names</h2>
+            <div id="favorites-panel-list" class="space-y-6"> <p id="favorites-panel-placeholder" class="text-center text-[#6B7280] text-lg italic">No favorites saved yet.</p> </div>
         </div>
     </aside>
-
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto mt-12 mb-8">
+    
+    <hr class="border-t border-dashed border-[#cbd5e1] max-w-4xl mx-auto mt-12 mb-8"> 
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+
+        <!-- Footer Links -->
         <p>
             <a href="aboutus.html" class="hover:text-dark-text underline">About Us</a> |
             <a href="#" class="hover:text-dark-text underline">Data Sources</a> |
-            <a href="blog.html" class="hover:text-dark-text underline">Blog</a> |
+            <a href="blog/middlenames.html" class="hover:text-dark-text underline">Blog</a> |
             <a href="affiliate.html" class="hover:text-dark-text underline">Recommendations</a>
         </p>
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript Section -->
     <script>
-        // --- Data Setup ---
+        // ------------------------------------------------------------------------------------------------------------------------ //
         // Initial sample data (replace or fetch from backend/Firebase later)
         const nameData = [
             { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
@@ -351,12 +307,15 @@
             { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
             // Add many more names here...
         ];
+        // ------------------------------------------------------------------------------------------------------------------------ //
         // Calculate length category for each name
         nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
         let nameDatabase = nameData; // Use this as the primary data source
-        let dataLoaded = true; // Assume data is loaded for this static example
 
-        // --- DOM Element References ---
+        // Assume data is loaded for this static example
+        let dataLoaded = true; // Assume data is loaded for this static example
+        dataLoaded = false;
+        // ------------------------------------------------------------------------------------------------------------------------ //
         const controlsFieldset = document.getElementById('generator-controls');
         const genderRadios = document.querySelectorAll('input[name="gender"]');
         const languageSelect = document.getElementById('language-select');
@@ -375,18 +334,26 @@
         const loadingIndicator = document.getElementById('loading-indicator');
         const featuredNameContent = document.getElementById('featured-name-content-moved');
         const hamburgerBtn = document.getElementById('hamburger-btn');
+        const headerHamburgerBtn = document.getElementById('header-hamburger-btn');
+        const favoritesBtn = document.getElementById('favorites-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const sortSelect = document.getElementById('sort-select');
         const menuFavoritesBtn = document.getElementById('menu-favorites-btn');
 
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
         // --- Application State ---
-        let selectedGender = 'any';
-        let selectedLanguage = ''; // Set after languages load
-        let selectedLength = 'any';
-        let selectedFirstLetter = '';
-        let selectedStyle = 50;
-        let currentDisplayedName = null; // Stores the currently shown name object
-        let favorites = []; // Array to hold favorite name objects
-        let favoritesSortAsc = true; // Sorting direction for favorites (future use)
+        let selectedGender       = 'any';
+        let selectedLanguage     = ''; // Set after languages load
+        let selectedLength       = 'any';
+        let selectedFirstLetter  = '';
+        let selectedStyle        = 50;
+        let selectedSort = 'none';
+        let currentDisplayedName = null;    // Stores the currently shown name object
+        let displayedNamesCounter = 0;
+        let filteredNames = [];
+        let favorites            = [];      // Array to hold favorite name objects
+        let favoritesSortAsc     = true;    // Sorting direction for favorites (future use)
+        // ------------------------------------------------------------------------------------------------------------------------ //
 
         // --- Utility Functions ---
 
@@ -414,7 +381,7 @@
                 buttonElement.classList.add('text-save-button'); // Use save color for success
                 buttonElement.disabled = true;
                 setTimeout(() => {
-                    buttonElement.innerHTML = originalHTML;
+                    buttonElement.innerHTML = originalHTML; 
                     buttonElement.classList.remove('text-save-button');
                     buttonElement.disabled = false;
                 }, 1500); // Revert after 1.5 seconds
@@ -428,7 +395,7 @@
                     buttonElement.classList.remove('text-error-red');
                 }, 1500);
             });
-        }
+        }   
 
         /** Determines the length category ('short', 'medium', 'long') of a name. */
         function getLengthCategory(name) {
@@ -438,7 +405,21 @@
             return 'long';
         }
 
-        // --- Favorites Management ---
+        /** Adds a new input field for an additional starting letter to the name filter. */
+        function addLetterInput() {
+            const container = document.getElementById('first-letter-inputs');
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+
+            newInput.id = "first-letter-input";
+            newInput.maxLength = 1;
+            newInput.placeholder = 'Letter';
+            newInput.className = 'text-base border border-gray-300 rounded-md px-2 py-1';
+            newInput.addEventListener('input', (event) => event.target.value = event.target.value.trim().toUpperCase());
+            container.appendChild(newInput);
+        }
+
+        // ------------------------------------------------------------------------------------------------------------------------ //
 
         /** Loads favorites from localStorage. */
         function loadFavorites() {
@@ -507,15 +488,15 @@
             if (favorites.length > 0) {
                 const clearAllBtn = document.createElement('button');
                 clearAllBtn.textContent = 'Clear All Favorites';
-                clearAllBtn.className = 'block mx-auto text-lg text-remove-button hover:text-remove-button-hover transition-colors underline btn-feedback mb-6';
-                clearAllBtn.onclick = () => {
+                clearAllBtn.className = 'block mx-auto text-lg text-[#F87171] hover:text-[#DC2626] transition-colors underline btn-feedback mb-6';
+                clearAllBtn.onclick = () => { 
                     if (confirm('Are you sure you want to remove all favorite names?')) {
                         favorites = [];
                         saveFavorites();
                         displayFavoritesInPanel(); // Refresh panel
-                        // Update save button if a name is currently displayed
+                       // Update save button if a name is currently displayed
                         if (currentDisplayedName) {
-                            const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`);
+                            const btnContainer = document.getElementById(`save-btn-container-${currentDisplayedName.id}`); 
                             if(btnContainer) renderSaveButton(btnContainer, currentDisplayedName, false);
                         }
                     }
@@ -531,9 +512,9 @@
                 const textDiv = document.createElement('div');
                 textDiv.innerHTML = `
                     <strong class="text-xl block">${fav.name}</strong>
-                    <span class="text-base text-medium-gray block">${fav.meaning || 'Meaning not available.'}</span>
+                    <span class="text-base text-[#6B7280] block">${fav.meaning || 'Meaning not available.'}</span>
                     <span class="text-sm text-gray-500 block mt-1">
-                        Origin: ${fav.originNotes || fav.language || 'N/A'} &bull;
+                        Origin: ${fav.originNotes || fav.language || 'N/A'} &bull; 
                         Pronunciation: ${fav.pronunciation || 'N/A'} &bull;
                         Popularity: ${fav.popularity || 'N/A'}
                     </span>`;
@@ -544,16 +525,16 @@
                 // Copy button for favorite item
                 const copyBtn = document.createElement('button');
                 copyBtn.title = 'Copy Info';
-                copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                copyBtn.className = 'btn-icon text-[#9CA3AF] hover:text-[#4B5563] transition-colors btn-feedback';
                 copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
                 copyBtn.onclick = (e) => {
                     const textToCopy = `Name: ${fav.name}\nMeaning: ${fav.meaning || 'N/A'}\nOrigin: ${fav.originNotes || fav.language || 'N/A'}\nPronunciation: ${fav.pronunciation || 'N/A'}\nPopularity: ${fav.popularity || 'N/A'}`;
                     copyToClipboard(textToCopy, e.currentTarget);
-                };
+                }; 
 
                 // Remove button for favorite item
                 const removeBtn = document.createElement('button');
-                removeBtn.title = 'Remove from Favorites';
+                removeBtn.title = 'Remove from Favorites';     
                 removeBtn.className = 'btn-icon text-remove-button hover:text-remove-button-hover transition-colors btn-feedback';
                 removeBtn.dataset.id = fav.id; // Store ID for removal
                 removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`;
@@ -567,7 +548,7 @@
             });
         }
 
-        /** Toggles the visibility of the favorites panel. */
+        /** Toggles the visibility of the favorites panel.*/
         function toggleFavoritesPanel() {
              if (!favoritesPanel) return;
              if (favoritesPanel.style.display === 'block') {
@@ -578,7 +559,7 @@
              }
          }
 
-        // --- UI Rendering ---
+        // ------------------------------------------------------------------------------------------------------------------------ //
 
         /** Renders the Save/Saved button for a name result. */
         function renderSaveButton(container, nameObj, isSaved) {
@@ -586,10 +567,10 @@
              container.innerHTML = ''; // Clear previous button
              const saveBtn = document.createElement('button');
              saveBtn.title = isSaved ? 'Saved to Favorites (Click to Remove in Panel)' : 'Save to Favorites';
-             saveBtn.disabled = isSaved; // Disable if already saved
+             saveBtn.disabled = isSaved; // Disable if already saved    
              saveBtn.className = `save-btn btn-icon transition-colors btn-feedback ${
                  isSaved ? 'text-save-button cursor-default' : 'text-medium-gray hover:text-save-button' // Different style/cursor if saved
-             }`;
+            }`;
              saveBtn.dataset.id = nameObj.id; // Store name ID
 
              // Set icon based on saved state
@@ -606,50 +587,51 @@
          }
 
         /** Populates the language dropdown and enables controls. */
-        function loadAndPrepareData() {
-            if (!languageSelect || !controlsFieldset || !generateBtn) return;
+        window.loadAndPrepareData = function () {
+            return new Promise((resolve, reject) => {
+                generateBtn.disabled = false;
+                if (!languageSelect || !controlsFieldset || !generateBtn) return;   
+                // Get unique languages from the database and sort them
+                const languages = [...new Set(nameDatabase.map(item => item.language))].sort();                
+                languageSelect.innerHTML = ''; // Clear existing options  
 
-            // Get unique languages from the database and sort them
-            const languages = [...new Set(nameDatabase.map(item => item.language))].sort();
-            languageSelect.innerHTML = ''; // Clear existing options
+                // Add "Any Language" option first
+                const anyOption = document.createElement('option'); anyOption.value = "any"; // Use 'any' or '' consistently
+                anyOption.textContent = "Any Language";  
+                languageSelect.appendChild(anyOption);
 
-            // Add "Any Language" option first
-            const anyOption = document.createElement('option');
-            anyOption.value = "any"; // Use 'any' or '' consistently
-            anyOption.textContent = "Any Language";
-            languageSelect.appendChild(anyOption);
+                // Add options for each unique language
+                languages.forEach(lang => {
+                    const option = document.createElement('option');
+                    option.value = lang;
+                    option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); // Capitalize
+                    languageSelect.appendChild(option);  
+                });
 
-            // Add options for each unique language
-            languages.forEach(lang => {
-                const option = document.createElement('option');
-                option.value = lang;
-                option.textContent = lang.charAt(0).toUpperCase() + lang.slice(1); // Capitalize
-                languageSelect.appendChild(option);
-            });
+                selectedLanguage = languageSelect.value; // Set initial selected language state
 
-            selectedLanguage = languageSelect.value; // Set initial selected language state
-
-            // Enable controls now that data is ready
-            controlsFieldset.disabled = false;
-            generateBtn.disabled = false;
-            dataLoaded = true;
-
-            // Hide loading message and show initial placeholder if they exist
-            const loadingMsg = document.getElementById('loading-message');
-            if(loadingMsg) loadingMsg.remove();
-            if(initialMessage) initialMessage.style.display = 'block';
-
-            displayFeaturedName(); // Show a featured name
+                // Enable controls now that data is ready
+                controlsFieldset.disabled = false;        
+                // Hide loading message and show initial placeholder if they exist
+                const loadingMsg = document.getElementById('loading-message');
+                if (loadingMsg) loadingMsg.remove();
+                if (initialMessage) initialMessage.style.display = 'block';
+                displayFeaturedName();                
+                
+                window.dataLoaded = true;
+                dataLoaded = true;
+                resolve(); // Resolve the promise after the data is prepared
+            });           
         }
 
         /** Displays a random name in the featured section. */
         function displayFeaturedName() {
              if (!dataLoaded || nameDatabase.length === 0 || !featuredNameContent) {
                  if(featuredNameContent) featuredNameContent.innerHTML = `<p class="text-medium-gray italic">Could not load featured name.</p>`;
-                 return;
+                 return; 
              }
              // Select a random name from the database
-             const randomIndex = Math.floor(Math.random() * nameDatabase.length);
+             const randomIndex = Math.floor(Math.random() * nameDatabase.length);   // Select a random name from the database
              const featuredName = nameDatabase[randomIndex];
 
              // Update the featured name section content
@@ -661,18 +643,22 @@
                      Popularity: ${featuredName.popularity || 'N/A'}
                  </p>
              `;
-         }
+         } 
 
-        // --- Event Listeners Setup ---
+        // ------------------------------------------------------------------------------------------------------------------------ //
         function setupEventListeners() {
+            // ------------------------------------------------------------------------------------------------------------------------ //
             // Update state when generator controls change
             genderRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedGender = event.target.value; }); });
             languageSelect.addEventListener('change', (event) => { selectedLanguage = event.target.value; });
             lengthRadios.forEach(radio => { radio.addEventListener('change', (event) => { selectedLength = event.target.value; }); });
-            firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim().toUpperCase(); event.target.value = selectedFirstLetter; }); // Force uppercase
             styleSlider.addEventListener('input', (event) => { selectedStyle = parseInt(event.target.value); updateSliderFeedback(); });
-
+             //firstLetterInput.addEventListener('input', (event) => { selectedFirstLetter = event.target.value.trim().toUpperCase(); event.target.value = selectedFirstLetter; }); // Force uppercase  
+            sortSelect.addEventListener('change', (event) => { selectedSort = event.target.value; });
+            
+            // ------------------------------------------------------------------------------------------------------------------------ //       
             // Generate Name Button Click
+            // ------------------------------------------------------------------------------------------------------------------------ //
             generateBtn.addEventListener('click', () => {
                 if (!dataLoaded) return; // Don't run if data isn't ready
 
@@ -686,20 +672,56 @@
                 const targetStyleCategory = getStyleCategory(selectedStyle);
 
                 // Filter the database based on current selections
-                const filteredNames = nameDatabase.filter(item => {
+                let filteredNames = nameDatabase.filter(item => {
                     const languageMatch = selectedLanguage === 'any' || item.language === selectedLanguage;
                     // Gender matching logic (handles 'any', specific genders, and 'neutral' mapping to 'any')
                     const genderMatch = selectedGender === 'any' ||
+
                                         item.gender === selectedGender ||
                                         (selectedGender === 'neutral' && item.gender === 'any') || // Treat 'neutral' request as 'any' gender in data
                                         item.gender === 'any'; // Names marked 'any' match all gender requests
                     const itemStyleCategory = getStyleCategory(item.styleScore);
                     const styleMatch = itemStyleCategory === targetStyleCategory; // Match exact style category
-                    const letterMatch = selectedFirstLetter === '' || item.name.toUpperCase().startsWith(selectedFirstLetter);
+                    // letter Match
+                    const letterInputs = document.querySelectorAll('#first-letter-inputs input');
+                    let letterMatch = false;
+                    if (letterInputs.length === 0) {
+                        letterMatch = true; // No letter specified, all names match
+                    } else {
+                        for (let i = 0; i < letterInputs.length; i++) {
+                            if(letterInputs[i].value.trim() != "" && item.name.toUpperCase().startsWith(letterInputs[i].value.trim().toUpperCase())){
+                                letterMatch = true; //Name starts with one of the input letters
+                            }
+                        }
+                    }
                     const lengthMatch = selectedLength === 'any' || item.lengthCategory === selectedLength;
-
+                    
                     return languageMatch && genderMatch && styleMatch && letterMatch && lengthMatch;
-                });
+                    });
+
+                // Sort the filtered names
+                if (selectedSort !== 'none') {
+                    filteredNames.sort((a, b) => { 
+                        if (selectedSort === 'name-asc') {
+                            return a.name.localeCompare(b.name);
+                        } else if (selectedSort === 'name-desc') {
+                            return b.name.localeCompare(a.name);
+                        } else if (selectedSort === 'style') {
+                            return a.styleScore - b.styleScore;
+                        } else {
+                            return 0;
+                        }
+                    });
+                }
+
+                
+                displayedNamesCounter = 0;
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.id = "load-more-button";
+                loadMoreBtn.className = "btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm mt-4";
+                loadMoreBtn.textContent = "Load More";
+
+                document.getElementById("results-container").appendChild(loadMoreBtn);
 
                 // Simulate network delay/processing time
                 setTimeout(() => {
@@ -707,10 +729,14 @@
                     nameOutput.innerHTML = ''; // Clear loading indicator
 
                     if (filteredNames.length > 0) {
-                        // Pick a random name from the filtered list
-                        const randomIndex = Math.floor(Math.random() * filteredNames.length);
-                        currentDisplayedName = filteredNames[randomIndex];
-
+                        displayNextName(filteredNames);
+                    } else {
+                         // No names found message
+                        if(resultsMessage) {
+                            resultsMessage.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or other filters?</p>`;
+                            resultsMessage.style.display = 'block';
+                        } 
+                        currentDisplayedName = null;
                         // Create the result display elements
                         const resultDiv = document.createElement('div');
                         resultDiv.className = 'result-item fade-in relative p-4 rounded-md bg-gray-50'; // Added padding/bg
@@ -720,7 +746,7 @@
                             <h3 class="text-4xl text-dark-text font-semibold mb-2">${currentDisplayedName.name}</h3>
                             <p class="text-lg text-dark-text mb-2">${currentDisplayedName.meaning || 'Meaning not available.'}</p>
                             <p class="text-base text-medium-gray mt-2">
-                                <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'} <br>
+                                <span class="font-semibold">Origin:</span> ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'} <br> 
                                 <span class="font-semibold">Pronunciation:</span> ${currentDisplayedName.pronunciation || 'N/A'} <br>
                                 <span class="font-semibold">Popularity:</span> ${currentDisplayedName.popularity || 'N/A'}
                             </p>
@@ -728,7 +754,7 @@
                         `;
 
                         // Create container for action buttons (Save, Copy)
-                        const buttonsDiv = document.createElement('div');
+                        const buttonsDiv = document.createElement('div'); 
                         buttonsDiv.className = 'absolute top-2 right-2 flex items-center gap-2'; // Position buttons top-right
 
                         // Save button container (rendered by function)
@@ -739,54 +765,87 @@
                         // Copy button
                         const copyBtn = document.createElement('button');
                         copyBtn.title = 'Copy Info';
-                        copyBtn.className = 'btn-icon text-copy-button hover:text-copy-button-hover transition-colors btn-feedback';
+                        copyBtn.className = 'btn-icon text-[#9CA3AF] hover:text-[#4B5563] transition-colors btn-feedback';
                         copyBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`;
                         copyBtn.onclick = (e) => {
                             const textToCopy = `Name: ${currentDisplayedName.name}\nMeaning: ${currentDisplayedName.meaning || 'N/A'}\nOrigin: ${currentDisplayedName.originNotes || currentDisplayedName.language || 'N/A'}\nPronunciation: ${currentDisplayedName.pronunciation || 'N/A'}\nPopularity: ${currentDisplayedName.popularity || 'N/A'}`;
                             copyToClipboard(textToCopy, e.currentTarget);
                         };
-
+                        
                         buttonsDiv.appendChild(saveBtnContainer);
                         buttonsDiv.appendChild(copyBtn);
-                        resultDiv.appendChild(textDiv);
+                        resultDiv.appendChild(textDiv);   
                         resultDiv.appendChild(buttonsDiv);
-                        nameOutput.appendChild(resultDiv);
+                        nameOutput.appendChild(resultDiv); 
 
-                    } else {
-                        // No names found message
-                        if(resultsMessage) {
-                            resultsMessage.innerHTML = `<p class="text-error-red italic error-message text-lg text-center">No matching names found this time! Maybe try adjusting the Style slider or other filters?</p>`;
-                            resultsMessage.style.display = 'block';
-                        }
-                        currentDisplayedName = null;
-                        if(initialMessage) initialMessage.style.display = 'none'; // Keep placeholder hidden
+                    
+                    const loadMoreButton = document.getElementById("load-more-button");      
+                    if (loadMoreButton){
+                         loadMoreButton.addEventListener("click", () => {
+                            displayNextName(filteredNames) 
+                        });
                     }
+
+                    if (displayedNamesCounter >= filteredNames.length){
+                        const loadMoreBtn = document.getElementById('load-more-button');
+                        if (loadMoreBtn){
+                             loadMoreBtn.style.display = 'none';
+                        }
+                    } 
+               
                 }, 300); // Simulate delay
+
+
             });
 
+
+            function displayNextName(filteredNames){
+                if (filteredNames.length > displayedNamesCounter){ 
+                    currentDisplayedName = filteredNames[displayedNamesCounter];
+                        displayedNamesCounter++
+                        const resultDiv = document.createElement('div');
+                        resultDiv.className = 'result-item fade-in relative p-4 rounded-md bg-gray-50'; // Added padding/bg
+                        document.getElementById("result-display").appendChild(resultDiv);
+                    }
+            }
+              // ------------------------------------------------------------------------------------------------------------------------ //
             // Hamburger Menu Toggle
             if (hamburgerBtn && mobileMenu) {
                 hamburgerBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('open');
+                }); 
+            }
+
+             // Open Favorites from the top-right button
+            if (favoritesBtn) {
+                favoritesBtn.addEventListener('click', toggleFavoritesPanel);
+            }
+
+               // Hamburger Menu Toggle (from header button)
+            if (headerHamburgerBtn && mobileMenu) {
+                headerHamburgerBtn.addEventListener('click', () => {
                     mobileMenu.classList.toggle('open');
                 });
             }
+
 
             // Close Mobile Menu when clicking outside
             document.addEventListener('click', (event) => {
                  if (mobileMenu && hamburgerBtn && !mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && mobileMenu.classList.contains('open')) {
                      mobileMenu.classList.remove('open');
                  }
-             });
+             }); 
+            // ------------------------------------------------------------------------------------------------------------------------ //
 
             // Open Favorites from Mobile Menu
             if (menuFavoritesBtn) {
                 menuFavoritesBtn.addEventListener('click', () => {
                      toggleFavoritesPanel();
                      if (mobileMenu) mobileMenu.classList.remove('open'); // Close mobile menu
-                 });
+                });
             }
 
-            // Event delegation for removing favorites from the panel
+            // Event delegation for removing favorites from the panel  
             if (favoritesPanelList) {
                 favoritesPanelList.addEventListener('click', (event) => {
                     // Check if the click was on a remove button
@@ -794,27 +853,59 @@
                     if (removeButton && removeButton.dataset.id) {
                         removeFromFavorites(removeButton.dataset.id);
                     }
-                    // Check if the click was on the "Clear All" button (handled within displayFavoritesInPanel now)
+                     // Check if the click was on the "Clear All" button (handled within displayFavoritesInPanel now)
                 });
             }
 
             // Close Favorites Panel Button
             if (closeFavoritesBtn) {
-                closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel);
+                //Add a new input for the starting letter
+                for (let i = 0; i < 3; i++) {
+
+
+                    addLetterInput();
+                }
+                closeFavoritesBtn.addEventListener('click', toggleFavoritesPanel); 
             }
         }
+        //dark mode code
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkModeIcon = document.getElementById('dark-mode-icon');
+        
+            body.classList.toggle('dark');
+            
+            // Toggle icons
+            if (body.classList.contains('dark')) {
+                darkModeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+            } else {
+                darkModeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
+            }
+            }
+        
+            if(darkModeToggle){
+                darkModeToggle.addEventListener('click', toggleDarkMode);
+            }
+            
+        
+        
+        
+        
 
-        // --- Initialization ---
+        // ------------------------------------------------------------------------------------------------------------------------ //
+        // Initialization
         // Run setup when the DOM is fully loaded
+        // ------------------------------------------------------------------------------------------------------------------------ //
         document.addEventListener('DOMContentLoaded', () => {
              loadFavorites();        // Load saved favorites first
-             loadAndPrepareData();   // Populate dropdowns, enable controls
              updateSliderFeedback(); // Set initial slider text
              setupEventListeners();  // Attach all event listeners
-             if(favoritesPanel) favoritesPanel.style.display = 'none'; // Ensure panel is hidden initially
+             if(favoritesPanel) favoritesPanel.style.display = 'none'; // Ensure panel is hidden initially   
+             loadAndPrepareData().then(()=>{});   // Populate dropdowns, enable controls
          });
 
-    </script>
+
+  </script>
 
 </body>
 </html>

@@ -77,7 +77,6 @@ The Stork Name Drop is a web application designed to help expectant parents and 
 
 ## Potential Future Enhancements
 
-* Implement "Related Names" and "Famous Namesakes" sections in results.
 * Add more advanced filtering options (e.g., by meaning, syllables).
 * Implement actual ad code in placeholders.
 * Add social sharing buttons to blog posts.
