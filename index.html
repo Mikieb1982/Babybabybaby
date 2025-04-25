@@ -23,9 +23,9 @@
         }
 
         .logo-container {
-            width: 200px;
-            height: 200px;
-            background-color: white; 
+            width: 100px;
+            height: 100px;
+            background-color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -60,7 +60,7 @@
             padding: 0 20px;
         }
 
-        .blog-image {
+        .blog-image { 
             width: 100px; 
             height: auto;
         }
@@ -78,13 +78,14 @@
         <h1>The Stork Name Drop</h1>
         <h2>The Baby Name Generator</h2>
         <div class="storks-container">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-         <img src="assets/german2025.png" alt="German 2025" class="blog-image">
-                <img src="assets/middle.png" alt="Middle Names" class="blog-image">
+ <img src="assets/german2025.png" alt="German 2025" class="blog-image">
+                <img src="assets/middle.png" alt="Middle Names"
+ class="blog-image">
+
+            <img src="assets/german2025.png" alt="German 2025" class="blog-image">
+            <img src="assets/middle.png" alt="Middle Names" class="blog-image">
+
+
                 <img src="assets/nickname.png" alt="Nicknames" class="blog-image">
                 <img src="assets/song.png" alt="Song Names" class="blog-image">
                 <img src="assets/uniqueeng.png" alt="Unique English Names" class="blog-image"> </div>
@@ -228,7 +229,7 @@
         <main
             class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 animate-fade-in-down">
 
-            <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
+            <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" >
                 <legend class="sr-only">Name Generation Controls</legend>
                 <section id="gender-selection">
                     <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
@@ -526,3 +527,113 @@
             <div class="mx-auto">
                 <input type="email" placeholder="Enter your email"
                     class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+        </section>
+
+        <aside id="favorites-panel" style="display: none;"
+            class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50 transition-all duration-500 ease-in-out">
+            <div
+                class="max-w-2xl mx-auto bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-lg relative">
+                <button id="close-favorites-btn" title="Close Favorites"
+                    class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-[#cbd5e1] transition btn-feedback"><svg
+                        xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#374151]" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-8 text-center">Favorite Names</h2>
+                <div id="favorites-panel-list" class="space-y-6">
+                    <p id="favorites-panel-placeholder" class="text-center text-[#6B7280] text-lg italic">No favorites
+                        saved
+                        yet.</p>
+                </div>
+            </div>
+        </aside>
+
+        <hr class="border-t border-dashed border-[#cbd5e1] max-w-4xl mx-auto mt-12 mb-8">
+        <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
+            <p><a href="aboutus.html" class="hover:text-dark-text underline">About Us</a> | <a href="#"
+                    class="hover:text-dark-text underline">Data Sources</a> | <a href="blog/middlenames.html"
+                    class="hover:text-dark-text underline">Blog</a> | <a href="affiliate.html"
+                    class="hover:text-dark-text underline">Recommendations</a></p>
+            <p>© 2025 The Stork Name Drop. All rights reserved.</p>
+        </footer>
+        <script>
+            // ------------------------------------------------------------------------------------------------------------------------ //
+            // Initial sample data (replace or fetch from backend/Firebase later)
+            const nameData = [
+                { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+                { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+                { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40 },
+                { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25 },
+                { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
+                { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
+                { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+                { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
+                { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+                { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
+                // Add many more names here...
+            ];
+            // ------------------------------------------------------------------------------------------------------------------------ //
+            // Calculate length category for each name
+            nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
+            let nameDatabase = nameData; // Use this as the primary data source
+
+            // Assume data is loaded for this static example
+            let dataLoaded = true; // Assume data is loaded for this static example
+            dataLoaded = false;
+            // ------------------------------------------------------------------------------------------------------------------------ //
+
+        </script>
+        <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu-content');
+
+
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('animate-slide-in-from-left')
+                });
+
+
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('animate-slide-in-from-left')
+                    }
+                });
+            }
+
+            // Function to generate a random name based on selected criteria
+            function generateRandomName() {
+                const gender = document.querySelector('input[name="gender"]:checked').value;
+                const language = document.getElementById("language-select").value;
+                const length = document.querySelector('input[name="length"]:checked').value;
+                const style = parseInt(document.getElementById("style-range").value, 10);
+
+                // Filter names based on selected criteria
+                let filteredNames = nameData.filter(name => {
+                    if (gender !== "any" && name.gender !== gender) return false;
+                    if (language !== "" && name.language !== language) return false;
+                    if (length !== "any" && name.lengthCategory !== length) return false;
+
+                    // Adjust this based on how you store and compare style preferences
+                    return name.styleScore >= style - 25 && name.styleScore <= style + 25;
+                });
+
+                // Select a random name from filtered results
+                if (filteredNames.length > 0) {
+                    const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
+
+                    // Display the result
+                    document.getElementById("results-placeholder").textContent = randomName.name;
+                } else {
+                    document.getElementById("results-placeholder").textContent = "No names found matching the criteria.";
+                }
+            }
+            // Event listener for the Generate Name button
+            const generateButton = document.getElementById("generate-btn");
+            generateButton.addEventListener("click", generateRandomName);
+
+        </script>
+    </body>
