@@ -5,6 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Stork Name Drop - Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Variables */
+        :root {
+            --soft-beige: #F5F5DC;
+            --dark-text: #374151;
+            --medium-gray: #6B7280;
+            --button-active: #60A5FA;
+            --button-active-hover: #3B82F6;
+            --button-inactive-hover-bg: #F9FAFB;
+            --button-inactive-hover-border: #1F2937;
+            --error-red: #EF4444;
+            --save-button: #34D399;
+            --save-button-hover: #059669;
+            --remove-button: #F87171;
+            --remove-button-hover: #DC2626;
+            --copy-button: #9CA3AF;
+            --copy-button-hover: #4B5563;
+            --accent-muted: #64748b;
+            --accent-muted-light: #cbd5e1;
+            --off-white: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-400: #94a3b8;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-repeat: repeat;
+            background-color: var(--soft-beige);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+        /* Links */
+        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--button-active-hover); text-decoration: underline; }
+        main a { color: var(--dark-text); }
+        main a:hover { color: var(--medium-gray); }
+        /* Headings */
+        h1, h2, h3, h4 { font-weight: bold; }
+        /* Lists */
+        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        /* Tables */
+        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: var(--slate-100); font-weight: bold; }
+        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
+        /* Paragraphs */
+        p { margin-bottom: 1rem; }
+        h1 { margin-bottom: 0.75rem; }
+        h2 { margin-top: 2rem; margin-bottom: 1rem; }
+        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
+    </style>
 
     <!-- Link to custom stylesheet -->
     <link rel="stylesheet" href="style.css" />

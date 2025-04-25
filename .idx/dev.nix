@@ -3,7 +3,7 @@
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
-
+  
   # Use https://search.nixos.org/packages to find packages
   packages = [
     # pkgs.go
@@ -11,12 +11,14 @@
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
-pkgs.jest
+    pkgs.jest
   ];
 
   # Sets environment variables in the workspace
   env = {};
-  idx = {
+  
+  # Configures IDX-specific settings
+  environment.idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
@@ -42,7 +44,7 @@ pkgs.jest
     # Workspace lifecycle hooks
     workspace = {
       # Runs when a workspace is first created
-      onCreate = {
+      onCreate = { 
         # Example: install JS dependencies from NPM
         # npm-install = "npm install";
         jest-test = "jest";
