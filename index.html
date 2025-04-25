@@ -2,107 +2,70 @@
 <html lang="en">
 
 <head>  
-    <meta charset="UTF-8">    
-    <style>
-        /* Variables */
-        :root {
-            --soft-beige: #F5F5DC;
-            --dark-text: #374151;
-            --medium-gray: #6B7280;
-            --button-active: #60A5FA;
-            --button-active-hover: #3B82F6;
-            --button-inactive-hover-bg: #F9FAFB;
-            --button-inactive-hover-border: #1F2937;
-            --error-red: #EF4444;
-            --save-button: #34D399;
-            --save-button-hover: #059669;
-            --remove-button: #F87171;
-            --remove-button-hover: #DC2626;
-            --copy-button: #9CA3AF;
-            --copy-button-hover: #4B5563;
-            --accent-muted: #64748b;
-            --accent-muted-light: #cbd5e1;
-            --off-white: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-400: #94a3b8;
-        }
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: var(--soft-beige);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--dark-text);
-        }
-        /* Links */
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--button-active-hover); text-decoration: underline; }
-        main a { color: var(--dark-text); }
-        main a:hover { color: var(--medium-gray); }
-        /* Headings */
-        h1, h2, h3, h4 { font-weight: bold; }
-        /* Lists */
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: var(--slate-100); font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        /* Paragraphs */
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-    </style>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
 
     <link rel="stylesheet" href="style.css">
-
-    <!-- Firebase Setup -->
+   
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDJaAq0xNhnU8eyP4iGZ6MqRRwnGxxx7tQ",
             authDomain: "the-stork-name-drop.firebaseapp.com",
             projectId: "the-stork-name-drop",
             storageBucket: "the-stork-name-drop.firebasestorage.app",
             messagingSenderId: "616266125527",
-            appId: "1:616266125527:web:b05f995e65909c5ddfa092",
-            measurementId: "G-4XRWLH02JP"
+            appId: "1:616266125527:web:b05f995e65909c5ddfa092", measurementId: "G-4XRWLH02JP"
         };
-
-        // Initialize Firebase
         try {
             const app = initializeApp(firebaseConfig);
-    
-            // Check if measurementId exists before initializing Analytics
             if (firebaseConfig.measurementId) {
                 const analytics = getAnalytics(app);
                 console.log("Firebase Analytics initialized.");
             } else {
                 console.log("Firebase initialized (Analytics skipped - no measurementId).");
-        }
+            }
         } catch (error) {
             console.error("Error initializing Firebase:", error);
-            // Optionally display an error message to the user
         }
     </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        plugins: [
+          require('@tailwindcss/forms'),
+          // Add other plugins as needed
+        ],
         theme: {
+        extend: {
+          animation: {
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'fade-in-down': 'fade-in-down 0.5s ease-out',
+            'fade-out-up': 'fade-out-up 0.5s ease-out',
+            'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+            'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+          },
+          keyframes: {
+            'fade-in-down': {
+              '0%': { opacity: '0', transform: 'translateY(-10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'fade-out-up': {
+              'from': { opacity: '1', transform: 'translateY(0px)' },
+              'to': { opacity: '0', transform: 'translateY(-10px)' },
+            },
+            'slide-in-from-left': {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(0)' },
+            },
+            'slide-out-to-right': {
+              'from': { transform: 'translateX(0)' },
+              'to': { transform: 'translateX(100%)' },
+            },
+          },
           extend: {
             colors: {
               'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
@@ -120,10 +83,8 @@
       }
     </script>
 </head>
-<body>  
-
-   <!-- Header Section -->
-    <header class="text-center mb-10 relative">
+<body class="font-serif bg-[#F5F5DC] bg-[url('https://www.transparenttextures.com/patterns/paper.png')] text-[#374151] overflow-x-hidden">  
+   <header class="text-center mb-10 relative">
         <!-- Logo -->
         <a href="index.html" title="The Stork Name Drop Home">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo"
@@ -139,13 +100,11 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
-    </header>
-   <!-- Mobile Menu -->
-        <!-- Mobile Menu Content (Hidden by default) -->
-        <div id="mobile-menu-content" class="hidden fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
+    </header> 
+        <div id="mobile-menu-content" class="hidden fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50  transition-all duration-300 ease-in-out">
         <nav class="relative z-10 space-y-4 pt-8">
-             <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
-            <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
+             <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
+            <a href="../index.html" class="block text-lg text-[#374151] hover:underline text-center">Home</a>
             <a href="../index.html#generator-controls"
                 class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
             <a href="../index.html#favorites-panel"
@@ -158,16 +117,20 @@
         </nav>
     </div>
 
-    <section id="showcase" class="container mx-auto py-12 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-[#374151] mb-4">Find the ideal name</h1>
-        <p class="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto px-4">
-            Discover the perfect name for your child or pet.
-        </p>
-    </section>
+    <section id="showcase" class="container mx-auto py-12 text-center animate-fade-in-down">
+        <div class="bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 max-w-3xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-bold text-[#374151] mb-4">
+            Find the Perfect Name
+          </h1>
+          <p class="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto px-4">
+            Discover the ideal name for your child or pet with our easy-to-use name generator.
+          </p>
+        </div>
+      </section>
 
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
 
-    <main class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12">
+    <main class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 animate-fade-in-down">
 
         <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
             <legend class="sr-only">Name Generation Controls</legend>
@@ -278,7 +241,7 @@
         <section id="related-names-section" class="mt-12">
             <hr class="border-t border-dashed border-[#cbd5e1] my-10">
             <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Related Names</h2>
-            <div id="related-names-container">
+            <div id="related-names-container" class="transition-all duration-500 ease-in-out">
 
             </div>
         </section>
@@ -360,7 +323,7 @@
                             onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';">
                     </a>
                 </div>
-                <div>
+                <div class="transition-all duration-500 ease-in-out">
                     <p class="text-sm text-medium-gray mb-2">May 1, 2025</p>
                     <p class="text-base text-dark-text leading-snug">Dive into the world of gender-neutral names,
                         exploring their versatility, meanings, and why they're becoming increasingly popular... <a
@@ -430,7 +393,7 @@
                 </div>
             </article>
             <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                <div class="flex justify-between items-start gap-4 mb-2">
+                <div class="flex justify-between items-start gap-4 mb-2 transition-all duration-500 ease-in-out">
                     <h3
                         class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow">
                         <a href="blog/song.html" class="hover:text-[#6B7280]">What's in a Song Name? Musical
@@ -457,7 +420,7 @@
     </section>
     <section id="newsletter-signup" class="my-12 max-w-3xl mx-auto text-center">
         <h2 class="text-2xl md:text-3xl font-semibold text-[#374151] mb-4">Stay Updated</h2>
-        <p class="text-lg text-[#6B7280] mb-6">Get the latest name trends and tips straight to your inbox!</p>
+        <p class="text-lg text-[#6B7280] mb-6 transition-all duration-500 ease-in-out">Get the latest name trends and tips straight to your inbox!</p>
         <div class="mx-auto">
             <input type="email" placeholder="Enter your email"
                 class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3">
@@ -466,8 +429,7 @@
     </section>
 
     <aside id="favorites-panel" style="display: none;"
-        class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50">
-        <div class="max-w-2xl mx-auto bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-lg relative">
+        class="fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50 transition-all duration-500 ease-in-out">        <div class="max-w-2xl mx-auto bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-lg relative">
             <button id="close-favorites-btn" title="Close Favorites"
                 class="absolute top-3 right-3 p-1.5 rounded-full hover:bg-[#cbd5e1] transition btn-feedback"><svg
                     xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-[#374151]" fill="none" viewBox="0 0 24 24"
@@ -478,7 +440,7 @@
                 <p id="favorites-panel-placeholder" class="text-center text-[#6B7280] text-lg italic">No favorites saved
                     yet.</p>
             </div>
-        </div>       
+        </div>
     </aside>
 
     <hr class="border-t border-dashed border-[#cbd5e1] max-w-4xl mx-auto mt-12 mb-8">
@@ -517,16 +479,18 @@
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu-content');
         
-        // --- Mobile Menu Toggle ---
+       
         if (hamburgerBtn && mobileMenu) {
           hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+             mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('animate-slide-in-from-left')
           });
           
-          // --- Close Mobile Menu on Outside Click ---
+          
           document.addEventListener('click', (event) => {
             if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
               mobileMenu.classList.add('hidden');
+               mobileMenu.classList.remove('animate-slide-in-from-left')
             }
           });
         }
