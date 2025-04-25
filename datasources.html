@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta Information -->
     <style>
         /* Variables */
-        :root {
+        :root{
             --soft-beige: #F5F5DC;
             --dark-text: #374151;
             --medium-gray: #6B7280;
@@ -24,11 +25,14 @@
             --off-white: #f8fafc;
             --slate-100: #f1f5f9;
             --slate-400: #94a3b8;
+            --button-disabled: #cbd5e1;
         }
-        body {
+
+        body{
             font-family: 'Times New Roman', Times, serif;
             background-image: url('https://www.transparenttextures.com/patterns/paper.png');
             background-repeat: repeat;
+
             background-color: var(--soft-beige);
             font-size: 1rem;
             line-height: 1.6;
@@ -45,6 +49,7 @@
         ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
         ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
         li { margin-bottom: 0.5rem; }
+
         /* Paragraphs */
         p { margin-bottom: 1rem; }
         h1 { margin-bottom: 0.75rem; }
@@ -53,6 +58,16 @@
         h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
     </style>
     <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <nav class="bg-white shadow-md rounded-lg p-4">
+        <ul class="flex flex-col sm:flex-row sm:justify-around sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <li><a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md transition duration-150 ease-in-out text-center sm:text-left">
+                    Home </a></li>
+            <li><a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100 hover:text-blue-700 rounded-md transition duration-150 ease-in-out text-center sm:text-left">
+                    About </a></li>
+        </ul>
+    </nav>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Data Sources - The Stork Name Drop</title>
@@ -61,7 +76,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
      <script>
-      // --- Tailwind CSS Configuration ---
+      //--- Tailwind CSS Configuration ---
       // Tailwind config copied for color consistency
       tailwind.config = {
         theme: {
@@ -81,27 +96,22 @@
       }
     </script>
 
+
 </head>
+
 <body class="p-4 md:p-8">
-
-    <!-- --- Header Section --- -->
     <header class="text-center mb-10 border-b border-accent-muted-light pb-4 shadow-sm">
-
         <!-- Website Logo -->
         <a href="index.html" title="The Stork Name Drop Home">
             <img src="assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-24 w-24 object-contain mb-3"
-                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo'; The Stork Name Drop Logo">
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button id="hamburger-btn" title="Open Menu"
-            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo'; The Stork Name Drop Logo"></a>
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
-
+        <!-- Mobile Menu Content -->
         <div id="mobile-menu-content" class="hidden">
             <nav class="relative z-10 space-y-4 pt-8">
                 <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
@@ -109,13 +119,15 @@
                 <a href="index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
                 <a href="index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
                 <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-                <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
                 <a href="affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+                <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
             </nav>
         </div>
+        </a>
+
     </header>
 
-    <!-- --- Main Content Area --- -->
+
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <!-- Main content -->
@@ -149,7 +161,7 @@
             </div>
         </article>
     </main>
-
+    <!-- --- Horizontal Line --- -->
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <!-- --- Footer Section --- -->
@@ -159,17 +171,17 @@
     </footer>
 
     <script>
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const mobileMenu = document.getElementById('mobile-menu-content');  
-       
+      // DOM Elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
+
         // Check if the elements exist before adding listeners
-        if (hamburgerBtn && mobileMenu)
-        {
-           // Toggle mobile menu
+        if (hamburgerBtn && mobileMenu) {
+            // Hamburger Button Click Event
             hamburgerBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            
+
             // Close mobile menu when clicking outside
              document.addEventListener('click', (event) => {
                  if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) 

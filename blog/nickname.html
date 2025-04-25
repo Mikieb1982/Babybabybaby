@@ -124,6 +124,32 @@
     <!-- Header Section -->
     <header class="text-center mb-10">
         <!-- Logo Image with Link to Home -->
+
+        <a href="../index.html" title="The Stork Name Drop Home">
+            <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-24 w-24 object-contain mb-3"
+                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo'; alt='The Stork Name Drop Logo Placeholder'">
+        </a>
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" title="Open Menu"
+            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu Content -->
+        <div id="mobile-menu-content" class="hidden">
+            <nav class="relative z-10 space-y-4 pt-8">
+                <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
+                <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
+                <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+                <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
+                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+                <a href="../affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+            </nav>
+        </div>
         <a href="../index.html" title="The Stork Name Drop Home">
             <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';"></img>
         </a>
@@ -293,7 +319,7 @@
                  <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
                  <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
                     <li>Nickname-Proof Boy Names | Nameberry, https://nameberry.com/blog/finding-nickname-proof-boy-names-with-nicknames</li>
-                    <li>Get the name of the dog – and the nickname - Poynter, https://www.poynter.org/reporting-editing/2014/get-the-name-of-the-dog-and-the-nickname/</li>
+                <li>Get the name of the dog – and the nickname - Poynter, https://www.poynter.org/reporting-editing/2014/get-the-name-of-the-dog-and-the-nickname/</li>
                     {/* ... (Include all other citations from the document) ... */}
                     <li>Street Names and Nicknames - UNC School of Government - University of North Carolina, https://www.sog.unc.edu/blogs/nc-criminal-law/street-names-and-nicknames</li>
                  </ol>
@@ -336,9 +362,27 @@
         </p>
     </footer>
     
+      <!-- Scripts -->
     <script>
-        // No JavaScript needed for this static blog post page
+        // DOM Elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
+
+        if (hamburgerBtn && mobileMenu) {
+            // Hamburger Button Click Event
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close Mobile Menu on Outside Click
+            document.addEventListener('click', (event) => {
+                if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
     </script>
 
 </body>
 </html>
+

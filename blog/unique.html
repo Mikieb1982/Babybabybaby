@@ -79,11 +79,33 @@
     </script>
 </head>
 <body class="p-4 md:p-8">
-
-    <header class="text-center mb-10">
+    <header class="text-center mb-10 border-b border-accent-muted-light pb-4 shadow-sm">
         <a href="../index.html" title="The Stork Name Drop Home">
-            <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+            <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-24 w-24 object-contain mb-3"
+                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo'; alt='The Stork Name Drop Logo Placeholder'">
         </a>
+
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" title="Open Menu"
+            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu Content -->
+        <div id="mobile-menu-content" class="hidden">
+            <nav class="relative z-10 space-y-4 pt-8">
+                <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
+                <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
+                <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+                <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
+                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+                <a href="../affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
+            </nav>
+        </div>
     </header>
 
     <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
@@ -129,7 +151,7 @@
             </section>
             <section class="mt-12">
                 <h2 class="text-2xl md:text-3xl text-dark-text mb-4">Share This Post</h2>
-                <p class="text-base text-dark-text leading-relaxed mb-4">Share this post!</p>
+                
                 <div class="flex space-x-4">
                     <a href="#" title="Share on Facebook" class="hover:text-button-active-hover transition-colors">
                         <svg class="h-8 w-8 text-button-active" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
@@ -137,7 +159,7 @@
                     <a href="#" title="Share on Twitter" class="hover:text-button-active-hover transition-colors">
                         <svg class="h-8 w-8 text-button-active" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.34a11.616 11.616 0 006.29 1.84" /></svg>
                     </a>
-                    <a href="mailto:?subject=Check%20out%20this%20blog%20post&body=I%20thought%20you%20might%20enjoy%20this%20post:%20[URL]" title="Share by Email" class="hover:text-button-active-hover transition-colors">
+                    <a href="mailto:?subject=Check%20out%20this%20blog%20post&body=I%20thought%20you%20might%20enjoy%20this%20post%20I%20read.%20[URL]" title="Share by Email" class="hover:text-button-active-hover transition-colors">
                        <svg class="h-8 w-8 text-button-active" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" /><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" /></svg>
                     </a>
                 </div>
@@ -155,10 +177,30 @@
         <p>
             <a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> |
             <a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> |
-            <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> |
-            <a href="../blog.html" class="hover:text-dark-text underline">Blog</a> |            
+            <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> | <a
+                href="../blog.html" class="hover:text-dark-text underline">Blog</a> | <a href="../affiliate.html"
+                class="hover:text-dark-text underline">Recommendations</a>
         </p>
     </footer>
+    <script>
+        // DOM Elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
 
+        if (hamburgerBtn && mobileMenu) {
+            // Hamburger Button Click Event
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close Mobile Menu on Outside Click
+            document.addEventListener('click', (event) => {
+                if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </body>
+
 </html>

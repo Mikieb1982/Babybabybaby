@@ -34,6 +34,27 @@
                 --slate-400: #94a3b8;
             }
             body {
+
+                /* Lists */
+            ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+            ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+            li { margin-bottom: 0.5rem; }
+            /* Tables */
+            table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
+            th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
+            th { background-color: var(--slate-100); font-weight: bold; }
+            .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
+            /* Paragraphs */
+            p { margin-bottom: 1rem; }
+            h1 { margin-bottom: 0.75rem; }
+            h2 { margin-top: 2rem; margin-bottom: 1rem; }
+            h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+            h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
+            /* Links */
+            a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
+            a:hover { color: var(--button-active-hover); text-decoration: underline; }
+            main a { color: var(--dark-text); }
+            main a:hover { color: var(--medium-gray); }
                 font-family: 'Times New Roman', Times, serif;
                 background-image: url('https://www.transparenttextures.com/patterns/paper.png');
                 background-repeat: repeat;
@@ -41,15 +62,6 @@
                 font-size: 1rem;
                 line-height: 1.6;
                 color: var(--dark-text);
-            }
-            /* Links */
-            a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-            a:hover { color: var(--button-active-hover); text-decoration: underline; }
-            main a { color: var(--dark-text); }
-            main a:hover { color: var(--medium-gray); }
-            /* Headings */
-            h1, h2, h3, h4 { font-weight: bold; }
-        </style>
 
 
 
@@ -91,7 +103,7 @@
     <header class="text-center mb-10 relative">
         <a href="../index.html" title="The Stork Name Drop Home">
             <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-48 w-48 object-contain mb-3" onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-        </a>        
+        </a>
         
         <!-- Mobile menu button -->
         <button id="hamburger-btn" title="Open Menu" class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
@@ -112,7 +124,7 @@
             <a href="../affiliate.html"
                class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
           </nav>
-        </div>
+        </div>    
       </header>
       
     <!-- Separator -->
@@ -179,7 +191,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Layla</td><td>Derek & the Dominos (1970/72)</td><td>Uncommon/Arabic origin</td><td>Entered charts post-song (1972: #974). Major surge much later, likely linked to 1992 Unplugged version. Steady climb since early 2000s.</td><td>Peak: #23 (2019). 2022: #29.</td><td>Popularity rise also potentially aided by similar names (Kayla).</td></tr>
+                            <tr><td>Layla</td><td>Derek & the Dominos (1970/72)</td><td>Uncommon/Arabic origin</td><td>Entered charts post-song (1972: #974). Major surge much later, likely linked to 1992 Unplugged version. Steady climb since early 2000s.</td><td>Peak: #23 (2019). 2022: #29.</td><td>Popularity rise also potentially aided by similar names (Kayla).</td>
                             <tr><td>Rhiannon</td><td>Fleetwood Mac (1975/76)</td><td>Ancient Welsh, rare</td><td>Immediate impact. Entered US Top 1000 in 1976 (#593). Clear boost from song.</td><td>Peak: #418 (1977). 2023: #1153.</td><td>Classic example of a song popularizing an unfamiliar name.</td></tr>
                             <tr><td>Jolene</td><td>Dolly Parton (1973/74)</td><td>Existing, declining</td><td>Reversed previous decline; significant popularity increase after song release. Re-entered Top 1000 in 2010, rising since.</td><td>2023: #548.</td><td>Shows song impact even with potentially negative character association.</td></tr>
                             <tr><td>Caroline</td><td>Neil Diamond (1969) / Others</td><td>Established classic</td><td>Song is a famous association, but release didn't cause a major spike. Popularity high & steady for decades (Top 100 since 1994).</td><td>2023: #83.</td><td>Example of an established name being less affected by a single song hit.</td></tr>
@@ -244,7 +256,7 @@
                     <li>Baby Lullaby Songs: Lyrics & Meanings - The Bump, accessed April 22, 2025, https://www.thebump.com/a/lullabies</li>
                  </ol>
             </div>
-            
+
             <!-- Social Sharing Section -->
             <section class="mt-12">
                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Share This Post</h2>
@@ -267,7 +279,7 @@
                  <a href="../blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
             </div>
 
-        </article>        
+        </article>
     </main>
 
     <!-- --- Footer Separator --- -->
@@ -276,12 +288,12 @@
     <!-- --- Footer --- -->
     <footer class="text-center text-medium-gray text-base space-y-2 pb-8">
         <p>
-            <a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> |            
+            <a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> |
             <a href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> |
             <a href="../blog.html" class="hover:text-dark-text underline">Blog</a> |
             <a href="../affiliate.html" class="hover:text-dark-text underline">Recommendations</a>
         </p>
-        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>        
+        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
     </footer>
 
 

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Blog Post Title -->
-    <title>Names From Literature: Ideas for Your Baby - The Stork Name Drop Blog</title>
+    <title>Names From Literature: Ideas for Your Baby - The Stork Name Drop Blog
+    </title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -19,10 +21,13 @@
                         'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
                         'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
                         'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-                        'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-                        'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
+                        'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563', 'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
                         'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
                     }
+                },
+                fontFamily: {
+                    'serif': ['Times New Roman', 'Times', 'serif']
                 }
             }
 
@@ -30,36 +35,39 @@
     </script>
     <style>
         body { 
-            font-family: 'Times New Roman', Times, serif; 
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png'); 
-            background-repeat: repeat; 
-            background-color: var(--soft-beige); 
-            font-size: 1rem; 
-            line-height: 1.6; 
-            color: var(--dark-text); 
-        } 
-        /* Links */ 
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; } 
-        a:hover { color: var(--button-active-hover); text-decoration: underline; } 
-        main a { color: var(--dark-text); } 
-        main a:hover { color: var(--medium-gray); } 
-        /* Headings */ 
-        h1, h2, h3, h4 { font-weight: bold; } 
-        /* Lists */ 
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; } 
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; } 
-        li { margin-bottom: 0.5rem; } 
-        /* Tables */ 
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; } 
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; } 
-        th { background-color: var(--slate-100); font-weight: bold; } 
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; } 
-        /* Paragraphs */ 
-        p { margin-bottom: 1rem; } 
-        h1 { margin-bottom: 0.75rem; } 
-        h2 { margin-top: 2rem; margin-bottom: 1rem; } 
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; } 
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; } 
+            font-family: 'Times New Roman', Times, serif;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-repeat: repeat;
+            background-color: var(--soft-beige);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+        }
+
+        /* Links */
+        a {
+            color: var(--button-active);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--button-active-hover);
+            text-decoration: underline;
+        }
+
+        main a {
+            color: var(--dark-text);
+        }
+
+        main a:hover {
+            color: var(--medium-gray);
+        }
+
+        /* Headings */
+        h1, h2, h3, h4 {
+            font-weight: bold;
+        }
     </style> 
 </head>
 <body class="p-4 md:p-8">
@@ -67,28 +75,52 @@
     <!-- Header Section -->
     <header class="text-center mb-12">
 
-        <a href="../index.html" title="The Stork Name Drop Home">
-            <img src="../assets/logo.png" alt="The Stork Name Drop logo" class="mx-auto h-48 w-48 object-contain mb-4"
-                 onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
+        <a href="../index.html" title="The Stork Name Drop Home"> <img src="../assets/logo.png"
+                alt="The Stork Name Drop logo" class="mx-auto h-24 w-24 object-contain mb-3"
+                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';"> </a>
+        <!-- Hamburger Button -->
+        <button id="hamburger-btn" title="Open Menu"
+            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <!-- Mobile Menu Content -->
+        <div id="mobile-menu-content" class="hidden">
+            <nav class="relative z-10 space-y-4 pt-8">
+                <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
+                <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
+                <a href="../index.html#generator-controls"
+                    class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+                <a href="../index.html#favorites-panel"
+                    class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
+                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+                <a href="../affiliate.html"
+                    class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About
+                    Us</a>
+            </nav>
         </a>
 
     </header>
 
     <!-- Divider -->
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-12 md:my-16">
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <!-- Main Content Area -->
     <main class="max-w-3xl mx-auto bg-off-white p-8 md:p-12 rounded-lg  shadow-md">
         <article>
-            
+
             <!-- Article Title -->
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-4 text-center">Names From Literature: Ideas for Your Baby</h1>
+            <h1 class="text-3xl md:text-4xl text-dark-text mb-4 text-center">Names From Literature: Ideas for Your
+                Baby</h1>
             <p class="text-center text-xl md:text-2xl text-medium-gray mb-10"></p>
-            
-            <img src="../assets/literature.png"
-                 alt="Abstract image representing unique names ideas" 
-                 class="mx-auto my-10 rounded-lg shadow-md w-full max-w-lg h-auto" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Literature+Names+Image';"> 
+
+            <img src="../assets/literature.png" alt="Abstract image representing unique names ideas"
+                class="mx-auto my-10 rounded-lg shadow-md w-full max-w-lg h-auto"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Literature+Names+Image';">
 
             <!-- Full Article Content -->
             <div class="space-y-6 text-base md:text-lg leading-relaxed">
@@ -96,17 +128,27 @@
                 <!-- Introduction -->
                 <section>
                     <p>Literature, with its rich tapestry of characters and tales, has always been a fertile ground for baby name inspiration. From the classic pages of Austen and Dickens to the magical worlds of Tolkien and Rowling, countless names have leapt off the pages and into the hearts of parents-to-be. If you're searching for a name that carries a sense of story, history, or a hint of the extraordinary, look no further than the world of books. This post is dedicated to exploring some of the most captivating names drawn from literature.</p>
+
                 </section>
 
-                <!-- Classic Names with Literary Roots --> 
+                <!-- Classic Names with Literary Roots -->
                 <section>
-                    <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Classic Names with Literary Roots</h2>
-                    <p>Some names have graced the pages of literature for centuries, weaving themselves into the cultural fabric. These classics possess a timeless elegance, often associated with virtue, courage, or wit. Consider these literary giants:</p>
+                    <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Classic Names with Literary Roots
+                    </h2>
+                    <p>Some names have graced the pages of literature for centuries, weaving themselves into the
+                        cultural fabric. These classics possess a timeless elegance, often associated with virtue,
+                        courage, or wit. Consider these literary giants:</p>
                     <ul class="space-y-3">
-                        <li><strong>Elizabeth:</strong> A name of Hebrew origin, meaning "God's promise," it's forever linked to Jane Austen's Elizabeth Bennet, a character of intelligence and independence in Pride and Prejudice.</li>
-                        <li><strong>Henry:</strong> Meaning "ruler of the home," Henry is a name found throughout literary history, from Shakespeare's kings to Jane Austen's observant and wise Henry Tilney in Northanger Abbey.</li>
-                        <li><strong>Jane:</strong> Simple yet profound, Jane, meaning "God is gracious," is exemplified by Jane Eyre, a character of strength and conviction in Charlotte Brontë's masterpiece.</li>
-                        <li><strong>Arthur:</strong> Of Celtic origin, meaning "bear-like," Arthur evokes the legendary King Arthur and his chivalrous knights of the Round Table, a symbol of bravery and honor.</li>
+                        <li><strong>Elizabeth:</strong> A name of Hebrew origin, meaning "God's promise," it's forever
+                            linked to Jane Austen's Elizabeth Bennet, a character of intelligence and independence in Pride
+                            and Prejudice.</li>
+                        <li><strong>Henry:</strong> Meaning "ruler of the home," Henry is a name found throughout literary
+                            history, from Shakespeare's kings to Jane Austen's observant and wise Henry Tilney in
+                            Northanger Abbey.</li>
+                        <li><strong>Jane:</strong> Simple yet profound, Jane, meaning "God is gracious," is exemplified by
+                            Jane Eyre, a character of strength and conviction in Charlotte Brontë's masterpiece.</li>
+                        <li><strong>Arthur:</strong> Of Celtic origin, meaning "bear-like," Arthur evokes the legendary King
+                            Arthur and his chivalrous knights of the Round Table, a symbol of bravery and honor.</li>
                     </ul>
                 </section>
 
@@ -114,12 +156,17 @@
                 <section>
                     <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Whimsical Names from Fantasy & Magic</h2>
                     <p>Fantasy and magical realism offer a treasure trove of unique and whimsical names, perfect for those looking for something truly distinctive:</p>
-                    <ul class="space-y-3">
-                        <li><strong>Luna:</strong> Meaning "moon," Luna Lovegood from the Harry Potter series embodies an enchanting blend of whimsy and wisdom, making this name popular for fans of the wizarding world.</li>
-                        <li><strong>Arwen:</strong> A name of Welsh origin, meaning "noble maiden," Arwen from The Lord of the Rings is an Elven princess, symbolizing beauty, strength, and grace.</li>
-                        <li><strong>Lyra:</strong> Meaning "lyre," this name, made famous by Lyra Belacqua in His Dark Materials, suggests a connection to music and adventure, perfectly capturing the spirit of exploration.</li>
+                    <ul class=" space-y-3">
+                        <li><strong>Luna:</strong> Meaning "moon," Luna Lovegood from the Harry Potter series embodies an
+                            enchanting blend of whimsy and wisdom, making this name popular for fans of the wizarding
+                            world.</li>
+                        <li><strong>Arwen:</strong> A name of Welsh origin, meaning "noble maiden," Arwen from The Lord
+                            of the Rings is an Elven princess, symbolizing beauty, strength, and grace.</li>
+                        <li><strong>Lyra:</strong> Meaning "lyre," this name, made famous by Lyra Belacqua in His Dark
+                            Materials, suggests a connection to music and adventure, perfectly capturing the spirit of
+                            exploration.</li>
                     </ul>
-                </section>
+                    </section>
 
                 <!-- Names with a Sense of Adventure -->
                 <section>
@@ -136,7 +183,9 @@
                 <section>
                     <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Choosing Your Literary Name</h2>
                     <p>When choosing a literary name, let the story behind the name guide you. What values or qualities does the character represent? How does the name sound when spoken aloud? Does it fit your family's style and heritage? Take your time to explore the world of literature and find a name that resonates with you.</p>
-                </section>
+                    </section>
+
+
 
                 <!-- Conclusion -->
                 <section>
@@ -149,25 +198,42 @@
             <!-- Back link -->
             <div class="text-center mt-12">
                 <a href="../blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a> 
-            </div>
+            </div> 
 
         </article>
     </main>
 
     <!-- Divider -->
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-12 md:my-16">
+    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
 
     <!-- Footer Section -->
 
 
     <footer class="text-center text-medium-gray text-base space-y-2">
         <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
+        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html"
+                class="hover:text-dark-text underline">Blog Index</a></p>
     </footer>
 
-    <script>
-        // No JavaScript needed for this static blog post page
+    <script> // DOM Elements
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
+
+        if (hamburgerBtn && mobileMenu) {
+            // Hamburger Button Click Event
+            hamburgerBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close Mobile Menu on Outside Click
+            document.addEventListener('click', (event) => {
+                if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+
     </script>
-    
+
 </body>
 </html>
