@@ -23,9 +23,9 @@
         }
 
         .logo-container {
-            width: 200px;
-            height: 200px;
-            background-color: white; 
+            width: 100px;
+            height: 100px;
+            background-color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -60,7 +60,7 @@
             padding: 0 20px;
         }
 
-        .blog-image {
+        .blog-image { 
             width: 100px; 
             height: auto;
         }
@@ -78,13 +78,14 @@
         <h1>The Stork Name Drop</h1>
         <h2>The Baby Name Generator</h2>
         <div class="storks-container">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-            <img src="assets/stork.png" alt="Stork" class="stork-image">
-         <img src="assets/german2025.png" alt="German 2025" class="blog-image">
-                <img src="assets/middle.png" alt="Middle Names" class="blog-image">
+ <img src="assets/german2025.png" alt="German 2025" class="blog-image">
+                <img src="assets/middle.png" alt="Middle Names"
+ class="blog-image">
+
+            <img src="assets/german2025.png" alt="German 2025" class="blog-image">
+            <img src="assets/middle.png" alt="Middle Names" class="blog-image">
+
+
                 <img src="assets/nickname.png" alt="Nicknames" class="blog-image">
                 <img src="assets/song.png" alt="Song Names" class="blog-image">
                 <img src="assets/uniqueeng.png" alt="Unique English Names" class="blog-image"> </div>
@@ -186,6 +187,8 @@
                     onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
             </a>
 
+            <a href="main.html" class="mx-auto text-lg underline">Extra Content</a>
+
             <!-- Hamburger Button -->
             <button id="hamburger-btn" title="Open Menu"
                 class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
@@ -198,20 +201,19 @@
         <div id="mobile-menu-content"
             class="hidden fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50  transition-all duration-300 ease-in-out">
             <nav class="relative z-10 space-y-4 pt-8">
-                <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
-                <a href="../index.html" class="block text-lg text-[#374151] hover:underline text-center">Home</a>
-                <a href="../index.html#generator-controls"
-                    class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-                <a href="../index.html#favorites-panel"
-                    class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About
+                 <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
+                <a href="index.html" class="block text-lg text-[#374151] hover:underline text-center">Home</a>
+                <a href="index.html#generator-controls"
+                   class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
+                <a href="index.html#favorites-panel"
+                   class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
+                <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
+                <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About
                     Us</a>
-                <a href="../affiliate.html"
-                    class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-            </nav>
+                <a href="affiliate.html"
+                   class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
+           </nav>
         </div>
-
         <section id="showcase" class="container mx-auto py-12 text-center animate-fade-in-down">
             <div class="bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 max-w-3xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-bold text-[#374151] mb-4">
@@ -228,7 +230,7 @@
         <main
             class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 animate-fade-in-down">
 
-            <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" disabled>
+            <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12" >
                 <legend class="sr-only">Name Generation Controls</legend>
                 <section id="gender-selection">
                     <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
@@ -351,178 +353,83 @@
                 </div>
             </section>
         </main>
-        <div class="pt-12 w-full mx-auto border-b-2 border-[#374151]"></div>
+        <script>
+            // ------------------------------------------------------------------------------------------------------------------------ //
+            // Initial sample data (replace or fetch from backend/Firebase later)
+            const nameData = [
+                { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+                { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+                { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40 },
+                { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25 },
+                { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
+                { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
+                { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
+                { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
+                { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
+                { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
+                // Add many more names here...
+            ];
+            // ------------------------------------------------------------------------------------------------------------------------ //
+            // Calculate length category for each name
+            nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
+            let nameDatabase = nameData; // Use this as the primary data source
+
+            // Assume data is loaded for this static example
+            let dataLoaded = true; // Assume data is loaded for this static example
+            dataLoaded = false;
+            // ------------------------------------------------------------------------------------------------------------------------ //
+
+        </script>
+        <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu-content');
 
 
-        <section id="featured-name-section-moved"
-            class="my-12 max-w-xl mx-auto text-center bg-[#f8fafc] p-6 md:p-8 rounded-lg border-2 border-[#374151] shadow-md">
-            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold mb-4">Featured Name</h2>
-            <div id="featured-name-content-moved" class="text-center">
-                <p class="text-[#6B7280] italic">Loading featured name...</p>
-            </div>
-        </section>
+            if (hamburgerBtn && mobileMenu) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('animate-slide-in-from-left')
+                });
 
-        <div id="ad-slot-below-featured" class="ad-placeholder">Potential Ad Space (e.g., Responsive)</div>
-        <section id="latest-posts" class="my-12 max-w-4xl mx-auto px-4">
-            <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
-            <div class="space-y-8">
-                <article class="blog-teaser bg-off-white p-4 rounded-lg border border-accent-muted-light shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                            <a href="blog/uniquenames.html" class="hover:text-[#6B7280]">Exploring Unique and Uncommon
-                                Names</a>
-                        </h3>
-                        <a href="blog/uniquenames.html" class="flex-shrink-0 block"> <img src="assets/uniquenames.png"
-                                alt="Choosing unique names concept image" class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">May 10, 2025</p>
-                        <p class="text-base text-dark-text leading-snug">Looking for a distinctive name? Explore the
-                            beauty
-                            of unique and uncommon names, and find the perfect one for your baby... <a
-                                href="blog/uniquenames.html"
-                                class="text-button-active hover:text-button-active-hover font-semibold">Read More
-                                &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                            <a href="blog/middle.html">Choosing the Perfect Middle Name</a>
-                        </h3>
-                        <a href="blog/middle.html" class="flex-shrink-0 block">
-                            <img src="assets/middle.png" alt="Choosing middle name concept image"
-                                class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Middle';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">April 21, 2025</p>
-                        <p class="text-base text-dark-text leading-snug">Struggling to find a middle name that flows
-                            well?
-                            Explore tips for choosing a middle name based on rhythm, meaning, and family tradition... <a
-                                href="blog/middle.html"
-                                class="text-button-active hover:text-button-active-hover font-semibold">Read More
-                                &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                            <a href="blog/genderneutral.html">Exploring Gender-Neutral Names</a>
-                        </h3>
-                        <a href="blog/genderneutral.html" class="flex-shrink-0 block"> <img
-                                src="assets/genderneutral.png" alt="Choosing gender-neutral names concept image"
-                                class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Neutral';">
-                        </a>
-                    </div>
-                    <div class="transition-all duration-500 ease-in-out">
-                        <p class="text-sm text-medium-gray mb-2">May 1, 2025</p>
-                        <p class="text-base text-dark-text leading-snug">Dive into the world of gender-neutral names,
-                            exploring their versatility, meanings, and why they're becoming increasingly popular... <a
-                                href="blog/genderneutral.html"
-                                class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read
-                                More &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                            <a href="blog/german2025.html">Popular German Baby Names in 2025</a>
-                        </h3>
-                        <a href="blog/german2025.html" class="flex-shrink-0 block">
-                            <img src="assets/german2025.png" alt="German flag or related concept image"
-                                class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=German';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">April 15, 2025</p>
-                        <p class="text-base text-dark-text leading-snug">Discover the latest trends in German baby names.
-                            From timeless classics making a comeback to newly popular choices... <a
-                                href="blog/german2025.html"
-                                class="text-button-active hover:text-button-active-hover font-semibold">Read More
-                                &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-off-white p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-dark-text hover:text-medium-gray transition mt-1 flex-grow">
-                            <a href="blog/uniqueeng.html">Unique & Uncommon English Name Ideas</a>
-                        </h3>
-                        <a href="blog/uniqueeng.html" class="flex-shrink-0 block">
-                            <img src="assets/uniqueeng.png" alt="Abstract image representing unique ideas"
-                                class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Unique';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">April 10, 2025</p>
-                        <p class="text-base text-[#374151] leading-snug">Looking for a name that stands out? Dive into a
-                            curated list of unique English names, exploring their origins and meanings... <a
-                                href="blog/uniqueeng.html" class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More
-                                &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow">
-                            <a href="blog/nickname.html" class="hover:text-[#6B7280]">Nicknames: Fun, Affectionate &
-                                Practical</a>
-                        </h3>
-                        <a href="blog/nickname.html" class="flex-shrink-0 block"> <img src="assets/nickname.png"
-                                alt="Illustration related to nicknames" class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Nick';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">April 22, 2025</p>
-                        <p class="text-base text-[#374151] leading-snug">Beyond the formal first name, nicknames add
-                            warmth
-                            and familiarity. Explore the world of nicknames, from common diminutives to unique terms of
-                            endearment... <a href="blog/nickname.html"
-                                class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
-                    </div>
-                </article>
-                <article class="blog-teaser bg-[#f8fafc] p-4 rounded-lg border border-[#cbd5e1] shadow-sm">
-                    <div class="flex justify-between items-start gap-4 mb-2 transition-all duration-500 ease-in-out">
-                        <h3
-                            class="text-xl md:text-2xl font-semibold text-[#374151] hover:text-[#6B7280] transition mt-1 flex-grow">
-                            <a href="blog/song.html" class="hover:text-[#6B7280]">What's in a Song Name? Musical
-                                Monikers</a>
-                        </h3>
-                        <a href="blog/song.html" class="flex-shrink-0 block"> <img src="assets/song.png"
-                                alt="Illustration related to music and names" class="w-24 h-24 object-cover rounded-md"
-                                onerror="this.onerror=null; this.src='https://placehold.co/96x96/f8fafc/6b7280?text=Song';">
-                        </a>
-                    </div>
-                    <div>
-                        <p class="text-sm text-[#6B7280] mb-2">April 23, 2025</p>
-                        <p class="text-base text-[#374151] leading-snug">Music has power, and so do names! Explore the
-                            trend of naming babies after beloved songs, the stories behind iconic musical names, and the
-                            pros and cons... <a href="blog/song.html"
-                                class="text-[#60A5FA] hover:text-[#3B82F6] font-semibold">Read More &rarr;</a></p>
-                    </div>
-                </article>
-            </div>
-            <div class="text-center mt-8">
-                <a href="blog/middlenames.html" class="text-lg hover:text-dark-text underline">More Blog Posts
-                    &rarr;</a>
-            </div>
-        </section>
-        <section id="newsletter-signup" class="my-12 max-w-3xl mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-semibold text-[#374151] mb-4">Stay Updated</h2>
-            <p class="text-lg text-[#6B7280] mb-6 transition-all duration-500 ease-in-out">Get the latest name trends and
-                tips straight to your inbox!</p>
-            <div class="mx-auto">
-                <input type="email" placeholder="Enter your email"
-                    class="w-full md:w-auto p-3 border rounded-md text-base mb-3 md:mb-0 md:mr-3
+
+                document.addEventListener('click', (event) => {
+                    if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('animate-slide-in-from-left')
+                    }
+                });
+            }
+
+            // Function to generate a random name based on selected criteria
+            function generateRandomName() {
+                const gender = document.querySelector('input[name="gender"]:checked').value;
+                const language = document.getElementById("language-select").value;
+                const length = document.querySelector('input[name="length"]:checked').value;
+                const style = parseInt(document.getElementById("style-range").value, 10);
+
+                // Filter names based on selected criteria
+                let filteredNames = nameData.filter(name => {
+                    if (gender !== "any" && name.gender !== gender) return false;
+                    if (language !== "" && name.language !== language) return false;
+                    if (length !== "any" && name.lengthCategory !== length) return false;
+
+                    // Adjust this based on how you store and compare style preferences
+                    return name.styleScore >= style - 25 && name.styleScore <= style + 25;
+                });
+
+                // Select a random name from filtered results
+                if (filteredNames.length > 0) {
+                    const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
+
+                    // Display the result
+                    document.getElementById("results-placeholder").textContent = randomName.name;
+                } else {
+                    document.getElementById("results-placeholder").textContent = "No names found matching the criteria.";
+                }
+            }
+            // Event listener for the Generate Name button
+            const generateButton = document.getElementById("generate-btn");
+            generateButton.addEventListener("click", generateRandomName);
+
+        </script>
+    </body>
