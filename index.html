@@ -169,8 +169,13 @@
                     <section id="language-selection">
                         <label for="language-select"
                             class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Language/Origin:</label>
-                        <select id="language-select" name="language" class="text-base" >
-                            <option value="">Loading Languages...</option>
+                        <select id="language-select" name="language" class="text-base">
+                            <option value="">Any Language</option>
+                            <option value="english">English</option>
+                            <option value="german">German</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="french">French</option>
                         </select>
                     <button id="generate-name" class="btn btn-primary">
                         Generate Name
@@ -615,11 +620,10 @@
             const generateButton = document.getElementById("generate-btn");
             generateButton.addEventListener("click", generateRandomName);
             
-            // Event listener for the Generate Name button
+             // Event listener for the Generate Name button (added event listener)
             const generateNameButton = document.getElementById("generate-name");
-                generateNameButton.addEventListener("click", () => {
-                console.log("The Generate Name button was clicked.");
-            });
+            generateNameButton.addEventListener("click", generateRandomName);
+           
 
         </script>
 </body>update git 
