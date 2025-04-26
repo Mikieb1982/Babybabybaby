@@ -564,10 +564,9 @@
                 });
             }
             let nameDatabase = nameData; // Use this as the primary data source
-
-            // Assume data is loaded for this static example
-            let dataLoaded = true; // Assume data is loaded for this static example
-            dataLoaded = false;
+             populateLanguageDropdown();
+             // Assume data is loaded for this static example
+           
             // ------------------------------------------------------------------------------------------------------------------------ //
 
         </script>
@@ -587,11 +586,11 @@
 
            
 
+           
 
-            // Function to generate a random name based on selected criteria
-            populateLanguageDropdown();
             function generateRandomName() {
-
+                
+               
                 const gender = document.querySelector('input[name="gender"]:checked').value;
                 const language = document.getElementById("language-select").value;
                 const length = document.querySelector('input[name="length"]:checked').value;
@@ -599,7 +598,7 @@
 
                 // Filter names based on selected criteria
                 let filteredNames = nameData.filter(name => {
-                    if (gender !== "any" && name.gender !== gender) return false;
+                  if (gender !== "any" && name.gender !== gender) return false;
                     if (language !== "" && name.language !== language) return false;
                     if (length !== "any" && name.lengthCategory !== length) return false;
 
@@ -607,6 +606,7 @@
                     return name.styleScore >= style - 25 && name.styleScore <= style + 25;
                 });
 
+                
                 // Select a random name from filtered results
                 if (filteredNames.length > 0) {
                     const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
