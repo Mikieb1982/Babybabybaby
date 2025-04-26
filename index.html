@@ -178,9 +178,7 @@
                             <option value="french">French</option>
                         </select>
                     <button id="generate-name-button" class="btn btn-primary">
-                        Generate Name
-                    </button>
-
+                        
                     </section>
                     <section id="letter-filter">
                         <label for="first-letter-input"
@@ -236,9 +234,7 @@
                     <option value="style">Style</option>
                 </select>
             </section>
-
              <button id="generate-name-2" class="btn btn-primary">
-                        Generate Name
                     </button>
 
                     </section>
@@ -302,12 +298,11 @@
                 // Add many more names here...
             ];
             // ------------------------------------------------------------------------------------------------------------------------ //
-            // Calculate length category for each name
-            nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
+             let dataLoaded = true;
             let nameDatabase = nameData; // Use this as the primary data source
 
             // Assume data is loaded for this static example
-            let dataLoaded = true; // Assume data is loaded for this static example
+             // Assume data is loaded for this static example
             dataLoaded = false;
             // ------------------------------------------------------------------------------------------------------------------------ //
         </script>
@@ -316,7 +311,7 @@
         <script>
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu-content');
-
+              function generateRandomName() {
 
 
             if (hamburgerBtn && mobileMenu) {
@@ -326,7 +321,7 @@
                 });
 
             };
-            </script>
+               const gender = document.querySelector('input[name="gender"]:checked').value;
         </script>
         <section id="latest-posts" class="my-12 max-w-4xl mx-auto px-4">
             <h2 class="text-2xl md:text-3xl text-dark-text font-semibold text-center mb-6">From the Blog</h2>
@@ -545,17 +540,11 @@
                 { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
                 // Add many more names here...
             ];
-            // ------------------------------------------------------------------------------------------------------------------------ //
-            // Calculate length category for each name
-            nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
-
-
+          nameData.forEach(item => { item.lengthCategory = getLengthCategory(item.name); });
              function populateLanguageDropdown() {
                 const languageSelect = document.getElementById('language-select');
                 const uniqueLanguages = [...new Set(nameData.map(item => item.language))];
-
-                languageSelect.innerHTML = '';
-                const allOption = document.createElement('option');
+                 languageSelect.innerHTML = ''; const allOption = document.createElement('option');
                 allOption.value = '';
                 allOption.textContent = 'Any Language';
                 languageSelect.appendChild(allOption);
@@ -567,56 +556,39 @@
              populateLanguageDropdown();
              // Assume data is loaded for this static example
            
-            // ------------------------------------------------------------------------------------------------------------------------ //
+               
+        function generateRandomName() {
 
-        </script>
-        <script>
+
+        const gender = document.querySelector('input[name="gender"]:checked').value;
+        const language = document.getElementById("language-select").value;
+        const length = document.querySelector('input[name="length"]:checked').value;
+        const style = parseInt(document.getElementById("style-range").value, 10);
+
+        // Filter names based on selected criteria
+        let filteredNames = nameData.filter(name => {
+            if (gender !== "any" && name.gender !== gender) return false;
+            if (language !== "" && name.language !== language) return false;
+            if (length !== "any" && name.lengthCategory !== length) return false;
+
+            // Adjust this based on how you store and compare style preferences
+            return name.styleScore >= style - 25 && name.styleScore <= style + 25;
+        });
+
+
+        // Select a random name from filtered results
+        if (filteredNames.length > 0) {
+            const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
+
+            // Display the result
+            document.getElementById("results-placeholder").textContent = randomName.name;
+        } else {
+            document.getElementById("results-placeholder").textContent = "No names found matching the criteria.";
+        }
+    }
+
             const hamburgerBtn = document.getElementById('hamburger-btn');
             const mobileMenu = document.getElementById('mobile-menu-content');
-
-
-            if (hamburgerBtn && mobileMenu) {
-                hamburgerBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    mobileMenu.classList.toggle('animate-slide-in-from-left')
-
-                });
-
-            };
-
-           
-
-           
-
-            function generateRandomName() {
-                
-               
-                const gender = document.querySelector('input[name="gender"]:checked').value;
-                const language = document.getElementById("language-select").value;
-                const length = document.querySelector('input[name="length"]:checked').value;
-                const style = parseInt(document.getElementById("style-range").value, 10);
-
-                // Filter names based on selected criteria
-                let filteredNames = nameData.filter(name => {
-                  if (gender !== "any" && name.gender !== gender) return false;
-                    if (language !== "" && name.language !== language) return false;
-                    if (length !== "any" && name.lengthCategory !== length) return false;
-
-                    // Adjust this based on how you store and compare style preferences
-                    return name.styleScore >= style - 25 && name.styleScore <= style + 25;
-                });
-
-                
-                // Select a random name from filtered results
-                if (filteredNames.length > 0) {
-                    const randomName = filteredNames[Math.floor(Math.random() * filteredNames.length)];
-
-                    // Display the result
-                    document.getElementById("results-placeholder").textContent = randomName.name;
-                } else {
-                    document.getElementById("results-placeholder").textContent = "No names found matching the criteria.";
-                }
-            }
             // Event listener for the Generate Name button
             const generateButton = document.getElementById("generate-btn");
             generateButton.addEventListener("click", generateRandomName);
