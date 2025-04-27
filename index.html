@@ -139,17 +139,17 @@
              flex-grow: 1;
          }
 
-         /* Removed mobile menu styles */
-
     </style>
 </head>
 
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md"> <div class="container mx-auto flex justify-between items-center">
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
 
             <nav class="flex space-x-4 sm:space-x-6 items-center">
@@ -158,13 +158,12 @@
                  <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
                  <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
              </nav>
-
-             </div>
-        </header>
+        </div>
+    </header>
 
     <section id="showcase" class="py-6 md:py-10 text-center relative">
         <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto mb-6 border border-gray-300 rounded-md shadow-sm"
+             class="w-full h-auto mb-6"
              onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
 
     </section>
@@ -273,8 +272,7 @@
 
     <script>
         // --- DOM Element References ---
-        // REMOVED: hamburgerBtn, closeMenuBtn, mobileMenu
-        const topNavGeneratorLink = document.getElementById('top-nav-generator-link'); // Added ID for smooth scroll
+        const topNavGeneratorLink = document.getElementById('top-nav-generator-link');
         const generateBtn = document.getElementById('generate-btn');
         const resultDisplay = document.getElementById('result-display');
         const resultsPlaceholder = document.getElementById('results-placeholder');
@@ -289,7 +287,6 @@
         const famousNamesakesContainer = document.getElementById('famous-namesakes-container');
         const relatedNamesSection = document.getElementById('related-names-section');
         const famousNamesakesSection = document.getElementById('famous-namesakes-section');
-        // REMOVED: bodyElement (no longer needed for backdrop)
 
         // --- State Variables ---
         let nameDatabase = [];
@@ -321,8 +318,6 @@
                 generateBtn.disabled = true;
             }
         }
-
-        // REMOVED: toggleMobileMenu, closeMobileMenu
 
         // Function to update slider feedback text
         function updateSliderFeedback() {
@@ -562,8 +557,6 @@
         }
 
         // --- Event Listeners ---
-        // REMOVED: hamburgerBtn, closeMenuBtn, backdrop click listener
-
         // Add smooth scroll for top nav generator link
         if (topNavGeneratorLink) {
             topNavGeneratorLink.addEventListener('click', (e) => {
