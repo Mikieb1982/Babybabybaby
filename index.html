@@ -1,308 +1,648 @@
-<!DOCTYPE html> <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
 
-        <link rel="stylesheet" href="style.css">
+    <script type="module">
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        // import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+        // const firebaseConfig = {
+        //     apiKey: "YOUR_API_KEY", // Replace with your actual config
+        //     authDomain: "YOUR_AUTH_DOMAIN",
+        //     projectId: "YOUR_PROJECT_ID",
+        //     storageBucket: "YOUR_STORAGE_BUCKET",
+        //     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+        //     appId: "YOUR_APP_ID",
+        //     measurementId: "YOUR_MEASUREMENT_ID" // Optional
+        // };
+        // try {
+        //     const app = initializeApp(firebaseConfig);
+        //     if (firebaseConfig.measurementId) {
+        //         const analytics = getAnalytics(app);
+        //         console.log("Firebase Analytics initialized.");
+        //     } else {
+        //         console.log("Firebase initialized (Analytics skipped - no measurementId).");
+        //     }
+        // } catch (error) {
+        //     console.error("Error initializing Firebase:", error);
+        // }
+        console.log("Firebase initialization skipped (commented out)."); // Placeholder log
+    </script>
 
-        <script type="module">
-            // Initialize Firebase, remove if unnecessary, was causing page load problems
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-            const firebaseConfig = {
-                apiKey: "AIzaSyDJaAq0xNhnU8eyP4iGZ6MqRRwnGxxx7tQ",
-                authDomain: "the-stork-name-drop.firebaseapp.com",
-                projectId: "the-stork-name-drop",
-                storageBucket: "the-stork-name-drop.firebasestorage.app",
-                messagingSenderId: "616266125527",
-                appId: "1:616266125527:web:b05f995e65909c5ddfa092", measurementId: "G-4XRWLH02JP"
-            };
-            try {
-                const app = initializeApp(firebaseConfig);
-                if (firebaseConfig.measurementId) {
-                    const analytics = getAnalytics(app);
-                    console.log("Firebase Analytics initialized.");
-                } else {
-                    console.log("Firebase initialized (Analytics skipped - no measurementId).");
-                }
-            } catch (error) {
-                console.error("Error initializing Firebase:", error);
-            }
-        </script>
-
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                plugins: [
-                    require('@tailwindcss/forms'),
-                    // Add other plugins as needed
-                ],
-                theme: {
-                    extend: {
-                        animation: {
-                            'fade-in': 'fade-in 0.5s ease-out',
-                            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                            'fade-in-down': 'fade-in-down 0.5s ease-out',
-                            'fade-out-up': 'fade-out-up 0.5s ease-out',
-                            'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-                            'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-                        },
-                        keyframes: {
-                            'fade-in': {
-                                '0%': { opacity: '0' },
-                                '100%': { opacity: '1' },
-                            },
-                            'fade-in-down': {
-                                '0%': { opacity: '0', transform: 'translateY(-10px)' },
-                                '100%': { opacity: '1', transform: 'translateY(0)' },
-                            },
-                            'fade-out-up': {
-                                'from': { opacity: '1', transform: 'translateY(0px)' },
-                                'to': { opacity: '0', transform: 'translateY(-10px)' },
-                            },
-                            'slide-in-from-left': {
-                                '0%': { transform: 'translateX(-100%)' },
-                                '100%': { transform: 'translateX(0)' },
-                            },
-                            'slide-out-to-right': {
-                                'from': { transform: 'translateX(0)' },
-                                'to': { transform: 'translateX(100%)' },
-                            },
-                        },
-                        extend: {
-                            colors: {
-                                'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-                                'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-                                'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-                                'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-                                'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-                                'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-                                'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-                                'indigo-100': '#e0e7ff', 'indigo-700': '#4338ca', /* Tag colors */
-                                'amber-100': '#fef3c7', 'amber-500': '#f59e0b' /* Featured colors */
-                            }
-                        }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Custom font family (example using Inter)
+                    fontFamily: {
+                      sans: ['Inter', 'sans-serif'], // Set Inter as the default sans-serif font
+                      serif: ['Georgia', 'serif'], // Keep a serif option if needed elsewhere
+                    },
+                    // Custom colors inspired by the image
+                    colors: {
+                        'stork-blue': '#D1E8E2', // A light blue-greenish tone for background
+                        'stork-title': '#2C3E50', // Darker color for title text (used for other headings now)
+                        'stork-text': '#34495E', // General text color
+                        'stork-accent': '#1ABC9C', // Accent color (e.g., for buttons, links)
+                        'stork-accent-hover': '#16A085', // Hover state for accent
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    // Custom animations
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                    },
+                    // Background texture
+                    backgroundImage: {
+                       'paper-texture': "url('https://www.transparenttextures.com/patterns/paper.png')",
                     }
                 }
             }
-        </script>
-    </head>
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <body class="font-serif bg-[#F5F5DC] bg-[url('https://www.transparenttextures.com/patterns/paper.png')] text-[#374151] overflow-x-hidden h-screen">
-        <header class="text-center mb-10 relative">
-            <!-- Logo -->
-            <a href="index.html" title="The Stork Name Drop Home">
+    <style>
+        /* Basic styles */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
 
+        /* Form element styles */
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+        /* Ad placeholder */
+        .ad-placeholder {
+            @apply w-full max-w-3xl mx-auto h-24 bg-gray-200 flex items-center justify-center text-gray-500 my-6 rounded-md;
+        }
+        /* Loader */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1ABC9C; /* Stork Accent */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Name card styles */
+         .name-card {
+            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+         }
+         .name-card h3 {
+             @apply text-xl font-semibold text-stork-title mb-2;
+         }
+         .name-card p {
+             @apply text-stork-text mb-1 text-sm;
+         }
+         .name-card .tags span {
+             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+         }
+         .name-card .actions button {
+             @apply text-xs px-2 py-1 rounded mr-2;
+         }
+
+         /* Full height layout */
+         html, body {
+             min-height: 100%;
+             display: flex;
+             flex-direction: column;
+         }
+         body {
+             flex-grow: 1;
+         }
+         main {
+             flex-grow: 1;
+         }
+    </style>
+</head>
+
+<body class="font-sans bg-stork-blue bg-paper-texture text-stork-text overflow-x-hidden">
+
+    <header class="relative py-4 px-4 md:px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                    class="mx-auto h-24 w-24 object-contain mb-3 absolute top-4 left-4"
-                    onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-            </a>
+                     class="h-16 w-16 md:h-20 md:w-20 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/80x80/D1E8E2/34495E?text=Logo';">
+                     </a>
 
-            <a href="main.html" class="mx-auto text-lg underline">Extra Content</a>
-
-
-            <!-- Hamburger Button -->
-            <button id="hamburger-btn" title="Open Menu" 
-                class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
+            <button id="hamburger-btn" title="Open Menu"
+                    class="fixed top-4 right-4 z-50 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-        </header>
-        <div id="mobile-menu-content"
-            class="hidden fixed inset-0 bg-[#f5f5dc] bg-opacity-95 backdrop-blur-sm p-6 md:p-10 overflow-y-auto z-50  transition-all duration-300 ease-in-out">
-            <nav class="relative z-10 space-y-4 pt-8 transition-all duration-500 ease-in-out">
-                 <h3 class="text-2xl font-semibold text-[#374151] mb-6 text-center">Menu</h3>
-                <a href="index.html" class="block text-lg text-[#374151] hover:underline text-center">Home</a>
-                 <a href="index.html#generator-controls"
-                                class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-                <a href="index.html#favorites-panel"
-                                class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-                <a href="blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-                <a href="aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About
-                    Us</a>
-                  <a href="affiliate.html"
-                   class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-           </nav>
+
+             <nav class="hidden md:flex space-x-6 items-center">
+                 <a href="index.html" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Home</a>
+                 <a href="#generator-controls" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Name Generator</a>
+                 <a href="blog.html" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Blog</a>
+             </nav>
         </div>
-        <section id="showcase" class="container mx-auto py-12 text-center">
-            <div class="p-8 md:p-12 rounded-lg shadow-md my-12 max-w-3xl mx-auto bg-[#f8fafc] border-2 border-[#374151]">
-                <h1 class="text-5xl md:text-6xl font-bold text-[#374151] mb-4">
-                    The Stork Name Drop
-                </h1>
-                <p class="text-xl md:text-2xl text-[#6B7280] max-w-2xl mx-auto px-4 transition-all duration-500 ease-in-out">
-                    Discover the ideal name for your child or pet with our easy-to-use name generator.
-                </p>
+
+        <div id="mobile-menu-content"
+             class="hidden fixed inset-0 bg-stork-blue bg-opacity-95 backdrop-blur-md p-6 md:p-10 overflow-y-auto z-40 transition-transform duration-300 ease-in-out transform -translate-x-full">
+             <button id="close-menu-btn" title="Close Menu" class="absolute top-6 right-6 p-2 text-stork-text hover:text-stork-accent">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                 </svg>
+            </button>
+            <nav class="relative space-y-6 pt-16 text-center">
+                <h3 class="text-2xl font-semibold text-stork-title mb-8">Menu</h3>
+                <a href="index.html" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Home</a>
+                <a href="#generator-controls" id="mobile-generator-link" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Name Generator</a>
+                <a href="blog.html" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="showcase" class="container mx-auto py-10 md:py-16 text-center relative px-4">
+         <div class="max-w-3xl mx-auto">
+            <img src="assets/eindextitle.png" alt="The Stork Name Drop Title"
+                 class="mx-auto max-w-full h-auto mb-6"
+                 style="max-height: 150px;" /* Adjust max-height as needed */
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x150/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+                 <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto">
+                Discover the ideal name for your child or pet with our easy-to-use name generator.
+            </p>
+        </div>
+         </section>
+
+    <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (Top)</div>
+
+    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <fieldset id="generator-controls" class="space-y-8 mb-12">
+            <legend class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Name Generator Options</legend>
+
+            <section id="gender-selection">
+                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Gender:</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-base md:text-lg cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-base md:text-lg cursor-pointer">Girl</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-base md:text-lg cursor-pointer">Neutral</label> </div>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <section id="language-selection">
+                    <label for="language-select" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Language/Origin:</label>
+                    <select id="language-select" name="language" class="w-full p-2 text-base border">
+                        <option value="">Any Language</option>
+                        <option value="english">English</option>
+                        <option value="german">German</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        </select>
+                </section>
+                <section id="letter-filter">
+                    <label for="first-letter-input" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Starts with:</label>
+                    <div id="first-letter-inputs" class="flex flex-wrap gap-1">
+                         <span class="text-sm text-gray-500">Select a letter (optional)</span>
+                     </div>
+                     <input type="hidden" id="selected-letter" value=""> </section>
             </div>
-            <div id="stork-blog-container" class="storks-container space-x-3 flex justify-center gap-6 my-6"></div>
+
+            <section id="length-filter">
+                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Name Length:</label>
+                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-base md:text-lg cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-base md:text-lg cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-base md:text-lg cursor-pointer">Long (9+)</label> </div>
+                </div>
+            </section>
+
+            <section id="style-slider">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-lg md:text-xl text-stork-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-sm md:text-base font-medium">Balanced</span>
+                </div>
+                <div class="flex items-center justify-between text-medium-gray mb-1 text-sm md:text-base">
+                    <span>Traditional</span>
+                    <span>Unique</span>
+                </div>
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-stork-accent">
+            </section>
+
+            <div class="text-center pt-4">
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-lg md:text-xl shadow-md btn-feedback">
+                    Generate Name
+                </button>
+            </div>
+        </fieldset>
+
+         <section id="results-section" class="mt-12 animate-fade-in">
+            <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
+            <div id="results-container" class="min-h-[100px] relative"> <div id="loading-indicator" class="loader" style="display: none;"></div>
+                 <div id="result-display" class="text-stork-text">
+                    <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Click "Generate Name" to see a result.</p>
+                 </div>
+                 <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
+            </div>
         </section>
 
-        <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (e.g., 728x90)</div>
+        <hr class="my-10 border-gray-300">
 
-        <main
-            class="max-w-3xl mx-auto bg-[#f8fafc] p-8 md:p-12 rounded-lg border-2 border-[#374151] shadow-md my-12 animate-fade-in-down">
-
-            <fieldset id="generator-controls" class="space-y-8 md:space-y-10 mb-12">
-                <legend class="sr-only">Name Generation Controls</legend>
-                <section id="gender-selection">
-                    <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3 text-[#374151]">Gender:</label>
-                    <div>
-                        <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any"
-                                checked class="mr-2"> <label for="gender-any"
-                                class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy"
-                                class="mr-2"> <label for="gender-boy"
-                                class="text-lg md:text-xl cursor-pointer">Boy</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl"
-                                class="mr-2"> <label for="gender-girl"
-                                class="text-lg md:text-xl cursor-pointer">Girl</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender"
-                                value="neutral" class="mr-2"> <label for="gender-neutral"
-                                class="text-lg md:text-xl cursor-pointer">Neutral</label> </div>
+        <div id="additional-info" class="space-y-10">
+            <section id="related-names-section" class="hidden"> <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
+                <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     </div>
-                </section>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    <section id="language-selection">
-                        <label for="language-select"
-                            class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Language/Origin:</label>
-                        <select id="language-select" name="language" class="text-base">
-                            <option value="">Any Language</option>
-                            <option value="english">English</option>
-                            <option value="german">German</option>
-                            <option value="japanese">Japanese</option>
-                            <option value="spanish">Spanish</option>
-                            <option value="french">French</option>
-                        </select>
-                    </section>
-                   <section id="letter-filter">
-                        <label for="first-letter-input"
-                            class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Starts
-                            with:</label>
-                        <div id="first-letter-inputs" class="flex space-x-2 flex-wrap"></div>
-                    </section>
-                </div>
-
-                <section id="length-filter">
-                    <label class="block text-xl md:text-2xl text-dark-text font-semibold mb-3">Name Length:</label>
-                    <div>
-                        <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any"
-                            checked class="mr-2"> <label for="length-any"
-                                class="text-lg md:text-xl cursor-pointer">Any</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short"
-                                class="mr-2"> <label for="length-short"
-                                class="text-lg md:text-xl cursor-pointer">Short (3-5)</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="length-medium" name="length"
-                                value="medium" class="mr-2"> <label for="length-medium"
-                                class="text-lg md:text-xl cursor-pointer">Medium (6-8)</label> </div>
-                        <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long"
-                                class="mr-2"> <label for="length-long"
-                                class="text-lg md:text-xl cursor-pointer">Long (9+)</label> </div>
-                    </div>
-                </section>
-
-                <section id="style-slider">
-                    <div class="flex justify-between items-center mb-2">
-                        <h2 class="text-xl md:text-2xl text-dark-text font-semibold text-[#374151]">Name Style:</h2>
-                        <span id="slider-feedback" class="text-[#6B7280] text-base md:text-lg">Balanced</span>
-                    </div>
-                    <div class="flex items-center justify-between text-[#6B7280] mb-3 text-base md:text-lg">
-                        <span>Traditional</span>
-                        <span>Unique</span>
-                    </div>
-                    <input id="style-range" type="range" min="0" max="100" value="50"
-                        class="w-full h-2 bg-[#cbd5e1] rounded-lg appearance-none cursor-pointer">
-                </section>
-
-                <div class="text-center pt-6">
-                    <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-xl md:text-2xl shadow-sm">Generate Name</button>
-                    </div>
-            </fieldset>
-
-            <section id="sort-filter">  
-                <label for="sort-select"
-                    class="block text-xl md:text-2xl text-dark-text font-semibold mb-2 text-[#374151]">Sort by:</label>
-                  <select id="sort-select" name="sort" class="text-base">
-                   <option value="date-added">Date Added</option>
-                   <option value="name-asc">Name (A-Z)</option>
-                  <option value="name-desc">Name (Z-A)</option>
-                   <option value="style">Style</option>
-                  </select>
-           </section>
-
-                    </section>
-                    <section id="letter-filter">
-
-                
-                 <section id="filter-names-section" class="mt-12">
-                <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Filters</h2>
-                <div id="filter-names-container" class="flex justify-around">
-                    <button class="btn btn-primary">Filter by Origin</button>
-                    <button class="btn btn-primary">Filter by Meaning</button>
-                    <button class="btn btn-primary">Filter by Syllables</button>
-                </div>
             </section>
 
-
-            <section id="results-section" class="mt-12 animate-fade-in">
-                <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Generated Name(s)
-                </h2>
-                <div id="results-container">
-                    <div id="result-display"
-                        class="content-area text-[#374151] font-base text-base px-4 py-4 rounded-lg border-[#374151] border-2 shadow-md mt-4">
-                        <p id="results-placeholder" class="text-center text-[#6B7280] text-lg italic">Click
-                            "Generate
-                            Name"
-                            to see a result.</p>
-                    </div>
-                    <p id="results-message" class="text-center text-[#6B7280] mt-4 text-lg" style="display:none;"></p>
-                    <div id="loading-indicator" class="loader" style="display: none;"></div>
+            <section id="famous-namesakes-section" class="hidden"> <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
+                <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
+                    <p class="text-center text-medium-gray italic">No information available yet.</p>
                 </div>
             </section>
-            <section id="related-names-section" class="mt-12">
-                <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Similar Names</h2>
-                <div id="related-names-container" class="transition-all duration-500 ease-in-out">
+        </div>
 
+    </main>
+
+    <footer class="bg-gray-100 text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+     </footer>
+
+
+    <script>
+        // --- DOM Element References ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu-content');
+        const mobileGeneratorLink = document.getElementById('mobile-generator-link');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultDisplay = document.getElementById('result-display');
+        const resultsPlaceholder = document.getElementById('results-placeholder');
+        const resultsMessage = document.getElementById('results-message');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const languageSelect = document.getElementById('language-select');
+        const firstLetterInputsContainer = document.getElementById('first-letter-inputs');
+        const selectedLetterInput = document.getElementById('selected-letter');
+        const styleSlider = document.getElementById('style-range');
+        const sliderFeedback = document.getElementById('slider-feedback');
+        const relatedNamesContainer = document.getElementById('related-names-container');
+        const famousNamesakesContainer = document.getElementById('famous-namesakes-container');
+        const relatedNamesSection = document.getElementById('related-names-section');
+        const famousNamesakesSection = document.getElementById('famous-namesakes-section');
+
+
+        // --- Initial Sample Data ---
+        const nameDatabase = [
+            // English Names
+            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10, famous: ["William Shakespeare", "Prince William"] },
+            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20, famous: ["Olivia Newton-John", "Olivia Colman"] },
+            { id: 'en3', name: "Noah", language: "english", gender: "boy", meaning: "Rest, comfort.", originNotes: "Hebrew origin, biblical figure", pronunciation: "NO-ah", popularity: "Top 10", lengthCategory: "short", styleScore: 15, famous: ["Noah (Bible)", "Noah Wyle"] },
+            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40, famous: ["Isla Fisher"] },
+            { id: 'en5', name: "Arthur", language: "english", gender: "boy", meaning: "Bear man / Noble strength.", originNotes: "Celtic/Welsh origin, legendary king", pronunciation: "AR-thur", popularity: "Classic", lengthCategory: "medium", styleScore: 5, famous: ["King Arthur", "Arthur Conan Doyle"] },
+            { id: 'en6', name: "Ava", language: "english", gender: "girl", meaning: "Birdlike, lively.", originNotes: "Germanic or Hebrew origins", pronunciation: "AY-vah", popularity: "Top 10", lengthCategory: "short", styleScore: 25, famous: ["Ava Gardner"] },
+
+            // German Names
+            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25, famous: ["Maximilian I (Holy Roman Emperor)"] },
+            { id: 'de2', name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom.", originNotes: "Greek origin, popular across Europe", pronunciation: "zo-FEE", popularity: "Top 100", lengthCategory: "medium", styleScore: 15, famous: ["Sophie Scholl"] },
+            { id: 'de3', name: "Leon", language: "german", gender: "boy", meaning: "Lion.", originNotes: "Greek origin, strong name", pronunciation: "LE-on", popularity: "Top 100", lengthCategory: "short", styleScore: 30, famous: ["Leonidas I of Sparta (historical)"] },
+            { id: 'de4', name: "Emilia", language: "german", gender: "girl", meaning: "Rival.", originNotes: "Latin origin", pronunciation: "eh-MEE-lee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 35, famous: ["Emilia Clarke"] },
+
+            // Japanese Names
+            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person.", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30, famous: [] },
+            { id: 'jp2', name: "Yui", language: "japanese", gender: "girl", meaning: "Bind, tie / 優 meaning gentle.", originNotes: "Kanji dependent meaning", pronunciation: "YOO-ee", popularity: "Popular (Japan)", lengthCategory: "short", styleScore: 45, famous: ["Yui Aragaki (Actress)"] },
+            { id: 'jp3', name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / Love.", originNotes: "Kanji dependent meaning", pronunciation: "REN", popularity: "Popular (Japan)", lengthCategory: "short", styleScore: 60, famous: [] },
+            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10, famous: ["Sakura Ando (Actress)"] },
+
+            // Spanish Names
+            { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30, famous: ["Mateo Alemán (Writer)"] },
+            { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20, famous: ["Saint Lucia"] },
+            { id: 'es3', name: "Hugo", language: "spanish", gender: "boy", meaning: "Mind, intellect.", originNotes: "Germanic origin", pronunciation: "OO-go", popularity: "Top 100", lengthCategory: "short", styleScore: 28, famous: ["Hugo Chávez", "Victor Hugo (French)"] },
+            { id: 'es4', name: "Sofia", language: "spanish", gender: "girl", meaning: "Wisdom.", originNotes: "Greek origin, variant of Sophie", pronunciation: "so-FEE-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 18, famous: ["Sofía Vergara"] },
+
+            // French Names
+            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10, famous: ["Louis XIV of France", "Louis Armstrong"] },
+            { id: 'fr2', name: "Camille", language: "french", gender: "any", meaning: "Temple servant.", originNotes: "Latin origin, unisex in French", pronunciation: "ka-MEEL", popularity: "Classic", lengthCategory: "medium", styleScore: 40, famous: ["Camille Pissarro (Male Painter)", "Camille Claudel (Female Sculptor)"] },
+            { id: 'fr3', name: "Jules", language: "french", gender: "boy", meaning: "Youthful.", originNotes: "Latin origin", pronunciation: "ZHOOL", popularity: "Classic", lengthCategory: "short", styleScore: 12, famous: ["Jules Verne"] },
+            { id: 'fr4', name: "Léa", language: "french", gender: "girl", meaning: "Weary.", originNotes: "Hebrew origin", pronunciation: "LAY-ah", popularity: "Top 100", lengthCategory: "short", styleScore: 22, famous: ["Léa Seydoux"] },
+
+            // Neutral / Any Gender Names
+            { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55, famous: ["Rowan Atkinson"] },
+            { id: 'any2', name: "Kai", language: "hawaiian", gender: "any", meaning: "Sea.", originNotes: "Hawaiian, also Welsh/Scandinavian roots", pronunciation: "KYE", popularity: "Rising Trend", lengthCategory: "short", styleScore: 70, famous: [] },
+            { id: 'any3', name: "River", language: "english", gender: "any", meaning: "River.", originNotes: "Nature name", pronunciation: "RIV-er", popularity: "Trendy", lengthCategory: "medium", styleScore: 75, famous: ["River Phoenix"] },
+            { id: 'any4', name: "Quinn", language: "irish", gender: "any", meaning: "Descendant of Conn (chief).", originNotes: "Irish surname", pronunciation: "KWIN", popularity: "Balanced", lengthCategory: "short", styleScore: 65, famous: [] }
+        ];
+        let dataLoaded = true; // Assume data is loaded for now
+        let currentName = null; // Store the currently displayed name object
+
+        // --- Functions ---
+
+        function toggleMobileMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                requestAnimationFrame(() => { mobileMenu.classList.remove('-translate-x-full'); });
+            } else {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+            }
+        }
+
+        function closeMobileMenu() {
+             if (!mobileMenu.classList.contains('hidden')) {
+                 mobileMenu.classList.add('-translate-x-full');
+                 mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+             }
+        }
+
+        function updateSliderFeedback() {
+            const value = parseInt(styleSlider.value);
+            if (value < 20) sliderFeedback.textContent = 'Very Traditional';
+            else if (value < 40) sliderFeedback.textContent = 'Traditional';
+            else if (value <= 60) sliderFeedback.textContent = 'Balanced';
+            else if (value <= 80) sliderFeedback.textContent = 'Unique';
+            else sliderFeedback.textContent = 'Very Unique';
+        }
+
+         function generateAlphabetButtons() {
+             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+             const anyBtn = document.createElement('button');
+             anyBtn.textContent = 'Any';
+             anyBtn.type = 'button';
+             anyBtn.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+             anyBtn.dataset.letter = '';
+             anyBtn.addEventListener('click', handleLetterSelection);
+             firstLetterInputsContainer.appendChild(anyBtn);
+
+             alphabet.forEach(letter => {
+                 const button = document.createElement('button');
+                 button.textContent = letter;
+                 button.type = 'button';
+                 button.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+                 button.dataset.letter = letter;
+                 button.addEventListener('click', handleLetterSelection);
+                 firstLetterInputsContainer.appendChild(button);
+             });
+             const placeholder = firstLetterInputsContainer.querySelector('span');
+             if (placeholder) placeholder.remove();
+             setActiveLetterButton(anyBtn);
+         }
+
+         function handleLetterSelection(event) {
+             const selectedLetter = event.target.dataset.letter;
+             selectedLetterInput.value = selectedLetter;
+             setActiveLetterButton(event.target);
+         }
+
+         function setActiveLetterButton(activeButton) {
+             const buttons = firstLetterInputsContainer.querySelectorAll('button');
+             buttons.forEach(button => {
+                 button.classList.remove('bg-stork-accent', 'text-white', 'border-stork-accent');
+                 button.classList.add('bg-gray-200', 'text-stork-text', 'border-gray-300');
+             });
+             activeButton.classList.add('bg-stork-accent', 'text-white', 'border-stork-accent');
+             activeButton.classList.remove('bg-gray-200', 'text-stork-text', 'border-gray-300');
+         }
+
+        function filterNames(criteria) {
+            return nameDatabase.filter(name => {
+                if (criteria.gender !== 'any' && name.gender !== 'any' && name.gender !== criteria.gender) return false;
+                if (criteria.language && name.language !== criteria.language) return false;
+                if (criteria.firstLetter && !name.name.toLowerCase().startsWith(criteria.firstLetter.toLowerCase())) return false;
+                const nameLength = name.name.length;
+                if (criteria.length !== 'any') {
+                    if (criteria.length === 'short' && (nameLength < 3 || nameLength > 5)) return false;
+                    if (criteria.length === 'medium' && (nameLength < 6 || nameLength > 8)) return false;
+                    if (criteria.length === 'long' && nameLength < 9) return false;
+                }
+                 const styleDifference = Math.abs(name.styleScore - criteria.style);
+                 const maxDifference = 30;
+                 if (styleDifference > maxDifference) return false;
+                return true;
+            });
+        }
+
+        function displayResult(name) {
+            currentName = name;
+            resultsPlaceholder.style.display = 'none';
+            resultDisplay.innerHTML = '';
+            resultsMessage.style.display = 'none';
+
+            const card = document.createElement('div');
+            card.classList.add('name-card', 'animate-fade-in');
+            card.innerHTML = `
+                <h3 class="flex justify-between items-center">
+                    <span>${name.name}</span>
+                    <span class="text-sm font-normal text-medium-gray capitalize">${name.gender} / ${name.language}</span>
+                </h3>
+                <p><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
+                <p><strong>Origin Notes:</strong> ${name.originNotes || 'N/A'}</p>
+                <p><strong>Pronunciation:</strong> ${name.pronunciation || 'N/A'}</p>
+                <div class="tags mt-2">
+                    <span class="capitalize">${name.lengthCategory} Length</span>
+                    <span>${getStyleLabel(name.styleScore)} Style</span>
+                    <span class="capitalize">${name.popularity} Popularity</span>
                 </div>
-            </section>
-
-            <section id="famous-namesakes-section" class="mt-12">
-                <h2 class="text-2xl md:text-3xl text-[#374151] font-semibold mb-6 text-center">Famous Namesakes /
-                    Mentions</h2>
-                <div id="famous-namesakes-container">
-
+                <div class="actions mt-3 text-right">
+                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="copyToClipboard('${name.name}')">Copy</button>
+                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="saveToFavorites('${name.id}')">Save ☆</button>
                 </div>
-            </section>
-        </main>
-        <script>
-            // ------------------------------------------------------------------------------------------------------------------------ //
-            // Initial sample data (replace or fetch from backend/Firebase later)
-            const nameData = [
-                { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
-                { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
-                { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40 },
-                { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25 },
-                { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10 },
-                { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30 },
-                { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10 },
-                { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30 },
-                { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20 },
-                { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55 }
-                // Add many more names here...
-            ];
-            // ------------------------------------------------------------------------------------------------------------------------ //
-             let dataLoaded = true;
-            let nameDatabase = nameData; // Use this as the primary data source
+            `;
+            resultDisplay.appendChild(card);
+             displayRelatedNames(name);
+             displayFamousNamesakes(name);
+             relatedNamesSection.classList.remove('hidden');
+             famousNamesakesSection.classList.remove('hidden');
+        }
 
-            // Assume data is loaded for this static example
-             // Assume data is loaded for this static example
-            dataLoaded = false;
-            // ------------------------------------------------------------------------------------------------------------------------ //
-        </script>
+         function getStyleLabel(score) {
+             if (score < 20) return 'Very Traditional';
+             if (score < 40) return 'Traditional';
+             if (score <= 60) return 'Balanced';
+             if (score <= 80) return 'Unique';
+             return 'Very Unique';
+         }
 
-        </script>
-        <script>
-            const
+         function displayRelatedNames(currentName) {
+             relatedNamesContainer.innerHTML = '';
+             const similar = nameDatabase.filter(name =>
+                 name.id !== currentName.id &&
+                 name.language === currentName.language &&
+                 (name.gender === currentName.gender || name.gender === 'any' || currentName.gender === 'any')
+             ).slice(0, 3);
+
+             if (similar.length === 0) {
+                 relatedNamesContainer.innerHTML = '<p class="text-center text-medium-gray italic col-span-full">No similar names found in this category.</p>';
+                 return;
+             }
+             similar.forEach(name => {
+                 const card = document.createElement('div');
+                 card.classList.add('name-card', 'text-sm', 'p-3');
+                 card.innerHTML = `
+                     <h4 class="font-semibold text-stork-title">${name.name}</h4>
+                     <p class="text-xs text-medium-gray capitalize">${name.gender} / ${name.language}</p>
+                     <div class="actions mt-2 text-right">
+                         <button class="btn btn-secondary btn-xs py-0.5 px-1.5 btn-feedback" onclick="displayResultById('${name.id}')">View</button>
+                         <button class="btn btn-secondary btn-xs py-0.5 px-1.5 btn-feedback" onclick="saveToFavorites('${name.id}')">Save ☆</button>
+                     </div>
+                 `;
+                 relatedNamesContainer.appendChild(card);
+             });
+         }
+
+         function displayFamousNamesakes(name) {
+             famousNamesakesContainer.innerHTML = '';
+             if (name.famous && name.famous.length > 0) {
+                 const list = document.createElement('ul');
+                 list.classList.add('list-disc', 'list-inside', 'space-y-1');
+                 name.famous.forEach(person => {
+                     const item = document.createElement('li');
+                     item.textContent = person;
+                     list.appendChild(item);
+                 });
+                 famousNamesakesContainer.appendChild(list);
+             } else {
+                 famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No famous namesakes listed.</p>';
+             }
+         }
+
+        function handleGenerateClick() {
+            if (!dataLoaded) {
+                resultsMessage.textContent = "Name data is still loading. Please wait.";
+                resultsMessage.style.display = 'block';
+                return;
+            }
+            loadingIndicator.style.display = 'block';
+            resultDisplay.innerHTML = '';
+            resultsPlaceholder.style.display = 'none';
+            resultsMessage.style.display = 'none';
+            relatedNamesSection.classList.add('hidden');
+            famousNamesakesSection.classList.add('hidden');
+
+            const criteria = {
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                language: languageSelect.value,
+                firstLetter: selectedLetterInput.value,
+                length: document.querySelector('input[name="length"]:checked').value,
+                style: parseInt(styleSlider.value)
+            };
+
+            setTimeout(() => {
+                const filtered = filterNames(criteria);
+                loadingIndicator.style.display = 'none';
+                if (filtered.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * filtered.length);
+                    const selectedName = filtered[randomIndex];
+                    displayResult(selectedName);
+                } else {
+                    resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
+                    resultsMessage.style.display = 'block';
+                    resultsPlaceholder.style.display = 'none';
+                    resultDisplay.innerHTML = '';
+                }
+            }, 500); // Simulate delay
+        }
+
+         function displayResultById(id) {
+             const nameToShow = nameDatabase.find(n => n.id === id);
+             if (nameToShow) {
+                 displayResult(nameToShow);
+                 document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+             }
+         }
+
+        // --- Placeholder Functions ---
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`Copied "${text}" to clipboard!`); // Replace with a better notification
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy text.');
+            });
+        }
+
+        function saveToFavorites(nameId) {
+            const nameObj = nameDatabase.find(n => n.id === nameId);
+            alert(`Saving "${nameObj?.name}" to favorites (not implemented yet).`);
+            // Implement localStorage or backend logic here
+        }
+
+        // --- Event Listeners ---
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileMenu.querySelectorAll('a').forEach(link => {
+             link.addEventListener('click', (e) => {
+                 if (link.getAttribute('href').startsWith('#')) {
+                      const targetId = link.getAttribute('href');
+                      const targetElement = document.querySelector(targetId);
+                      if(targetElement) {
+                          e.preventDefault();
+                          targetElement.scrollIntoView({ behavior: 'smooth' });
+                      }
+                     closeMobileMenu();
+                 } else {
+                      closeMobileMenu();
+                 }
+             });
+         });
+        generateBtn.addEventListener('click', handleGenerateClick);
+        styleSlider.addEventListener('input', updateSliderFeedback);
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSliderFeedback();
+            generateAlphabetButtons();
+            if (!dataLoaded) {
+                console.log("Data loading simulation...");
+                // setTimeout(() => { dataLoaded = true; console.log("Data loaded."); }, 1500);
+            }
+        });
+    </script>
+
+</body>
+</html>
