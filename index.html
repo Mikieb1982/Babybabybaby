@@ -53,8 +53,10 @@
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
                         'fade-out-up': 'fade-out-up 0.5s ease-out',
-                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out', // Kept for other potential uses
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out', // Kept for other potential uses
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out', // Added for menu
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out', // Added for menu (if needed)
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
@@ -62,6 +64,8 @@
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } }, // Added for menu
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } }, // Added for menu (if needed)
                     },
                     // Removed paper-texture background image
                 }
@@ -89,7 +93,7 @@
 
         /* Ad placeholder */
         .ad-placeholder {
-            @apply w-full max-w-3xl mx-auto h-24 bg-gray-200/80 flex items-center justify-center text-gray-500 my-6 rounded-md backdrop-blur-sm; /* Added slight transparency and blur */
+            @apply w-full max-w-3xl mx-auto h-24 bg-gray-200/80 flex items-center justify-center text-gray-500 my-6 rounded-md backdrop-blur-sm;
         }
         /* Loader */
         .loader {
@@ -138,7 +142,6 @@
 
          /* Mobile Menu Background */
          #mobile-menu-content {
-             /* Use a semi-transparent white for better contrast over the background image */
              background-color: rgba(255, 255, 255, 0.9);
          }
     </style>
@@ -146,7 +149,8 @@
 
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed">
 
-    <header class="relative py-4 px-4 md:px-6 bg-white/70 backdrop-blur-sm shadow-sm"> <div class="container mx-auto flex justify-between items-center">
+    <header class="relative py-4 px-4 md:px-6 bg-white/70 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-16 w-16 md:h-20 md:w-20 object-contain"
@@ -169,7 +173,7 @@
         </div>
 
         <div id="mobile-menu-content"
-             class="hidden fixed inset-0 p-6 md:p-10 overflow-y-auto z-40 transition-transform duration-300 ease-in-out transform -translate-x-full backdrop-blur-md"> <button id="close-menu-btn" title="Close Menu" class="absolute top-6 right-6 p-2 text-stork-text hover:text-stork-accent">
+             class="hidden fixed inset-y-0 right-0 w-64 sm:w-80 p-6 md:p-10 overflow-y-auto z-40 transition-transform duration-300 ease-in-out transform translate-x-full backdrop-blur-md shadow-lg"> <button id="close-menu-btn" title="Close Menu" class="absolute top-6 right-6 p-2 text-stork-text hover:text-stork-accent">
                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                  </svg>
@@ -186,7 +190,8 @@
 
     <section id="showcase" class="py-6 md:py-10 text-center relative">
         <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto mb-6 border border-gray-300 rounded-md shadow-sm" onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+             class="w-full h-auto mb-6 border border-gray-300 rounded-md shadow-sm"
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
 
     </section>
 
@@ -287,7 +292,8 @@
 
     </main>
 
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t"> © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
      </footer>
 
 
@@ -343,25 +349,34 @@
             }
         }
 
-        // Function to toggle mobile menu
+        // Function to toggle mobile menu (slide from right)
         function toggleMobileMenu() {
             const isHidden = mobileMenu.classList.contains('hidden');
             if (isHidden) {
                 mobileMenu.classList.remove('hidden');
-                requestAnimationFrame(() => { mobileMenu.classList.remove('-translate-x-full'); });
+                // Delay slightly to allow display block, then trigger transform
+                requestAnimationFrame(() => {
+                    mobileMenu.classList.remove('translate-x-full'); // Slide in from right
+                });
             } else {
-                mobileMenu.classList.add('-translate-x-full');
-                mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+                mobileMenu.classList.add('translate-x-full'); // Slide out to right
+                // Wait for transition to finish before hiding
+                 mobileMenu.addEventListener('transitionend', () => {
+                     mobileMenu.classList.add('hidden');
+                 }, { once: true });
             }
         }
 
-        // Function to close mobile menu
+        // Function to close mobile menu (slide to right)
         function closeMobileMenu() {
              if (!mobileMenu.classList.contains('hidden')) {
-                 mobileMenu.classList.add('-translate-x-full');
-                 mobileMenu.addEventListener('transitionend', () => { mobileMenu.classList.add('hidden'); }, { once: true });
+                 mobileMenu.classList.add('translate-x-full'); // Slide out to right
+                 mobileMenu.addEventListener('transitionend', () => {
+                     mobileMenu.classList.add('hidden');
+                 }, { once: true });
              }
         }
+
 
         // Function to update slider feedback text
         function updateSliderFeedback() {
