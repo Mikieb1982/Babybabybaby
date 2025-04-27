@@ -161,6 +161,7 @@
                  <a href="index.html" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Home</a>
                  <a href="#generator-controls" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Name Generator</a>
                  <a href="blog.html" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Blog</a>
+                 <a href="datasources.html" class="text-lg text-stork-text hover:text-stork-accent transition duration-200">Data Sources</a>
              </nav>
         </div>
 
@@ -176,14 +177,17 @@
                 <a href="index.html" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Home</a>
                 <a href="#generator-controls" id="mobile-generator-link" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Name Generator</a>
                 <a href="blog.html" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Blog</a>
+                 <a href="datasources.html" class="block text-xl text-stork-text hover:text-stork-accent transition duration-200 py-2">Data Sources</a>
             </nav>
         </div>
     </header>
 
-    <section id="showcase" class="py-6 md:py-10 text-center relative"> <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto mb-6" onerror="this.onerror=null; this.src='https://placehold.co/1200x200/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
+             class="w-full h-auto mb-6"
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x200/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
 
-        </section>
+    </section>
 
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (Top)</div>
 
@@ -577,10 +581,10 @@
         function copyToClipboard(text) {
             if (!text) return;
             navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied "${text}" to clipboard!`); // Replace with a better notification
+                alert(`Copied "${text}" to clipboard!`); // Consider a less intrusive notification
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
-                alert('Failed to copy text.'); // Replace with a better notification
+                alert('Failed to copy text.'); // Consider a less intrusive notification
             });
         }
 
