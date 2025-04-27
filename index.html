@@ -6,29 +6,8 @@
     <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
 
     <script type="module">
-        // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        // import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-        // const firebaseConfig = {
-        //     apiKey: "YOUR_API_KEY", // Replace with your actual config
-        //     authDomain: "YOUR_AUTH_DOMAIN",
-        //     projectId: "YOUR_PROJECT_ID",
-        //     storageBucket: "YOUR_STORAGE_BUCKET",
-        //     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-        //     appId: "YOUR_APP_ID",
-        //     measurementId: "YOUR_MEASUREMENT_ID" // Optional
-        // };
-        // try {
-        //     const app = initializeApp(firebaseConfig);
-        //     if (firebaseConfig.measurementId) {
-        //         const analytics = getAnalytics(app);
-        //         console.log("Firebase Analytics initialized.");
-        //     } else {
-        //         console.log("Firebase initialized (Analytics skipped - no measurementId).");
-        //     }
-        // } catch (error) {
-        //     console.error("Error initializing Firebase:", error);
-        // }
-        console.log("Firebase initialization skipped (commented out)."); // Placeholder log
+        // ... (Firebase code commented out as before) ...
+        console.log("Firebase initialization skipped (commented out).");
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,18 +16,16 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    // Custom font family (example using Inter)
                     fontFamily: {
-                      sans: ['Inter', 'sans-serif'], // Set Inter as the default sans-serif font
-                      serif: ['Georgia', 'serif'], // Keep a serif option if needed elsewhere
+                      sans: ['Inter', 'sans-serif'],
+                      serif: ['Georgia', 'serif'],
                     },
-                    // Custom colors inspired by the image
                     colors: {
-                        'stork-blue': '#D1E8E2', // A light blue-greenish tone for background
-                        'stork-title': '#2C3E50', // Darker color for title text (used for other headings now)
-                        'stork-text': '#34495E', // General text color
-                        'stork-accent': '#1ABC9C', // Accent color (e.g., for buttons, links)
-                        'stork-accent-hover': '#16A085', // Hover state for accent
+                        'stork-blue': '#D1E8E2',
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
                         'soft-beige': '#F5F5DC',
                         'dark-text': '#374151',
                         'medium-gray': '#6B7280',
@@ -71,7 +48,6 @@
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
-                    // Custom animations
                     animation: {
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -87,7 +63,6 @@
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
                     },
-                    // Background texture
                     backgroundImage: {
                        'paper-texture': "url('https://www.transparenttextures.com/patterns/paper.png')",
                     }
@@ -173,7 +148,7 @@
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-16 w-16 md:h-20 md:w-20 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/80x80/D1E8E2/34495E?text=Logo';">
-                     </a>
+            </a>
 
             <button id="hamburger-btn" title="Open Menu"
                     class="fixed top-4 right-4 z-50 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow md:hidden">
@@ -205,17 +180,17 @@
         </div>
     </header>
 
-    <section id="showcase" class="container mx-auto py-10 md:py-16 text-center relative px-4">
-         <div class="max-w-3xl mx-auto">
-            <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-                 class="mx-auto max-w-full h-auto mb-6"
-                 style="max-height: 150px;" /* Adjust max-height as needed */
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x150/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
-                 <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto">
+    <section id="showcase" class="py-10 md:py-16 text-center relative">
+        <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
+             class="w-full h-auto object-cover mb-6" /* w-full makes it span width, object-cover helps maintain aspect ratio */
+             style="max-height: 250px;" /* Adjust max-height for desired appearance */
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x250/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+             <div class="max-w-3xl mx-auto px-4">
+            <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto">
                 Discover the ideal name for your child or pet with our easy-to-use name generator.
             </p>
         </div>
-         </section>
+        </section>
 
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (Top)</div>
 
@@ -244,14 +219,15 @@
                         <option value="japanese">Japanese</option>
                         <option value="spanish">Spanish</option>
                         <option value="french">French</option>
-                        </select>
+                    </select>
                 </section>
                 <section id="letter-filter">
                     <label for="first-letter-input" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Starts with:</label>
                     <div id="first-letter-inputs" class="flex flex-wrap gap-1">
                          <span class="text-sm text-gray-500">Select a letter (optional)</span>
                      </div>
-                     <input type="hidden" id="selected-letter" value=""> </section>
+                     <input type="hidden" id="selected-letter" value="">
+                </section>
             </div>
 
             <section id="length-filter">
@@ -285,7 +261,8 @@
 
          <section id="results-section" class="mt-12 animate-fade-in">
             <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
-            <div id="results-container" class="min-h-[100px] relative"> <div id="loading-indicator" class="loader" style="display: none;"></div>
+            <div id="results-container" class="min-h-[100px] relative">
+                 <div id="loading-indicator" class="loader" style="display: none;"></div>
                  <div id="result-display" class="text-stork-text">
                     <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Click "Generate Name" to see a result.</p>
                  </div>
@@ -296,12 +273,13 @@
         <hr class="my-10 border-gray-300">
 
         <div id="additional-info" class="space-y-10">
-            <section id="related-names-section" class="hidden"> <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
-                <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    </div>
+            <section id="related-names-section" class="hidden">
+                <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
+                <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
             </section>
 
-            <section id="famous-namesakes-section" class="hidden"> <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
+            <section id="famous-namesakes-section" class="hidden">
+                <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
                 <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
                     <p class="text-center text-medium-gray italic">No information available yet.</p>
                 </div>
@@ -339,6 +317,7 @@
 
         // --- Initial Sample Data ---
         const nameDatabase = [
+            // ... (Sample data remains the same) ...
             // English Names
             { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10, famous: ["William Shakespeare", "Prince William"] },
             { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20, famous: ["Olivia Newton-John", "Olivia Colman"] },
@@ -377,11 +356,11 @@
             { id: 'any3', name: "River", language: "english", gender: "any", meaning: "River.", originNotes: "Nature name", pronunciation: "RIV-er", popularity: "Trendy", lengthCategory: "medium", styleScore: 75, famous: ["River Phoenix"] },
             { id: 'any4', name: "Quinn", language: "irish", gender: "any", meaning: "Descendant of Conn (chief).", originNotes: "Irish surname", pronunciation: "KWIN", popularity: "Balanced", lengthCategory: "short", styleScore: 65, famous: [] }
         ];
-        let dataLoaded = true; // Assume data is loaded for now
-        let currentName = null; // Store the currently displayed name object
+        let dataLoaded = true;
+        let currentName = null;
 
         // --- Functions ---
-
+        // ... (All JS functions remain the same) ...
         function toggleMobileMenu() {
             const isHidden = mobileMenu.classList.contains('hidden');
             if (isHidden) {
