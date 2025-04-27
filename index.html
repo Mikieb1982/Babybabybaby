@@ -180,16 +180,9 @@
         </div>
     </header>
 
-    <section id="showcase" class="py-10 md:py-16 text-center relative">
-        <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto object-cover mb-6" /* w-full makes it span width, object-cover helps maintain aspect ratio */
-             style="max-height: 250px;" /* Adjust max-height for desired appearance */
-             onerror="this.onerror=null; this.src='https://placehold.co/1200x250/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
-             <div class="max-w-3xl mx-auto px-4">
-            <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto">
-                Discover the ideal name for your child or pet with our easy-to-use name generator.
-            </p>
-        </div>
+    <section id="showcase" class="py-6 md:py-10 text-center relative"> <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
+             class="w-full h-auto mb-6" onerror="this.onerror=null; this.src='https://placehold.co/1200x200/D1E8E2/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+
         </section>
 
     <div id="ad-slot-top" class="ad-placeholder">Potential Ad Space (Top)</div>
@@ -253,8 +246,8 @@
             </section>
 
             <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-lg md:text-xl shadow-md btn-feedback">
-                    Generate Name
+                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-lg md:text-xl shadow-md btn-feedback" disabled>
+                    Loading Names...
                 </button>
             </div>
         </fieldset>
@@ -264,7 +257,7 @@
             <div id="results-container" class="min-h-[100px] relative">
                  <div id="loading-indicator" class="loader" style="display: none;"></div>
                  <div id="result-display" class="text-stork-text">
-                    <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Click "Generate Name" to see a result.</p>
+                    <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
                  </div>
                  <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
             </div>
@@ -314,53 +307,38 @@
         const relatedNamesSection = document.getElementById('related-names-section');
         const famousNamesakesSection = document.getElementById('famous-namesakes-section');
 
-
-        // --- Initial Sample Data ---
-        const nameDatabase = [
-            // ... (Sample data remains the same) ...
-            // English Names
-            { id: 'en1', name: "William", language: "english", gender: "boy", meaning: "Resolute protector.", originNotes: "Germanic roots, English royalty", pronunciation: "WIL-ee-uhm", popularity: "Classic", lengthCategory: "medium", styleScore: 10, famous: ["William Shakespeare", "Prince William"] },
-            { id: 'en2', name: "Olivia", language: "english", gender: "girl", meaning: "Olive tree.", originNotes: "Latin origin, via Shakespeare", pronunciation: "oh-LIV-ee-uh", popularity: "Top 100", lengthCategory: "medium", styleScore: 20, famous: ["Olivia Newton-John", "Olivia Colman"] },
-            { id: 'en3', name: "Noah", language: "english", gender: "boy", meaning: "Rest, comfort.", originNotes: "Hebrew origin, biblical figure", pronunciation: "NO-ah", popularity: "Top 10", lengthCategory: "short", styleScore: 15, famous: ["Noah (Bible)", "Noah Wyle"] },
-            { id: 'en4', name: "Isla", language: "english", gender: "girl", meaning: "Island.", originNotes: "Scottish river/island name", pronunciation: "EYE-luh", popularity: "Rising Trend", lengthCategory: "short", styleScore: 40, famous: ["Isla Fisher"] },
-            { id: 'en5', name: "Arthur", language: "english", gender: "boy", meaning: "Bear man / Noble strength.", originNotes: "Celtic/Welsh origin, legendary king", pronunciation: "AR-thur", popularity: "Classic", lengthCategory: "medium", styleScore: 5, famous: ["King Arthur", "Arthur Conan Doyle"] },
-            { id: 'en6', name: "Ava", language: "english", gender: "girl", meaning: "Birdlike, lively.", originNotes: "Germanic or Hebrew origins", pronunciation: "AY-vah", popularity: "Top 10", lengthCategory: "short", styleScore: 25, famous: ["Ava Gardner"] },
-
-            // German Names
-            { id: 'de1', name: "Maximilian", language: "german", gender: "boy", meaning: "Greatest.", originNotes: "Latin origin, popular in Germany", pronunciation: "mak-see-MEE-lee-ahn", popularity: "Classic", lengthCategory: "long", styleScore: 25, famous: ["Maximilian I (Holy Roman Emperor)"] },
-            { id: 'de2', name: "Sophie", language: "german", gender: "girl", meaning: "Wisdom.", originNotes: "Greek origin, popular across Europe", pronunciation: "zo-FEE", popularity: "Top 100", lengthCategory: "medium", styleScore: 15, famous: ["Sophie Scholl"] },
-            { id: 'de3', name: "Leon", language: "german", gender: "boy", meaning: "Lion.", originNotes: "Greek origin, strong name", pronunciation: "LE-on", popularity: "Top 100", lengthCategory: "short", styleScore: 30, famous: ["Leonidas I of Sparta (historical)"] },
-            { id: 'de4', name: "Emilia", language: "german", gender: "girl", meaning: "Rival.", originNotes: "Latin origin", pronunciation: "eh-MEE-lee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 35, famous: ["Emilia Clarke"] },
-
-            // Japanese Names
-            { id: 'jp1', name: "Haruto", language: "japanese", gender: "boy", meaning: "Sun flying / Clear weather person.", originNotes: "Kanji dependent meaning", pronunciation: "ha-ROO-toh", popularity: "Popular (Japan)", lengthCategory: "medium", styleScore: 30, famous: [] },
-            { id: 'jp2', name: "Yui", language: "japanese", gender: "girl", meaning: "Bind, tie / 優 meaning gentle.", originNotes: "Kanji dependent meaning", pronunciation: "YOO-ee", popularity: "Popular (Japan)", lengthCategory: "short", styleScore: 45, famous: ["Yui Aragaki (Actress)"] },
-            { id: 'jp3', name: "Ren", language: "japanese", gender: "any", meaning: "Lotus / Love.", originNotes: "Kanji dependent meaning", pronunciation: "REN", popularity: "Popular (Japan)", lengthCategory: "short", styleScore: 60, famous: [] },
-            { id: 'jp6', name: "Sakura", language: "japanese", gender: "girl", meaning: "Cherry blossom.", originNotes: "Iconic Japanese flower name", pronunciation: "SAH-koo-rah", popularity: "Classic", lengthCategory: "medium", styleScore: 10, famous: ["Sakura Ando (Actress)"] },
-
-            // Spanish Names
-            { id: 'es1', name: "Mateo", language: "spanish", gender: "boy", meaning: "Gift of God.", originNotes: "Hebrew origin, popular Hispanic name", pronunciation: "mah-TEH-oh", popularity: "Top 100", lengthCategory: "medium", styleScore: 30, famous: ["Mateo Alemán (Writer)"] },
-            { id: 'es2', name: "Lucia", language: "spanish", gender: "girl", meaning: "Light.", originNotes: "Latin origin, classic and beautiful", pronunciation: "loo-SEE-ah / LOO-thee-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 20, famous: ["Saint Lucia"] },
-            { id: 'es3', name: "Hugo", language: "spanish", gender: "boy", meaning: "Mind, intellect.", originNotes: "Germanic origin", pronunciation: "OO-go", popularity: "Top 100", lengthCategory: "short", styleScore: 28, famous: ["Hugo Chávez", "Victor Hugo (French)"] },
-            { id: 'es4', name: "Sofia", language: "spanish", gender: "girl", meaning: "Wisdom.", originNotes: "Greek origin, variant of Sophie", pronunciation: "so-FEE-ah", popularity: "Top 100", lengthCategory: "medium", styleScore: 18, famous: ["Sofía Vergara"] },
-
-            // French Names
-            { id: 'fr1', name: "Louis", language: "french", gender: "boy", meaning: "Famous warrior.", originNotes: "Germanic roots, French royalty", pronunciation: "LOO-ee / LWEE", popularity: "Classic", lengthCategory: "short", styleScore: 10, famous: ["Louis XIV of France", "Louis Armstrong"] },
-            { id: 'fr2', name: "Camille", language: "french", gender: "any", meaning: "Temple servant.", originNotes: "Latin origin, unisex in French", pronunciation: "ka-MEEL", popularity: "Classic", lengthCategory: "medium", styleScore: 40, famous: ["Camille Pissarro (Male Painter)", "Camille Claudel (Female Sculptor)"] },
-            { id: 'fr3', name: "Jules", language: "french", gender: "boy", meaning: "Youthful.", originNotes: "Latin origin", pronunciation: "ZHOOL", popularity: "Classic", lengthCategory: "short", styleScore: 12, famous: ["Jules Verne"] },
-            { id: 'fr4', name: "Léa", language: "french", gender: "girl", meaning: "Weary.", originNotes: "Hebrew origin", pronunciation: "LAY-ah", popularity: "Top 100", lengthCategory: "short", styleScore: 22, famous: ["Léa Seydoux"] },
-
-            // Neutral / Any Gender Names
-            { id: 'any1', name: "Rowan", language: "english", gender: "any", meaning: "Rowan tree, little redhead.", originNotes: "Gaelic origin, nature name", pronunciation: "ROH-uhn", popularity: "Balanced", lengthCategory: "short", styleScore: 55, famous: ["Rowan Atkinson"] },
-            { id: 'any2', name: "Kai", language: "hawaiian", gender: "any", meaning: "Sea.", originNotes: "Hawaiian, also Welsh/Scandinavian roots", pronunciation: "KYE", popularity: "Rising Trend", lengthCategory: "short", styleScore: 70, famous: [] },
-            { id: 'any3', name: "River", language: "english", gender: "any", meaning: "River.", originNotes: "Nature name", pronunciation: "RIV-er", popularity: "Trendy", lengthCategory: "medium", styleScore: 75, famous: ["River Phoenix"] },
-            { id: 'any4', name: "Quinn", language: "irish", gender: "any", meaning: "Descendant of Conn (chief).", originNotes: "Irish surname", pronunciation: "KWIN", popularity: "Balanced", lengthCategory: "short", styleScore: 65, famous: [] }
-        ];
-        let dataLoaded = true;
+        // --- State Variables ---
+        let nameDatabase = [];
+        let dataLoaded = false;
         let currentName = null;
 
         // --- Functions ---
-        // ... (All JS functions remain the same) ...
+
+        // Function to fetch name data from JSON file
+        async function loadNameData() {
+            try {
+                const response = await fetch('names.json'); // Ensure names.json is in the correct path
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                nameDatabase = data;
+                dataLoaded = true;
+                console.log("Name data loaded successfully.");
+                resultsPlaceholder.textContent = 'Click "Generate Name" to see a result.';
+                generateBtn.textContent = 'Generate Name';
+                generateBtn.disabled = false;
+
+            } catch (error) {
+                console.error("Could not load name data:", error);
+                resultsPlaceholder.textContent = 'Error loading name data. Please try again later.';
+                resultsPlaceholder.classList.add('text-error-red');
+                generateBtn.textContent = 'Error Loading Data';
+                generateBtn.disabled = true;
+            }
+        }
+
+        // Function to toggle mobile menu
         function toggleMobileMenu() {
             const isHidden = mobileMenu.classList.contains('hidden');
             if (isHidden) {
@@ -372,6 +350,7 @@
             }
         }
 
+        // Function to close mobile menu
         function closeMobileMenu() {
              if (!mobileMenu.classList.contains('hidden')) {
                  mobileMenu.classList.add('-translate-x-full');
@@ -379,6 +358,7 @@
              }
         }
 
+        // Function to update slider feedback text
         function updateSliderFeedback() {
             const value = parseInt(styleSlider.value);
             if (value < 20) sliderFeedback.textContent = 'Very Traditional';
@@ -388,6 +368,7 @@
             else sliderFeedback.textContent = 'Very Unique';
         }
 
+         // Function to generate alphabet buttons
          function generateAlphabetButtons() {
              const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
              const anyBtn = document.createElement('button');
@@ -412,12 +393,14 @@
              setActiveLetterButton(anyBtn);
          }
 
+         // Function to handle letter button clicks
          function handleLetterSelection(event) {
              const selectedLetter = event.target.dataset.letter;
              selectedLetterInput.value = selectedLetter;
              setActiveLetterButton(event.target);
          }
 
+         // Function to set the active state for letter buttons
          function setActiveLetterButton(activeButton) {
              const buttons = firstLetterInputsContainer.querySelectorAll('button');
              buttons.forEach(button => {
@@ -428,7 +411,12 @@
              activeButton.classList.remove('bg-gray-200', 'text-stork-text', 'border-gray-300');
          }
 
+        // Function to filter names based on criteria
         function filterNames(criteria) {
+             if (!dataLoaded || nameDatabase.length === 0) {
+                 console.warn("Attempted to filter names before data was loaded or database is empty.");
+                 return [];
+             }
             return nameDatabase.filter(name => {
                 if (criteria.gender !== 'any' && name.gender !== 'any' && name.gender !== criteria.gender) return false;
                 if (criteria.language && name.language !== criteria.language) return false;
@@ -446,6 +434,7 @@
             });
         }
 
+        // Function to display a name card
         function displayResult(name) {
             currentName = name;
             resultsPlaceholder.style.display = 'none';
@@ -456,20 +445,20 @@
             card.classList.add('name-card', 'animate-fade-in');
             card.innerHTML = `
                 <h3 class="flex justify-between items-center">
-                    <span>${name.name}</span>
-                    <span class="text-sm font-normal text-medium-gray capitalize">${name.gender} / ${name.language}</span>
+                    <span>${name?.name ?? 'N/A'}</span>
+                    <span class="text-sm font-normal text-medium-gray capitalize">${name?.gender ?? 'N/A'} / ${name?.language ?? 'N/A'}</span>
                 </h3>
-                <p><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
-                <p><strong>Origin Notes:</strong> ${name.originNotes || 'N/A'}</p>
-                <p><strong>Pronunciation:</strong> ${name.pronunciation || 'N/A'}</p>
+                <p><strong>Meaning:</strong> ${name?.meaning ?? 'N/A'}</p>
+                <p><strong>Origin Notes:</strong> ${name?.originNotes ?? 'N/A'}</p>
+                <p><strong>Pronunciation:</strong> ${name?.pronunciation ?? 'N/A'}</p>
                 <div class="tags mt-2">
-                    <span class="capitalize">${name.lengthCategory} Length</span>
-                    <span>${getStyleLabel(name.styleScore)} Style</span>
-                    <span class="capitalize">${name.popularity} Popularity</span>
+                    <span class="capitalize">${name?.lengthCategory ?? 'N/A'} Length</span>
+                    <span>${getStyleLabel(name?.styleScore ?? 50)} Style</span>
+                    <span class="capitalize">${name?.popularity ?? 'N/A'} Popularity</span>
                 </div>
                 <div class="actions mt-3 text-right">
-                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="copyToClipboard('${name.name}')">Copy</button>
-                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="saveToFavorites('${name.id}')">Save ☆</button>
+                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="copyToClipboard('${name?.name ?? ''}')">Copy</button>
+                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="saveToFavorites('${name?.id ?? ''}')">Save ☆</button>
                 </div>
             `;
             resultDisplay.appendChild(card);
@@ -479,6 +468,7 @@
              famousNamesakesSection.classList.remove('hidden');
         }
 
+         // Function to get a style label based on score
          function getStyleLabel(score) {
              if (score < 20) return 'Very Traditional';
              if (score < 40) return 'Traditional';
@@ -487,8 +477,11 @@
              return 'Very Unique';
          }
 
+         // Function to display related/similar names
          function displayRelatedNames(currentName) {
              relatedNamesContainer.innerHTML = '';
+             if (!dataLoaded || !currentName) return;
+
              const similar = nameDatabase.filter(name =>
                  name.id !== currentName.id &&
                  name.language === currentName.language &&
@@ -514,22 +507,24 @@
              });
          }
 
+         // Function to display famous namesakes
          function displayFamousNamesakes(name) {
              famousNamesakesContainer.innerHTML = '';
-             if (name.famous && name.famous.length > 0) {
-                 const list = document.createElement('ul');
-                 list.classList.add('list-disc', 'list-inside', 'space-y-1');
-                 name.famous.forEach(person => {
-                     const item = document.createElement('li');
-                     item.textContent = person;
-                     list.appendChild(item);
-                 });
-                 famousNamesakesContainer.appendChild(list);
-             } else {
-                 famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No famous namesakes listed.</p>';
+             if (!name || !name.famous || name.famous.length === 0) {
+                  famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No famous namesakes listed.</p>';
+                  return;
              }
+             const list = document.createElement('ul');
+             list.classList.add('list-disc', 'list-inside', 'space-y-1');
+             name.famous.forEach(person => {
+                 const item = document.createElement('li');
+                 item.textContent = person;
+                 list.appendChild(item);
+             });
+             famousNamesakesContainer.appendChild(list);
          }
 
+        // Function to handle the "Generate Name" button click
         function handleGenerateClick() {
             if (!dataLoaded) {
                 resultsMessage.textContent = "Name data is still loading. Please wait.";
@@ -551,23 +546,26 @@
                 style: parseInt(styleSlider.value)
             };
 
-            setTimeout(() => {
-                const filtered = filterNames(criteria);
-                loadingIndicator.style.display = 'none';
-                if (filtered.length > 0) {
-                    const randomIndex = Math.floor(Math.random() * filtered.length);
-                    const selectedName = filtered[randomIndex];
-                    displayResult(selectedName);
-                } else {
-                    resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
-                    resultsMessage.style.display = 'block';
-                    resultsPlaceholder.style.display = 'none';
-                    resultDisplay.innerHTML = '';
-                }
-            }, 500); // Simulate delay
+            // Process directly
+            const filtered = filterNames(criteria);
+            loadingIndicator.style.display = 'none';
+
+            if (filtered.length > 0) {
+                const randomIndex = Math.floor(Math.random() * filtered.length);
+                const selectedName = filtered[randomIndex];
+                displayResult(selectedName);
+            } else {
+                resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
+                resultsMessage.style.display = 'block';
+                resultsPlaceholder.style.display = 'block';
+                resultsPlaceholder.textContent = "No names found matching your criteria.";
+                resultDisplay.innerHTML = '';
+            }
         }
 
+         // Function to display a specific name by ID
          function displayResultById(id) {
+             if (!dataLoaded) return;
              const nameToShow = nameDatabase.find(n => n.id === id);
              if (nameToShow) {
                  displayResult(nameToShow);
@@ -577,18 +575,24 @@
 
         // --- Placeholder Functions ---
         function copyToClipboard(text) {
+            if (!text) return;
             navigator.clipboard.writeText(text).then(() => {
                 alert(`Copied "${text}" to clipboard!`); // Replace with a better notification
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
-                alert('Failed to copy text.');
+                alert('Failed to copy text.'); // Replace with a better notification
             });
         }
 
         function saveToFavorites(nameId) {
+             if (!dataLoaded || !nameId) return;
             const nameObj = nameDatabase.find(n => n.id === nameId);
-            alert(`Saving "${nameObj?.name}" to favorites (not implemented yet).`);
-            // Implement localStorage or backend logic here
+            if (nameObj) {
+                 alert(`Saving "${nameObj.name}" to favorites (not implemented yet).`);
+                 // TODO: Implement favorite saving logic
+            } else {
+                console.warn(`Could not find name with id "${nameId}" to save.`);
+            }
         }
 
         // --- Event Listeners ---
@@ -616,12 +620,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateSliderFeedback();
             generateAlphabetButtons();
-            if (!dataLoaded) {
-                console.log("Data loading simulation...");
-                // setTimeout(() => { dataLoaded = true; console.log("Data loaded."); }, 1500);
-            }
+            loadNameData(); // Start loading data
         });
+
     </script>
 
 </body>
 </html>
+
