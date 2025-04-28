@@ -128,6 +128,7 @@
          }
          main {
              flex-grow: 1;
+             position: relative; /* Needed for absolute positioning of blog post view */
          }
 
          /* Blog specific styles */
@@ -138,6 +139,9 @@
              transform: translateY(20px) scale(0.9);
              /* Add transition for the initial state properties */
              transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+             /* Ensure cards are positioned relative for flip origin */
+             position: relative;
+             z-index: 1; /* Ensure cards are above the main content initially */
          }
 
          .blog-post-summary-container img {
@@ -153,19 +157,19 @@
          .blog-card-inner {
              transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth flip transition */
              transform-style: preserve-3d; /* Preserve 3D space for children */
-             position: relative; /* Needed for potential backface, though we are just flipping the front */
+             position: relative; /* Needed for potential backface */
              transform-origin: center; /* Ensure the rotation is around the center */
              width: 100%;
              height: 100%;
              display: block; /* Ensure the link block takes full space */
-             /* Hide the back of the element during flip if needed */
-             /* backface-visibility: hidden; */ /* Uncomment if you see the back during flip */
+             backface-visibility: hidden; /* Hide the back of the element during flip */
+             z-index: 2; /* Ensure the flipping element is above the wrapper */
          }
 
          /* State when the card is flipping/picked up */
          .blog-card-inner.is-flipping {
              transform: rotateY(180deg) scale(1.2) translateZ(50px); /* Flip, zoom in, and move slightly forward */
-             z-index: 10; /* Bring to front during animation */
+             /* z-index handled by JS during transition */
          }
 
          /* Class to trigger the dealing animation */
@@ -174,8 +178,37 @@
               transform: translateY(0) scale(1);
          }
 
+        /* Styles for the full blog post view */
+        #full-blog-post-view {
+            position: fixed; /* Position fixed to cover the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto; /* Allow scrolling for long posts */
+            background-color: rgba(248, 250, 252, 0.95); /* off-white with some transparency */
+            backdrop-filter: blur(8px); /* Blur the background */
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Initially not interactive */
+            pointer-events: none; /* Initially not interactive */
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
+            z-index: 0; /* Initially behind everything */
+            padding-top: 80px; /* Space for fixed header */
+        }
 
-         /* Adjusted grid for mobile */
+        #full-blog-post-view.is-active {
+            opacity: 1; /* Become visible */
+            visibility: visible; /* Become interactive */
+            pointer-events: auto; /* Become interactive */
+            z-index: 40; /* Bring to front when active (below fixed header) */
+        }
+
+        /* Hide the blog list when a post is showing */
+        body.showing-post #blog-list-section {
+            display: none;
+        }
+
+        /* Adjusted grid for mobile */
          #blog-list-container {
              /* Default to 1 column on smallest screens */
              /* On small screens (sm), show 2 columns */
@@ -207,44 +240,53 @@
         </div>
     </header>
 
-    <section id="showcase" class="py-6 md:py-10 text-center relative">
-        <img src="assets/blog.png" alt="The Stork Name Drop Blog Title"
-             class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
-             onerror="this.onerror=null; this.src='https://placehold.co/768x150/ffffff00/2C3E50?text=The+Stork+Name+Drop+Blog'; this.style.border='1px dashed #ccc';">
-        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+    <section id="blog-list-section">
+        <section id="showcase" class="py-6 md:py-10 text-center relative">
+            <img src="assets/blog.png" alt="The Stork Name Drop Blog Title"
+                 class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
+                 onerror="this.onerror=null; this.src='https://placehold.co/768x150/ffffff00/2C3E50?text=The+Stork+Name+Drop+Blog'; this.style.border='1px dashed #ccc';">
+            <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+        </section>
+
+        <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+            <div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+                <article class="blog-post-summary-container blog-card-wrapper">
+                     <a href="blog/song.html" class="block blog-card-inner">
+                        <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
+                     </a>
+                </article>
+
+                 <article class="blog-post-summary-container blog-card-wrapper">
+                    <a href="blog/german2025.html" class="block blog-card-inner">
+                       <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
+                    </a>
+               </article>
+
+                <article class="blog-post-summary-container blog-card-wrapper">
+                    <a href="blog/middle.html" class="block blog-card-inner">
+                        <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
+                    </a>
+                </article>
+
+                 <article class="blog-post-summary-container blog-card-wrapper">
+                    <a href="blog/uniqueeng.html" class="block blog-card-inner">
+                       <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
+                    </a>
+               </article>
+
+            </div>
+
+        </main>
     </section>
 
-    <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div id="full-blog-post-view">
+        <div class="container mx-auto p-6 md:p-10 bg-white rounded-lg shadow-lg">
+             </div>
+    </div>
 
-            <article class="blog-post-summary-container blog-card-wrapper">
-                 <a href="blog/song.html" class="block blog-card-inner">
-                    <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
-                 </a>
-            </article>
-
-             <article class="blog-post-summary-container blog-card-wrapper">
-                <a href="blog/german2025.html" class="block blog-card-inner">
-                   <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
-                </a>
-           </article>
-
-            <article class="blog-post-summary-container blog-card-wrapper">
-                <a href="blog/middle.html" class="block blog-card-inner">
-                    <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
-                </a>
-            </article>
-
-             <article class="blog-post-summary-container blog-card-wrapper">
-                <a href="blog/uniqueeng.html" class="block blog-card-inner">
-                   <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
-                </a>
-           </article>
-
-        </div>
-
-    </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
@@ -253,46 +295,164 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const blogListContainer = document.getElementById('blog-list-container');
+            const blogListSection = document.getElementById('blog-list-section');
+            const fullBlogPostView = document.getElementById('full-blog-post-view');
             const blogCards = blogListContainer.querySelectorAll('.blog-post-summary-container');
+            const cardLinks = blogListContainer.querySelectorAll('.blog-card-inner');
+            const body = document.body;
 
-            // Trigger dealing animation
-            // Add a class to the container after a short delay
-            setTimeout(() => {
-                 blogListContainer.classList.add('is-dealt');
-                 // Add staggered delay for individual cards
-                 blogCards.forEach((card, index) => {
-                      card.style.transitionDelay = `${index * 0.1}s`; // Adjust delay time (0.1s per card)
-                 });
-            }, 100); // Short delay before starting animation
+            // --- Functions to manage views and history ---
 
-            const cardLinks = document.querySelectorAll('.blog-card-inner');
+            // Function to show the blog list view
+            const showBlogList = () => {
+                // Remove the class hiding the list
+                body.classList.remove('showing-post');
+                // Hide the full post view
+                fullBlogPostView.classList.remove('is-active');
+                // Clear the content
+                fullBlogPostView.querySelector('.container').innerHTML = '';
 
+                // Reset card transforms if needed (optional, they reset when hidden/shown)
+                cardLinks.forEach(link => {
+                    link.classList.remove('is-flipping');
+                });
+
+                 // Re-trigger dealing animation if desired when returning
+                 // Remove and re-add the class to restart the CSS animation
+                 blogListContainer.classList.remove('is-dealt');
+                 // Use a small timeout to allow the class removal to register
+                 setTimeout(() => {
+                     blogListContainer.classList.add('is-dealt');
+                     blogCards.forEach((card, index) => {
+                         card.style.transitionDelay = `${index * 0.1}s`;
+                     });
+                 }, 50); // Small delay
+            };
+
+            // Function to show a specific blog post
+            const showBlogPost = async (url) => {
+                 try {
+                    // Show loader or some indicator while fetching (optional)
+                    fullBlogPostView.querySelector('.container').innerHTML = '<div class="loader"></div>';
+                    fullBlogPostView.classList.add('is-active'); // Show the container immediately
+
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const html = await response.text();
+
+                    // Parse the fetched HTML to extract the main content
+                    // ASSUMPTION: The main blog content is within an element with ID 'blog-content'
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const blogContent = doc.getElementById('blog-content'); // Adjust ID if necessary
+
+                    if (blogContent) {
+                        // Inject the extracted content into the full blog post view
+                        fullBlogPostView.querySelector('.container').innerHTML = blogContent.innerHTML; // Use innerHTML to get content inside the element
+
+                        // Add the class to hide the blog list
+                        body.classList.add('showing-post');
+
+                         // Scroll to top of the post view
+                         fullBlogPostView.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    } else {
+                        // Handle case where content element is not found
+                        fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Could not load blog post content.</p>';
+                         // Still hide the blog list even if content failed
+                         body.classList.add('showing-post');
+                    }
+
+                 } catch (error) {
+                     console.error('Error fetching or parsing blog post:', error);
+                     fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Error loading blog post.</p>';
+                      // Still hide the blog list even if fetching failed
+                      body.classList.add('showing-post');
+                 }
+            };
+
+
+            // --- Event Listeners ---
+
+            // Click handler for blog cards
             cardLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault(); // Prevent default link navigation
 
                     const targetUrl = this.href; // Get the target URL
+                    const clickedCardInner = this; // The element that flips
 
                     // Add the class to trigger the flip animation
-                    this.classList.add('is-flipping');
+                    clickedCardInner.classList.add('is-flipping');
 
-                    // Wait for the animation to complete before navigating
-                    // Use both transitionend and a timeout as a fallback
-                    const handleTransitionEnd = () => {
-                        window.location.href = targetUrl;
-                        this.removeEventListener('transitionend', handleTransitionEnd); // Clean up listener
-                    };
-
-                    this.addEventListener('transitionend', handleTransitionEnd);
-
-                    // Fallback just in case transitionend doesn't fire
+                    // Use setTimeout to wait for the flip animation to be near completion
+                    // The duration should match the CSS transition duration (0.6s) or slightly less
                     setTimeout(() => {
-                         if (window.location.href !== targetUrl) {
-                             window.location.href = targetUrl;
-                         }
-                    }, 700); // Timeout duration should be slightly longer than the CSS transition (0.6s + buffer)
+                        // Fetch and show the blog post content
+                        showBlogPost(targetUrl);
+
+                        // Update browser history
+                        history.pushState({ postUrl: targetUrl }, '', targetUrl);
+
+                        // Remove the flipping class after the content is loaded/shown
+                        // This can be done here or after showBlogPost finishes
+                        // For visual effect, removing it slightly after showing the post might be better
+                         setTimeout(() => {
+                             clickedCardInner.classList.remove('is-flipping');
+                         }, 200); // Small delay after showing post
+                    }, 500); // Adjust this timeout to sync with CSS transition (e.g., 500ms for 600ms transition)
                 });
             });
+
+            // Handle browser back/forward button clicks
+            window.addEventListener('popstate', (event) => {
+                // Check the state object pushed to history
+                if (event.state && event.state.postUrl) {
+                    // If state has a postUrl, show that blog post
+                    showBlogPost(event.state.postUrl);
+                } else {
+                    // If state is null or doesn't have postUrl, show the blog list
+                    showBlogList();
+                }
+            });
+
+            // --- Initial Page Load ---
+
+            // Trigger dealing animation on initial load if not already showing a post
+             // We need to check if the URL already points to a blog post
+             const initialPath = window.location.pathname;
+             const isBlogPostUrl = cardLinks.some(link => initialPath.endsWith(link.getAttribute('href')));
+
+            if (!isBlogPostUrl) {
+                // If it's just the blog list page, trigger the dealing animation
+                 setTimeout(() => {
+                      blogListContainer.classList.add('is-dealt');
+                      blogCards.forEach((card, index) => {
+                           card.style.transitionDelay = `${index * 0.1}s`; // Adjust delay time (0.1s per card)
+                      });
+                 }, 100); // Short delay before starting animation
+
+                 // Push initial state for the blog list page
+                 history.replaceState({ view: 'blog-list' }, '', window.location.href);
+
+            } else {
+                 // If the page was loaded directly with a blog post URL, show the post
+                 // Find the correct link element to get the exact URL
+                 const activeLink = Array.from(cardLinks).find(link => initialPath.endsWith(link.getAttribute('href')));
+                 if(activeLink) {
+                      showBlogPost(activeLink.href);
+                      // Replace history state for the initial blog post view
+                      history.replaceState({ postUrl: activeLink.href }, '', window.location.href);
+                 } else {
+                      // Fallback if URL looks like a post but doesn't match a link
+                      showBlogList();
+                      history.replaceState({ view: 'blog-list' }, '', window.location.href);
+                 }
+            }
+
+
         });
     </script>
 
