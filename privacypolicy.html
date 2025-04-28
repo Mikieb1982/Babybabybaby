@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Privacy Policy - The Stork Name Drop</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration - Copied from index page for consistency
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                      serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles - Copied from index page for consistency */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Form element styles - Copied from index page for consistency */
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+        /* Loader - Copied from index page for consistency */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1ABC9C; /* Stork Accent */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Name card styles - Copied from index page for consistency */
+         .name-card {
+            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+         }
+         .name-card h3 {
+             @apply text-xl font-semibold text-stork-title mb-2;
+         }
+         .name-card p {
+             @apply text-stork-text mb-1 text-sm;
+         }
+         .name-card .tags span {
+             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+         }
+         .name-card .actions button {
+             @apply text-xs px-2 py-1 rounded mr-2;
+         }
+
+         /* Full height layout - Copied from index page for consistency */
+         html, body {
+             min-height: 100%;
+             display: flex;
+             flex-direction: column;
+         }
+         body {
+             flex-grow: 1;
+             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+         }
+         main {
+             flex-grow: 1;
+         }
+
+         /* Policy specific styles */
+         .policy-content h1 {
+             @apply text-3xl md:text-4xl text-stork-title font-bold mb-6 text-center border-b pb-3;
+         }
+         .policy-content h2 {
+             @apply text-2xl md:text-3xl text-stork-title font-semibold mt-8 mb-4 border-b pb-2;
+         }
+         .policy-content h3 {
+              @apply text-xl md:text-2xl text-stork-title font-semibold mt-6 mb-3;
+         }
+         .policy-content p {
+             @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+         }
+          .policy-content ul {
+             @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+         }
+         .policy-content ul li {
+             @apply mb-2;
+         }
+         .policy-content strong {
+             @apply font-semibold;
+         }
+         .policy-content a {
+             @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
+         }
+
+
+    </style>
+</head>
+
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
+        </div>
+    </header>
+
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">Privacy Policy</h1>
+        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Understanding how we handle your information.</p>
+    </section>
+
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <div class="policy-content">
+            <h1>Privacy Policy for The Stork Name Drop</h1>
+
+            <p><strong>Effective Date:</strong> 28 April 2025</p>
+
+            <p>This Privacy Policy describes how The Stork Name Drop ("we," "us," or "our") collects, uses, and protects the limited personal information you may provide when using our website, thestorknamedrop.com (the "Service").</p>
+
+            <h2>1. Information We Do Not Collect</h2>
+            <p>Our website is a static site. We do not currently use cookies, tracking technologies, or collect personal information such as names, email addresses, IP addresses, or browsing behavior.</p>
+
+            <h2>2. Information You May Voluntarily Provide</h2>
+            <p>If you choose to contact us via email at thestorknamedrop@gmail.com, you may voluntarily provide personal information such as your name and email address within the content of your message. We will use this information only to respond to your inquiry or feedback.</p>
+
+            <h2>3. How We Use Information</h2>
+            <p>Any information you voluntarily provide via email will be used solely for the purpose of communicating with you and addressing your specific request or feedback.</p>
+
+            <h2>4. Data Retention</h2>
+            <p>We retain email correspondence for as long as necessary to resolve your inquiry or address your feedback.</p>
+
+            <h2>5. Information Sharing</h2>
+            <p>We do not share any personal information you may provide via email with third parties, except as required by law.</p>
+
+            <h2>6. Security</h2>
+            <p>We take reasonable steps to protect the limited information you may provide via email. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure.</p>
+
+            <h2>7. Links to Other Websites</h2>
+            <p>Our Service may contain links to other websites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+
+            <h2>8. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:thestorknamedrop@gmail.com">thestorknamedrop@gmail.com</a></p>
+
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+     </footer>
+
+</body>
+</html>
