@@ -149,7 +149,7 @@
             </a>
 
             <nav class="flex space-x-4 sm:space-x-6 items-center">
-                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Home</a>
                  <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
                  <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
                  <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
@@ -160,7 +160,7 @@
 
     <section id="showcase" class="py-6 md:py-10 text-center relative">
         <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto mb-6"
+             class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
              onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
 
     </section>
@@ -349,244 +349,237 @@
              setActiveLetterButton(anyBtn);
          }
 
-         // Function to handle letter button clicks
+         // Function to handle letter button selection
          function handleLetterSelection(event) {
              const selectedLetter = event.target.dataset.letter;
              selectedLetterInput.value = selectedLetter;
-             setActiveLetterButton(event.target);
+             console.log(`Selected letter: ${selectedLetter}`);
+             // Update active button style
+             document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
+                 btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
+                 btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
+             });
+             event.target.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
+             event.target.classList.add('btn-primary', 'text-white', 'border-stork-accent');
          }
 
-         // Function to set the active state for letter buttons
-         function setActiveLetterButton(activeButton) {
-             const buttons = firstLetterInputsContainer.querySelectorAll('button');
-             buttons.forEach(button => {
-                 button.classList.remove('bg-stork-accent', 'text-white', 'border-stork-accent');
-                 button.classList.add('bg-gray-200', 'text-stork-text', 'border-gray-300');
-             });
-             activeButton.classList.add('bg-stork-accent', 'text-white', 'border-stork-accent');
-             activeButton.classList.remove('bg-gray-200', 'text-stork-text', 'border-gray-300');
+         // Function to set the active letter button initially
+         function setActiveLetterButton(button) {
+             button.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
+             button.classList.add('btn-primary', 'text-white', 'border-stork-accent');
          }
+
 
         // Function to filter names based on criteria
-        function filterNames(criteria) {
-             if (!dataLoaded || nameDatabase.length === 0) {
-                 console.warn("Attempted to filter names before data was loaded or database is empty.");
-                 return [];
-             }
-            return nameDatabase.filter(name => {
-                if (criteria.gender !== 'any' && name.gender !== 'any' && name.gender !== criteria.gender) return false;
-                if (criteria.language && name.language !== criteria.language) return false;
-                if (criteria.firstLetter && !name.name.toLowerCase().startsWith(criteria.firstLetter.toLowerCase())) return false;
-                const nameLength = name.name.length;
-                if (criteria.length !== 'any') {
-                    if (criteria.length === 'short' && (nameLength < 3 || nameLength > 5)) return false;
-                    if (criteria.length === 'medium' && (nameLength < 6 || nameLength > 8)) return false;
-                    if (criteria.length === 'long' && nameLength < 9) return false;
+        function filterNames() {
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const language = languageSelect.value;
+            const firstLetter = selectedLetterInput.value.toLowerCase();
+            const length = document.querySelector('input[name="length"]:checked').value;
+            const styleValue = parseInt(styleSlider.value);
+
+            // Basic filtering
+            let filtered = nameDatabase.filter(name => {
+                // Gender filter
+                if (gender !== 'any' && name.gender.toLowerCase() !== gender) {
+                    return false;
                 }
-                 const styleDifference = Math.abs(name.styleScore - criteria.style);
-                 const maxDifference = 30;
-                 if (styleDifference > maxDifference) return false;
+                // Language filter
+                if (language !== '' && name.origin.toLowerCase().indexOf(language) === -1) { // Basic check for language origin
+                     return false;
+                 }
+                // First letter filter
+                if (firstLetter !== '' && name.name.toLowerCase().charAt(0) !== firstLetter) {
+                    return false;
+                }
+                // Length filter
+                if (length !== 'any') {
+                    const nameLength = name.name.length;
+                    if (length === 'short' && (nameLength < 3 || nameLength > 5)) return false;
+                    if (length === 'medium' && (nameLength < 6 || nameLength > 8)) return false;
+                    if (length === 'long' && nameLength < 9) return false;
+                }
                 return true;
             });
+
+            // Style filtering (simplified example - needs actual data/logic for traditional/unique scoring)
+            // This is a placeholder. Real implementation would require a 'style' score in your data.
+            if (styleValue < 50) { // More traditional
+                 filtered = filtered.sort((a, b) => (a.popularity_score || 0) - (b.popularity_score || 0)); // Assuming popularity_score exists
+            } else if (styleValue > 50) { // More unique
+                 filtered = filtered.sort((a, b) => (b.popularity_score || 0) - (a.popularity_score || 0)); // Assuming popularity_score exists
+            }
+            // If value is 50 (Balanced), no specific style sorting is applied here.
+
+            return filtered;
         }
 
-        // Function to display a name card
-        function displayResult(name) {
-            currentName = name;
-            resultsPlaceholder.style.display = 'none';
-            resultDisplay.innerHTML = '';
-            resultsMessage.style.display = 'none';
+        // Function to display a single generated name
+        function displayGeneratedName(name) {
+            resultDisplay.innerHTML = ''; // Clear previous result
+            resultsMessage.style.display = 'none'; // Hide message
 
-            const card = document.createElement('div');
-            card.classList.add('name-card', 'animate-fade-in');
-            card.innerHTML = `
-                <h3 class="flex justify-between items-center">
-                    <span>${name?.name ?? 'N/A'}</span>
-                    <span class="text-sm font-normal text-medium-gray capitalize">${name?.gender ?? 'N/A'} / ${name?.language ?? 'N/A'}</span>
-                </h3>
-                <p><strong>Meaning:</strong> ${name?.meaning ?? 'N/A'}</p>
-                <p><strong>Origin Notes:</strong> ${name?.originNotes ?? 'N/A'}</p>
-                <p><strong>Pronunciation:</strong> ${name?.pronunciation ?? 'N/A'}</p>
-                <div class="tags mt-2">
-                    <span class="capitalize">${name?.lengthCategory ?? 'N/A'} Length</span>
-                    <span>${getStyleLabel(name?.styleScore ?? 50)} Style</span>
-                    <span class="capitalize">${name?.popularity ?? 'N/A'} Popularity</span>
+            if (!name) {
+                resultsPlaceholder.textContent = 'No names found matching your criteria. Try adjusting your filters.';
+                resultsPlaceholder.classList.remove('text-medium-gray');
+                resultsPlaceholder.classList.add('text-stork-text');
+                return;
+            }
+
+            resultsPlaceholder.style.display = 'none'; // Hide placeholder
+
+            const nameCard = document.createElement('div');
+            nameCard.classList.add('name-card', 'animate-fade-in');
+            nameCard.innerHTML = `
+                <h3 class="text-center">${name.name}</h3>
+                <p class="text-center"><strong>Origin:</strong> ${name.origin || 'N/A'}</p>
+                <p class="text-center"><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
+                ${name.gender ? `<p class="text-center"><strong>Gender:</strong> ${name.gender}</p>` : ''}
+                ${name.popularity ? `<p class="text-center"><strong>Popularity:</strong> ${name.popularity}</p>` : ''}
+                <div class="tags text-center mt-2">
+                    ${name.tags ? name.tags.map(tag => `<span>${tag}</span>`).join('') : ''}
                 </div>
-                <div class="actions mt-3 text-right">
-                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="copyToClipboard('${name?.name ?? ''}')">Copy</button>
-                    <button class="btn btn-secondary btn-xs btn-feedback" onclick="saveToFavorites('${name?.id ?? ''}')">Save ☆</button>
+                <div class="actions text-center mt-4">
+                    <button class="btn btn-secondary btn-feedback copy-btn" data-name="${name.name}">Copy</button>
+                    <button class="btn btn-primary btn-feedback save-btn" data-name="${name.name}">Save</button>
                 </div>
             `;
-            resultDisplay.appendChild(card);
-             displayRelatedNames(name);
-             displayFamousNamesakes(name);
-             relatedNamesSection.classList.remove('hidden');
-             famousNamesakesSection.classList.remove('hidden');
+            resultDisplay.appendChild(nameCard);
+
+            // Add event listeners for copy and save buttons
+            nameCard.querySelector('.copy-btn').addEventListener('click', handleCopyName);
+            nameCard.querySelector('.save-btn').addEventListener('click', handleSaveName);
+
+            // Placeholder for additional info (related names, famous namesakes)
+            displayAdditionalInfo(name);
         }
 
-         // Function to get a style label based on score
-         function getStyleLabel(score) {
-             if (score < 20) return 'Very Traditional';
-             if (score < 40) return 'Traditional';
-             if (score <= 60) return 'Balanced';
-             if (score <= 80) return 'Unique';
-             return 'Very Unique';
-         }
+         // Function to display additional information (placeholder)
+         function displayAdditionalInfo(name) {
+             // This is a placeholder. You would fetch or generate this data based on the 'name' object.
+             relatedNamesContainer.innerHTML = ''; // Clear previous
+             famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No information available yet.</p>'; // Clear previous
 
-         // Function to display related/similar names
-         function displayRelatedNames(currentName) {
-             relatedNamesContainer.innerHTML = '';
-             if (!dataLoaded || !currentName) return;
-
-             const similar = nameDatabase.filter(name =>
-                 name.id !== currentName.id &&
-                 name.language === currentName.language &&
-                 (name.gender === currentName.gender || name.gender === 'any' || currentName.gender === 'any')
-             ).slice(0, 3);
-
-             if (similar.length === 0) {
-                 relatedNamesContainer.innerHTML = '<p class="text-center text-medium-gray italic col-span-full">No similar names found in this category.</p>';
-                 return;
+             // Example: Show related names section if data exists (replace with actual logic)
+             if (name.related_names && name.related_names.length > 0) {
+                 relatedNamesSection.classList.remove('hidden');
+                 name.related_names.forEach(relatedName => {
+                     const relatedNameCard = document.createElement('div');
+                     relatedNameCard.classList.add('name-card', 'p-3', 'text-center');
+                     relatedNameCard.innerHTML = `<h4 class="text-lg font-semibold">${relatedName.name}</h4><p class="text-sm">${relatedName.origin || ''} ${relatedName.meaning ? `(${relatedName.meaning})` : ''}</p>`;
+                     relatedNamesContainer.appendChild(relatedNameCard);
+                 });
+             } else {
+                 relatedNamesSection.classList.add('hidden');
              }
-             similar.forEach(name => {
-                 const card = document.createElement('div');
-                 card.classList.add('name-card', 'text-sm', 'p-3');
-                 card.innerHTML = `
-                     <h4 class="font-semibold text-stork-title">${name.name}</h4>
-                     <p class="text-xs text-medium-gray capitalize">${name.gender} / ${name.language}</p>
-                     <div class="actions mt-2 text-right">
-                         <button class="btn btn-secondary btn-xs py-0.5 px-1.5 btn-feedback" onclick="displayResultById('${name.id}')">View</button>
-                         <button class="btn btn-secondary btn-xs py-0.5 px-1.5 btn-feedback" onclick="saveToFavorites('${name.id}')">Save ☆</button>
-                     </div>
-                 `;
-                 relatedNamesContainer.appendChild(card);
-             });
-         }
 
-         // Function to display famous namesakes
-         function displayFamousNamesakes(name) {
-             famousNamesakesContainer.innerHTML = '';
-             if (!name || !name.famous || name.famous.length === 0) {
-                  famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No famous namesakes listed.</p>';
-                  return;
+             // Example: Show famous namesakes section if data exists (replace with actual logic)
+             if (name.famous_namesakes && name.famous_namesakes.length > 0) {
+                 famousNamesakesSection.classList.remove('hidden');
+                 famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p>${item}</p>`).join('');
+             } else {
+                  famousNamesakesSection.classList.add('hidden');
              }
-             const list = document.createElement('ul');
-             list.classList.add('list-disc', 'list-inside', 'space-y-1');
-             name.famous.forEach(person => {
-                 const item = document.createElement('li');
-                 item.textContent = person;
-                 list.appendChild(item);
-             });
-             famousNamesakesContainer.appendChild(list);
          }
 
-        // Function to handle the "Generate Name" button click
-        function handleGenerateClick() {
+
+        // Function to handle name generation button click
+        function handleGenerateName() {
             if (!dataLoaded) {
-                resultsMessage.textContent = "Name data is still loading. Please wait.";
+                resultsMessage.textContent = 'Name data is still loading. Please wait.';
                 resultsMessage.style.display = 'block';
                 return;
             }
-            loadingIndicator.style.display = 'block';
-            resultDisplay.innerHTML = '';
-            resultsPlaceholder.style.display = 'none';
-            resultsMessage.style.display = 'none';
-            relatedNamesSection.classList.add('hidden');
-            famousNamesakesSection.classList.add('hidden');
 
-            const criteria = {
-                gender: document.querySelector('input[name="gender"]:checked').value,
-                language: languageSelect.value,
-                firstLetter: selectedLetterInput.value,
-                length: document.querySelector('input[name="length"]:checked').value,
-                style: parseInt(styleSlider.value)
-            };
+            loadingIndicator.style.display = 'block'; // Show loader
+            resultDisplay.style.display = 'none'; // Hide result display
+            resultsPlaceholder.style.display = 'none'; // Hide placeholder
+            resultsMessage.style.display = 'none'; // Hide message
+            relatedNamesSection.classList.add('hidden'); // Hide related names
+            famousNamesakesSection.classList.add('hidden'); // Hide famous namesakes
 
-            // Process directly
-            const filtered = filterNames(criteria);
-            loadingIndicator.style.display = 'none';
 
-            if (filtered.length > 0) {
-                const randomIndex = Math.floor(Math.random() * filtered.length);
-                const selectedName = filtered[randomIndex];
-                displayResult(selectedName);
-            } else {
-                resultsMessage.textContent = "No names found matching your criteria. Try broadening your search!";
-                resultsMessage.style.display = 'block';
-                resultsPlaceholder.style.display = 'block';
-                resultsPlaceholder.textContent = "No names found matching your criteria.";
-                resultDisplay.innerHTML = '';
-            }
+            // Simulate a delay for loading
+            setTimeout(() => {
+                const filteredNames = filterNames();
+                console.log(`Found ${filteredNames.length} names matching criteria.`);
+
+                if (filteredNames.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * filteredNames.length);
+                    currentName = filteredNames[randomIndex];
+                    displayGeneratedName(currentName);
+                } else {
+                    currentName = null;
+                    displayGeneratedName(null); // Display no results message
+                }
+
+                loadingIndicator.style.display = 'none'; // Hide loader
+                resultDisplay.style.display = 'block'; // Show result display
+                resultsPlaceholder.style.display = 'none'; // Ensure placeholder is hidden
+            }, 500); // Simulate a 0.5 second loading time
         }
 
-         // Function to display a specific name by ID
-         function displayResultById(id) {
-             if (!dataLoaded) return;
-             const nameToShow = nameDatabase.find(n => n.id === id);
-             if (nameToShow) {
-                 displayResult(nameToShow);
-                 document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
-             }
-         }
-
-        // --- Placeholder Functions ---
-        function copyToClipboard(text) {
-            if (!text) return;
-            navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied "${text}" to clipboard!`); // Consider a less intrusive notification
+        // Function to handle copying a name (placeholder)
+        function handleCopyName(event) {
+            const nameToCopy = event.target.dataset.name;
+            navigator.clipboard.writeText(nameToCopy).then(() => {
+                console.log(`Copied "${nameToCopy}" to clipboard.`);
+                // Optional: Provide user feedback (e.g., change button text briefly)
+                const originalText = event.target.textContent;
+                event.target.textContent = 'Copied!';
+                setTimeout(() => {
+                    event.target.textContent = originalText;
+                }, 1500);
             }).catch(err => {
-                console.error('Failed to copy text: ', err);
-                alert('Failed to copy text.'); // Consider a less intrusive notification
+                console.error('Failed to copy name: ', err);
+                // Optional: Provide error feedback
             });
         }
 
-        function saveToFavorites(nameId) {
-             if (!dataLoaded || !nameId) return;
-            const nameObj = nameDatabase.find(n => n.id === nameId);
-            if (nameObj) {
-                 alert(`Saving "${nameObj.name}" to favorites (not implemented yet).`);
-                 // TODO: Implement favorite saving logic
-            } else {
-                console.warn(`Could not find name with id "${nameId}" to save.`);
-            }
+        // Function to handle saving a name (placeholder - needs backend/local storage)
+        function handleSaveName(event) {
+            const nameToSave = event.target.dataset.name;
+            console.log(`Saving "${nameToSave}" (feature not fully implemented).`);
+            // TODO: Implement saving functionality (e.g., to local storage or a database)
+
+             // Optional: Provide user feedback (e.g., change button text briefly)
+             const originalText = event.target.textContent;
+             event.target.textContent = 'Saved!';
+             event.target.classList.remove('btn-primary');
+             event.target.classList.add('bg-save-button', 'hover:bg-save-button-hover');
+             setTimeout(() => {
+                 event.target.textContent = originalText;
+                 event.target.classList.remove('bg-save-button', 'hover:bg-save-button-hover');
+                 event.target.classList.add('btn-primary');
+             }, 1500);
         }
 
         // --- Event Listeners ---
-        // Add smooth scroll for top nav generator link
-        if (topNavGeneratorLink) {
-            topNavGeneratorLink.addEventListener('click', (e) => {
-                 if (topNavGeneratorLink.getAttribute('href').startsWith('#')) {
-                      const targetId = topNavGeneratorLink.getAttribute('href');
-                      const targetElement = document.querySelector(targetId);
-                      if(targetElement) {
-                          e.preventDefault();
-                          // Account for the fixed header height when scrolling
-                          const headerOffset = 64; // Adjust this value based on your fixed header's height
-                          const elementPosition = targetElement.getBoundingClientRect().top;
-                          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                          window.scrollTo({
-                               top: offsetPosition,
-                               behavior: "smooth"
-                          });
-                      }
-                 }
-            });
-        }
-
-
-        generateBtn.addEventListener('click', handleGenerateClick);
+        generateBtn.addEventListener('click', handleGenerateName);
         styleSlider.addEventListener('input', updateSliderFeedback);
+        // Add listeners for gender and length radio buttons if needed for immediate filtering feedback (optional)
+        // document.querySelectorAll('input[name="gender"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
+        // document.querySelectorAll('input[name="length"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
+        // languageSelect.addEventListener('change', handleFilterChange); // Optional: if you want immediate changes
 
         // --- Initialization ---
-        document.addEventListener('DOMContentLoaded', () => {
-            updateSliderFeedback();
-            generateAlphabetButtons();
-            loadNameData(); // Start loading data
+        loadNameData(); // Load the name data when the page loads
+        updateSliderFeedback(); // Set initial slider feedback text
+        generateAlphabetButtons(); // Generate the alphabet buttons
+
+        // Smooth scroll for top nav generator link
+        topNavGeneratorLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80, // Adjust offset for fixed header
+                    behavior: 'smooth'
+                });
+            }
         });
 
     </script>
-
 </body>
 </html>
-
