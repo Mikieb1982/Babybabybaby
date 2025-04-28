@@ -132,7 +132,6 @@
 
          /* Blog specific styles */
          .blog-post-summary-container {
-             /* Removed old summary styles */
              @apply text-center; /* Center the image and text */
          }
 
@@ -140,12 +139,12 @@
              @apply rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105; /* Add hover effect */
          }
 
-         .blog-post-summary-container h2 {
-             @apply text-lg md:text-xl font-semibold text-stork-title mt-2 mb-1; /* Style for title below image */
-         }
-
-         .blog-post-summary-container p {
-             @apply text-sm text-medium-gray; /* Style for date/info below title */
+         /* Adjusted grid for mobile */
+         #blog-list-container {
+             /* Default to 1 column on smallest screens */
+             /* On small screens (sm), show 2 columns */
+             /* On large screens (lg), show 4 columns */
+             @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
          }
 
 
@@ -187,25 +186,25 @@
                  <a href="blog/song.html" class="block">
                     <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
                  </a>
-                 </article>
+            </article>
 
              <article class="blog-post-summary-container">
                 <a href="blog/german2025.html" class="block">
                    <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
                 </a>
-                </article>
+           </article>
 
             <article class="blog-post-summary-container">
                 <a href="blog/middle.html" class="block">
                     <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
                 </a>
-                 </article>
+            </article>
 
              <article class="blog-post-summary-container">
                 <a href="blog/uniqueeng.html" class="block">
                    <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
                 </a>
-                 </article>
+           </article>
 
         </div>
 
