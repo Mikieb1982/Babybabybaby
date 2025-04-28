@@ -7,15 +7,16 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration - Copied from index page for consistency
+        // Tailwind CSS Configuration - Copied from index/privacy page for consistency
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-                      serif: ['Georgia', 'serif'],
+                        sans: ['"Nunito Sans"', 'sans-serif'], // Custom default sans-serif font
+                        serif: ['Georgia', 'serif'],
                     },
                     colors: {
+                        // Custom color palette matching the site's theme
                         'stork-title': '#2C3E50',
                         'stork-text': '#34495E',
                         'stork-accent': '#1ABC9C',
@@ -43,6 +44,7 @@
                         'amber-500': '#f59e0b'
                     },
                     animation: {
+                        // Custom animations
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
@@ -53,8 +55,9 @@
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
                     keyframes: {
+                        // Definitions for custom animations
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -70,13 +73,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Basic styles - Copied from index page for consistency */
+        /* Basic styles - Consistent across pages */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
-        /* Form element styles - Copied from index page for consistency */
+        /* Form element styles - Consistent across pages */
         select, input[type="text"], input[type="radio"], input[type="range"] {
              @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
         }
@@ -84,47 +87,136 @@
         input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
         input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
 
-        /* Loader - Copied from index page for consistency */
+        /* Loader styles - Consistent across pages */
         .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1ABC9C; /* Stork Accent */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+             border: 4px solid #f3f3f3; /* Light grey */
+             border-top: 4px solid #1ABC9C; /* Stork Accent */
+             border-radius: 50%;
+             width: 40px;
+             height: 40px;
+             animation: spin 1s linear infinite;
+             margin: 20px auto;
         }
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+             0% { transform: rotate(0deg); }
+             100% { transform: rotate(360deg); }
         }
 
-        /* Name card styles - Copied from index page for consistency */
+        /* Name card styles - Consistent across pages */
          .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+             @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
          .name-card h3 {
-             @apply text-xl font-semibold text-stork-title mb-2;
+              @apply text-xl font-semibold text-stork-title mb-2;
          }
          .name-card p {
-             @apply text-stork-text mb-1 text-sm;
+              @apply text-stork-text mb-1 text-sm;
          }
          .name-card .tags span {
-             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+              @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
          }
          .name-card .actions button {
-             @apply text-xs px-2 py-1 rounded mr-2;
+              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* Full height layout - Copied from index page for consistency */
+         /* Full height layout - Consistent across pages */
          html, body {
-             min-height: 100%;
-             display: flex;
-             flex-direction: column;
+              min-height: 100%;
+              display: flex;
+              flex-direction: column;
          }
          body {
-             flex-grow: 1;
-             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+              flex-grow: 1;
+              padding-top: 64px; /* Offset for fixed header */
          }
          main {
-             flex-g
+              flex-grow: 1;
+         }
+
+         /* Policy specific styles - Consistent across policy pages */
+         .policy-content h1 {
+              @apply text-3xl md:text-4xl text-stork-title font-bold mb-6 text-center border-b pb-3;
+         }
+         .policy-content h2 {
+              @apply text-2xl md:text-3xl text-stork-title font-semibold mt-8 mb-4 border-b pb-2;
+         }
+         .policy-content h3 {
+               @apply text-xl md:text-2xl text-stork-title font-semibold mt-6 mb-3;
+         }
+         .policy-content p {
+              @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+         }
+          .policy-content ul {
+              @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+         }
+         .policy-content ul li {
+              @apply mb-2;
+         }
+         .policy-content strong {
+              @apply font-semibold;
+         }
+         .policy-content a {
+              @apply text-stork-accent hover:text-stork-accent-hover transition duration-200 underline;
+         }
+
+    </style>
+</head>
+
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';"> </a>
+
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
+        </div>
+    </header>
+
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">Terms of Service</h1>
+        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Please read these terms carefully before using our service.</p>
+    </section>
+
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <div class="policy-content">
+            <h1>Terms of Service for The Stork Name Drop</h1>
+
+            <p><strong>Effective Date:</strong> 28 April 2025</p> <p><strong>Last Updated:</strong> 28 April 2025</p> <p>Welcome to The Stork Name Drop! These Terms of Service ("Terms") govern your use of our website, thestorknamedrop.com (the "Service"), operated by The Stork Name Drop ("we," "us," or "our").</p>
+            <p>Please read these Terms carefully before accessing or using our Service. By accessing or using any part of the Service, you agree to be bound by these Terms. If you do not agree to all the terms and conditions of this agreement, then you may not access the Service.</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using the Service, you confirm that you accept these Terms and that you agree to comply with them. If you do not agree to these Terms, you must not use our Service.</p>
+
+            <h2>2. Use of the Service</h2>
+            <p>The Stork Name Drop provides a baby name generation tool and related content for informational and entertainment purposes only. You agree to use the Service only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Service.</p>
+            <p>You are granted a limited, non-exclusive, non-transferable, revocable license to access and use the Service strictly in accordance with these Terms.</p>
+            <p>Prohibited behavior includes, but is not limited to: attempting to interfere with the site's operation, scraping data, using the Service for any illegal purpose, or attempting to reverse engineer any part of the Service.</p>
+
+            <h2>3. Intellectual Property</h2>
+            <p>The Service and its original content (excluding content provided by users, if any, and publicly sourced name data), features, and functionality are and will remain the exclusive property of The Stork Name Drop and its licensors. The Service is protected by copyright, trademark, and other laws of Germany and foreign countries.</p>
+            <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of The Stork Name Drop.</p>
+            <p>The names generated by the tool are sourced from publicly available data and databases (see our <a href="datasources.html">Data Sources</a> page). We do not claim ownership over individual names themselves.</p>
+
+            <h2>4. Analytics and Usage Data</h2>
+            <p>We use Google Analytics to collect information about how users interact with our Service. This service helps us understand website traffic and usage patterns to improve our Service.</p>
+            <p>Google Analytics may collect information such as your IP address (often anonymized by Google), browser type, operating system, referring URLs, pages visited, and time spent on pages. This data is typically aggregated and does not personally identify you.</p>
+            <p>Google's ability to use and share information collected by Google Analytics about your visits to this site is restricted by the <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer">Google Analytics Terms of Use</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>. You can prevent Google Analytics from recognizing you on return visits to this site by disabling cookies on your browser or by installing the <a href="https://tools.google.com/dlpage/gaoptout/" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+            <p>By using our Service, you consent to the processing of data about you by Google in the manner and for the purposes set out above.</p>
+            <h2>5. Disclaimer of Warranties</h2>
+            <p>The Service is provided on an "AS IS" and "AS AVAILABLE" basis. We make no representations or warranties of any kind, express or implied, as to the operation of the Service or the information, content, or materials included therein. You expressly agree that your use of the Service is at your sole risk.</p>
+            <p>We do not warrant that the Service, its servers, or email sent from us are free of viruses or other harmful components. We will not be liable for any damages of any kind arising from the use of this Service.</p>
+            <p>Specifically, we do not guarantee the accuracy, suitability, or availability of any names generated or information provided.</p>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>In no event shall The Stork Name Drop, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, u
