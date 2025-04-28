@@ -1,170 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        /* Links */
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--button-active-hover); text-decoration: underline; }
-        main a { color: var(--dark-text); }
-        main a:hover { color: var(--medium-gray); }
-        /* Headings */
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title of the blog post -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Choosing the Perfect Middle Name: A Guide - The Stork Name Drop Blog</title>
 
-    <!-- Include Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-     <script>
-      // Tailwind config copied for color consistency
+    <script>
+        // Tailwind CSS Configuration - Copied from index page for consistency
         tailwind.config = {
-        theme: {
-          extend: {
-            colors: { 
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937',
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
+            theme: {
+                extend: {
+                    fontFamily: {
+                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                      serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
             }
-          }
-                
         }
-      }
     </script>
-        <style>
-                /* Variables */
-                :root {
-                    --soft-beige: #F5F5DC;
-                    --dark-text: #374151;
-                    --medium-gray: #6B7280;
-                    --button-active: #60A5FA;
-                    --button-active-hover: #3B82F6;
-                    --button-inactive-hover-bg: #F9FAFB;
-                    --button-inactive-hover-border: #1F2937;
-                    --error-red: #EF4444;
-                    --save-button: #34D399;
-                    --save-button-hover: #059669;
-                    --remove-button: #F87171;
-                    --remove-button-hover: #DC2626;
-                    --copy-button: #9CA3AF;
-                    --copy-button-hover: #4B5563;
-                    --accent-muted: #64748b;
-                    --accent-muted-light: #cbd5e1;
-                    --off-white: #f8fafc;
-                    --slate-100: #f1f5f9;
-                    --slate-400: #94a3b8;
-                }
-                body {
-                    font-family: 'Times New Roman', Times, serif;
-                    background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-                    background-repeat: repeat;
-                    background-color: var(--soft-beige);
-                    font-size: 1rem;
-                    line-height: 1.6;
-                    color: var(--dark-text);
-                }
-        h1, h2, h3, h4 { font-weight: bold; }
-        /* Lists */
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: var(--slate-100); font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        /* Paragraphs */
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles - Copied from index page for consistency */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Form element styles - Copied from index page for consistency */
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+        /* Loader - Copied from index page for consistency */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1ABC9C; /* Stork Accent */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Name card styles - Copied from index page for consistency */
+         .name-card {
+            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+         }
+         .name-card h3 {
+             @apply text-xl font-semibold text-stork-title mb-2;
+         }
+         .name-card p {
+             @apply text-stork-text mb-1 text-sm;
+         }
+         .name-card .tags span {
+             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+         }
+         .name-card .actions button {
+             @apply text-xs px-2 py-1 rounded mr-2;
+         }
+
+         /* Full height layout - Copied from index page for consistency */
+         html, body {
+             min-height: 100%;
+             display: flex;
+             flex-direction: column;
+         }
+         body {
+             flex-grow: 1;
+             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+         }
+         main {
+             flex-grow: 1;
+         }
+
+         /* Blog post specific styles */
+         .blog-post-image {
+             @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
+         }
+
+         .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+             @apply text-stork-title font-semibold;
+         }
+
+         .blog-content h1 {
+             @apply text-3xl md:text-4xl mb-4 text-center;
+         }
+          .blog-content h2 {
+             @apply text-2xl md:text-3xl pt-6 mb-4;
+         }
+          .blog-content h3 {
+             @apply text-xl md:text-2xl pt-4 mb-3;
+         }
+          .blog-content h4 {
+             @apply text-lg md:text-xl pt-2 mb-2;
+         }
+
+         .blog-content p {
+             @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+         }
+
+         .blog-content ul, .blog-content ol {
+             @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+         }
+
+         .blog-content ul li, .blog-content ol li {
+             @apply mb-2;
+         }
+
+         .blog-content table {
+             @apply border-collapse w-full mb-6 text-sm;
+         }
+
+         .blog-content th, .blog-content td {
+             @apply border border-gray-300 p-3 text-left align-top;
+         }
+
+         .blog-content th {
+             @apply bg-gray-100 font-semibold text-stork-title;
+         }
+
+         .blog-content .table-wrapper {
+             @apply overflow-x-auto mb-6;
+         }
+
+         .blog-content .text-medium-gray {
+             @apply text-medium-gray;
+         }
+
+         .blog-content a {
+             @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
+         }
+
+         .social-share-link {
+             @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
+         }
+
+
     </style>
+    </head>
 
-</head>
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-<!-- Body with padding -->
-<body>
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
 
-    <!-- Header section -->
-    <header>
-        <!-- Link to the home page -->
-        <a href="../index.html" title="The Stork Name Drop Home">
-            <!-- Logo image -->
-            <img src="../assets/logo.png" alt="The Stork Name Drop Logo: A stylized stork carrying a baby in a sling."  onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo';">
-        </a>
-         <!-- Hamburger Button -->
-        <button id="hamburger-btn" title="Open Menu"
-            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-
-        <!-- Mobile Menu Content -->
-        <div id="mobile-menu-content" class="hidden">
-            <nav class="relative z-10 space-y-4 pt-8">
-                <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
-                <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
-                <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-                <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-                <a href="../affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
-            </nav>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                 <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
         </div>
+    </header>
+
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">Choosing the Perfect Middle Name</h1>
+        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">A Guide to Rhythm, Meaning, and Tradition</p>
+    </section>
 
 
-    </header> 
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-    <!-- Horizontal rule for visual separation -->
-    <hr>
-
-    <!-- Main content section -->
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-             <!-- Main heading of the article -->
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-8 text-center">Choosing the Perfect Middle Name: A Guide to Rhythm, Meaning, and Tradition</h1>
-
-            <!-- Image related to the article topic -->
-            <section class="mt-4 mb-6 p-4 border border-slate-400 rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Share This Post</h3>
-                <p>Share this post!</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-blue-500 hover:text-blue-700">Facebook</a>
-                    <a href="#" class="text-blue-500 hover:text-blue-700">Twitter</a>
-                    <a href="mailto:?subject=Check%20out%20this%20blog%20post&body=I%20thought%20you%20might%20enjoy%20this%20blog%20post%20I%20read.%20https://your-blog-link.com" class="text-blue-500 hover:text-blue-700">Email</a>
-                </div>
-            </section>
+        <article class="blog-content">
+             <p class="text-center text-sm text-medium-gray mb-8">Published: April 21, 2025</p>
 
             <img src="../assets/middle.png"
-                 alt="Illustration depicting a tree with many branches, each branch containing a name tag, representing the vast array of middle name choices."
-                 
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Middle+Name+Image';">
+                  alt="Illustration depicting a tree with many branches, each branch containing a name tag, representing the vast array of middle name choices."
+                  class="blog-post-image"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Middle+Name+Image';">
 
-            <!-- Article content -->
-            <div>
+            <div class="space-y-6 text-base md:text-lg leading-relaxed">
 
                 <h2>1. Introduction: The Middle Name Quest</h2>
                 <p>The journey of choosing a name, particularly for a new baby, is often filled with excitement, anticipation, and perhaps a touch of overwhelm. While the first name frequently captures the most attention and deliberation, the middle name presents a unique and often cherished opportunity. It's more than just a space on a form; it's a chance to weave in layers of meaning, connection, and personal style.</p>
                 <p>Middle names serve a multitude of purposes. They can be a heartfelt tribute to beloved family members or friends, carrying forward a legacy of love and respect. They act as vessels for preserving cultural heritage, connecting an individual to their roots and ancestral stories. In an increasingly populated world, a middle name can add a layer of distinction, helping an individual stand out, especially if their first and last names are common. Furthermore, middle names offer a space for personal expression, reflecting parental hopes, values, or even creative flair. Sometimes, the choice is simply about finding a name that sounds beautiful, creating a harmonious flow between the first and last names. It's a space where meaning and melody can intersect, offering an extra chance for collaboration and significance in the naming process.</p>
                 <p>This guide aims to navigate the multifaceted world of middle names. We will delve into their fascinating history, explore how the sounds and rhythms of names interact, uncover the importance of meaning, and connect with the deep-rooted tradition of family ties. We'll examine the appeal of both classic and unique naming styles, and finally, provide practical tips and tools to help individuals confidently choose the perfect middle name.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">2. More Than Just a Placeholder: The Story of Middle Names</h2>
+                <h2>2. More Than Just a Placeholder: The Story of Middle Names</h2>
                 <p>Often overlooked, the middle name boasts a rich and complex history, evolving from ancient practices to the near-ubiquitous custom seen in many Western cultures today. Understanding this journey reveals much about changing societal values, population dynamics, and the very concept of identity.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">A Whirlwind History: From Roman Cognomina to American Custom</h3>
+                <h3>A Whirlwind History: From Roman Cognomina to American Custom</h3>
                 <p>While the modern middle name is a relatively recent phenomenon, the idea of multiple names has ancient roots. Students of Roman history might recall the <em>tria nomina</em> system used by Roman men, consisting of a <em>praenomen</em> (personal name), <em>nomen</em> (family name), and <em>cognomen</em> (a name indicating a specific branch of the family or a personal characteristic, akin to a nickname). Some Roman aristocrats even accumulated numerous cognomina to signify extensive lineage. However, this system wasn't identical to today's middle name and its usage faded after the fall of the Western Roman Empire.</p>
                 <p>The practice of using additional names re-emerged centuries later in Europe, likely beginning in Italy during the late Medieval period, around the 13th or 14th centuries. Initially, this was primarily a custom among the elite classes. Many of these early middle names were saints' names, chosen with the belief that the namesake saint would offer protection to the child. This practice, carrying religious and class connotations, gradually spread to Spain and France and eventually to other social classes over the following centuries.</p>
                 <p>In contrast, middle names were rare in early England and, consequently, in Colonial America. Historical records show that none of the Mayflower passengers and very few of the American Founding Fathers possessed middle names. Early American tradition, mirroring English custom, typically involved only a given name and a surname. The shift began subtly in the late 1700s, particularly among wealthy, extended families in the American South, who started adopting middle names, often drawn from family lineage, mimicking the European aristocracy they aspired to. German immigrants arriving in Pennsylvania also played a significant role, as middle names were more commonplace in German culture by the 17th century, and they brought this custom with them.</p>
                 <p>The 19th century witnessed a dramatic surge in the use of middle names across the United States and Europe. This boom was largely driven by significant population growth and increasing urbanization. As communities grew larger and travel improved, the practical need to distinguish individuals with common first and last names became increasingly apparent. John Adams, the second US president, lived in a time when many shared his name in Massachusetts; his son, John Quincy Adams, named after a maternal great-grandfather, became the first president with a middle name, providing clear differentiation. The practice quickly spread from the upper class to the middle class after 1800, becoming nearly customary by the Civil War era. By 1900, almost every American child was given a middle name. This shift was cemented by practical administrative needs; government forms, such as the US census and World War I enlistment forms, began including space for a middle name, reflecting the assumption that nearly everyone had one.</p>
                 <p>The evolution of the middle name from an aristocratic marker to a societal norm illustrates how practical necessity and social aspiration can intertwine. Initially adopted by elites to signify lineage and status, the custom was later embraced by the growing middle class, partly in emulation. Simultaneously, burgeoning populations created a genuine need for better individual identification. This convergence transformed the middle name from a faddish rarity into a standard component of personal identity in many Western cultures.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Cultural Tapestry: How Middle Names Vary Around the Globe</h3>
+                <h3>Cultural Tapestry: How Middle Names Vary Around the Globe</h3>
                 <p>While common in English-speaking countries, the middle name is not a universal concept. Its form and function vary significantly across cultures, often reflecting deep-seated traditions related to lineage, religion, and identity.</p>
                 <p>In some cultures, what occupies the "middle" position serves a specific genealogical purpose. Russian naming conventions, for example, follow a patronymic system: a person's name consists of a given name, followed by a patronymic derived from the father's first name (with suffixes like <em>-ovich</em> for sons and <em>-ovna</em> for daughters), and finally the surname. Historically, similar patronymic systems existed in Dutch and Scandinavian cultures (e.g., "Jan Pietersen" meaning Jan, son of Peter). Interestingly, attempts by English authorities to enforce fixed surnames on Dutch settlers in colonial America inadvertently contributed to the American middle name custom, as families sought new ways to differentiate relatives sharing the same first and now-fixed last names.</p>
                 <p>In many Hispanic cultures, individuals traditionally have two given names, followed by a paternal surname and then a maternal surname. These are often considered compound first names rather than a distinct "middle" name in the Anglo-American sense. Similarly, Arabic naming traditions often trace paternal lineage by including the father's and grandfather's first names after the individual's given name, followed by the family surname. In India, naming practices vary widely, but middle names can sometimes indicate the father's name, caste, or place of origin.</p>
@@ -172,9 +255,9 @@
                 <p>In contrast, some cultures, like France, often embrace multiple middle names chosen primarily for their aesthetic appeal or sound. Meanwhile, middle names are rare or traditionally absent in countries like China, Japan, and Korea.</p>
                 <p>The purpose embedded within a culture often defines the form and prevalence of its middle names. Where strict lineage tracking is paramount, as in Russian or Arabic traditions, the middle name slot fulfills a specific patronymic role. Where religious identity is central, names of saints or godparents prevail. The Anglo-American middle name, however, carries a mixed heritage – born from status mimicry, fueled by the practical need for differentiation, and later infused with personal sentiment like honoring relatives or simply liking the sound. This less rigid functional history has resulted in remarkable flexibility, allowing for choices ranging from deeply traditional family names to purely aesthetic or unique selections, reflecting a cultural landscape that values both heritage and individualism.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">3. Finding the Flow: The Music of a Name</h2>
+                <h2>3. Finding the Flow: The Music of a Name</h2>
                 <p>While meaning, family history, and cultural significance are vital considerations, the sheer sound of a name – its rhythm, cadence, and flow – plays a crucial role in its overall appeal. Choosing a middle name involves not just picking <em>a</em> name, but crafting a harmonious combination of first, middle, and last names that feels pleasing to say and hear.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Syllable Science: Crafting a Balanced Rhythm</h3>
+                <h3>Syllable Science: Crafting a Balanced Rhythm</h3>
                 <p>One of the most common pieces of advice for achieving good name flow relates to the number of syllables in each part of the name.</p>
                 <ul class="space-y-2">
                     <li><strong>Varying the Count:</strong> A general guideline suggests that varying the syllable count across the first, middle, and last names often creates a more pleasing and balanced rhythm. Think of patterns like 2-3-1 (e.g., <em>Stella Josephine Olson</em>), 3-1-2 (e.g., <em>Gwendolen Eve Conner</em>), or 1-2-3 (e.g., <em>James Kevin O'Connor</em>).</li>
@@ -188,7 +271,7 @@
                         </ul>
                     </li>
                 </ul>
-                <h3 class="text-xl md:text-2xl text-dark-text">The Sound Check: Stress, Vowels, and Consonants</h3>
+                <h3>The Sound Check: Stress, Vowels, and Consonants</h3>
                 <p>Beyond syllable count, the specific sounds within the names and how they interact are crucial.</p>
                 <ul class="space-y-2">
                     <li><strong>Syllable Stress:</strong> Pay attention to where the emphasis falls in each name. Varying the stress pattern can significantly enhance flow, especially if the syllable counts are similar. Since many English first names are stressed on the first syllable (e.g., EM-i-ly, THOM-as), middle names with stress on the second or third syllable (like <em>so-FEE-uh</em> or <em>E-LIZ-a-beth</em>) are often perceived as creating a more pleasing rhythm.</li>
@@ -202,7 +285,7 @@
                 </ul>
                 <p>It is important to remember that while these phonetic principles offer valuable guidance, the ultimate judge of "good flow" is the individual ear. Linguistic patterns exist, and understanding them can help identify potential issues like clashing sounds or monotonous rhythms. However, personal aesthetic taste varies widely. What one person finds musical, another might deem sing-songy. Some might prefer the strong meter created by names with similar stress patterns, while others seek variation. The aim is not to rigidly adhere to "rules," but to use these concepts as tools to arrive at a name combination that sounds harmonious and appealing to the parents making the choice.</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table: Syllable Flow Examples</h3>
+                <h3>Table: Syllable Flow Examples</h3>
                 <p>To illustrate these concepts, consider the following examples:</p>
                 <div class="table-wrapper">
                     <table>
@@ -226,15 +309,15 @@
                         </tbody>
                     </table>
                 </div>
-                 <p class="text-sm text-medium-gray">Note: Stress patterns can vary slightly by accent. Flow assessment is based on common guidelines but remains subjective.</p>
-                
-                <h2 class="text-2xl md:text-3xl text-dark-text">4. What's in a (Middle) Name?: Meaning and Significance</h2>
+                <p class="text-sm text-medium-gray">Note: Stress patterns can vary slightly by accent. Flow assessment is based on common guidelines but remains subjective.</p>
+
+                <h2>4. What's in a (Middle) Name?: Meaning and Significance</h2>
                 <p>Beyond the melody and rhythm, the meaning embedded within a name often holds profound significance for parents. Choosing a middle name becomes an opportunity to imbue a child's identity with values, hopes, and connections that resonate deeply.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">The Search for Meaning: Why It Matters</h3>
-                 <p class="mb-2">For many, a name is more than just a label; it's a story, a wish, a connection.</p>
+                <h3>The Search for Meaning: Why It Matters</h3>
+                <p class="mb-2">For many, a name is more than just a label; it's a story, a wish, a connection.</p>
                 <p>For many, a name is more than just a label; it's a story, a wish, a connection. The meaning behind a middle name can add a rich layer to a child's identity. Parents often select middle names whose meanings reflect specific aspirations they hold for their child, such as strength, joy, wisdom, peace, or courage. Choosing a name like Grace or Hope explicitly links the child to these positive virtues.</p>
                 <p>Furthermore, meaning serves as a powerful connector to heritage, culture, or faith. Historically, this was evident in the widespread practice of using saints' names as middle names, believed to offer divine protection or invoke a blessing. Today, a middle name with specific cultural or religious roots can reinforce a child's connection to their community and background. It can be a way to honor family beliefs or traditions passed down through generations.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Unlocking Meanings: Resources and Ideas</h3>
+                <h3>Unlocking Meanings: Resources and Ideas</h3>
                 <p>Finding names with specific meanings is easier than ever thanks to numerous resources:</p>
                 <ul class="space-y-2">
                     <li><strong>Online Name Databases:</strong> Websites like BabyNames.com, Nameberry, The Bump, BabyCenter, and the Huggies Baby Name Finder offer extensive searchable databases. Users can often filter names by meaning, origin, gender, number of syllables, and style.</li>
@@ -243,43 +326,43 @@
                 </ul>
                 <p>While historical middle names often served practical functions like differentiation or reflected status and religious duty, the modern naming landscape places a strong emphasis on <strong>personal meaning</strong>. This focus aligns with broader cultural trends emphasizing individualism and self-expression. Parents today actively seek names that resonate with their own values, hopes, and personal stories, using the middle name as a canvas to paint a unique and meaningful identity for their child, moving beyond sole reliance on predetermined traditions.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">5. Honoring Your Heritage: Family Ties in the Middle</h2>
+                <h2>5. Honoring Your Heritage: Family Ties in the Middle</h2>
                 <p>Of all the motivations behind choosing a middle name, perhaps the most enduring and widespread is the desire to honor family. Data suggests that a significant portion of parents, perhaps around 20%, select middle names specifically to recognize ancestors or carry on family traditions. This practice weaves a thread of connection through generations, embedding family history directly into a child's identity.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Passing the Torch: Using Ancestral Given Names</h3>
+                <h3>Passing the Torch: Using Ancestral Given Names</h3>
                 <p>A very common tradition involves using the first name of a parent, grandparent, great-grandparent, or another cherished relative as the child's middle name. This straightforward approach creates a clear link to the honored individual. For example, a boy named Thomas John Smith might be named after his father, John William Smith.</p>
                 <p>Some cultures follow specific patterns for this practice. Traditional Scottish naming patterns, for instance, often dictated that the first son be named after the paternal grandfather, the second son after the maternal grandfather, the first daughter after the maternal grandmother, and the second daughter after the paternal grandmother, frequently including the full name. In the American South, the tradition of passing down the same first name through multiple generations (e.g., John Smith Jr., III, IV) often led to individuals being known by their middle names as a practical way to distinguish between father and son.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">The Maiden Name Tradition: Preserving Family Lines</h3>
+                <h3>The Maiden Name Tradition: Preserving Family Lines</h3>
                 <p>Another deeply significant practice is using the mother's maiden name – her surname before marriage – as a child's middle name. This tradition holds particular weight for several reasons. It explicitly honors the mother's side of the family, ensuring her lineage is represented in the child's full name. Crucially, it serves to preserve a family surname that might otherwise be lost to history due to the long-standing Western tradition of women adopting their husband's surname upon marriage. This act can be seen as a subtle counterpoint to the historical legal doctrine of coverture, under which a married woman's legal identity (and name) was subsumed by her husband's.</p>
                 <p>The use of maiden names as middle names gained traction in Western cultures during the 19th century and was noted as a common practice in the United States by the mid-1930s. Famous examples include Johns Hopkins, whose first name derives from an ancestral surname, Robert Strange McNamara, whose middle name was his mother's maiden name, and Reese Witherspoon, whose middle name, Reese, is her mother's maiden name. This remains a popular and meaningful choice today, with modern variations including replacing the original middle name entirely with the maiden name or adding the maiden name as a second middle name.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Other Family Connections</h3>
+                <h3>Other Family Connections</h3>
                 <p>Beyond given names and maiden names, family heritage can be honored by using other family surnames as middle names, the names of godparents, or even the names of close family friends who hold special significance.</p>
                 <p>The prevalence of using family names makes middle names potentially valuable clues for those researching family history. Discovering a particular surname used as a middle name, especially an uncommon one, can point towards a maternal line or other previously unknown family connections. For instance, John Quincy Adams' middle name clearly signals a connection to the Quincy family. However, this connection isn't always direct lineage. People also historically used middle names to honor respected community figures, such as clergymen, politicians, military heroes, or even admired friends. Therefore, while middle names offer intriguing genealogical hints, careful research is needed to confirm the exact nature of the relationship rather than assuming a blood tie based solely on the name.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">6. Classic Charm vs. Unique Flair: Finding Your Style</h2>
+                <h2>6. Classic Charm vs. Unique Flair: Finding Your Style</h2>
                 <p>When selecting a middle name, parents often find themselves at a crossroads: should they opt for a name steeped in tradition, a classic choice that has stood the test of time? Or should they embrace something more unique, a name that reflects individuality and perhaps a touch of the unconventional?. Both paths offer distinct advantages and carry different connotations.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text">Timeless & True: The Appeal of Classic Middle Names</h3>
+                <h3>Timeless & True: The Appeal of Classic Middle Names</h3>
                 <p>Classic middle names are often those with a long history of use, frequently employed as honor names to connect generations. Their enduring popularity stems from several factors. They possess a comforting familiarity, often sound aesthetically pleasing with a wide range of first and last names, and carry connotations of stability, tradition, and grace. For many, choosing a classic middle name feels like a safe, reliable, and meaningful way to round out their child's full name.</p>
                 <p>Common examples abound. For girls, names like Anne (or Ann), Lynn, Elizabeth, Lee, Rose, Grace, May (or Mae), Marie, Jane, and Claire consistently appear among the most popular middle names in English-speaking countries. For boys, James, John, William, Thomas, David, Robert, Edward, Michael, Alan, Andrew, Joseph, Lee, Henry, and Alexander are perennial favorites.</p>
                 <p>Based on various surveys and databases, here are some of the most frequently used classic middle names:</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table: Popular Classic Middle Names (US/UK)</h3>
+                <h3>Table: Popular Classic Middle Names (US/UK)</h3>
                 <p>Based on various surveys and databases, here are some of the most frequently used classic middle names:</p>
-                 <div class="table-wrapper">
+                <div class="table-wrapper">
                     <table>
-                        <thead >
+                        <thead>
                             <tr><th>Girls (Examples)</th><th>Boys (Examples)</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>Louise</td><td>James</td></tr>
-                           <tr><td>Rose</td><td>John</td></tr>
+                            <tr><td>Rose</td><td>John</td></tr>
                             <tr><td>Grace</td><td>William</td></tr>
                             <tr><td>Anne/Ann</td><td>Thomas</td></tr>
                             <tr><td>Elizabeth</td><td>Michael</td></tr>
                             <tr><td>Marie</td><td>David</td></tr>
-                           <tr><td>May/Mae</td><td>Robert</td></tr>
                             <tr><td>May/Mae</td><td>Robert</td></tr>
-                           <tr><td>Jane</td><td>Lee</td></tr>
-                           <tr><td>Lynn</td><td>Edward</td></tr>
+                            <tr><td>May/Mae</td><td>Robert</td></tr>
+                            <tr><td>Jane</td><td>Lee</td></tr>
+                            <tr><td>Lynn</td><td>Edward</td></tr>
                             <tr><td>Jane</td><td>Lee</td></tr>
                             <tr><td>Lynn</td><td>Edward</td></tr>
                             <tr><td>Lee</td><td>Andrew</td></tr>
@@ -288,7 +371,7 @@
                 </div>
                 <p class="text-sm text-medium-gray">Note: Popularity can fluctuate slightly by region and year. Sources include various online surveys and databases.</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text">Dare to Be Different: Exploring Unique & Unconventional Ideas</h3>
+                <h3>Dare to Be Different: Exploring Unique & Unconventional Ideas</h3>
                 <p>Alongside the enduring appeal of classics, there's a growing trend towards choosing unique, less common, or unconventional middle names. This reflects a broader cultural shift towards individualism and creativity in naming. The middle name slot is often perceived as a lower-risk space to be adventurous, allowing parents to use names they love but might hesitate to choose as a first name.</p>
                 <p>Inspiration for unique middle names can come from a vast array of sources:</p>
                 <ul class="space-y-1">
@@ -299,8 +382,8 @@
                     <li><strong>Personal Significance:</strong> The most unique names often stem from personal experiences – a place name special to the parents' relationship, a word with private meaning, an inside joke, a name reflecting a hobby or passion (like <em>Noel</em> for a Christmas enthusiast or <em>Galileo</em> for science lovers), or even a name inspired by a favorite sports team or brand (though caution is advised here).</li>
                 </ul>
 
-                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table: Unique Middle Name Sources & Examples</h3>
-                 <div class="table-wrapper">
+                <h3>Table: Unique Middle Name Sources & Examples</h3>
+                <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr><th>Source Category</th><th>Examples</th><th>Potential Vibe</th></tr>
@@ -315,7 +398,7 @@
                         </tbody>
                     </table>
                 </div>
-                <h3 class="text-xl md:text-2xl text-dark-text">The Balancing Act: Pros and Cons of Each Approach</h3>
+                <h3>The Balancing Act: Pros and Cons of Each Approach</h3>
                 <p>Choosing between a classic and a unique middle name involves weighing different priorities.</p>
                 <ul class="space-y-1">
                     <li><strong>Classic Names:</strong>
@@ -324,9 +407,9 @@
                             <li><em>Cons:</em> They can sometimes feel impersonal or lack individuality. They might be perceived as common "filler" names if chosen without specific meaning.</li>
                         </ul>
                     </li>
-                     <li><strong>Unique Names:</strong>
+                    <li><strong>Unique Names:</strong>
                         <ul class="text-sm md:text-base mt-1 pl-4">
-                           <li><em>Pros:</em> They emphasize individuality and self-expression. They can be highly memorable and carry deep personal significance. They can provide a child with an alternative name option if they dislike their first name. They can balance a very common first name by adding distinction.</li>
+                            <li><em>Pros:</em> They emphasize individuality and self-expression. They can be highly memorable and carry deep personal significance. They can provide a child with an alternative name option if they dislike their first name. They can balance a very common first name by adding distinction.</li>
                             <li><em>Cons:</em> Names tied too closely to current trends risk sounding dated later. Very unusual names might elicit negative reactions or judgment. They might require frequent explanation or spelling corrections, although this is less of an issue for middle names. They are less likely to be shared family names passed down through generations.</li>
                         </ul>
                     </li>
@@ -334,8 +417,8 @@
                 <p>Often, the best approach involves finding a balance. The middle name can be used strategically to complement the first name. A very common or traditional first name might benefit from a more distinctive middle name, while a highly unusual first name could be grounded by a classic middle. The middle name slot also offers a perfect opportunity for compromise between partners, allowing for the inclusion of a name one person loved but that didn't make the final cut for the first name position.</p>
                 <p>Ultimately, the middle name position, being less prominent in daily life than the first name, functions as a flexible space for identity exploration. Choosing a classic or family name often signals a prioritization of tradition, continuity, and connection to roots. Opting for a unique name typically reflects a stronger emphasis on individuality, creativity, and marking personal passions or significance. The choice between these paths reveals how parents navigate the interplay between heritage and personal expression, using the middle name as a meaningful medium.</p>
 
-                 <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table: Classic vs. Unique Middle Names - Considerations</h3>
-                 <div class="table-wrapper">
+                <h3>Table: Classic vs. Unique Middle Names - Considerations</h3>
+                <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr><th>Feature</th><th>Classic Approach (Pros/Cons)</th><th>Unique Approach (Pros/Cons)</th></tr>
@@ -352,9 +435,9 @@
                     </table>
                 </div>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">7. Your Middle Name Toolkit: Practical Steps to the Perfect Choice</h2>
+                <h2>7. Your Middle Name Toolkit: Practical Steps to the Perfect Choice</h2>
                 <p>Navigating the options for a middle name can feel like an exciting puzzle. To help assemble the pieces and arrive at a choice that feels right, consider these practical steps:</p>
-                 <ul class="space-y-2">
+                <ul class="space-y-2">
                     <li><strong>Say It Out Loud (and Listen!):</strong> This is perhaps the most crucial step. Say the full name – First Middle Last – out loud, multiple times. How does it roll off the tongue? Is it easy or difficult to pronounce? Listen for awkward sound collisions where one name ends and the next begins. Assess the overall rhythm and syllable balance. Most importantly, do <em>you</em> genuinely like the way it sounds together?.</li>
                     <li><strong>Mind the Initials (and Monograms):</strong> Don't forget to check the initials formed by the first, middle, and last names. Do they inadvertently spell out something undesirable, awkward, or comical (like A.S.S., P.I.G., W.T.F., F.M.L., or L.O.L.)?. If monograms are important, consider how the initials will look in that format as well.</li>
                     <li><strong>Connect with Meaning:</strong> Reflect on the significance you want the middle name to carry. Are there particular values (strength, joy, peace), hopes, or aspects of heritage you wish to embed in the name?. Utilize online name resources to find names that align with these desired meanings. Consider if the middle name's meaning complements or adds an interesting layer to the first name.</li>
@@ -365,62 +448,63 @@
                     <li><strong>Think About Alternatives (Optional):</strong> If settling on one middle name proves difficult, or if there's a desire to honor multiple people or traditions, consider using two middle names. This practice, once reserved for nobility, is becoming more common. Be mindful that it creates a longer name, which might occasionally cause minor issues with forms, though generally less problematic than hyphenated or double last names. Alternatively, remember that a middle name is optional. While most people in Western cultures have one, choosing just a first and last name is perfectly acceptable. Potential minor downsides could include needing to specify "No Middle Name" (or NMN) on forms or the child potentially feeling left out later if most peers have one.</li>
                 </ul>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text">8. Conclusion: Naming with Confidence and Joy</h2>
+                <h2>8. Conclusion: Naming with Confidence and Joy</h2>
                 <p>Choosing a middle name is a journey through history, sound, meaning, family legacy, and personal style. From the practical need for differentiation in growing populations to the heartfelt desire to honor a grandparent or express a unique value, the middle name has evolved into a versatile and significant part of identity in many cultures. Whether drawn to the enduring elegance of a classic like Elizabeth or James, or the distinctive flair of a nature-inspired name like River or Wren, the process involves balancing various factors.</p>
                 <p>Considering the flow and rhythm created by syllable counts and sound interactions helps ensure the name is pleasing to the ear. Exploring the meanings behind names adds layers of significance and connection. Weaving in family ties, whether through ancestral given names or cherished maiden names, anchors the child within their heritage. Navigating the choice between timeless tradition and unique expression allows parents to align the name with their personal values and aesthetic preferences.</p>
                 <p>While the tips and tools provided offer guidance, remember that the "perfect" middle name is ultimately a subjective and deeply personal choice. Trust your instincts. Listen to the names, feel their resonance, and select the one that brings joy and feels authentically right for your child and your family narrative. The full name chosen – first, middle, and last – is more than just an identifier; it's one of the first gifts given to a child, a fundamental part of their story waiting to unfold. May the process of choosing be filled with discovery, connection, and confidence.</p>
 
-                {/* Works Cited Section */}
-                 <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                 <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
+                <h2>Works Cited</h2>
+                <ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
                     <li>Why Do We Have Middle Names? The Real Reasons, Explained - Reader's Digest, https://www.rd.com/article/why-do-we-have-middle-names/</li>
                     <li>How to choose a middle name for your baby | BabyCenter, https://www.babycenter.com/baby-names/advice/choosing-a-middle-name-for-your-baby-what-to-consider_20000167</li>
-                    {/* ... (Include all other citations from the document) ... */}
-                     <li>Thoughts on not giving your child a middle name? : r/namenerds - Reddit, https://www.reddit.com/r/namenerds/comments/7lb2c9/thoughts_on_not_giving_your_child_a_middle_name/</li>
-                 </ol>
+                    <li>The History of Middle Names - Ancestry, https://www.ancestry.com/c/genealogy/history-of-middle-names</li>
+                    <li>The Surprising History of the Middle Name - Mental Floss, https://www.mentalfloss.com/article/58180/surprising-history-middle-name</li>
+                    <li>The History of the Middle Name - ThoughtCo, https://www.thoughtco.com/history-of-the-middle-name-1422488</li>
+                    <li>Middle Names: History, Meaning, and Trends - Nameberry, https://nameberry.com/blog/middle-names</li>
+                    <li>Baby Name Trends 2024: What's In and What's Out? - Nameberry, https://nameberry.com/blog/baby-name-trends-2024</li>
+                    <li>Unique Word Names You Won't Find Anywhere Else | Nameberry, https://nameberry.com/blog/truly-unique-word-names-for-babies</li>
+                    <li>Nature Names for Babies | Nameberry, https://nameberry.com/list/Nature-Names-for-Babies</li>
+                    <li>Virtue Names for Babies | Nameberry, https://nameberry.com/list/Virtue-Names-for-Babies</li>
+                    <li>Literary Names for Babies | Nameberry, https://nameberry.com/list/Literary-Names-for-Babies</li>
+                    <li>Mythological Names for Babies | Nameberry, https://nameberry.com/list/Mythological-Names-for-Babies</li>
+                    <li>Surname Baby Names | Nameberry, https://nameberry.com/list/Surname-Baby-Names</li>
+                    <li>Occupational Names for Babies | Nameberry, https://nameberry.com/list/Occupational-Names-for-Babies</li>
+                    <li>The 100 Most Popular Middle Names for Babies - BabyNames.com, https://www.babynames.com/info/middle-names</li>
+                    <li>Most Popular Middle Names for Boys & Girls | The Bump, https://www.thebump.com/a/most-popular-middle-names</li>
+                    <li>Most Popular Middle Names | BabyCenter, https://www.babycenter.com/baby-names/popular/most-popular-middle-names</li>
+                    <li>Huggies Baby Name Finder, https://www.huggies.com.au/baby-names/finder</li>
+                    <li>Thoughts on not giving your child a middle name? : r/namenerds - Reddit, https://www.reddit.com/r/namenerds/comments/7lb2c9/thoughts_on_not_giving_your_child_a_middle_name/</li>
+                </ol>
             </div>
-            <!-- Back link -->
+
+            <section class="mt-12">
+                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-4 text-center border-b pb-3">Share This Post</h2>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=[URL-TO-POST]" target="_blank" rel="noopener noreferrer" class="social-share-link">
+                       <img src="../assets/facebook.png" alt="Share on Facebook" class="h-8 w-8 object-contain">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=[URL-TO-POST]&text=[POST-TITLE]" target="_blank" rel="noopener noreferrer" class="social-share-link">
+                       <img src="../assets/twitter.png" alt="Share on Twitter" class="h-8 w-8 object-contain">
+                        <span>Twitter</span>
+                    </a>
+                    <a href="mailto:?subject=[POST-TITLE]&body=Check out this post: [URL-TO-POST]" class="social-share-link">
+                       <img src="../assets/email.png" alt="Share via Email" class="h-8 w-8 object-contain">
+                        <span>Email</span>
+                    </a>
+                </div>
+            </section>
+
             <div class="text-center mt-12">
-                 <a href="../blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
-            </div>  
+                 <a href="../blog.html" class="text-lg text-stork-accent hover:text-stork-accent-hover underline transition duration-200">&larr; Back to Blog Index</a>
+            </div>
 
         </article>
     </main>
-     <!-- Horizontal rule for visual separation -->
-     <hr>
 
-    <!-- Footer section -->
-    <footer class="text-center text-medium-gray text-base space-y-2">
-        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-        <p><a href="../index.html" class="hover:text-dark-text underline">Name Generator</a> | <a href="../blog.html" class="hover:text-dark-text underline">Blog Index</a></p>
-    </footer>    
-
-    <!-- Scripts -->
-    <script>
-        // DOM Elements
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu-content');
-
-        if (hamburgerBtn && mobileMenu) {
-            // Hamburger Button Click Event
-            hamburgerBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close Mobile Menu on Outside Click
-            document.addEventListener('click', (event) => {
-                if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        }
-    </script>
-    <script>
-        // No JavaScript needed for this static blog post page
-    </script>
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+     </footer>
 
 </body>
 </html>
-```
-
-This should restore the full content to your `middle.html` pa
