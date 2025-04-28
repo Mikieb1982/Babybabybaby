@@ -133,11 +133,47 @@
          /* Blog specific styles */
          .blog-post-summary-container {
              @apply text-center; /* Center the image and text */
+             /* Initial state for dealing animation */
+             opacity: 0;
+             transform: translateY(20px) scale(0.9);
+             /* Add transition for the initial state properties */
+             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
          }
 
          .blog-post-summary-container img {
              @apply rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105; /* Add hover effect */
          }
+
+         /* Styles for the card flip animation */
+         .blog-card-wrapper {
+             perspective: 1000px; /* Add perspective to the parent for 3D effect */
+             /* Ensure padding/margin doesn't interfere */
+         }
+
+         .blog-card-inner {
+             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth flip transition */
+             transform-style: preserve-3d; /* Preserve 3D space for children */
+             position: relative; /* Needed for potential backface, though we are just flipping the front */
+             transform-origin: center; /* Ensure the rotation is around the center */
+             width: 100%;
+             height: 100%;
+             display: block; /* Ensure the link block takes full space */
+             /* Hide the back of the element during flip if needed */
+             /* backface-visibility: hidden; */ /* Uncomment if you see the back during flip */
+         }
+
+         /* State when the card is flipping/picked up */
+         .blog-card-inner.is-flipping {
+             transform: rotateY(180deg) scale(1.2) translateZ(50px); /* Flip, zoom in, and move slightly forward */
+             z-index: 10; /* Bring to front during animation */
+         }
+
+         /* Class to trigger the dealing animation */
+         #blog-list-container.is-dealt .blog-post-summary-container {
+              opacity: 1;
+              transform: translateY(0) scale(1);
+         }
+
 
          /* Adjusted grid for mobile */
          #blog-list-container {
@@ -182,26 +218,26 @@
 
         <div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 
-            <article class="blog-post-summary-container">
-                 <a href="blog/song.html" class="block">
+            <article class="blog-post-summary-container blog-card-wrapper">
+                 <a href="blog/song.html" class="block blog-card-inner">
                     <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
                  </a>
             </article>
 
-             <article class="blog-post-summary-container">
-                <a href="blog/german2025.html" class="block">
+             <article class="blog-post-summary-container blog-card-wrapper">
+                <a href="blog/german2025.html" class="block blog-card-inner">
                    <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
                 </a>
            </article>
 
-            <article class="blog-post-summary-container">
-                <a href="blog/middle.html" class="block">
+            <article class="blog-post-summary-container blog-card-wrapper">
+                <a href="blog/middle.html" class="block blog-card-inner">
                     <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
                 </a>
             </article>
 
-             <article class="blog-post-summary-container">
-                <a href="blog/uniqueeng.html" class="block">
+             <article class="blog-post-summary-container blog-card-wrapper">
+                <a href="blog/uniqueeng.html" class="block blog-card-inner">
                    <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
                 </a>
            </article>
@@ -214,5 +250,52 @@
          © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
      </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogListContainer = document.getElementById('blog-list-container');
+            const blogCards = blogListContainer.querySelectorAll('.blog-post-summary-container');
+
+            // Trigger dealing animation
+            // Add a class to the container after a short delay
+            setTimeout(() => {
+                 blogListContainer.classList.add('is-dealt');
+                 // Add staggered delay for individual cards
+                 blogCards.forEach((card, index) => {
+                      card.style.transitionDelay = `${index * 0.1}s`; // Adjust delay time (0.1s per card)
+                 });
+            }, 100); // Short delay before starting animation
+
+            const cardLinks = document.querySelectorAll('.blog-card-inner');
+
+            cardLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default link navigation
+
+                    const targetUrl = this.href; // Get the target URL
+
+                    // Add the class to trigger the flip animation
+                    this.classList.add('is-flipping');
+
+                    // Wait for the animation to complete before navigating
+                    // Use both transitionend and a timeout as a fallback
+                    const handleTransitionEnd = () => {
+                        window.location.href = targetUrl;
+                        this.removeEventListener('transitionend', handleTransitionEnd); // Clean up listener
+                    };
+
+                    this.addEventListener('transitionend', handleTransitionEnd);
+
+                    // Fallback just in case transitionend doesn't fire
+                    setTimeout(() => {
+                         if (window.location.href !== targetUrl) {
+                             window.location.href = targetUrl;
+                         }
+                    }, 700); // Timeout duration should be slightly longer than the CSS transition (0.6s + buffer)
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
