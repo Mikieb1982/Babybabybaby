@@ -300,6 +300,7 @@
             const blogCards = blogListContainer.querySelectorAll('.blog-post-summary-container');
             const cardLinks = blogListContainer.querySelectorAll('.blog-card-inner');
             const body = document.body;
+            let injectedStyleElement = null; // Variable to hold the dynamically injected style
 
             // --- Functions to manage views and history ---
 
@@ -311,6 +312,12 @@
                 fullBlogPostView.classList.remove('is-active');
                 // Clear the content
                 fullBlogPostView.querySelector('.container').innerHTML = '';
+
+                // Remove the dynamically injected style element if it exists
+                if (injectedStyleElement) {
+                    injectedStyleElement.remove();
+                    injectedStyleElement = null; // Reset the variable
+                }
 
                 // Reset card transforms if needed (optional, they reset when hidden/shown)
                 cardLinks.forEach(link => {
@@ -342,11 +349,33 @@
                     }
                     const html = await response.text();
 
-                    // Parse the fetched HTML to extract the main content
-                    // ASSUMPTION: The main blog content is within an element with ID 'blog-content'
+                    // Parse the fetched HTML to extract content and styles
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, 'text/html');
+
+                    // Extract the main blog content
                     const blogContent = doc.getElementById('blog-content'); // Adjust ID if necessary
+
+                    // Extract styles from the fetched document's head
+                    const styleElements = doc.querySelectorAll('style');
+                    let extractedStyles = '';
+                    styleElements.forEach(style => {
+                         extractedStyles += style.textContent;
+                    });
+
+                    // Remove any previously injected style element
+                    if (injectedStyleElement) {
+                         injectedStyleElement.remove();
+                         injectedStyleElement = null;
+                    }
+
+                    // Create a new style element and inject the extracted styles
+                    if (extractedStyles) {
+                         injectedStyleElement = document.createElement('style');
+                         injectedStyleElement.textContent = extractedStyles;
+                         document.head.appendChild(injectedStyleElement);
+                    }
+
 
                     if (blogContent) {
                         // Inject the extracted content into the full blog post view
@@ -461,4 +490,3 @@
 
 </body>
 </html>
-
