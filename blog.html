@@ -1,492 +1,435 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Blog - The Stork Name Drop</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind CSS Configuration - Copied from index page for consistency
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                      sans: ['"Nunito Sans"', 'sans-serif'],
-                      serif: ['Georgia', 'serif'],
-                    },
-                    colors: {
-                        'stork-title': '#2C3E50',
-                        'stork-text': '#34495E',
-                        'stork-accent': '#1ABC9C',
-                        'stork-accent-hover': '#16A085',
-                        'soft-beige': '#F5F5DC',
-                        'dark-text': '#374151',
-                        'medium-gray': '#6B7280',
-                        'button-active': '#60A5FA',
-                        'button-active-hover': '#3B82F6',
-                        'button-inactive-hover-bg': '#F9FAFB',
-                        'button-inactive-hover-border': '#1F2937',
-                        'error-red': '#EF4444',
-                        'save-button': '#34D399',
-                        'save-button-hover': '#059669',
-                        'remove-button': '#F87171',
-                        'remove-button-hover': '#DC2626',
-                        'copy-button': '#9CA3AF',
-                        'copy-button-hover': '#4B5563',
-                        'accent-muted': '#64748b',
-                        'accent-muted-light': '#cbd5e1',
-                        'off-white': '#f8fafc',
-                        'indigo-100': '#e0e7ff',
-                        'indigo-700': '#4338ca',
-                        'amber-100': '#fef3c7',
-                        'amber-500': '#f59e0b'
-                    },
-                    animation: {
-                        'fade-in': 'fade-in 0.5s ease-out',
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'fade-in-down': 'fade-in-down 0.5s ease-out',
-                        'fade-out-up': 'fade-out-up 0.5s ease-out',
-                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-                    },
-                    keyframes: {
-                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
-                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-                    },
-                }
-            }
-        }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
 
-    <style>
-        /* Basic styles - Copied from index page for consistency */
-        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
-        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
-        .btn-feedback { @apply transform active:scale-95; }
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-        /* Form element styles - Copied from index page for consistency */
-        select, input[type="text"], input[type="radio"], input[type="range"] {
-             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
-        }
-        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
-        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
-        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
-
-        /* Loader - Copied from index page for consistency */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1ABC9C; /* Stork Accent */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Name card styles - Copied from index page for consistency */
-         .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
-         }
-         .name-card h3 {
-             @apply text-xl font-semibold text-stork-title mb-2;
-         }
-         .name-card p {
-             @apply text-stork-text mb-1 text-sm;
-         }
-         .name-card .tags span {
-             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
-         }
-         .name-card .actions button {
-             @apply text-xs px-2 py-1 rounded mr-2;
-         }
-
-         /* Full height layout - Copied from index page for consistency */
-         html, body {
-             min-height: 100%;
-             display: flex;
-             flex-direction: column;
-         }
-         body {
-             flex-grow: 1;
-             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-         }
-         main {
-             flex-grow: 1;
-             position: relative; /* Needed for absolute positioning of blog post view */
-         }
-
-         /* Blog specific styles */
-         .blog-post-summary-container {
-             @apply text-center; /* Center the image and text */
-             /* Initial state for dealing animation */
-             opacity: 0;
-             transform: translateY(20px) scale(0.9);
-             /* Add transition for the initial state properties */
-             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-             /* Ensure cards are positioned relative for flip origin */
-             position: relative;
-             z-index: 1; /* Ensure cards are above the main content initially */
-         }
-
-         .blog-post-summary-container img {
-             @apply rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105; /* Add hover effect */
-         }
-
-         /* Styles for the card flip animation */
-         .blog-card-wrapper {
-             perspective: 1000px; /* Add perspective to the parent for 3D effect */
-             /* Ensure padding/margin doesn't interfere */
-         }
-
-         .blog-card-inner {
-             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth flip transition */
-             transform-style: preserve-3d; /* Preserve 3D space for children */
-             position: relative; /* Needed for potential backface */
-             transform-origin: center; /* Ensure the rotation is around the center */
-             width: 100%;
-             height: 100%;
-             display: block; /* Ensure the link block takes full space */
-             backface-visibility: hidden; /* Hide the back of the element during flip */
-             z-index: 2; /* Ensure the flipping element is above the wrapper */
-         }
-
-         /* State when the card is flipping/picked up */
-         .blog-card-inner.is-flipping {
-             transform: rotateY(180deg) scale(1.2) translateZ(50px); /* Flip, zoom in, and move slightly forward */
-             /* z-index handled by JS during transition */
-         }
-
-         /* Class to trigger the dealing animation */
-         #blog-list-container.is-dealt .blog-post-summary-container {
-              opacity: 1;
-              transform: translateY(0) scale(1);
-         }
-
-        /* Styles for the full blog post view */
-        #full-blog-post-view {
-            position: fixed; /* Position fixed to cover the screen */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow-y: auto; /* Allow scrolling for long posts */
-            background-color: rgba(248, 250, 252, 0.95); /* off-white with some transparency */
-            backdrop-filter: blur(8px); /* Blur the background */
-            opacity: 0; /* Initially hidden */
-            visibility: hidden; /* Initially not interactive */
-            pointer-events: none; /* Initially not interactive */
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
-            z-index: 0; /* Initially behind everything */
-            padding-top: 80px; /* Space for fixed header */
-        }
-
-        #full-blog-post-view.is-active {
-            opacity: 1; /* Become visible */
-            visibility: visible; /* Become interactive */
-            pointer-events: auto; /* Become interactive */
-            z-index: 40; /* Bring to front when active (below fixed header) */
-        }
-
-        /* Hide the blog list when a post is showing */
-        body.showing-post #blog-list-section {
-            display: none;
-        }
-
-        /* Adjusted grid for mobile */
-         #blog-list-container {
-             /* Default to 1 column on smallest screens */
-             /* On small screens (sm), show 2 columns */
-             /* On large screens (lg), show 4 columns */
-             @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
-         }
+<title>Blog - The Stork Name Drop</title>
 
 
-    </style>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+
+// Tailwind CSS Configuration - Copied from index page for consistency
+
+tailwind.config = {
+
+theme: {
+
+extend: {
+
+fontFamily: {
+
+sans: ['"Nunito Sans"', 'sans-serif'],
+
+serif: ['Georgia', 'serif'],
+
+},
+
+colors: {
+
+'stork-title': '#2C3E50',
+
+'stork-text': '#34495E',
+
+'stork-accent': '#1ABC9C',
+
+'stork-accent-hover': '#16A085',
+
+'soft-beige': '#F5F5DC',
+
+'dark-text': '#374151',
+
+'medium-gray': '#6B7280',
+
+'button-active': '#60A5FA',
+
+'button-active-hover': '#3B82F6',
+
+'button-inactive-hover-bg': '#F9FAFB',
+
+'button-inactive-hover-border': '#1F2937',
+
+'error-red': '#EF4444',
+
+'save-button': '#34D399',
+
+'save-button-hover': '#059669',
+
+'remove-button': '#F87171',
+
+'remove-button-hover': '#DC2626',
+
+'copy-button': '#9CA3AF',
+
+'copy-button-hover': '#4B5563',
+
+'accent-muted': '#64748b',
+
+'accent-muted-light': '#cbd5e1',
+
+'off-white': '#f8fafc',
+
+'indigo-100': '#e0e7ff',
+
+'indigo-700': '#4338ca',
+
+'amber-100': '#fef3c7',
+
+'amber-500': '#f59e0b'
+
+},
+
+animation: {
+
+'fade-in': 'fade-in 0.5s ease-out',
+
+'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+'fade-in-down': 'fade-in-down 0.5s ease-out',
+
+'fade-out-up': 'fade-out-up 0.5s ease-out',
+
+'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+
+'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+
+'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+
+'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+
+},
+
+keyframes: {
+
+'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+
+'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+
+'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+
+'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+
+'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+
+'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+
+'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+
+},
+
+}
+
+}
+
+}
+
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+
+
+<style>
+
+/* Basic styles - Copied from index page for consistency */
+
+.btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+
+.btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+
+.btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+
+.btn-feedback { @apply transform active:scale-95; }
+
+
+
+/* Form element styles - Copied from index page for consistency */
+
+select, input[type="text"], input[type="radio"], input[type="range"] {
+
+@apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+
+}
+
+input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+
+input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+
+input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+
+
+/* Loader - Copied from index page for consistency */
+
+.loader {
+
+border: 4px solid #f3f3f3;
+
+border-top: 4px solid #1ABC9C; /* Stork Accent */
+
+border-radius: 50%;
+
+width: 40px;
+
+height: 40px;
+
+animation: spin 1s linear infinite;
+
+margin: 20px auto;
+
+}
+
+@keyframes spin {
+
+0% { transform: rotate(0deg); }
+
+100% { transform: rotate(360deg); }
+
+}
+
+
+
+/* Name card styles - Copied from index page for consistency */
+
+.name-card {
+
+@apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+
+}
+
+.name-card h3 {
+
+@apply text-xl font-semibold text-stork-title mb-2;
+
+}
+
+.name-card p {
+
+@apply text-stork-text mb-1 text-sm;
+
+}
+
+.name-card .tags span {
+
+@apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+
+}
+
+.name-card .actions button {
+
+@apply text-xs px-2 py-1 rounded mr-2;
+
+}
+
+
+
+/* Full height layout - Copied from index page for consistency */
+
+html, body {
+
+min-height: 100%;
+
+display: flex;
+
+flex-direction: column;
+
+}
+
+body {
+
+flex-grow: 1;
+
+padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+
+}
+
+main {
+
+flex-grow: 1;
+
+}
+
+
+
+/* Blog specific styles */
+
+.blog-post-summary-container {
+
+@apply text-center; /* Center the image and text */
+
+}
+
+
+
+.blog-post-summary-container img {
+
+@apply rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105; /* Add hover effect */
+
+}
+
+
+
+/* Adjusted grid for mobile */
+
+#blog-list-container {
+
+/* Default to 1 column on smallest screens */
+
+/* On small screens (sm), show 2 columns */
+
+/* On large screens (lg), show 4 columns */
+
+@apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
+
+}
+
+
+
+
+
+</style>
+
 </head>
+
+
 
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
-
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
-                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                 <a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-             </nav>
-        </div>
-    </header>
-
-    <section id="blog-list-section">
-        <section id="showcase" class="py-6 md:py-10 text-center relative">
-            <img src="assets/blog.png" alt="The Stork Name Drop Blog Title"
-                 class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
-                 onerror="this.onerror=null; this.src='https://placehold.co/768x150/ffffff00/2C3E50?text=The+Stork+Name+Drop+Blog'; this.style.border='1px dashed #ccc';">
-            <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
-        </section>
-
-        <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
-
-            <div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-
-                <article class="blog-post-summary-container blog-card-wrapper">
-                     <a href="blog/song.html" class="block blog-card-inner">
-                        <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
-                     </a>
-                </article>
-
-                 <article class="blog-post-summary-container blog-card-wrapper">
-                    <a href="blog/german2025.html" class="block blog-card-inner">
-                       <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
-                    </a>
-               </article>
-
-                <article class="blog-post-summary-container blog-card-wrapper">
-                    <a href="blog/middle.html" class="block blog-card-inner">
-                        <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
-                    </a>
-                </article>
-
-                 <article class="blog-post-summary-container blog-card-wrapper">
-                    <a href="blog/uniqueeng.html" class="block blog-card-inner">
-                       <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
-                    </a>
-               </article>
-
-            </div>
-
-        </main>
-    </section>
 
 
-    <div id="full-blog-post-view">
-        <div class="container mx-auto p-6 md:p-10 bg-white rounded-lg shadow-lg">
-             </div>
-    </div>
+<header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+
+<div class="container mx-auto flex justify-between items-center">
+
+<a href="index.html" title="The Stork Name Drop Home" class="z-20">
+
+<img src="assets/logo.png" alt="The Stork Name Drop Logo"
+
+class="h-12 w-12 object-contain"
+
+onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+
+</a>
 
 
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
-     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const blogListContainer = document.getElementById('blog-list-container');
-            const blogListSection = document.getElementById('blog-list-section');
-            const fullBlogPostView = document.getElementById('full-blog-post-view');
-            const blogCards = blogListContainer.querySelectorAll('.blog-post-summary-container');
-            const cardLinks = blogListContainer.querySelectorAll('.blog-card-inner');
-            const body = document.body;
-            let injectedStyleElement = null; // Variable to hold the dynamically injected style
+<nav class="flex space-x-4 sm:space-x-6 items-center">
 
-            // --- Functions to manage views and history ---
+<a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
 
-            // Function to show the blog list view
-            const showBlogList = () => {
-                // Remove the class hiding the list
-                body.classList.remove('showing-post');
-                // Hide the full post view
-                fullBlogPostView.classList.remove('is-active');
-                // Clear the content
-                fullBlogPostView.querySelector('.container').innerHTML = '';
+<a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
 
-                // Remove the dynamically injected style element if it exists
-                if (injectedStyleElement) {
-                    injectedStyleElement.remove();
-                    injectedStyleElement = null; // Reset the variable
-                }
+<a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
 
-                // Reset card transforms if needed (optional, they reset when hidden/shown)
-                cardLinks.forEach(link => {
-                    link.classList.remove('is-flipping');
-                });
+<a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
 
-                 // Re-trigger dealing animation if desired when returning
-                 // Remove and re-add the class to restart the CSS animation
-                 blogListContainer.classList.remove('is-dealt');
-                 // Use a small timeout to allow the class removal to register
-                 setTimeout(() => {
-                     blogListContainer.classList.add('is-dealt');
-                     blogCards.forEach((card, index) => {
-                         card.style.transitionDelay = `${index * 0.1}s`;
-                     });
-                 }, 50); // Small delay
-            };
+<a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
 
-            // Function to show a specific blog post
-            const showBlogPost = async (url) => {
-                 try {
-                    // Show loader or some indicator while fetching (optional)
-                    fullBlogPostView.querySelector('.container').innerHTML = '<div class="loader"></div>';
-                    fullBlogPostView.classList.add('is-active'); // Show the container immediately
+</nav>
 
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    const html = await response.text();
+</div>
 
-                    // Parse the fetched HTML to extract content and styles
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-
-                    // Extract the main blog content
-                    const blogContent = doc.getElementById('blog-content'); // Adjust ID if necessary
-
-                    // Extract styles from the fetched document's head
-                    const styleElements = doc.querySelectorAll('style');
-                    let extractedStyles = '';
-                    styleElements.forEach(style => {
-                         extractedStyles += style.textContent;
-                    });
-
-                    // Remove any previously injected style element
-                    if (injectedStyleElement) {
-                         injectedStyleElement.remove();
-                         injectedStyleElement = null;
-                    }
-
-                    // Create a new style element and inject the extracted styles
-                    if (extractedStyles) {
-                         injectedStyleElement = document.createElement('style');
-                         injectedStyleElement.textContent = extractedStyles;
-                         document.head.appendChild(injectedStyleElement);
-                    }
+</header>
 
 
-                    if (blogContent) {
-                        // Inject the extracted content into the full blog post view
-                        fullBlogPostView.querySelector('.container').innerHTML = blogContent.innerHTML; // Use innerHTML to get content inside the element
 
-                        // Add the class to hide the blog list *after* content is loaded
-                        body.classList.add('showing-post');
+<section id="showcase" class="py-6 md:py-10 text-center relative">
 
-                         // Scroll to top of the post view
-                         fullBlogPostView.scrollTo({ top: 0, behavior: 'smooth' });
+<img src="assets/blog.png" alt="The Stork Name Drop Blog Title"
 
-                    } else {
-                        // Handle case where content element is not found
-                        fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Could not load blog post content.</p>';
-                         // Still hide the blog list even if content failed
-                         body.classList.add('showing-post'); // Keep list hidden if post view is active but failed
-                    }
+class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
 
-                 } catch (error) {
-                     console.error('Error fetching or parsing blog post:', error);
-                     fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Error loading blog post.</p>';
-                      // Still hide the blog list even if fetching failed
-                      body.classList.add('showing-post'); // Keep list hidden if post view is active but failed
-                 }
-            };
+onerror="this.onerror=null; this.src='https://placehold.co/768x150/ffffff00/2C3E50?text=The+Stork+Name+Drop+Blog'; this.style.border='1px dashed #ccc';">
+
+<p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+
+</section>
 
 
-            // --- Event Listeners ---
 
-            // Click handler for blog cards
-            cardLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Prevent default link navigation
-
-                    const targetUrl = this.href; // Get the target URL
-                    const clickedCardInner = this; // The element that flips
-
-                    // Add the class to trigger the flip animation
-                    clickedCardInner.classList.add('is-flipping');
-
-                    // Use setTimeout to wait for the flip animation to be near completion
-                    // The duration should match the CSS transition duration (0.6s) or slightly less
-                    setTimeout(() => {
-                        // Fetch and show the blog post content
-                        showBlogPost(targetUrl);
-
-                        // Update browser history
-                        history.pushState({ postUrl: targetUrl }, '', targetUrl);
-
-                        // Remove the flipping class after the content is loaded/shown
-                        // This can be done here or after showBlogPost finishes
-                        // For visual effect, removing it slightly after showing the post might be better
-                         setTimeout(() => {
-                             clickedCardInner.classList.remove('is-flipping');
-                         }, 200); // Small delay after showing post
-                    }, 500); // Adjust this timeout to sync with CSS transition (e.g., 500ms for 600ms transition)
-                });
-            });
-
-            // Handle browser back/forward button clicks
-            window.addEventListener('popstate', (event) => {
-                // Check the state object pushed to history
-                if (event.state && event.state.postUrl) {
-                    // If state has a postUrl, show that blog post
-                    showBlogPost(event.state.postUrl);
-                } else {
-                    // If state is null or doesn't have postUrl, show the blog list
-                    showBlogList();
-                }
-            });
-
-            // --- Initial Page Load ---
-
-            // Trigger dealing animation on initial load if not already showing a post
-             // We need to check if the URL already points to a blog post
-             const initialPath = window.location.pathname;
-             // Find the correct link element to get the exact URL if it exists
-             const activeLink = Array.from(cardLinks).find(link => initialPath.endsWith(link.getAttribute('href')));
-             const isBlogPostUrl = !!activeLink; // Check if an active link was found
+<main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
 
-            if (!isBlogPostUrl) {
-                // If it's just the blog list page (no post URL in history), show the list
-                showBlogList(); // Ensure list is visible and state is correct
 
-                // Trigger the dealing animation
-                 setTimeout(() => {
-                      blogListContainer.classList.add('is-dealt');
-                      blogCards.forEach((card, index) => {
-                           card.style.transitionDelay = `${index * 0.1}s`; // Adjust delay time (0.1s per card)
-                      });
-                 }, 100); // Short delay before starting animation
+<div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
 
-                 // Replace initial state for the blog list page
-                 history.replaceState({ view: 'blog-list' }, '', window.location.href);
 
-            } else {
-                 // If the page was loaded directly with a blog post URL, show the post
-                 // activeLink is already found above
-                 if(activeLink) {
-                      showBlogPost(activeLink.href);
-                      // Replace history state for the initial blog post view
-                      history.replaceState({ postUrl: activeLink.href }, '', window.location.href);
-                 } else {
-                      // Fallback - should not happen if isBlogPostUrl is true, but good practice
-                      showBlogList();
-                      history.replaceState({ view: 'blog-list' }, '', window.location.href);
-                 }
-            }
-        });
-    </script>
+
+<article class="blog-post-summary-container">
+
+<a href="blog/song.html" class="block">
+
+<img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
+
+</a>
+
+</article>
+
+
+
+<article class="blog-post-summary-container">
+
+<a href="blog/german2025.html" class="block">
+
+<img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
+
+</a>
+
+</article>
+
+
+
+<article class="blog-post-summary-container">
+
+<a href="blog/middle.html" class="block">
+
+<img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
+
+</a>
+
+</article>
+
+
+
+<article class="blog-post-summary-container">
+
+<a href="blog/uniqueeng.html" class="block">
+
+<img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
+
+</a>
+
+</article>
+
+
+
+</div>
+
+
+
+</main>
+
+
+
+<footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+
+© 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+
+</footer>
+
+
 
 </body>
+
 </html>
