@@ -59,7 +59,7 @@
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -184,7 +184,7 @@
                 <section id="language-selection">
                     <label for="language-select" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Language/Origin:</label>
                     <select id="language-select" name="language" class="w-full p-2 text-base border">
-                        <option value="">Any Language</option>
+                        <option value="all">Any Language</option>
                         <option value="english">English</option>
                         <option value="german">German</option>
                         <option value="japanese">Japanese</option>
@@ -284,30 +284,63 @@
         const famousNamesakesSection = document.getElementById('famous-namesakes-section');
 
         // --- State Variables ---
-        let nameDatabase = [];
+        let nameDatabase = []; // This will now hold the data for the *currently selected* language
         let dataLoaded = false;
         let currentName = null;
 
         // --- Functions ---
 
-        // Function to fetch name data from JSON file
-        async function loadNameData() {
+        // Function to fetch name data based on selected language
+        async function loadNameData(language) {
+            let filename = 'names.json'; // Default or fallback
+            if (language === 'english') {
+                filename = 'english_names.json';
+            } else if (language === 'german') {
+                filename = 'german_names.json';
+            } else if (language === 'japanese') {
+                filename = 'japanese_names.json';
+            } else if (language === 'spanish') {
+                filename = 'spanish_names.json';
+            } else if (language === 'french') {
+                 filename = 'french_names.json';
+            } else if (language === 'italian') {
+                 filename = 'italian_names.json';
+            }
+            // Add more languages here as needed
+
+            console.log(`Attempting to load data from: ${filename}`);
+
+            // Show loading state
+            dataLoaded = false;
+            generateBtn.textContent = 'Loading Names...';
+            generateBtn.disabled = true;
+            resultsPlaceholder.textContent = `Loading ${language === 'all' ? 'all' : language} name data...`;
+            resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
+            resultsPlaceholder.classList.add('text-medium-gray');
+
+
             try {
-                const response = await fetch('names.json'); // Ensure names.json is in the correct path
+                const response = await fetch(filename);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                nameDatabase = data;
+                nameDatabase = data; // Update the nameDatabase with the new data
                 dataLoaded = true;
-                console.log("Name data loaded successfully.");
+                console.log(`${filename} loaded successfully. ${nameDatabase.length} names found.`);
+
                 resultsPlaceholder.textContent = 'Click "Generate Name" to see a result.';
+                resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
+                resultsPlaceholder.classList.add('text-medium-gray');
                 generateBtn.textContent = 'Generate Name';
                 generateBtn.disabled = false;
 
             } catch (error) {
-                console.error("Could not load name data:", error);
-                resultsPlaceholder.textContent = 'Error loading name data. Please try again later.';
+                console.error(`Could not load name data from ${filename}:`, error);
+                nameDatabase = []; // Clear data on error
+                dataLoaded = false;
+                resultsPlaceholder.textContent = `Error loading ${language === 'all' ? 'all' : language} name data. Please try again later.`;
+                resultsPlaceholder.classList.remove('text-medium-gray', 'text-stork-text');
                 resultsPlaceholder.classList.add('text-error-red');
                 generateBtn.textContent = 'Error Loading Data';
                 generateBtn.disabled = true;
@@ -327,6 +360,8 @@
          // Function to generate alphabet buttons
          function generateAlphabetButtons() {
              const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+             firstLetterInputsContainer.innerHTML = ''; // Clear existing buttons
+
              const anyBtn = document.createElement('button');
              anyBtn.textContent = 'Any';
              anyBtn.type = 'button';
@@ -344,9 +379,7 @@
                  button.addEventListener('click', handleLetterSelection);
                  firstLetterInputsContainer.appendChild(button);
              });
-             const placeholder = firstLetterInputsContainer.querySelector('span');
-             if (placeholder) placeholder.remove();
-             setActiveLetterButton(anyBtn);
+             setActiveLetterButton(anyBtn); // Set 'Any' as active initially
          }
 
          // Function to handle letter button selection
@@ -370,24 +403,29 @@
          }
 
 
-        // Function to filter names based on criteria
+        // Function to filter names based on criteria (now filters the currently loaded nameDatabase)
         function filterNames() {
             const gender = document.querySelector('input[name="gender"]:checked').value;
-            const language = languageSelect.value;
+            // Language filtering is now handled by loading the correct file,
+            // but we might still use the languageSelect value for display or future features.
+            const selectedLanguageValue = languageSelect.value;
             const firstLetter = selectedLetterInput.value.toLowerCase();
             const length = document.querySelector('input[name="length"]:checked').value;
             const styleValue = parseInt(styleSlider.value);
 
-            // Basic filtering
+            // Basic filtering applied to the currently loaded nameDatabase
             let filtered = nameDatabase.filter(name => {
                 // Gender filter
-                if (gender !== 'any' && name.gender.toLowerCase() !== gender) {
+                if (gender !== 'any' && name.gender && name.gender.toLowerCase() !== gender) {
                     return false;
                 }
-                // Language filter
-                if (language !== '' && name.origin.toLowerCase().indexOf(language) === -1) { // Basic check for language origin
-                     return false;
-                 }
+                 // Origin filter (optional, if you want to filter within a loaded file)
+                 // If you have 'all' names loaded, you might filter by origin here.
+                 // If you load specific language files, this filter might be less relevant.
+                 // if (selectedLanguageValue !== 'all' && name.origin && name.origin.toLowerCase().indexOf(selectedLanguageValue) === -1) {
+                 //     return false;
+                 // }
+
                 // First letter filter
                 if (firstLetter !== '' && name.name.toLowerCase().charAt(0) !== firstLetter) {
                     return false;
@@ -404,10 +442,11 @@
 
             // Style filtering (simplified example - needs actual data/logic for traditional/unique scoring)
             // This is a placeholder. Real implementation would require a 'style' score in your data.
+            // Assuming a 'style_score' property exists in your JSON data (e.g., 0 for traditional, 100 for unique)
             if (styleValue < 50) { // More traditional
-                 filtered = filtered.sort((a, b) => (a.popularity_score || 0) - (b.popularity_score || 0)); // Assuming popularity_score exists
+                 filtered.sort((a, b) => (a.style_score || 0) - (b.style_score || 0));
             } else if (styleValue > 50) { // More unique
-                 filtered = filtered.sort((a, b) => (b.popularity_score || 0) - (a.popularity_score || 0)); // Assuming popularity_score exists
+                 filtered.sort((a, b) => (b.style_score || 0) - (a.style_score || 0));
             }
             // If value is 50 (Balanced), no specific style sorting is applied here.
 
@@ -423,6 +462,7 @@
                 resultsPlaceholder.textContent = 'No names found matching your criteria. Try adjusting your filters.';
                 resultsPlaceholder.classList.remove('text-medium-gray');
                 resultsPlaceholder.classList.add('text-stork-text');
+                resultsPlaceholder.style.display = 'block'; // Show placeholder
                 return;
             }
 
@@ -554,18 +594,48 @@
              }, 1500);
         }
 
+        // Function to handle language selection change
+        function handleLanguageChange() {
+            const selectedLanguage = languageSelect.value;
+            console.log(`Language changed to: ${selectedLanguage}`);
+            loadNameData(selectedLanguage); // Load data for the selected language
+            // Reset other filters or UI elements if necessary here
+            selectedLetterInput.value = ''; // Clear selected letter
+            document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
+                 btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
+                 btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
+             });
+             // Find and set 'Any' letter button as active
+             const anyLetterButton = document.querySelector('#first-letter-inputs button[data-letter=""]');
+             if (anyLetterButton) {
+                 setActiveLetterButton(anyLetterButton);
+             }
+             // You might also want to reset gender, length, and style filters to 'any' or default values
+             document.getElementById('gender-any').checked = true;
+             document.getElementById('length-any').checked = true;
+             styleSlider.value = 50;
+             updateSliderFeedback();
+
+             displayGeneratedName(null); // Clear the currently displayed name
+             resultsPlaceholder.textContent = `Loading ${selectedLanguage === 'all' ? 'all' : selectedLanguage} name data...`; // Update placeholder text
+             resultsPlaceholder.style.display = 'block'; // Ensure placeholder is visible
+        }
+
+
         // --- Event Listeners ---
         generateBtn.addEventListener('click', handleGenerateName);
         styleSlider.addEventListener('input', updateSliderFeedback);
+        languageSelect.addEventListener('change', handleLanguageChange); // Add listener for language change
         // Add listeners for gender and length radio buttons if needed for immediate filtering feedback (optional)
         // document.querySelectorAll('input[name="gender"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
         // document.querySelectorAll('input[name="length"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
-        // languageSelect.addEventListener('change', handleFilterChange); // Optional: if you want immediate changes
+
 
         // --- Initialization ---
-        loadNameData(); // Load the name data when the page loads
+        generateAlphabetButtons(); // Generate the alphabet buttons first
+        loadNameData(languageSelect.value); // Load the initial name data based on the default language selection
         updateSliderFeedback(); // Set initial slider feedback text
-        generateAlphabetButtons(); // Generate the alphabet buttons
+
 
         // Smooth scroll for top nav generator link
         topNavGeneratorLink.addEventListener('click', function(e) {
