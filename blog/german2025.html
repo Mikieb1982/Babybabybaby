@@ -1,152 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Metadata -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>German Baby Names 2025: Trends, Classics, and Rising Stars - The Stork Name Drop Blog</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom CSS -->
-    <style>
-        /* Variables */
-        :root {
-            --soft-beige: #F5F5DC;
-            --dark-text: #374151;
-            --medium-gray: #6B7280;
-            --button-active: #60A5FA;
-            --button-active-hover: #3B82F6;
-            --button-inactive-hover-bg: #F9FAFB;
-            --button-inactive-hover-border: #1F2937;
-            --error-red: #EF4444;
-            --save-button: #34D399;
-            --save-button-hover: #059669;
-            --remove-button: #F87171;
-            --remove-button-hover: #DC2626;
-            --copy-button: #9CA3AF;
-            --copy-button-hover: #4B5563;
-            --accent-muted: #64748b;
-            --accent-muted-light: #cbd5e1;
-            --off-white: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-400: #94a3b8;
-        }
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
-            background-repeat: repeat;
-            background-color: var(--soft-beige);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--dark-text);
-        }
-        /* Links */
-        a { color: var(--button-active); text-decoration: none; transition: color 0.2s ease; }
-        a:hover { color: var(--button-active-hover); text-decoration: underline; }
-        main a { color: var(--dark-text); }
-        main a:hover { color: var(--medium-gray); }
-        /* Headings */
-        h1, h2, h3, h4 { font-weight: bold; }
-        /* Lists */
-        ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-        ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; }
-        /* Tables */
-        table { border-collapse: collapse; width: 100%; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        th, td { border: 1px solid var(--slate-400); padding: 0.5rem 0.75rem; text-align: left; vertical-align: top; }
-        th { background-color: var(--slate-100); font-weight: bold; }
-        .table-wrapper { overflow-x: auto; margin-bottom: 1.5rem; }
-        /* Paragraphs */
-        p { margin-bottom: 1rem; }
-        h1 { margin-bottom: 0.75rem; }
-        h2 { margin-top: 2rem; margin-bottom: 1rem; }
-        h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        h4 { margin-top: 1rem; margin-bottom: 0.5rem; font-size: 1.1em; }
-    </style>
-    <!-- Tailwind CSS Configuration -->
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'soft-beige': '#F5F5DC', 'dark-text': '#374151', 'medium-gray': '#6B7280',
-              'button-active': '#60A5FA', 'button-active-hover': '#3B82F6',
-              'button-inactive-hover-bg': '#F9FAFB', 'button-inactive-hover-border': '#1F2937', 
-              'error-red': '#EF4444', 'save-button': '#34D399', 'save-button-hover': '#059669',
-              'remove-button': '#F87171', 'remove-button-hover': '#DC2626',
-              'copy-button': '#9CA3AF', 'copy-button-hover': '#4B5563',
-              'accent-muted': '#64748b', 'accent-muted-light': '#cbd5e1', 'off-white': '#f8fafc',
-              'slate-100': '#f1f5f9', 'slate-400': '#94a3b8'
-            },
-          }
+        // Tailwind CSS Configuration - Copied from index page for consistency
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                      serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
+            }
         }
-      }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles - Copied from index page for consistency */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Form element styles - Copied from index page for consistency */
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+        /* Loader - Copied from index page for consistency */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1ABC9C; /* Stork Accent */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Name card styles - Copied from index page for consistency */
+         .name-card {
+            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+         }
+         .name-card h3 {
+             @apply text-xl font-semibold text-stork-title mb-2;
+         }
+         .name-card p {
+             @apply text-stork-text mb-1 text-sm;
+         }
+         .name-card .tags span {
+             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+         }
+         .name-card .actions button {
+             @apply text-xs px-2 py-1 rounded mr-2;
+         }
+
+         /* Full height layout - Copied from index page for consistency */
+         html, body {
+             min-height: 100%;
+             display: flex;
+             flex-direction: column;
+         }
+         body {
+             flex-grow: 1;
+             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+         }
+         main {
+             flex-grow: 1;
+         }
+
+         /* Blog post specific styles */
+         .blog-post-image {
+             @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
+         }
+
+         .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+             @apply text-stork-title font-semibold;
+         }
+
+         .blog-content h1 {
+             @apply text-3xl md:text-4xl mb-4 text-center;
+         }
+          .blog-content h2 {
+             @apply text-2xl md:text-3xl pt-6 mb-4;
+         }
+          .blog-content h3 {
+             @apply text-xl md:text-2xl pt-4 mb-3;
+         }
+          .blog-content h4 {
+             @apply text-lg md:text-xl pt-2 mb-2;
+         }
+
+         .blog-content p {
+             @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+         }
+
+         .blog-content ul, .blog-content ol {
+             @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+         }
+
+         .blog-content ul li, .blog-content ol li {
+             @apply mb-2;
+         }
+
+         .blog-content table {
+             @apply border-collapse w-full mb-6 text-sm;
+         }
+
+         .blog-content th, .blog-content td {
+             @apply border border-gray-300 p-3 text-left align-top;
+         }
+
+         .blog-content th {
+             @apply bg-gray-100 font-semibold text-stork-title;
+         }
+
+         .blog-content .table-wrapper {
+             @apply overflow-x-auto mb-6;
+         }
+
+         .blog-content .text-medium-gray {
+             @apply text-medium-gray;
+         }
+
+         .blog-content a {
+             @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
+         }
+
+         .social-share-link {
+             @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
+         }
+
+
+    </style>
 </head>
-<body class="p-4 md:p-8">
 
-    <!-- Header -->
-    <header class="text-center mb-10 border-b border-accent-muted-light pb-4 shadow-sm">
-        <a href="../index.html" title="The Stork Name Drop Home">
-            <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="mx-auto h-24 w-24 object-contain mb-3"
-                onerror="this.onerror=null; this.src='https://placehold.co/192x192/F5F5DC/374151?text=Logo'; alt='The Stork Name Drop Logo Placeholder'">
-        </a>
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-        <!-- Hamburger Button -->
-        <button id="hamburger-btn" title="Open Menu"
-            class="fixed top-4 right-4 p-2 rounded-md hover:bg-accent-muted-light transition btn-feedback bg-off-white/75 backdrop-blur-sm shadow">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-dark-text" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
 
-        <!-- Mobile Menu Content -->
-        <div id="mobile-menu-content" class="hidden">
-            <nav class="relative z-10 space-y-4 pt-8">
-                <h3 class="text-2xl font-semibold text-dark-text mb-6 text-center">Menu</h3>
-                <a href="../index.html" class="block text-lg text-dark-text hover:underline text-center">Home</a>
-                <a href="../index.html#generator-controls" class="block text-lg text-dark-text hover:underline text-center">Name Generator</a>
-                <a href="../index.html#favorites-panel" class="block text-lg text-dark-text hover:underline text-center">Favorites</a>
-                <a href="../blog.html" class="block text-lg text-dark-text hover:underline text-center">Blog</a>
-                <a href="../affiliate.html" class="block text-lg text-dark-text hover:underline text-center">Recommendations</a>
-                <a href="../aboutus.html" class="block text-lg text-dark-text hover:underline text-center">About Us</a>
-            </nav>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                 <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
         </div>
     </header>
 
-    <!-- Horizontal Line -->
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">German Baby Names 2025</h1>
+        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Trends, Classics, and Rising Stars</p>
+    </section>
 
-    <!-- Main Content -->
-    <main class="max-w-3xl mx-auto bg-off-white p-6 md:p-10 rounded-lg border-2 border-dark-text shadow-sm">
-        <article>
-            <h1 class="text-3xl md:text-4xl text-dark-text mb-3 text-center">German Baby Names 2025: Trends, Classics, and Rising Stars</h1>
-            <p class="text-center text-sm text-medium-gray mb-8">Published: April 15, 2025</p>
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <article class="blog-content">
+             <p class="text-center text-sm text-medium-gray mb-8">Published: April 15, 2025</p>
 
             <img src="../assets/german2025.png"
-                 alt="Collage of the most popular german baby names"
-                 class="mx-auto my-8 rounded-lg shadow-sm w-full max-w-lg h-auto"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=German+Names+Image';">
-                
-            <!-- Content -->
+                  alt="Collage of the most popular german baby names"
+                  class="blog-post-image"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=German+Names+Image';">
+
             <div class="space-y-4 text-base md:text-lg leading-relaxed">
                 <p>Choosing a name for a new arrival is one of the most exciting and personal decisions for expectant parents. It's a choice filled with hope, tradition, and a touch of trend-watching. As we look towards 2025, the landscape of German baby names presents a fascinating mix of enduring favorites, surprising comebacks, and emerging contenders. Whether you're drawn to timeless elegance, modern simplicity, or names with deep roots, understanding the currents shaping German naming preferences can offer inspiration. This report delves into the latest statistics, decodes the trends, rediscovers returning classics, spotlights the names gaining momentum, explores their meanings, and navigates the unique regional nuances across Germany.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">The Reigning Champions: Germany's Most Popular Baby Names</h2>
+                <h2>The Reigning Champions: Germany's Most Popular Baby Names</h2>
                 <p>Recent years have shown remarkable consistency at the very peak of Germany's baby name charts. Based on the extensive data compiled by hobbyist name researcher Knud Bielefeld for 2024, which analyzed over 240,000 birth registrations (approximately 36% of all babies born in Germany), the top spots remain familiar.</p>
                 <p>For girls, <strong>Emilia</strong> holds onto the coveted number one position nationwide, a spot it has frequently occupied in recent years. It's closely followed by <strong>Sophia</strong> and <strong>Emma</strong>, who often trade places just behind the leader. The Gesellschaft für deutsche Sprache (GfdS), which releases its official statistics later and covers a larger percentage of births (around 90%), found that <strong>Sophia/Sofia</strong> actually edged out Emilia for the top spot in their 2023 data, albeit by a tiny margin, highlighting the intense competition between these favorites.</p>
                 <p>Among boys, <strong>Noah</strong> continues its reign as Germany's most popular choice, securing the number one rank for the third consecutive year in Bielefeld's 2024 analysis. It has been a dominant force since at least 2019 according to GfdS data as well. Hot on Noah's heels are <strong>Matteo</strong> and <strong>Elias</strong>, consistently rounding out the top three.</p>
                 <p>This stability at the summit is noteworthy. Both Bielefeld and the GfdS have observed minimal changes in the top few names year after year. Bielefeld suggests that many parents seem to gravitate towards names that are already established and perceived as fashionable, perhaps prioritizing names that feel familiar and "unauffällig" (inconspicuous) over highly unique choices. This tendency could reflect a cultural preference for names that ensure easy acceptance and avoid the potential pitfalls of overly uncommon or unconventional monikers, even as many parents express a desire for individuality.</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 1: Top 30 German Baby Names (Nationwide, 2024 - Knud Bielefeld)</h3>
+                <h3>Table 1: Top 30 German Baby Names (Nationwide, 2024 - Knud Bielefeld)</h3>
                 <div class="table-wrapper">
                     <table>
-                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -154,7 +251,6 @@
                                 <th>Boys</th>
                             </tr>
                         </thead>
-                        <!-- Table Data -->
                         <tbody>
                             <tr><td>1</td><td>Emilia</td><td>Noah</td></tr>
                             <tr><td>2</td><td>Sophia</td><td>Matteo</td></tr>
@@ -191,30 +287,29 @@
                 </div>
                 <p class="text-sm text-medium-gray">Source: Based on Knud Bielefeld's 2024 analysis. Note: Bielefeld combines phonetically similar spellings (e.g., Sophia/Sofia, Luca/Luka).</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Decoding the Trends: What's Shaping German Name Choices?</h2>
+                <h2>Decoding the Trends: What's Shaping German Name Choices?</h2>
                 <p>Beyond the top contenders, several distinct trends characterize the current German naming landscape, painting a picture of evolving parental preferences.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Trend 1: Short, Melodic, and Vowel-Rich</h3>
+                <h3>Trend 1: Short, Melodic, and Vowel-Rich</h3>
                 <p>A dominant trend observed across recent years is the preference for short names, often featuring soft sounds and prominent vowels. Many popular girls' names end in the gentle '-a' sound (Emilia, Sophia, Emma, Mia, Lina, Ella, Mila, Ida, Clara, Frieda) or the soft '-i'/'ie' sound (Leni, Marie, Lilly, Emily, Amelie). Boys' names frequently favor brevity and vowel endings too, such as Luca, Leo, Theo, and Noah, or contain soft consonants like L, M, and N (Leon, Emil, Finn, Liam, Louis). In 2024, the letter 'L' was the most common starting letter for first names, gracing 15% of all babies' names. This phonetic preference marks a noticeable shift from longer, more consonant-heavy traditional German names like Friedrich or Hildegard. It aligns with international naming styles and may reflect a desire for names perceived as modern, gentle, easily pronounceable across different languages, and perhaps influenced by global media.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Trend 2: International Flair vs. German Roots</h3>
+                <h3>Trend 2: International Flair vs. German Roots</h3>
                 <p>The top lists reveal a blend of international favorites and names with strong German heritage. Names like Emilia, Noah, Sophia, Emma, Liam, and Luca enjoy widespread popularity not just in Germany but globally. Biblical and Hebrew names also feature prominently, including Noah, Elias, Hannah, Mia (often linked to Maria), Paul, and David. Simultaneously, classic German names or those with a long history of use in Germany hold their ground. Emil, Paul, Karl, Anton, Oskar, Ida, Frieda, Mathilda, Clara, and Leni are all examples found within the top ranks, showcasing a continued appreciation for national naming traditions alongside global trends.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Trend 3: Stability with Subtle Shifts</h3>
+                <h3>Trend 3: Stability with Subtle Shifts</h3>
                 <p>While the very top names exhibit remarkable stability , the charts are not entirely static. Subtle but constant movement occurs within the Top 10 and Top 20. For instance, the GfdS data showed Sophia overtaking Emilia in 2023. The same year saw Lia/Liah and Liam break into the GfdS Top 10 for the first time. Names can also fluctuate – Finn dropped out of the GfdS Top 10 in 2023 after being 4th in 2022, but Bielefeld's 2024 data and some 2025 predictions suggest it remains popular or could rebound. This dynamic suggests that while a large group of parents follows established trends, there's enough change driven by emerging preferences to prevent complete stagnation.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Trend 4: The Rise of Unisex Names?</h3>
+                <h3>Trend 4: The Rise of Unisex Names?</h3>
                 <p>While official lists predominantly categorize names by gender, there's a growing awareness and potential trend towards gender-neutral options. Names like Noa, Mika, Charlie, Alex, Luca, Robin, Kim, and Samy are sometimes cited as examples used for any gender. It's worth noting that Noah, the top boys' name, has a distinct female biblical counterpart, Noa (meaning "motion"), which is popular in several countries, and the name Noah itself is sometimes considered gender-neutral. Minimalist names like Liv, Mio, Nio, and Lio also fit this flexible profile.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Everything Old is New Again: The Comeback of Classic German Names</h2>
+                <h2>Everything Old is New Again: The Comeback of Classic German Names</h2>
                 <p>One of the most intriguing developments is the resurgence of traditional German names that had fallen out of favor for decades. This "retro revival" sees names reminiscent of grandparents' or even great-grandparents' generations finding new appeal.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">The Retro Trend</h3>
+                <h3>The Retro Trend</h3>
                 <p>Names like <strong>Gerda</strong>, <strong>Erika</strong>, <strong>Frida</strong>, <strong>Greta</strong>, <strong>Lieselotte</strong>, <strong>Elfriede</strong>, <strong>Hilda</strong>, <strong>Käthe</strong>, <strong>Irma</strong>, and <strong>Wilma</strong> for girls, and <strong>Erwin</strong>, <strong>Kurt</strong>, <strong>Friedrich</strong>, <strong>Heinrich</strong>, <strong>Erich</strong>, <strong>Otto</strong>, <strong>Karl</strong>, <strong>Anton</strong>, and <strong>Oskar</strong> for boys are examples of this phenomenon. The fact that Gerda and Erika were among the names newly entering Bielefeld's Top 500 list in 2024 signals that this trend is gaining measurable traction.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Regional Hotspot: Saxony</h3>
+                <h3>Regional Hotspot: Saxony</h3>
                 <p>Interestingly, this retro trend seems to have particularly strong roots in Eastern Germany, with Saxony often cited as a "Brutstätte" (breeding ground or incubator) for these names. Names such as Gerda, Erika, Erwin, and Kurt were reportedly gaining popularity in Saxony before becoming more noticeable nationwide. This distinct regional origin suggests that factors like local cultural identity, perhaps different historical naming pools less influenced by immediate post-war Western trends, or even a touch of nostalgia (some sources mention DDR-era names), might be driving this revival initially. It highlights that naming trends don't always emerge uniformly across the country but can stem from specific regional tastes and histories.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Historical Comparison</h3>
+                <h3>Historical Comparison</h3>
                 <p>Comparing today's top names with those from previous decades starkly illustrates the cyclical nature of naming fashions and the extent of the current shifts.</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 2: Top 10 German Baby Names: Then (2014 & 2004) vs. Now (2023 - GfdS)</h3>
-                 <div class="table-wrapper">
+                <h3>Table 2: Top 10 German Baby Names: Then (2014 & 2004) vs. Now (2023 - GfdS)</h3>
+                <div class="table-wrapper">
                     <table>
-                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Rank</th>
@@ -226,7 +321,6 @@
                                 <th>Boys 2004</th>
                             </tr>
                         </thead>
-                        <!-- Table Data -->
                         <tbody>
                             <tr><td>1</td><td>Sophia/Sofia</td><td>Noah</td><td>Sophie/Sofie</td><td>Maximilian</td><td>Marie</td><td>Maximilian</td></tr>
                             <tr><td>2</td><td>Emilia</td><td>Matt(h)eo/Mat(h)eo</td><td>Marie</td><td>Alexander</td><td>Sophie</td><td>Alexander</td></tr>
@@ -244,15 +338,14 @@
                 <p class="text-sm text-medium-gray">Source: Gesellschaft für deutsche Sprache (GfdS). Spelling variations combined.</p>
                 <p>This comparison reveals enduring classics like <strong>Sophia/Sophie</strong>, <strong>Marie/Maria</strong>, <strong>Emma</strong>, <strong>Hannah/Hanna</strong>, <strong>Paul</strong>, and <strong>Leon</strong>, which remain strong or have returned to favor. It also highlights the meteoric rise of names like <strong>Noah</strong>, <strong>Emilia</strong>, <strong>Matteo</strong>, <strong>Mia</strong>, <strong>Lina</strong>, <strong>Ella</strong>, <strong>Mila</strong>, <strong>Liam</strong>, and <strong>Henry/Henri</strong> to the top tier over the last two decades. Conversely, names that dominated the charts in 2004 and 2014, such as <strong>Maximilian</strong>, <strong>Alexander</strong>, and <strong>Lukas/Luca</strong> for boys, and <strong>Leonie</strong>, <strong>Lena</strong>, and <strong>Laura</strong> for girls, while still present, have ceded the highest ranks.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Shooting Stars: Names to Watch in 2025</h2>
+                <h2>Shooting Stars: Names to Watch in 2025</h2>
                 <p>While the top of the charts shows stability, movement further down the rankings often signals the next big trends. Identifying names rapidly gaining popularity provides clues about the potential favorites of 2025.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Recent Risers</h3>
+                <h3>Recent Risers</h3>
                 <p>The GfdS data for 2023 highlighted <strong>Lia/Liah</strong> and <strong>Liam</strong> as significant movers, both breaking into the Top 10 for the first time. Knud Bielefeld's 2024 analysis identified several "Aufsteiger des Jahres" (Rising Stars) – names showing notable upward momentum or entering the Top 500 list for the first time.</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 3: Rising Star German Baby Names 2024/2025</h3>
-                 <div class="table-wrapper">
+                <h3>Table 3: Rising Star German Baby Names 2024/2025</h3>
+                <div class="table-wrapper">
                     <table>
-                         <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Category</th>
@@ -260,7 +353,6 @@
                                 <th>Boys</th>
                             </tr>
                         </thead>
-                        <!-- Table Data -->
                         <tbody>
                             <tr><td>GfdS 2023 Top 10 Newcomers</td><td>Lia/Liah</td><td>Liam</td></tr>
                             <tr><td>Bielefeld 2024 Top 500 Newcomers</td><td>Elodie, Rüya, Erika, Liora, Rania, Gerda, Nami, Estelle, Hava, Lima</td><td>Troi, Sultan, Marek, Alaz, Said, Dian, Lior, Aziz, Quinn, Tamino</td></tr>
@@ -271,15 +363,15 @@
                 </div>
                 <p class="text-sm text-medium-gray">Sources: GfdS, Knud Bielefeld, Trend Forecasts</p>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Expert Predictions for 2025</h3>
+                <h3>Expert Predictions for 2025</h3>
                 <p>Looking ahead, name experts and trend watchers anticipate continued momentum for several names. <strong>Malia</strong>, <strong>Hailey</strong>, and <strong>Emilio</strong> were specifically highlighted by Bielefeld as showing significant upward movement recently, suggesting they could crack the Top 10 soon. <strong>Luna</strong> is also frequently mentioned as gaining popularity, potentially fueled by the trend towards nature-inspired names. The retro names popular in Saxony (<strong>Gerda</strong>, <strong>Erika</strong>, <strong>Kurt</strong>, <strong>Erwin</strong>) are ones to watch, with the potential to spread more widely across Germany. Additionally, some sources point to an increase in floral names like <strong>Viola</strong>, <strong>Iris</strong>, and <strong>Rose</strong>.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Names Losing Steam?</h3>
+                <h3>Names Losing Steam?</h3>
                 <p>Conversely, some formerly popular names appear to be declining. <strong>Ben</strong>, once a top contender, has fallen out of the Top 10 in recent lists. <strong>Finn</strong>'s trajectory has been inconsistent, dropping significantly in the GfdS 2023 list but remaining strong in Bielefeld's 2024 data. External factors can also play a role; Bielefeld noted the name <strong>Meta</strong> sharply declined after the Facebook parent company adopted the name. Furthermore, certain names like <strong>Kevin</strong>, <strong>Mandy</strong>, <strong>Jacqueline</strong>, <strong>Greta</strong>, <strong>Justin</strong>, and <strong>Alexa</strong> may face headwinds due to negative stereotypes, specific associations (like Greta Thunberg or Amazon's Alexa), or simply falling out of fashion.</p>
                 <p>Tracking these rising and potentially falling names provides the clearest indication of how the German baby name landscape might evolve in the near future. Combining quantitative data like the "Aufsteiger" lists with qualitative trend analysis offers the most robust picture of likely shifts for 2025.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Beyond the Sound: The Meaning Behind the Monikers</h2>
+                <h2>Beyond the Sound: The Meaning Behind the Monikers</h2>
                 <p>For many parents, a name's meaning and origin are just as important as its sound. Delving into the etymology of popular German names reveals rich cultural, historical, and linguistic tapestry.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Deep Dive into Top/Trending Names:</h3>
+                <h3>Deep Dive into Top/Trending Names:</h3>
                 <ul class="space-y-2 text-base md:text-lg">
                     <li><strong>Emilia:</strong> This widely loved name has Latin roots, likely derived from the Roman family name Aemilius. Its meaning is often interpreted as "rival," "industrious," "eager," or "diligent". Its international appeal is strong.</li>
                     <li><strong>Noah:</strong> A name of Hebrew origin (Noach), profoundly significant in Abrahamic religions as the builder of the Ark. It means "rest," "comfort," or "peace". Its popularity transcends borders.</li>
@@ -288,27 +380,26 @@
                     <li><strong>Emma:</strong> A name with Germanic roots, derived from words meaning "universal," "whole," "great," or "all-encompassing". It's a powerful yet gentle name popular worldwide.</li>
                     <li><strong>Elias:</strong> The Greek form of the Hebrew name Elijah (Eliyahu), meaning "Yahweh is God" or "The Lord is my God". It honors a major biblical prophet known for his faith and miracles.</li>
                     <li><strong>Mia:</strong> Often considered a diminutive of Maria (from Hebrew Miriam), its precise meaning is debated. Interpretations range from "sea of bitterness" or "rebelliousness" to "wished-for child" or "star of the sea." It's frequently associated with the meaning "mine" in Romance languages or interpreted as "gift of God". Its short, sweet sound has made it an international hit.</li>
-                    <li><strong>Leon:</strong> Derived from the Greek word  leon  (via Latin  leo ), meaning "lion". It symbolizes strength, courage, and royalty, and is popular across Europe.</li>
+                    <li><strong>Leon:</strong> Derived from the Greek word  leon  (via Latin  leo ), meaning "lion". It symbolizes strength, courage, and royalty, and is popular across Europe.</li>
                     <li><strong>Lina:</strong> This name has multiple potential origins. It can be a short form of names like Paulina ("small") or Angelina ("angel"), a standalone German name meaning "tender," an Arabic name meaning "palm tree," or even derive from Greek, meaning "lament".</li>
-                    <li><strong>Theo:</strong> Typically a short form of Theodore (from Greek  Theos  "God" +  doron  "gift," meaning "gift of God") or Theobald (from Germanic  theud  "people" +  bald  "bold," meaning "bold people"). It has gained significant popularity as a standalone name.</li>
+                    <li><strong>Theo:</strong> Typically a short form of Theodore (from Greek  Theos  "God" +  doron  "gift," meaning "gift of God") or Theobald (from Germanic  theud  "people" +  bald  "bold," meaning "bold people"). It has gained significant popularity as a standalone name.</li>
                     <li><strong>Mohammed:</strong> An Arabic name meaning "praised" or "praiseworthy". As the name of the Prophet of Islam, it holds immense religious and cultural significance for Muslim families, often traditionally given to the firstborn son. It exists in many spelling variations and is considered the most common first name globally.</li>
                 </ul>
                 <p>The enduring presence of names with biblical or religious origins (Noah, Elias, Matteo, Sophia, Hannah, Mia/Maria, Paul, David, Adam) in the top German lists is significant. It suggests that even in an increasingly secular society, these names retain cultural resonance, connecting families to heritage, tradition, or simply conveying positive, timeless values.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">From Bavaria to Berlin: Regional Naming Nuances</h2>
+                <h2>From Bavaria to Berlin: Regional Naming Nuances</h2>
                 <p>While national rankings provide a broad overview, Germany's diverse regions exhibit distinct naming preferences, reflecting local traditions, demographics, and cultural identities.</p>
                 <ul class="space-y-2 text-base md:text-lg">
                     <li><strong>Berlin/Brandenburg & Urban Centers (Hamburg, Bremen):</strong> Reflecting greater diversity, the name <strong>Mohammed</strong> consistently ranks at or near the top for boys in these areas. In the combined 2024 ranking for Berlin and Brandenburg, <strong>Hannah</strong> and <strong>Mohammed</strong> took the #1 spots. Hamburg also shows preferences for names like Clara, Isa, Liam, Mads, and Mattis.</li>
                     <li><strong>Bavaria (South):</strong> Southern Germany often shows a preference for more traditional or regionally specific names. <strong>Leon</strong> frequently leads the boys' list here. Names like Felix, Lukas, Maximilian, Ludwig, Katharina, and Theresa are also more common than nationwide. <strong>Sophia</strong> is particularly strong for girls in the South.</li>
-                    <li><strong>Saxony (East):</strong> As mentioned, the East, particularly Saxony, is the heartland of the retro name revival (Kurt, Erwin, Gerda, Erika). In 2024, <strong>Mia</strong> and <strong>Matteo</strong> topped the Saxon charts. Other names like Emil, Oskar, Karl, Frieda, Mathilda, and Clara also rank highly, distinguishing the region's taste from the national average.</li>
+                    <li><strong>Saxony (East):</strong> As mentioned, the East, particularly Saxony, is the heartland of the retro name revival (Kurt, Erwin, Gerda, Erika). In 2024, <strong>Mia</strong> and <strong>Matteo</strong> topped the Saxon charts. Other names like Emil, Oskar, Karl, Frieda, Mathilda, Clara, and Leni also rank highly, distinguishing the region's taste from the national average.</li>
                     <li><strong>North (Lower Saxony, Schleswig-Holstein, Mecklenburg-Vorpommern):</strong> The North often sees <strong>Ella</strong> ranking very high for girls. <strong>Frieda</strong> was #1 in Mecklenburg-Vorpommern in 2023. While Noah is popular for boys, names like Matteo, Finn, Liam, Emil, Henry, and Levi also feature strongly. Unique Northern German or Scandinavian-influenced names like Fiete, Jonte, Lasse, Alva, Jeppe, Lönne, Fenna, Hanno, and Thies are also noted in these regions.</li>
                     <li><strong>West:</strong> Naming patterns in the West tend to align more closely with the national average, though <strong>Mohammed</strong> often ranks higher here than nationwide (e.g., #2 in Bielefeld's 2024 West German list). Noah typically leads for boys, followed by names like Matteo, Henry, and Elias. Emilia, Sophia, Lina, and Mia are popular choices for girls.</li>
                 </ul>
 
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Table 4: Regional Top Names Snapshot (Germany 2024)</h3>
-                 <div class="table-wrapper">
+                <h3>Table 4: Regional Top Names Snapshot (Germany 2024)</h3>
+                <div class="table-wrapper">
                     <table>
-                        <!-- Table Header -->
                         <thead>
                             <tr>
                                 <th>Region/State</th>
@@ -316,7 +407,6 @@
                                 <th>Top Boys' Names (Examples)</th>
                             </tr>
                         </thead>
-                         <!-- Table Data -->
                         <tbody>
                             <tr><td>Norddeutschland</td><td>1. Emilia, 2. Ella, 3. Emma</td><td>1. Matteo, 2. Noah, 3. Finn</td></tr>
                             <tr><td>Lower Saxony (2023)</td><td>1. Ella</td><td>1. Noah</td></tr>
@@ -333,78 +423,64 @@
                 <p class="text-sm text-medium-gray">Sources: Primarily based on Knud Bielefeld's 2024 regional analysis, supplemented with state-specific #1s. Note: GfdS 2023 data used for specific states where 2024 data wasn't available in snippets.</p>
                 <p>These regional variations are significant. They illustrate how naming choices can reflect underlying demographic shifts (like the prominence of Mohammed in diverse urban areas), cultural conservatism (stronger traditional names in Bavaria), or distinct historical trajectories (the retro trend in Saxony). National averages provide a useful benchmark, but they inevitably mask these fascinating local specificities.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Crystal Ball: Predicting the Top German Baby Names for 2025</h2>
+                <h2>Crystal Ball: Predicting the Top German Baby Names for 2025</h2>
                 <p>Predicting future name trends isn't an exact science, but analyzing current data and emerging patterns offers strong clues about what to expect in 2025.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Likely Top Contenders</h3>
+                <h3>Likely Top Contenders</h3>
                 <p>Given their sustained popularity, <strong>Emilia</strong>, <strong>Sophia</strong>, <strong>Emma</strong>, <strong>Mia</strong>, and <strong>Lina</strong> are strong bets to remain among the top choices for girls. For boys, <strong>Noah</strong>, <strong>Matteo</strong>, <strong>Elias</strong>, <strong>Leon</strong>, and <strong>Luca</strong> are likely to continue dominating the highest ranks. Some preliminary 2025 forecasts based on early data even suggest <strong>Emma</strong> and <strong>Matteo</strong> could claim the number one spots.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Continued Trends</h3>
+                <h3>Continued Trends</h3>
                 <p>The preference for <strong>short, vowel-rich, melodic names</strong> shows no signs of slowing down and is expected to continue shaping choices in 2025. The <strong>retro revival</strong>, particularly names like Gerda, Kurt, Erwin, and Erika, might gain further traction beyond its Eastern German origins. <strong>Nature-inspired names</strong> (Luna, Flora, River, Sky, Solea, Orion) and names influenced by <strong>celebrities and pop culture</strong> (Hailey, Lenny, Levi, Zayn) are also likely to remain influential factors.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Spotlight on Rising Stars</h3>
+                <h3>Spotlight on Rising Stars</h3>
                 <p>The names identified as "Shooting Stars" in Section VI are the ones most likely to climb higher in the 2025 rankings. Keep an eye on <strong>Lia</strong> and <strong>Liam</strong>, which already cracked the Top 10, and names like <strong>Malia</strong>, <strong>Hailey</strong>, <strong>Emilio</strong>, <strong>Luna</strong>, <strong>Elodie</strong>, <strong>Lior</strong>, <strong>Valentin</strong>, and the retro favorites <strong>Gerda</strong> and <strong>Erika</strong> as they potentially gain wider appeal.</p>
-                <h3 class="text-xl md:text-2xl text-dark-text pt-4 mb-3">Wildcards</h3>
+                <h3>Wildcards</h3>
                 <p>Unpredictable events can always influence naming trends. A hugely successful film or series, a major cultural moment, or the name choice of a high-profile celebrity could unexpectedly propel a name into the spotlight. The cautionary tale of the name Meta declining after the Facebook rebrand demonstrates that external factors can indeed have a tangible impact on parental choices.</p>
 
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Conclusion: Finding Your Perfect German Baby Name</h2>
+                <h2>Conclusion: Finding Your Perfect German Baby Name</h2>
                 <p>The world of German baby names in 2025 is a vibrant mix of the familiar and the fresh. While enduring favorites like Emilia, Sophia, Noah, and Matteo continue to dominate the top spots, reflecting a desire for established and well-loved names, several trends are reshaping the landscape. The preference for short, melodic names rich in vowels remains strong, lending a modern, gentle feel to many popular choices. A fascinating counterpoint is the retro revival, bringing back classic German names from generations past, particularly noticeable in the East. Meanwhile, rising stars like Lia, Liam, Malia, and Emilio signal the potential chart-toppers of tomorrow. Regional variations add another layer of complexity, showcasing how naming patterns reflect Germany's diverse cultural and demographic makeup.</p>
                 <p>For parents-to-be embarking on the wonderful journey of choosing a name, this information offers a wealth of inspiration. Consider the trends, explore the meanings and origins that resonate with you, and perhaps even glance at the regional charts. However, remember that statistics and trends are just guides. Pay attention to how a name sounds with your surname, think about potential nicknames, and ultimately, choose a name that you love and that feels right for your child. Trends may come and go, but the perfect name is timeless.</p>
 
-                {/* Works Cited Section */}
-                <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Works Cited</h2>
-                <ol class="text-xs text-medium-gray space-y-1 list-decimal list-inside break-words">
+                <h2>Works Cited</h2>
+                <ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
                     <li>Beliebte Vornamen 2024: Emilia und Noah, Mohammed und Gerda - ZDFheute, https://www.zdf.de/nachrichten/panorama/beliebte-vornamen-2024-emilia-noah-100.html</li>
                     <li>Die beliebtesten Vornamen des Jahres 2024 - beliebte-Vornamen.de, https://www.beliebte-vornamen.de/jahrgang/j2024</li>
-                    <!-- ... Add all other citations here ... -->
                     <li>Die beliebtesten Vornamen des Jahres 2025, https://www.beliebte-vornamen.de/jahrgang/j2025</li>
+                    <li>Gesellschaft für deutsche Sprache (GfdS) - Die beliebtesten Vornamen des Jahres 2023, https://gfds.de/die-beliebtesten-vornamen/</li>
+                    <li>Vorname Mohammed in Deutschland: Statistik, Herkunft und Bedeutung - beliebte-Vornamen.de, https://www.beliebte-vornamen.de/3509-mohammed.htm</li>
+                    <li>Regionalstatistik - beliebte-Vornamen.de, https://www.beliebte-vornamen.de/regionale-auswertung.htm</li>
+                    <li>Trendreport Vornamen 2024: Kurz, weich, international - familie.de, https://www.familie.de/schwangerschaft/vornamen/vornamen-trendreport-2024/</li>
+                    <li>Vornamen-Trends 2024: Kurz, weich, international - Elterngeld.de, https://www.elterngeld.de/vornamen-trends-2024/</li>
+                    <li>Vornamen-Trends 2025: Das sind die beliebtesten Babynamen - desired.de, https://www.desired.de/schwangerschaft/baby/babynamen/vornamen-trends-2025/</li>
+                    <li>Vornamen-Trends 2025: Diese Namen sind im Kommen - baby-vornamen.de, https://www.baby-vornamen.de/magazin/aktuelle_meldungen/vornamenstrends_2025.php</li>
                 </ol>
             </div>
-            <h2 class="text-2xl md:text-3xl text-dark-text pt-6 mb-4">Share This Post</h2>
-            <p>Share this post!</p>
-            <div>
-              <ul>
-                <li><a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank">Facebook</a></li>
-                <li><a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=YOUR_TEXT" target="_blank">Twitter</a></li>
-                <li><a href="mailto:?subject=Check%20out%20this%20post&body=YOUR_URL" target="_blank">Email</a></li>
-              </ul>
-            </div>
 
-            {/* Back link */}
+            <section class="mt-12">
+                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-4 text-center border-b pb-3">Share This Post</h2>
+                <div class="flex justify-center space-x-4 mt-6">
+                    <a href="#" class="social-share-link">
+                        <img src="../assets/facebook.png" alt="Share on Facebook" class="h-8 w-8 object-contain">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="social-share-link">
+                        <img src="../assets/twitter.png" alt="Share on Twitter" class="h-8 w-8 object-contain">
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-share-link">
+                        <img src="../assets/email.png" alt="Share via Email" class="h-8 w-8 object-contain">
+                        <span>Email</span>
+                    </a>
+                </div>
+            </section>
+
             <div class="text-center mt-12">
-                 <a href="../blog.html" class="text-lg hover:text-dark-text underline">&larr; Back to Blog Index</a>
+                 <a href="../blog.html" class="text-lg text-stork-accent hover:text-stork-accent-hover underline transition duration-200">&larr; Back to Blog Index</a>
             </div>
 
         </article>
     </main>
 
-    <!-- Horizontal Line -->
-    <hr class="border-t border-dashed border-accent-muted-light max-w-4xl mx-auto my-10 md:my-14">
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
+     </footer>
 
-    <!-- Footer -->
-    <footer class="text-center text-medium-gray text-base space-y-2">
-        <!-- Copyright -->
-        <p>&copy; 2025 The Stork Name Drop. All rights reserved.</p>
-         <p><a href="../aboutus.html" class="hover:text-dark-text underline">About Us</a> | <a
-                href="../datasources.html" class="hover:text-dark-text underline">Data Sources</a> | <a
-                href="../blog.html" class="hover:text-dark-text underline">Blog</a> | <a href="../affiliate.html"
-                class="hover:text-dark-text underline">Recommendations</a></p>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // DOM Elements
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const mobileMenu = document.getElementById('mobile-menu-content');
-
-        if (hamburgerBtn && mobileMenu) {
-            // Hamburger Button Click Event
-            hamburgerBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-            // Close Mobile Menu on Outside Click
-            document.addEventListener('click', (event) => {
-                if (!mobileMenu.contains(event.target) && !hamburgerBtn.contains(event.target) && !mobileMenu.classList.contains('hidden')) { mobileMenu.classList.add('hidden'); }
-            });
-        }
-    </script>
 </body>
 </html>
-```
-
-This should give you the complete page for your German names blog post, including the image and the full article te
