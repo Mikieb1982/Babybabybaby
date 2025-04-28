@@ -7,15 +7,16 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration - Copied from index page for consistency
+        // Tailwind CSS Configuration - Consistent across pages
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-                      serif: ['Georgia', 'serif'],
+                        sans: ['"Nunito Sans"', 'sans-serif'], // Custom default sans-serif font
+                        serif: ['Georgia', 'serif'],
                     },
                     colors: {
+                        // Custom color palette matching the site's theme
                         'stork-title': '#2C3E50',
                         'stork-text': '#34495E',
                         'stork-accent': '#1ABC9C',
@@ -43,6 +44,7 @@
                         'amber-500': '#f59e0b'
                     },
                     animation: {
+                        // Custom animations
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
@@ -53,8 +55,9 @@
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
                     keyframes: {
+                        // Definitions for custom animations
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -70,13 +73,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Basic styles - Copied from index page for consistency */
+        /* Basic styles - Consistent across pages */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
-        /* Form element styles - Copied from index page for consistency */
+        /* Form element styles - Consistent across pages */
         select, input[type="text"], input[type="radio"], input[type="range"] {
              @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
         }
@@ -84,91 +87,87 @@
         input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
         input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
 
-        /* Loader - Copied from index page for consistency */
+        /* Loader styles - Consistent across pages */
         .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1ABC9C; /* Stork Accent */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+             border: 4px solid #f3f3f3; /* Light grey */
+             border-top: 4px solid #1ABC9C; /* Stork Accent */
+             border-radius: 50%;
+             width: 40px;
+             height: 40px;
+             animation: spin 1s linear infinite;
+             margin: 20px auto;
         }
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+             0% { transform: rotate(0deg); }
+             100% { transform: rotate(360deg); }
         }
 
-        /* Name card styles - Copied from index page for consistency */
+        /* Name card styles - Consistent across pages */
          .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+             @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
          .name-card h3 {
-             @apply text-xl font-semibold text-stork-title mb-2;
+              @apply text-xl font-semibold text-stork-title mb-2;
          }
          .name-card p {
-             @apply text-stork-text mb-1 text-sm;
+              @apply text-stork-text mb-1 text-sm;
          }
          .name-card .tags span {
-             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
+              @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
          }
          .name-card .actions button {
-             @apply text-xs px-2 py-1 rounded mr-2;
+              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* Full height layout - Copied from index page for consistency */
+         /* Full height layout - Consistent across pages */
          html, body {
-             min-height: 100%;
-             display: flex;
-             flex-direction: column;
+              min-height: 100%;
+              display: flex;
+              flex-direction: column;
          }
          body {
-             flex-grow: 1;
-             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+              flex-grow: 1;
+              padding-top: 64px; /* Offset for fixed header */
          }
          main {
-             flex-grow: 1;
+              flex-grow: 1;
          }
 
-         /* Policy specific styles */
+         /* Policy specific styles - Consistent across policy pages */
          .policy-content h1 {
-             @apply text-3xl md:text-4xl text-stork-title font-bold mb-6 text-center border-b pb-3;
+              @apply text-3xl md:text-4xl text-stork-title font-bold mb-6 text-center border-b pb-3;
          }
          .policy-content h2 {
-             @apply text-2xl md:text-3xl text-stork-title font-semibold mt-8 mb-4 border-b pb-2;
+              @apply text-2xl md:text-3xl text-stork-title font-semibold mt-8 mb-4 border-b pb-2;
          }
          .policy-content h3 {
-              @apply text-xl md:text-2xl text-stork-title font-semibold mt-6 mb-3;
+               @apply text-xl md:text-2xl text-stork-title font-semibold mt-6 mb-3;
          }
          .policy-content p {
-             @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+              @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
          }
           .policy-content ul {
-             @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+              @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
          }
          .policy-content ul li {
-             @apply mb-2;
+              @apply mb-2;
          }
          .policy-content strong {
-             @apply font-semibold;
+              @apply font-semibold;
          }
          .policy-content a {
-             @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
+              @apply text-stork-accent hover:text-stork-accent-hover transition duration-200 underline; /* Added underline for clarity */
          }
-
 
     </style>
 </head>
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';"> </a>
 
             <nav class="flex space-x-4 sm:space-x-6 items-center">
                  <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
@@ -192,34 +191,52 @@
             <h1>Privacy Policy for The Stork Name Drop</h1>
 
             <p><strong>Effective Date:</strong> 28 April 2025</p>
+            <p><strong>Last Updated:</strong> 28 April 2025</p> <p>This Privacy Policy describes how The Stork Name Drop ("we," "us," or "our") collects, uses, and protects information when you use our website, thestorknamedrop.com (the "Service").</p>
 
-            <p>This Privacy Policy describes how The Stork Name Drop ("we," "us," or "our") collects, uses, and protects the limited personal information you may provide when using our website, thestorknamedrop.com (the "Service").</p>
+            <h2>1. Information We Collect</h2>
+            <p>We collect information in the following ways:</p>
+            <ul>
+                <li><strong>Information You Voluntarily Provide:</strong> If you choose to contact us via email at <a href="mailto:thestorknamedrop@gmail.com">thestorknamedrop@gmail.com</a>, you may provide personal information such as your name and email address. We use this information solely to respond to your inquiry or feedback.</li>
+                <li><strong>Usage Data (via Google Analytics):</strong> We use Google Analytics to understand how our Service is used. This helps us improve the website and user experience. Google Analytics collects data such as pages visited, time spent on pages, browser type, operating system, and approximate location (often derived from IP address, which may be anonymized by Google). This data is typically aggregated and does not directly identify you to us.</li>
+            </ul>
 
-            <h2>1. Information We Do Not Collect</h2>
-            <p>Our website is a static site. We do not currently use cookies, tracking technologies, or collect personal information such as names, email addresses, IP addresses, or browsing behavior.</p>
+            <h2>2. How We Use Information</h2>
+            <ul>
+                <li><strong>To Respond to Inquiries:</strong> Information provided via email is used solely to communicate with you regarding your specific request or feedback.</li>
+                <li><strong>To Improve Our Service:</strong> Aggregated usage data from Google Analytics helps us understand user behavior, identify popular features, troubleshoot issues, and enhance the overall functionality and content of the Service.</li>
+            </ul>
 
-            <h2>2. Information You May Voluntarily Provide</h2>
-            <p>If you choose to contact us via email at thestorknamedrop@gmail.com, you may voluntarily provide personal information such as your name and email address within the content of your message. We will use this information only to respond to your inquiry or feedback.</p>
+            <h2>3. Cookies and Tracking Technologies</h2>
+            <p>Google Analytics uses cookies to collect usage data. Cookies are small text files placed on your device. You can control the use of cookies at the individual browser level. If you reject cookies, you may still use our site, but your ability to use some features may be limited.</p>
+            <p>For more information on how Google uses data when you use our partners' sites or apps, please see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google's partner sites policy</a>.</p>
 
-            <h2>3. How We Use Information</h2>
-            <p>Any information you voluntarily provide via email will be used solely for the purpose of communicating with you and addressing your specific request or feedback.</p>
+            <h2>4. Google Analytics and Your Choices</h2>
+            <p>Google's ability to use and share information collected by Google Analytics about your visits to this site is restricted by the <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer">Google Analytics Terms of Use</a> and the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.</p>
+            <p>You can prevent your data from being used by Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout/" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+            <p>By using our Service, you consent to the processing of data about you by Google in the manner and for the purposes set out above and in Google's policies.</p>
 
-            <h2>4. Data Retention</h2>
+            <h2>5. Data Retention</h2>
             <p>We retain email correspondence for as long as necessary to resolve your inquiry or address your feedback.</p>
+            <p>Usage data collected by Google Analytics is retained according to Google's standard data retention policies, which may vary.</p>
 
-            <h2>5. Information Sharing</h2>
-            <p>We do not share any personal information you may provide via email with third parties, except as required by law.</p>
+            <h2>6. Information Sharing</h2>
+            <p>We do not sell or rent your personal information.</p>
+            <p>We do not share personal information you provide via email with third parties, except as required by law or to respond to your specific request (e.g., if necessary to involve a service provider, though this is unlikely for email inquiries).</p>
+            <p>Aggregated, non-personally identifiable usage data may be shared with third parties for analysis or reporting purposes, but this data does not identify individual users.</p>
 
-            <h2>6. Security</h2>
-            <p>We take reasonable steps to protect the limited information you may provide via email. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure.</p>
+            <h2>7. Security</h2>
+            <p>We take reasonable administrative and technical steps to protect the limited personal information you may provide via email and the integrity of our website. However, please be aware that no method of transmission over the internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee its absolute security.</p>
 
-            <h2>7. Links to Other Websites</h2>
-            <p>Our Service may contain links to other websites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+            <h2>8. Links to Other Websites</h2>
+            <p>Our Service may contain links to other websites that are not operated by us (e.g., links to data sources, Google policies). If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
 
-            <h2>8. Changes to This Privacy Policy</h2>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+            <h2>9. Children's Privacy</h2>
+            <p>Our Service is not intended for use by children under the age of 13 (or a higher age threshold depending on applicable law). We do not knowingly collect personally identifiable information from children. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us. If we become aware that we have collected personal information from children without verification of parental consent, we take steps to remove that information.</p>
 
-            <h2>9. Contact Us</h2>
+            <h2>10. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+
+            <h2>11. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us by email: <a href="mailto:thestorknamedrop@gmail.com">thestorknamedrop@gmail.com</a></p>
 
         </div>
@@ -227,8 +244,10 @@
     </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
-     </footer>
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a> </footer>
 
 </body>
 </html>
+```
+
+I've added sections detailing the collection of usage data via Google Analytics, information on cookies, links to Google's policies, and opt-out options. I also restructured the "Information We Collect" section slightly and added a "Last Updated" date. Finally, I updated the footer links to point to `privacy.html` and `terms.htm
