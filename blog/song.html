@@ -12,8 +12,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-                      serif: ['Georgia', 'serif'],
+                        sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                        serif: ['Georgia', 'serif'],
                     },
                     colors: {
                         'stork-title': '#2C3E50',
@@ -54,7 +54,7 @@
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -65,6 +65,7 @@
             }
         }
     </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
@@ -101,7 +102,7 @@
 
         /* Name card styles - Copied from index page for consistency */
          .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+             @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
          .name-card h3 {
              @apply text-xl font-semibold text-stork-title mb-2;
@@ -116,82 +117,82 @@
              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* Full height layout - Copied from index page for consistency */
-         html, body {
-             min-height: 100%;
-             display: flex;
-             flex-direction: column;
-         }
-         body {
-             flex-grow: 1;
-             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-         }
-         main {
-             flex-grow: 1;
-         }
+        /* Full height layout - Copied from index page for consistency */
+        html, body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            flex-grow: 1;
+            padding-top: 64px; /* Add padding to body to offset fixed header height (matching example) */
+        }
+        main {
+            flex-grow: 1;
+        }
 
-         /* Blog post specific styles */
-         .blog-post-image {
-             @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
-         }
+        /* Blog post specific styles */
+        .blog-post-image {
+            @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
+        }
 
-         .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
-             @apply text-stork-title font-semibold;
-         }
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
+            @apply text-stork-title font-semibold;
+        }
 
-         .blog-content h1 {
-             @apply text-3xl md:text-4xl mb-4 text-center;
-         }
-          .blog-content h2 {
-             @apply text-2xl md:text-3xl pt-6 mb-4;
-         }
-          .blog-content h3 {
-             @apply text-xl md:text-2xl pt-4 mb-3;
-         }
-          .blog-content h4 {
-             @apply text-lg md:text-xl pt-2 mb-2;
-         }
+        .blog-content h1 {
+            @apply text-3xl md:text-4xl mb-4 text-center;
+        }
+         .blog-content h2 {
+            @apply text-2xl md:text-3xl pt-6 mb-4;
+        }
+         .blog-content h3 {
+            @apply text-xl md:text-2xl pt-4 mb-3;
+        }
+         .blog-content h4 {
+            /* Using style from example provided in previous turn */
+            @apply text-xl md:text-2xl pt-4 mb-2 font-bold;
+        }
 
-         .blog-content p {
-             @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
-         }
+        .blog-content p {
+            @apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
+        }
 
-         .blog-content ul, .blog-content ol {
-             @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
-         }
+        .blog-content ul, .blog-content ol {
+            @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
+        }
 
-         .blog-content ul li, .blog-content ol li {
-             @apply mb-2;
-         }
+        .blog-content ul li, .blog-content ol li {
+            @apply mb-2;
+        }
 
-         .blog-content table {
-             @apply border-collapse w-full mb-6 text-sm;
-         }
+        .blog-content table {
+            @apply border-collapse w-full mb-6 text-sm;
+        }
 
-         .blog-content th, .blog-content td {
-             @apply border border-gray-300 p-3 text-left align-top;
-         }
+        .blog-content th, .blog-content td {
+            @apply border border-gray-300 p-3 text-left align-top;
+        }
 
-         .blog-content th {
-             @apply bg-gray-100 font-semibold text-stork-title;
-         }
+        .blog-content th {
+            @apply bg-gray-100 font-semibold text-stork-title;
+        }
 
-         .blog-content .table-wrapper {
-             @apply overflow-x-auto mb-6;
-         }
+        .blog-content .table-wrapper {
+            @apply overflow-x-auto mb-6;
+        }
 
-         .blog-content .text-medium-gray {
-             @apply text-medium-gray;
-         }
+        .blog-content .text-medium-gray {
+            @apply text-medium-gray; /* Uses the custom color */
+        }
 
-         .blog-content a {
-             @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
-         }
+        .blog-content a {
+            @apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
+        }
 
-         .social-share-link {
-             @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
-         }
-
+        .social-share-link {
+            @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
+        }
 
     </style>
     </head>
@@ -199,12 +200,9 @@
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
     <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+        <div class="container mx-auto flex justify-between items-center"> <a href="../index.html" title="The Stork Name Drop Home" class="z-20 flex-shrink-0">
                 <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
+                     class="h-12 w-12 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';"> </a>
 
             <nav class="flex space-x-4 sm:space-x-6 items-center">
                  <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
@@ -227,13 +225,11 @@
         <div id="blog-content">
             <article class="blog-content">
                 <img src="../assets/song.png"
-                      alt="Illustration depicting a musical note and a baby's block, representing the connection between music and baby names"
-                      class="blog-post-image"
-                      onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Song+Names+Image';">
+                     alt="Illustration depicting a musical note and a baby's block, representing the connection between music and baby names"
+                     class="blog-post-image"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Song+Names+Image';">
 
-                <div class="space-y-4 text-base md:text-lg leading-relaxed">
-
-                    <p>Music has this incredible power, doesn't it? A few notes can transport us back to a first kiss, a sun-drenched road trip, or a tearful goodbye. Songs become the soundtracks to our lives, weaving themselves into the fabric of our memories. So, is it any wonder that sometimes, when searching for that perfect name for a new arrival, parents find inspiration not in dusty old books, but blasting from their speakers? Naming a child after a beloved song or a character crooned about in lyrics is a trend that hits a high note for many. It’s personal, it’s often unique, and it definitely comes with a story. But before you name your little one after that chart-topper, let's take a spin through the world of song-inspired baby names – from the greatest hits to the potential B-sides.</p>
+                <div class="space-y-4"> <p>Music has this incredible power, doesn't it? A few notes can transport us back to a first kiss, a sun-drenched road trip, or a tearful goodbye. Songs become the soundtracks to our lives, weaving themselves into the fabric of our memories. So, is it any wonder that sometimes, when searching for that perfect name for a new arrival, parents find inspiration not in dusty old books, but blasting from their speakers? Naming a child after a beloved song or a character crooned about in lyrics is a trend that hits a high note for many. It’s personal, it’s often unique, and it definitely comes with a story. But before you name your little one after that chart-topper, let's take a spin through the world of song-inspired baby names – from the greatest hits to the potential B-sides.</p>
 
                     <h2>The Soundtrack of Our Lives: A Playlist of Names</h2>
                     <p>First things first: the sheer volume of names immortalized in song is staggering. Flick through any record collection (or streaming playlist), and you'll find a veritable who's who across every genre and decade imaginable. It seems lyricists have always loved naming names!</p>
@@ -243,18 +239,22 @@
 
                     <h2>Behind the Music: Stories of Iconic Song Names</h2>
                     <p>Some song names are so iconic, they feel like characters in their own right. Ever wondered about the real stories swirling behind those famous titles? The inspirations are often as dramatic, romantic, or intriguing as the songs themselves.</p>
+
                     <h3>"Layla" - Derek and the Dominos (Eric Clapton)</h3>
                     <p>Perhaps one of rock's most famous tales of unrequited love, "Layla" is steeped in agonizing passion. Eric Clapton penned the song in 1970 while desperately in love with Pattie Boyd, who happened to be married to his close friend, George Harrison of The Beatles. Clapton found a parallel to his situation in "The Story of Layla and Majnun," a 7th-century Arab story retold by the 12th-century Persian poet Nizami Ganjavi, given to him by a friend. The tale depicts a man driven mad by his forbidden love for the beautiful Layla, a story that resonated deeply with Clapton's own turmoil. He even directly confessed his feelings to Harrison.</p>
                     <p>The song itself has two distinct parts. The fiery rock section, featuring its legendary guitar riff (often attributed to guest guitarist Duane Allman, possibly inspired by an Albert King melody), captures the anguish. The contrasting, melancholic piano coda, credited to drummer Jim Gordon, adds a layer of sorrowful beauty. However, this piano part is controversial; both Clapton's bandmate Bobby Whitlock and Gordon's ex-girlfriend, singer Rita Coolidge, claim Gordon took the melody from a song Coolidge was writing called "Time" without giving her credit.</p>
                     <p>Ultimately, life imitated art, albeit years later. Boyd divorced Harrison in 1977 and married Clapton in 1979 (Harrison attended the wedding party). Clapton later wrote another hit, "Wonderful Tonight," for Boyd, though they eventually divorced in 1989. The song "Layla," initially released somewhat anonymously under the band name Derek and the Dominos, wasn't an immediate smash but gained traction after a single release in 1972. Its legendary status was cemented further by Clapton's acoustic version on his 1992 Unplugged album, which won a Grammy for Best Rock Song.</p>
+
                     <h3>"Jolene" - Dolly Parton</h3>
                     <p>"Jolene, Jolene, Jolene, Joleeeeene... I'm begging of you please don't take my man." That instantly recognizable plea comes straight from the heart, inspired by a real-life situation, though perhaps embellished for dramatic effect. Dolly Parton revealed the song stemmed from a statuesque, red-headed bank teller who showered her husband, Carl Dean, with a little too much attention shortly after they were married. "He just loved going to the bank because she paid him so much attention," Parton explained, adding it became a running joke between them. While Parton admitted feeling a twinge of insecurity ("She had everything I didn't... no matter how beautiful a woman might be, you're always threatened by other women, period"), she also clarified the situation wasn't as dire as the song implies.</p>
                     <p>Interestingly, the name "Jolene" didn't belong to the bank teller. Parton borrowed it from a beautiful, young, red-headed fan with green eyes who asked for her autograph after a show. Parton was so taken with the name's musicality ("That sounds like a song. I'm going to write a song about that") that she kept repeating it rhythmically on the way back to her bus so she wouldn't forget it.</p>
                     <p>Released in 1973, "Jolene" became Parton's second solo No. 1 country hit and her first top 10 hit in the UK. In a remarkable feat of songwriting prowess, Parton reportedly wrote "Jolene" around the same time she penned another of her most iconic hits, "I Will Always Love You". Decades later, Parton humorously thanked the anonymous bank teller during a performance: "Had it not been for that woman I would never have written 'Jolene' and I wouldn't have made all that money, so thank you, Jolene".</p>
+
                     <h3>"Rhiannon" - Fleetwood Mac (Stevie Nicks)</h3>
                     <p>Stevie Nicks' signature song, often introduced live as being about "an old Welsh witch," has an appropriately mystical origin story. Nicks discovered the name "Rhiannon" purely by chance in 1974, stumbling upon a paperback novel called Triad by Mary Bartlet Leader at a friend's house. The book tells the story of a woman possessed by a spirit named Rhiannon. Nicks was so captivated by the name itself that she sat down and wrote the song in about 10 minutes, envisioning Rhiannon as a mystical figure involved with birds and magic, even before knowing its deeper roots.</p>
                     <p>It wasn't until years later, around 1978, after the song had become a major hit for Fleetwood Mac following its 1975/76 release, that Nicks learned the name's true significance. A fan sent her books exploring Welsh mythology, including Evangeline Walton's adaptation of the Mabinogion, ancient Welsh prose tales. Nicks discovered that Rhiannon is a prominent figure in Welsh mythology – a powerful goddess associated with horses, birds, and sovereignty, possibly derived from the Celtic Rigantona ("great queen"). Nicks was astonished to find that the lyrics she had intuitively written aligned remarkably well with the mythological Rhiannon. This discovery sparked a long-term fascination, leading Nicks to research the mythology further and even plan a multimedia Rhiannon project (potentially now a TV miniseries) featuring other unreleased songs inspired by the legend.</p>
                     <p>The song's live performances became legendary, known for their theatrical intensity. Nicks would fully embody the character, leading drummer Mick Fleetwood to describe her rendition as being "like an exorcism". This powerful connection Nicks felt to the song and the character cemented "Rhiannon" as not just a hit, but a defining part of her persona.</p>
+
                     <h3>"Sweet Caroline" - Neil Diamond</h3>
                     <p>"Touching me... touching you..." Few songs invite a singalong quite like Neil Diamond's 1969 smash, "Sweet Caroline." But who is Caroline? Diamond himself has offered slightly different takes over the years, adding a layer of friendly mystery. For decades, the inspiration remained unknown. Then, in 2007, Diamond revealed the song was sparked by an image of President John F. Kennedy's young daughter, Caroline Kennedy. He saw a magazine photo of her in the early '60s, when he was a struggling songwriter – a picture of her dressed in riding gear next to her pony. "It was such an innocent, wonderful picture, I immediately felt there was a song in there," he recalled. He finally shared this origin story when performing the song via satellite for Caroline Kennedy's 50th birthday, saying she seemed "really, really happy" about it.</p>
                     <p>However, in a 2014 interview, Diamond offered a slightly different angle, stating the song was actually about his then-wife, Marcia Murphey, whom he married in 1969. The problem? He needed a three-syllable name to fit the melody, and "Marcia" just didn't scan. "So I had Caroline Kennedy's name from years ago in one of my books," he explained. "I tried 'Sweet Caroline,' and that worked". Perhaps the truth lies in a blend of both – the emotion inspired by Marcia, fitted to a name sparked years earlier by an innocent photo.</p>
@@ -278,7 +278,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Layla</td><td>Derek & the Dominos (1970/72)</td><td>Uncommon/Arabic origin</td><td>Entered charts post-song (1972: #974). Major surge much later, likely linked to 1992 Unplugged version. Steady climb since early 2000s.</td><td>Peak: #23 (2019). 2022: #29.</td><td>Popularity rise also potentially aided by similar names (Kayla).</td>
+                                <tr><td>Layla</td><td>Derek & the Dominos (1970/72)</td><td>Uncommon/Arabic origin</td><td>Entered charts post-song (1972: #974). Major surge much later, likely linked to 1992 Unplugged version. Steady climb since early 2000s.</td><td>Peak: #23 (2019). 2022: #29.</td><td>Popularity rise also potentially aided by similar names (Kayla).</td></tr>
                                 <tr><td>Rhiannon</td><td>Fleetwood Mac (1975/76)</td><td>Ancient Welsh, rare</td><td>Immediate impact. Entered US Top 1000 in 1976 (#593). Clear boost from song.</td><td>Peak: #418 (1977). 2023: #1153.</td><td>Classic example of a song popularizing an unfamiliar name.</td></tr>
                                 <tr><td>Jolene</td><td>Dolly Parton (1973/74)</td><td>Existing, declining</td><td>Reversed previous decline; significant popularity increase after song release. Re-entered Top 1000 in 2010, rising since.</td><td>2023: #548.</td><td>Shows song impact even with potentially negative character association.</td></tr>
                                 <tr><td>Caroline</td><td>Neil Diamond (1969) / Others</td><td>Established classic</td><td>Song is a famous association, but release didn't cause a major spike. Popularity high & steady for decades (Top 100 since 1994).</td><td>2023: #83.</td><td>Example of an established name being less affected by a single song hit.</td></tr>
@@ -295,16 +295,18 @@
 
                     <h2>Parental Advisory: The Pros and Cons of Musical Monikers</h2>
                     <p>So, you love a song, you love the name in it... should you use it for your baby? Beyond the charts and trends, naming a child is deeply personal. Choosing a name from a song comes with its own unique set of potential high notes and flat notes.</p>
+
                     <h3>The Pros (Why Parents Do It):</h3>
-                    <ul class="space-y-1">
+                    <ul>
                         <li><strong>A Personal Soundtrack:</strong> The biggest draw is often the sentimental value. The song might be "your song" as a couple, remind you of a cherished memory, or simply be by a favorite artist whose music means the world to you. Giving the name feels like weaving that personal history into your child's identity.</li>
                         <li><strong>A Built-In Story:</strong> "Where did you get my name?" It's a question many kids ask. A song-inspired name comes with a ready-made, often romantic or cool, backstory. It's a "bonus little nod" to something meaningful.</li>
                         <li><strong>Hitting the Right Note (Aesthetically):</strong> Sometimes, parents just fall in love with how the name sounds in the song, or the vibe it evokes. Hearing it sung can help parents picture it on a real person.</li>
                         <li><strong>Tribute Time:</strong> It can be a way to honor a beloved musician (like naming a child Hendrix, Lennon, or Presley) or admire the qualities associated with the song's character.</li>
                         <li><strong>Shared Harmony:</strong> The name taps into a piece of shared culture, creating potential moments of connection and nostalgia with others who know the song.</li>
                     </ul>
+
                     <h3>The Cons (Potential Challenges):</h3>
-                    <ul class="space-y-1">
+                    <ul>
                         <li><strong>The Endless Encore:</strong> Be prepared: people will sing the song. All. The. Time. If your daughter is named Jolene, Delilah, or Roxanne, she'll likely hear those opening bars more times than she can count. This might be fun initially but could become tiresome for the child over years.</li>
                         <li><strong>Off-Key Associations:</strong> What's the song really about? Is it a tale of heartbreak ("Layla"), infidelity ("Jolene"), drug references ("Lucy in the Sky with Diamonds"), or something just plain dated or potentially embarrassing ("Come On Eileen," "Stacy's Mom")? Consider the lyrical baggage the name carries. You might love the tune, but do you want your child associated with the theme?</li>
                         <li><strong>Character Overload:</strong> If a name is overwhelmingly tied to one specific song or character (think "Jolene" or more extreme fandom examples like "Anakin" or "Khaleesi"), it can be hard for the child to make the name their own. As one commenter noted, a child isn't a "bumper sticker for a Fandom". It's crucial to remember you're naming a future adult who needs a name that works in professional and personal life.</li>
@@ -312,13 +314,14 @@
                         <li><strong>Dated Discography:</strong> That song might be a hit now, but will it sound hopelessly stuck in a particular era later on? A name like Rosanna might feel very tied to the 80s for some. Considering the name's timelessness beyond the track is wise.</li>
                         <li><strong>The Regret Remix:</strong> Baby name regret is surprisingly common, affecting nearly 1 in 5 UK parents in one survey and 11% in a BabyCenter poll. Reasons vary – the name becomes too popular, it doesn't fit the child's personality, feeling pressured, or practical issues like spelling. While this applies to any name, the specific association with a song could potentially sour if your feelings about the song change, or if the downsides (like the constant singing) become overwhelming. Some parents do legally change their child's name, though it's generally advised to do so early. Sometimes, parents regret the name, but the child grows up liking it.</li>
                     </ul>
+
                     <h3>Finding the Harmony:</h3>
                     <p>Many parents find a happy medium by choosing a name they genuinely love on its own merits, where the song connection is a delightful bonus rather than the sole reason. Think names like Valerie, Jude, Michelle, or Eric – established names that happen to feature in famous songs. This differs from choosing a name solely because it's in a song, especially if the name itself is problematic or inextricably linked to a specific, perhaps limiting, context.</p>
                     <p>It's also worth remembering that the song's relevance can shift. A name tied to a 70s rock anthem might draw constant comments from grandparents but blank stares from peers. The cultural weight of the song association isn't fixed; it evolves with time and across generations. Ultimately, while the song provides the initial spark or a lovely layer of meaning, the name itself still needs to work – it should sound good, feel right, and be a name your child can grow with.</p>
 
                     <h2>Encore! Fun Facts and Musical Tidbits</h2>
                     <p>Before we fade out, here are a few extra tracks of trivia about names in songs:</p>
-                    <ul class="space-y-1">
+                    <ul>
                         <li><strong>Double Platinum:</strong> Dolly Parton reportedly wrote "Jolene" and "I Will Always Love You" within days, possibly even the same night. Talk about a creative streak!</li>
                         <li><strong>Guitar Hero:</strong> That haunting bird-like sound at the very end of the original "Layla"? That was guitarist Duane Allman making his instrument sing.</li>
                         <li><strong>Boston Strong:</strong> After the 2013 Boston Marathon bombing, Neil Diamond donated the royalties from the surge in "Sweet Caroline" sales to the One Fund Boston charity.</li>
@@ -336,16 +339,16 @@
                     <p>Now over to you! What are your favorite song names? Were you named after a tune, or have you ever considered it for your own kids? Share your playlist picks in the comments below!</p>
 
                     <h2>Works Cited</h2>
-                    <ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
+                    <ol class="text-sm text-medium-gray list-decimal list-inside break-words">
                         <li>All the song titles with names in them that I can think of (feel free to add) - Reddit, accessed April 22, 2025, https://www.reddit.com/r/namenerds/comments/gl993g/all_the_song_titles_with_names_in_them_that_i_can/</li>
                         <li>Baby Lullaby Songs: Lyrics & Meanings - The Bump, accessed April 22, 2025, https://www.thebump.com/a/lullabies</li>
-                         <li>The Story Behind Eric Clapton's 'Layla' - Ultimate Classic Rock, accessed April 22, 2025, https://ultimateclassicrock.com/eric-clapton-layla-story/</li>
-                         <li>The Real Story Behind Dolly Parton's 'Jolene' - Smooth Radio, accessed April 22, 2025, https://www.smoothradio.com/artists/dolly-parton/jolene-lyrics-meaning-story/</li>
-                         <li>The Meaning Behind The Song: Rhiannon by Fleetwood Mac - The Daily Universe, accessed April 22, 2025, https://universe.byu.edu/2018/02/27/the-meaning-behind-the-song-rhiannon-by-fleetwood-mac-jmb/</li>
-                         <li>The Story Behind Neil Diamond's 'Sweet Caroline' - Smooth Radio, accessed April 22, 2025, https://www.smoothradio.com/artists/neil-diamond/sweet-caroline-lyrics-meaning-story/</li>
-                         <li>Baby Name Regret Is Real: What To Do If You Hate Your Baby's Name - The Bump, accessed April 22, 2025, https://www.thebump.com/a/baby-name-regret</li>
-                         <li>11% of Moms Regret Their Baby's Name - BabyCenter, accessed April 22, 2025, https://www.babycenter.com/0_11-of-moms-regret-their-babys-name_10386532.bc</li>
-                         <li>SSA - Popular Baby Names - Social Security Administration, accessed April 22, 2025, https://www.ssa.gov/oact/babynames/</li>
+                        <li>The Story Behind Eric Clapton's 'Layla' - Ultimate Classic Rock, accessed April 22, 2025, https://ultimateclassicrock.com/eric-clapton-layla-story/</li>
+                        <li>The Real Story Behind Dolly Parton's 'Jolene' - Smooth Radio, accessed April 22, 2025, https://www.smoothradio.com/artists/dolly-parton/jolene-lyrics-meaning-story/</li>
+                        <li>The Meaning Behind The Song: Rhiannon by Fleetwood Mac - The Daily Universe, accessed April 22, 2025, https://universe.byu.edu/2018/02/27/the-meaning-behind-the-song-rhiannon-by-fleetwood-mac-jmb/</li>
+                        <li>The Story Behind Neil Diamond's 'Sweet Caroline' - Smooth Radio, accessed April 22, 2025, https://www.smoothradio.com/artists/neil-diamond/sweet-caroline-lyrics-meaning-story/</li>
+                        <li>Baby Name Regret Is Real: What To Do If You Hate Your Baby's Name - The Bump, accessed April 22, 2025, https://www.thebump.com/a/baby-name-regret</li>
+                        <li>11% of Moms Regret Their Baby's Name - BabyCenter, accessed April 22, 2025, https://www.babycenter.com/0_11-of-moms-regret-their-babys-name_10386532.bc</li>
+                        <li>SSA - Popular Baby Names - Social Security Administration, accessed April 22, 2025, https://www.ssa.gov/oact/babynames/</li>
                     </ol>
                 </div>
 
@@ -369,7 +372,7 @@
 
                 <div class="text-center mt-12">
                      <a href="../blog.html" class="text-lg text-stork-accent hover:text-stork-accent-hover underline transition duration-200">&larr; Back to Blog Index</a>
-                </div>
+                 </div>
 
             </article>
         </div>
@@ -381,4 +384,3 @@
 
      </body>
 </html>
-
