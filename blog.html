@@ -54,7 +54,7 @@
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -352,7 +352,7 @@
                         // Inject the extracted content into the full blog post view
                         fullBlogPostView.querySelector('.container').innerHTML = blogContent.innerHTML; // Use innerHTML to get content inside the element
 
-                        // Add the class to hide the blog list
+                        // Add the class to hide the blog list *after* content is loaded
                         body.classList.add('showing-post');
 
                          // Scroll to top of the post view
@@ -362,14 +362,14 @@
                         // Handle case where content element is not found
                         fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Could not load blog post content.</p>';
                          // Still hide the blog list even if content failed
-                         body.classList.add('showing-post');
+                         body.classList.add('showing-post'); // Keep list hidden if post view is active but failed
                     }
 
                  } catch (error) {
                      console.error('Error fetching or parsing blog post:', error);
                      fullBlogPostView.querySelector('.container').innerHTML = '<p class="text-center text-error-red">Error loading blog post.</p>';
                       // Still hide the blog list even if fetching failed
-                      body.classList.add('showing-post');
+                      body.classList.add('showing-post'); // Keep list hidden if post view is active but failed
                  }
             };
 
@@ -423,10 +423,16 @@
             // Trigger dealing animation on initial load if not already showing a post
              // We need to check if the URL already points to a blog post
              const initialPath = window.location.pathname;
-             const isBlogPostUrl = cardLinks.some(link => initialPath.endsWith(link.getAttribute('href')));
+             // Find the correct link element to get the exact URL if it exists
+             const activeLink = Array.from(cardLinks).find(link => initialPath.endsWith(link.getAttribute('href')));
+             const isBlogPostUrl = !!activeLink; // Check if an active link was found
+
 
             if (!isBlogPostUrl) {
-                // If it's just the blog list page, trigger the dealing animation
+                // If it's just the blog list page (no post URL in history), show the list
+                showBlogList(); // Ensure list is visible and state is correct
+
+                // Trigger the dealing animation
                  setTimeout(() => {
                       blogListContainer.classList.add('is-dealt');
                       blogCards.forEach((card, index) => {
@@ -434,25 +440,22 @@
                       });
                  }, 100); // Short delay before starting animation
 
-                 // Push initial state for the blog list page
+                 // Replace initial state for the blog list page
                  history.replaceState({ view: 'blog-list' }, '', window.location.href);
 
             } else {
                  // If the page was loaded directly with a blog post URL, show the post
-                 // Find the correct link element to get the exact URL
-                 const activeLink = Array.from(cardLinks).find(link => initialPath.endsWith(link.getAttribute('href')));
+                 // activeLink is already found above
                  if(activeLink) {
                       showBlogPost(activeLink.href);
                       // Replace history state for the initial blog post view
                       history.replaceState({ postUrl: activeLink.href }, '', window.location.href);
                  } else {
-                      // Fallback if URL looks like a post but doesn't match a link
+                      // Fallback - should not happen if isBlogPostUrl is true, but good practice
                       showBlogList();
                       history.replaceState({ view: 'blog-list' }, '', window.location.href);
                  }
             }
-
-
         });
     </script>
 
