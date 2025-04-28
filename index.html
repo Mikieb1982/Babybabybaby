@@ -514,7 +514,7 @@
              }
 
              // Example: Show famous namesakes section if data exists (replace with actual logic)
-             if (name.famous_namesakes && name.famous_namesakes.length > 0) {
+             if (name.famous_namesakes && name.famous_akes && name.famous_namesakes.length > 0) {
                  famousNamesakesSection.classList.remove('hidden');
                  famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p>${item}</p>`).join('');
              } else {
