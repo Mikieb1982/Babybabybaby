@@ -2,306 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Blog - The Stork Name Drop</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog - Layout Fix</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    // Tailwind CSS Configuration - Copied from index page for consistency
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Nunito Sans"', 'sans-serif'],
-            serif: ['Georgia', 'serif'],
-          },
-          colors: {
-            'stork-title': '#2C3E50',
-            'stork-text': '#34495E',
-            'stork-accent': '#1ABC9C',
-            'stork-accent-hover': '#16A085',
-            'soft-beige': '#F5F5DC',
-            'dark-text': '#374151',
-            'medium-gray': '#6B7280',
-            'button-active': '#60A5FA',
-            'button-active-hover': '#3B82F6',
-            'button-inactive-hover-bg': '#F9FAFB',
-            'button-inactive-hover-border': '#1F2937',
-            'error-red': '#EF4444',
-            'save-button': '#34D399',
-            'save-button-hover': '#059669',
-            'remove-button': '#F87171',
-            'remove-button-hover': '#DC2626',
-            'copy-button': '#9CA3AF',
-            'copy-button-hover': '#4B5563',
-            'accent-muted': '#64748b',
-            'accent-muted-light': '#cbd5e1',
-            'off-white': '#f8fafc',
-            'indigo-100': '#e0e7ff',
-            'indigo-700': '#4338ca',
-            'amber-100': '#fef3c7',
-            'amber-500': '#f59e0b'
-          },
-          animation: {
-            'fade-in': 'fade-in 0.5s ease-out',
-            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'fade-in-down': 'fade-in-down 0.5s ease-out',
-            'fade-out-up': 'fade-out-up 0.5s ease-out',
-            'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-            'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-            'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-            'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-          },
-          keyframes: {
-            'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-            'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-            'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-            'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-            'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-            'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-            'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-          },
-        }
-      }
-    }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Added CSS Rule --- */
-        *, *:before, *:after {
-          box-sizing: border-box;
-        }
-        /* --- End Added CSS Rule --- */
-
-        /* Basic styles - Copied from index page for consistency */
-        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
-        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
-        .btn-feedback { @apply transform active:scale-95; }
-
-        /* Form element styles - Copied from index page for consistency */
-        select, input[type="text"], input[type="radio"], input[type="range"] {
-            @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
-        }
-        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
-        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
-        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
-
-        /* Loader - Copied from index page for consistency */
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1ABC9C; /* Stork Accent */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Name card styles - Copied from index page for consistency */
-        .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
-        }
-        .name-card h3 {
-            @apply text-xl font-semibold text-stork-title mb-2;
-        }
-        .name-card p {
-            @apply text-stork-text mb-1 text-sm;
-        }
-        .name-card .tags span {
-            @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
-        }
-        .name-card .actions button {
-            @apply text-xs px-2 py-1 rounded mr-2;
-        }
-
-        /* Full height layout - Copied from index page for consistency */
-        html, body {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+        /* --- Minimal CSS for Flip Card Structure --- */
         body {
-            flex-grow: 1;
-            padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-        }
-        main {
-            flex-grow: 1;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
         }
 
-        /* Blog specific styles */
-        .blog-post-summary-container {
-            /* Removed centering as flip card handles layout */
-        }
-
-        /* Adjusted grid for mobile */
-        #blog-list-container {
-            @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
-        }
-
-        /* --- Card Flip Animation CSS (Positioning Restored) --- */
+        /* Basic container for the card */
         .flip-card {
-            background-color: transparent;
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            /* perspective: 1000px; */ /* DEBUG: Keep commented */
-            font-family: '"Nunito Sans"', sans-serif;
-            border-radius: 0.5rem;
-            /* border: 2px dashed red; */ /* DEBUG: Removed */
-            overflow: hidden;
+            width: 300px;  /* Or your desired card width */
+            height: 250px; /* Or your desired card height */
+            margin-bottom: 1.5rem; /* Spacing */
+            border-radius: 0.5rem; /* Rounded corners */
+            position: relative; /* Needed for absolute positioning of children if we add it back */
+             /* We'll add perspective later */
         }
 
+        /* Inner container */
         .flip-card-inner {
-            position: relative;
             width: 100%;
             height: 100%;
-            text-align: center;
-            /* transition: transform 0.8s; */ /* DEBUG: Keep commented */
-            /* transform-style: preserve-3d; */ /* DEBUG: Keep commented */
-            border-radius: 0.5rem;
+            border-radius: 0.5rem; /* Match parent */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Basic shadow */
+            /* We'll add transform styles later */
+            position: relative; /* Ensure it contains positioned children */
         }
 
-        /* DEBUG: Keep hover effect commented */
-        /* .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        } */
-
-        .flip-card-front, .flip-card-back {
-            position: absolute; /* Restored */
-            width: 100%;
-            height: 100%; /* Restored */
-            -webkit-backface-visibility: hidden; /* Restored */
-            backface-visibility: hidden; /* Restored */
-            border-radius: 0.5rem;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
+        /* Front and Back faces - STARTING SIMPLE */
+        .flip-card-front,
+        .flip-card-back {
+             width: 100%;
+             height: 100%;
+             border-radius: 0.5rem; /* Match parent */
+             padding: 1rem;
+             display: flex; /* Use flex to center content */
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+             text-align: center;
+             /* CRITICAL: Remove absolute positioning for now to test layout */
+             /* position: absolute; */
+             /* backface-visibility: hidden; */
         }
 
+        /* Basic styling for front */
         .flip-card-front {
             background-color: #ffffff;
             color: black;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            /* min-height: 150px; */ /* DEBUG: Removed */
-            /* border: 1px solid blue; */ /* DEBUG: Removed */
+            border: 1px solid #e5e7eb;
+            /* Initially, only the front is visible */
         }
 
-        .flip-card-front img {
-             /* Ensure image fills the front face and respects aspect ratio */
-             @apply w-full h-full object-cover rounded-lg block;
-        }
-
+        /* Basic styling for back - HIDE IT FOR NOW */
         .flip-card-back {
-            background-color: theme('colors.stork-accent');
+            background-color: #4f46e5;
             color: white;
-            /* transform: rotateY(180deg); */ /* DEBUG: Keep commented */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            padding: 1rem;
-            /* min-height: 100px; */ /* DEBUG: Removed */
-            /* border: 1px solid green; */ /* DEBUG: Removed */
+            border: 1px solid #4f46e5;
+            display: none; /* Hide the back completely for this layout test */
+            /* transform: rotateY(180deg); */ /* Remove transform for now */
         }
-        /* --- End Card Flip Animation CSS --- */
 
+        /* We will add the hover effect later */
+        /* .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        } */
+        /* .flip-card:hover .flip-card-front {
+             display: none;
+        } */
+        /* .flip-card:hover .flip-card-back {
+             display: flex;
+        } */
+
+        /* --- End of Custom CSS --- */
     </style>
 </head>
+<body class="p-8">
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+    <div class="text-center mb-12">
+         <h1 class="text-4xl font-bold mb-4">BLOG</h1>
+         <p class="text-lg text-gray-600">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+    </div>
 
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
 
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
-                <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                <a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-                <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-            </nav>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                {/* Front Side Content - Should be visible */}
+                <div class="flip-card-front">
+                    <h2 class="text-xl font-semibold mb-2">Choosing a Middle Name</h2>
+                    <p class="text-gray-600 text-sm">Tips for rhythm, meaning, and tradition.</p>
+                </div>
+                {/* Back Side Content - Should be hidden by display:none */}
+                <div class="flip-card-back">
+                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                    <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
+                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <section id="showcase" class="py-6 md:py-10 text-center relative">
-        <img src="assets/blog.png" alt="The Stork Name Drop Blog Title"
-             class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
-             onerror="this.onerror=null; this.src='https://placehold.co/768x150/ffffff00/2C3E50?text=The+Stork+Name+Drop+Blog'; this.style.border='1px dashed #ccc';">
-        <p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
-    </section>
-
-    <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
-
-        <div id="blog-list-container"> <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
-                    </div>
-                    <div class="flip-card-back">
-                        <h3 class="text-lg font-semibold mb-2">Song Inspired Names</h3>
-                        <p class="text-sm mb-4">Discover baby names inspired by popular songs and artists.</p>
-                        <a href="blog/song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                     <h2 class="text-xl font-semibold mb-2">Another Blog Post</h2>
+                     <p class="text-gray-600 text-sm mb-4">A summary of this post goes here.</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                    <p class="text-sm mb-4">Click below to read the full article.</p>
+                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
                 </div>
             </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
-                    </div>
-                    <div class="flip-card-back">
-                        <h3 class="text-lg font-semibold mb-2">German Names 2025</h3>
-                        <p class="text-sm mb-4">Explore predictions for popular German baby names in 2025.</p>
-                        <a href="blog/german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
-                    </div>
+        </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                     <h2 class="text-xl font-semibold mb-2">Third Article Title</h2>
+                     <p class="text-gray-600 text-sm mb-4">Brief description of the third post.</p>
+                </div>
+                <div class="flip-card-back">
+                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                    <p class="text-sm mb-4">Find out more about this topic.</p>
+                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
                 </div>
             </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
-                    </div>
-                    <div class="flip-card-back">
-                         <h3 class="text-lg font-semibold mb-2">Perfect Middle Name</h3>
-                         <p class="text-sm mb-4">Tips for choosing a middle name based on rhythm, meaning, and tradition.</p>
-                         <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
-                    </div>
-                    <div class="flip-card-back">
-                         <h3 class="text-lg font-semibold mb-2">Unique English Names</h3>
-                         <p class="text-sm mb-4">Explore the reasons why choosing a less common English name might be right for you.</p>
-                         <a href="blog/uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-        </div> </main> <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-        © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
-    </footer>
+        </div>
+        </div>
 
 </body>
 </html>
 ```
 
-Please try this version. If the layout is now correct (four cards, responsive grid, each showing only the front image which fills the card space), then we can proceed to re-enable the 3D transforms and the hover effect in the next st
+**Changes Made:**
+
+1.  **Removed Absolute Positioning:** Commented out `position: absolute` on `.flip-card-front` and `.flip-card-back`. This is the most likely cause of the layout breaking within the grid.
+2.  **Hid Back Face:** Set `display: none;` on `.flip-card-back`. For now, we just want to see the front face rendering correctly in the grid.
+3.  **Removed Transforms/Animation CSS:** Commented out `perspective`, `transform-style`, `backface-visibility`, `transform`, and the `:hover` rules.
+
+**What to Expect:**
+
+With this code, you should **not** see the flip animation. Instead, you should see your blog cards laid out correctly in the grid, each showing only its "front" content. The white rectangle issue should be gone.
+
+**Next Steps:**
+
+1.  **Test this code.** Does it fix the white rectangle problem and show the cards correctly in the grid?
+2.  **If yes:** We can then carefully re-introduce the CSS needed for the flip (absolute positioning, transforms, hover effects) one step at a time to see exactly which rule causes the conflict.
+3.  **If no:** There might be a deeper conflict or an error in how the HTML structure was applied. Double-check that each card has the exact `flip-card > flip-card-inner > flip-card-front + flip-card-back` structu
