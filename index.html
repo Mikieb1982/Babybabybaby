@@ -19,8 +19,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                      sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-                      serif: ['Georgia', 'serif'],
+                        sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                        serif: ['Georgia', 'serif'],
                     },
                     colors: {
                         'stork-title': '#2C3E50',
@@ -58,15 +58,21 @@
                         'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                        'blink-caret': 'blink-caret .75s step-end infinite' // Added blink animation
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
                         'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                        /* Added blink keyframes */
+                        'blink-caret': {
+                          'from, to': { borderColor: 'transparent' },
+                          '50%': { borderColor: '#1ABC9C' } /* Use stork-accent color */
+                        }
                     },
                 }
             }
@@ -108,10 +114,12 @@
 
         /* Name card styles */
          .name-card {
-            @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
+             @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
          .name-card h3 {
              @apply text-xl font-semibold text-stork-title mb-2;
+             /* Add min-height to prevent layout shift during typing */
+             min-height: 1.75rem; /* Adjust based on font size/line height */
          }
          .name-card p {
              @apply text-stork-text mb-1 text-sm;
@@ -123,6 +131,25 @@
              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
+         /* Typewriter Effect Styles */
+         .typewriter-target {
+            /* Style for the element where typing happens */
+            display: inline-block; /* Or block, depending on layout */
+            overflow: hidden; /* Ensures text doesn't wrap */
+            white-space: nowrap; /* Keeps text on a single line */
+         }
+         .typewriter-target.typing::after {
+            content: '|'; /* Cursor character */
+            display: inline-block;
+            /* Use Tailwind animation utility */
+            animation: blink-caret .75s step-end infinite;
+            /* Or define animation directly:
+            animation: blink-caret 0.75s step-end infinite; */
+            margin-left: 2px; /* Space between text and cursor */
+            vertical-align: baseline;
+            color: #1ABC9C; /* Cursor color */
+         }
+
          /* Full height layout */
          html, body {
              min-height: 100%;
@@ -132,6 +159,8 @@
          body {
              flex-grow: 1;
              padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
+             font-family: 'Nunito Sans', sans-serif; /* Ensure correct font */
+             color: #34495E; /* Default text color */
          }
          main {
              flex-grow: 1;
@@ -234,31 +263,31 @@
         </fieldset>
 
          <section id="results-section" class="mt-12 animate-fade-in">
-            <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
-            <div id="results-container" class="min-h-[100px] relative">
-                 <div id="loading-indicator" class="loader" style="display: none;"></div>
-                 <div id="result-display" class="text-stork-text">
-                    <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
+             <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
+             <div id="results-container" class="min-h-[100px] relative">
+                  <div id="loading-indicator" class="loader" style="display: none;"></div>
+                  <div id="result-display" class="text-stork-text">
+                      <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
+                  </div>
+                  <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
+             </div>
+         </section>
+
+         <hr class="my-10 border-gray-300">
+
+         <div id="additional-info" class="space-y-10">
+             <section id="related-names-section" class="hidden">
+                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
+                 <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+             </section>
+
+             <section id="famous-namesakes-section" class="hidden">
+                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
+                 <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
+                     <p class="text-center text-medium-gray italic">No information available yet.</p>
                  </div>
-                 <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
-            </div>
-        </section>
-
-        <hr class="my-10 border-gray-300">
-
-        <div id="additional-info" class="space-y-10">
-            <section id="related-names-section" class="hidden">
-                <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
-                <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
-            </section>
-
-            <section id="famous-namesakes-section" class="hidden">
-                <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
-                <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
-                    <p class="text-center text-medium-gray italic">No information available yet.</p>
-                </div>
-            </section>
-        </div>
+             </section>
+         </div>
 
     </main>
 
@@ -286,60 +315,49 @@
         const famousNamesakesSection = document.getElementById('famous-namesakes-section');
 
         // --- State Variables ---
-        let nameDatabase = []; // This will now hold the data for the *currently selected* language
+        let nameDatabase = []; // Holds data for the currently selected language
         let dataLoaded = false;
         let currentName = null;
+        let typingInterval = null; // To manage the typewriter interval
 
         // --- Functions ---
 
         // Function to fetch name data based on selected language
         async function loadNameData(language) {
             let filename = 'names.json'; // Default or fallback
-            if (language === 'english') {
-                filename = 'english_names.json';
-            } else if (language === 'german') {
-                filename = 'german_names.json';
-            } else if (language === 'japanese') {
-                filename = 'japanese_names.json';
-            } else if (language === 'spanish') {
-                filename = 'spanish_names.json';
-            } else if (language === 'french') {
-                 filename = 'french_names.json';
-            } else if (language === 'italian') {
-                 filename = 'italian_names.json';
-            }
-            // Add more languages here as needed
+            if (language === 'english') filename = 'english_names.json';
+            else if (language === 'german') filename = 'german_names.json';
+            else if (language === 'japanese') filename = 'japanese_names.json';
+            else if (language === 'spanish') filename = 'spanish_names.json';
+            else if (language === 'french') filename = 'french_names.json';
+            else if (language === 'italian') filename = 'italian_names.json';
+            // Add more languages here
 
             console.log(`Attempting to load data from: ${filename}`);
-
-            // Show loading state
             dataLoaded = false;
             generateBtn.textContent = 'Loading Names...';
             generateBtn.disabled = true;
             resultsPlaceholder.textContent = `Loading ${language === 'all' ? 'all' : language} name data...`;
+            resultsPlaceholder.style.display = 'block';
+            resultDisplay.innerHTML = ''; // Clear previous results
             resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
             resultsPlaceholder.classList.add('text-medium-gray');
 
-
             try {
                 const response = await fetch(filename);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 const data = await response.json();
-                nameDatabase = data; // Update the nameDatabase with the new data
+                nameDatabase = data;
                 dataLoaded = true;
                 console.log(`${filename} loaded successfully. ${nameDatabase.length} names found.`);
-
                 resultsPlaceholder.textContent = 'Click "Generate Name" to see a result.';
                 resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
                 resultsPlaceholder.classList.add('text-medium-gray');
                 generateBtn.textContent = 'Generate Name';
                 generateBtn.disabled = false;
-
             } catch (error) {
                 console.error(`Could not load name data from ${filename}:`, error);
-                nameDatabase = []; // Clear data on error
+                nameDatabase = [];
                 dataLoaded = false;
                 resultsPlaceholder.textContent = `Error loading ${language === 'all' ? 'all' : language} name data. Please try again later.`;
                 resultsPlaceholder.classList.remove('text-medium-gray', 'text-stork-text');
@@ -362,7 +380,7 @@
          // Function to generate alphabet buttons
          function generateAlphabetButtons() {
              const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-             firstLetterInputsContainer.innerHTML = ''; // Clear existing buttons
+             firstLetterInputsContainer.innerHTML = ''; // Clear existing
 
              const anyBtn = document.createElement('button');
              anyBtn.textContent = 'Any';
@@ -381,7 +399,7 @@
                  button.addEventListener('click', handleLetterSelection);
                  firstLetterInputsContainer.appendChild(button);
              });
-             setActiveLetterButton(anyBtn); // Set 'Any' as active initially
+             setActiveLetterButton(anyBtn); // Set 'Any' active initially
          }
 
          // Function to handle letter button selection
@@ -389,7 +407,6 @@
              const selectedLetter = event.target.dataset.letter;
              selectedLetterInput.value = selectedLetter;
              console.log(`Selected letter: ${selectedLetter}`);
-             // Update active button style
              document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
                  btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
                  btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
@@ -404,35 +421,17 @@
              button.classList.add('btn-primary', 'text-white', 'border-stork-accent');
          }
 
-
-        // Function to filter names based on criteria (now filters the currently loaded nameDatabase)
+        // Function to filter names based on criteria
         function filterNames() {
             const gender = document.querySelector('input[name="gender"]:checked').value;
-            // Language filtering is now handled by loading the correct file,
-            // but we might still use the languageSelect value for display or future features.
             const selectedLanguageValue = languageSelect.value;
             const firstLetter = selectedLetterInput.value.toLowerCase();
             const length = document.querySelector('input[name="length"]:checked').value;
             const styleValue = parseInt(styleSlider.value);
 
-            // Basic filtering applied to the currently loaded nameDatabase
             let filtered = nameDatabase.filter(name => {
-                // Gender filter
-                if (gender !== 'any' && name.gender && name.gender.toLowerCase() !== gender) {
-                    return false;
-                }
-                 // Origin filter (optional, if you want to filter within a loaded file)
-                 // If you have 'all' names loaded, you might filter by origin here.
-                 // If you load specific language files, this filter might be less relevant.
-                 // if (selectedLanguageValue !== 'all' && name.origin && name.origin.toLowerCase().indexOf(selectedLanguageValue) === -1) {
-                 //     return false;
-                 // }
-
-                // First letter filter
-                if (firstLetter !== '' && name.name.toLowerCase().charAt(0) !== firstLetter) {
-                    return false;
-                }
-                // Length filter
+                if (gender !== 'any' && name.gender && name.gender.toLowerCase() !== gender) return false;
+                if (firstLetter !== '' && name.name.toLowerCase().charAt(0) !== firstLetter) return false;
                 if (length !== 'any') {
                     const nameLength = name.name.length;
                     if (length === 'short' && (nameLength < 3 || nameLength > 5)) return false;
@@ -442,38 +441,67 @@
                 return true;
             });
 
-            // Style filtering (simplified example - needs actual data/logic for traditional/unique scoring)
-            // This is a placeholder. Real implementation would require a 'style' score in your data.
-            // Assuming a 'style_score' property exists in your JSON data (e.g., 0 for traditional, 100 for unique)
-            if (styleValue < 50) { // More traditional
+            // Style filtering placeholder
+            if (styleValue < 50) {
                  filtered.sort((a, b) => (a.style_score || 0) - (b.style_score || 0));
-            } else if (styleValue > 50) { // More unique
+            } else if (styleValue > 50) {
                  filtered.sort((a, b) => (b.style_score || 0) - (a.style_score || 0));
             }
-            // If value is 50 (Balanced), no specific style sorting is applied here.
-
             return filtered;
         }
 
-        // Function to display a single generated name
+        // --- NEW: Typewriter Effect Function ---
+        function typewriterEffect(text, element, speed = 100) { // speed in milliseconds
+            // Clear any existing typing interval
+            if (typingInterval) {
+                clearInterval(typingInterval);
+                typingInterval = null;
+            }
+
+            element.textContent = ''; // Clear target element
+            element.classList.add('typing'); // Add class for cursor
+            let i = 0;
+
+            typingInterval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingInterval); // Stop interval when done
+                    typingInterval = null;
+                    element.classList.remove('typing'); // Remove cursor class
+                }
+            }, speed);
+        }
+
+
+        // --- MODIFIED: Function to display a single generated name ---
         function displayGeneratedName(name) {
             resultDisplay.innerHTML = ''; // Clear previous result
             resultsMessage.style.display = 'none'; // Hide message
+
+            // Stop any previous typewriter effect immediately
+             if (typingInterval) {
+                clearInterval(typingInterval);
+                typingInterval = null;
+            }
 
             if (!name) {
                 resultsPlaceholder.textContent = 'No names found matching your criteria. Try adjusting your filters.';
                 resultsPlaceholder.classList.remove('text-medium-gray');
                 resultsPlaceholder.classList.add('text-stork-text');
-                resultsPlaceholder.style.display = 'block'; // Show placeholder
+                resultsPlaceholder.style.display = 'block';
                 return;
             }
 
-            resultsPlaceholder.style.display = 'none'; // Hide placeholder
+            resultsPlaceholder.style.display = 'none';
 
             const nameCard = document.createElement('div');
             nameCard.classList.add('name-card', 'animate-fade-in');
+
+            // Create card structure, leave H3 empty initially with an ID
             nameCard.innerHTML = `
-                <h3 class="text-center">${name.name}</h3>
+                <h3 class="text-center typewriter-target" id="name-typewriter-target"></h3>
                 <p class="text-center"><strong>Origin:</strong> ${name.origin || 'N/A'}</p>
                 <p class="text-center"><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
                 ${name.gender ? `<p class="text-center"><strong>Gender:</strong> ${name.gender}</p>` : ''}
@@ -488,21 +516,29 @@
             `;
             resultDisplay.appendChild(nameCard);
 
+            // Find the target element and start the typewriter effect
+            const typewriterTarget = nameCard.querySelector('#name-typewriter-target');
+            if (typewriterTarget) {
+                typewriterEffect(name.name, typewriterTarget, 80); // Adjust speed (e.g., 80ms)
+            } else {
+                console.error("Could not find typewriter target element.");
+            }
+
+
             // Add event listeners for copy and save buttons
             nameCard.querySelector('.copy-btn').addEventListener('click', handleCopyName);
             nameCard.querySelector('.save-btn').addEventListener('click', handleSaveName);
 
-            // Placeholder for additional info (related names, famous namesakes)
+            // Display additional info
             displayAdditionalInfo(name);
         }
 
          // Function to display additional information (placeholder)
          function displayAdditionalInfo(name) {
-             // This is a placeholder. You would fetch or generate this data based on the 'name' object.
              relatedNamesContainer.innerHTML = ''; // Clear previous
              famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No information available yet.</p>'; // Clear previous
 
-             // Example: Show related names section if data exists (replace with actual logic)
+             // Example: Show related names
              if (name.related_names && name.related_names.length > 0) {
                  relatedNamesSection.classList.remove('hidden');
                  name.related_names.forEach(relatedName => {
@@ -515,8 +551,8 @@
                  relatedNamesSection.classList.add('hidden');
              }
 
-             // Example: Show famous namesakes section if data exists (replace with actual logic)
-             if (name.famous_namesakes && name.famous_akes && name.famous_namesakes.length > 0) {
+             // Example: Show famous namesakes
+             if (name.famous_namesakes && name.famous_namesakes.length > 0) { // Corrected property name check
                  famousNamesakesSection.classList.remove('hidden');
                  famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p>${item}</p>`).join('');
              } else {
@@ -533,15 +569,20 @@
                 return;
             }
 
-            loadingIndicator.style.display = 'block'; // Show loader
-            resultDisplay.style.display = 'none'; // Hide result display
-            resultsPlaceholder.style.display = 'none'; // Hide placeholder
-            resultsMessage.style.display = 'none'; // Hide message
-            relatedNamesSection.classList.add('hidden'); // Hide related names
-            famousNamesakesSection.classList.add('hidden'); // Hide famous namesakes
+            loadingIndicator.style.display = 'block';
+            resultDisplay.style.display = 'none';
+            resultsPlaceholder.style.display = 'none';
+            resultsMessage.style.display = 'none';
+            relatedNamesSection.classList.add('hidden');
+            famousNamesakesSection.classList.add('hidden');
+
+            // Stop any ongoing typewriter effect before generating a new name
+             if (typingInterval) {
+                clearInterval(typingInterval);
+                typingInterval = null;
+            }
 
 
-            // Simulate a delay for loading
             setTimeout(() => {
                 const filteredNames = filterNames();
                 console.log(`Found ${filteredNames.length} names matching criteria.`);
@@ -555,36 +596,29 @@
                     displayGeneratedName(null); // Display no results message
                 }
 
-                loadingIndicator.style.display = 'none'; // Hide loader
-                resultDisplay.style.display = 'block'; // Show result display
-                resultsPlaceholder.style.display = 'none'; // Ensure placeholder is hidden
-            }, 500); // Simulate a 0.5 second loading time
+                loadingIndicator.style.display = 'none';
+                resultDisplay.style.display = 'block';
+                resultsPlaceholder.style.display = 'none';
+            }, 500); // Simulate loading time
         }
 
-        // Function to handle copying a name (placeholder)
+        // Function to handle copying a name
         function handleCopyName(event) {
             const nameToCopy = event.target.dataset.name;
             navigator.clipboard.writeText(nameToCopy).then(() => {
                 console.log(`Copied "${nameToCopy}" to clipboard.`);
-                // Optional: Provide user feedback (e.g., change button text briefly)
                 const originalText = event.target.textContent;
                 event.target.textContent = 'Copied!';
-                setTimeout(() => {
-                    event.target.textContent = originalText;
-                }, 1500);
-            }).catch(err => {
-                console.error('Failed to copy name: ', err);
-                // Optional: Provide error feedback
-            });
+                setTimeout(() => { event.target.textContent = originalText; }, 1500);
+            }).catch(err => { console.error('Failed to copy name: ', err); });
         }
 
-        // Function to handle saving a name (placeholder - needs backend/local storage)
+        // Function to handle saving a name (placeholder)
         function handleSaveName(event) {
             const nameToSave = event.target.dataset.name;
             console.log(`Saving "${nameToSave}" (feature not fully implemented).`);
-            // TODO: Implement saving functionality (e.g., to local storage or a database)
+            // TODO: Implement saving functionality
 
-             // Optional: Provide user feedback (e.g., change button text briefly)
              const originalText = event.target.textContent;
              event.target.textContent = 'Saved!';
              event.target.classList.remove('btn-primary');
@@ -600,44 +634,38 @@
         function handleLanguageChange() {
             const selectedLanguage = languageSelect.value;
             console.log(`Language changed to: ${selectedLanguage}`);
-            loadNameData(selectedLanguage); // Load data for the selected language
-            // Reset other filters or UI elements if necessary here
-            selectedLetterInput.value = ''; // Clear selected letter
+            loadNameData(selectedLanguage); // Load new data
+            selectedLetterInput.value = ''; // Reset letter
             document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
-                 btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
-                 btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
-             });
-             // Find and set 'Any' letter button as active
-             const anyLetterButton = document.querySelector('#first-letter-inputs button[data-letter=""]');
-             if (anyLetterButton) {
-                 setActiveLetterButton(anyLetterButton);
-             }
-             // You might also want to reset gender, length, and style filters to 'any' or default values
-             document.getElementById('gender-any').checked = true;
-             document.getElementById('length-any').checked = true;
-             styleSlider.value = 50;
-             updateSliderFeedback();
-
-             displayGeneratedName(null); // Clear the currently displayed name
-             resultsPlaceholder.textContent = `Loading ${selectedLanguage === 'all' ? 'all' : selectedLanguage} name data...`; // Update placeholder text
-             resultsPlaceholder.style.display = 'block'; // Ensure placeholder is visible
+                btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
+                btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
+            });
+            const anyLetterButton = document.querySelector('#first-letter-inputs button[data-letter=""]');
+            if (anyLetterButton) setActiveLetterButton(anyLetterButton);
+            document.getElementById('gender-any').checked = true;
+            document.getElementById('length-any').checked = true;
+            styleSlider.value = 50;
+            updateSliderFeedback();
+            displayGeneratedName(null); // Clear displayed name
+            resultsPlaceholder.textContent = `Loading ${selectedLanguage === 'all' ? 'all' : selectedLanguage} name data...`;
+            resultsPlaceholder.style.display = 'block';
+            // Stop any ongoing typewriter effect
+             if (typingInterval) {
+                clearInterval(typingInterval);
+                typingInterval = null;
+            }
         }
 
 
         // --- Event Listeners ---
         generateBtn.addEventListener('click', handleGenerateName);
         styleSlider.addEventListener('input', updateSliderFeedback);
-        languageSelect.addEventListener('change', handleLanguageChange); // Add listener for language change
-        // Add listeners for gender and length radio buttons if needed for immediate filtering feedback (optional)
-        // document.querySelectorAll('input[name="gender"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
-        // document.querySelectorAll('input[name="length"]').forEach(radio => radio.addEventListener('change', handleFilterChange));
-
+        languageSelect.addEventListener('change', handleLanguageChange);
 
         // --- Initialization ---
-        generateAlphabetButtons(); // Generate the alphabet buttons first
-        loadNameData(languageSelect.value); // Load the initial name data based on the default language selection
-        updateSliderFeedback(); // Set initial slider feedback text
-
+        generateAlphabetButtons();
+        loadNameData(languageSelect.value); // Initial load
+        updateSliderFeedback();
 
         // Smooth scroll for top nav generator link
         topNavGeneratorLink.addEventListener('click', function(e) {
@@ -646,7 +674,7 @@
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Adjust offset for fixed header
+                    top: targetElement.offsetTop - 80, // Adjust offset
                     behavior: 'smooth'
                 });
             }
@@ -655,3 +683,4 @@
     </script>
 </body>
 </html>
+```
