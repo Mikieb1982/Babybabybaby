@@ -118,7 +118,6 @@
          }
          /* General style for h3 in card */
          .name-card h3 {
-             /* Adjusted min-height for larger font size (e.g., 5xl -> 3rem font, ~3.5rem line height) */
              min-height: 3.5rem;
              margin-bottom: 0.5rem; /* Tailwind mb-2 */
          }
@@ -132,7 +131,7 @@
              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* --- UPDATED: Typewriter Target Styles --- */
+         /* Typewriter Target Styles */
          #name-typewriter-target {
             font-family: 'Special Elite', monospace;
             font-size: 3rem; /* Increased font size (Tailwind text-5xl) */
@@ -262,8 +261,8 @@
             </section>
 
             <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-full md:w-auto text-lg md:text-xl shadow-md btn-feedback" disabled>
-                    Loading Names...
+                <button id="generate-btn" class="btn btn-primary w-auto px-6 py-3 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
+                    <img src="assets/drop.png" alt="Generate Name" class="h-8 w-auto"> <span class="sr-only">Generate Name</span>
                 </button>
             </div>
         </fieldset>
@@ -341,7 +340,7 @@
 
             console.log(`Attempting to load data from: ${filename}`);
             dataLoaded = false;
-            generateBtn.textContent = 'Loading Names...';
+            // No longer setting button text content here
             generateBtn.disabled = true;
             resultsPlaceholder.textContent = `Loading ${language === 'all' ? 'all' : language} name data...`;
             resultsPlaceholder.style.display = 'block';
@@ -356,10 +355,10 @@
                 nameDatabase = data;
                 dataLoaded = true;
                 console.log(`${filename} loaded successfully. ${nameDatabase.length} names found.`);
-                resultsPlaceholder.textContent = 'Click "Generate Name" to see a result.';
+                resultsPlaceholder.textContent = 'Click the button below to see a result.'; // Updated placeholder
                 resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
                 resultsPlaceholder.classList.add('text-medium-gray');
-                generateBtn.textContent = 'Generate Name';
+                 // No longer setting button text content here
                 generateBtn.disabled = false;
             } catch (error) {
                 console.error(`Could not load name data from ${filename}:`, error);
@@ -368,7 +367,7 @@
                 resultsPlaceholder.textContent = `Error loading ${language === 'all' ? 'all' : language} name data. Please try again later.`;
                 resultsPlaceholder.classList.remove('text-medium-gray', 'text-stork-text');
                 resultsPlaceholder.classList.add('text-error-red');
-                generateBtn.textContent = 'Error Loading Data';
+                // No longer setting button text content here
                 generateBtn.disabled = true;
             }
         }
