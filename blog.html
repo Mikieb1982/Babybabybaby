@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Stork Name Drop - Blog</title> <link rel="icon" href="assets/logo.png" type="image/png">
+    <title>The Stork Name Drop - Blog</title>
+
+    <link rel="icon" href="assets/logo.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration (Same as before)
         tailwind.config = {
             theme: {
                 extend: {
@@ -46,21 +47,229 @@
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
-                        // Add slide animations
-                        'slide-in-left': 'slide-in-left 0.5s ease-out',
-                        'slide-out-left': 'slide-out-left 0.5s ease-out',
-                        'slide-in-right': 'slide-in-right 0.5s ease-out',
-                        'slide-out-right': 'slide-out-right 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        // Add slide keyframes
-                        'slide-in-left': { '0%': { transform: 'translateX(-100%)', opacity: 0 }, '100%': { transform: 'translateX(0)', opacity: 1 } },
-                        'slide-out-left': { '0%': { transform: 'translateX(0)', opacity: 1 }, '100%': { transform: 'translateX(-100%)', opacity: 0 } },
-                        'slide-in-right': { '0%': { transform: 'translateX(100%)', opacity: 0 }, '100%': { transform: 'translateX(0)', opacity: 1 } },
-                        'slide-out-right': { '0%': { transform: 'translateX(0)', opacity: 1 }, '100%': { transform: 'translateX(100%)', opacity: 0 } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
                     },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base styles */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Layout styles */
+        html, body { min-height: 100%; display: flex; flex-direction: column; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; }
+
+        /* --- Card Flip Animation CSS --- */
+        .flip-card {
+            width: 300px; height: 250px; margin-bottom: 1.5rem;
+            border-radius: 0.5rem; position: relative;
+            background-color: transparent; perspective: 1000px;
+        }
+        .flip-card-inner {
+            width: 100%; height: 100%; border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            position: relative; transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+        .flip-card-front, .flip-card-back {
+             width: 100%; height: 100%; border-radius: 0.5rem;
+             display: flex; flex-direction: column; justify-content: center; align-items: center;
+             text-align: center; position: absolute; top: 0; left: 0;
+             -webkit-backface-visibility: hidden; backface-visibility: hidden;
+             overflow: hidden;
+        }
+        .flip-card-front {
+            background-color: #ffffff; color: #34495E;
+            border: 1px solid #e5e7eb; padding: 0;
+        }
+        .flip-card-front img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 0.5rem; display: block;
+        }
+        .flip-card-back {
+            /* Use backtile.png as background */
+            background-image: url('assets/backtile.png');
+            background-size: cover; background-position: center; background-repeat: no-repeat;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 1rem;
+            position: relative; /* For optional overlay */
+        }
+        /* Optional overlay example */
+        /* .flip-card-back::before { ... } */
+        /* .flip-card-back > * { ... } */
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        /* --- End of Flip Card CSS --- */
+
+    </style>
+</head>
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 animate-fade-in-down">
+
+        <div class="text-center mb-12 bg-off-white/90 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-lg">
+              <img src="assets/blog.png" alt="Blog Title"
+                   class="h-auto w-full max-w-md mx-auto mb-4"
+                   onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=BLOG'; this.style.border='1px dashed #ccc';">
+              <p class="text-lg text-stork-text">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/middletile.png" alt="Middle Names Tile"
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Middle+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Choosing Middle Names</h3>
+                            <p class="text-sm mb-4">Find the perfect middle name flow.</p>
+                            <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
+                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Unique+English';">
+                         </div>
+                    <div class="flip-card-back">
+                         <div>
+                            <h3 class="text-lg font-semibold mb-2">Unique English Names</h3>
+                            <p class="text-sm mb-4">Explore distinctive English baby names.</p>
+                            <a href="blog/uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
+                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=German+2025';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">German Names 2025</h3>
+                            <p class="text-sm mb-4">See the latest in German baby names.</p>
+                            <a href="blog/german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/songtile.png" alt="Names from Songs Tile"
+                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Song+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Names Inspired by Songs</h3>
+                            <p class="text-sm mb-4">Find names featured in popular music.</p>
+                            <a href="blog/song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/beatlestile.png" alt="Beatles Names Tile"
+                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Beatles Baby Name Gold</h3>
+                            <p class="text-sm mb-4">A deep dive into names from Fab Four songs.</p>
+                            <a href="blog/beatles.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div> </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
+    </footer>
+
+</body>
+</html>
+
+Step 2: Add Swipe Navigation to Individual Blog Posts
+Now, we'll modify one of the blog post pages, beatles.html, to include the swipe navigation logic. You will need to apply this same logic (the <style> additions and the entire <script> block) to your other blog post files (middle.html, uniqueeng.html, german2025.html, song.html), making sure to adjust the currentPostIndex value within the script for each page.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Stork Name Drop - Beatles Names Deep Dive</title>
+
+    <link rel="icon" href="../assets/logo.png" type="image/png"> <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration (Same as index.html)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    },
+                    colors: { /* Your colors */ },
+                    animation: { /* Your animations */ },
+                    keyframes: { /* Your keyframes */ },
                 }
             }
         }
@@ -77,55 +286,11 @@
         .btn-feedback { @apply transform active:scale-95; }
 
         /* Layout styles */
-        html, body {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-        body {
-            flex-grow: 1;
-            padding-top: 64px; /* Adjust based on fixed header height */
-            font-family: 'Nunito Sans', sans-serif;
-            color: #34495E; /* stork-text */
-        }
-        main {
-            flex-grow: 1;
-            position: relative; /* Needed for positioning blog posts */
-            overflow: hidden; /* Hide overflowing posts during transition */
-        }
+        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; } /* Added overflow-x: hidden */
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; position: relative; } /* Added position: relative */
 
-        /* Blog Container */
-        #blog-post-viewer {
-            position: relative;
-            width: 100%;
-            /* min-height needed? Or let content dictate height? */
-        }
-
-        /* Individual Blog Post Styling */
-        .blog-post-content {
-            position: absolute; /* Position posts absolutely for transitions */
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 1;
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-            background-color: #f8fafc; /* off-white, adjust as needed */
-            border-radius: 0.5rem;
-            padding: 1.5rem 2.5rem; /* p-6 md:p-10 */
-            margin: 2rem 0; /* Add some vertical margin */
-            border: 1px solid #e5e7eb; /* border-gray-200 */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-lg */
-        }
-
-        /* States for Transitions */
-        .blog-post-content.next-enter { transform: translateX(100%); opacity: 0; }
-        .blog-post-content.prev-enter { transform: translateX(-100%); opacity: 0; }
-        .blog-post-content.next-exit { transform: translateX(-100%); opacity: 0; animation: slide-out-left 0.5s ease-out forwards; }
-        .blog-post-content.prev-exit { transform: translateX(100%); opacity: 0; animation: slide-out-right 0.5s ease-out forwards; }
-        .blog-post-content.active { transform: translateX(0); opacity: 1; z-index: 10; /* Ensure active is on top */}
-
-        /* Blog content specific styles (apply within the loaded article) */
+        /* Blog post specific styles */
         .blog-content h1 { @apply text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center; }
         .blog-content h2 { @apply text-2xl md:text-3xl font-semibold text-stork-title mt-8 mb-4 border-b pb-2; }
         .blog-content h3 { @apply text-xl md:text-2xl font-semibold text-stork-title mt-6 mb-3; }
@@ -142,66 +307,77 @@
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
         .blog-content .works-cited { @apply text-xs text-gray-500 mt-10 border-t pt-4; }
         .blog-content .works-cited li { @apply mb-1 break-words; }
-        .blog-content img.blog-header-image { /* Style for header images within posts */
-             @apply w-full h-auto mb-6 md:mb-8 rounded-md shadow-md;
-        }
+        .blog-content img.blog-header-image { @apply w-full h-auto mb-6 md:mb-8 rounded-md shadow-md; }
 
-        /* Loader */
-        .loader {
-            border: 4px solid #f3f3f3; border-top: 4px solid #1ABC9C;
-            border-radius: 50%; width: 40px; height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 40px auto; /* More margin */
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* Navigation Arrows (Optional) */
+        /* --- NEW: Navigation Arrows Styles --- */
         .blog-nav {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            z-index: 20; cursor: pointer;
+            position: fixed; /* Fixed position relative to viewport */
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40; /* Lower than header */
+            cursor: pointer;
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.5rem;
-            transition: background-color 0.2s;
+            border-radius: 50%;
+            padding: 0.75rem; /* p-3 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, opacity 0.3s;
+            opacity: 0.7; /* Slightly transparent */
         }
-        .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); }
-        #prev-post { left: 10px; }
-        #next-post { right: 10px; }
-        .blog-nav svg { width: 24px; height: 24px; stroke: #34495E; }
+        .blog-nav:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            opacity: 1;
+        }
+        #prev-post { left: 15px; } /* Position from left */
+        #next-post { right: 15px; } /* Position from right */
+        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; } /* Slightly larger icons */
+        .blog-nav.hidden { /* Class to hide buttons */
+             opacity: 0;
+             pointer-events: none;
+        }
 
     </style>
 </head>
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20"> <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
             <nav class="flex space-x-4 sm:space-x-6 items-center">
-                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in-down">
+        <article class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg blog-content">
 
-        <div id="blog-post-viewer" class="relative min-h-[60vh]">
-            <div id="blog-loader" class="loader" style="display: none;"></div>
-            <p id="blog-message" class="text-center text-medium-gray text-lg italic mt-16"></p>
+            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="blog-header-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
+
+            <h1 class="text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center">
+                Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
+            </h1>
+
+            <p>If there’s one band that soundtracked the world, it’s The Beatles...</p>
+            <h2>Let It Be (Named Something Great!)</h2>
+            <p>...Share your thoughts in the comments below – we'd love to hear your stories!</p>
+
+            <div class="works-cited">
+                <h3 class="text-lg font-semibold mb-3">Works Cited</h3>
+                <ol>
+                    <li>Cultural impact of the Beatles - Wikipedia...</li>
+                    </ol>
             </div>
+            </article>
 
-        <button id="prev-post" class="blog-nav" aria-label="Previous Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
              </svg>
          </button>
-         <button id="next-post" class="blog-nav" aria-label="Next Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+         <button id="next-post" class="blog-nav hidden" aria-label="Next Post"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
              </svg>
          </button>
@@ -209,205 +385,116 @@
     </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
-    </footer>
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a> </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Configuration ---
+            // Define the order of your blog posts HERE
+            // IMPORTANT: The filenames must match exactly.
             const blogPosts = [
-                { id: 'middle', title: 'Choosing Middle Names', filePath: 'blog/middle_content.html' },
-                { id: 'uniqueeng', title: 'Unique English Names', filePath: 'blog/uniqueeng_content.html' },
-                { id: 'german2025', title: 'German Names 2025', filePath: 'blog/german2025_content.html' },
-                { id: 'song', title: 'Names Inspired by Songs', filePath: 'blog/song_content.html' },
-                { id: 'beatles', title: 'Beatles Baby Name Gold', filePath: 'blog/beatles_content.html' }
+                'middle.html',
+                'uniqueeng.html',
+                'german2025.html',
+                'song.html',
+                'beatles.html' // This is the last post in this example
             ];
-            const swipeThreshold = 50; // Minimum pixels to trigger swipe
-            const transitionDuration = 500; // ms, should match CSS transition duration
+
+            // --- !! IMPORTANT: Set the index for THIS specific page !! ---
+            const currentPostIndex = 4; // 0=middle, 1=uniqueeng, 2=german, 3=song, 4=beatles
+
+            const swipeThreshold = 60; // Minimum pixels horizontal swipe
 
             // --- DOM Elements ---
-            const viewer = document.getElementById('blog-post-viewer');
-            const loader = document.getElementById('blog-loader');
-            const messageEl = document.getElementById('blog-message');
             const prevButton = document.getElementById('prev-post');
             const nextButton = document.getElementById('next-post');
+            const mainContent = document.querySelector('main'); // Element to attach swipe listeners
 
             // --- State ---
-            let currentPostIndex = 0;
             let touchStartX = 0;
             let touchEndX = 0;
-            let isTransitioning = false; // Prevent multiple transitions at once
 
             // --- Functions ---
 
-            /**
-             * Loads and displays a blog post by its index in the blogPosts array.
-             * @param {number} index - The index of the post to load.
-             * @param {string} direction - 'next', 'prev', or 'none' for transition direction.
-             */
-            async function loadBlogPost(index, direction = 'none') {
-                if (isTransitioning) return; // Don't load if already transitioning
-                if (index < 0 || index >= blogPosts.length) {
-                    console.warn("Invalid post index:", index);
-                    return; // Index out of bounds
-                }
-
-                isTransitioning = true;
-                loader.style.display = 'block';
-                messageEl.textContent = ''; // Clear any messages
-                const postData = blogPosts[index];
-
-                // --- Transition Out Old Post ---
-                const currentPostElement = viewer.querySelector('.blog-post-content.active');
-                if (currentPostElement) {
-                    currentPostElement.classList.remove('active');
-                    if (direction === 'next') {
-                        currentPostElement.classList.add('next-exit');
-                    } else if (direction === 'prev') {
-                        currentPostElement.classList.add('prev-exit');
-                    }
-                    // Remove the old element after transition
-                    setTimeout(() => {
-                        currentPostElement.remove();
-                    }, transitionDuration);
-                } else {
-                     // If no current post, transition finishes instantly
-                     setTimeout(() => {}, 0);
-                }
-
-
-                // --- Fetch and Prepare New Post ---
-                try {
-                    const response = await fetch(postData.filePath);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status} for ${postData.filePath}`);
-                    }
-                    const contentHTML = await response.text();
-
-                    const newPostElement = document.createElement('div');
-                    newPostElement.classList.add('blog-post-content');
-                    newPostElement.innerHTML = contentHTML; // Inject fetched HTML
-
-                    // Set initial state for transition
-                    if (direction === 'next') {
-                        newPostElement.classList.add('next-enter');
-                    } else if (direction === 'prev') {
-                        newPostElement.classList.add('prev-enter');
-                    } else {
-                        newPostElement.classList.add('active'); // No transition if direction is 'none'
-                    }
-
-                    viewer.appendChild(newPostElement);
-
-                    // --- Transition In New Post ---
-                    // Force reflow to ensure transition applies correctly
-                    void newPostElement.offsetWidth;
-
-                    if (direction !== 'none') {
-                         setTimeout(() => { // Timeout ensures initial state is set before adding 'active'
-                            newPostElement.classList.remove('next-enter', 'prev-enter');
-                            newPostElement.classList.add('active');
-                         }, 50); // Small delay
-                    }
-
-                    // Update state and UI
-                    currentPostIndex = index;
-                    document.title = `The Stork Name Drop - ${postData.title}`;
-                    // Update URL hash without triggering hashchange listener immediately
-                    history.replaceState(null, '', `#post=${postData.id}`);
-                    updateNavButtons();
-
-                } catch (error) {
-                    console.error("Error loading blog post:", error);
-                    messageEl.textContent = `Sorry, couldn't load the blog post. Please try again. (${error.message})`;
-                    messageEl.classList.add('text-error-red');
-                } finally {
-                    loader.style.display = 'none';
-                     // Allow new transitions after a delay slightly longer than the animation
-                    setTimeout(() => {
-                        isTransitioning = false;
-                    }, transitionDuration + 100);
-                }
-            }
-
-            /** Updates the visibility/disabled state of nav buttons */
-            function updateNavButtons() {
-                prevButton.style.display = currentPostIndex > 0 ? 'block' : 'none';
-                nextButton.style.display = currentPostIndex < blogPosts.length - 1 ? 'block' : 'none';
-            }
-
-            /** Handles navigation to the next post */
+            /** Navigate to the next post */
             function navigateNext() {
                 if (currentPostIndex < blogPosts.length - 1) {
-                    loadBlogPost(currentPostIndex + 1, 'next');
+                    window.location.href = blogPosts[currentPostIndex + 1];
                 }
             }
 
-            /** Handles navigation to the previous post */
+            /** Navigate to the previous post */
             function navigatePrev() {
                 if (currentPostIndex > 0) {
-                    loadBlogPost(currentPostIndex - 1, 'prev');
+                    window.location.href = blogPosts[currentPostIndex - 1];
                 }
             }
 
-            /** Handles touch start event */
+             /** Handles touch start event */
             function handleTouchStart(event) {
-                touchStartX = event.changedTouches[0].screenX;
+                // Use the first touch point
+                touchStartX = event.touches[0].clientX;
             }
 
             /** Handles touch end event to detect swipe */
             function handleTouchEnd(event) {
-                if (isTransitioning) return; // Ignore swipes during transition
-                touchEndX = event.changedTouches[0].screenX;
+                // Use the first changed touch point
+                touchEndX = event.changedTouches[0].clientX;
                 handleSwipeGesture();
             }
 
             /** Determines swipe direction and navigates */
             function handleSwipeGesture() {
                 const deltaX = touchEndX - touchStartX;
+                // Check if swipe distance is significant
                 if (Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) { // Swiped left
+                    if (deltaX < 0) { // Swiped left (finger moved left) -> Next post
+                        console.log("Swipe Left Detected - Next Post");
                         navigateNext();
-                    } else { // Swiped right
+                    } else { // Swiped right (finger moved right) -> Previous post
+                        console.log("Swipe Right Detected - Previous Post");
                         navigatePrev();
                     }
                 }
-                // Reset touch points
-                touchStartX = 0;
-                touchEndX = 0;
+                 // Reset touch points
+                 touchStartX = 0;
+                 touchEndX = 0;
             }
 
-             /** Handles hash changes in the URL */
-            function handleHashChange() {
-                const postId = location.hash.substring(1).split('=')[1]; // Get ID from #post=ID
-                const postIndex = blogPosts.findIndex(p => p.id === postId);
+            /** Show/Hide navigation buttons based on index */
+            function updateNavButtonsVisibility() {
+                if (currentPostIndex > 0) {
+                    prevButton.classList.remove('hidden');
+                } else {
+                    prevButton.classList.add('hidden');
+                }
 
-                if (postIndex !== -1 && postIndex !== currentPostIndex) {
-                    // Determine direction based on index change for smooth transition
-                    const direction = postIndex > currentPostIndex ? 'next' : 'prev';
-                    loadBlogPost(postIndex, direction);
-                } else if (!postId && currentPostIndex !== 0) {
-                     // If hash is removed or invalid, go to the first post
-                     loadBlogPost(0, 'prev'); // Assume going back to start
+                if (currentPostIndex < blogPosts.length - 1) {
+                    nextButton.classList.remove('hidden');
+                } else {
+                    nextButton.classList.add('hidden');
                 }
             }
 
-
             // --- Initialization ---
-
-            // Determine initial post index from hash or default to 0
-            const initialHash = location.hash.substring(1).split('=')[1];
-            const initialIndex = blogPosts.findIndex(p => p.id === initialHash);
-            currentPostIndex = initialIndex !== -1 ? initialIndex : 0;
-
-            loadBlogPost(currentPostIndex, 'none'); // Load initial post without transition
+            updateNavButtonsVisibility(); // Show/hide buttons on load
 
             // --- Event Listeners ---
-            viewer.addEventListener('touchstart', handleTouchStart, { passive: true });
-            viewer.addEventListener('touchend', handleTouchEnd, { passive: true });
-            prevButton.addEventListener('click', navigatePrev);
-            nextButton.addEventListener('click', navigateNext);
-            window.addEventListener('hashchange', handleHashChange);
+            // Add swipe listeners to the main content area
+            if (mainContent) {
+                mainContent.addEventListener('touchstart', handleTouchStart, { passive: true });
+                mainContent.addEventListener('touchend', handleTouchEnd, { passive: true });
+            } else {
+                console.error("Main content area not found for swipe listeners.");
+            }
+
+            // Add listeners for navigation buttons
+            if (prevButton) {
+                prevButton.addEventListener('click', navigatePrev);
+            }
+            if (nextButton) {
+                nextButton.addEventListener('click', navigateNext);
+            }
 
         });
     </script>
@@ -415,33 +502,20 @@
 </body>
 </html>
 
-
-2. Create Blog Content Snippets (Example: blog/beatles_content.html)
-You need to do this for all 5 of your blog posts. Go into each full HTML file (like the beatles.html I created previously) and copy only the content within the <article> tag (or your main content container). Save this snippet into a new file within the blog/ directory.
-Example - blog/beatles_content.html:
-<img src="../assets/beatles.png" alt="Beatles Blog Header"
-     class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
-
-<h1 class="text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center">
-    Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
-</h1>
-
-<p>If there’s one band that soundtracked the world, it’s The Beatles...</p>
-<div class="works-cited">
-    <h3 class="text-lg font-semibold mb-3">Works Cited</h3>
-    <ol>
-        <li>Cultural impact of the Beatles - Wikipedia...</li>
-        </ol>
-</div>
-
-Repeat this process to create:
- * blog/middle_content.html
- * blog/uniqueeng_content.html
- * blog/german2025_content.html
- * blog/song_content.html
-Important Notes:
- * File Paths: Double-check all image paths (src="...") and any internal links (href="...") within the content snippets. They need to be relative to the main blog.html file (which is one level above the blog/ directory). So, image paths will likely need to start with ../assets/.
- * Styling: The necessary CSS for formatting the blog content (.blog-content h1, .blog-content p, etc.) is included in the main blog.html container file.
- * Testing: This is a complex change. Test thoroughly on different devices and browsers, especially the swipe functionality and transitions.
- * Performance: Fetching HTML content like this works but might not be the most performant method for a very large number of blog posts. For now, with 5 posts, it should be acceptable.
-This setup provides the foundation for your swipeable blog section.
+Explanation of Changes to beatles.html:
+ * Navigation Arrows Added: HTML for previous/next arrow buttons (<button id="prev-post">, <button id="next-post">) is added within the <main> section.
+ * Arrow Styling: CSS is added to style these buttons (fixed position, background, hover effect, icon size) and to hide them initially or when at the first/last post.
+ * JavaScript Added:
+   * An array blogPosts defines the sequence of blog post filenames. Make sure this order is correct and matches your filenames.
+   * A variable currentPostIndex is set to 4 because beatles.html is the 5th item (index 4) in the array. You MUST change this number in the script for each of the other blog post files. (e.g., it would be 0 for middle.html, 1 for uniqueeng.html, etc.).
+   * Touch event listeners (touchstart, touchend) are added to the <main> element to detect swipes.
+   * handleSwipeGesture calculates the swipe direction and calls navigatePrev() or navigateNext().
+   * navigatePrev() and navigateNext() change window.location.href to the appropriate file from the blogPosts array, causing a page load.
+   * Click listeners are added to the arrow buttons to also trigger navigation.
+   * updateNavButtonsVisibility shows/hides the arrows based on whether there's a previous/next post.
+Next Steps:
+ * Save beatles.html: Replace your existing blog/beatles.html with this new code.
+ * Copy Logic to Other Posts: Copy the new <style> rules for .blog-nav and the entire <script> block from the bottom of this beatles.html file.
+ * Paste into Other Posts: Paste the copied styles and script into blog/middle.html, blog/uniqueeng.html, blog/german2025.html, and blog/song.html.
+ * !! CRITICAL !!: In each of those other files, you MUST update the currentPostIndex variable within the script to match its correct position in the blogPosts array (0 for the first post, 1 for the second, etc.).
+ * Test: Open any of the blog posts in your browser and try swiping left/right or clicking the arrows. It should navigate between the full blog post pages.
