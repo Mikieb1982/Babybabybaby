@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Unique & Uncommon English Name Ideas - The Stork Name Drop Blog</title>
+    <title>The Stork Name Drop - Beatles Names Deep Dive</title>
 
     <link rel="icon" href="../assets/logo.png" type="image/png">
 
@@ -48,20 +48,12 @@
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
-                        'fade-out-up': 'fade-out-up 0.5s ease-out',
-                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                        // Add other animations if needed
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
-                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        // Add other keyframes if needed
                     },
                 }
             }
@@ -84,22 +76,25 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-post-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { @apply text-stork-title font-semibold; }
-        .blog-content h1 { @apply text-3xl md:text-4xl mb-4 text-center; }
-        .blog-content h2 { @apply text-2xl md:text-3xl pt-6 mb-4; }
-        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3; }
-        .blog-content h4 { @apply text-lg md:text-xl pt-2 mb-2; }
-        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
-        .blog-content ul li, .blog-content ol li { @apply mb-2; }
-        .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
-        .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
-        .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
-        .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
+        .blog-content h1 { @apply text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center; }
+        .blog-content h2 { @apply text-2xl md:text-3xl font-semibold text-stork-title mt-8 mb-4 border-b pb-2; }
+        .blog-content h3 { @apply text-xl md:text-2xl font-semibold text-stork-title mt-6 mb-3; }
+        .blog-content p { @apply mb-4 leading-relaxed text-base md:text-lg; }
+        .blog-content strong { @apply font-semibold text-stork-title; }
+        .blog-content em { @apply italic; }
+        .blog-content ul { @apply list-disc list-inside mb-4 pl-4 space-y-2 text-base md:text-lg; }
+        .blog-content ol { @apply list-decimal list-inside mb-4 pl-4 space-y-2 text-base md:text-lg; }
+        .blog-content li { @apply mb-2; }
+        .blog-content table { @apply min-w-full divide-y divide-gray-200 border border-gray-300 mb-6 shadow-sm; }
+        .blog-content th { @apply px-4 py-2 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider; }
+        .blog-content td { @apply px-4 py-2 whitespace-normal text-sm text-gray-700 border-b border-gray-200; }
+        .blog-content tbody tr:nth-child(even) { @apply bg-gray-50; }
+        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
+        .blog-content .works-cited { @apply text-xs text-gray-500 mt-10 border-t pt-4; }
+        .blog-content .works-cited li { @apply mb-1 break-words; }
+        .blog-content img.blog-header-image { @apply w-full h-auto mb-6 md:mb-8 rounded-md shadow-md; }
+        .blog-content .table-wrapper { @apply overflow-x-auto mb-6 shadow-md rounded-lg; } /* Added styling to table wrapper */
         .blog-content .text-medium-gray { @apply text-medium-gray; }
-        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
-        .social-share-link { @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200; }
 
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
@@ -119,49 +114,268 @@
 
     </style>
 </head>
-
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20"> <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
             <nav class="flex space-x-4 sm:space-x-6 items-center">
                  <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
                  <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
                  <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in-down">
+        <article class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg blog-content">
 
-        <article class="blog-content">
-             <h1>Unique & Uncommon English Name Ideas</h1>
-            <p class="text-center text-sm text-medium-gray mb-8">Published: April 18, 2025</p>
+            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="blog-header-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
 
-            <img src="../assets/uniqueeng.png"
-                 alt="Abstract image representing unique names ideas"
-                 class="blog-post-image"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Unique+Names+Image';">
+            <h1>
+                Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
+            </h1>
 
-            <div class="space-y-6 text-base md:text-lg leading-relaxed">
-                <p>Choosing a name for a new arrival is one of the most exciting, and sometimes daunting, parts of welcoming a child...</p>
-                <h2>Finding Your One-of-a-Kind Treasure</h2>
-                <p>Ultimately, the "perfect" name is the one that resonates most deeply with a family...</p>
-                <h2>Works Cited</h2>
-                <ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
-                    <li>Popular Baby Names | SSA, accessed April 21, 2025, <a href="https://www.ssa.gov/oact/babynames/" target="_blank" rel="noopener noreferrer">https://www.ssa.gov/oact/babynames/</a></li>
-                    <li>Baby names in England and Wales - Office for National Statistics, accessed April 21, 2025, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023" target="_blank" rel="noopener noreferrer">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023</a></li>
-                    <li>The most popular baby names of 2023 - Statistics Canada, accessed April 21, 2025, <a href="https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023" target="_blank" rel="noopener noreferrer">https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023</a></li>
-                    <li>Popular baby names | NSW Government, accessed April 21, 2025, <a href="https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names" target="_blank" rel="noopener noreferrer">https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names</a></li>
-                    <li>200 Unique Word Names You Won't Find Anywhere Else | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/truly-unique-word-names-for-babies" target="_blank" rel="noopener noreferrer">https://nameberry.com/blog/truly-unique-word-names-for-babies</a></li>
-                    <li>Baby Name Trends 2025 | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/baby-name-trends-2025" target="_blank" rel="noopener noreferrer">https://nameberry.com/blog/baby-name-trends-2025</a></li>
+            <p>If there’s one band that soundtracked the world, it’s The Beatles. From Liverpool to Rishikesh, their music crossed continents and generations.<sup>1</sup> And woven into that iconic tapestry of sound? Names! Lots of them. We're talking about girls, guys, places, pets, and even maybe a Maharishi or two.<sup>2</sup></p>
+            <p>The Fab Four weren't just musical geniuses; they were storytellers. And what's a good story without memorable characters? Sometimes they reached out directly to you, the listener, making songs feel incredibly personal.<sup>3</sup> But other times, they got specific, dropping names that sparked curiosity, tugged at heartstrings, or just sounded right.</p>
+            <p>So, grab your headphones, maybe a cup of tea, and let’s take a magical mystery tour through the names immortalized in Beatles songs. Who were these people (and pets!), and did their fame in vinyl translate to bumps on the baby name charts? Let’s find out!</p>
+
+            <h2>The Name Game: Who Were They Singing About?</h2>
+            <p>The Beatles' catalogue is peppered with names, each with its own fascinating backstory. Let's meet some of the most memorable characters:</p>
+
+            <h3>Eleanor Rigby</h3>
+            <p>Ah, poor Eleanor. This haunting 1966 classic paints a picture of profound loneliness.<sup>4</sup> Paul McCartney initially toyed with "Daisy Hawkins" before landing on Eleanor Rigby.<sup>4</sup> Where did the name come from? Paul has said "Eleanor" might have been inspired by actress Eleanor Bron (who starred with the band in <em>Help!</em>), and "Rigby" came from a wine shop sign in Bristol (Rigby & Evens Ltd).<sup>4</sup> The song depicts Eleanor picking up rice after a wedding, living in a dream, and keeping a "face in a jar by the door" – a stark image of isolation.<sup>4</sup> She dies alone, buried by the equally lonely Father McKenzie, who darns his socks in the night.<sup>4</sup> Years later, a real Eleanor Rigby gravestone was found near where John and Paul first met, adding a layer of spooky coincidence, though Paul maintains the name wasn't directly inspired by it.<sup>5</sup> The song’s detached, observational style was a departure, focusing on the quiet desperation of ordinary, lonely lives.<sup>4</sup></p>
+
+            <h3>Lucy (in the Sky with Diamonds)</h3>
+            <p>This 1967 psychedelic swirl from <em>Sgt. Pepper</em> immediately sparked speculation. Was "Lucy in the Sky with Diamonds" a coded reference to LSD? The band always denied it.<sup>7</sup> John Lennon consistently stated the inspiration was much more innocent: a nursery school drawing by his three-year-old son, Julian.<sup>7</sup> Julian had drawn his classmate, Lucy O'Donnell, floating amongst stars and titled it "Lucy – in the sky with diamonds".<sup>7</sup> The song's dreamlike, surreal imagery ("cellophane flowers," "newspaper taxis") was heavily influenced by Lewis Carroll's <em>Alice in Wonderland</em>.<sup>7</sup> Paul McCartney described the song's Lucy as a kind of ethereal, almost god-like figure.<sup>7</sup> Fun fact: The name Lucy later achieved actual astronomical heights when paleoanthropologist Donald Johanson, celebrating his discovery of an early hominin fossil while the song played, named her "Lucy".<sup>9</sup> That fossil, in turn, inspired the name of a NASA space mission!<sup>9</sup></p>
+
+            <h3>Hey Jude</h3>
+            <p>Arguably one of the most beloved Beatles anthems, "Hey Jude" (1968) has a touching origin story. Paul McCartney wrote it for John Lennon's young son, Julian, during John and Cynthia Lennon's difficult divorce following John's affair with Yoko Ono.<sup>10</sup> Paul was driving to visit Cynthia and Julian and started singing "Hey Jules, don't make it bad..." wanting to offer comfort.<sup>11</sup> He changed "Jules" to "Jude" simply because it sounded better musically.<sup>10</sup> The song offers encouragement: take a sad situation, acknowledge the pain ("don't carry the world upon your shoulders"), but open yourself up to love and make things better.<sup>11</sup> Interestingly, John Lennon interpreted the song as being directed at him, giving him permission to leave Cynthia for Yoko.<sup>10</sup> Julian himself has expressed a complex "love-hate" relationship with the song, acknowledging the kindness behind it but also its reminder of his parents' painful split.<sup>12</sup></p>
+
+            <h3>Michelle</h3>
+            <p>Ooh là là! This romantic ballad from 1965's <em>Rubber Soul</em> oozes Gallic charm.<sup>13</sup> Paul McCartney had the tune for a while, initially humming faux-French lyrics at parties to emulate the Parisian Left Bank vibe popularised by figures like Juliette Greco.<sup>13</sup> When John suggested turning it into a proper song, Paul sought help with the French lyrics.<sup>13</sup> He asked Jan Vaughan, a French teacher and wife of his friend Ivan Vaughan (who introduced Paul to John!), for a French name and a phrase that rhymed.<sup>13</sup> She came up with "Michelle, ma belle" ("Michelle, my beautiful") and translated "these are words that go together well" into "sont des mots qui vont très bien ensemble".<sup>13</sup> John Lennon contributed the passionate "I love you, I love you, I love you" bridge, inspired by Nina Simone's "I Put a Spell on You".<sup>13</sup> The song paints Michelle simply as beautiful and beloved.<sup>13</sup></p>
+
+            <h3>Martha My Dear</h3>
+            <p>Who was the "silly girl" Paul McCartney was singing to in this cheerful 1968 track from the <em>White Album</em>? None other than his beloved Old English Sheepdog, Martha!<sup>16</sup> Paul bought Martha in 1966, and she was his constant companion during a turbulent time for the band.<sup>18</sup> While Paul explicitly stated the song was for his dog, some read deeper meanings into it, interpreting lines like "don't forget me" or "Help yourself to a bit of what is all around you" as veiled references to his recent breakup with actress Jane Asher and her alleged infidelity.<sup>17</sup> Regardless of subtext, the song captures a feeling of affection and perhaps gentle chiding ("Hold your head up you silly girl, look what you've done"), applicable to a pet or a person.<sup>17</sup></p>
+
+            <h3>Dear Prudence</h3>
+            <p>Another <em>White Album</em> gem born from the Beatles' 1968 trip to Rishikesh, India, to study Transcendental Meditation with Maharishi Mahesh Yogi.<sup>19</sup> "Prudence" was Prudence Farrow, actress Mia Farrow's sister, who was also on the retreat.<sup>20</sup> Prudence became so intensely focused on meditating that she barely left her bungalow for days.<sup>20</sup> Worried, John and George were tasked with coaxing her out to socialize.<sup>20</sup> John wrote the song as a gentle plea: "Dear Prudence, won't you come out to play? Dear Prudence, greet the brand new day... Open up your eyes, see the sunny skies".<sup>20</sup> It's a beautiful, hypnotic invitation to re-engage with the world, inspired by someone taking their spiritual quest perhaps a little too seriously.<sup>20</sup></p>
+
+            <h3>Lovely Rita</h3>
+            <p>This jaunty tune from <em>Sgt. Pepper</em> (1967) features another memorable female character. "Rita" is a "meter maid," a term Paul McCartney heard used in America for female traffic wardens, which amused him.<sup>23</sup> He liked the slightly cheeky connotation of "maid" combined with the official "meter".<sup>25</sup> One story suggests the song was inspired by a real traffic warden named Meta Davies who gave Paul a parking ticket outside Abbey Road Studios.<sup>23</sup> Meta claimed Paul asked her name and said it would be good for a song.<sup>25</sup> However, Paul has also denied a direct real-life inspiration, calling it more of a coincidence or fantasy.<sup>24</sup> Either way, the song portrays Rita, the meter maid, as an object of the narrator's quirky affection.<sup>24</sup></p>
+
+            <h3>Sexy Sadie</h3>
+            <p>Don't let the name fool you – "Sexy Sadie" wasn't about a seductive woman. This biting track from the <em>White Album</em> (1968) was John Lennon's thinly veiled swipe at Maharishi Mahesh Yogi.<sup>26</sup> John felt disillusioned and betrayed after hearing allegations (primarily from "Magic Alex" Mardas) of the Maharishi making inappropriate advances towards Mia Farrow during the India retreat.<sup>27</sup> John originally wanted to call the song "Maharishi," with much more explicit lyrics, but George Harrison persuaded him to change the title to "Sexy Sadie".<sup>27</sup> The finished lyrics, "Sexy Sadie, what have you done? / You made a fool of everyone," still drip with contempt, accusing the figure of deceit.<sup>27</sup></p>
+
+            <h3>Julia</h3>
+            <p>Perhaps the most tender and personal name song, "Julia" (1968) is John Lennon's ode to his mother, Julia Lennon, who was tragically killed when he was 17.<sup>29</sup> Written in India, using a finger-picking style taught to him by Donovan, the song evokes dreamlike images of his mother ("seashell eyes, windy smile") and his feeling of having lost her twice.<sup>30</sup> It also weaves in a reference to his future wife, Yoko Ono, whose name means "child of the sea" in Japanese, with the line "Oceanchild, calls me".<sup>30</sup> It's the only solo Lennon performance in the Beatles' catalogue, a haunting tribute to the two most important women in his life.<sup>30</sup></p>
+
+            <h3>Penny Lane</h3>
+            <p>Not a person, but a place that feels like a character. Released as a double A-side with "Strawberry Fields Forever" in 1967, "Penny Lane" is Paul McCartney's nostalgic look back at the sights and sounds of a real street and bus terminus in Liverpool familiar from his and John's childhoods.<sup>32</sup> The lyrics populate the scene with vivid characters: the barber showing photos, the fireman rushing in, the nurse selling poppies, the banker – all drawn from memory.<sup>33</sup> It captures a specific time and place with a blend of realism and dreamlike, slightly psychedelic imagery ("blue suburban skies" mixed with pouring rain).<sup>33</sup></p>
+
+            <h3>Sgt. Pepper</h3>
+            <p>The ultimate conceptual name! For their groundbreaking 1967 album, the Beatles decided to shed their identities and perform as a fictional group: Sgt. Pepper's Lonely Hearts Club Band.<sup>35</sup> The whimsical name apparently came about on a flight when Paul McCartney misheard roadie Mal Evans asking for the salt and pepper ("S" and "P") packets on their meal trays.<sup>35</sup> Sgt. Pepper acts as the album's master of ceremonies, introducing the band and later, "the one and only Billy Shears" (Ringo's persona for "With a Little Help from My Friends").<sup>35</sup></p>
+
+            <p>And the list goes on! Think of Desmond and Molly Jones in "Ob-La-Di, Ob-La-Da," JoJo and Loretta Martin in "Get Back," Mean Mr. Mustard, Polythene Pam, Bungalow Bill, Maxwell Edison... the Beatles certainly knew how to populate their musical world.<sup>2</sup></p>
+
+            <h2>Did the Beatles Start a Baby Name Boom?</h2>
+            <p>We know the Beatles influenced fashion, music, and culture – but did they influence what people named their babies? It's a fascinating question for us name nerds! Let's look at some of the prominent names and see if their appearance in a hit song coincided with a rise on the baby name charts, particularly in the US and UK around the time of the songs' releases.</p>
+
+            <div class="table-wrapper">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Song Title</th>
+                            <th scope="col">Release</th>
+                            <th scope="col">Brief Origin/Inspiration</th>
+                            <th scope="col">US Trend Around Release</th>
+                            <th scope="col">UK Trend Around Release</th>
+                            <th scope="col">Beatles Effect?</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="font-medium text-gray-900">Michelle</td>
+                            <td>Michelle</td> <td>1965</td>
+                            <td>French feel, Paul's party piece, Jan Vaughan's lyrics <sup>13</sup></td>
+                            <td>Peaked Top 5 (1968) shortly after song release <sup>37</sup></td>
+                            <td>Popularized <sup>37</sup></td>
+                            <td class="font-semibold text-green-600">Strong/Likely</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-900">Jude</td>
+                            <td>Hey Jude</td> <td>1968</td>
+                            <td>For Julian Lennon during parents' divorce <sup>10</sup></td>
+                            <td>Jumped 69% in 1969 after #1 single <sup>39</sup></td>
+                            <td>Boosted <sup>39</sup></td>
+                            <td class="font-semibold text-green-600">Strong/Likely</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="font-medium text-gray-900">Eleanor</td>
+                            <td>Eleanor Rigby</td> <td>1966</td>
+                            <td>Actress E. Bron? Shop name? Gravestone coincidence? <sup>4</sup></td>
+                            <td>Name was declining; song released during dip.<sup>41</sup> Recent resurgence unrelated.</td>
+                            <td>Sometimes seen as dated <sup>42</sup></td>
+                            <td>Unclear/Minimal</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-900">Lucy</td>
+                            <td>Lucy in the Sky with Diamonds</td> <td>1967</td>
+                            <td>Julian Lennon's drawing of classmate Lucy O'Donnell <sup>7</sup></td>
+                            <td>Long-term staple; song released between 19th C peak & late 20th C dip.<sup>43</sup> LSD link? <sup>7</sup></td>
+                            <td>Popular <sup>44</sup></td>
+                            <td>Unclear/Minimal</td>
+                        </tr>
+                         <tr class="bg-gray-50">
+                            <td class="font-medium text-gray-900">Julia</td>
+                            <td>Julia</td> <td>1968</td>
+                            <td>John's mother Julia Lennon; Yoko Ono ("Oceanchild") <sup>29</sup></td>
+                            <td>Consistently popular; no major spike after song. Major rise later (2001).<sup>45</sup></td>
+                            <td>Popular <sup>47</sup></td>
+                            <td>No Obvious Effect</td>
+                        </tr>
+                         <tr>
+                            <td class="font-medium text-gray-900">Prudence</td>
+                            <td>Dear Prudence</td> <td>1968</td>
+                            <td>Prudence Farrow's intense meditation in India <sup>19</sup></td>
+                            <td>Remained very rare <sup>48</sup></td>
+                            <td>Rare</td>
+                            <td class="font-semibold text-red-600">None</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="font-medium text-gray-900">Rita</td>
+                            <td>Lovely Rita</td> <td>1967</td>
+                            <td>American "meter maid" slang; maybe traffic warden Meta Davies <sup>23</sup></td>
+                            <td>Likely declining from 1940s peak when song released; fell off Top 1000 later.<sup>50</sup></td>
+                            <td>Less common now <sup>50</sup></td>
+                            <td class="font-semibold text-red-600">None/Negative</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-900">Martha</td>
+                            <td>Martha My Dear</td> <td>1968</td>
+                            <td>Paul's sheepdog Martha; possible Jane Asher subtext <sup>16</sup></td>
+                            <td>Long, slow decline continued after song release.<sup>51</sup> Seen as dated.<sup>52</sup></td>
+                            <td>More popular in UK <sup>53</sup></td>
+                            <td class="font-semibold text-red-600">None</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="font-medium text-gray-900">Sadie</td>
+                            <td>Sexy Sadie</td> <td>1968</td>
+                            <td>Disillusionment with Maharishi Mahesh Yogi <sup>26</sup></td>
+                            <td>Song released at name's absolute lowest point.<sup>54</sup> Later resurgence unrelated.</td>
+                            <td>Popular now <sup>55</sup></td>
+                            <td class="font-semibold text-red-600">None/Negative (Initially?)</td>
+                        </tr>
+                         <tr>
+                            <td class="font-medium text-gray-900">Penny</td>
+                            <td>Penny Lane</td> <td>1967</td>
+                            <td>Real Liverpool street; diminutive of Penelope <sup>32</sup></td>
+                            <td>Already popular (Top 100 in 60s); song likely sustained visibility.<sup>57</sup></td>
+                            <td>Popular <sup>58</sup></td>
+                            <td>Possible/Sustaining</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-medium-gray mb-6 italic">(Popularity data primarily based on US Social Security Administration records and Nameberry/The Bump/UK ONS where available for periods around song releases)</p>
+
+            <p>So, what does this tell us? It seems the "Beatles Baby Name Effect" was real, but selective!</p>
+            <ul>
+                <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts in popularity right after their respective songs became massive hits.<sup>37</sup> The romantic allure of "Michelle" and the uplifting hope of "Hey Jude" likely resonated strongly with expecting parents.<sup>11</sup></li>
+                <li><strong>Minimal Impact:</strong> Classic, established names like <strong>Eleanor</strong>, <strong>Lucy</strong>, and <strong>Julia</strong> didn't seem dramatically swayed by their song appearances.<sup>41</sup> "Eleanor Rigby," while iconic, is quite bleak, perhaps not the vibe most parents seek.<sup>4</sup> "Lucy" had the LSD association controversy <sup>7</sup>, and "Julia," while beautiful, is deeply melancholic.<sup>30</sup> These names had their own historical trajectories.</li>
+                <li><strong>No Boost for the Declining or Rare:</strong> Names already fading from their peak popularity, like <strong>Rita</strong> and <strong>Martha</strong>, weren't revived by their songs.<sup>50</sup> Rita's playful portrayal and Martha's canine connection (and potential relationship drama subtext) didn't reverse their slides.<sup>17</sup> The very rare <strong>Prudence</strong> remained rare, perhaps hampered by the character's withdrawn depiction and the name's prim sound.<sup>20</sup></li>
+                <li><strong>Negative Connotations Matter:</strong> <strong>Sadie</strong> was at its lowest point when "Sexy Sadie" came out, and the song's negative portrayal of its subject certainly didn't help matters then.<sup>27</sup> Its modern resurgence is completely separate.</li>
+                <li><strong>Sustaining Power?:</strong> For <strong>Penny</strong>, already popular when "Penny Lane" charmed the world, the song likely helped keep the cheerful name in the public eye.<sup>33</sup></li>
+            </ul>
+            <p>It shows that while a hit song can definitely put a name on the map or give it a boost, factors like the song's tone, the character's portrayal, and the name's existing popularity and style all play a role in whether it catches on with the baby-naming public. Pop culture influence is powerful, but unpredictable!</p>
+
+            <h2>More Than Just a Name: Why the Beatles' Choices Resonate</h2>
+            <p>Why did the Beatles bother using specific names? Why not just sing about "a girl" or "a man"? Their choices show the power a name holds in songwriting.</p>
+            <ul>
+                <li><strong>Making Feelings Concrete:</strong> Abstract ideas like loneliness become instantly relatable when attached to "Eleanor Rigby" or "Father McKenzie".<sup>4</sup> A name gives a universal feeling a specific, human face.</li>
+                <li><strong>Adding Emotional Weight:</strong> Knowing the real stories behind "Julia" (John's mother <sup>30</sup>) or "Hey Jude" (Julian Lennon <sup>11</sup>) adds layers of poignant depth. Even without knowing the backstory, the specificity hints at genuine emotion.</li>
+                <li><strong>Sketching Characters Quickly:</strong> Names help bring scenes to life. The barber in "Penny Lane," "Lovely Rita," or even the briefly mentioned Vera, Chuck, and Dave in "When I'm Sixty-Four" feel more real because they have names.<sup>2</sup></li>
+                <li><strong>Creating Intrigue and Legend:</strong> Names like "Lucy" or "Sexy Sadie" became iconic partly because of the speculation surrounding them.<sup>7</sup> Was Lucy about drugs? Who really was Sadie? The name becomes a hook, drawing listeners into the mystery.</li>
+                <li><strong>Sounding Good:</strong> Sometimes, it's just about the music! The pleasing sound of "Michelle, ma belle" <sup>13</sup> or the better flow of "Jude" over "Jules" <sup>10</sup> shows that the pure sonic quality of a name matters in a song.</li>
+            </ul>
+            <p>The Beatles used names in all these ways – sometimes personal, sometimes fictional, sometimes symbolic, sometimes just for the sound. It highlights how versatile and powerful naming is as a creative tool, capable of anchoring emotion, building stories, creating mystique, and enhancing the music itself.</p>
+
+            <h2>Let It Be (Named Something Great!)</h2>
+            <p>From Paul's dog Martha to John's mother Julia, from Julian Lennon's classmate Lucy to the fictional meter maid Rita, the names in Beatles songs are a rich collection of stories, inspirations, and happy accidents. They remind us that names are more than just labels; they carry history, evoke feelings, and connect us to people, places, and even moments in time.</p>
+            <p>Here at The Stork Name Drop, we're fascinated by how names weave themselves into our culture, and the Beatles provide a perfect, enduring example.<sup>1</sup> Their songs not only changed music but also left a subtle, selective imprint on the world of names, sparking trends and keeping certain monikers alive in our collective memory.<sup>59</sup></p>
+            <p>Whether you're naming a baby, a pet, or even just a character in a story, finding that perfect name is a creative journey. The Beatles certainly showed us how much meaning and magic a simple name can hold.</p>
+            <p>Now over to you! What's your favorite Beatles name song? Did any Fab Four tune influence a name choice in your life or family? Share your thoughts in the comments below – we'd love to hear your stories!</p>
+
+            <div class="works-cited">
+                <h3 class="text-lg font-semibold mb-3">Works Cited</h3>
+                <ol>
+                    <li>Cultural impact of the Beatles - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Cultural_impact_of_the_Beatles" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Cultural_impact_of_the_Beatles</a></li>
+                    <li>I think there are around 80 names in Beatle songs. Can you list them? - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/beatles/comments/1dtdera/i_think_there_are_around_80_names_in_beatle_songs/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/beatles/comments/1dtdera/i_think_there_are_around_80_names_in_beatle_songs/</a></li>
+                    <li>10 Great Beatles Songs with Girl Names in the Titles - CultureSonar, accessed April 29, 2025, <a href="https://www.culturesonar.com/beatles-songs-with-girl-names/" target="_blank" rel="noopener noreferrer">https://www.culturesonar.com/beatles-songs-with-girl-names/</a></li>
+                    <li>Eleanor Rigby - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Eleanor_Rigby" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Eleanor_Rigby</a></li>
+                    <li>The Meaning Behind "Eleanor Rigby" by The Beatles - American Songwriter, accessed April 29, 2025, <a href="https://americansongwriter.com/the-meaning-behind-eleanor-rigby-by-the-beatles/" target="_blank" rel="noopener noreferrer">https://americansongwriter.com/the-meaning-behind-eleanor-rigby-by-the-beatles/</a></li>
+                    <li>wcsx.com, accessed April 29, 2025, <a href="https://wcsx.com/2023/03/09/the-beatles-eleanor-rigby-the-story-behind-the-song/" target="_blank" rel="noopener noreferrer">https://wcsx.com/2023/03/09/the-beatles-eleanor-rigby-the-story-behind-the-song/</a></li>
+                    <li>Lucy in the Sky with Diamonds - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Lucy_in_the_Sky_with_Diamonds</a></li>
+                    <li>(Duplicate link removed)</li>
+                    <li>Inspiration Links The Beatles, a Fossil and a NASA Mission, accessed April 29, 2025, <a href="https://www.nasa.gov/missions/inspiration-links-the-beatles-a-fossil-and-a-nasa-mission/" target="_blank" rel="noopener noreferrer">https://www.nasa.gov/missions/inspiration-links-the-beatles-a-fossil-and-a-nasa-mission/</a></li>
+                    <li>The Story Behind 'Hey Jude,' 50 Years After Its Release | GBH - WGBH, accessed April 29, 2025, <a href="https://www.wgbh.org/news/local/2018-08-24/the-story-behind-hey-jude-50-years-after-its-release" target="_blank" rel="noopener noreferrer">https://www.wgbh.org/news/local/2018-08-24/the-story-behind-hey-jude-50-years-after-its-release</a></li>
+                    <li>Hey Jude - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Hey_Jude" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Hey_Jude</a></li>
+                    <li>"Hey Jude" by The Beatles: The Story Behind The Song - The YU Observer, accessed April 29, 2025, <a href="https://yuobserver.org/2024/09/hey-jude-by-the-beatles-the-story-behind-the-song/" target="_blank" rel="noopener noreferrer">https://yuobserver.org/2024/09/hey-jude-by-the-beatles-the-story-behind-the-song/</a></li>
+                    <li>Michelle (song) - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Michelle_(song)" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Michelle_(song)</a></li>
+                    <li>Michelle - Beatles Wiki - Interviews, Music, Beatles Quotes, accessed April 29, 2025, <a href="http://beatleswiki.com/wiki/index.php?title=Michelle" target="_blank" rel="noopener noreferrer">http://beatleswiki.com/wiki/index.php?title=Michelle</a></li>
+                     <li>(Duplicate link removed)</li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Martha My Dear - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Martha_My_Dear" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Martha_My_Dear</a></li>
+                    <li>Martha My Dear: An Ode to Paul McCartney's Dog - Waggel, accessed April 29, 2025, <a href="https://www.waggel.co.uk/blog/post/martha-my-dear-an-ode-to-paul-mccartneys-dog" target="_blank" rel="noopener noreferrer">https://www.waggel.co.uk/blog/post/martha-my-dear-an-ode-to-paul-mccartneys-dog</a></li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Dear Prudence - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Dear_Prudence" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Dear_Prudence</a></li>
+                    <li>The story behind Dear Prudence (for those who don't know it). : r/beatles - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/beatles/comments/3pfrih/the_story_behind_dear_prudence_for_those_who_dont/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/beatles/comments/3pfrih/the_story_behind_dear_prudence_for_those_who_dont/</a></li>
+                    <li>“Dear Prudence”1967-1968 | The Pop History Dig, accessed April 29, 2025, <a href="https://pophistorydig.com/topics/dear-prudence-1967-1968/" target="_blank" rel="noopener noreferrer">https://pophistorydig.com/topics/dear-prudence-1967-1968/</a></li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Lovely Rita - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Lovely_Rita" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Lovely_Rita</a></li>
+                    <li>"Lovely Rita" by The Beatles. The in-depth story behind the songs..., accessed April 29, 2025, <a href="http://www.beatlesebooks.com/lovely-rita" target="_blank" rel="noopener noreferrer">http://www.beatlesebooks.com/lovely-rita</a></li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Sexy Sadie - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Sexy_Sadie" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Sexy_Sadie</a></li>
+                    <li>"Sexy Sadie" song by The Beatles. The in-depth story behind the songs..., accessed April 29, 2025, <a href="http://www.beatlesebooks.com/sexy-sadie" target="_blank" rel="noopener noreferrer">http://www.beatlesebooks.com/sexy-sadie</a></li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Julia (Beatles song) - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Julia_(Beatles_song)" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Julia_(Beatles_song)</a></li>
+                    <li>"Julia" song by The Beatles. The in-depth story behind the songs..., accessed April 29, 2025, <a href="http://www.beatlesebooks.com/julia" target="_blank" rel="noopener noreferrer">http://www.beatlesebooks.com/julia</a></li>
+                     <li>(Duplicate link removed)</li>
+                    <li>Penny Lane - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Penny_Lane" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Penny_Lane</a></li>
+                    <li>The Inspiration Behind The Beatles' 'Penny Lane' - The Third Eye, accessed April 29, 2025, <a href="https://thirdeyepsychrock.blog/2023/01/21/the-inspiration-behind-the-beatles-penny-lane/" target="_blank" rel="noopener noreferrer">https://thirdeyepsychrock.blog/2023/01/21/the-inspiration-behind-the-beatles-penny-lane/</a></li>
+                    <li>Sgt. Pepper's Lonely Hearts Club Band (song) - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band_(song)" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Sgt._Pepper%27s_Lonely_Hearts_Club_Band_(song)</a></li>
+                    <li>www.catawiki.com, accessed April 29, 2025, <a href="https://www.catawiki.com/en/stories/4241-beatles-50-years-ago-the-story-behind-the-sergeant-pepper-s-lonely-hearts-club-band" target="_blank" rel="noopener noreferrer">https://www.catawiki.com/en/stories/4241-beatles-50-years-ago-the-story-behind-the-sergeant-pepper-s-lonely-hearts-club-band</a></li>
+                    <li>Michelle (name) - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Michelle_(name)" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Michelle_(name)</a></li>
+                    <li>Michelle - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/girl-baby-name-michelle" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/girl-baby-name-michelle</a></li>
+                    <li>About Names: Dr. Cleveland Evans on the name “Jude” | American Name Society, accessed April 29, 2025, <a href="https://www.americannamesociety.org/about-names-dr-cleveland-evans-on-the-name-jude/" target="_blank" rel="noopener noreferrer">https://www.americannamesociety.org/about-names-dr-cleveland-evans-on-the-name-jude/</a></li>
+                    <li>Jude - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/boy-baby-name-jude" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/boy-baby-name-jude</a></li>
+                    <li>Eleanor - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Eleanor" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Eleanor</a></li>
+                    <li>Popularity of Eleanor : r/NameNerdCirclejerk - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/NameNerdCirclejerk/comments/127outb/popularity_of_eleanor/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/NameNerdCirclejerk/comments/127outb/popularity_of_eleanor/</a></li>
+                    <li>Lucy - Firstnames.blog, accessed April 29, 2025, <a href="https://firstnames.blog/firstnames/lucy/" target="_blank" rel="noopener noreferrer">https://firstnames.blog/firstnames/lucy/</a></li>
+                    <li>Lucy - Baby name meaning, origin, and popularity - BabyCentre UK, accessed April 29, 2025, <a href="https://www.babycentre.co.uk/babyname/1007453/lucy" target="_blank" rel="noopener noreferrer">https://www.babycentre.co.uk/babyname/1007453/lucy</a></li>
+                    <li>Julia: Name Meaning, Origin, Popularity - Parents, accessed April 29, 2025, <a href="https://www.parents.com/julia-name-meaning-origin-popularity-8640143" target="_blank" rel="noopener noreferrer">https://www.parents.com/julia-name-meaning-origin-popularity-8640143</a></li>
+                    <li>Julia - Firstnames.blog, accessed April 29, 2025, <a href="https://firstnames.blog/firstnames/julia/" target="_blank" rel="noopener noreferrer">https://firstnames.blog/firstnames/julia/</a></li>
+                    <li>Julia - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/girl-baby-name-julia" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/girl-baby-name-julia</a></li>
+                    <li>Prudence - Baby Name Meaning, Origin and Popularity - The Bump, accessed April 29, 2025, <a href="https://www.thebump.com/b/prudence-baby-name" target="_blank" rel="noopener noreferrer">https://www.thebump.com/b/prudence-baby-name</a></li>
+                    <li>Prudence - Name Meaning, Origin & Similar Names - Kiindred, accessed April 29, 2025, <a href="https://kiindred.co/baby-name/prudence-f/" target="_blank" rel="noopener noreferrer">https://kiindred.co/baby-name/prudence-f/</a></li>
+                    <li>Rita - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/girl-baby-name-rita" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/girl-baby-name-rita</a></li>
+                    <li>Martha - Firstnames.blog, accessed April 29, 2025, <a href="https://firstnames.blog/firstnames/martha/" target="_blank" rel="noopener noreferrer">https://firstnames.blog/firstnames/martha/</a></li>
+                    <li>Why is the name Martha not popular in America? : r/namenerds - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/namenerds/comments/15wbneo/why_is_the_name_martha_not_popular_in_america/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/namenerds/comments/15wbneo/why_is_the_name_martha_not_popular_in_america/</a></li>
+                    <li>Martha - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/girl-baby-name-martha" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/girl-baby-name-martha</a></li>
+                    <li>Sadie - Firstnames.blog, accessed April 29, 2025, <a href="https://firstnames.blog/firstnames/sadie/" target="_blank" rel="noopener noreferrer">https://firstnames.blog/firstnames/sadie/</a></li>
+                    <li>Sadie (given name) - Wikipedia, accessed April 29, 2025, <a href="https://en.wikipedia.org/wiki/Sadie_(given_name)" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Sadie_(given_name)</a></li>
+                    <li>Penny - Baby Name Meaning, Origin and Popularity - The Bump, accessed April 29, 2025, <a href="https://www.thebump.com/b/penny-baby-name" target="_blank" rel="noopener noreferrer">https://www.thebump.com/b/penny-baby-name</a></li>
+                    <li>Top names of the 1960s - SSA, accessed April 29, 2025, <a href="https://www.ssa.gov/oact/babynames/decades/names1960s.html" target="_blank" rel="noopener noreferrer">https://www.ssa.gov/oact/babynames/decades/names1960s.html</a></li>
+                    <li>Penny - Baby Name Meaning, Origin, and Popularity | Nameberry, accessed April 29, 2025, <a href="https://nameberry.com/b/girl-baby-name-penny" target="_blank" rel="noopener noreferrer">https://nameberry.com/b/girl-baby-name-penny</a></li>
+                    <li>Beatles related baby names?... - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/beatles/comments/3dkpwz/beatles_related_baby_names/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/beatles/comments/3dkpwz/beatles_related_baby_names/</a></li>
+                    <li>Parents naming their children after the Beatles - Maccaboard, accessed April 29, 2025, <a href="https://maccaboard.paulmccartney.com/topic/9273/parents-naming-their-children-after-the-beatles" target="_blank" rel="noopener noreferrer">https://maccaboard.paulmccartney.com/topic/9273/parents-naming-their-children-after-the-beatles</a></li>
+                    <li>If you had to name your kid something related to The Beatles... - Reddit, accessed April 29, 2025, <a href="https://www.reddit.com/r/namenerds/comments/1364l52/if_you_had_to_name_your_kid_something_related_to/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/namenerds/comments/1364l52/if_you_had_to_name_your_kid_something_related_to/</a></li>
                 </ol>
             </div>
-        </article>
+            </article>
 
         <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
@@ -244,5 +458,4 @@
     </script>
 
 </body>
-</html>
-
+</ht
