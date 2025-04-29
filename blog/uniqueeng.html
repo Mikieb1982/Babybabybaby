@@ -1,823 +1,248 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>Unique & Uncommon English Name Ideas - The Stork Name Drop Blog</title>
-
-
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-
-// Tailwind CSS Configuration - Copied from index page for consistency
-
-tailwind.config = {
-
-theme: {
-
-extend: {
-
-fontFamily: {
-
-sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-
-serif: ['Georgia', 'serif'],
-
-},
-
-colors: {
-
-'stork-title': '#2C3E50',
-
-'stork-text': '#34495E',
-
-'stork-accent': '#1ABC9C',
-
-'stork-accent-hover': '#16A085',
-
-'soft-beige': '#F5F5DC',
-
-'dark-text': '#374151',
-
-'medium-gray': '#6B7280',
-
-'button-active': '#60A5FA',
-
-'button-active-hover': '#3B82F6',
-
-'button-inactive-hover-bg': '#F9FAFB',
-
-'button-inactive-hover-border': '#1F2937',
-
-'error-red': '#EF4444',
-
-'save-button': '#34D399',
-
-'save-button-hover': '#059669',
-
-'remove-button': '#F87171',
-
-'remove-button-hover': '#DC2626',
-
-'copy-button': '#9CA3AF',
-
-'copy-button-hover': '#4B5563',
-
-'accent-muted': '#64748b',
-
-'accent-muted-light': '#cbd5e1',
-
-'off-white': '#f8fafc',
-
-'indigo-100': '#e0e7ff',
-
-'indigo-700': '#4338ca',
-
-'amber-100': '#fef3c7',
-
-'amber-500': '#f59e0b'
-
-},
-
-animation: {
-
-'fade-in': 'fade-in 0.5s ease-out',
-
-'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-
-'fade-in-down': 'fade-in-down 0.5s ease-out',
-
-'fade-out-up': 'fade-out-up 0.5s ease-out',
-
-'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-
-'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-
-'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-
-'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-
-},
-
-keyframes: {
-
-'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-
-'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
-
-'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-
-'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-
-'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-
-'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-
-'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-
-},
-
-}
-
-}
-
-}
-
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
-
-
-
-<style>
-
-/* Basic styles - Copied from index page for consistency */
-
-.btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-
-.btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
-
-.btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
-
-.btn-feedback { @apply transform active:scale-95; }
-
-
-
-/* Form element styles - Copied from index page for consistency */
-
-select, input[type="text"], input[type="radio"], input[type="range"] {
-
-@apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
-
-}
-
-input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
-
-input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
-
-input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
-
-
-
-/* Loader - Copied from index page for consistency */
-
-.loader {
-
-border: 4px solid #f3f3f3;
-
-border-top: 4px solid #1ABC9C; /* Stork Accent */
-
-border-radius: 50%;
-
-width: 40px;
-
-height: 40px;
-
-animation: spin 1s linear infinite;
-
-margin: 20px auto;
-
-}
-
-@keyframes spin {
-
-0% { transform: rotate(0deg); }
-
-100% { transform: rotate(360deg); }
-
-}
-
-
-
-/* Name card styles - Copied from index page for consistency */
-
-.name-card {
-
-@apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
-
-}
-
-.name-card h3 {
-
-@apply text-xl font-semibold text-stork-title mb-2;
-
-}
-
-.name-card p {
-
-@apply text-stork-text mb-1 text-sm;
-
-}
-
-.name-card .tags span {
-
-@apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
-
-}
-
-.name-card .actions button {
-
-@apply text-xs px-2 py-1 rounded mr-2;
-
-}
-
-
-
-/* Full height layout - Copied from index page for consistency */
-
-html, body {
-
-min-height: 100%;
-
-display: flex;
-
-flex-direction: column;
-
-}
-
-body {
-
-flex-grow: 1;
-
-padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-
-}
-
-main {
-
-flex-grow: 1;
-
-}
-
-
-
-/* Blog post specific styles */
-
-.blog-post-image {
-
-@apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
-
-}
-
-
-
-.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
-
-@apply text-stork-title font-semibold;
-
-}
-
-
-
-.blog-content h1 {
-
-@apply text-3xl md:text-4xl mb-4 text-center;
-
-}
-
-.blog-content h2 {
-
-@apply text-2xl md:text-3xl pt-6 mb-4;
-
-}
-
-.blog-content h3 {
-
-@apply text-xl md:text-2xl pt-4 mb-3;
-
-}
-
-.blog-content h4 {
-
-@apply text-lg md:text-xl pt-2 mb-2;
-
-}
-
-
-
-.blog-content p {
-
-@apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
-
-}
-
-
-
-.blog-content ul, .blog-content ol {
-
-@apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
-
-}
-
-
-
-.blog-content ul li, .blog-content ol li {
-
-@apply mb-2;
-
-}
-
-
-
-.blog-content table {
-
-@apply border-collapse w-full mb-6 text-sm;
-
-}
-
-
-
-.blog-content th, .blog-content td {
-
-@apply border border-gray-300 p-3 text-left align-top;
-
-}
-
-
-
-.blog-content th {
-
-@apply bg-gray-100 font-semibold text-stork-title;
-
-}
-
-
-
-.blog-content .table-wrapper {
-
-@apply overflow-x-auto mb-6;
-
-}
-
-
-
-.blog-content .text-medium-gray {
-
-@apply text-medium-gray;
-
-}
-
-
-
-.blog-content a {
-
-@apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
-
-}
-
-
-
-.social-share-link {
-
-@apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
-
-}
-
-
-
-
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Unique & Uncommon English Name Ideas - The Stork Name Drop Blog</title>
+
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration - Copied from index page for consistency
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Layout styles */
+        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; position: relative; }
+
+        /* Blog post specific styles */
+        .blog-post-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { @apply text-stork-title font-semibold; }
+        .blog-content h1 { @apply text-3xl md:text-4xl mb-4 text-center; }
+        .blog-content h2 { @apply text-2xl md:text-3xl pt-6 mb-4; }
+        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3; }
+        .blog-content h4 { @apply text-lg md:text-xl pt-2 mb-2; }
+        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
+        .blog-content ul li, .blog-content ol li { @apply mb-2; }
+        .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
+        .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
+        .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
+        .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
+        .blog-content .text-medium-gray { @apply text-medium-gray; }
+        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
+        .social-share-link { @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200; }
+
+        /* --- Navigation Arrows Styles --- */
+        .blog-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            z-index: 40; cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%; padding: 0.75rem; /* p-3 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, opacity 0.3s;
+            opacity: 0.7;
+        }
+        .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
+        #prev-post { left: 15px; }
+        #next-post { right: 15px; }
+        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
+        .blog-nav.hidden { opacity: 0; pointer-events: none; }
+
+    </style>
 </head>
 
-
-
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-
-
-
-<header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-
-<div class="container mx-auto flex justify-between items-center">
-
-<a href="../index.html" title="The Stork Name Drop Home" class="z-20">
-
-<img src="../assets/logo.png" alt="The Stork Name Drop Logo"
-
-class="h-12 w-12 object-contain"
-
-onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-
-</a>
-
-
-
-<nav class="flex space-x-4 sm:space-x-6 items-center">
-
-<a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-
-<a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-
-<a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-
-<a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-
-<a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-
-</nav>
-
-</div>
-
-</header>
-
-
-
-<section id="showcase" class="py-6 md:py-10 text-center relative">
-
-<h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">Unique & Uncommon English Name Ideas</h1>
-
-<p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">Beyond the Top 10: Finding Your Perfectly Uncommon Name</p>
-
-</section>
-
-
-
-
-
-<main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
-
-
-
-<article class="blog-content">
-
-<p class="text-center text-sm text-medium-gray mb-8">Published: April 18, 2025</p>
-
-
-
-<img src="../assets/uniqueeng.png"
-
-alt="Abstract image representing unique names ideas"
-
-class="blog-post-image"
-
-onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Unique+Names+Image';">
-
-
-
-<div class="space-y-6 text-base md:text-lg leading-relaxed">
-
-
-
-<p>Choosing a name for a new arrival is one of the most exciting, and sometimes daunting, parts of welcoming a child. It's a decision filled with hopes, dreams, and the desire to find something that feels just right. For many parents-to-be, the search extends beyond the familiar sounds heard echoing across playgrounds and listed at the top of popularity charts. Looking for a name that stands out from the crowd? This curated list explores unique English names, delving into their origins and meanings for inspiration beyond the most common choices. The journey to find a name less ordinary can be a wonderful adventure, uncovering hidden gems and stories waiting to be told. A unique name can be a special gift, a first chapter in a child's individual story.</p>
-
-<p>The quest for uniqueness in naming reflects a broader cultural moment. Perhaps it's a desire for individuality in an increasingly connected world, a way to honor specific heritage, or simply the joy of discovering a beautiful name that isn't shared by several others in the same class. Whatever the motivation, this exploration serves as a guide on that exciting path, offering pathways to names that resonate with distinction and charm.</p>
-
-
-
-<h2>What Does "Uncommon" Mean in a World of Olivias and Noahs?</h2>
-
-<p>The idea of an "uncommon" name is, of course, relative. What feels rare in one community might be familiar in another. Thankfully, official statistics provide a useful map of the naming landscape. Government bodies like the Social Security Administration (SSA) in the United States, the Office for National Statistics (ONS) in the UK, Statistics Canada, and various state registries in Australia meticulously compile data on the names given to babies each year. These lists clearly show which names currently occupy the top spots.</p>
-
-<p>Certain names consistently appear at the very peak of popularity across major English-speaking nations. These form the "Top Tier" – names chosen frequently by parents year after year. Understanding this popular crowd helps define the territory of the truly uncommon.</p>
-
-
-
-<h3>Table 1: The Popular Crowd - Recent Top 5 Baby Names</h3>
-
-<div class="table-wrapper">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Country</th>
-
-<th>Rank</th>
-
-<th>Boy Name</th>
-
-<th>Girl Name</th>
-
-<th>Data Year</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr><td>US</td><td>1</td><td>Liam</td><td>Olivia</td><td>2023</td></tr>
-
-<tr><td>US</td><td>2</td><td>Noah</td><td>Emma</td><td>2023</td></tr>
-
-<tr><td>US</td><td>3</td><td>Oliver</td><td>Charlotte</td><td>2023</td></tr>
-
-<tr><td>US</td><td>4</td><td>James</td><td>Amelia</td><td>2023</td></tr>
-
-<tr><td>US</td><td>5</td><td>Elijah</td><td>Sophia</td><td>2023</td></tr>
-
-<tr><td>UK (Eng/Wales)</td><td>1</td><td>Muhammad</td><td>Olivia</td><td>2023</td></tr>
-
-<tr><td>UK (Eng/Wales)</td><td>2</td><td>Noah</td><td>Amelia</td><td>2023</td></tr>
-
-<tr><td>UK (Eng/Wales)</td><td>3</td><td>Oliver</td><td>Isla</td><td>2023</td></tr>
-
-<tr><td>UK (Eng/Wales)</td><td>4</td><td>Leo</td><td>Lily</td><td>2023</td></tr>
-
-<tr><td>UK (Eng/Wales)</td><td>5</td><td>Arthur</td><td>Freya</td><td>2023</td></tr>
-
-<tr><td>Canada</td><td>1</td><td>Noah</td><td>Olivia</td><td>2023</td></tr>
-
-<tr><td>Canada</td><td>2</td><td>Liam</td><td>Emma</td><td>2023</td></tr>
-
-<tr><td>Canada</td><td>3</td><td>Oliver</td><td>Charlotte</td><td>2023</td></tr>
-
-<tr><td>Canada</td><td>4</td><td>Lucas</td><td>Amelia</td><td>2023</td></tr>
-
-<tr><td>Canada</td><td>5</td><td>William</td><td>Sophia</td><td>2023</td></tr>
-
-<tr><td>Australia (NSW)</td><td>1</td><td>Noah</td><td>Charlotte</td><td>2024</td></tr>
-
-<tr><td>Australia (NSW)</td><td>2</td><td>Oliver</td><td>Amelia</td><td>2024</td></tr>
-
-<tr><td>Australia (NSW)</td><td>3</td><td>Leo</td><td>Isla</td><td>2024</td></tr>
-
-<tr><td>Australia (NSW)</td><td>4</td><td>William</td><td>Olivia</td><td>2024</td></tr>
-
-<tr><td>Australia (NSW)</td><td>5</td><td>Theodore</td><td>Mia</td><td>2024</td></tr>
-
-<tr><td>Australia (Vic)</td><td>1</td><td>Oliver</td><td>Isla</td><td>2024</td></tr>
-
-<tr><td>Australia (Vic)</td><td>2</td><td>Noah</td><td>Charlotte</td><td>2024</td></tr>
-
-<tr><td>Australia (Vic)</td><td>3</td><td>Leo</td><td>Amelia</td><td>2024</td></tr>
-
-<tr><td>Australia (Vic)</td><td>4</td><td>Jack</td><td>Olivia</td><td>2024</td></tr>
-
-<tr><td>Australia (Vic)</td><td>5</td><td>Henry</td><td>Mia</td><td>2024</td></tr>
-
-<tr><td>Australia (WA)</td><td>1</td><td>Noah/Oliver (tie)</td><td>Charlotte/Isla (tie)</td><td>2024</td></tr>
-
-<tr><td>Australia (WA)</td><td>2</td><td>Leo</td><td>Amelia</td><td>2024</td></tr>
-
-<tr><td>Australia (WA)</td><td>3</td><td>Henry</td><td>Olivia</td><td>2024</td></tr>
-
-<tr><td>Australia (WA)</td><td>4</td><td>Luca</td><td>Harper</td><td>2024</td></tr>
-
-<tr><td>Australia (WA)</td><td>5</td><td>Jack</td><td>Mia</td><td>2024</td></tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-<p class="text-sm text-medium-gray">Note: Data reflects the most recent available year from sources, typically 2023 or early 2024 state/territory data for Australia. Rankings can shift slightly year to year. Sources: SSA, ONS, StatCan, NSW/Vic/WA Gov.</p>
-
-<p>This table visually establishes the baseline of "common" names, highlighting the dominance of choices like Olivia, Noah, Amelia, Liam, and Oliver across borders. It makes the contrast with the "uncommon" names explored later more impactful. Seeing these names repeated immediately defines the popular crowd this post aims to move beyond, justifying the search for uniqueness.</p>
-
-<p>For the purposes of this exploration, "uncommon" generally refers to names found outside the Top 500 or even Top 1000 in these major English-speaking regions. Official statistics reveal a fascinating picture: while the top 1000 names in the US account for roughly 71 percent of births, this leaves nearly 30 percent named outside that popular group. This significant portion represents a vast landscape of potential uniqueness, demonstrating that finding an uncommon name is far from impossible. It's worth noting that popularity is fluid; names can rise or fall. Some names currently outside the top ranks might still feel familiar due to past popularity peaks or emerging trends. The focus here is on names offering genuine distinctiveness in the current naming climate.</p>
-
-
-
-<h2>Spark Your Imagination: Where Unique Names Hide</h2>
-
-<p>Unique names aren't just random collections of letters; they often emerge from rich and inspiring sources. Thinking about names in categories can be a wonderful way to brainstorm and discover options that resonate personally. Consider this section a series of treasure chests, each holding different styles of uncommon gems.</p>
-
-<h3>Echoes from the Attic: Charming Vintage Revivals</h3>
-
-<p>There's a definite trend towards rediscovering names that might have belonged to grandparents or great-grandparents. These names possess a classic feel but sound fresh today precisely because they've skipped a generation or two. Sometimes dubbed "Croc Names" – like the once-unfashionable shoe making a comeback – these are vintage choices poised for a stylish return. The appeal often stems from a predictable cycle: names popular around a century ago, having fallen out of common use, are now being rediscovered. This distance lends them a feeling of being both reassuringly classic and refreshingly distinct.</p>
-
-<p>Consider names like <strong>Etta</strong>, a diminutive of Henrietta or Harriet meaning "Ruler of the Home" with medieval roots; <strong>Otto</strong>, a German name meaning "wealth" borne by kings and historical figures; <strong>Thaddeus</strong>, a distinguished Greek name meaning "praise," associated with an Apostle; <strong>Linus</strong>, Greek for "flax," the name of an early Pope and the beloved Peanuts character; or <strong>Barnaby</strong>, with Aramaic and Saxon roots meaning "son of consolation" or relating to a "young warrior".</p>
-
-<h3>Wild & Wonderful: Inspired by Nature's Beauty</h3>
-
-<p>Nature remains a powerful and enduring source of name inspiration. This category is vast, encompassing delicate botanicals, strong animal names, evocative geographical features, and even names related to the sky, weather, or seasons. The detailed categorization of nature and word names seen in naming resources suggests a broader shift towards names valued for their direct, evocative imagery and conceptual meaning, moving beyond traditional lineage alone. The sheer variety – from flowers and trees to minerals and landscapes – indicates this reflects a deep desire for tangible, meaningful connections.</p>
-
-<p>Examples include the cheerful <strong>Lark</strong>, a British name meaning "songbird"; the evocative <strong>Briar</strong>, British for a "thorny bush," often linked to wild roses and fairytales; <strong>Sorrel</strong>, a German name denoting a "reddish-brown" color, often used for horses or the tangy plant; <strong>Cove</strong>, a British name for a "small coastal inlet," suggesting shelter and the sea; <strong>Arden</strong>, a British/Celtic name meaning "great forest" or "eagle valley," famously used by Shakespeare; or <strong>Zephyr</strong>, the gentle "west wind" from Greek mythology.</p>
-
-<h3>Storied & Special: Names from Myths, Legends & Literature</h3>
-
-<p>Names drawn from mythology, classic literature, Arthurian legends, or significant historical figures carry an inherent romance and weight. Many names that sound truly unique today aren't new inventions but possess considerable historical or cultural significance. Their current rarity often belies a rich past, offering depth alongside distinctiveness. Choosing such a name connects a child to epic tales and enduring characters.</p>
-
-<p>Think of <strong>Avalon</strong>, the mystical Welsh "island of apples" from Arthurian legend; <strong>Lysander</strong>, a Greek name meaning "liberator," borne by a Spartan admiral and a Shakespearean lover; <strong>Oberon</strong>, the legendary King of the Fairies, also featured by Shakespeare; <strong>Elspeth</strong>, the traditional Scottish form of Elizabeth, meaning "chosen by God"; <strong>Isolde</strong>, a name of German or Brythonic origin famed through myth and opera; <strong>Evander</strong>, a Greek and Gaelic name meaning "good man," found in mythology; <strong>Calliope</strong>, the Greek Muse of epic poetry, meaning "beautiful-voiced"; or <strong>Caspian</strong>, a place name forever linked to C.S. Lewis's magical world of Narnia.</p>
-
-<h3>Words with Meaning: Unique Nouns & Concepts</h3>
-
-<p>A growing trend involves using evocative "word names" – nouns or concepts chosen for their direct meaning and sound. These names often carry their meaning transparently, offering an immediate conceptual resonance that differs from traditional names where meanings might be historical or require looking up. This directness appeals to those seeking clarity and instant significance. Categories include virtues, abstract ideas, time or celestial events, and even musical or artistic terms.</p>
-
-<p>Consider <strong>Reverie</strong>, a French word for "daydream"; <strong>Sonnet</strong>, an English/Italian term for a "little song" or structured poem; <strong>Valor</strong>, a Latin-derived word for "worthiness" or "bravery"; <strong>Candor</strong>, from Latin, meaning "forthrightness" or "fairness"; <strong>Solstice</strong>, Latin for "sun standing still," marking the year's extremes; <strong>Vesper</strong>, Latin for the "evening star" or "evening prayer"; <strong>Meridian</strong>, Latin for "midday" or "noon"; or <strong>Zenith</strong>, ultimately from Arabic, signifying the "highest point".</p>
-
-<h3>Family Ties & Formal Flair: Surname-Style Names</h3>
-
-<p>Using surnames as first names is another popular avenue for finding distinctive options. These names often convey a sense of heritage, polish, or even gender neutrality. Their distinct character frequently derives from origins in lineage, occupation, or place, giving them a different feel – perhaps more grounded or formal – compared to traditional given names often rooted in religious figures, abstract qualities, or mythology.</p>
-
-<p>Examples include <strong>Ellison</strong>, an English/Norwegian name meaning "son of Elias" or "son of Ellis"; <strong>Hollis</strong>, an English topographic name for someone living "near holly trees"; <strong>Fletcher</strong>, an English occupational name (via French) for an "arrow-maker"; <strong>Bellamy</strong>, a French name meaning "handsome friend" or "fine friend"; or <strong>Albion</strong>, the ancient poetic name for Great Britain, meaning "white land," which functions similarly to a place or surname.</p>
-
-
-
-<h2>A Curated Collection of Uncommon English Gems</h2>
-
-<p>The following list offers a starting point, featuring names drawn from the categories above. These selections are generally found outside the most popular rankings in the US, UK, Canada, and Australia, chosen for their appeal, history, and relative rarity. They are treasures unearthed for consideration:</p>
-
-
-
-<h4>For Girls:</h4>
-
-<ul class="space-y-3">
-
-<li><strong>Araminta:</strong> (English) Likely a literary invention combining names like Arabella and Aminta, possibly suggesting meanings like "defender" or "lion". <em>Why it's Special:</em> Elegant, aristocratic, and rare, Araminta feels both fanciful and strong, appearing in 18th-century literature.</li>
-
-<li><strong>Avalon:</strong> (Welsh) "Island of apples". <em>Why it's Special:</em> Steeped in Arthurian myth as the magical island where King Arthur was taken to heal, it has an ethereal, legendary quality.</li>
-
-<li><strong>Briar:</strong> (British) "Thorny bush of wild roses; Brambles". <em>Why it's Special:</em> A nature name connected to the Sleeping Beauty fairytale (Briar Rose), it feels both beautiful and resilient, acknowledging that beauty often has protective thorns. Usable for boys too.</li>
-
-<li><strong>Calliope:</strong> (Greek) "Beautiful-voiced". <em>Why it's Special:</em> The name of the Muse of epic poetry, it has artistic flair and a lovely sound. Also the name of a whimsical steam-powered musical instrument.</li>
-
-<li><strong>Cassia:</strong> (Greek/Hebrew) "Cassia tree" (similar to cinnamon). <em>Why it's Special:</em> A warm, spicy botanical name that's less common than Cinnamon or Saffron but shares their fragrant appeal. Also related to an ancient Roman family name.</li>
-
-<li><strong>Elspeth:</strong> (Scottish) Scottish form of Elizabeth, "Chosen by God" or "Consecrated by God". <em>Why it's Special:</em> A traditional yet distinctly Scottish alternative to the classic Elizabeth, offering familiar roots with a less common sound.</li>
-
-<li><strong>Etta:</strong> (English) Diminutive of Henrietta/Harriet, "Ruler of the Home". <em>Why it's Special:</em> A sassy, vintage nickname-name popularized by singer Etta James, it feels strong, simple, and stylishly retro.</li>
-
-<li><strong>Isolde:</strong> (German/Brythonic) Meaning uncertain, possibly "ice battle" or "she who is gazed upon". <em>Why it's Special:</em> A name of legendary romance and tragedy from the tale of Tristan and Isolde, popularized by Wagner's opera. It's dramatic and hauntingly beautiful.</li>
-
-<li><strong>Lark:</strong> (British) "Songbird". <em>Why it's Special:</em> A sweet, simple, and cheerful nature name associated with early mornings and lightheartedness.</li>
-
-<li><strong>Reverie:</strong> (French) "Daydream". <em>Why it's Special:</em> An evocative word name suggesting imagination, contemplation, and whimsical beauty.</li>
-
-<li><strong>Sorrel:</strong> (German) "Reddish brown". <em>Why it's Special:</em> A warm, earthy color and nature name associated with autumn leaves and horses' coats. Also a tangy herb. Gender-neutral.</li>
-
-<li><strong>Vesper:</strong> (Latin) "Evening star; Evening prayer". <em>Why it's Special:</em> A sophisticated name with celestial and spiritual connotations, boosted by a notable James Bond character. Gender-neutral.</li>
-
-</ul>
-
-
-
-<h4>For Boys:</h4>
-
-<ul class="space-y-3">
-
-<li><strong>Albion:</strong> (Latin/English) "White land," ancient name for Great Britain. <em>Why it's Special:</em> A stately, historical name linked to the White Cliffs of Dover, evoking British heritage and a sense of place.</li>
-
-<li><strong>Barnaby:</strong> (Aramaic/Saxon) "Son of consolation" or related to "young warrior". <em>Why it's Special:</em> A charmingly old-fashioned English-feeling name with biblical roots (via Barnabas) and a friendly sound.</li>
-
-<li><strong>Caspian:</strong> (Place Name/Latin) Named after the Caspii people ("white") or the Caspian Sea. <em>Why it's Special:</em> An adventurous, romantic name strongly associated with C.S. Lewis's Prince Caspian from the Chronicles of Narnia.</li>
-
-<li><strong>Evander:</strong> (Greek/Gaelic) "Good man" or related to Ivor. <em>Why it's Special:</em> A strong, classical name found in Greek and Roman mythology (a hero who founded a city where Rome later stood) and also has Gaelic connections.</li>
-
-<li><strong>Fletcher:</strong> (English/French) "Arrow-maker". <em>Why it's Special:</em> A crisp, occupational surname-name that feels both traditional and energetic.</li>
-
-<li><strong>Linus:</strong> (Greek) "Flax". <em>Why it's Special:</em> Combines classical roots (mythological musician, early Pope) with gentle familiarity (Linus van Pelt from Peanuts).</li>
-
-<li><strong>Lysander:</strong> (Greek) "Liberator". <em>Why it's Special:</em> A heroic name from ancient Sparta and Shakespeare's A Midsummer Night's Dream, suggesting freedom and romance.</li>
-
-<li><strong>Oberon:</strong> (Germanic/French) Meaning uncertain, possibly "noble bear". <em>Why it's Special:</em> The King of the Fairies in literature, most famously in Shakespeare's A Midsummer Night's Dream. Magical and regal.</li>
-
-<li><strong>Otto:</strong> (German) "Wealth, prosperity". <em>Why it's Special:</em> A strong, simple, palindromic name borne by Holy Roman Emperors and Otto von Bismarck. Vintage yet feels modern.</li>
-
-<li><strong>Peregrine:</strong> (Latin) "Wanderer, traveler". <em>Why it's Special:</em> An adventurous, sophisticated name with ancient Roman and later Puritan usage. Offers the charming nickname Perry.</li>
-
-<li><strong>Thaddeus:</strong> (Greek/Aramaic) "Praise" or "heart, courageous". <em>Why it's Special:</em> An Apostle's name with a distinguished, slightly formal feel and the friendly nickname Thad or Tad.</li>
-
-<li><strong>Valor:</strong> (Latin) "Worthiness, bravery". <em>Why it's Special:</em> A bold, modern-sounding virtue name that makes a strong statement. Gender-neutral.</li>
-
-<li><strong>Zephyr:</strong> (Greek) "West wind". <em>Why it's Special:</em> A gentle, poetic nature name associated with the mildest of breezes.</li>
-
-</ul>
-
-
-
-<h4>Gender Neutral:</h4>
-
-<ul class="space-y-3">
-
-<li><strong>Arden:</strong> (British/Celtic) "Great forest" or "Eagle valley". <em>Why it's Special:</em> A smooth, grounded nature name with literary ties to Shakespeare's Forest of Arden. Works well for any gender.</li>
-
-<li><strong>Bellamy:</strong> (French) "Handsome friend; Fine friend". <em>Why it's Special:</em> A melodic surname-style name with a lovely meaning suggesting companionship and charm. Increasingly used for girls as well as boys.</li>
-
-<li><strong>Candor:</strong> (Latin) "Forthrightness, fairness, brightness". <em>Why it's Special:</em> A virtue name suggesting honesty and sincerity, with a clean, clear sound.</li>
-
-<li><strong>Cove:</strong> (British) "Small coastal inlet; Enclosed chamber". <em>Why it's Special:</em> A sleek, modern-sounding nature name evoking images of the sea and tranquility.</li>
-
-<li><strong>Ellison:</strong> (English/Norwegian) "Son of Elias/Ellis". <em>Why it's Special:</em> A polished surname-name that follows the trend but remains less common than Allison or Ellis.</li>
-
-<li><strong>Hollis:</strong> (English) "Dweller near the holly trees". <em>Why it's Special:</em> A gentle, slightly preppy surname-style name with natural imagery.</li>
-
-<li><strong>Meridian:</strong> (Latin) "Midday, noon; South". <em>Why it's Special:</em> A sophisticated geographical term suggesting a peak or central point, with a rhythmic sound.</li>
-
-<li><strong>Solstice:</strong> (Latin) "Sun standing still". <em>Why it's Special:</em> A powerful celestial name marking the turning points of the seasons, unique and evocative.</li>
-
-<li><strong>Zenith:</strong> (Arabic via French/Latin) "Highest point". <em>Why it's Special:</em> A strong, aspirational name signifying the peak or culmination.</li>
-
-</ul>
-
-
-
-<h2>Why Choose the Road Less Traveled? The Joy of a Unique Name</h2>
-
-<p>Choosing a name that isn't in the Top 100 (or even Top 1000) holds a special appeal for many parents. One practical benefit is simply avoiding confusion – having multiple children with the same name in a classroom can be tricky. Beyond practicality, an uncommon name can serve as a unique identity marker, something distinctive that belongs solely to the child within their immediate peer group. It can also be a wonderful conversation starter, prompting questions about its origin or meaning.</p>
-
-<p>This desire for distinction aligns with several current naming trends. There's a noticeable move away from names perceived as overly common or tied to specific recent generations (like some Boomer or Millennial names). Instead, there's an embrace of individuality, achieved through various paths: reviving charming vintage names, connecting with the natural world, exploring global influences, or selecting words with profound meanings. While creative spellings or "fast fashion" names have seen waves of popularity, there's also a strong pull towards uniqueness found through rediscovering established names with rich histories, aligning well with the focus on established English (and related European) names explored here. It's also worth remembering that pop culture can sometimes unexpectedly elevate a previously uncommon name, adding an element of unpredictability to the naming adventure.</p>
-
-<p>Perhaps one of the most lovely aspects of choosing an uncommon name is that it often comes with a built-in story. Whether it's the tale of a mythological hero, the meaning of a beautiful word, or the history of a vintage gem, this narrative becomes part of the child's heritage, a special connection to language and culture.</p>
-
-
-
-<h2>Finding Your One-of-a-Kind Treasure</h2>
-
-<p>Ultimately, the "perfect" name is the one that resonates most deeply with a family. The categories and names presented here are intended as sparks for imagination, starting points on a personal journey of discovery. Exploring these options is encouraged, but trusting individual instincts and connections is paramount.</p>
-
-<p>A few practical considerations can be helpful: saying the full name aloud to hear how it flows, thinking about potential nicknames, and doing a quick search to ensure there are no strong unintended associations.</p>
-
-<p>The process of choosing a name is a significant one, filled with possibility. May the search be joyful, leading to that special, unique name that feels perfectly suited to the new life it will accompany. Which uncommon names have captured attention? Are there favorite unique name stories waiting to be shared? The world of names is vast and fascinating, and the journey to find the right one is part of the magic.</p>
-
-
-
-<h2>Works Cited</h2>
-
-<ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
-
-<li>Popular Baby Names | SSA, accessed April 21, 2025, https://www.ssa.gov/oact/babynames/</li>
-
-<li>Baby names in England and Wales - Office for National Statistics, accessed April 21, 2025, https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023</li>
-
-<li>The most popular baby names of 2023 - Statistics Canada, accessed April 21, 2025, https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023</li>
-
-<li>Popular baby names | NSW Government, accessed April 21, 2025, https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names</li>
-
-<li>200 Unique Word Names You Won't Find Anywhere Else | Nameberry, accessed April 21, 2025, https://nameberry.com/blog/truly-unique-word-names-for-babies</li>
-
-<li>Baby Name Trends 2025 | Nameberry, accessed April 21, 2025, https://nameberry.com/blog/baby-name-trends-2025</li>
-
-</ol>
-
-</div>
-
-
-
-<section class="mt-12">
-
-<h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-4 text-center border-b pb-3">Share This Post</h2>
-
-<div class="flex justify-center space-x-4 mt-6">
-
-<a href="https://www.facebook.com/sharer/sharer.php?u=[URL-TO-POST]" target="_blank" rel="noopener noreferrer" class="social-share-link">
-
-<img src="../assets/facebook.png" alt="Share on Facebook" class="h-8 w-8 object-contain">
-
-<span>Facebook</span>
-
-</a>
-
-<a href="https://twitter.com/intent/tweet?url=[URL-TO-POST]&text=[POST-TITLE]" target="_blank" rel="noopener noreferrer" class="social-share-link">
-
-<img src="../assets/twitter.png" alt="Share on Twitter" class="h-8 w-8 object-contain">
-
-<span>Twitter</span>
-
-</a>
-
-<a href="mailto:?subject=[POST-TITLE]&body=Check out this post: [URL-TO-POST]" class="social-share-link">
-
-<img src="../assets/email.png" alt="Share via Email" class="h-8 w-8 object-contain">
-
-<span>Email</span>
-
-</a>
-
-</div>
-
-</section>
-
-
-
-<div class="text-center mt-12">
-
-<a href="../blog.html" class="text-lg text-stork-accent hover:text-stork-accent-hover underline transition duration-200">&larr; Back to Blog Index</a>
-
-</div>
-
-
-
-</article>
-
-</main>
-
-
-
-<footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-
-© 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
-
-</footer>
-
-
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <article class="blog-content">
+             <h1>Unique & Uncommon English Name Ideas</h1>
+            <p class="text-center text-sm text-medium-gray mb-8">Published: April 18, 2025</p>
+
+            <img src="../assets/uniqueeng.png"
+                 alt="Abstract image representing unique names ideas"
+                 class="blog-post-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Unique+Names+Image';">
+
+            <div class="space-y-6 text-base md:text-lg leading-relaxed">
+                <p>Choosing a name for a new arrival is one of the most exciting, and sometimes daunting, parts of welcoming a child...</p>
+                <h2>Finding Your One-of-a-Kind Treasure</h2>
+                <p>Ultimately, the "perfect" name is the one that resonates most deeply with a family...</p>
+                <h2>Works Cited</h2>
+                <ol class="text-sm text-medium-gray space-y-1 list-decimal list-inside break-words">
+                    <li>Popular Baby Names | SSA, accessed April 21, 2025, <a href="https://www.ssa.gov/oact/babynames/" target="_blank" rel="noopener noreferrer">https://www.ssa.gov/oact/babynames/</a></li>
+                    <li>Baby names in England and Wales - Office for National Statistics, accessed April 21, 2025, <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023" target="_blank" rel="noopener noreferrer">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/livebirths/bulletins/babynamesenglandandwales/2023</a></li>
+                    <li>The most popular baby names of 2023 - Statistics Canada, accessed April 21, 2025, <a href="https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023" target="_blank" rel="noopener noreferrer">https://www.statcan.gc.ca/o1/en/plus/7180-most-popular-baby-names-2023</a></li>
+                    <li>Popular baby names | NSW Government, accessed April 21, 2025, <a href="https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names" target="_blank" rel="noopener noreferrer">https://www.nsw.gov.au/family-and-relationships/births/popular-baby-names</a></li>
+                    <li>200 Unique Word Names You Won't Find Anywhere Else | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/truly-unique-word-names-for-babies" target="_blank" rel="noopener noreferrer">https://nameberry.com/blog/truly-unique-word-names-for-babies</a></li>
+                    <li>Baby Name Trends 2025 | Nameberry, accessed April 21, 2025, <a href="https://nameberry.com/blog/baby-name-trends-2025" target="_blank" rel="noopener noreferrer">https://nameberry.com/blog/baby-name-trends-2025</a></li>
+                </ol>
+            </div>
+        </article>
+
+        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+             </svg>
+         </button>
+         <button id="next-post" class="blog-nav hidden" aria-label="Next Post">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+             </svg>
+         </button>
+
+    </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a> </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuration ---
+            const blogPosts = [
+                'middle.html',
+                'uniqueeng.html', // This is the current page
+                'german2025.html',
+                'song.html',
+                'beatles.html'
+            ];
+
+            // --- !! IMPORTANT: Set the index for THIS specific page !! ---
+            const currentPostIndex = 1; // 0=middle, 1=uniqueeng, 2=german2025, 3=song, 4=beatles
+
+            const swipeThreshold = 60;
+
+            // --- DOM Elements ---
+            const prevButton = document.getElementById('prev-post');
+            const nextButton = document.getElementById('next-post');
+            const swipeArea = document.body;
+
+            // --- State ---
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            // --- Functions ---
+            function navigateNext() {
+                if (currentPostIndex < blogPosts.length - 1) {
+                    window.location.href = blogPosts[currentPostIndex + 1];
+                }
+            }
+            function navigatePrev() {
+                if (currentPostIndex > 0) {
+                    window.location.href = blogPosts[currentPostIndex - 1];
+                }
+            }
+            function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
+            function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
+            function handleSwipeGesture() {
+                const deltaX = touchEndX - touchStartX;
+                if (Math.abs(deltaX) > swipeThreshold) {
+                    if (deltaX < 0) { navigateNext(); } else { navigatePrev(); }
+                }
+                touchStartX = 0; touchEndX = 0;
+            }
+            function updateNavButtonsVisibility() {
+                if (!prevButton || !nextButton) return;
+                prevButton.classList.toggle('hidden', currentPostIndex <= 0);
+                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
+            }
+
+            // --- Initialization ---
+            updateNavButtonsVisibility();
+
+            // --- Event Listeners ---
+            if (swipeArea) {
+                swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
+                swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }
+            if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
+            if (nextButton) { nextButton.addEventListener('click', navigateNext); }
+        });
+    </script>
 
 </body>
-
 </html>
+
