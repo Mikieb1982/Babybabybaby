@@ -146,16 +146,16 @@
             @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
         }
 
-        /* --- Card Flip Animation CSS (Simplified for Debugging) --- */
+        /* --- Card Flip Animation CSS (Positioning Restored) --- */
         .flip-card {
             background-color: transparent;
             width: 100%;
             aspect-ratio: 3 / 4;
-            /* perspective: 1000px; */ /* DEBUG: Commented out */
+            /* perspective: 1000px; */ /* DEBUG: Keep commented */
             font-family: '"Nunito Sans"', sans-serif;
             border-radius: 0.5rem;
-            border: 2px dashed red; /* DEBUG: Added border to make card boundaries visible */
-            overflow: hidden; /* DEBUG: Ensure content doesn't spill out */
+            /* border: 2px dashed red; */ /* DEBUG: Removed */
+            overflow: hidden;
         }
 
         .flip-card-inner {
@@ -163,23 +163,22 @@
             width: 100%;
             height: 100%;
             text-align: center;
-            /* transition: transform 0.8s; */ /* DEBUG: Commented out */
-            /* transform-style: preserve-3d; */ /* DEBUG: Commented out */
+            /* transition: transform 0.8s; */ /* DEBUG: Keep commented */
+            /* transform-style: preserve-3d; */ /* DEBUG: Keep commented */
             border-radius: 0.5rem;
         }
 
-        /* DEBUG: Removed hover effect for now */
+        /* DEBUG: Keep hover effect commented */
         /* .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
         } */
 
         .flip-card-front, .flip-card-back {
-            /* position: absolute; */ /* DEBUG: Changed to relative to stack them */
-            position: relative;
+            position: absolute; /* Restored */
             width: 100%;
-            /* height: 100%; */ /* DEBUG: Allow height to be auto based on content for now */
-            /* -webkit-backface-visibility: hidden; */ /* DEBUG: Commented out */
-            /* backface-visibility: hidden; */ /* DEBUG: Commented out */
+            height: 100%; /* Restored */
+            -webkit-backface-visibility: hidden; /* Restored */
+            backface-visibility: hidden; /* Restored */
             border-radius: 0.5rem;
             overflow: hidden;
             display: flex;
@@ -193,22 +192,23 @@
             background-color: #ffffff;
             color: black;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            min-height: 150px; /* DEBUG: Added min-height */
-            border: 1px solid blue; /* DEBUG: Border */
+            /* min-height: 150px; */ /* DEBUG: Removed */
+            /* border: 1px solid blue; */ /* DEBUG: Removed */
         }
 
         .flip-card-front img {
-             @apply w-full h-auto object-cover rounded-lg block; /* Changed height to auto */
+             /* Ensure image fills the front face and respects aspect ratio */
+             @apply w-full h-full object-cover rounded-lg block;
         }
 
         .flip-card-back {
             background-color: theme('colors.stork-accent');
             color: white;
-            /* transform: rotateY(180deg); */ /* DEBUG: Commented out */
+            /* transform: rotateY(180deg); */ /* DEBUG: Keep commented */
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             padding: 1rem;
-            min-height: 100px; /* DEBUG: Added min-height */
-            border: 1px solid green; /* DEBUG: Border */
+            /* min-height: 100px; */ /* DEBUG: Removed */
+            /* border: 1px solid green; */ /* DEBUG: Removed */
         }
         /* --- End Card Flip Animation CSS --- */
 
@@ -304,17 +304,4 @@
 </html>
 ```
 
-**Summary of Debugging Changes:**
-
-1.  **CSS Comments:** Commented out `perspective`, `transition`, `transform-style`, `backface-visibility`, and the `transform` on hover and on `.flip-card-back`.
-2.  **CSS Positioning:** Changed `position: absolute` to `position: relative` on `.flip-card-front` and `.flip-card-back` so they stack normally instead of overlaying.
-3.  **CSS Sizing:** Commented out `height: 100%` on the front/back faces and changed the image height to `h-auto` to let content determine height for now. Added `min-height` to both front and back faces to prevent collapse.
-4.  **Debug Borders:** Added visible borders around `.flip-card` (dashed red), `.flip-card-front` (solid blue), and `.flip-card-back` (solid green) so you can see the boundaries of each element.
-
-Please try this version. You should **not** see the flip animation. Instead, you should hopefully see:
-
-* Four card areas arranged in a grid (1 column on small screens, 2 on medium, 4 on large).
-* Each card area will have a dashed red border.
-* Inside each red border, you should see the image (with a blue border) stacked on top of the text content (with a green border).
-
-If you see this layout, it confirms the grid and basic card structure are working, and the problem lies specifically within the CSS used for the 3D flip effect. If you *still* only see one box, there's a more fundamental issue possibly related to HTML structure errors outside the main content area, CSS conflicts from other files, or asset loading proble
+Please try this version. If the layout is now correct (four cards, responsive grid, each showing only the front image which fills the card space), then we can proceed to re-enable the 3D transforms and the hover effect in the next st
