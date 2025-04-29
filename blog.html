@@ -2,135 +2,271 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - Flip Animation Enabled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Stork Name Drop - Blog</title> {/* Updated Title */}
+
+    <link rel="icon" href="assets/logo.png" type="image/png"> {/* Added Favicon Link */}
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        // Tailwind CSS Configuration from index.html
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                        serif: ['Georgia', 'serif'],
+                    },
+                    colors: { // Added custom colors
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: { // Added animations
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: { // Added keyframes
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }, // Fixed fade-in-down
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet"> {/* Added Nunito Sans font link */}
 
     <style>
-        /* --- CSS for Flip Card Animation --- */
+        /* --- Custom CSS from index.html --- */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Form element styles (might not be needed on blog page, but included for consistency) */
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+
+        /* Full height layout from index.html */
+        html, body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
+            flex-grow: 1;
+            padding-top: 64px; /* Offset for fixed header */
+            /* Background is applied directly to body tag below */
+        }
+        main {
+            flex-grow: 1;
         }
 
-        /* 1. Main container - Defines perspective */
+        /* --- CSS for Flip Card Animation --- */
+        /* (Keep this CSS as it was in the previous step) */
         .flip-card {
-            width: 300px;  /* Or your desired card width */
-            height: 250px; /* Or your desired card height */
-            margin-bottom: 1.5rem; /* Spacing */
-            border-radius: 0.5rem; /* Rounded corners */
-            position: relative; /* Keep relative positioning */
-            background-color: transparent; /* Ensure container is transparent */
-            perspective: 1000px; /* Re-add perspective for 3D */
+            width: 300px;
+            height: 250px;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            position: relative;
+            background-color: transparent;
+            perspective: 1000px;
         }
-
-        /* 2. Inner container - This element flips */
         .flip-card-inner {
             width: 100%;
             height: 100%;
-            border-radius: 0.5rem; /* Match parent */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Basic shadow */
-            position: relative; /* Keep relative positioning */
-            transform-style: preserve-3d; /* Re-add preserve-3d */
-            transition: transform 0.8s; /* Re-add transition */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
         }
-
-        /* 3. Front and Back faces - Positioning and Visibility */
         .flip-card-front,
         .flip-card-back {
              width: 100%;
              height: 100%;
-             border-radius: 0.5rem; /* Match parent */
+             border-radius: 0.5rem;
              padding: 1rem;
-             display: flex; /* Use flex to center content */
+             display: flex;
              flex-direction: column;
              justify-content: center;
              align-items: center;
              text-align: center;
-             position: absolute; /* Re-add absolute positioning */
-             backface-visibility: hidden; /* Re-add backface visibility */
-             overflow: hidden; /* Added to prevent content spillover */
+             position: absolute;
+             backface-visibility: hidden;
+             overflow: hidden;
         }
-
-        /* 4. Styling for front face */
         .flip-card-front {
-            background-color: #ffffff;
-            color: black;
+            background-color: #ffffff; /* White background for front */
+            color: #34495E; /* Use stork-text color */
             border: 1px solid #e5e7eb;
-            /* No transform needed, it faces forward */
         }
-
-        /* 5. Styling for back face */
         .flip-card-back {
-            background-color: #4f46e5;
+            background-color: #1ABC9C; /* Use stork-accent color */
             color: white;
-            border: 1px solid #4f46e5;
-            transform: rotateY(180deg); /* Re-add initial rotation */
-            /* display: none; --- REMOVED this line */
+            border: 1px solid #1ABC9C; /* Use stork-accent color */
+            transform: rotateY(180deg);
         }
-
-        /* 6. Hover effect - Trigger the flip */
         .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg); /* Re-add hover transform */
+            transform: rotateY(180deg);
         }
-        /* --- End of Custom CSS --- */
+        /* --- End of Flip Card CSS --- */
+
     </style>
 </head>
-<body class="p-8">
+{/* Applied body styles from index.html */}
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-    <div class="text-center mb-12">
-         <h1 class="text-4xl font-bold mb-4">BLOG</h1>
-         <p class="text-lg text-gray-600">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
-    </div>
+    {/* Header copied from index.html */}
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            {/* Updated Nav Links - Highlight Blog */}
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a> {/* Pointing to index page generator */}
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> {/* Highlighted */}
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
+        </div>
+    </header>
 
+    {/* Main content area structure similar to index.html */}
+    <main class="container mx-auto px-6 py-8 animate-fade-in-down"> {/* Added container and animation */}
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        {/* Blog Page Title/Intro */}
+        <div class="text-center mb-12 bg-off-white/90 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-lg"> {/* Added background/styling */}
+             <h1 class="text-3xl md:text-4xl font-bold mb-4 text-stork-title">BLOG</h1> {/* Use stork-title color */}
+             <p class="text-lg text-stork-text">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
+             {/* You might have your stork banner image here */}
+             {/* Example: <img src="assets/blog_banner.png" alt="Blog Banner" class="mt-4 mx-auto max-w-lg"> */}
+        </div>
 
-        {/* Card structure remains the same */}
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h2 class="text-xl font-semibold mb-2">Choosing a Middle Name</h2>
-                    <p class="text-gray-600 text-sm">Tips for rhythm, meaning, and tradition.</p>
-                </div>
-                <div class="flip-card-back">
-                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                    <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
-                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
+        {/* Blog Card Grid */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+
+            {/* Card 1 */}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h2 class="text-xl font-semibold mb-2 text-stork-title">Choosing a Middle Name</h2>
+                        <p class="text-stork-text text-sm">Tips for rhythm, meaning, and tradition.</p>
+                        {/* Optional Image: <img src="/images/your-image1.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                        <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
+                        {/* Updated button style */}
+                        <a href="/blog/choosing-middle-name" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                     <h2 class="text-xl font-semibold mb-2">Another Blog Post</h2>
-                     <p class="text-gray-600 text-sm mb-4">A summary of this post goes here.</p>
-                </div>
-                <div class="flip-card-back">
-                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                    <p class="text-sm mb-4">Click below to read the full article.</p>
-                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
-                </div>
-            </div>
-        </div>
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                     <h2 class="text-xl font-semibold mb-2">Third Article Title</h2>
-                     <p class="text-gray-600 text-sm mb-4">Brief description of the third post.</p>
-                </div>
-                <div class="flip-card-back">
-                    <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                    <p class="text-sm mb-4">Find out more about this topic.</p>
-                    <a href="#" class="bg-white text-indigo-600 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors text-sm font-medium">Go to Post</a>
+
+            {/* Card 2 */}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Another Blog Post Title</h2>
+                         <p class="text-stork-text text-sm mb-4">A summary of this post goes here.</p>
+                         {/* Optional Image: <img src="/images/your-image2.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                        <p class="text-sm mb-4">Click below to read the full article.</p>
+                        {/* Updated button style */}
+                        <a href="/blog/another-post-link" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        </div>
+
+            {/* Card 3 */}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Third Article Title</h2>
+                         <p class="text-stork-text text-sm mb-4">Brief description of the third post.</p>
+                         {/* Optional Image: <img src="/images/your-image3.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                        <p class="text-sm mb-4">Find out more about this topic.</p>
+                         {/* Updated button style */}
+                        <a href="/blog/third-post-link" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                    </div>
+                </div>
+            </div>
+
+             {/* === Add more flip cards here using the same structure === */}
+
+        </div> {/* End of Grid */}
+
+    </main>
+
+    {/* Footer copied from index.html */}
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
+    </footer>
+
+    {/* Removed the JS from index.html as it's specific to the generator */}
+    {/* You might need different JS for blog-specific features */}
 
 </body>
 </html>
 ```
 
-Please test this version. You should now see the front of the cards initially, and they should flip over when you hover your mouse over them. Check if the layout within the grid still looks correct and the cards don't disappear or overlap incorrect
+**Summary of Changes:**
+
+* **Head:** Added viewport meta tag, favicon link, Tailwind config script, Nunito Sans font link, and CSS from index.html (`.btn`, body layout styles).
+* **Body:** Applied font, text color, background image, and padding styles from `index.html`.
+* **Header:** Replaced the placeholder header with the fixed, blurred header from `index.html`, ensuring the "Blog" link is highlighted.
+* **Main:** Wrapped the main content in `container mx-auto` and added styling to the intro section to match the index page's main content block style. Applied `stork-title` and `stork-text` colors.
+* **Flip Cards:** Updated text colors inside the cards to use `stork-title` and `stork-text`. Changed the background of the back face to `stork-accent`. Updated the "Go to Post" button style on the back face to use `.btn` and custom background/text colors that fit the theme.
+* **Footer:** Replaced the placeholder footer with the one from `index.html`.
+* **JavaScript:** Removed the generator-specific JavaScript from the end of the body.
+
+This should give your `blog.html` page the same overall look and feel (header, footer, background, fonts, colors) as your index page, while retaining the flip card animation for the blog post previews. Remember to replace placeholder content (like image paths and actual post links) with your real da
