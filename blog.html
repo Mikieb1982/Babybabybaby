@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Stork Name Drop - Blog</title> {/* Updated Title */}
+    <title>The Stork Name Drop - Blog</title>
 
-    <link rel="icon" href="assets/logo.png" type="image/png"> {/* Added Favicon Link */}
+    <link rel="icon" href="assets/logo.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,10 +14,10 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                        sans: ['"Nunito Sans"', 'sans-serif'],
                         serif: ['Georgia', 'serif'],
                     },
-                    colors: { // Added custom colors
+                    colors: {
                         'stork-title': '#2C3E50',
                         'stork-text': '#34495E',
                         'stork-accent': '#1ABC9C',
@@ -44,7 +44,7 @@
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
-                    animation: { // Added animations
+                    animation: {
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
@@ -54,9 +54,9 @@
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
-                    keyframes: { // Added keyframes
+                    keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }, // Fixed fade-in-down
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -69,16 +69,16 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet"> {/* Added Nunito Sans font link */}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Custom CSS from index.html --- */
+        /* Custom CSS from index.html */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
-        /* Form element styles (might not be needed on blog page, but included for consistency) */
+        /* Form element styles */
         select, input[type="text"], input[type="radio"], input[type="range"] {
              @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
         }
@@ -86,7 +86,7 @@
         input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
         input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
 
-        /* Full height layout from index.html */
+        /* Full height layout */
         html, body {
             min-height: 100%;
             display: flex;
@@ -95,14 +95,12 @@
         body {
             flex-grow: 1;
             padding-top: 64px; /* Offset for fixed header */
-            /* Background is applied directly to body tag below */
         }
         main {
             flex-grow: 1;
         }
 
-        /* --- CSS for Flip Card Animation --- */
-        /* (Keep this CSS as it was in the previous step) */
+        /* CSS for Flip Card Animation */
         .flip-card {
             width: 300px;
             height: 250px;
@@ -137,27 +135,25 @@
              overflow: hidden;
         }
         .flip-card-front {
-            background-color: #ffffff; /* White background for front */
-            color: #34495E; /* Use stork-text color */
+            background-color: #ffffff;
+            color: #34495E; /* stork-text */
             border: 1px solid #e5e7eb;
         }
         .flip-card-back {
-            background-color: #1ABC9C; /* Use stork-accent color */
+            background-color: #1ABC9C; /* stork-accent */
             color: white;
-            border: 1px solid #1ABC9C; /* Use stork-accent color */
+            border: 1px solid #1ABC9C; /* stork-accent */
             transform: rotateY(180deg);
         }
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
         }
-        /* --- End of Flip Card CSS --- */
+        /* End of Flip Card CSS */
 
     </style>
 </head>
-{/* Applied body styles from index.html */}
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-    {/* Header copied from index.html */}
     <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
@@ -165,108 +161,96 @@
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
-            {/* Updated Nav Links - Highlight Blog */}
             <nav class="flex space-x-4 sm:space-x-6 items-center">
                  <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a> {/* Pointing to index page generator */}
-                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> {/* Highlighted */}
+                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
                  <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
                  <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
             </nav>
         </div>
     </header>
 
-    {/* Main content area structure similar to index.html */}
-    <main class="container mx-auto px-6 py-8 animate-fade-in-down"> {/* Added container and animation */}
+    <main class="container mx-auto px-6 py-8 animate-fade-in-down">
 
-        {/* Blog Page Title/Intro */}
-        <div class="text-center mb-12 bg-off-white/90 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-lg"> {/* Added background/styling */}
-             <h1 class="text-3xl md:text-4xl font-bold mb-4 text-stork-title">BLOG</h1> {/* Use stork-title color */}
+        <div class="text-center mb-12 bg-off-white/90 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-lg">
+             <h1 class="text-3xl md:text-4xl font-bold mb-4 text-stork-title">BLOG</h1>
              <p class="text-lg text-stork-text">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
-             {/* You might have your stork banner image here */}
              {/* Example: <img src="assets/blog_banner.png" alt="Blog Banner" class="mt-4 mx-auto max-w-lg"> */}
         </div>
 
         {/* Blog Card Grid */}
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center"> {/* Adjusted grid for potentially 4 cards */}
 
-            {/* Card 1 */}
+            {/* Card 1: Middle Names */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <h2 class="text-xl font-semibold mb-2 text-stork-title">Choosing a Middle Name</h2>
-                        <p class="text-stork-text text-sm">Tips for rhythm, meaning, and tradition.</p>
-                        {/* Optional Image: <img src="/images/your-image1.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                        <h2 class="text-xl font-semibold mb-2 text-stork-title">Choosing Middle Names</h2> {/* Updated */}
+                        <p class="text-stork-text text-sm">Tips for rhythm, meaning, and tradition.</p> {/* Updated */}
                     </div>
                     <div class="flip-card-back">
                         <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                        <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
-                        {/* Updated button style */}
-                        <a href="/blog/choosing-middle-name" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        <p class="text-sm mb-4">Find the perfect middle name flow.</p> {/* Updated */}
+                        <a href="middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a> {/* Updated Link */}
                     </div>
                 </div>
             </div>
 
-            {/* Card 2 */}
+            {/* Card 2: Unique English Names */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Another Blog Post Title</h2>
-                         <p class="text-stork-text text-sm mb-4">A summary of this post goes here.</p>
-                         {/* Optional Image: <img src="/images/your-image2.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Unique English Names</h2> {/* Updated */}
+                         <p class="text-stork-text text-sm mb-4">Discover uncommon choices.</p> {/* Updated */}
                     </div>
                     <div class="flip-card-back">
                         <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                        <p class="text-sm mb-4">Click below to read the full article.</p>
-                        {/* Updated button style */}
-                        <a href="/blog/another-post-link" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        <p class="text-sm mb-4">Explore distinctive English baby names.</p> {/* Updated */}
+                        <a href="uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a> {/* Updated Link */}
                     </div>
                 </div>
             </div>
 
-            {/* Card 3 */}
+            {/* Card 3: German Names 2025 */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Third Article Title</h2>
-                         <p class="text-stork-text text-sm mb-4">Brief description of the third post.</p>
-                         {/* Optional Image: <img src="/images/your-image3.jpg" alt="Descriptive Alt Text" class="mt-2 rounded max-w-full h-auto"> */}
+                         <h2 class="text-xl font-semibold mb-2 text-stork-title">German Names 2025</h2> {/* Updated */}
+                         <p class="text-stork-text text-sm mb-4">Trends and popular choices.</p> {/* Updated */}
                     </div>
                     <div class="flip-card-back">
                         <h3 class="text-lg font-semibold mb-2">Read More</h3>
-                        <p class="text-sm mb-4">Find out more about this topic.</p>
-                         {/* Updated button style */}
-                        <a href="/blog/third-post-link" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        <p class="text-sm mb-4">See the latest in German baby names.</p> {/* Updated */}
+                        <a href="german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a> {/* Updated Link */}
                     </div>
                 </div>
             </div>
 
-             {/* === Add more flip cards here using the same structure === */}
+             {/* Card 4: Names from Songs */}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <h2 class="text-xl font-semibold mb-2 text-stork-title">Names Inspired by Songs</h2> {/* Updated */}
+                         <p class="text-stork-text text-sm mb-4">Musical inspiration for your baby.</p> {/* Updated */}
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Read More</h3>
+                        <p class="text-sm mb-4">Find names featured in popular music.</p> {/* Updated */}
+                        <a href="song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a> {/* Updated Link */}
+                    </div>
+                </div>
+            </div>
+
+             {/* Add more flip cards here if needed */}
 
         </div> {/* End of Grid */}
 
     </main>
 
-    {/* Footer copied from index.html */}
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
     </footer>
 
-    {/* Removed the JS from index.html as it's specific to the generator */}
-    {/* You might need different JS for blog-specific features */}
-
 </body>
 </html>
-```
-
-**Summary of Changes:**
-
-* **Head:** Added viewport meta tag, favicon link, Tailwind config script, Nunito Sans font link, and CSS from index.html (`.btn`, body layout styles).
-* **Body:** Applied font, text color, background image, and padding styles from `index.html`.
-* **Header:** Replaced the placeholder header with the fixed, blurred header from `index.html`, ensuring the "Blog" link is highlighted.
-* **Main:** Wrapped the main content in `container mx-auto` and added styling to the intro section to match the index page's main content block style. Applied `stork-title` and `stork-text` colors.
-* **Flip Cards:** Updated text colors inside the cards to use `stork-title` and `stork-text`. Changed the background of the back face to `stork-accent`. Updated the "Go to Post" button style on the back face to use `.btn` and custom background/text colors that fit the theme.
-* **Footer:** Replaced the placeholder footer with the one from `index.html`.
-* **JavaScript:** Removed the generator-specific JavaScript from the end of the body.
-
-This should give your `blog.html` page the same overall look and feel (header, footer, background, fonts, colors) as your index page, while retaining the flip card animation for the blog post previews. Remember to replace placeholder content (like image paths and actual post links) with your real da
