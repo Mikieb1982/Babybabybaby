@@ -138,20 +138,76 @@
 
         /* Blog specific styles */
         .blog-post-summary-container {
-            @apply text-center; /* Center the image and text */
-        }
-
-        .blog-post-summary-container img {
-            @apply rounded-lg shadow-md transition-transform duration-300 ease-in-out hover:scale-105; /* Add hover effect */
+            /* Removed centering as flip card handles layout */
         }
 
         /* Adjusted grid for mobile */
         #blog-list-container {
-            /* Default to 1 column on smallest screens */
-            /* On small screens (sm), show 2 columns */
-            /* On large screens (lg), show 4 columns */
             @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
         }
+
+        /* --- Card Flip Animation CSS --- */
+        .flip-card {
+            background-color: transparent;
+            /* width: 100%; /* Let grid control width */
+            /* height: 400px; /* Adjust height based on your image aspect ratio */
+            aspect-ratio: 3 / 4; /* Maintain aspect ratio based on common image tile size */
+            perspective: 1000px;
+            font-family: '"Nunito Sans"', sans-serif; /* Use defined sans font */
+            border-radius: 0.5rem; /* Tailwind's rounded-lg */
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            border-radius: 0.5rem; /* Ensure inner container also has rounded corners */
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            overflow: hidden; /* Important to keep rounded corners on images */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0; /* Remove padding if image should fill the card */
+        }
+
+        .flip-card-front {
+            background-color: #ffffff; /* White background */
+            color: black; /* Default text color */
+            /* border: 1px solid #e5e7eb; /* Optional: Light gray border */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
+        }
+        /* Style the front image */
+        .flip-card-front img {
+             @apply w-full h-full object-cover rounded-lg; /* Make image fill the front, maintain aspect ratio */
+             /* Removed hover effect from image as card flips now */
+        }
+
+
+        .flip-card-back {
+            background-color: theme('colors.stork-accent'); /* Use theme color */
+            color: white;
+            transform: rotateY(180deg);
+            /* border: 1px solid theme('colors.stork-accent'); /* Matching border */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
+            padding: 1rem; /* Add padding back for text content */
+        }
+        /* --- End Card Flip Animation CSS --- */
 
     </style>
 </head>
@@ -185,31 +241,57 @@
 
     <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <div id="blog-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div id="blog-list-container"> <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Song Inspired Names</h3>
+                        <p class="text-sm mb-4">Discover baby names inspired by popular songs and artists.</p>
+                        <a href="blog/song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
 
-            <article class="blog-post-summary-container">
-                <a href="blog/song.html" class="block">
-                    <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
-                </a>
-            </article>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
+                    </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">German Names 2025</h3>
+                        <p class="text-sm mb-4">Explore predictions for popular German baby names in 2025.</p>
+                        <a href="blog/german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
 
-            <article class="blog-post-summary-container">
-                <a href="blog/german2025.html" class="block">
-                    <img src="assets/german2025tile.png" alt="Tile image for Popular German Baby Names 2025 blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=German+Names';">
-                </a>
-            </article>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
+                    </div>
+                    <div class="flip-card-back">
+                         <h3 class="text-lg font-semibold mb-2">Perfect Middle Name</h3>
+                         <p class="text-sm mb-4">Tips for choosing a middle name based on rhythm, meaning, and tradition.</p>
+                         <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
 
-            <article class="blog-post-summary-container">
-                <a href="blog/middle.html" class="block">
-                    <img src="assets/middletile.png" alt="Tile image for Choosing the Perfect Middle Name blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Middle+Name';">
-                </a>
-            </article>
-
-            <article class="blog-post-summary-container">
-                <a href="blog/uniqueeng.html" class="block">
-                    <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" class="w-full h-auto object-cover" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
-                </a>
-            </article>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/uniqueengtile.png" alt="Tile image for Why Choose a Unique English Name? blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Unique+English';">
+                    </div>
+                    <div class="flip-card-back">
+                         <h3 class="text-lg font-semibold mb-2">Unique English Names</h3>
+                         <p class="text-sm mb-4">Explore the reasons why choosing a less common English name might be right for you.</p>
+                         <a href="blog/uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 font-semibold text-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -221,3 +303,22 @@
 
 </body>
 </html>
+```
+
+**Key Changes:**
+
+1.  **CSS Added:** The `.flip-card`, `.flip-card-inner`, `.flip-card-front`, and `.flip-card-back` CSS rules were added to your `<style>` block.
+2.  **CSS Adjustments:**
+    * The `font-family` in `.flip-card` now uses `"Nunito Sans"`.
+    * The `width` is removed from `.flip-card` to let the grid container manage it.
+    * An `aspect-ratio: 3 / 4;` is added to `.flip-card` to maintain a consistent shape based on your image tiles (adjust if needed).
+    * The background color for `.flip-card-back` now uses `theme('colors.stork-accent')` from your Tailwind config.
+    * Padding was removed from `.flip-card-front` and adjusted on `.flip-card-back`.
+    * Styling was added to make the `img` fill the front face (`.flip-card-front img`).
+3.  **HTML Structure Applied:** Each `<article>` was replaced with the `div.flip-card > div.flip-card-inner > div.flip-card-front + div.flip-card-back` structure.
+4.  **Content Placement:**
+    * The original `<img>` tag is placed inside `flip-card-front`.
+    * Placeholder titles and descriptions, along with a "Read More" button (styled using your theme colors), are added to `flip-card-back`. The `href` from the original link is used for the button.
+5.  **Removed Redundant Styles:** The `blog-post-summary-container` class and its centering styles were removed as the flip card structure handles the layout now. The hover effect on the image itself was also removed.
+
+Now, when you hover over the blog post images, they should flip to reveal the title, description, and a link to the po
