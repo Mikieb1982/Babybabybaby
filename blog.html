@@ -502,20 +502,4 @@ Now, we'll modify one of the blog post pages, beatles.html, to include the swipe
 </body>
 </html>
 
-Explanation of Changes to beatles.html:
- * Navigation Arrows Added: HTML for previous/next arrow buttons (<button id="prev-post">, <button id="next-post">) is added within the <main> section.
- * Arrow Styling: CSS is added to style these buttons (fixed position, background, hover effect, icon size) and to hide them initially or when at the first/last post.
- * JavaScript Added:
-   * An array blogPosts defines the sequence of blog post filenames. Make sure this order is correct and matches your filenames.
-   * A variable currentPostIndex is set to 4 because beatles.html is the 5th item (index 4) in the array. You MUST change this number in the script for each of the other blog post files. (e.g., it would be 0 for middle.html, 1 for uniqueeng.html, etc.).
-   * Touch event listeners (touchstart, touchend) are added to the <main> element to detect swipes.
-   * handleSwipeGesture calculates the swipe direction and calls navigatePrev() or navigateNext().
-   * navigatePrev() and navigateNext() change window.location.href to the appropriate file from the blogPosts array, causing a page load.
-   * Click listeners are added to the arrow buttons to also trigger navigation.
-   * updateNavButtonsVisibility shows/hides the arrows based on whether there's a previous/next post.
-Next Steps:
- * Save beatles.html: Replace your existing blog/beatles.html with this new code.
- * Copy Logic to Other Posts: Copy the new <style> rules for .blog-nav and the entire <script> block from the bottom of this beatles.html file.
- * Paste into Other Posts: Paste the copied styles and script into blog/middle.html, blog/uniqueeng.html, blog/german2025.html, and blog/song.html.
- * !! CRITICAL !!: In each of those other files, you MUST update the currentPostIndex variable within the script to match its correct position in the blogPosts array (0 for the first post, 1 for the second, etc.).
- * Test: Open any of the blog posts in your browser and try swiping left/right or clicking the arrows. It should navigate between the full blog post pages.
+ 
