@@ -9,7 +9,6 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration from index.html
         tailwind.config = {
             theme: {
                 extend: {
@@ -72,13 +71,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom CSS from index.html */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
-        /* Form element styles */
         select, input[type="text"], input[type="radio"], input[type="range"] {
              @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
         }
@@ -86,7 +83,6 @@
         input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
         input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
 
-        /* Full height layout */
         html, body {
             min-height: 100%;
             display: flex;
@@ -94,16 +90,15 @@
         }
         body {
             flex-grow: 1;
-            padding-top: 64px; /* Offset for fixed header */
+            padding-top: 64px;
         }
         main {
             flex-grow: 1;
         }
 
-        /* CSS for Flip Card Animation */
         .flip-card {
-            width: 300px; /* Adjust card width if needed */
-            height: 300px; /* Increased height to accommodate image */
+            width: 300px;
+            height: 300px;
             margin-bottom: 1.5rem;
             border-radius: 0.5rem;
             position: relative;
@@ -127,7 +122,6 @@
              padding: 1rem;
              display: flex;
              flex-direction: column;
-             /* Changed justify-content to space-between for front card */
              justify-content: space-between;
              align-items: center;
              text-align: center;
@@ -135,26 +129,23 @@
              backface-visibility: hidden;
              overflow: hidden;
         }
-        /* Back card content centered */
         .flip-card-back {
             justify-content: center;
         }
         .flip-card-front {
             background-color: #ffffff;
-            color: #34495E; /* stork-text */
+            color: #34495E;
             border: 1px solid #e5e7eb;
         }
         .flip-card-back {
-            background-color: #1ABC9C; /* stork-accent */
+            background-color: #1ABC9C;
             color: white;
-            border: 1px solid #1ABC9C; /* stork-accent */
+            border: 1px solid #1ABC9C;
             transform: rotateY(180deg);
         }
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
         }
-        /* End of Flip Card CSS */
-
     </style>
 </head>
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
@@ -179,26 +170,21 @@
     <main class="container mx-auto px-6 py-8 animate-fade-in-down">
 
         <div class="text-center mb-12 bg-off-white/90 backdrop-blur-sm p-6 rounded-lg border border-gray-200 shadow-lg">
-             {/* Replaced H1 with blog.png image */}
              <img src="assets/blog.png" alt="Blog Title"
                   class="h-auto w-full max-w-md mx-auto mb-4"
                   onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=BLOG'; this.style.border='1px dashed #ccc';">
              <p class="text-lg text-stork-text">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
         </div>
 
-        {/* Blog Card Grid */}
-        {/* Adjusted grid columns for responsiveness */}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
 
-            {/* Card 1: Middle Names */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        {/* Added image for middletile.png */}
                         <img src="assets/middletile.png" alt="Middle Names Tile"
-                             class="w-full h-40 object-cover rounded-t-md mb-4"  /* Adjusted image height and added object-cover */
+                             class="w-full h-40 object-cover rounded-t-md mb-4"
                              onerror="this.onerror=null; this.src='https://placehold.co/300x160/cccccc/34495E?text=Middle+Names';">
-                        <div> {/* Wrapped text content */}
+                        <div>
                             <h2 class="text-xl font-semibold mb-1 text-stork-title">Choosing Middle Names</h2>
                             <p class="text-stork-text text-sm">Tips for rhythm, meaning, and tradition.</p>
                         </div>
@@ -211,11 +197,9 @@
                 </div>
             </div>
 
-            {/* Card 2: Unique English Names */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                         {/* Added image for uniqueengtile.png */}
                          <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
                               class="w-full h-40 object-cover rounded-t-md mb-4"
                               onerror="this.onerror=null; this.src='https://placehold.co/300x160/cccccc/34495E?text=Unique+English';">
@@ -232,11 +216,9 @@
                 </div>
             </div>
 
-            {/* Card 3: German Names 2025 */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                         {/* Added image for german2025tile.png */}
                          <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
                               class="w-full h-40 object-cover rounded-t-md mb-4"
                               onerror="this.onerror=null; this.src='https://placehold.co/300x160/cccccc/34495E?text=German+2025';">
@@ -253,11 +235,9 @@
                 </div>
             </div>
 
-             {/* Card 4: Names from Songs */}
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                         {/* Added image for songtile.png */}
                          <img src="assets/songtile.png" alt="Names from Songs Tile"
                               class="w-full h-40 object-cover rounded-t-md mb-4"
                               onerror="this.onerror=null; this.src='https://placehold.co/300x160/cccccc/34495E?text=Song+Names';">
@@ -274,9 +254,7 @@
                 </div>
             </div>
 
-             {/* Add more flip cards here if needed */}
-
-        </div> {/* End of Grid */}
+        </div>
 
     </main>
 
@@ -288,13 +266,4 @@
 </html>
 ```
 
-**Key Changes:**
-
-1.  **Blog Header:** Replaced the `<h1>BLOG</h1>` with an `<img>` tag pointing to `assets/blog.png`. Added alt text and basic styling.
-2.  **Card Images:** Added an `<img>` tag at the beginning of each `flip-card-front` div, pointing to the corresponding image (`middletile.png`, `uniqueengtile.png`, `german2025tile.png`, `songtile.png`).
-3.  **Image Styling:** Applied `w-full h-40 object-cover rounded-t-md mb-4` classes to the card images. This makes them fill the width, sets a fixed height (adjust `h-40` if needed), covers the area without distortion, rounds the top corners, and adds margin below.
-4.  **Card Height:** Increased the `.flip-card` height in the CSS to `300px` to better accommodate the image and text. You might need to adjust this value depending on your image aspect ratios and desired look.
-5.  **Front Card Layout:** Wrapped the text content (`h2` and `p`) on the front cards in a `div` and changed `justify-content` to `space-between` for `.flip-card-front` to push the image to the top and the text block to the bottom.
-6.  **Grid:** Adjusted the grid columns (`lg:grid-cols-4`) to potentially show four cards across on larger screens.
-
-Make sure the image paths in the `src` attributes are correct relative to your `blog.html` file. You may need to adjust the card height (`height: 300px;` in `.flip-card` CSS) or image height (`h-40` class) for the best visual f
+The code should now be free of unnecessary commen
