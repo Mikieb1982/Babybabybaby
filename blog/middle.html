@@ -1,517 +1,248 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>Choosing the Perfect Middle Name: A Guide - The Stork Name Drop Blog</title>
-
-
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-
-// Tailwind CSS Configuration - Copied from index page for consistency
-
-tailwind.config = {
-
-theme: {
-
-extend: {
-
-fontFamily: {
-
-sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
-
-serif: ['Georgia', 'serif'],
-
-},
-
-colors: {
-
-'stork-title': '#2C3E50',
-
-'stork-text': '#34495E',
-
-'stork-accent': '#1ABC9C',
-
-'stork-accent-hover': '#16A085',
-
-'soft-beige': '#F5F5DC',
-
-'dark-text': '#374151',
-
-'medium-gray': '#6B7280',
-
-'button-active': '#60A5FA',
-
-'button-active-hover': '#3B82F6',
-
-'button-inactive-hover-bg': '#F9FAFB',
-
-'button-inactive-hover-border': '#1F2937',
-
-'error-red': '#EF4444',
-
-'save-button': '#34D399',
-
-'save-button-hover': '#059669',
-
-'remove-button': '#F87171',
-
-'remove-button-hover': '#DC2626',
-
-'copy-button': '#9CA3AF',
-
-'copy-button-hover': '#4B5563',
-
-'accent-muted': '#64748b',
-
-'accent-muted-light': '#cbd5e1',
-
-'off-white': '#f8fafc',
-
-'indigo-100': '#e0e7ff',
-
-'indigo-700': '#4338ca',
-
-'amber-100': '#fef3c7',
-
-'amber-500': '#f59e0b'
-
-},
-
-animation: {
-
-'fade-in': 'fade-in 0.5s ease-out',
-
-'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-
-'fade-in-down': 'fade-in-down 0.5s ease-out',
-
-'fade-out-up': 'fade-out-up 0.5s ease-out',
-
-'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-
-'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-
-'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-
-'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-
-},
-
-keyframes: {
-
-'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-
-'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
-
-'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-
-'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-
-'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-
-'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-
-'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-
-},
-
-}
-
-}
-
-}
-
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
-
-
-
-<style>
-
-/* Basic styles - Copied from index page for consistency */
-
-.btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-
-.btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
-
-.btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
-
-.btn-feedback { @apply transform active:scale-95; }
-
-
-
-/* Form element styles - Copied from index page for consistency */
-
-select, input[type="text"], input[type="radio"], input[type="range"] {
-
-@apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
-
-}
-
-input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
-
-input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
-
-input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
-
-
-
-/* Loader - Copied from index page for consistency */
-
-.loader {
-
-border: 4px solid #f3f3f3;
-
-border-top: 4px solid #1ABC9C; /* Stork Accent */
-
-border-radius: 50%;
-
-width: 40px;
-
-height: 40px;
-
-animation: spin 1s linear infinite;
-
-margin: 20px auto;
-
-}
-
-@keyframes spin {
-
-0% { transform: rotate(0deg); }
-
-100% { transform: rotate(360deg); }
-
-}
-
-
-
-/* Name card styles - Copied from index page for consistency */
-
-.name-card {
-
-@apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
-
-}
-
-.name-card h3 {
-
-@apply text-xl font-semibold text-stork-title mb-2;
-
-}
-
-.name-card p {
-
-@apply text-stork-text mb-1 text-sm;
-
-}
-
-.name-card .tags span {
-
-@apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
-
-}
-
-.name-card .actions button {
-
-@apply text-xs px-2 py-1 rounded mr-2;
-
-}
-
-
-
-/* Full height layout - Copied from index page for consistency */
-
-html, body {
-
-min-height: 100%;
-
-display: flex;
-
-flex-direction: column;
-
-}
-
-body {
-
-flex-grow: 1;
-
-padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-
-}
-
-main {
-
-flex-grow: 1;
-
-}
-
-
-
-/* Blog post specific styles */
-
-.blog-post-image {
-
-@apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
-
-}
-
-
-
-.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 {
-
-@apply text-stork-title font-semibold;
-
-}
-
-
-
-.blog-content h1 {
-
-@apply text-3xl md:text-4xl mb-4 text-center;
-
-}
-
-.blog-content h2 {
-
-@apply text-2xl md:text-3xl pt-6 mb-4;
-
-}
-
-.blog-content h3 {
-
-@apply text-xl md:text-2xl pt-4 mb-3;
-
-}
-
-/* Updated h4 style */
-
-.blog-content h4 {
-
-@apply text-xl md:text-2xl pt-4 mb-2 font-bold; /* Increased font size and added bold */
-
-}
-
-
-
-.blog-content p {
-
-@apply text-stork-text text-base md:text-lg leading-relaxed mb-4;
-
-}
-
-
-
-.blog-content ul, .blog-content ol {
-
-@apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed;
-
-}
-
-
-
-.blog-content ul li, .blog-content ol li {
-
-@apply mb-2;
-
-}
-
-
-
-.blog-content table {
-
-@apply border-collapse w-full mb-6 text-sm;
-
-}
-
-
-
-.blog-content th, .blog-content td {
-
-@apply border border-gray-300 p-3 text-left align-top;
-
-}
-
-
-
-.blog-content th {
-
-@apply bg-gray-100 font-semibold text-stork-title;
-
-}
-
-
-
-.blog-content .table-wrapper {
-
-@apply overflow-x-auto mb-6;
-
-}
-
-
-
-.blog-content .text-medium-gray {
-
-@apply text-medium-gray;
-
-}
-
-
-
-.blog-content a {
-
-@apply text-stork-accent hover:text-stork-accent-hover transition duration-200;
-
-}
-
-
-
-.social-share-link {
-
-@apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200;
-
-}
-
-
-
-
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Choosing the Perfect Middle Name: A Guide - The Stork Name Drop Blog</title>
+
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration - Copied from index page for consistency
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Layout styles */
+        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; position: relative; }
+
+        /* Blog post specific styles */
+        .blog-post-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4 { @apply text-stork-title font-semibold; }
+        .blog-content h1 { @apply text-3xl md:text-4xl mb-4 text-center; }
+        .blog-content h2 { @apply text-2xl md:text-3xl pt-6 mb-4; }
+        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3; }
+        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-2 font-bold; }
+        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
+        .blog-content ul li, .blog-content ol li { @apply mb-2; }
+        .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
+        .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
+        .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
+        .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
+        .blog-content .text-medium-gray { @apply text-medium-gray; }
+        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
+        .social-share-link { @apply flex items-center space-x-2 text-stork-text hover:text-stork-accent transition duration-200; }
+
+        /* --- Navigation Arrows Styles --- */
+        .blog-nav {
+            position: fixed; top: 50%; transform: translateY(-50%);
+            z-index: 40; cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%; padding: 0.75rem; /* p-3 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s, opacity 0.3s;
+            opacity: 0.7;
+        }
+        .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
+        #prev-post { left: 15px; }
+        #next-post { right: 15px; }
+        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
+        .blog-nav.hidden { opacity: 0; pointer-events: none; }
+
+    </style>
 </head>
 
-
-
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-
-
-
-<header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-
-<div class="container mx-auto flex justify-between items-center">
-
-<a href="../index.html" title="The Stork Name Drop Home" class="z-20">
-
-<img src="../assets/logo.png" alt="The Stork Name Drop Logo"
-
-class="h-12 w-12 object-contain"
-
-onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-
-</a>
-
-
-
-<nav class="flex space-x-4 sm:space-x-6 items-center">
-
-<a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-
-<a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-
-<a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-
-<a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-
-<a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-
-</nav>
-
-</div>
-
-</header>
-
-
-
-<section id="showcase" class="py-6 md:py-10 text-center relative">
-
-<h1 class="text-3xl md:text-4xl text-stork-title font-bold mb-4 animate-fade-in-down">Choosing the Perfect Middle Name</h1>
-
-<p class="text-lg md:text-xl text-stork-text max-w-2xl mx-auto animate-fade-in-down">A Guide to Rhythm, Meaning, and Tradition</p>
-
-</section>
-
-
-
-
-
-<main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
-
-
-
-<article class="blog-content">
-
-<p class="text-center text-sm text-medium-gray mb-8">Published: April 21, 2025</p>
-
-
-
-<img src="../assets/middle.png"
-
-alt="Illustration depicting a tree with many branches, each branch containing a name tag, representing the vast array of middle name choices."
-
-class="blog-post-image"
-
-onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Middle+Name+Image';">
-
-
-
-<div class="space-y-6 text-base md:text-lg leading-relaxed">
-
-
-
-<h2>1. Introduction: The Middle Name Quest</h2>
-
-<p>The journey of choosing a name, particularly for a new baby, is often filled with excitement, anticipation, and perhaps a touch of overwhelm. While the first name frequently captures the most attention and deliberation, the middle name presents a unique and often cherished opportunity. It's more than just a space on a form; it's a chance to weave in layers of meaning, connection, and personal style.</p>
-
-<p>Middle names serve a multitude of purposes. They can be a heartfelt tribute to beloved family members or friends, carrying forward a legacy of love and respect. They act as vessels for preserving cultural heritage, connecting an individual to their roots and ancestral stories. In an increasingly populated world, a middle name can add a layer of distinction, helping an individual stand out, especially if their first and last names are common. Furthermore, middle names offer a space for personal expression, reflecting parental hopes, values, or even creative flair. Sometimes, the choice is simply about finding a name that sounds beautiful, creating a harmonious flow between the first and last names. It's a space where meaning and melody can intersect, offering an extra chance for collaboration and significance in the naming process.</p>
-
-<p>This guide aims to navigate the multifaceted world of middle names. We will delve into their fascinating history, explore how the sounds and rhythms of names interact, uncover the importance of meaning, and connect with the deep-rooted tradition of family ties. We'll examine the appeal of both classic and unique naming styles, and finally, provide practical tips and tools to help individuals confidently choose the perfect middle name.</p>
-
-
-
-<h2>2. More Than Just a Placeholder: The Story of Middle Names</h2>
-
-<p>Often overlooked, the middle name boasts a rich and complex history, evolving from ancient practices to the near-ubiquitous custom seen in many Western cultures today. Understanding this journey reveals much about changing societal values, population dynamics, and the very concept of identity.</p>
-
-
-
-<h3>A Whirlwind History: From Roman Cognomina to American Custom</h3>
-
-<p>While the modern middle name is a relatively recent phenomenon, the idea of multiple names has ancient roots. Students of Roman history might recall the <em>tria nomina</em> system used by Roman men, consisting of a <em>praenomen</em> (personal name), <em>nomen</em> (family name), and <em>cognomen</em> (a name indicating a specific branch of the family or a personal characteristic, akin to a nickname). Some Roman aristocrats even accumulated numerous cognomina to signify extensive lineage. However, this system wasn't identical to today's middle name and its usage faded after the fall of the Western Roman Empire.</p>
-
-<p>The practice of using additional names re-emerged centuries later in Europe, likely beginning in Italy during the late Medieval period, around the 13th or 14th centuries. Initially, this was primarily a custom among the elite classes. Many of these early middle names were saints' names, chosen with the belief that the namesake saint would offer protection to the child. This practice, carrying religious and class connotations, gradually spread to Spain and France and eventually to other social classes over the following centuries.</p>
-
-<p>In contrast, middle names were rare in early England and, consequently, in Colonial America. Historical records show that none of the Mayflower passengers and very few of the American Founding Fathers possessed middle names. Early American tradition, mirroring English custom, typically involved only a given name and a surname. The shift began subtly in the late 1700s, particularly among wealthy, extended families in the American South, who started adopting middle names, often drawn from family lineage, mimicking the European aristocracy they aspired to. German immigrants arriving in Pennsylvania also played a significant role, as middle names were more commonplace in German culture by the 17th century, and they brought this custom with them.</p>
-
-<p>The 19th century witnessed a dramatic surge in the use of middle names across the United States and Europe. This boom was largely driven by significant population growth and increasing urbanization. As communities grew larger and travel improved, the practical need to distinguish individuals with common first and last names became increasingly apparent. John Adams, the second US president, lived in a time when many shared his name in Massachusetts; his son, John Quincy Adams, named after a maternal great-grandfather, became the first president with a middle name, providing clear differentiation. The practice quickly spread from the upper class to the middle class after 1800, becoming nearly customary by the Civil War era. By 1900, almost every American child was given a middle name. This shift was cemented by practical administrative needs; government forms, such as the US census and World War I enlistment forms, began including space for a middle name, reflecting the assumption that nearly everyone had one.</p>
-
-<p>The evolution of the middle name from an aristocratic marker to a societal norm illustrates how practical necessity and social aspiration can intertwine. Initially adopted by elites to signify lineage and status, the custom was later embraced by the growing middle class, partly in emulation. Simultaneously, burgeoning populations created a genuine need for better individual identification. This convergence transformed the middle name from a faddish rarity into a standard component of personal identity in many Western cultures.</p>
-
-
-
-<h3>Cultural Tapestry: How Middle Names Vary Around the Globe</h3>
-
-<p>While common in English-speaking countries, the middle name is not a universal concept. Its form and function vary significantly across cultures, often reflecting deep-seated traditions related to lineage, religion, and identity.</p>
-
-<p>In some cultures, what occupies the "middle" position serves a specific genealogical purpose. Russian naming conventions, for example, follow a patronymic system: a person's name consists of a given name, followed by a patronymic derived from the father's first name (with suffixes like <em>-ovich</em> for sons and <em>-ovna</em> for daughters), and finally the surname. Historically, similar patronymic systems existed in Dutch and Scandinavian cultures (e.g., "Jan Pietersen" meaning Jan, son of Peter). Interestingly, attempts by English authorities to enforce fixed surnames on Dutch settlers in colonial America inadvertently contributed to the American middle name custom, as families sought new ways to differentiate relatives sharing the same first and now-fixed last names.</p>
-
-<p>In many Hispanic cultures, individuals traditionally have two given names, followed by a paternal surname and then a maternal surname. These are often considered compound first names rather than a distinct "middle" name in the Anglo-American sense. Similarly, Arabic naming traditions often trace paternal lineage by including the father's and grandfather's first names after the individual's given name, followed by the family surname. In India, naming practices vary widely, but middle names can sometimes indicate the father's name, caste, or place of origin.</p>
-
-<p>Religious traditions also shape middle name usage. Roman Catholic families, particularly in places like Québec, traditionally gave children three names: Joseph or Marie, followed by the godparent's name, and then the name chosen by the parents. The historical practice of naming children after saints for protection or blessing is another strong influence in Catholic and other Christian traditions.</p>
-
-<p>In contrast, some cultures, like France, often embrace multiple middle names chosen primarily for their aesthetic appeal or sound. Meanwhile, middle names are rare or traditionally absent in countries like China, Japan, and Korea.</p>
-
-<p>The purpose embedded within a culture often defines the form and prevalence of its middle names. Where strict lineage tracking is paramount, as in Russian or Arabic traditions, the middle name slot fulfills a specific patronymic role. Where religious identity is central, names of saints or godparents prevail. The Anglo-American middle name, however, carries a mixed heritage – born from status mimicry, fueled by the practical need for differentiation, and later infused with personal sentimen
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+
+        <article class="blog-content">
+            <h1>Choosing the Perfect Middle Name: A Guide</h1>
+            <p class="text-center text-sm text-medium-gray mb-8">Published: April 21, 2025</p>
+
+            <img src="../assets/middle.png"
+                 alt="Illustration depicting a tree with many branches, each branch containing a name tag, representing the vast array of middle name choices."
+                 class="blog-post-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/f8fafc/6b7280?text=Middle+Name+Image';">
+
+            <div class="space-y-6 text-base md:text-lg leading-relaxed">
+                <h2>1. Introduction: The Middle Name Quest</h2>
+                <p>The journey of choosing a name, particularly for a new baby, is often filled with excitement, anticipation, and perhaps a touch of overwhelm...</p>
+                <p>...This convergence transformed the middle name from a faddish rarity into a standard component of personal identity in many Western cultures.</p>
+                <h3>Cultural Tapestry: How Middle Names Vary Around the Globe</h3>
+                <p>While common in English-speaking countries, the middle name is not a universal concept...</p>
+                <p>...The Anglo-American middle name, however, carries a mixed heritage – born from status mimicry, fueled by the practical need for differentiation, and later infused with personal sentiment.</p>
+                 </div>
+        </article>
+
+        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+             </svg>
+         </button>
+         <button id="next-post" class="blog-nav hidden" aria-label="Next Post">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+             </svg>
+         </button>
+
+    </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a> </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuration ---
+            const blogPosts = [
+                'middle.html', // This is the current page
+                'uniqueeng.html',
+                'german2025.html',
+                'song.html',
+                'beatles.html'
+            ];
+
+            // --- !! IMPORTANT: Set the index for THIS specific page !! ---
+            const currentPostIndex = 0; // 0=middle, 1=uniqueeng, 2=german2025, 3=song, 4=beatles
+
+            const swipeThreshold = 60;
+
+            // --- DOM Elements ---
+            const prevButton = document.getElementById('prev-post');
+            const nextButton = document.getElementById('next-post');
+            const swipeArea = document.body;
+
+            // --- State ---
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            // --- Functions ---
+            function navigateNext() {
+                if (currentPostIndex < blogPosts.length - 1) {
+                    window.location.href = blogPosts[currentPostIndex + 1];
+                }
+            }
+            function navigatePrev() {
+                // Previous button should not navigate from the first post
+                // This function is kept for completeness but won't be called if index is 0
+                if (currentPostIndex > 0) {
+                    window.location.href = blogPosts[currentPostIndex - 1];
+                }
+            }
+            function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
+            function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
+            function handleSwipeGesture() {
+                const deltaX = touchEndX - touchStartX;
+                if (Math.abs(deltaX) > swipeThreshold) {
+                    if (deltaX < 0) { navigateNext(); }
+                    // No navigation back from the first post via swipe
+                    // else { navigatePrev(); }
+                }
+                touchStartX = 0; touchEndX = 0;
+            }
+            function updateNavButtonsVisibility() {
+                if (!prevButton || !nextButton) return;
+                // Previous button is always hidden for the first post (index 0)
+                prevButton.classList.add('hidden');
+                // Next button is hidden only if it's the very last post
+                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
+            }
+
+            // --- Initialization ---
+            updateNavButtonsVisibility();
+
+            // --- Event Listeners ---
+            if (swipeArea) {
+                swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
+                swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }
+            // No event listener needed for prevButton as it's always hidden here
+            // if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
+            if (nextButton) { nextButton.addEventListener('click', navigateNext); }
+        });
+    </script>
+
+</body>
+</html>
