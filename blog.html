@@ -3,77 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - Layout Fix with Images</title>
+    <title>My Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Minimal CSS for Flip Card Structure --- */
+        /* --- Custom CSS for the Card Flip Animation --- */
+
+        /* Set base font for the page */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Light gray background */
         }
 
-        /* Basic container for the card */
+        /* 1. The main container for each card - defines perspective for 3D effect */
         .flip-card {
-            width: 300px;  /* Or your desired card width */
-            height: 350px; /* Increased height to accommodate image */
-            margin-bottom: 1.5rem; /* Spacing */
-            border-radius: 0.5rem; /* Rounded corners */
-            position: relative;
+            background-color: transparent; /* No background color needed here */
+            width: 300px;  /* Match the width of your cards */
+            height: 250px; /* Match the height of your cards */
+            perspective: 1000px; /* Creates the 3D space for the flip */
+            border-radius: 0.5rem; /* Rounded corners for the container */
+            margin-bottom: 1.5rem; /* Add some space below cards if needed */
         }
 
-        /* Inner container */
+        /* 2. Inner container - This is what actually flips */
         .flip-card-inner {
+            position: relative;
             width: 100%;
             height: 100%;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            position: relative;
-            overflow: hidden; /* Hide overflow from inner elements like images */
+            text-align: center;
+            transition: transform 0.8s; /* Speed of the flip animation */
+            transform-style: preserve-3d; /* Allows children to be positioned in 3D */
+            border-radius: 0.5rem; /* Match parent's rounded corners */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Add shadow here */
         }
 
-        /* Front and Back faces - Still simplified for layout */
+        /* 3. Trigger the flip on hover */
+        /* When you hover over .flip-card, rotate .flip-card-inner */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* 4. Front and Back sides - Common styling */
         .flip-card-front,
         .flip-card-back {
-             width: 100%;
-             height: 100%;
-             border-radius: 0.5rem;
-             padding: 1rem;
-             display: flex;
-             flex-direction: column;
-             /* Changed justify-content to space-between for better image/text layout */
-             justify-content: space-between;
-             align-items: center;
-             text-align: center;
-        }
-
-        /* Basic styling for front */
-        .flip-card-front {
-            background-color: #ffffff;
-            color: black;
-            border: 1px solid #e5e7eb;
-        }
-
-        /* Styling for the image within the card */
-        .card-image {
-            width: 100%; /* Make image take full width of padding */
-            height: 150px; /* Set a fixed height for the image area */
-            object-fit: cover; /* Scale image to cover, cropping if needed */
-            border-radius: 0.375rem; /* Slightly rounded corners for image */
-            margin-bottom: 0.75rem; /* Space below image (Tailwind mb-3) */
-        }
-
-        /* Basic styling for back - Still hidden */
-        .flip-card-back {
-            background-color: #4f46e5;
-            color: white;
-            border: 1px solid #4f46e5;
-            display: none; /* Keep hidden for layout test */
-             /* Center content vertically in back card */
+            position: absolute; /* Positioned absolutely within .flip-card-inner */
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Hide the back side when facing away (Safari) */
+            backface-visibility: hidden; /* Hide the back side when facing away */
+            border-radius: 0.5rem; /* Match parent's rounded corners */
+            overflow: hidden; /* Prevents content spilling out */
+            display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            padding: 1rem; /* Add padding inside the card faces */
         }
 
+        /* 5. Style the Front Side */
+        .flip-card-front {
+            background-color: #ffffff; /* Example: White background */
+            color: black;
+            border: 1px solid #e5e7eb; /* Light gray border */
+            /* The content for the front goes inside the div with this class */
+        }
+
+        /* 6. Style the Back Side */
+        .flip-card-back {
+            background-color: #4f46e5; /* Example: Indigo background */
+            color: white;
+            border: 1px solid #4f46e5; /* Matching border */
+            transform: rotateY(180deg); /* Start rotated so it's hidden initially */
+            /* The content for the back goes inside the div with this class */
+        }
         /* --- End of Custom CSS --- */
     </style>
 </head>
@@ -82,26 +85,20 @@
     <div class="text-center mb-12">
          <h1 class="text-4xl font-bold mb-4">BLOG</h1>
          <p class="text-lg text-gray-600">Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.</p>
-    </div>
+         </div>
 
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
 
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                {/* Front Side Content */}
+        <div class="flip-card"> {/* 1. Main container */}
+            <div class="flip-card-inner"> {/* 2. Inner flipper */}
+                {/* 3. Front Side Content */}
                 <div class="flip-card-front">
-                    {/* Image added here */}
-                    <img src="https://placehold.co/300x150/e2e8f0/64748b?text=Middle+Names"
-                         alt="Placeholder image for middle names blog post"
-                         class="card-image"> {/* Apply image styling class */}
-                    {/* Text content */}
-                    <div>
-                        <h2 class="text-xl font-semibold mb-1">Choosing a Middle Name</h2>
-                        <p class="text-gray-600 text-sm">Tips for rhythm, meaning, and tradition.</p>
-                    </div>
+                    <h2 class="text-xl font-semibold mb-2">Choosing a Middle Name</h2>
+                    <p class="text-gray-600 text-sm">Tips for rhythm, meaning, and tradition.</p>
+                    {/* Optional: <img src="placeholder.jpg" alt="Blog Post Image" class="mt-4 rounded max-w-full h-auto"> */}
                 </div>
-                {/* Back Side Content - Still hidden */}
+                {/* 4. Back Side Content */}
                 <div class="flip-card-back">
                     <h3 class="text-lg font-semibold mb-2">Read More</h3>
                     <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
@@ -109,19 +106,14 @@
                 </div>
             </div>
         </div>
-        <div class="flip-card">
-            <div class="flip-card-inner">
+        <div class="flip-card"> {/* 1. Main container */}
+            <div class="flip-card-inner"> {/* 2. Inner flipper */}
+                {/* 3. Front Side Content */}
                 <div class="flip-card-front">
-                     {/* Image added here */}
-                     <img src="https://placehold.co/300x150/dbeafe/1e3a8a?text=Blog+Post+2"
-                          alt="Placeholder image for second blog post"
-                          class="card-image">
-                     {/* Text content */}
-                     <div>
-                        <h2 class="text-xl font-semibold mb-1">Another Blog Post</h2>
-                        <p class="text-gray-600 text-sm mb-4">A summary of this post goes here.</p>
-                    </div>
+                     <h2 class="text-xl font-semibold mb-2">Another Blog Post</h2>
+                     <p class="text-gray-600 text-sm mb-4">A summary of this post goes here.</p>
                 </div>
+                {/* 4. Back Side Content */}
                 <div class="flip-card-back">
                     <h3 class="text-lg font-semibold mb-2">Read More</h3>
                     <p class="text-sm mb-4">Click below to read the full article.</p>
@@ -129,19 +121,14 @@
                 </div>
             </div>
         </div>
-        <div class="flip-card">
-            <div class="flip-card-inner">
+        <div class="flip-card"> {/* 1. Main container */}
+            <div class="flip-card-inner"> {/* 2. Inner flipper */}
+                {/* 3. Front Side Content */}
                 <div class="flip-card-front">
-                     {/* Image added here */}
-                     <img src="https://placehold.co/300x150/fee2e2/991b1b?text=Article+3"
-                          alt="Placeholder image for third article"
-                          class="card-image">
-                     {/* Text content */}
-                     <div>
-                        <h2 class="text-xl font-semibold mb-1">Third Article Title</h2>
-                        <p class="text-gray-600 text-sm mb-4">Brief description of the third post.</p>
-                    </div>
+                     <h2 class="text-xl font-semibold mb-2">Third Article Title</h2>
+                     <p class="text-gray-600 text-sm mb-4">Brief description of the third post.</p>
                 </div>
+                {/* 4. Back Side Content */}
                 <div class="flip-card-back">
                     <h3 class="text-lg font-semibold mb-2">Read More</h3>
                     <p class="text-sm mb-4">Find out more about this topic.</p>
@@ -154,15 +141,4 @@
 </body>
 </html>
 
-Key Changes:
- * Increased Card Height: Adjusted .flip-card height to 350px to better accommodate an image plus text. You might need to tweak this.
- * <img> Tags Added: Placed <img> tags inside each .flip-card-front. Replace the src URLs with your actual PNG file paths.
- * .card-image CSS Class:
-   * Created a new CSS rule .card-image.
-   * Set a fixed height (e.g., 150px) for the image area.
-   * Used width: 100% to fill the card's width (respecting padding).
-   * Used object-fit: cover; which ensures the image covers the defined height and width, cropping excess parts instead of stretching/squashing. This is great for making images fit uniformly.
-   * Added margin-bottom and border-radius.
- * Flexbox Adjustment: Changed justify-content on .flip-card-front to space-between to push the image towards the top and the text towards the bottom, using the available space. Wrapped the text in a div to keep it grouped.
- * overflow: hidden;: Added to .flip-card-inner to ensure the rounded corners clip the image correctly.
-Now, when you replace the placeholder src URLs with your PNGs, they should appear at the top of each card front, sized consistently. The layout should still be correct within the grid, and the back faces remain hidden for now.
+This brings back the CSS and HTML structure intended to create the flip animation on hover. Remember that this version might still have the layout issue you encountered (the white rectangle) if there's a conflict with Tailwind's grid and the position: absolute styling needed for the flip.
