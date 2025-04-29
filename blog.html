@@ -109,18 +109,39 @@
             width: 100%; height: 100%; object-fit: cover;
             border-radius: 0.5rem; display: block;
         }
+
+        /* --- MODIFIED: Style the Back Side (Image Background) --- */
         .flip-card-back {
             /* Use backtile.png as background */
             background-image: url('assets/backtile.png');
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-            color: white;
-            transform: rotateY(180deg);
-            padding: 1rem;
-            position: relative; /* For optional overlay */
+            background-size: cover; /* Cover the area */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent tiling */
+
+            color: white; /* Keep text white - adjust if needed for contrast */
+            /* Remove solid background color and border */
+            /* background-color: #1ABC9C; */
+            /* border: 1px solid #1ABC9C; */
+            transform: rotateY(180deg); /* Start rotated */
+            padding: 1rem; /* Keep padding for text content */
+
+            /* Optional: Add a subtle overlay for better text readability if image is complex */
+            position: relative; /* Needed for pseudo-element overlay */
         }
-        /* Optional overlay example */
-        /* .flip-card-back::before { ... } */
-        /* .flip-card-back > * { ... } */
+        /* Optional overlay example (uncomment and adjust if needed) */
+        /* .flip-card-back::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); // Semi-transparent black overlay
+            border-radius: 0.5rem; // Match parent rounding
+            z-index: 1; // Place overlay behind text
+        }
+        .flip-card-back > * { // Ensure content is above the overlay
+            position: relative;
+            z-index: 2;
+        } */
+
 
         .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
@@ -247,146 +268,4 @@
 
 </body>
 </html>
-
-Step 2: Add Swipe Navigation to Individual Blog Posts
-Now, we'll modify one of the blog post pages, beatles.html, to include the swipe navigation logic. You will need to apply this same logic (the <style> additions and the entire <script> block) to your other blog post files (middle.html, uniqueeng.html, german2025.html, song.html), making sure to adjust the currentPostIndex value within the script for each page.
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Stork Name Drop - Beatles Names Deep Dive</title>
-
-    <link rel="icon" href="../assets/logo.png" type="image/png"> <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind CSS Configuration (Same as index.html)
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Nunito Sans"', 'sans-serif'],
-                        serif: ['Georgia', 'serif'],
-                    },
-                    colors: { /* Your colors */ },
-                    animation: { /* Your animations */ },
-                    keyframes: { /* Your keyframes */ },
-                }
-            }
-        }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
-
-    <style>
-        /* Basic styles */
-        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
-        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
-        .btn-feedback { @apply transform active:scale-95; }
-
-        /* Layout styles */
-        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; } /* Added overflow-x: hidden */
-        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; } /* Added position: relative */
-
-        /* Blog post specific styles */
-        .blog-content h1 { @apply text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center; }
-        .blog-content h2 { @apply text-2xl md:text-3xl font-semibold text-stork-title mt-8 mb-4 border-b pb-2; }
-        .blog-content h3 { @apply text-xl md:text-2xl font-semibold text-stork-title mt-6 mb-3; }
-        .blog-content p { @apply mb-4 leading-relaxed; }
-        .blog-content strong { @apply font-semibold text-stork-title; }
-        .blog-content em { @apply italic; }
-        .blog-content ul { @apply list-disc list-inside mb-4 pl-4; }
-        .blog-content ol { @apply list-decimal list-inside mb-4 pl-4; }
-        .blog-content li { @apply mb-2; }
-        .blog-content table { @apply min-w-full divide-y divide-gray-200 border border-gray-300 mb-6 shadow-sm; }
-        .blog-content th { @apply px-4 py-2 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider; }
-        .blog-content td { @apply px-4 py-2 whitespace-normal text-sm text-gray-700 border-b border-gray-200; }
-        .blog-content tbody tr:nth-child(even) { @apply bg-gray-50; }
-        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
-        .blog-content .works-cited { @apply text-xs text-gray-500 mt-10 border-t pt-4; }
-        .blog-content .works-cited li { @apply mb-1 break-words; }
-        .blog-content img.blog-header-image { @apply w-full h-auto mb-6 md:mb-8 rounded-md shadow-md; }
-
-        /* --- NEW: Navigation Arrows Styles --- */
-        .blog-nav {
-            position: fixed; /* Fixed position relative to viewport */
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 40; /* Lower than header */
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            padding: 0.75rem; /* p-3 */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, opacity 0.3s;
-            opacity: 0.7; /* Slightly transparent */
-        }
-        .blog-nav:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            opacity: 1;
-        }
-        #prev-post { left: 15px; } /* Position from left */
-        #next-post { right: 15px; } /* Position from right */
-        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; } /* Slightly larger icons */
-        .blog-nav.hidden { /* Class to hide buttons */
-             opacity: 0;
-             pointer-events: none;
-        }
-
-    </style>
-</head>
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" title="The Stork Name Drop Home" class="z-20"> <img src="../assets/logo.png" alt="The Stork Name Drop Logo" class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
-                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                 <a href="../index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in-down">
-        <article class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg blog-content">
-
-            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="blog-header-image"
-                 onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
-
-            <h1 class="text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center">
-                Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
-            </h1>
-
-            <p>If there’s one band that soundtracked the world, it’s The Beatles...</p>
-            <h2>Let It Be (Named Something Great!)</h2>
-            <p>...Share your thoughts in the comments below – we'd love to hear your stories!</p>
-
-            <div class="works-cited">
-                <h3 class="text-lg font-semibold mb-3">Works Cited</h3>
-                <ol>
-                    <li>Cultural impact of the Beatles - Wikipedia...</li>
-                    </ol>
-            </div>
-            </article>
-
-        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-             </svg>
-         </button>
-         <button id="next-post" class="blog-nav hidden" aria-label="Next Post"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-             </svg>
-         </button>
-
-    </main>
-
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a> </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
+```
