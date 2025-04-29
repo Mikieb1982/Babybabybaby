@@ -269,16 +269,3 @@
 </body>
 </html>
 ```
-
-**Changes:**
-
-1.  **CSS Rule `.flip-card-back`:**
-    * Removed `background-color: #1ABC9C;` and `border: 1px solid #1ABC9C;`.
-    * Added `background-image: url('assets/backtile.png');`.
-    * Added `background-size: cover;`.
-    * Added `background-position: center;`.
-    * Added `background-repeat: no-repeat;`.
-2.  **Text Contrast:** Kept `color: white;`. If `backtile.png` is very light, you might need to change this to a darker color (like `color: #34495E;`) or use the optional overlay included in the comments within the CSS rule to darken the background image slightly.
-3.  **HTML Structure:** Wrapped the content inside `.flip-card-back` with a `<div>` to make applying the optional overlay easier if needed (it ensures the text content is targeted correctly by the `z-index` rules in the overlay example).
-
-Make sure the `backtile.png` image is located in your `assets` folder relative to the `blog.html` file. The back of the cards should now display this image instead of the solid accent col
