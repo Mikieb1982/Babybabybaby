@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - Layout Fix</title>
+    <title>My Blog - Flip Animation Enabled</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Minimal CSS for Flip Card Structure --- */
+        /* --- CSS for Flip Card Animation --- */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Light gray background */
         }
 
-        /* Basic container for the card */
+        /* 1. Main container - Defines perspective */
         .flip-card {
             width: 300px;  /* Or your desired card width */
             height: 250px; /* Or your desired card height */
             margin-bottom: 1.5rem; /* Spacing */
             border-radius: 0.5rem; /* Rounded corners */
-            position: relative; /* Needed for absolute positioning of children if we add it back */
-             /* We'll add perspective later */
+            position: relative; /* Keep relative positioning */
+            background-color: transparent; /* Ensure container is transparent */
+            perspective: 1000px; /* Re-add perspective for 3D */
         }
 
-        /* Inner container */
+        /* 2. Inner container - This element flips */
         .flip-card-inner {
             width: 100%;
             height: 100%;
             border-radius: 0.5rem; /* Match parent */
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Basic shadow */
-            /* We'll add transform styles later */
-            position: relative; /* Ensure it contains positioned children */
+            position: relative; /* Keep relative positioning */
+            transform-style: preserve-3d; /* Re-add preserve-3d */
+            transition: transform 0.8s; /* Re-add transition */
         }
 
-        /* Front and Back faces - STARTING SIMPLE */
+        /* 3. Front and Back faces - Positioning and Visibility */
         .flip-card-front,
         .flip-card-back {
              width: 100%;
@@ -46,39 +48,32 @@
              justify-content: center;
              align-items: center;
              text-align: center;
-             /* CRITICAL: Remove absolute positioning for now to test layout */
-             /* position: absolute; */
-             /* backface-visibility: hidden; */
+             position: absolute; /* Re-add absolute positioning */
+             backface-visibility: hidden; /* Re-add backface visibility */
+             overflow: hidden; /* Added to prevent content spillover */
         }
 
-        /* Basic styling for front */
+        /* 4. Styling for front face */
         .flip-card-front {
             background-color: #ffffff;
             color: black;
             border: 1px solid #e5e7eb;
-            /* Initially, only the front is visible */
+            /* No transform needed, it faces forward */
         }
 
-        /* Basic styling for back - HIDE IT FOR NOW */
+        /* 5. Styling for back face */
         .flip-card-back {
             background-color: #4f46e5;
             color: white;
             border: 1px solid #4f46e5;
-            display: none; /* Hide the back completely for this layout test */
-            /* transform: rotateY(180deg); */ /* Remove transform for now */
+            transform: rotateY(180deg); /* Re-add initial rotation */
+            /* display: none; --- REMOVED this line */
         }
 
-        /* We will add the hover effect later */
-        /* .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        } */
-        /* .flip-card:hover .flip-card-front {
-             display: none;
-        } */
-        /* .flip-card:hover .flip-card-back {
-             display: flex;
-        } */
-
+        /* 6. Hover effect - Trigger the flip */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg); /* Re-add hover transform */
+        }
         /* --- End of Custom CSS --- */
     </style>
 </head>
@@ -92,14 +87,13 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
 
+        {/* Card structure remains the same */}
         <div class="flip-card">
             <div class="flip-card-inner">
-                {/* Front Side Content - Should be visible */}
                 <div class="flip-card-front">
                     <h2 class="text-xl font-semibold mb-2">Choosing a Middle Name</h2>
                     <p class="text-gray-600 text-sm">Tips for rhythm, meaning, and tradition.</p>
                 </div>
-                {/* Back Side Content - Should be hidden by display:none */}
                 <div class="flip-card-back">
                     <h3 class="text-lg font-semibold mb-2">Read More</h3>
                     <p class="text-sm mb-4">Explore classic pairings and unique ideas.</p>
@@ -139,18 +133,4 @@
 </html>
 ```
 
-**Changes Made:**
-
-1.  **Removed Absolute Positioning:** Commented out `position: absolute` on `.flip-card-front` and `.flip-card-back`. This is the most likely cause of the layout breaking within the grid.
-2.  **Hid Back Face:** Set `display: none;` on `.flip-card-back`. For now, we just want to see the front face rendering correctly in the grid.
-3.  **Removed Transforms/Animation CSS:** Commented out `perspective`, `transform-style`, `backface-visibility`, `transform`, and the `:hover` rules.
-
-**What to Expect:**
-
-With this code, you should **not** see the flip animation. Instead, you should see your blog cards laid out correctly in the grid, each showing only its "front" content. The white rectangle issue should be gone.
-
-**Next Steps:**
-
-1.  **Test this code.** Does it fix the white rectangle problem and show the cards correctly in the grid?
-2.  **If yes:** We can then carefully re-introduce the CSS needed for the flip (absolute positioning, transforms, hover effects) one step at a time to see exactly which rule causes the conflict.
-3.  **If no:** There might be a deeper conflict or an error in how the HTML structure was applied. Double-check that each card has the exact `flip-card > flip-card-inner > flip-card-front + flip-card-back` structu
+Please test this version. You should now see the front of the cards initially, and they should flip over when you hover your mouse over them. Check if the layout within the grid still looks correct and the cards don't disappear or overlap incorrect
