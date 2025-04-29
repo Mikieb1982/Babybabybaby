@@ -146,14 +146,16 @@
             @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
         }
 
-        /* --- Card Flip Animation CSS --- */
+        /* --- Card Flip Animation CSS (Simplified for Debugging) --- */
         .flip-card {
             background-color: transparent;
-            /* width: 100%; /* Let grid control width */
-            aspect-ratio: 3 / 4; /* Maintain aspect ratio based on common image tile size */
-            perspective: 1000px;
-            font-family: '"Nunito Sans"', sans-serif; /* Use defined sans font */
-            border-radius: 0.5rem; /* Tailwind's rounded-lg */
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            /* perspective: 1000px; */ /* DEBUG: Commented out */
+            font-family: '"Nunito Sans"', sans-serif;
+            border-radius: 0.5rem;
+            border: 2px dashed red; /* DEBUG: Added border to make card boundaries visible */
+            overflow: hidden; /* DEBUG: Ensure content doesn't spill out */
         }
 
         .flip-card-inner {
@@ -161,50 +163,52 @@
             width: 100%;
             height: 100%;
             text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            border-radius: 0.5rem; /* Ensure inner container also has rounded corners */
+            /* transition: transform 0.8s; */ /* DEBUG: Commented out */
+            /* transform-style: preserve-3d; */ /* DEBUG: Commented out */
+            border-radius: 0.5rem;
         }
 
-        .flip-card:hover .flip-card-inner {
+        /* DEBUG: Removed hover effect for now */
+        /* .flip-card:hover .flip-card-inner {
             transform: rotateY(180deg);
-        }
+        } */
 
         .flip-card-front, .flip-card-back {
-            position: absolute;
+            /* position: absolute; */ /* DEBUG: Changed to relative to stack them */
+            position: relative;
             width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+            /* height: 100%; */ /* DEBUG: Allow height to be auto based on content for now */
+            /* -webkit-backface-visibility: hidden; */ /* DEBUG: Commented out */
+            /* backface-visibility: hidden; */ /* DEBUG: Commented out */
             border-radius: 0.5rem;
-            overflow: hidden; /* Important to keep rounded corners on images */
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 0; /* Remove padding if image should fill the card */
+            padding: 0;
         }
 
         .flip-card-front {
-            background-color: #ffffff; /* White background */
-            color: black; /* Default text color */
-            /* border: 1px solid #e5e7eb; /* Optional: Light gray border */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
-        }
-        /* Style the front image */
-        .flip-card-front img {
-             @apply w-full h-full object-cover rounded-lg block; /* Make image fill the front, maintain aspect ratio, ensure block display */
-             /* Removed hover effect from image as card flips now */
+            background-color: #ffffff;
+            color: black;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            min-height: 150px; /* DEBUG: Added min-height */
+            border: 1px solid blue; /* DEBUG: Border */
         }
 
+        .flip-card-front img {
+             @apply w-full h-auto object-cover rounded-lg block; /* Changed height to auto */
+        }
 
         .flip-card-back {
-            background-color: theme('colors.stork-accent'); /* Use theme color */
+            background-color: theme('colors.stork-accent');
             color: white;
-            transform: rotateY(180deg);
-            /* border: 1px solid theme('colors.stork-accent'); /* Matching border */
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
-            padding: 1rem; /* Add padding back for text content */
+            /* transform: rotateY(180deg); */ /* DEBUG: Commented out */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1rem;
+            min-height: 100px; /* DEBUG: Added min-height */
+            border: 1px solid green; /* DEBUG: Border */
         }
         /* --- End Card Flip Animation CSS --- */
 
@@ -240,8 +244,7 @@
 
     <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <div id="blog-list-container">
-            <div class="flip-card">
+        <div id="blog-list-container"> <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img src="assets/songtile.png" alt="Tile image for What's in a Song Name? blog post" onerror="this.onerror=null; this.src='https://placehold.co/300x400/f8fafc/6b7280?text=Song+Names';">
@@ -293,9 +296,7 @@
                 </div>
             </div>
 
-        </div> </main>
-
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+        </div> </main> <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:underline">Privacy Policy</a> | <a href="#" class="hover:underline">Terms of Service</a>
     </footer>
 
@@ -303,9 +304,17 @@
 </html>
 ```
 
-**Summary of Fixes:**
+**Summary of Debugging Changes:**
 
-1.  **Removed Extraneous `</div>`:** The extra closing div tag inside the `<main>` section, just before the first `.flip-card`, was removed. This was likely breaking the grid layout.
-2.  **Ensured Image Display:** Added `block` to the Tailwind classes applied to the `img` inside `.flip-card-front` (`@apply w-full h-full object-cover rounded-lg block;`) to prevent potential inline spacing issues.
+1.  **CSS Comments:** Commented out `perspective`, `transition`, `transform-style`, `backface-visibility`, and the `transform` on hover and on `.flip-card-back`.
+2.  **CSS Positioning:** Changed `position: absolute` to `position: relative` on `.flip-card-front` and `.flip-card-back` so they stack normally instead of overlaying.
+3.  **CSS Sizing:** Commented out `height: 100%` on the front/back faces and changed the image height to `h-auto` to let content determine height for now. Added `min-height` to both front and back faces to prevent collapse.
+4.  **Debug Borders:** Added visible borders around `.flip-card` (dashed red), `.flip-card-front` (solid blue), and `.flip-card-back` (solid green) so you can see the boundaries of each element.
 
-Please replace the code on your server with this updated version. This should resolve the issue and display all four cards correctly with the flip animation working on hov
+Please try this version. You should **not** see the flip animation. Instead, you should hopefully see:
+
+* Four card areas arranged in a grid (1 column on small screens, 2 on medium, 4 on large).
+* Each card area will have a dashed red border.
+* Inside each red border, you should see the image (with a blue border) stacked on top of the text content (with a green border).
+
+If you see this layout, it confirms the grid and basic card structure are working, and the problem lies specifically within the CSS used for the 3D flip effect. If you *still* only see one box, there's a more fundamental issue possibly related to HTML structure errors outside the main content area, CSS conflicts from other files, or asset loading proble
