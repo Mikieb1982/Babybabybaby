@@ -120,8 +120,7 @@
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in-down">
         <article class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg blog-content">
 
-            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="w-full h-auto mb-6 md:mb-8 rounded-md object-cover shadow-md max-h-60 md:max-h-80"
-                 onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
+            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="w-full h-auto mb-6 md:mb-8 rounded-md shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/1000x300/cccccc/34495E?text=Beatles+Blog+Header'; this.style.border='1px dashed #ccc';">
 
             <h1 class="text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center">
                 Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
@@ -383,15 +382,3 @@
 
     </body>
 </html>
-```
-
-**Key things implemented:**
-
-1.  **File Structure:** Assumes this `beatles.html` file will reside inside a `blog/` directory, so paths to assets (`../assets/`) and other pages (`../index.html`, etc.) have been adjusted accordingly. If your structure is different, you'll need to change these paths.
-2.  **Styling:** Includes the standard header/footer, background, fonts, and basic styles from your other pages. Specific styles for blog content elements (`h1`, `h2`, `p`, `table`, etc.) are added.
-3.  **Header Image:** The `beatles.png` image is placed prominently at the top of the article content.
-4.  **Content Formatting:** The text from your document has been structured with headings, paragraphs, lists, and a table for better readability. Superscript tags (`<sup>`) are used for the citations.
-5.  **Table:** The name popularity data is formatted into an HTML table with Tailwind classes for basic styling.
-6.  **Works Cited:** The citations are formatted as an ordered list at the end.
-
-You can now save this code as `beatles.html` inside your `blog` folder. Remember to place the `beatles.png` image inside the `assets` folder in the parent directory relative to the `blog` fold
