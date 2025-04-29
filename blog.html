@@ -149,7 +149,6 @@
             color: #34495E; /* Fallback text color */
             border: 1px solid #e5e7eb; /* Optional border */
             padding: 0; /* Remove padding so image can fill */
-            /* z-index: 2; */ /* Ensure front is initially above back */
         }
 
         /* 5. Style the Image on the Front */
@@ -264,7 +263,21 @@
                 </div>
             </div>
 
-        </div> </main>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/beatlestile.png" alt="Beatles Names Tile"
+                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <h3 class="text-lg font-semibold mb-2">Beatles Baby Name Gold</h3>
+                        <p class="text-sm mb-4">A deep dive into names from Fab Four songs.</p>
+                        <a href="blog/beatles.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                    </div>
+                </div>
+            </div>
+
+            </div> </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
@@ -274,16 +287,4 @@
 </html>
 ```
 
-**Summary of Changes:**
-
-1.  **CSS Integration:** The necessary CSS rules for the flip animation (`.flip-card`, `.flip-card-inner`, `.flip-card-front`, `.flip-card-back`, `:hover`) have been added/merged into your existing `<style>` block.
-2.  **CSS Adjustments:**
-    * Ensured `position: absolute` and `backface-visibility: hidden` are applied to `.flip-card-front` and `.flip-card-back` to allow them to stack and flip correctly.
-    * Removed padding from `.flip-card-front` so the `img` can fill it completely using `object-fit: cover`.
-    * Added padding back to `.flip-card-back` for the text content.
-    * Set the background of `.flip-card-back` to your `stork-accent` color (`#1ABC9C`).
-3.  **HTML Structure:** The `flip-card > flip-card-inner > flip-card-front + flip-card-back` structure is applied to each of your blog post links.
-4.  **Image Handling:** The `<img>` tags are placed directly inside `.flip-card-front` and styled via `.flip-card-front img` to act as the visible front face.
-5.  **Link Updates:** The `href` attributes inside `.flip-card-back` now point to the `blog/` directory (e.g., `href="blog/middle.html"`).
-
-This integrated code should now display your blog cards with the images on the front, and they should perform the flip animation on hover to reveal the text and link on the back, all while respecting your site's layout and styli
+I've added a fifth `flip-card` element to the grid. This new card uses `assets/beatlestile.png` for the front image and links to `blog/beatles.html` on the back, with appropriate text describing the Beatles blog po
