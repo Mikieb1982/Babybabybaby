@@ -21,8 +21,7 @@
                     fontFamily: {
                         sans: ['"Nunito Sans"', 'sans-serif'],
                         serif: ['Georgia', 'serif'],
-                        // Add typewriter font family if needed globally, or apply directly
-                        // typewriter: ['"Special Elite"', 'monospace'],
+                        // typewriter: ['"Special Elite"', 'monospace'], // Example
                     },
                     colors: {
                         'stork-title': '#2C3E50',
@@ -82,6 +81,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Special+Elite&display=swap" rel="stylesheet">
+
     <style>
         /* Basic styles */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
@@ -116,10 +116,10 @@
          .name-card {
              @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
-         /* General style for h3 in card (only min-height now) */
+         /* General style for h3 in card */
          .name-card h3 {
-             /* Set min-height based on the new larger font size (e.g., 4xl -> 2.25rem line-height ~ 2.75rem) */
-             min-height: 2.75rem;
+             /* Adjusted min-height for larger font size (e.g., 5xl -> 3rem font, ~3.5rem line height) */
+             min-height: 3.5rem;
              margin-bottom: 0.5rem; /* Tailwind mb-2 */
          }
          .name-card p {
@@ -132,29 +132,28 @@
              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* --- MODIFIED: Typewriter Target Styles --- */
+         /* --- UPDATED: Typewriter Target Styles --- */
          #name-typewriter-target {
-            font-family: 'Special Elite', monospace; /* Apply typewriter font */
-            /* Note: Replace 'Special Elite' with 'Lumios Typewriter' if you load it via @font-face */
-            font-size: 2.25rem; /* Tailwind text-4xl (approx double text-xl) */
-            line-height: 2.5rem; /* Adjust line height for larger font */
+            font-family: 'Special Elite', monospace;
+            font-size: 3rem; /* Increased font size (Tailwind text-5xl) */
+            line-height: 3.25rem; /* Adjusted line height */
             color: #2C3E50; /* stork-title color */
-            text-align: center; /* Center the text */
-            display: block; /* Make it block to allow centering */
+            text-align: center;
+            display: block;
             overflow: hidden;
             white-space: nowrap;
-            width: 100%; /* Ensure it takes full width for centering */
+            width: 100%;
          }
 
          #name-typewriter-target.typing::after {
             content: '|';
             display: inline-block;
             animation: blink-caret .75s step-end infinite;
-            margin-left: 4px; /* Slightly more space for larger font */
+            margin-left: 5px; /* Adjusted margin for larger font */
             vertical-align: baseline;
             color: #1ABC9C; /* Cursor color */
-            font-size: 2.25rem; /* Match font size */
-            line-height: 2.5rem; /* Match line height */
+            font-size: 3rem; /* Match font size */
+            line-height: 3.25rem; /* Match line height */
          }
 
          /* Full height layout */
@@ -504,7 +503,7 @@
 
             // Use the specific ID for the h3 where the name will be typed
             nameCard.innerHTML = `
-                <h3 id="name-typewriter-target"></h3> {/* Removed typewriter-target class here, applied via CSS ID selector */}
+                <h3 id="name-typewriter-target"></h3>
                 <p class="text-center"><strong>Origin:</strong> ${name.origin || 'N/A'}</p>
                 <p class="text-center"><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
                 ${name.gender ? `<p class="text-center"><strong>Gender:</strong> ${name.gender}</p>` : ''}
@@ -681,4 +680,3 @@
     </script>
 </body>
 </html>
-```
