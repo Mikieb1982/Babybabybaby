@@ -19,8 +19,10 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Nunito Sans"', 'sans-serif'], // Added Nunito Sans
+                        sans: ['"Nunito Sans"', 'sans-serif'],
                         serif: ['Georgia', 'serif'],
+                        // Add typewriter font family if needed globally, or apply directly
+                        // typewriter: ['"Special Elite"', 'monospace'],
                     },
                     colors: {
                         'stork-title': '#2C3E50',
@@ -58,7 +60,7 @@
                         'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-                        'blink-caret': 'blink-caret .75s step-end infinite' // Added blink animation
+                        'blink-caret': 'blink-caret .75s step-end infinite'
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
@@ -68,7 +70,6 @@
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
                         'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-                        /* Added blink keyframes */
                         'blink-caret': {
                           'from, to': { borderColor: 'transparent' },
                           '50%': { borderColor: '#1ABC9C' } /* Use stork-accent color */
@@ -80,8 +81,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Special+Elite&display=swap" rel="stylesheet">
     <style>
         /* Basic styles */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
@@ -116,10 +116,11 @@
          .name-card {
              @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300;
          }
+         /* General style for h3 in card (only min-height now) */
          .name-card h3 {
-             @apply text-xl font-semibold text-stork-title mb-2;
-             /* Add min-height to prevent layout shift during typing */
-             min-height: 1.75rem; /* Adjust based on font size/line height */
+             /* Set min-height based on the new larger font size (e.g., 4xl -> 2.25rem line-height ~ 2.75rem) */
+             min-height: 2.75rem;
+             margin-bottom: 0.5rem; /* Tailwind mb-2 */
          }
          .name-card p {
              @apply text-stork-text mb-1 text-sm;
@@ -131,23 +132,29 @@
              @apply text-xs px-2 py-1 rounded mr-2;
          }
 
-         /* Typewriter Effect Styles */
-         .typewriter-target {
-            /* Style for the element where typing happens */
-            display: inline-block; /* Or block, depending on layout */
-            overflow: hidden; /* Ensures text doesn't wrap */
-            white-space: nowrap; /* Keeps text on a single line */
+         /* --- MODIFIED: Typewriter Target Styles --- */
+         #name-typewriter-target {
+            font-family: 'Special Elite', monospace; /* Apply typewriter font */
+            /* Note: Replace 'Special Elite' with 'Lumios Typewriter' if you load it via @font-face */
+            font-size: 2.25rem; /* Tailwind text-4xl (approx double text-xl) */
+            line-height: 2.5rem; /* Adjust line height for larger font */
+            color: #2C3E50; /* stork-title color */
+            text-align: center; /* Center the text */
+            display: block; /* Make it block to allow centering */
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%; /* Ensure it takes full width for centering */
          }
-         .typewriter-target.typing::after {
-            content: '|'; /* Cursor character */
+
+         #name-typewriter-target.typing::after {
+            content: '|';
             display: inline-block;
-            /* Use Tailwind animation utility */
             animation: blink-caret .75s step-end infinite;
-            /* Or define animation directly:
-            animation: blink-caret 0.75s step-end infinite; */
-            margin-left: 2px; /* Space between text and cursor */
+            margin-left: 4px; /* Slightly more space for larger font */
             vertical-align: baseline;
             color: #1ABC9C; /* Cursor color */
+            font-size: 2.25rem; /* Match font size */
+            line-height: 2.5rem; /* Match line height */
          }
 
          /* Full height layout */
@@ -158,9 +165,9 @@
          }
          body {
              flex-grow: 1;
-             padding-top: 64px; /* Add padding to body to offset fixed header height (adjust as needed) */
-             font-family: 'Nunito Sans', sans-serif; /* Ensure correct font */
-             color: #34495E; /* Default text color */
+             padding-top: 64px;
+             font-family: 'Nunito Sans', sans-serif;
+             color: #34495E;
          }
          main {
              flex-grow: 1;
@@ -450,37 +457,33 @@
             return filtered;
         }
 
-        // --- NEW: Typewriter Effect Function ---
-        function typewriterEffect(text, element, speed = 100) { // speed in milliseconds
-            // Clear any existing typing interval
+        // Typewriter Effect Function
+        function typewriterEffect(text, element, speed = 100) {
             if (typingInterval) {
                 clearInterval(typingInterval);
                 typingInterval = null;
             }
-
-            element.textContent = ''; // Clear target element
-            element.classList.add('typing'); // Add class for cursor
+            element.textContent = '';
+            element.classList.add('typing');
             let i = 0;
-
             typingInterval = setInterval(() => {
                 if (i < text.length) {
                     element.textContent += text.charAt(i);
                     i++;
                 } else {
-                    clearInterval(typingInterval); // Stop interval when done
+                    clearInterval(typingInterval);
                     typingInterval = null;
-                    element.classList.remove('typing'); // Remove cursor class
+                    element.classList.remove('typing');
                 }
             }, speed);
         }
 
 
-        // --- MODIFIED: Function to display a single generated name ---
+        // MODIFIED: Function to display a single generated name
         function displayGeneratedName(name) {
-            resultDisplay.innerHTML = ''; // Clear previous result
-            resultsMessage.style.display = 'none'; // Hide message
+            resultDisplay.innerHTML = '';
+            resultsMessage.style.display = 'none';
 
-            // Stop any previous typewriter effect immediately
              if (typingInterval) {
                 clearInterval(typingInterval);
                 typingInterval = null;
@@ -499,9 +502,9 @@
             const nameCard = document.createElement('div');
             nameCard.classList.add('name-card', 'animate-fade-in');
 
-            // Create card structure, leave H3 empty initially with an ID
+            // Use the specific ID for the h3 where the name will be typed
             nameCard.innerHTML = `
-                <h3 class="text-center typewriter-target" id="name-typewriter-target"></h3>
+                <h3 id="name-typewriter-target"></h3> {/* Removed typewriter-target class here, applied via CSS ID selector */}
                 <p class="text-center"><strong>Origin:</strong> ${name.origin || 'N/A'}</p>
                 <p class="text-center"><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
                 ${name.gender ? `<p class="text-center"><strong>Gender:</strong> ${name.gender}</p>` : ''}
@@ -519,17 +522,14 @@
             // Find the target element and start the typewriter effect
             const typewriterTarget = nameCard.querySelector('#name-typewriter-target');
             if (typewriterTarget) {
-                typewriterEffect(name.name, typewriterTarget, 80); // Adjust speed (e.g., 80ms)
+                typewriterEffect(name.name, typewriterTarget, 80); // Adjust speed if needed
             } else {
                 console.error("Could not find typewriter target element.");
             }
 
-
-            // Add event listeners for copy and save buttons
             nameCard.querySelector('.copy-btn').addEventListener('click', handleCopyName);
             nameCard.querySelector('.save-btn').addEventListener('click', handleSaveName);
 
-            // Display additional info
             displayAdditionalInfo(name);
         }
 
@@ -552,7 +552,7 @@
              }
 
              // Example: Show famous namesakes
-             if (name.famous_namesakes && name.famous_namesakes.length > 0) { // Corrected property name check
+             if (name.famous_namesakes && name.famous_namesakes.length > 0) {
                  famousNamesakesSection.classList.remove('hidden');
                  famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p>${item}</p>`).join('');
              } else {
@@ -576,7 +576,6 @@
             relatedNamesSection.classList.add('hidden');
             famousNamesakesSection.classList.add('hidden');
 
-            // Stop any ongoing typewriter effect before generating a new name
              if (typingInterval) {
                 clearInterval(typingInterval);
                 typingInterval = null;
@@ -649,7 +648,6 @@
             displayGeneratedName(null); // Clear displayed name
             resultsPlaceholder.textContent = `Loading ${selectedLanguage === 'all' ? 'all' : selectedLanguage} name data...`;
             resultsPlaceholder.style.display = 'block';
-            // Stop any ongoing typewriter effect
              if (typingInterval) {
                 clearInterval(typingInterval);
                 typingInterval = null;
@@ -684,3 +682,18 @@
 </body>
 </html>
 ```
+
+**Summary of Changes:**
+
+1.  **Font Import:** Added 'Special Elite' to the Google Fonts `<link>` tag in the `<head>`.
+2.  **CSS Updates:**
+    * Created a specific CSS rule for `#name-typewriter-target`.
+    * Set `font-family: 'Special Elite', monospace;`.
+    * Set `font-size: 2.25rem;` (Tailwind's `text-4xl`).
+    * Set `text-align: center;`.
+    * Set `display: block;` and `width: 100%;` to ensure centering works correctly.
+    * Adjusted `line-height` and `margin-left` for the `::after` pseudo-element (the cursor) to match the larger font size.
+    * Modified the general `.name-card h3` rule to only set `min-height` (adjusted for the new font size) and `margin-bottom`.
+3.  **HTML (in JS):** Removed the `typewriter-target` class from the `h3` in the `displayGeneratedName` function's template literal, as the styles are now applied via the ID selector in CSS.
+
+The generated name should now appear centered, in a larger size, using the 'Special Elite' typewriter fo
