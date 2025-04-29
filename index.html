@@ -261,8 +261,8 @@
             </section>
 
             <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-auto px-6 py-3 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
-                    <img src="assets/drop.png" alt="Generate Name" class="h-8 w-auto"> <span class="sr-only">Generate Name</span>
+                <button id="generate-btn" class="btn btn-primary w-auto px-8 py-4 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
+                    <img src="assets/drop.png" alt="Generate Name" class="h-24 w-auto"> <span class="sr-only">Generate Name</span>
                 </button>
             </div>
         </fieldset>
@@ -340,7 +340,6 @@
 
             console.log(`Attempting to load data from: ${filename}`);
             dataLoaded = false;
-            // No longer setting button text content here
             generateBtn.disabled = true;
             resultsPlaceholder.textContent = `Loading ${language === 'all' ? 'all' : language} name data...`;
             resultsPlaceholder.style.display = 'block';
@@ -358,7 +357,6 @@
                 resultsPlaceholder.textContent = 'Click the button below to see a result.'; // Updated placeholder
                 resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
                 resultsPlaceholder.classList.add('text-medium-gray');
-                 // No longer setting button text content here
                 generateBtn.disabled = false;
             } catch (error) {
                 console.error(`Could not load name data from ${filename}:`, error);
@@ -367,7 +365,6 @@
                 resultsPlaceholder.textContent = `Error loading ${language === 'all' ? 'all' : language} name data. Please try again later.`;
                 resultsPlaceholder.classList.remove('text-medium-gray', 'text-stork-text');
                 resultsPlaceholder.classList.add('text-error-red');
-                // No longer setting button text content here
                 generateBtn.disabled = true;
             }
         }
