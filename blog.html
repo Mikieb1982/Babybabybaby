@@ -248,15 +248,3 @@
 </body>
 </html>
 ```
-
-**Changes Made:**
-
-1.  **Removed Text from Front:** Deleted the `div` containing the `h2` and `p` tags inside each `flip-card-front`.
-2.  **Adjusted Card Height:** Changed the `.flip-card` height back to `250px` in the CSS.
-3.  **Adjusted Padding:** Removed padding from `.flip-card-front` and `.flip-card-back` initially to allow the image to fill the space. Added padding back specifically to `.flip-card-back` so the text isn't stuck to the edges.
-4.  **Adjusted Justify Content:** Set `justify-content: center` for both front and back faces to center their content vertically.
-5.  **Image Styling:** Added a new CSS rule `.flip-card-front img` to make the image fill 100% width and height of the front face using `object-fit: cover` and match the card's border radius. Removed the inline image classes.
-6.  **Added Titles to Back:** Since the titles were removed from the front, I added them back to the back face (`flip-card-back`) above the description for context.
-7.  **Updated Placeholders:** Adjusted the placeholder image dimensions in the `onerror` attributes to match the new card height.
-
-Now, the front of each card should just show the image, filling the card space. The back will contain the title, description, and li
