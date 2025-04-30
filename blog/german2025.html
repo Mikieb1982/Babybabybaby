@@ -87,24 +87,29 @@
         main { flex-grow: 1; position: relative; } /* Keep main relative for nav arrows */
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-3xl h-auto object-contain; } /* Even wider header image */
-        .blog-inline-image { @apply my-6 rounded-lg shadow-sm object-contain w-full max-w-sm mx-auto; } /* Slightly larger centered inline images */
+        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-3xl h-auto object-contain; }
+        .blog-inline-image { @apply my-6 rounded-lg shadow-sm object-contain w-full max-w-sm mx-auto; }
         .blog-content::after { content: ""; display: table; clear: both; }
 
         /* Headings, tables, boxes span columns */
         .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-3; } /* Span 3 columns on md+ */
 
         /* Updated heading styles */
-        .blog-content h1 { @apply text-4xl md:text-5xl mb-8 text-center; } /* Larger font, more margin */
-        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-6 border-b border-gray-300 pb-3; } /* Larger font, more padding/margin */
-        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-4 font-semibold; } /* Larger font, more padding/margin */
-        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; } /* Larger font, more padding/margin */
+        .blog-content h1 { @apply text-4xl md:text-5xl mb-8 text-center; }
+        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-6 border-b border-gray-300 pb-3; }
+        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-4 font-semibold; }
+        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; }
 
-        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4 break-inside-avoid-column; }
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; }
+        /* Updated paragraph styles */
+        .blog-content p { @apply text-stork-text text-lg md:text-xl font-semibold leading-relaxed mb-4 break-inside-avoid-column; } /* Increased size, added bold */
+
+        /* List styles */
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; } /* Kept list font size normal */
         .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; }
         .blog-content ul li, .blog-content ol li { @apply mb-1; }
-        .blog-content strong { @apply font-semibold; }
+        .blog-content strong { @apply font-semibold; } /* Keep strong tag styling */
+
+        /* Table styles */
         .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
         .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
         .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
@@ -113,8 +118,10 @@
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover underline transition duration-200; }
 
         /* Box styling */
-        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm break-inside-avoid-column; } /* Avoid breaking boxes */
+        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm break-inside-avoid-column; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; }
+        /* Make text inside boxes normal weight (not bold like paragraphs) */
+        .blog-content .box p { @apply font-normal text-sm !mb-0; }
 
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
@@ -183,7 +190,7 @@
                 </ul>
                  <div class="box">
                      <span class="box-title">Why the Stability?</span>
-                     <p class="text-sm !mb-0">It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
+                     <p>It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
                  </div>
             <h2>Decoding the Vibe: What's Trending in 2025?</h2>
             <p>So, what styles are parents loving right now?</p>
@@ -196,7 +203,7 @@
                 </ul>
                  <div class="box">
                     <span class="box-title">Fun Fact:</span>
-                    <p class="text-sm !mb-0">The letter 'L' was the most common starting letter in 2024!</p>
+                    <p>The letter 'L' was the most common starting letter in 2024!</p>
                 </div>
 
                 <h3>Trend Alert #2: Global Meets Local</h3>
@@ -225,12 +232,12 @@
                 </ul>
                  <div class="box">
                     <span class="box-title">Did You Know?</span>
-                    <p class="text-sm !mb-0">Gerda and Erika actually popped up in the Top 500 list recently!</p>
+                    <p>Gerda and Erika actually popped up in the Top 500 list recently!</p>
                 </div>
 
                 <div class="box">
                     <span class="box-title">Saxony: The Retro Hotspot?</span>
-                    <p class="text-sm !mb-0">This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
+                    <p>This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
                 </div>
             <h2>On the Up and Up: Names to Watch in 2025!</h2>
             <p>Who are the rising stars predicted to climb the charts?</p>
@@ -254,7 +261,7 @@
 
                 <div class="box">
                     <span class="box-title">Fading Favourites?</span>
-                    <p class="text-sm !mb-0">Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
+                    <p>Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
                 </div>
             <h2>What's in a Name? Meanings Matter!</h2>
              <p>Beyond the sound, many parents love knowing the story behind a name.</p>
