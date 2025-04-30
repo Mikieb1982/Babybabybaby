@@ -84,7 +84,7 @@
         /* Layout styles */
         html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
         body { flex-grow: 1; padding-top: 64px; /* Height of fixed header */ font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; }
+        main { flex-grow: 1; position: relative; } /* Removed width constraints here, applied below */
 
         /* Blog post specific styles */
         .blog-header-image { @apply mx-auto my-6 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
@@ -98,15 +98,14 @@
         .blog-content p, .blog-content ul, .blog-content ol, .blog-content .box,
         .blog-content img.blog-inline-image-left, .blog-content img.blog-inline-image-right,
         .blog-content .table-wrapper {
-            @apply clear-both; /* Ensure they clear floats */
-            break-inside: avoid; /* Try to prevent breaking inside columns */
+            @apply clear-both;
+            break-inside: avoid;
         }
         .blog-inline-image-left { @apply float-left; }
         .blog-inline-image-right { @apply float-right; }
 
 
-        /* UPDATED Typography for blog content */
-        /* Increased size for h1 */
+        /* Typography for blog content */
         .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-8 text-center text-stork-title; }
         .blog-content h2 { @apply text-3xl md:text-4xl font-bold pt-8 mb-6 text-stork-title; }
         .blog-content h3 { @apply text-2xl md:text-3xl font-bold pt-6 mb-4 text-stork-title; }
@@ -143,13 +142,15 @@
         .blog-nav.hidden { opacity: 0; pointer-events: none; }
 
         /* Responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) { /* Adjust arrow position slightly on smaller large screens */
+             #prev-post { left: 10px; }
+             #next-post { right: 10px; }
+        }
+        @media (max-width: 768px) { /* md breakpoint */
             .blog-nav { padding: 0.5rem; /* p-2 */ }
-            #prev-post { left: 10px; }
-            #next-post { right: 10px; }
             .blog-nav svg { width: 24px; height: 24px; }
         }
-         @media (max-width: 640px) {
+         @media (max-width: 640px) { /* sm breakpoint */
             .blog-nav { display: none; /* Hide arrows on very small screens, rely on swipe */ }
         }
 
@@ -196,7 +197,7 @@
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down px-4 sm:px-6 lg:px-8">
 
         <article class="blog-content">
             <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
