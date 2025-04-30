@@ -84,48 +84,42 @@
         /* Layout styles */
         html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
         body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; }
+        main { flex-grow: 1; position: relative; } /* Keep main relative for nav arrows */
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-xl h-auto object-contain; }
-        .blog-inline-image { @apply my-4 rounded-lg shadow-sm object-contain w-full max-w-md mx-auto; } /* Centered inline images */
-        .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats if any were used, good practice */
+        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-2xl h-auto object-contain; } /* Wider header image */
+        .blog-inline-image { @apply my-4 rounded-lg shadow-sm object-contain w-full max-w-xs mx-auto; } /* Smaller centered inline images */
+        .blog-content::after { content: ""; display: table; clear: both; }
 
-        /* Ensure headings and specific divs clear floats if needed */
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content .table-wrapper, .blog-content .box { @apply clear-both; }
+        /* Headings, tables, boxes span columns */
+        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-2; } /* Span columns on md+ */
 
-        .blog-content h1 { @apply text-3xl md:text-4xl mb-4 text-center; }
-        .blog-content h2 { @apply text-2xl md:text-3xl pt-6 mb-4 border-b border-gray-300 pb-2; } /* Added border */
-        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; } /* Ensured h3 is bold */
-        .blog-content h4 { @apply text-lg md:text-xl pt-2 mb-2 font-semibold; } /* Ensured h4 is bold */
-        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
-        .blog-content ul { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed; } /* Reduced list spacing */
-        .blog-content ol { @apply list-decimal pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
-        .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; } /* Style list markers */
-        .blog-content ul li, .blog-content ol li { @apply mb-1; } /* Reduced list item margin */
+        .blog-content h1 { @apply text-3xl md:text-4xl mb-6 text-center; } /* Increased margin */
+        .blog-content h2 { @apply text-2xl md:text-3xl pt-8 mb-4 border-b border-gray-300 pb-2; } /* Increased top padding */
+        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; }
+        .blog-content h4 { @apply text-lg md:text-xl pt-2 mb-2 font-semibold; }
+        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4 break-inside-avoid-column; } /* Avoid column breaks in paragraphs */
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; } /* Avoid column breaks in lists */
+        .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; }
+        .blog-content ul li, .blog-content ol li { @apply mb-1; }
         .blog-content strong { @apply font-semibold; }
         .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
         .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
         .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
         .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
         .blog-content .text-medium-gray { @apply text-medium-gray; }
-        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover underline transition duration-200; } /* Added underline */
+        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover underline transition duration-200; }
 
         /* Box styling */
-        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm; } /* Increased vertical margin */
-        .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; } /* Made title slightly larger */
-
-        /* Two-column layout for sections */
-        .two-columns { @apply md:columns-2 md:gap-8; }
-        .two-columns > * { @apply break-inside-avoid-column; } /* Prevent elements breaking across columns */
-        .two-columns h3, .two-columns h4, .two-columns .box { @apply column-span-all; } /* Make subheadings and boxes span columns */
+        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm; }
+        .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; }
 
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
             position: fixed; top: 50%; transform: translateY(-50%);
             z-index: 40; cursor: pointer;
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.75rem; /* p-3 */
+            border-radius: 50%; padding: 0.75rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.2s, opacity 0.3s;
             opacity: 0.7;
@@ -151,15 +145,16 @@
             <nav class="flex space-x-4 sm:space-x-6 items-center">
                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
                 <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <article class="blog-content">
+        <article class="blog-content md:columns-2 md:gap-8">
             <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
 
             <img src="../assets/germanfamily.png" alt="Happy German family with newborn" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/700x400/f8fafc/6b7280?text=German+Family';">
@@ -169,8 +164,7 @@
              <img src="../assets/german2025.png" alt="German Baby Names 2025 Trends collage" class="blog-inline-image" onerror="this.onerror=null; this.src='https://placehold.co/600x300/f8fafc/6b7280?text=Trends+2025';">
 
             <h2>And the Winners Are... Germany's Most Popular Picks!</h2>
-            <div class="two-columns">
-                <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
+            <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
 
                 <h3>Top of the Pops: Girls</h3>
                 <ul>
@@ -189,11 +183,8 @@
                      <span class="box-title">Why the Stability?</span>
                      <p class="text-sm !mb-0">It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
                  </div>
-            </div>
-
             <h2>Decoding the Vibe: What's Trending in 2025?</h2>
-            <div class="two-columns">
-                <p>So, what styles are parents loving right now?</p>
+            <p>So, what styles are parents loving right now?</p>
 
                 <h3>Trend Alert #1: Short, Sweet, and Vowel-tastic!</h3>
                 <p>Think short, melodic names that roll off the tongue.</p>
@@ -219,13 +210,10 @@
 
                 <h3>Trend Alert #4: Is Unisex the Future?</h3>
                 <p>Gender-neutral names are getting more attention. Think Noa (yes, different from Noah!), Mika, Charlie, Luca, or minimalist picks like Liv and Mio.</p>
-            </div>
-
-             <img src="../assets/crawling.png" alt="Baby crawling happily" class="blog-inline-image" onerror="this.onerror=null; this.src='https://placehold.co/600x300/f8fafc/6b7280?text=Crawling+Baby';">
+            <img src="../assets/crawling.png" alt="Baby crawling happily" class="blog-inline-image" onerror="this.onerror=null; this.src='https://placehold.co/600x300/f8fafc/6b7280?text=Crawling+Baby';">
 
             <h2>Everything Old is New Again: Grandma & Grandpa Chic!</h2>
-            <div class="two-columns">
-                <p>Get ready for a surprise – names from your grandparents' era are making a comeback!</p>
+            <p>Get ready for a surprise – names from your grandparents' era are making a comeback!</p>
 
                 <h3>Hello, Retro Revival!</h3>
                 <p>Dust off the old photo albums, because these names are back:</p>
@@ -242,11 +230,8 @@
                     <span class="box-title">Saxony: The Retro Hotspot?</span>
                     <p class="text-sm !mb-0">This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
                 </div>
-            </div>
-
             <h2>On the Up and Up: Names to Watch in 2025!</h2>
-            <div class="two-columns">
-                <p>Who are the rising stars predicted to climb the charts?</p>
+            <p>Who are the rising stars predicted to climb the charts?</p>
 
                 <h3>Recent Movers and Shakers</h3>
                 <ul>
@@ -269,11 +254,8 @@
                     <span class="box-title">Fading Favourites?</span>
                     <p class="text-sm !mb-0">Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
                 </div>
-            </div>
-
             <h2>What's in a Name? Meanings Matter!</h2>
-            <p>Beyond the sound, many parents love knowing the story behind a name.</p>
-            <div class="two-columns">
+             <p>Beyond the sound, many parents love knowing the story behind a name.</p>
                 <ul>
                     <li><strong>Emilia:</strong> Latin for "rival" or "industrious."</li>
                     <li><strong>Noah:</strong> Hebrew for "rest" or "comfort."</li>
@@ -287,12 +269,9 @@
                     <li><strong>Theo:</strong> Often short for Theodore ("gift of God") or Theobald ("bold people").</li>
                     <li><strong>Mohammed:</strong> Arabic for "praised," hugely significant in Islam.</li>
                 </ul>
-            </div>
-            <p><strong>Note:</strong> Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
-
-            <h2>Location, Location, Location: Regional Differences!</h2>
-            <div class="two-columns">
-                <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
+                 <p><strong>Note:</strong> Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
+           <h2>Location, Location, Location: Regional Differences!</h2>
+            <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
                 <ul>
                     <li><strong>Berlin/Brandenburg & Big Cities:</strong> Mohammed is often #1 for boys here, reflecting diversity. Hannah topped the Berlin/Brandenburg list for girls in 2024. Hamburg loves names like Clara, Isa, Mads, and Mattis too.</li>
                     <li><strong>Bavaria (South):</strong> Often leans more traditional. Leon is frequently the top boy's name. Sophia is super popular for girls. You'll hear more names like Felix, Lukas, Maximilian, Ludwig, Katharina, and Theresa here.</li>
@@ -300,8 +279,6 @@
                     <li><strong>North:</strong> Ella is a big hit for girls. Frieda topped the charts in Mecklenburg-Vorpommern recently. Besides the national faves, look out for unique Northern/Scandinavian names like Fiete, Jonte, Lasse, Alva, or Fenna.</li>
                     <li><strong>West:</strong> Often mirrors the national average, though Mohammed tends to rank higher than nationwide. Noah, Matteo, Henry, Emilia, Sophia, and Lina are common choices.</li>
                 </ul>
-            </div>
-
             <h2>So, What's the Perfect Name for *Your* Little One?</h2>
             <p>Phew! That's a lot to take in, right? The German baby name scene in 2025 is a cool mix of steady favourites, trendy short names, and surprising retro comebacks.</p>
             <p>Whether you love the chart-toppers like Emilia and Noah, feel drawn to the rising stars like Lia and Emilio, or have a soft spot for a classic like Karl or Gerda, there's plenty of inspiration.</p>
