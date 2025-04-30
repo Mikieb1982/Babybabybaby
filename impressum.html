@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Impressum - The Stork Name Drop</title>
+
+    <link rel="icon" href="assets/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration (Same as index.html)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+
+        /* Layout styles */
+        html, body { min-height: 100%; display: flex; flex-direction: column; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; }
+
+        /* Content specific styles */
+        .content-box h1 { @apply text-3xl md:text-4xl font-bold text-stork-title mb-6 text-center; }
+        .content-box h2 { @apply text-xl md:text-2xl font-semibold text-stork-title mt-6 mb-3; }
+        .content-box p { @apply mb-4 leading-relaxed text-base md:text-lg; }
+        .content-box strong { @apply font-semibold; }
+
+    </style>
+</head>
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 animate-fade-in-down">
+        <div class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg content-box">
+
+            <h1>Impressum (Legal Notice)</h1>
+
+            <h2>Angaben gemäß § 5 TMG:</h2>
+            <p>
+                <strong>[Your Full Name]</strong><br>
+                [Your Street Address]<br> [Your Postal Code] [Your City]<br>
+                Deutschland
+            </p>
+
+            <h2>Kontakt:</h2>
+            <p>
+                E-Mail: [Your Email Address]<br>
+                </p>
+
+            <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h2>
+             <p>
+                [Your Full Name]<br>
+                [Your Street Address, same as above] <br>
+                [Your Postal Code] [Your City]<br>
+                Deutschland
+            </p>
+
+             <h2>Haftungsausschluss (Disclaimer):</h2>
+             <p>
+                <strong>Haftung für Inhalte</strong><br>
+                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+             </p>
+             <p>
+                <strong>Haftung für Links</strong><br>
+                Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+             </p>
+             <p>
+                <strong>Urheberrecht</strong><br>
+                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+             </p>
+             <p>
+                <strong class="text-red-600">WICHTIGER HINWEIS:</strong> Die obigen Disclaimer-Texte sind Standardmuster und ersetzen keine individuelle Rechtsberatung. Bitte konsultieren Sie einen Anwalt, um sicherzustellen, dass Ihr Impressum und Disclaimer vollständig und korrekt sind.
+             </p>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+        © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a> | <a href="impressum.html" class="hover:underline">Impressum</a> </footer>
+
+</body>
+</html>
+
+```
+
+**2. Update `index.html` Footer**
+
+Now, open your `index.html` file (the latest version, `index_html_typewriter`) and add the link to the new `impressum.html` page in the footer.
+
+Find the `<footer>` section near the bottom and add `| <a href="impressum.html" class="hover:underline">Impressum</a>` like this:
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
+
+    <link rel="icon" href="assets/logo.png" type="image/png">
+
+    <script type="text/javascript">
+        var _iub = _iub || [];
+        _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4012598.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                        // typewriter: ['"Special Elite"', 'monospace'], // Example
+                    },
+                    colors: {
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'dark-text': '#374151',
+                        'medium-gray': '#6B7280',
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'off-white': '#f8fafc',
+                        'indigo-100': '#e0e7ff',
+                        'indigo-700': '#4338ca',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                        'blink-caret': 'blink-caret .75s step-end infinite'
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                        'blink-caret': {
+                          'from, to': { borderColor: 'transparent' },
+                          '50%': { borderColor: '#1ABC9C' } /* Use stork-accent color */
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Special+Elite&display=swap" rel="stylesheet">
+
+    <style>
+        /* Styles from previous version */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; }
+        select, input[type="text"], input[type="radio"], input[type="range"] {
+             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        }
+        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
+        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+        .loader {
+            border: 4px solid #f3f3f3; border-top: 4px solid #1ABC9C;
+            border-radius: 50%; width: 40px; height: 40px;
+            animation: spin 1s linear infinite; margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .name-card { @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300; }
+        .name-card h3 { min-height: 3.5rem; margin-bottom: 0.5rem; }
+        .name-card p { @apply text-stork-text mb-1 text-sm; }
+        .name-card .tags span { @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded; }
+        .name-card .actions button { @apply text-xs px-2 py-1 rounded mr-2; }
+        #name-typewriter-target {
+            font-family: 'Special Elite', monospace; font-size: 3rem; line-height: 3.25rem;
+            color: #2C3E50; text-align: center; display: block;
+            overflow: hidden; white-space: nowrap; width: 100%;
+        }
+        #name-typewriter-target.typing::after {
+            content: '|'; display: inline-block; animation: blink-caret .75s step-end infinite;
+            margin-left: 5px; vertical-align: baseline; color: #1ABC9C;
+            font-size: 3rem; line-height: 3.25rem;
+        }
+        html, body { min-height: 100%; display: flex; flex-direction: column; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; }
+    </style>
+</head>
+
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                 <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Home</a>
+                 <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
+        </div>
+    </header>
+
+    <section id="showcase" class="py-6 md:py-10 text-center relative">
+        <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
+             class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+    </section>
+
+    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+        <fieldset id="generator-controls" class="space-y-8 mb-12">
+             <legend class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Name Generator Options</legend>
+             <section id="gender-selection">
+                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Gender:</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-base md:text-lg cursor-pointer">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-base md:text-lg cursor-pointer">Girl</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-base md:text-lg cursor-pointer">Neutral</label> </div>
+                </div>
+            </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <section id="language-selection">
+                    <label for="language-select" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Language/Origin:</label>
+                    <select id="language-select" name="language" class="w-full p-2 text-base border">
+                        <option value="all">Any Language</option>
+                        <option value="english">English</option>
+                        <option value="german">German</option>
+                        <option value="japanese">Japanese</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="french">French</option>
+                        <option value="italian">Italian</option>
+                    </select>
+                </section>
+                <section id="letter-filter">
+                    <label for="first-letter-input" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Starts with:</label>
+                    <div id="first-letter-inputs" class="flex flex-wrap gap-1">
+                         <span class="text-sm text-gray-500">Select a letter (optional)</span>
+                     </div>
+                     <input type="hidden" id="selected-letter" value="">
+                </section>
+            </div>
+            <section id="length-filter">
+                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Name Length:</label>
+                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-base md:text-lg cursor-pointer">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-base md:text-lg cursor-pointer">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-base md:text-lg cursor-pointer">Long (9+)</label> </div>
+                </div>
+            </section>
+            <section id="style-slider">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-lg md:text-xl text-stork-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-sm md:text-base font-medium">Balanced</span>
+                </div>
+                <div class="flex items-center justify-between text-medium-gray mb-1 text-sm md:text-base">
+                    <span>Traditional</span>
+                    <span>Unique</span>
+                </div>
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-stork-accent">
+            </section>
+            <div class="text-center pt-4">
+                <button id="generate-btn" class="btn btn-primary w-auto px-8 py-6 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
+                    <img src="assets/drop.png" alt="Generate Name" class="h-48 w-auto">
+                    <span class="sr-only">Generate Name</span>
+                </button>
+            </div>
+         </fieldset>
+         <section id="results-section" class="mt-12 animate-fade-in">
+             <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
+             <div id="results-container" class="min-h-[100px] relative">
+                  <div id="loading-indicator" class="loader" style="display: none;"></div>
+                  <div id="result-display" class="text-stork-text">
+                      <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
+                  </div>
+                  <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
+             </div>
+         </section>
+         <hr class="my-10 border-gray-300">
+         <div id="additional-info" class="space-y-10">
+             <section id="related-names-section" class="hidden">
+                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
+                 <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+             </section>
+             <section id="famous-namesakes-section" class="hidden">
+                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
+                 <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
+                     <p class="text-center text-medium-gray italic">No information available yet.</p>
+                 </div>
+             </section>
+         </div>
+    </main>
+
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a> | <a href="impressum.html" class="hover:underline">Impressum</a> </footer>
+    <script>
+        // --- DOM Element References ---
+        const topNavGeneratorLink = document.getElementById('top-nav-generator-link');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultDisplay = document.getElementById('result-display');
+        const resultsPlaceholder = document.getElementById('results-placeholder');
+        const resultsMessage = document.getElementById('results-message');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const languageSelect = document.getElementById('language-select');
+        const firstLetterInputsContainer = document.getElementById('first-letter-inputs');
+        const selectedLetterInput = document.getElementById('selected-letter');
+        const styleSlider = document.getElementById('style-range');
+        const sliderFeedback = document.getElementById('slider-feedback');
+        const relatedNamesContainer = document.getElementById('related-names-container');
+        const famousNamesakesContainer = document.getElementById('famous-namesakes-container');
+        const relatedNamesSection = document.getElementById('related-names-section');
+        const famousNamesakesSection = document.getElementById('famous-namesakes-section');
+
+        // --- State Variables ---
+        let nameDatabase = [];
+        let dataLoaded = false;
+        let currentName = null;
+        let typingInterval = null;
+
+        // --- Functions ---
+        async function loadNameData(language) {
+            let filename = 'names.json';
+            if (language === 'english') filename = 'english_names.json';
+            else if (language === 'german') filename = 'german_names.json';
+            else if (language === 'japanese') filename = 'japanese_names.json';
+            else if (language === 'spanish') filename = 'spanish_names.json';
+            else if (language === 'french') filename = 'french_names.json';
+            else if (language === 'italian') filename = 'italian_names.json';
+
+            console.log(`Attempting to load data from: ${filename}`);
+            dataLoaded = false;
+            generateBtn.disabled = true;
+            resultsPlaceholder.textContent = `Loading ${language === 'all' ? 'all' : language} name data...`;
+            resultsPlaceholder.style.display = 'block';
+            resultDisplay.innerHTML = '';
+            resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
+            resultsPlaceholder.classList.add('text-medium-gray');
+
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.json();
+                nameDatabase = data;
+                dataLoaded = true;
+                console.log(`${filename} loaded successfully. ${nameDatabase.length} names found.`);
+                resultsPlaceholder.textContent = 'Click the button below to see a result.';
+                resultsPlaceholder.classList.remove('text-stork-text', 'text-error-red');
+                resultsPlaceholder.classList.add('text-medium-gray');
+                generateBtn.disabled = false;
+            } catch (error) {
+                console.error(`Could not load name data from ${filename}:`, error);
+                nameDatabase = [];
+                dataLoaded = false;
+                resultsPlaceholder.textContent = `Error loading ${language === 'all' ? 'all' : language} name data. Please try again later.`;
+                resultsPlaceholder.classList.remove('text-medium-gray', 'text-stork-text');
+                resultsPlaceholder.classList.add('text-error-red');
+                generateBtn.disabled = true;
+            }
+        }
+
+        function updateSliderFeedback() {
+            const value = parseInt(styleSlider.value);
+            if (value < 20) sliderFeedback.textContent = 'Very Traditional';
+            else if (value < 40) sliderFeedback.textContent = 'Traditional';
+            else if (value <= 60) sliderFeedback.textContent = 'Balanced';
+            else if (value <= 80) sliderFeedback.textContent = 'Unique';
+            else sliderFeedback.textContent = 'Very Unique';
+        }
+
+        function generateAlphabetButtons() {
+             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+             firstLetterInputsContainer.innerHTML = '';
+             const anyBtn = document.createElement('button');
+             anyBtn.textContent = 'Any';
+             anyBtn.type = 'button';
+             anyBtn.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+             anyBtn.dataset.letter = '';
+             anyBtn.addEventListener('click', handleLetterSelection);
+             firstLetterInputsContainer.appendChild(anyBtn);
+             alphabet.forEach(letter => {
+                 const button = document.createElement('button');
+                 button.textContent = letter;
+                 button.type = 'button';
+                 button.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+                 button.dataset.letter = letter;
+                 button.addEventListener('click', handleLetterSelection);
+                 firstLetterInputsContainer.appendChild(button);
+             });
+             setActiveLetterButton(anyBtn);
+         }
+
+        function handleLetterSelection(event) {
+             const selectedLetter = event.target.dataset.letter;
+             selectedLetterInput.value = selectedLetter;
+             console.log(`Selected letter: ${selectedLetter}`);
+             document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
+                 btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
+                 btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
+             });
+             event.target.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
+             event.target.classList.add('btn-primary', 'text-white', 'border-stork-accent');
+         }
+
+        function setActiveLetterButton(button) {
+             button.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
+             button.classList.add('btn-primary', 'text-white', 'border-stork-accent');
+         }
+
+        function filterNames() {
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const firstLetter = selectedLetterInput.value.toLowerCase();
+            const length = document.querySelector('input[name="length"]:checked').value;
+            const styleValue = parseInt(styleSlider.value);
+            let filtered = nameDatabase.filter(name => {
+                if (gender !== 'any' && name.gender && name.gender.toLowerCase() !== gender) return false;
+                if (firstLetter !== '' && name.name.toLowerCase().charAt(0) !== firstLetter) return false;
+                if (length !== 'any') {
+                    const nameLength = name.name.length;
+                    if (length === 'short' && (nameLength < 3 || nameLength > 5)) return false;
+                    if (length === 'medium' && (nameLength < 6 || nameLength > 8)) return false;
+                    if (length === 'long' && nameLength < 9) return false;
+                }
+                return true;
+            });
+            if (styleValue < 50) { filtered.sort((a, b) => (a.style_score || 0) - (b.style_score || 0)); }
+            else if (styleValue > 50) { filtered.sort((a, b) => (b.style_score || 0) - (a.style_score || 0)); }
+            return filtered;
+        }
+
+        function typewriterEffect(text, element, speed = 100) {
+            if (typingInterval) { clearInterval(typingInterval); typingInterval = null; }
+            element.textContent = ''; element.classList.add('typing'); let i = 0;
+            typingInterval = setInterval(() => {
+                if (i < text.length) { element.textContent += text.charAt(i); i++; }
+                else { clearInterval(typingInterval); typingInterval = null; element.classList.remove('typing'); }
+            }, speed);
+        }
+
+        function displayGeneratedName(name) {
+            resultDisplay.innerHTML = ''; resultsMessage.style.display = 'none';
+            if (typingInterval) { clearInterval(typingInterval); typingInterval = null; }
+            if (!name) {
+                resultsPlaceholder.textContent = 'No names found matching your criteria. Try adjusting your filters.';
+                resultsPlaceholder.classList.remove('text-medium-gray');
+                resultsPlaceholder.classList.add('text-stork-text');
+                resultsPlaceholder.style.display = 'block'; return;
+            }
+            resultsPlaceholder.style.display = 'none';
+            const nameCard = document.createElement('div');
+            nameCard.classList.add('name-card', 'animate-fade-in');
+            nameCard.innerHTML = `
+                <h3 id="name-typewriter-target"></h3>
+                <p class="text-center"><strong>Origin:</strong> ${name.origin || 'N/A'}</p>
+                <p class="text-center"><strong>Meaning:</strong> ${name.meaning || 'N/A'}</p>
+                ${name.gender ? `<p class="text-center"><strong>Gender:</strong> ${name.gender}</p>` : ''}
+                ${name.popularity ? `<p class="text-center"><strong>Popularity:</strong> ${name.popularity}</p>` : ''}
+                <div class="tags text-center mt-2">${name.tags ? name.tags.map(tag => `<span>${tag}</span>`).join('') : ''}</div>
+                <div class="actions text-center mt-4">
+                    <button class="btn btn-secondary btn-feedback copy-btn" data-name="${name.name}">Copy</button>
+                    <button class="btn btn-primary btn-feedback save-btn" data-name="${name.name}">Save</button>
+                </div>`;
+            resultDisplay.appendChild(nameCard);
+            const typewriterTarget = nameCard.querySelector('#name-typewriter-target');
+            if (typewriterTarget) { typewriterEffect(name.name, typewriterTarget, 80); }
+            else { console.error("Could not find typewriter target element."); }
+            nameCard.querySelector('.copy-btn').addEventListener('click', handleCopyName);
+            nameCard.querySelector('.save-btn').addEventListener('click', handleSaveName);
+            displayAdditionalInfo(name);
+        }
+
+        function displayAdditionalInfo(name) {
+             relatedNamesContainer.innerHTML = '';
+             famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No information available yet.</p>';
+             if (name.related_names && name.related_names.length > 0) {
+                 relatedNamesSection.classList.remove('hidden');
+                 name.related_names.forEach(relatedName => {
+                     const relatedNameCard = document.createElement('div');
+                     relatedNameCard.classList.add('name-card', 'p-3', 'text-center');
+                     relatedNameCard.innerHTML = `<h4 class="text-lg font-semibold">${relatedName.name}</h4><p class="text-sm">${relatedName.origin || ''} ${relatedName.meaning ? `(${relatedName.meaning})` : ''}</p>`;
+                     relatedNamesContainer.appendChild(relatedNameCard);
+                 });
+             } else { relatedNamesSection.classList.add('hidden'); }
+             if (name.famous_namesakes && name.famous_namesakes.length > 0) {
+                 famousNamesakesSection.classList.remove('hidden');
+                 famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p>${item}</p>`).join('');
+             } else { famousNamesakesSection.classList.add('hidden'); }
+         }
+
+        function handleGenerateName() {
+            if (!dataLoaded) { resultsMessage.textContent = 'Name data is still loading. Please wait.'; resultsMessage.style.display = 'block'; return; }
+            loadingIndicator.style.display = 'block'; resultDisplay.style.display = 'none';
+            resultsPlaceholder.style.display = 'none'; resultsMessage.style.display = 'none';
+            relatedNamesSection.classList.add('hidden'); famousNamesakesSection.classList.add('hidden');
+            if (typingInterval) { clearInterval(typingInterval); typingInterval = null; }
+            setTimeout(() => {
+                const filteredNames = filterNames();
+                console.log(`Found ${filteredNames.length} names matching criteria.`);
+                if (filteredNames.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * filteredNames.length);
+                    currentName = filteredNames[randomIndex]; displayGeneratedName(currentName);
+                } else { currentName = null; displayGeneratedName(null); }
+                loadingIndicator.style.display = 'none'; resultDisplay.style.display = 'block';
+                resultsPlaceholder.style.display = 'none';
+            }, 500);
+        }
+
+        function handleCopyName(event) {
+            const nameToCopy = event.target.dataset.name;
+            navigator.clipboard.writeText(nameToCopy).then(() => {
+                console.log(`Copied "${nameToCopy}" to clipboard.`);
+                const originalText = event.target.textContent;
+                event.target.textContent = 'Copied!';
+                setTimeout(() => { event.target.textContent = originalText; }, 1500);
+            }).catch(err => { console.error('Failed to copy name: ', err); });
+        }
+
+        function handleSaveName(event) {
+            const nameToSave = event.target.dataset.name;
+            console.log(`Saving "${nameToSave}" (feature not fully implemented).`);
+             const originalText = event.target.textContent;
+             event.target.textContent = 'Saved!';
+             event.target.classList.remove('btn-primary');
+             event.target.classList.add('bg-save-button', 'hover:bg-save-button-hover');
+             setTimeout(() => {
+                 event.target.textContent = originalText;
+                 event.target.classList.remove('bg-save-button', 'hover:bg-save-button-hover');
+                 event.target.classList.add('btn-primary');
+             }, 1500);
+        }
+
+        function handleLanguageChange() {
+            const selectedLanguage = languageSelect.value;
+            console.log(`Language changed to: ${selectedLanguage}`);
+            loadNameData(selectedLanguage);
+            selectedLetterInput.value = '';
+            document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
+                btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent');
+                btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300');
+            });
+            const anyLetterButton = document.querySelector('#first-letter-inputs button[data-letter=""]');
+            if (anyLetterButton) setActiveLetterButton(anyLetterButton);
+            document.getElementById('gender-any').checked = true;
+            document.getElementById('length-any').checked = true;
+            styleSlider.value = 50; updateSliderFeedback();
+            displayGeneratedName(null);
+            resultsPlaceholder.textContent = `Loading ${selectedLanguage === 'all' ? 'all' : selectedLanguage} name data...`;
+            resultsPlaceholder.style.display = 'block';
+             if (typingInterval) { clearInterval(typingInterval); typingInterval = null; }
+        }
+
+        // --- Event Listeners ---
+        generateBtn.addEventListener('click', handleGenerateName);
+        styleSlider.addEventListener('input', updateSliderFeedback);
+        languageSelect.addEventListener('change', handleLanguageChange);
+
+        // --- Initialization ---
+        generateAlphabetButtons();
+        loadNameData(languageSelect.value);
+        updateSliderFeedback();
+
+        // Smooth scroll
+        topNavGeneratorLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+            }
+        });
+
+    </script>
+</body>
+</html>
