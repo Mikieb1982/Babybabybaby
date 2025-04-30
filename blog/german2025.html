@@ -84,27 +84,27 @@
         /* Layout styles */
         html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
         body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; } /* Keep main relative for nav arrows */
+        main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
         .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-3xl h-auto object-contain; }
         .blog-inline-image { @apply my-6 rounded-lg shadow-sm object-contain w-full max-w-sm mx-auto; }
         .blog-content::after { content: ""; display: table; clear: both; }
 
-        /* Headings, tables, boxes span columns */
-        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-3; } /* Span 3 columns on md+ */
+        /* Elements that should span columns in a multi-column layout */
+        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-2; } /* Span 2 columns */
 
-        /* Updated heading styles */
+        /* Heading styles */
         .blog-content h1 { @apply text-4xl md:text-5xl mb-8 text-center; }
-        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-6 border-b border-gray-300 pb-3; }
-        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-4 font-semibold; }
-        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; }
+        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-6 border-b border-gray-300 pb-3; } /* Added more margin-bottom */
+        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-5 font-semibold; } /* Added more margin-bottom */
+        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-4 font-semibold; } /* Added more margin-bottom */
 
-        /* Updated paragraph styles */
-        .blog-content p { @apply text-stork-text text-lg md:text-xl font-semibold leading-relaxed mb-4 break-inside-avoid-column; } /* Increased size, added bold */
+        /* Paragraph styles - Larger font size, normal weight */
+        .blog-content p { @apply text-stork-text text-lg md:text-xl font-normal leading-relaxed mb-4 break-inside-avoid-column; }
 
         /* List styles */
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; } /* Kept list font size normal */
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg font-normal leading-relaxed break-inside-avoid-column; } /* Normal font weight */
         .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; }
         .blog-content ul li, .blog-content ol li { @apply mb-1; }
         .blog-content strong { @apply font-semibold; } /* Keep strong tag styling */
@@ -120,8 +120,7 @@
         /* Box styling */
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm break-inside-avoid-column; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; }
-        /* Make text inside boxes normal weight (not bold like paragraphs) */
-        .blog-content .box p { @apply font-normal text-sm !mb-0; }
+        .blog-content .box p { @apply font-normal text-sm !mb-0; } /* Normal weight for text inside boxes */
 
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
@@ -163,7 +162,7 @@
 
     <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-12 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <article class="blog-content md:columns-3 md:gap-10">
+        <article class="blog-content md:columns-2 md:gap-10">
             <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
 
             <img src="../assets/germanfamily.png" alt="Happy German family with newborn" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/900x500/f8fafc/6b7280?text=German+Family';">
