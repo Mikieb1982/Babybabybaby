@@ -9,7 +9,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration (Copied from german2025.html)
+        // Tailwind CSS Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -75,106 +75,145 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Basic styles */
+        /* Basic button styles (using Tailwind @apply for consistency) */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
         /* Layout styles */
-        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
-        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; }
-
-        /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
-        .blog-inline-image {
-            @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[180px];
+        html, body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            /* Prevent accidental horizontal scrolling */
+            overflow-x: hidden;
+        }
+        body {
+            flex-grow: 1;
+            /* Add padding for the fixed header */
+            padding-top: 64px; /* Adjust if header height changes */
+            font-family: 'Nunito Sans', sans-serif;
+            color: #34495E; /* stork-text */
+            /* Background image styling */
+            background-image: url('../assets/back.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        main {
+            flex-grow: 1;
+            position: relative;
+            /* Responsive padding applied via Tailwind classes on the <main> element */
+        }
+        footer {
+            /* Ensure footer stays at the bottom */
+            margin-top: auto;
         }
 
-        /* Typography for blog content */
-        .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-10 text-center text-stork-title; }
-        .blog-content h2 { @apply text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
-        .blog-content h3 { @apply text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
-        .blog-content h4 { @apply text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title; }
+        /* Blog post specific styles */
+        .blog-header-image {
+            /* Full width on small screens, max width on larger, centered */
+            @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-lg h-auto object-contain;
+        }
+        .blog-inline-image {
+            /* Centered, max width, maintains aspect ratio */
+            @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[180px] h-auto;
+        }
+
+        /* Typography for blog content - uses responsive prefixes (sm:, md:, lg:) */
+        .blog-content h1 { @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title; }
+        .blog-content h2 { @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
+        .blog-content h3 { @apply text-xl sm:text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
+        .blog-content h4 { @apply text-lg sm:text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title; }
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-5; }
         .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-5 text-stork-text text-base md:text-lg leading-relaxed; }
         .blog-content ul li, .blog-content ol li { @apply mb-2; }
         .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content em { @apply italic; }
-        /* Updated table styles */
-        .blog-content table { @apply w-auto min-w-[50%] max-w-full divide-y divide-gray-200 border border-gray-300 mb-6 shadow-sm mx-auto; } /* Added mx-auto, removed min-w-full, added w-auto */
-        .blog-content th { @apply px-4 py-2 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider; }
-        .blog-content td { @apply px-4 py-2 whitespace-normal text-sm text-gray-700 border-b border-gray-200; }
+
+        /* Table styles - wrapped for horizontal scrolling on small screens */
+        .blog-content .table-wrapper {
+            /* Enable horizontal scrolling */
+            @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-full; /* Use max-w-full for responsiveness */
+        }
+        .blog-content table {
+            /* Ensure table takes minimum necessary width but can expand */
+            @apply w-full border border-gray-300 divide-y divide-gray-200;
+        }
+        .blog-content th { @apply px-4 py-2 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap; } /* Prevent header wrapping */
+        .blog-content td { @apply px-4 py-2 whitespace-normal text-sm text-gray-700 border-b border-gray-200; } /* Allow content wrapping */
         .blog-content tbody tr:nth-child(even) { @apply bg-gray-50; }
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
-        /* Updated table wrapper to be centered */
-        .blog-content .table-wrapper { @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-4xl; } /* Added mx-auto and max-width */
         .blog-content .text-medium-gray { @apply text-medium-gray; }
-        /* Removed works-cited styles */
 
         /* Simple box styling */
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
-        /* --- Grid Layout --- */
-        .content-grid { }
+        /* --- Grid Layout (collapses to single column on mobile) --- */
+        .content-grid { } /* Base styles, single column by default */
         .grid-section {
-             break-inside: avoid;
+             break-inside: avoid; /* Helps prevent sections breaking weirdly in multi-column */
              @apply mb-6;
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { /* md breakpoint and up */
             .content-grid {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 3rem; /* gap-12 */
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
+                gap: 3rem; /* Tailwind gap-12 */
             }
              .grid-section > * {
-                 break-inside: avoid-column;
+                 break-inside: avoid-column; /* Prevents content breaking across columns */
              }
+             /* Reset top margin for first heading in each column */
              .grid-section:nth-child(odd) h2:first-of-type,
              .grid-section:nth-child(even) h2:first-of-type {
                  @apply mt-0 pt-0;
              }
              .grid-section.full-span {
-                 @apply md:col-span-2;
+                 @apply md:col-span-2; /* Allow sections to span both columns */
              }
         }
 
-        /* --- Navigation Arrows Styles --- */
+        /* --- Navigation Arrows Styles (Hidden on small mobile) --- */
         .blog-nav {
             position: fixed; top: 50%; transform: translateY(-50%);
             z-index: 40; cursor: pointer;
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.75rem;
+            border-radius: 50%; padding: 0.75rem; /* 12px */
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.2s, opacity 0.3s;
             opacity: 0.7;
+            /* Ensure buttons are focusable and look like buttons */
+            @apply focus:outline-none focus:ring-2 focus:ring-stork-accent focus:ring-offset-2;
         }
         .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
         #prev-post { left: 15px; }
         #next-post { right: 15px; }
-        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
+        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; } /* stork-text */
         .blog-nav.hidden { opacity: 0; pointer-events: none; }
 
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
+        /* Responsive adjustments for nav arrows */
+        @media (max-width: 1024px) { /* lg breakpoint */
              #prev-post { left: 10px; }
              #next-post { right: 10px; }
         }
-        @media (max-width: 768px) {
-            .blog-nav { padding: 0.5rem; }
+        @media (max-width: 768px) { /* md breakpoint */
+            .blog-nav { padding: 0.5rem; } /* 8px */
             .blog-nav svg { width: 24px; height: 24px; }
         }
-         @media (max-width: 640px) {
+         @media (max-width: 640px) { /* sm breakpoint */
+            /* Hide arrows on small screens */
             .blog-nav { display: none; }
         }
 
     </style>
 </head>
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+<body class="font-sans text-stork-text overflow-x-hidden">
 
     <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
@@ -183,12 +222,12 @@
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
-                <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-                <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            <nav class="flex space-x-3 sm:space-x-4 md:space-x-6 items-center">
+                <a href="../index.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                <a href="../index.html#generator-controls" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                <a href="../blog.html" class="text-xs sm:text-sm md:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                <a href="../datasources.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data</a>
+                <a href="../aboutus.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
             </nav>
         </div>
     </header>
@@ -279,102 +318,103 @@
                     <h2>Did the Beatles Start a Baby Name Boom?</h2>
                     <p>We know the Beatles influenced fashion, music, and culture – but did they influence what people named their babies? It's a fascinating question for us name nerds! Let's look at some of the prominent names and see if their appearance in a hit song coincided with a rise on the baby name charts, particularly in the US and UK around the time of the songs' releases.</p>
                     <div class="table-wrapper">
-                        <table class="w-auto min-w-[50%] max-w-full divide-y divide-gray-200 border border-gray-300 mb-6 shadow-sm mx-auto">
+                        <table class="w-full divide-y divide-gray-200 border border-gray-300 shadow-sm">
                             <thead class="bg-gray-100">
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Song Title</th>
-                                    <th scope="col">Release</th>
-                                    <th scope="col">Brief Origin/Inspiration</th>
-                                    <th scope="col">US Trend Around Release</th>
-                                    <th scope="col">UK Trend Around Release</th>
-                                    <th scope="col">Beatles Effect?</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Name</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Song Title</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Release</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Brief Origin/Inspiration</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">US Trend Around Release</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">UK Trend Around Release</th>
+                                    <th scope="col" class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Beatles Effect?</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    <td class="font-medium text-gray-900">Michelle</td>
-                                    <td>Michelle</td> <td>1965</td>
-                                    <td>French feel, Paul's party piece, Jan Vaughan's lyrics</td>
-                                    <td>Peaked Top 5 (1968) shortly after song release</td>
-                                    <td>Popularized</td>
-                                    <td class="font-semibold text-green-600">Strong/Likely</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Michelle</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Michelle</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1965</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">French feel, Paul's party piece, Jan Vaughan's lyrics</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Peaked Top 5 (1968) shortly after song release</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Popularized</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-green-600">Strong/Likely</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-medium text-gray-900">Jude</td>
-                                    <td>Hey Jude</td> <td>1968</td>
-                                    <td>For Julian Lennon during parents' divorce</td>
-                                    <td>Jumped 69% in 1969 after #1 single</td>
-                                    <td>Boosted</td>
-                                    <td class="font-semibold text-green-600">Strong/Likely</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Jude</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Hey Jude</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1968</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">For Julian Lennon during parents' divorce</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Jumped 69% in 1969 after #1 single</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Boosted</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-green-600">Strong/Likely</td>
                                 </tr>
                                 <tr class="bg-gray-50">
-                                    <td class="font-medium text-gray-900">Eleanor</td>
-                                    <td>Eleanor Rigby</td> <td>1966</td>
-                                    <td>Actress E. Bron? Shop name? Gravestone coincidence?</td>
-                                    <td>Name was declining; song released during dip. Recent resurgence unrelated.</td>
-                                    <td>Sometimes seen as dated</td>
-                                    <td>Unclear/Minimal</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Eleanor</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Eleanor Rigby</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1966</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Actress E. Bron? Shop name? Gravestone coincidence?</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Name was declining; song released during dip. Recent resurgence unrelated.</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Sometimes seen as dated</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Unclear/Minimal</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-medium text-gray-900">Lucy</td>
-                                    <td>Lucy in the Sky with Diamonds</td> <td>1967</td>
-                                    <td>Julian Lennon's drawing of classmate Lucy O'Donnell</td>
-                                    <td>Long-term staple; song released between 19th C peak & late 20th C dip. LSD link?</td>
-                                    <td>Popular</td>
-                                    <td>Unclear/Minimal</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Lucy</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Lucy in the Sky with Diamonds</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1967</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Julian Lennon's drawing of classmate Lucy O'Donnell</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Long-term staple; song released between 19th C peak & late 20th C dip. LSD link?</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Popular</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Unclear/Minimal</td>
                                 </tr>
                                  <tr class="bg-gray-50">
-                                    <td class="font-medium text-gray-900">Julia</td>
-                                    <td>Julia</td> <td>1968</td>
-                                    <td>John's mother Julia Lennon; Yoko Ono ("Oceanchild")</td>
-                                    <td>Consistently popular; no major spike after song. Major rise later (2001).</td>
-                                    <td>Popular</td>
-                                    <td>No Obvious Effect</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Julia</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Julia</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1968</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">John's mother Julia Lennon; Yoko Ono ("Oceanchild")</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Consistently popular; no major spike after song. Major rise later (2001).</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Popular</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">No Obvious Effect</td>
                                 </tr>
                                  <tr>
-                                    <td class="font-medium text-gray-900">Prudence</td>
-                                    <td>Dear Prudence</td> <td>1968</td>
-                                    <td>Prudence Farrow's intense meditation in India</td>
-                                    <td>Remained very rare</td>
-                                    <td>Rare</td>
-                                    <td class="font-semibold text-red-600">None</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Prudence</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Dear Prudence</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1968</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Prudence Farrow's intense meditation in India</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Remained very rare</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Rare</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-red-600">None</td>
                                 </tr>
                                 <tr class="bg-gray-50">
-                                    <td class="font-medium text-gray-900">Rita</td>
-                                    <td>Lovely Rita</td> <td>1967</td>
-                                    <td>American "meter maid" slang; maybe traffic warden Meta Davies</td>
-                                    <td>Likely declining from 1940s peak when song released; fell off Top 1000 later.</td>
-                                    <td>Less common now</td>
-                                    <td class="font-semibold text-red-600">None/Negative</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Rita</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Lovely Rita</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1967</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">American "meter maid" slang; maybe traffic warden Meta Davies</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Likely declining from 1940s peak when song released; fell off Top 1000 later.</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Less common now</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-red-600">None/Negative</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-medium text-gray-900">Martha</td>
-                                    <td>Martha My Dear</td> <td>1968</td>
-                                    <td>Paul's sheepdog Martha; possible Jane Asher subtext</td>
-                                    <td>Long, slow decline continued after song release. Seen as dated.</td>
-                                    <td>More popular in UK</td>
-                                    <td class="font-semibold text-red-600">None</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Martha</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Martha My Dear</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1968</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Paul's sheepdog Martha; possible Jane Asher subtext</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Long, slow decline continued after song release. Seen as dated.</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">More popular in UK</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-red-600">None</td>
                                 </tr>
                                 <tr class="bg-gray-50">
-                                    <td class="font-medium text-gray-900">Sadie</td>
-                                    <td>Sexy Sadie</td> <td>1968</td>
-                                    <td>Disillusionment with Maharishi Mahesh Yogi</td>
-                                    <td>Song released at name's absolute lowest point. Later resurgence unrelated.</td>
-                                    <td>Popular now</td>
-                                    <td class="font-semibold text-red-600">None/Negative (Initially?)</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Sadie</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Sexy Sadie</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1968</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Disillusionment with Maharishi Mahesh Yogi</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Song released at name's absolute lowest point. Later resurgence unrelated.</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Popular now</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-semibold text-red-600">None/Negative (Initially?)</td>
                                 </tr>
                                  <tr>
-                                    <td class="font-medium text-gray-900">Penny</td>
-                                    <td>Penny Lane</td> <td>1967</td>
-                                    <td>Real Liverpool street; diminutive of Penelope</td>
-                                    <td>Already popular (Top 100 in 60s); song likely sustained visibility.</td>
-                                    <td>Popular</td>
-                                    <td>Possible/Sustaining</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm font-medium text-gray-900">Penny</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Penny Lane</td> <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">1967</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Real Liverpool street; diminutive of Penelope</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Already popular (Top 100 in 60s); song likely sustained visibility.</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Popular</td>
+                                    <td class="px-4 py-2 whitespace-normal text-sm text-gray-700">Possible/Sustaining</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <p class="text-center text-sm text-medium-gray mt-2">Note: Inspirations are based on band members' accounts and common interpretations. Trend data is approximate.</p>
                     <p>So, what does this tell us? It seems the "Beatles Baby Name Effect" was real, but selective!</p>
                     <ul>
                         <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts in popularity right after their respective songs became massive hits. The romantic allure of "Michelle" and the uplifting hope of "Hey Jude" likely resonated strongly with expecting parents.</li>
@@ -407,14 +447,14 @@
                     <p>Now over to you! What's your favorite Beatles name song? Did any Fab Four tune influence a name choice in your life or family? Share your thoughts in the comments below – we'd love to hear your stories!</p>
                 </div>
 
-                </div> </article>
+            </div> </article>
 
-        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
+        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post" title="Previous Post">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
              </svg>
          </button>
-         <button id="next-post" class="blog-nav hidden" aria-label="Next Post">
+         <button id="next-post" class="blog-nav hidden" aria-label="Next Post" title="Next Post">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
              </svg>
@@ -423,69 +463,106 @@
     </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a> </footer>
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline text-stork-accent hover:text-stork-accent-hover">Privacy Policy</a> | <a href="../terms.html" class="hover:underline text-stork-accent hover:text-stork-accent-hover">Terms of Service</a>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Configuration ---
+            // List of blog post HTML files in order
             const blogPosts = [
-                'middle.html',
-                'uniqueeng.html',
-                'german2025.html',
-                'song.html',
-                'beatles.html' // This page
+                'middle.html',      // Index 0
+                'uniqueeng.html',   // Index 1
+                'german2025.html',  // Index 2
+                'song.html',        // Index 3
+                'beatles.html'      // Index 4 (This page)
+                // Add future posts here
             ];
 
             // --- !! IMPORTANT: Set the index for THIS specific page !! ---
-            const currentPostIndex = 4; // 0=middle, 1=uniqueeng, 2=german2025, 3=song, 4=beatles
+            // This needs to be manually updated for each blog post file.
+            const currentPostIndex = 4;
 
+            // Minimum horizontal distance (pixels) to trigger a swipe navigation
             const swipeThreshold = 60;
 
             // --- DOM Elements ---
             const prevButton = document.getElementById('prev-post');
             const nextButton = document.getElementById('next-post');
-            const swipeArea = document.body;
+            const swipeArea = document.body; // Use the whole body for swipe detection
 
-            // --- State ---
+            // --- State Variables for Touch Events ---
             let touchStartX = 0;
             let touchEndX = 0;
 
-            // --- Functions ---
+            // --- Navigation Functions ---
             function navigateNext() {
+                // Check if there is a next post in the array
                 if (currentPostIndex < blogPosts.length - 1) {
-                    // Corrected path assuming blog posts are in a 'blog' subdirectory
+                    // Navigate to the next post's HTML file
+                    // Assumes blog posts are in the same directory or adjust path as needed
                     window.location.href = blogPosts[currentPostIndex + 1];
                 }
             }
             function navigatePrev() {
+                // Check if there is a previous post in the array
                 if (currentPostIndex > 0) {
-                     // Corrected path assuming blog posts are in a 'blog' subdirectory
+                    // Navigate to the previous post's HTML file
+                    // Assumes blog posts are in the same directory or adjust path as needed
                     window.location.href = blogPosts[currentPostIndex - 1];
                 }
             }
-            function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
-            function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
-            function handleSwipeGesture() {
-                const deltaX = touchEndX - touchStartX;
-                if (Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) { navigateNext(); } else { navigatePrev(); }
-                }
-                touchStartX = 0; touchEndX = 0;
+
+            // --- Touch Event Handlers ---
+            function handleTouchStart(event) {
+                // Record the starting horizontal position of the touch
+                touchStartX = event.touches[0].clientX;
             }
+            function handleTouchEnd(event) {
+                // Record the ending horizontal position of the touch
+                touchEndX = event.changedTouches[0].clientX;
+                // Process the swipe gesture
+                handleSwipeGesture();
+            }
+            function handleSwipeGesture() {
+                const deltaX = touchEndX - touchStartX; // Calculate horizontal distance swiped
+                // Check if the swipe distance exceeds the threshold
+                if (Math.abs(deltaX) > swipeThreshold) {
+                    if (deltaX < 0) {
+                        // Swiped left (negative deltaX) -> Go to next post
+                        navigateNext();
+                    } else {
+                        // Swiped right (positive deltaX) -> Go to previous post
+                        navigatePrev();
+                    }
+                }
+                // Reset touch coordinates for the next swipe
+                touchStartX = 0;
+                touchEndX = 0;
+            }
+
+            // --- Update Button Visibility ---
             function updateNavButtonsVisibility() {
+                // Ensure buttons exist before trying to modify them
                 if (!prevButton || !nextButton) return;
+                // Hide 'Previous' button if this is the first post
                 prevButton.classList.toggle('hidden', currentPostIndex <= 0);
+                // Hide 'Next' button if this is the last post
                 nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
             }
 
             // --- Initialization ---
+            // Set the initial visibility of the navigation buttons when the page loads
             updateNavButtonsVisibility();
 
             // --- Event Listeners ---
+            // Add touch event listeners to the swipe area (body)
             if (swipeArea) {
+                // Use { passive: true } for better scroll performance, as we don't prevent default scroll
                 swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
                 swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
             }
+            // Add click listeners to the navigation buttons
             if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
             if (nextButton) { nextButton.addEventListener('click', navigateNext); }
         });
@@ -493,3 +570,4 @@
 
 </body>
 </html>
+
