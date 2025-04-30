@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>German Baby Names 2025: Hot Trends & Cool Classics - The Stork Name Drop Blog</title>
+    <title>The Stork Name Drop - Blog</title>
 
-    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <link rel="icon" href="assets/logo.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration - Copied from index page for consistency
+        // Tailwind CSS Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -40,10 +40,7 @@
                         'accent-muted-light': '#cbd5e1',
                         'off-white': '#f8fafc',
                         'indigo-100': '#e0e7ff',
-                        'indigo-200': '#c7d2fe', // Added for box border
                         'indigo-700': '#4338ca',
-                        'indigo-800': '#3730a3', // Added for box title
-                         'indigo-50': '#eef2ff', // Added for box background
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
@@ -59,7 +56,7 @@
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { transform: 'translateY(0)' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
                         'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
@@ -82,307 +79,200 @@
         .btn-feedback { @apply transform active:scale-95; }
 
         /* Layout styles */
-        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
+        html, body { min-height: 100%; display: flex; flex-direction: column; }
         body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; }
+        main { flex-grow: 1; }
 
-        /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-3xl h-auto object-contain; }
-        .blog-inline-image { @apply my-6 rounded-lg shadow-sm object-contain w-full max-w-sm mx-auto; }
-        .blog-content::after { content: ""; display: table; clear: both; }
-
-        /* Elements that should span columns in a multi-column layout */
-        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-2; } /* Span 2 columns */
-
-        /* Heading styles - Made bolder and increased spacing */
-        .blog-content h1 { @apply text-4xl md:text-5xl mb-10 font-semibold text-center; } /* Added font-semibold, increased mb */
-        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-8 font-semibold border-b border-gray-300 pb-3; } /* Added font-semibold, increased mb */
-        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-6 font-semibold; } /* Increased mb */
-        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-5 font-semibold; } /* Increased mb */
-
-        /* Paragraph styles - Larger font size, normal weight */
-        .blog-content p { @apply text-stork-text text-lg md:text-xl font-normal leading-relaxed mb-4 break-inside-avoid-column; }
-
-        /* List styles */
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg font-normal leading-relaxed break-inside-avoid-column; }
-        .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; }
-        .blog-content ul li, .blog-content ol li { @apply mb-1; }
-        .blog-content strong { @apply font-semibold; }
-
-        /* Table styles */
-        .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
-        .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
-        .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
-        .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
-        .blog-content .text-medium-gray { @apply text-medium-gray; }
-        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover underline transition duration-200; }
-
-        /* Box styling */
-        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm break-inside-avoid-column; }
-        .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; }
-        .blog-content .box p { @apply font-normal text-sm !mb-0; }
-
-        /* --- Navigation Arrows Styles --- */
-        .blog-nav {
-            position: fixed; top: 50%; transform: translateY(-50%);
-            z-index: 40; cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.75rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, opacity 0.3s;
-            opacity: 0.7;
+        /* --- Card Flip Animation CSS --- */
+        .flip-card {
+            width: 300px; /* Fixed width for consistency */
+            height: 250px; /* Fixed height */
+            margin-bottom: 1.5rem; /* Spacing below card */
+            border-radius: 0.5rem; /* Rounded corners */
+            position: relative; /* Needed for absolute positioning inside */
+            background-color: transparent; /* Ensure container is transparent */
+            perspective: 1000px; /* Adds depth for 3D effect */
         }
-        .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
-        #prev-post { left: 15px; }
-        #next-post { right: 15px; }
-        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
-        .blog-nav.hidden { opacity: 0; pointer-events: none; }
+        .flip-card-inner {
+            width: 100%; height: 100%; border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
+            position: relative; /* Parent for absolute positioned children */
+            transform-style: preserve-3d; /* Enable 3D transformations */
+            transition: transform 0.8s; /* Smooth flip transition */
+        }
+        .flip-card-front, .flip-card-back {
+             width: 100%; height: 100%; border-radius: 0.5rem;
+             display: flex; flex-direction: column; justify-content: center; align-items: center; /* Center content */
+             text-align: center; /* Center text */
+             position: absolute; top: 0; left: 0; /* Overlay front and back */
+             -webkit-backface-visibility: hidden; /* Hide the back side when facing away (Safari) */
+             backface-visibility: hidden; /* Hide the back side when facing away */
+             overflow: hidden; /* Prevent content spill */
+        }
+        .flip-card-front {
+            background-color: #ffffff; /* White background */
+            color: #34495E; /* Default text color */
+            border: 1px solid #e5e7eb; /* Light gray border */
+            padding: 0; /* Remove padding if image fills the front */
+        }
+        .flip-card-front img {
+            width: 100%; height: 100%; /* Make image fill the container */
+            object-fit: cover; /* Cover the area, might crop */
+            border-radius: 0.5rem; /* Match card rounding */
+            display: block; /* Remove extra space below image */
+        }
+        .flip-card-back {
+            background-image: url('assets/backtile.png'); /* Background image */
+            background-size: cover; background-position: center; background-repeat: no-repeat;
+            color: white; /* Text color for contrast */
+            transform: rotateY(180deg); /* Initially rotated away */
+            padding: 1rem; /* Padding for content */
+            position: relative; /* For potential pseudo-elements like overlays */
+        }
+        /* Optional: Add a semi-transparent overlay for better text readability */
+        /* .flip-card-back::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 0.5rem; z-index: 0;
+        } */
+        /* Ensure content is above the overlay */
+        /* .flip-card-back > * { position: relative; z-index: 1; } */
+
+        /* Trigger the flip on hover */
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg); /* Rotate the inner container */
+        }
+        /* --- End of Flip Card CSS --- */
 
     </style>
-</head>
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
+    <script type="text/javascript">
+     var _iub = _iub || [];
+     _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4012598.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
+</head>
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
     <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
             <nav class="flex space-x-4 sm:space-x-6 items-center">
-                <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                <a href="../index.html#generator-controls" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-                <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-            </nav>
+                 <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-12 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="container mx-auto px-6 py-8 animate-fade-in-down">
 
-        <article class="blog-content md:columns-2 md:gap-10">
-            <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
+        <div class="text-center mb-12">
+             <img src="assets/blog.png" alt="Blog Title"
+                  class="h-auto w-full max-w-md mx-auto mb-4"
+                  onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=BLOG'; this.style.border='1px dashed #ccc';">
+             <p class="text-lg text-stork-text bg-off-white/90 backdrop-blur-sm p-4 rounded-lg inline-block">
+                 Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.
+             </p>
+        </div>
 
-            <img src="../assets/germanfamily.png" alt="Happy German family with newborn" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/900x500/f8fafc/6b7280?text=German+Family';">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
 
-            <p>Choosing a baby name? Oh, the excitement! It's a big decision, mixing tradition, personal taste, and maybe even a peek at what's trending. If you're expecting a little one in 2025 or just love names, let's dive into the wonderful world of German baby names! We've got the scoop on the reigning champs, the cool new kids on the block, and some blasts from the past making a surprising return.</p>
-
-             <img src="../assets/german2025.png" alt="German Baby Names 2025 Trends collage" class="blog-inline-image" onerror="this.onerror=null; this.src='https://placehold.co/600x300/f8fafc/6b7280?text=Trends+2025';">
-
-            <h2>And the Winners Are... Germany's Most Popular Picks!</h2>
-            <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
-
-                <h3>Top of the Pops: Girls</h3>
-                <ul>
-                    <li><strong>Emilia:</strong> Still holding strong at number one nationwide! A frequent favourite.</li>
-                    <li><strong>Sophia/Sofia:</strong> Right behind Emilia, sometimes even sneaking into first place depending on who's counting! These two are neck-and-neck.</li>
-                    <li><strong>Emma:</strong> Consistently popular and rounding out the top three.</li>
-                </ul>
-
-                <h3>Top of the Pops: Boys</h3>
-                <ul>
-                    <li><strong>Noah:</strong> King of the castle! This name has been the top choice for boys for several years running.</li>
-                    <li><strong>Matteo/Matt(h)eo:</strong> Giving Noah a run for his money, sitting comfortably at number two.</li>
-                    <li><strong>Elias:</strong> Another strong contender, frequently landing in the top three.</li>
-                </ul>
-                 <div class="box">
-                     <span class="box-title">Why the Stability?</span>
-                     <p>It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
-                 </div>
-            <h2>Decoding the Vibe: What's Trending in 2025?</h2>
-            <p>So, what styles are parents loving right now?</p>
-
-                <h3>Trend Alert #1: Short, Sweet, and Vowel-tastic!</h3>
-                <p>Think short, melodic names that roll off the tongue.</p>
-                <ul>
-                    <li><strong>Girls:</strong> Lots of names ending in '-a' (like Mia, Lina, Ella, Ida) or '-i'/'ie' (Leni, Lilly).</li>
-                    <li><strong>Boys:</strong> Short and sweet wins here too (Luca, Leo, Theo), often featuring soft 'L', 'M', or 'N' sounds (Leon, Emil, Finn).</li>
-                </ul>
-                 <div class="box">
-                    <span class="box-title">Fun Fact:</span>
-                    <p>The letter 'L' was the most common starting letter in 2024!</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/middletile.png" alt="Middle Names Tile"
+                             onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Middle+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div> <h3 class="text-lg font-semibold mb-2">Choosing Middle Names</h3>
+                            <p class="text-sm mb-4">Find the perfect middle name flow.</p>
+                            <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <h3>Trend Alert #2: Global Meets Local</h3>
-                <p>It's a mix! You'll find internationally loved names (Liam, Noah, Emilia) alongside solid German classics.</p>
-                <ul>
-                    <li><strong>Global Stars:</strong> Emilia, Noah, Sophia, Emma, Liam, Luca.</li>
-                    <li><strong>Biblical & Hebrew Hits:</strong> Noah, Elias, Hannah, Mia, Paul, David.</li>
-                    <li><strong>German Heritage Heroes:</strong> Emil, Paul, Karl, Anton, Oskar, Ida, Frieda, Mathilda, Clara, Leni.</li>
-                </ul>
-
-                <h3>Trend Alert #3: Steady at the Top, Shifting Below</h3>
-                <p>While the top 3 might seem set in stone, there's always movement just below. Names like Lia/Liah and Liam recently broke into the Top 10, showing things <strong>do</strong> change!</p>
-
-                <h3>Trend Alert #4: Is Unisex the Future?</h3>
-                <p>Gender-neutral names are getting more attention. Think Noa (yes, different from Noah!), Mika, Charlie, Luca, or minimalist picks like Liv and Mio.</p>
-            <img src="../assets/crawling.png" alt="Baby crawling happily" class="blog-inline-image" onerror="this.onerror=null; this.src='https://placehold.co/600x300/f8fafc/6b7280?text=Crawling+Baby';">
-
-            <h2>Everything Old is New Again: Grandma & Grandpa Chic!</h2>
-            <p>Get ready for a surprise – names from your grandparents' era are making a comeback!</p>
-
-                <h3>Hello, Retro Revival!</h3>
-                <p>Dust off the old photo albums, because these names are back:</p>
-                <ul>
-                    <li><strong>Girls:</strong> Gerda, Erika, Frida, Greta, Lieselotte, Hilda, Käthe, Irma, Wilma.</li>
-                    <li><strong>Boys:</strong> Erwin, Kurt, Friedrich, Heinrich, Erich, Otto, Karl, Anton, Oskar.</li>
-                </ul>
-                 <div class="box">
-                    <span class="box-title">Did You Know?</span>
-                    <p>Gerda and Erika actually popped up in the Top 500 list recently!</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Unique+English';">
+                         </div>
+                    <div class="flip-card-back">
+                         <div>
+                            <h3 class="text-lg font-semibold mb-2">Unique English Names</h3>
+                            <p class="text-sm mb-4">Explore distinctive English baby names.</p>
+                            <a href="blog/uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <div class="box">
-                    <span class="box-title">Saxony: The Retro Hotspot?</span>
-                    <p>This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=German+2025';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">German Names 2025</h3>
+                            <p class="text-sm mb-4">See the latest in German baby names.</p>
+                            <a href="blog/german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
                 </div>
-            <h2>On the Up and Up: Names to Watch in 2025!</h2>
-            <p>Who are the rising stars predicted to climb the charts?</p>
+            </div>
 
-                <h3>Recent Movers and Shakers</h3>
-                <ul>
-                    <li><strong>Lia/Liah & Liam:</strong> Both broke into the Top 10 recently – definitely ones to watch!</li>
-                    <li><strong>Bielefeld's 2024 Risers (Girls):</strong> Alea, Amelie, Ayla, Aurelia, Dua, Elli, Hailey, Inaya, Luna, Malia.</li>
-                    <li><strong>Bielefeld's 2024 Risers (Boys):</strong> Emilio, Jano, Josef, Leano, Linus, Maleo, Marlo, Milan, Toni, Valentin.</li>
-                    <li><strong>New to the Top 500 (Girls):</strong> Elodie, Rüya, Erika, Liora, Rania, Gerda, Nami, Estelle, Hava, Lima.</li>
-                    <li><strong>New to the Top 500 (Boys):</strong> Troi, Sultan, Marek, Alaz, Said, Dian, Lior, Aziz, Quinn, Tamino.</li>
-                </ul>
-
-                <h3>Expert Predictions: What's Next?</h3>
-                <ul>
-                    <li>Keep an eye on <strong>Malia, Hailey,</strong> and <strong>Emilio</strong> – they might crack the Top 10 soon!</li>
-                    <li><strong>Luna</strong> is gaining traction (hello, nature names!).</li>
-                    <li>Those <strong>retro names</strong> (Gerda, Erika, Kurt, Erwin) could spread further.</li>
-                    <li>Maybe more <strong>floral names</strong> like Viola, Iris, and Rose?</li>
-                </ul>
-
-                <div class="box">
-                    <span class="box-title">Fading Favourites?</span>
-                    <p>Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/songtile.png" alt="Names from Songs Tile"
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Song+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Names Inspired by Songs</h3>
+                            <p class="text-sm mb-4">Find names featured in popular music.</p>
+                            <a href="blog/song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
                 </div>
-            <h2>What's in a Name? Meanings Matter!</h2>
-             <p>Beyond the sound, many parents love knowing the story behind a name.</p>
-                <ul>
-                    <li><strong>Emilia:</strong> Latin for "rival" or "industrious."</li>
-                    <li><strong>Noah:</strong> Hebrew for "rest" or "comfort."</li>
-                    <li><strong>Sophia/Sofia:</strong> Greek for "wisdom."</li>
-                    <li><strong>Matteo/Mateo:</strong> Hebrew via Italian/Spanish for "gift of God."</li>
-                    <li><strong>Emma:</strong> Germanic for "universal" or "whole."</li>
-                    <li><strong>Elias:</strong> Hebrew for "The Lord is my God."</li>
-                    <li><strong>Mia:</strong> Often linked to Maria, meanings range from "sea of bitterness" to "wished-for child" or "mine."</li>
-                    <li><strong>Leon:</strong> Greek/Latin for "lion."</li>
-                    <li><strong>Lina:</strong> Multiple origins - could mean "tender," "palm tree," or be short for other names.</li>
-                    <li><strong>Theo:</strong> Often short for Theodore ("gift of God") or Theobald ("bold people").</li>
-                    <li><strong>Mohammed:</strong> Arabic for "praised," hugely significant in Islam.</li>
-                </ul>
-                 <p><strong>Note:</strong> Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
-           <h2>Location, Location, Location: Regional Differences!</h2>
-            <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
-                <ul>
-                    <li><strong>Berlin/Brandenburg & Big Cities:</strong> Mohammed is often #1 for boys here, reflecting diversity. Hannah topped the Berlin/Brandenburg list for girls in 2024. Hamburg loves names like Clara, Isa, Mads, and Mattis too.</li>
-                    <li><strong>Bavaria (South):</strong> Often leans more traditional. Leon is frequently the top boy's name. Sophia is super popular for girls. You'll hear more names like Felix, Lukas, Maximilian, Ludwig, Katharina, and Theresa here.</li>
-                    <li><strong>Saxony (East):</strong> The retro heartland! Mia and Matteo were #1 in 2024. Emil, Oskar, Karl, Frieda, Mathilda, and Clara are also popular.</li>
-                    <li><strong>North:</strong> Ella is a big hit for girls. Frieda topped the charts in Mecklenburg-Vorpommern recently. Besides the national faves, look out for unique Northern/Scandinavian names like Fiete, Jonte, Lasse, Alva, or Fenna.</li>
-                    <li><strong>West:</strong> Often mirrors the national average, though Mohammed tends to rank higher than nationwide. Noah, Matteo, Henry, Emilia, Sophia, and Lina are common choices.</li>
-                </ul>
-            <h2>So, What's the Perfect Name for *Your* Little One?</h2>
-            <p>Phew! That's a lot to take in, right? The German baby name scene in 2025 is a cool mix of steady favourites, trendy short names, and surprising retro comebacks.</p>
-            <p>Whether you love the chart-toppers like Emilia and Noah, feel drawn to the rising stars like Lia and Emilio, or have a soft spot for a classic like Karl or Gerda, there's plenty of inspiration.</p>
-            <p>Remember, trends are fun, but the best name is the one <strong>you</strong> love. Say it out loud, see how it feels, and choose the name that brings a smile to your face. Good luck with your naming adventure!</p>
+            </div>
 
-        </article>
-        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-             </svg>
-         </button>
-         <button id="next-post" class="blog-nav hidden" aria-label="Next Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-             </svg>
-         </button>
-         </main>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                         <img src="assets/beatlestile.png" alt="Beatles Names Tile"
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
+                         </div>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Beatles Baby Name Gold</h3>
+                            <p class="text-sm mb-4">A deep dive into names from Fab Four songs.</p>
+                            <a href="blog/beatles.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div> </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="../impressum.html" class="hover:underline">Impressum</a> | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a>
-         </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Configuration ---
-            const blogPosts = [
-                'middle.html',
-                'uniqueeng.html',
-                'german2025.html', // This is the current page
-                'song.html',
-                'beatles.html'
-            ];
-
-            // --- !! IMPORTANT: Set the index for THIS specific page !! ---
-            const currentPostIndex = 2; // 0=middle, 1=uniqueeng, 2=german2025, 3=song, 4=beatles
-
-            const swipeThreshold = 60; // Minimum pixels swiped to trigger navigation
-
-            // --- DOM Elements ---
-            const prevButton = document.getElementById('prev-post');
-            const nextButton = document.getElementById('next-post');
-            const swipeArea = document.body; // Use body for swipe detection
-
-            // --- State ---
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            // --- Functions ---
-            // Navigate to the next post in the list
-            function navigateNext() {
-                if (currentPostIndex < blogPosts.length - 1) {
-                    window.location.href = blogPosts[currentPostIndex + 1];
-                }
-            }
-            // Navigate to the previous post in the list
-            function navigatePrev() {
-                if (currentPostIndex > 0) {
-                    window.location.href = blogPosts[currentPostIndex - 1];
-                }
-            }
-            // Record the starting X position of a touch
-            function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
-            // Record the ending X position and check for swipe
-            function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
-            // Determine if a swipe occurred and navigate
-            function handleSwipeGesture() {
-                const deltaX = touchEndX - touchStartX;
-                if (Math.abs(deltaX) > swipeThreshold) { // Check if swipe distance is sufficient
-                    if (deltaX < 0) { navigateNext(); } // Swipe left
-                    else { navigatePrev(); } // Swipe right
-                }
-                // Reset coordinates
-                touchStartX = 0;
-                touchEndX = 0;
-            }
-            // Show/hide navigation buttons based on current post index
-            function updateNavButtonsVisibility() {
-                if (!prevButton || !nextButton) return; // Ensure buttons exist
-                prevButton.classList.toggle('hidden', currentPostIndex <= 0); // Hide prev on first post
-                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1); // Hide next on last post
-            }
-
-            // --- Initialization ---
-            updateNavButtonsVisibility(); // Set initial button visibility
-
-            // --- Event Listeners ---
-            // Add touch listeners for swipe navigation
-            if (swipeArea) {
-                swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true }); // Use passive for performance
-                swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
-            }
-            // Add click listeners for button navigation
-            if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
-            if (nextButton) { nextButton.addEventListener('click', navigateNext); }
-        });
-    </script>
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
+     </footer>
 
 </body>
 </html>
+```
+
+I've added the scripts just before the closing `</head>` tag in your blog page HTML. Let me know if you need anything el
