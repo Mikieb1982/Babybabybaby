@@ -80,74 +80,27 @@
 
         /* Layout styles */
         html, body { min-height: 100%; display: flex; flex-direction: column; }
-        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        body { flex-grow: 1; padding-top: 64px; /* Adjusted for fixed header height */ font-family: 'Nunito Sans', sans-serif; color: #34495E; }
         main { flex-grow: 1; }
 
+        /* Remove flip card styles */
         /* --- Card Flip Animation CSS --- */
-        .flip-card {
-            width: 300px; /* Fixed width for consistency */
-            height: 250px; /* Fixed height */
-            margin-bottom: 1.5rem; /* Spacing below card */
-            border-radius: 0.5rem; /* Rounded corners */
-            position: relative; /* Needed for absolute positioning inside */
-            background-color: transparent; /* Ensure container is transparent */
-            perspective: 1000px; /* Adds depth for 3D effect */
-        }
-        .flip-card-inner {
-            width: 100%; height: 100%; border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
-            position: relative; /* Parent for absolute positioned children */
-            transform-style: preserve-3d; /* Enable 3D transformations */
-            transition: transform 0.8s; /* Smooth flip transition */
-        }
-        .flip-card-front, .flip-card-back {
-             width: 100%; height: 100%; border-radius: 0.5rem;
-             display: flex; flex-direction: column; justify-content: center; align-items: center; /* Center content */
-             text-align: center; /* Center text */
-             position: absolute; top: 0; left: 0; /* Overlay front and back */
-             -webkit-backface-visibility: hidden; /* Hide the back side when facing away (Safari) */
-             backface-visibility: hidden; /* Hide the back side when facing away */
-             overflow: hidden; /* Prevent content spill */
-        }
-        .flip-card-front {
-            background-color: #ffffff; /* White background */
-            color: #34495E; /* Default text color */
-            border: 1px solid #e5e7eb; /* Light gray border */
-            padding: 0; /* Remove padding if image fills the front */
-        }
-        .flip-card-front img {
-            width: 100%; height: 100%; /* Make image fill the container */
-            object-fit: cover; /* Cover the area, might crop */
-            border-radius: 0.5rem; /* Match card rounding */
-            display: block; /* Remove extra space below image */
-        }
-        .flip-card-back {
-            background-image: url('assets/backtile.png'); /* Background image */
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-            color: white; /* Text color for contrast */
-            transform: rotateY(180deg); /* Initially rotated away */
-            padding: 1rem; /* Padding for content */
-            position: relative; /* For potential pseudo-elements like overlays */
-        }
-        /* Optional: Add a semi-transparent overlay for better text readability */
-        /* .flip-card-back::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); border-radius: 0.5rem; z-index: 0;
-        } */
-        /* Ensure content is above the overlay */
-        /* .flip-card-back > * { position: relative; z-index: 1; } */
-
-        /* Trigger the flip on hover */
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg); /* Rotate the inner container */
-        }
+        /* .flip-card { ... } */
+        /* .flip-card-inner { ... } */
+        /* .flip-card-front, .flip-card-back { ... } */
+        /* .flip-card-front { ... } */
+        /* .flip-card-front img { ... } */
+        /* .flip-card-back { ... } */
+        /* .flip-card-back::before { ... } */
+        /* .flip-card-back > * { ... } */
+        /* .flip-card:hover .flip-card-inner { ... } */
         /* --- End of Flip Card CSS --- */
 
     </style>
 
     <script type="text/javascript">
-     var _iub = _iub || [];
-     _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
+      var _iub = _iub || [];
+      _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
     </script>
     <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4012598.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
@@ -186,86 +139,62 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="assets/middletile.png" alt="Middle Names Tile"
-                             onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Middle+Names';">
-                         </div>
-                    <div class="flip-card-back">
-                        <div> <h3 class="text-lg font-semibold mb-2">Choosing Middle Names</h3>
-                            <p class="text-sm mb-4">Find the perfect middle name flow.</p>
-                            <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
-                        </div>
-                    </div>
+            <a href="blog/middle.html" class="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm">
+                <img src="assets/middletile.png" alt="Middle Names Tile"
+                     class="w-full h-48 object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/cccccc/34495E?text=Middle+Names';">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors">Choosing Middle Names</h3>
+                    <p class="text-sm text-stork-text mb-3">Find the perfect middle name flow.</p>
+                    <span class="text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors">Read More &rarr;</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
-                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Unique+English';">
-                         </div>
-                    <div class="flip-card-back">
-                         <div>
-                            <h3 class="text-lg font-semibold mb-2">Unique English Names</h3>
-                            <p class="text-sm mb-4">Explore distinctive English baby names.</p>
-                            <a href="blog/uniqueeng.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
-                        </div>
-                    </div>
+            <a href="blog/uniqueeng.html" class="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm">
+                <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
+                     class="w-full h-48 object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/cccccc/34495E?text=Unique+English';">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors">Unique English Names</h3>
+                    <p class="text-sm text-stork-text mb-3">Explore distinctive English baby names.</p>
+                    <span class="text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors">Read More &rarr;</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
-                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=German+2025';">
-                         </div>
-                    <div class="flip-card-back">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">German Names 2025</h3>
-                            <p class="text-sm mb-4">See the latest in German baby names.</p>
-                            <a href="blog/german2025.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
-                        </div>
-                    </div>
+            <a href="blog/german2025.html" class="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm">
+                <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
+                     class="w-full h-48 object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/cccccc/34495E?text=German+2025';">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors">German Names 2025</h3>
+                    <p class="text-sm text-stork-text mb-3">See the latest in German baby names.</p>
+                    <span class="text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors">Read More &rarr;</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/songtile.png" alt="Names from Songs Tile"
-                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Song+Names';">
-                         </div>
-                    <div class="flip-card-back">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">Names Inspired by Songs</h3>
-                            <p class="text-sm mb-4">Find names featured in popular music.</p>
-                            <a href="blog/song.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
-                        </div>
-                    </div>
+            <a href="blog/song.html" class="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm">
+                <img src="assets/songtile.png" alt="Names from Songs Tile"
+                     class="w-full h-48 object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/cccccc/34495E?text=Song+Names';">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors">Names Inspired by Songs</h3>
+                    <p class="text-sm text-stork-text mb-3">Find names featured in popular music.</p>
+                    <span class="text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors">Read More &rarr;</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                         <img src="assets/beatlestile.png" alt="Beatles Names Tile"
-                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
-                         </div>
-                    <div class="flip-card-back">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">Beatles Baby Name Gold</h3>
-                            <p class="text-sm mb-4">A deep dive into names from Fab Four songs.</p>
-                            <a href="blog/beatles.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
-                        </div>
-                    </div>
+            <a href="blog/beatles.html" class="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm">
+                <img src="assets/beatlestile.png" alt="Beatles Names Tile"
+                     class="w-full h-48 object-cover"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/cccccc/34495E?text=Beatles+Names';">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors">Beatles Baby Name Gold</h3>
+                    <p class="text-sm text-stork-text mb-3">A deep dive into names from Fab Four songs.</p>
+                    <span class="text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors">Read More &rarr;</span>
                 </div>
-            </div>
+            </a>
 
-            </div> </main>
+        </div> </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
@@ -273,6 +202,3 @@
 
 </body>
 </html>
-```
-
-I've added the scripts just before the closing `</head>` tag in your blog page HTML. Let me know if you need anything el
