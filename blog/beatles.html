@@ -14,10 +14,11 @@
             theme: {
                 extend: {
                     fontFamily: {
+                        // Sets the default sans-serif font
                         sans: ['"Nunito Sans"', 'sans-serif'],
                         serif: ['Georgia', 'serif'],
                     },
-                    colors: { // Using the same color palette
+                    colors: { // Consistent color palette
                         'stork-title': '#2C3E50',
                         'stork-text': '#34495E',
                         'stork-accent': '#1ABC9C',
@@ -47,7 +48,7 @@
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
-                    animation: { // Using the same animations
+                    animation: { // Consistent animations
                         'fade-in': 'fade-in 0.5s ease-out',
                         'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
@@ -57,7 +58,7 @@
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
-                    keyframes: { // Using the same keyframes
+                    keyframes: { // Consistent keyframes
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                         'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
@@ -93,17 +94,17 @@
             flex-grow: 1;
             /* Add padding for the fixed header */
             padding-top: 64px; /* Adjust if header height changes */
-            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Nunito Sans', sans-serif; /* Use defined sans font */
             color: #34495E; /* stork-text */
             /* Background image styling */
             background-image: url('../assets/back.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Keeps background fixed during scroll */
         }
         main {
-            flex-grow: 1;
+            flex-grow: 1; /* Ensures main content takes available space */
             position: relative;
             /* Responsive padding applied via Tailwind classes on the <main> element */
         }
@@ -114,45 +115,51 @@
 
         /* Blog post specific styles */
         .blog-header-image {
-            /* Adjusted max-width to match German post */
+            /* Responsive width, max width, auto height */
             @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-md h-auto object-contain;
         }
         .blog-inline-image {
-            /* Adjusted max-width to match German post */
+            /* Smaller max width for inline images */
             @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[120px] h-auto;
         }
 
         /* Typography for blog content - uses responsive prefixes (sm:, md:, lg:) */
-        /* Kept Beatles H1 style for better fit with longer title */
-        .blog-content h1 { @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title; }
-        .blog-content h2 { @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
-        .blog-content h3 { @apply text-xl sm:text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
-        .blog-content h4 { @apply text-lg sm:text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title; }
-        /* Consistent paragraph margin */
+        .blog-content h1 {
+             /* Larger base size, scales up on larger screens */
+            @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title;
+        }
+        .blog-content h2 {
+            /* Scales up heading size */
+            @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title;
+        }
+        .blog-content h3 {
+            @apply text-xl sm:text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title;
+        }
+        .blog-content h4 {
+            @apply text-lg sm:text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title;
+        }
+        /* Consistent paragraph margin and responsive text size/leading */
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-5; }
         .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-5 text-stork-text text-base md:text-lg leading-relaxed; }
         .blog-content ul li, .blog-content ol li { @apply mb-2; }
         .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content em { @apply italic; }
 
-        /* Table styles - Updated to match German post style */
+        /* Table styles - Wrapper allows horizontal scroll on small screens */
         .blog-content .table-wrapper {
-            /* Enable horizontal scrolling */
+            /* Enable horizontal scrolling only when needed */
             @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-full;
         }
         .blog-content table {
-            /* Styles from German post */
-            @apply border-collapse w-full text-sm;
+            @apply border-collapse w-full text-sm; /* Full width within wrapper */
         }
         .blog-content th, .blog-content td {
-             /* Styles from German post */
             @apply border border-gray-300 p-3 text-left align-top;
         }
         .blog-content th {
-             /* Styles from German post */
-            @apply bg-gray-100 font-semibold text-stork-title whitespace-nowrap; /* Added whitespace-nowrap back for headers */
+            /* Keep headers from wrapping */
+            @apply bg-gray-100 font-semibold text-stork-title whitespace-nowrap;
         }
-        /* Removed specific tbody, even row background, etc. to match German post simplicity */
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
         .blog-content .text-medium-gray { @apply text-medium-gray; }
 
@@ -160,32 +167,35 @@
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
-        /* --- Grid Layout (Consistent) --- */
-        .content-grid { }
+        /* --- Grid Layout (Responsive) --- */
+        .content-grid { } /* Base styles (single column) */
         .grid-section {
-             break-inside: avoid;
+             break-inside: avoid; /* Try to prevent breaking inside sections */
              @apply mb-6;
         }
 
-        @media (min-width: 768px) { /* md breakpoint and up */
+        /* Apply grid layout only on medium screens and up */
+        @media (min-width: 768px) { /* md breakpoint */
             .content-grid {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
                 gap: 3rem; /* Tailwind gap-12 */
             }
              .grid-section > * {
-                 break-inside: avoid-column;
+                 break-inside: avoid-column; /* Prevent breaking within columns */
              }
+             /* Remove top margin from first heading in each column */
              .grid-section:nth-child(odd) h2:first-of-type,
              .grid-section:nth-child(even) h2:first-of-type {
                  @apply mt-0 pt-0;
              }
+             /* Allow sections to span both columns */
              .grid-section.full-span {
-                 @apply md:col-span-2;
+                 @apply md:col-span-2; /* Spans 2 columns at md breakpoint */
              }
         }
 
-        /* --- Navigation Arrows Styles (Consistent) --- */
+        /* --- Navigation Arrows Styles (Responsive) --- */
         .blog-nav {
             position: fixed; top: 50%; transform: translateY(-50%);
             z-index: 40; cursor: pointer;
@@ -199,34 +209,31 @@
         .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
         #prev-post { left: 15px; }
         #next-post { right: 15px; }
-        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
-        .blog-nav.hidden { opacity: 0; pointer-events: none; }
+        .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; } /* Arrow size */
+        .blog-nav.hidden { opacity: 0; pointer-events: none; } /* Hide inactive arrows */
 
-        /* Responsive adjustments for nav arrows (Consistent) */
-        @media (max-width: 1024px) { /* lg breakpoint */
+        /* Adjust nav arrows for smaller screens */
+        @media (max-width: 1024px) { /* Below lg breakpoint */
              #prev-post { left: 10px; }
              #next-post { right: 10px; }
         }
-        @media (max-width: 768px) { /* md breakpoint */
-            .blog-nav { padding: 0.5rem; } /* 8px */
-            .blog-nav svg { width: 24px; height: 24px; }
+        @media (max-width: 768px) { /* Below md breakpoint */
+            .blog-nav { padding: 0.5rem; } /* Smaller padding */
+            .blog-nav svg { width: 24px; height: 24px; } /* Smaller arrows */
         }
-         @media (max-width: 640px) { /* sm breakpoint */
+         /* Hide nav arrows entirely on small mobile screens */
+         @media (max-width: 640px) { /* Below sm breakpoint */
             .blog-nav { display: none; }
         }
 
     </style>
 </head>
 
-<body class="font-sans text-stork-text overflow-x-hidden">
-
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+<body class="font-sans text-stork-text overflow-x-hidden"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
-                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
-            </a>
+                     class="h-12 w-12 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';"> </a>
             <nav class="flex space-x-3 sm:space-x-4 md:space-x-6 items-center">
                 <a href="../index.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
                 <a href="../index.html#generator-controls" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
@@ -258,8 +265,7 @@
                     <img src="../assets/beatlesfamily.png"
                          alt="Beatles family collage"
                          class="blog-inline-image"
-                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/D1E8E2/34495E?text=Beatles+Family';">
-                </div>
+                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/D1E8E2/34495E?text=Beatles+Family';"> </div>
 
                 <div class="grid-section">
                     <h3>Eleanor Rigby</h3>
@@ -483,51 +489,69 @@
             // --- !! IMPORTANT: Set the index for THIS specific page !! ---
             const currentPostIndex = 4;
 
-            const swipeThreshold = 60; // Pixels
+            // Minimum distance (in pixels) to register as a swipe
+            const swipeThreshold = 60;
 
             // --- DOM Elements ---
             const prevButton = document.getElementById('prev-post');
             const nextButton = document.getElementById('next-post');
-            const swipeArea = document.body;
+            const swipeArea = document.body; // Use body for swipe detection
 
             // --- State ---
             let touchStartX = 0;
             let touchEndX = 0;
 
             // --- Functions ---
+            // Navigate to the next post if available
             function navigateNext() {
                 if (currentPostIndex < blogPosts.length - 1) {
                     window.location.href = blogPosts[currentPostIndex + 1];
                 }
             }
+            // Navigate to the previous post if available
             function navigatePrev() {
                 if (currentPostIndex > 0) {
                     window.location.href = blogPosts[currentPostIndex - 1];
                 }
             }
+            // Record the starting X position of a touch
             function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
+            // Record the ending X position and check for swipe
             function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
+            // Determine swipe direction and navigate if threshold is met
             function handleSwipeGesture() {
                 const deltaX = touchEndX - touchStartX;
                 if (Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) { navigateNext(); } else { navigatePrev(); }
+                    if (deltaX < 0) { // Swipe left
+                        navigateNext();
+                    } else { // Swipe right
+                        navigatePrev();
+                    }
                 }
-                touchStartX = 0; touchEndX = 0;
+                // Reset touch coordinates
+                touchStartX = 0;
+                touchEndX = 0;
             }
+            // Show/hide navigation arrows based on current post index
             function updateNavButtonsVisibility() {
-                if (!prevButton || !nextButton) return;
+                if (!prevButton || !nextButton) return; // Exit if buttons not found
+                // Hide prev button if it's the first post
                 prevButton.classList.toggle('hidden', currentPostIndex <= 0);
+                // Hide next button if it's the last post
                 nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
             }
 
             // --- Initialization ---
+            // Set initial visibility of nav buttons on page load
             updateNavButtonsVisibility();
 
             // --- Event Listeners ---
+            // Add touch listeners for swipe gestures (passive for performance)
             if (swipeArea) {
                 swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
                 swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
             }
+            // Add click listeners for navigation buttons
             if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
             if (nextButton) { nextButton.addEventListener('click', navigateNext); }
         });
