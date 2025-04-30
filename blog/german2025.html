@@ -84,9 +84,10 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-2xl h-auto object-contain; } /* Adjusted max-width */
-        .blog-inline-image-left { @apply float-left w-1/3 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[200px]; } /* Style for left-floated images, added max-width */
-        .blog-inline-image-right { @apply float-right w-1/3 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[200px]; } /* Style for right-floated images, added max-width */
+        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-2xl h-auto object-contain; }
+        /* Updated inline image styles for smaller size */
+        .blog-inline-image-left { @apply float-left w-1/4 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; } /* Changed w-1/3 to w-1/4, max-w-[200px] to max-w-[150px] */
+        .blog-inline-image-right { @apply float-right w-1/4 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; } /* Changed w-1/3 to w-1/4, max-w-[200px] to max-w-[150px] */
         .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats after the article content */
 
         /* Ensure headings and tables clear the floated images */
@@ -149,7 +150,7 @@
 
             <img src="../assets/german2025.png" alt="German Baby Names 2025 Trends" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/800x400/f8fafc/6b7280?text=German+Names+2025';">
 
-            <img src="../assets/germanfamily.png" alt="A happy German family" class="blog-inline-image-left" onerror="this.onerror=null; this.src='https://placehold.co/200x200/f8fafc/6b7280?text=Family';">
+            <img src="../assets/germanfamily.png" alt="A happy German family" class="blog-inline-image-left" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Family';">
 
             <p>Choosing a baby name? Oh, the excitement! It's a big decision, mixing tradition, personal taste, and maybe even a peek at what's trending. If you're expecting a little one in 2025 or just love names, let's dive into the wonderful world of German baby names! We've got the scoop on the reigning champs, the cool new kids on the block, and some blasts from the past making a surprising return.</p>
 
@@ -213,7 +214,7 @@
 
             <h2>On the Up and Up: Names to Watch in 2025!</h2>
 
-            <img src="../assets/crawling.png" alt="A baby crawling" class="blog-inline-image-right" onerror="this.onerror=null; this.src='https://placehold.co/200x200/f8fafc/6b7280?text=Crawling';">
+            <img src="../assets/crawling.png" alt="A baby crawling" class="blog-inline-image-right" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Crawling';">
 
             <p>Who are the rising stars predicted to climb the charts?</p>
 
