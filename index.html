@@ -118,7 +118,7 @@
          }
          /* General style for h3 in card */
          .name-card h3 {
-             min-height: 3.5rem;
+             min-height: 3.5rem; /* Ensure space for the name even before typing */
              margin-bottom: 0.5rem; /* Tailwind mb-2 */
          }
          .name-card p {
@@ -138,10 +138,10 @@
              line-height: 3.25rem; /* Adjusted line height */
              color: #2C3E50; /* stork-title color */
              text-align: center;
-             display: block;
-             overflow: hidden;
-             white-space: nowrap;
-             width: 100%;
+             display: block; /* Ensure it takes full width for centering */
+             overflow: hidden; /* Hide text overflow during typing */
+             white-space: nowrap; /* Keep text on one line */
+             width: 100%; /* Take full width of its container */
          }
 
          #name-typewriter-target.typing::after {
@@ -174,8 +174,8 @@
     </style>
 
     <script type="text/javascript">
-     var _iub = _iub || [];
-     _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
+      var _iub = _iub || [];
+      _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
     </script>
     <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4012598.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
@@ -183,9 +183,7 @@
 
 </head>
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
@@ -194,12 +192,12 @@
             </a>
 
             <nav class="flex space-x-4 sm:space-x-6 items-center">
-                 <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Home</a>
-                 <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                 <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
-                 <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                 <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-             </nav>
+                <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Home</a>
+                <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+            </nav>
         </div>
     </header>
 
@@ -269,16 +267,18 @@
 
             <div class="text-center pt-4">
                 <button id="generate-btn" class="btn btn-primary w-auto px-8 py-6 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
-                    <img src="assets/drop.png" alt="Generate Name" class="h-48 w-auto">
-                    <span class="sr-only">Generate Name</span> </button>
+                    <img src="assets/drop.png" alt="Generate Name" class="h-48 w-auto"> <span class="sr-only">Generate Name</span> </button>
             </div>
         </fieldset>
 
          <section id="results-section" class="mt-12 animate-fade-in">
              <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
-             <div id="results-container" class="min-h-[100px] relative"> <div id="loading-indicator" class="loader" style="display: none;"></div> <div id="result-display" class="text-stork-text">
-                     <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p> </div>
-                 <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p> </div>
+             <div id="results-container" class="min-h-[100px] relative"> <div id="loading-indicator" class="loader" style="display: none;"></div>
+                 <div id="result-display" class="text-stork-text">
+                     <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
+                     </div>
+                 <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
+             </div>
          </section>
 
          <hr class="my-10 border-gray-300">
@@ -301,7 +301,7 @@
     </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="impressum.html" class="hover:underline">Impressum</a> | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
      </footer>
 
 
@@ -383,53 +383,53 @@
             else sliderFeedback.textContent = 'Very Unique';
         }
 
-         // Function to generate alphabet buttons
-         function generateAlphabetButtons() {
-             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-             firstLetterInputsContainer.innerHTML = ''; // Clear existing placeholder/buttons
+        // Function to generate alphabet buttons
+        function generateAlphabetButtons() {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            firstLetterInputsContainer.innerHTML = ''; // Clear existing placeholder/buttons
 
-             // Create 'Any' button
-             const anyBtn = document.createElement('button');
-             anyBtn.textContent = 'Any';
-             anyBtn.type = 'button'; // Important for forms
-             anyBtn.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
-             anyBtn.dataset.letter = ''; // Empty value for 'Any'
-             anyBtn.addEventListener('click', handleLetterSelection);
-             firstLetterInputsContainer.appendChild(anyBtn);
+            // Create 'Any' button
+            const anyBtn = document.createElement('button');
+            anyBtn.textContent = 'Any';
+            anyBtn.type = 'button'; // Important for forms
+            anyBtn.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+            anyBtn.dataset.letter = ''; // Empty value for 'Any'
+            anyBtn.addEventListener('click', handleLetterSelection);
+            firstLetterInputsContainer.appendChild(anyBtn);
 
-             // Create alphabet buttons
-             alphabet.forEach(letter => {
-                 const button = document.createElement('button');
-                 button.textContent = letter;
-                 button.type = 'button';
-                 button.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
-                 button.dataset.letter = letter; // Store letter in data attribute
-                 button.addEventListener('click', handleLetterSelection);
-                 firstLetterInputsContainer.appendChild(button);
-             });
-             setActiveLetterButton(anyBtn); // Set 'Any' active initially
-         }
+            // Create alphabet buttons
+            alphabet.forEach(letter => {
+                const button = document.createElement('button');
+                button.textContent = letter;
+                button.type = 'button';
+                button.classList.add('btn', 'btn-secondary', 'text-xs', 'py-1', 'px-2', 'btn-feedback', 'border', 'border-gray-300');
+                button.dataset.letter = letter; // Store letter in data attribute
+                button.addEventListener('click', handleLetterSelection);
+                firstLetterInputsContainer.appendChild(button);
+            });
+            setActiveLetterButton(anyBtn); // Set 'Any' active initially
+        }
 
-         // Function to handle letter button selection
-         function handleLetterSelection(event) {
-             const selectedLetter = event.target.dataset.letter;
-             selectedLetterInput.value = selectedLetter; // Update hidden input
-             console.log(`Selected letter: ${selectedLetter}`);
+        // Function to handle letter button selection
+        function handleLetterSelection(event) {
+            const selectedLetter = event.target.dataset.letter;
+            selectedLetterInput.value = selectedLetter; // Update hidden input
+            console.log(`Selected letter: ${selectedLetter}`);
 
-             // Update button styles
-             document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
-                 btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent'); // Remove active styles
-                 btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300'); // Add inactive styles
-             });
-             event.target.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300'); // Remove inactive styles from clicked button
-             event.target.classList.add('btn-primary', 'text-white', 'border-stork-accent'); // Add active styles to clicked button
-         }
+            // Update button styles
+            document.querySelectorAll('#first-letter-inputs button').forEach(btn => {
+                btn.classList.remove('btn-primary', 'text-white', 'border-stork-accent'); // Remove active styles
+                btn.classList.add('btn-secondary', 'text-stork-text', 'border-gray-300'); // Add inactive styles
+            });
+            event.target.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300'); // Remove inactive styles from clicked button
+            event.target.classList.add('btn-primary', 'text-white', 'border-stork-accent'); // Add active styles to clicked button
+        }
 
-         // Function to set the active letter button visually
-         function setActiveLetterButton(button) {
-             button.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
-             button.classList.add('btn-primary', 'text-white', 'border-stork-accent');
-         }
+        // Function to set the active letter button visually
+        function setActiveLetterButton(button) {
+            button.classList.remove('btn-secondary', 'text-stork-text', 'border-gray-300');
+            button.classList.add('btn-primary', 'text-white', 'border-stork-accent');
+        }
 
         // Function to filter names based on criteria
         function filterNames() {
@@ -461,15 +461,15 @@
 
             // Style filtering/sorting (Placeholder - requires 'style_score' in JSON)
             // Assuming 'style_score' exists: 0 = very traditional, 100 = very unique
-            if (filtered.length > 1 && 'style_score' in filtered[0]) { // Check if sorting is possible
-                 // Sort based on proximity to the slider value (more complex)
-                 // Or simpler: Sort by score ascending for traditional, descending for unique
-                 if (styleValue < 50) { // User wants more traditional
-                     filtered.sort((a, b) => (a.style_score || 50) - (b.style_score || 50)); // Sort ascending (lower score = more traditional)
-                 } else if (styleValue > 50) { // User wants more unique
-                     filtered.sort((a, b) => (b.style_score || 50) - (a.style_score || 50)); // Sort descending (higher score = more unique)
-                 }
-                 // If styleValue is 50, no specific style sort is applied beyond other filters.
+            if (filtered.length > 1 && filtered[0] && 'style_score' in filtered[0]) { // Check if sorting is possible and data exists
+                // Sort based on proximity to the slider value (more complex)
+                // Or simpler: Sort by score ascending for traditional, descending for unique
+                if (styleValue < 50) { // User wants more traditional
+                    filtered.sort((a, b) => (a.style_score || 50) - (b.style_score || 50)); // Sort ascending (lower score = more traditional)
+                } else if (styleValue > 50) { // User wants more unique
+                    filtered.sort((a, b) => (b.style_score || 50) - (a.style_score || 50)); // Sort descending (higher score = more unique)
+                }
+                // If styleValue is 50, no specific style sort is applied beyond other filters.
             }
 
             return filtered;
@@ -559,32 +559,32 @@
             displayAdditionalInfo(name);
         }
 
-         // Function to display additional information (related names, namesakes)
-         function displayAdditionalInfo(name) {
-             relatedNamesContainer.innerHTML = ''; // Clear previous related names
-             famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No information available yet.</p>'; // Reset namesakes
+        // Function to display additional information (related names, namesakes)
+        function displayAdditionalInfo(name) {
+            relatedNamesContainer.innerHTML = ''; // Clear previous related names
+            famousNamesakesContainer.innerHTML = '<p class="text-center text-medium-gray italic">No information available yet.</p>'; // Reset namesakes
 
-             // Display Related Names (if available in JSON)
-             if (name.related_names && name.related_names.length > 0) {
-                 relatedNamesSection.classList.remove('hidden'); // Show the section
-                 name.related_names.forEach(relatedName => {
-                     const relatedNameCard = document.createElement('div');
-                     relatedNameCard.classList.add('name-card', 'p-3', 'text-center', 'bg-gray-50'); // Slightly different background
-                     relatedNameCard.innerHTML = `<h4 class="text-lg font-semibold text-stork-title">${relatedName.name}</h4><p class="text-sm text-medium-gray">${relatedName.origin || ''} ${relatedName.meaning ? `(${relatedName.meaning})` : ''}</p>`;
-                     relatedNamesContainer.appendChild(relatedNameCard);
-                 });
-             } else {
-                 relatedNamesSection.classList.add('hidden'); // Hide if no data
-             }
+            // Display Related Names (if available in JSON)
+            if (name.related_names && name.related_names.length > 0) {
+                relatedNamesSection.classList.remove('hidden'); // Show the section
+                name.related_names.forEach(relatedName => {
+                    const relatedNameCard = document.createElement('div');
+                    relatedNameCard.classList.add('name-card', 'p-3', 'text-center', 'bg-gray-50'); // Slightly different background
+                    relatedNameCard.innerHTML = `<h4 class="text-lg font-semibold text-stork-title">${relatedName.name}</h4><p class="text-sm text-medium-gray">${relatedName.origin || ''} ${relatedName.meaning ? `(${relatedName.meaning})` : ''}</p>`;
+                    relatedNamesContainer.appendChild(relatedNameCard);
+                });
+            } else {
+                relatedNamesSection.classList.add('hidden'); // Hide if no data
+            }
 
-             // Display Famous Namesakes (if available in JSON)
-             if (name.famous_namesakes && name.famous_namesakes.length > 0) {
-                 famousNamesakesSection.classList.remove('hidden'); // Show the section
-                 famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p class="mb-1">${item}</p>`).join('');
-             } else {
-                  famousNamesakesSection.classList.add('hidden'); // Hide if no data
-             }
-         }
+            // Display Famous Namesakes (if available in JSON)
+            if (name.famous_namesakes && name.famous_namesakes.length > 0) {
+                famousNamesakesSection.classList.remove('hidden'); // Show the section
+                famousNamesakesContainer.innerHTML = name.famous_namesakes.map(item => `<p class="mb-1">${item}</p>`).join('');
+            } else {
+                 famousNamesakesSection.classList.add('hidden'); // Hide if no data
+            }
+        }
 
 
         // Function to handle name generation button click
@@ -650,7 +650,7 @@
             }).catch(err => {
                 console.error('Failed to copy name: ', err);
                 // Optionally provide user feedback about the error
-                alert('Could not copy name to clipboard.');
+                alert('Could not copy name to clipboard.'); // Avoid using alert() in production, use a custom message box
             });
         }
 
@@ -739,6 +739,3 @@
     </script>
 </body>
 </html>
-```
-
-I've added the Iubenda script blocks right before the closing `</head>` tag. Let me know if you need any other adjustmen
