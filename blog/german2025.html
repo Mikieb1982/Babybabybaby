@@ -84,14 +84,13 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-2xl h-auto object-contain; }
-        /* Updated inline image styles for smaller size */
-        .blog-inline-image-left { @apply float-left w-1/4 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; } /* Changed w-1/3 to w-1/4, max-w-[200px] to max-w-[150px] */
-        .blog-inline-image-right { @apply float-right w-1/4 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; } /* Changed w-1/3 to w-1/4, max-w-[200px] to max-w-[150px] */
+        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-xl h-auto object-contain; } /* Adjusted max-width */
+        .blog-inline-image-left { @apply float-left w-1/4 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; }
+        .blog-inline-image-right { @apply float-right w-1/4 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[150px]; }
         .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats after the article content */
 
-        /* Ensure headings and tables clear the floated images */
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content .table-wrapper { @apply clear-both; }
+        /* Ensure headings and specific divs clear the floated images */
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content .table-wrapper, .blog-content .box { @apply clear-both; }
 
         .blog-content h1 { @apply text-3xl md:text-4xl mb-4 text-center; }
         .blog-content h2 { @apply text-2xl md:text-3xl pt-6 mb-4; }
@@ -107,6 +106,10 @@
         .blog-content .table-wrapper { @apply overflow-x-auto mb-6; }
         .blog-content .text-medium-gray { @apply text-medium-gray; }
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
+
+        /* Simple box styling for notes/facts */
+        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-4 text-sm; }
+        .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
@@ -148,14 +151,17 @@
         <article class="blog-content">
             <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
 
-            <img src="../assets/german2025.png" alt="German Baby Names 2025 Trends" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/800x400/f8fafc/6b7280?text=German+Names+2025';">
-
-            <img src="../assets/germanfamily.png" alt="A happy German family" class="blog-inline-image-left" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Family';">
+            <img src="https://image-proxy.svc.prod.bard.google.com/v1/images/7866d0132140?token=AEhms7f9Xy-d469_8t2G6l8q_G5e8186" alt="Stork delivering babies" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/700x400/f8fafc/6b7280?text=Stork+and+Babies';">
 
             <p>Choosing a baby name? Oh, the excitement! It's a big decision, mixing tradition, personal taste, and maybe even a peek at what's trending. If you're expecting a little one in 2025 or just love names, let's dive into the wonderful world of German baby names! We've got the scoop on the reigning champs, the cool new kids on the block, and some blasts from the past making a surprising return.</p>
 
             <h2>And the Winners Are... Germany's Most Popular Picks!</h2>
             <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
+
+            <div class="box">
+                 <span class="box-title">Why the Stability?</span>
+                 <p class="text-sm !mb-0">It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
+            </div>
 
             <h3>Top of the Pops: Girls</h3>
             <ul>
@@ -171,8 +177,6 @@
                 <li><strong>Elias:</strong> Another strong contender, frequently landing in the top three.</li>
             </ul>
 
-            <p><strong>Why the Stability?</strong> It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
-
             <h2>Decoding the Vibe: What's Trending in 2025?</h2>
             <p>So, what styles are parents loving right now?</p>
 
@@ -181,8 +185,11 @@
             <ul>
                 <li><strong>Girls:</strong> Lots of names ending in '-a' (like Mia, Lina, Ella, Ida) or '-i'/'ie' (Leni, Lilly).</li>
                 <li><strong>Boys:</strong> Short and sweet wins here too (Luca, Leo, Theo), often featuring soft 'L', 'M', or 'N' sounds (Leon, Emil, Finn).</li>
-                <li><strong>Fun Fact:</strong> The letter 'L' was the most common starting letter in 2024!</li>
             </ul>
+             <div class="box">
+                <span class="box-title">Fun Fact:</span>
+                <p class="text-sm !mb-0">The letter 'L' was the most common starting letter in 2024!</p>
+            </div>
 
             <h3>Trend Alert #2: Global Meets Local</h3>
             <p>It's a mix! You'll find internationally loved names (Liam, Noah, Emilia) alongside solid German classics.</p>
@@ -194,6 +201,8 @@
 
             <h3>Trend Alert #3: Steady at the Top, Shifting Below</h3>
             <p>While the top 3 might seem set in stone, there's always movement just below. Names like Lia/Liah and Liam recently broke into the Top 10, showing things <strong>do</strong> change!</p>
+
+             <img src="https://image-proxy.svc.prod.bard.google.com/v1/images/47596815664c?token=AEhms7eW6o_J8x70_8mQ5B1t_G5e8186" alt="Couple with newborn baby" class="blog-inline-image-left" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Couple+Baby';">
 
             <h3>Trend Alert #4: Is Unisex the Future?</h3>
             <p>Gender-neutral names are getting more attention. Think Noa (yes, different from Noah!), Mika, Charlie, Luca, or minimalist picks like Liv and Mio.</p>
@@ -207,14 +216,20 @@
                 <li><strong>Girls:</strong> Gerda, Erika, Frida, Greta, Lieselotte, Hilda, Käthe, Irma, Wilma.</li>
                 <li><strong>Boys:</strong> Erwin, Kurt, Friedrich, Heinrich, Erich, Otto, Karl, Anton, Oskar.</li>
             </ul>
-            <p><strong>Did You Know?</strong> Gerda and Erika actually popped up in the Top 500 list recently!</p>
+             <div class="box">
+                <span class="box-title">Did You Know?</span>
+                <p class="text-sm !mb-0">Gerda and Erika actually popped up in the Top 500 list recently!</p>
+            </div>
 
-            <h3>Saxony: The Retro Hotspot?</h3>
-            <p>This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
+            <div class="box">
+                <span class="box-title">Saxony: The Retro Hotspot?</span>
+                <p class="text-sm !mb-0">This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.</p>
+            </div>
+
 
             <h2>On the Up and Up: Names to Watch in 2025!</h2>
 
-            <img src="../assets/crawling.png" alt="A baby crawling" class="blog-inline-image-right" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Crawling';">
+            <img src="https://image-proxy.svc.prod.bard.google.com/v1/images/7866d0132140?token=AEhms7f9Xy-d469_8t2G6l8q_G5e8186" alt="Baby crawling with parents watching" class="blog-inline-image-right" onerror="this.onerror=null; this.src='https://placehold.co/150x150/f8fafc/6b7280?text=Crawling';">
 
             <p>Who are the rising stars predicted to climb the charts?</p>
 
@@ -235,8 +250,10 @@
                 <li>Maybe more <strong>floral names</strong> like Viola, Iris, and Rose?</li>
             </ul>
 
-            <h3>Fading Favourites?</h3>
-            <p>Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
+            <div class="box">
+                <span class="box-title">Fading Favourites?</span>
+                <p class="text-sm !mb-0">Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!</p>
+            </div>
 
 
             <h2>What's in a Name? Meanings Matter!</h2>
@@ -254,7 +271,7 @@
                 <li><strong>Theo:</strong> Often short for Theodore ("gift of God") or Theobald ("bold people").</li>
                 <li><strong>Mohammed:</strong> Arabic for "praised," hugely significant in Islam.</li>
             </ul>
-            <p>Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
+            <p><strong>Note:</strong> Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
 
             <h2>Location, Location, Location: Regional Differences!</h2>
             <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
