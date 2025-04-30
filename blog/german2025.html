@@ -87,9 +87,7 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        /* UPDATED: Reduced max-width for header image */
         .blog-header-image { @apply mx-auto my-6 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
-        /* UPDATED: Reduced max-width for inline images */
         .blog-inline-image-left { @apply float-left w-1/4 sm:w-1/5 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
         .blog-inline-image-right { @apply float-right w-1/4 sm:w-1/5 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
 
@@ -103,13 +101,13 @@
             @apply clear-both; /* Ensure they clear floats */
             break-inside: avoid; /* Try to prevent breaking inside columns */
         }
-        /* Allow inline images to float again within columns, but clear them */
-         .blog-inline-image-left { @apply float-left; }
-         .blog-inline-image-right { @apply float-right; }
+        .blog-inline-image-left { @apply float-left; }
+        .blog-inline-image-right { @apply float-right; }
 
 
-        /* Typography for blog content */
-        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-8 text-center text-stork-title; }
+        /* UPDATED Typography for blog content */
+        /* Increased size for h1 */
+        .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-8 text-center text-stork-title; }
         .blog-content h2 { @apply text-3xl md:text-4xl font-bold pt-8 mb-6 text-stork-title; }
         .blog-content h3 { @apply text-2xl md:text-3xl font-bold pt-6 mb-4 text-stork-title; }
         .blog-content h4 { @apply text-xl md:text-2xl font-bold pt-4 mb-4 text-stork-title; }
@@ -155,7 +153,7 @@
             .blog-nav { display: none; /* Hide arrows on very small screens, rely on swipe */ }
         }
 
-        /* NEW: Two-column layout for medium screens and up */
+        /* Two-column layout for medium screens and up */
         @media (min-width: 768px) { /* md breakpoint */
             .blog-content {
                 column-count: 2;
@@ -165,17 +163,14 @@
             .blog-header-image {
                  column-span: all;
             }
-             /* Ensure floated images still work within columns, but might look odd */
+             /* Ensure floated images still work within columns */
              .blog-inline-image-left, .blog-inline-image-right {
                  margin-top: 0.25rem; /* Add a little space above floated images in columns */
             }
             /* Boxes should ideally span both columns or sit neatly within one */
-            /* This might need more specific adjustments depending on content */
              .box {
-                /* Option 1: Try to keep within one column (default behavior) */
                  break-inside: avoid;
-                 /* Option 2: Make boxes span columns (uncomment if needed, might cause layout shifts) */
-                 /* column-span: all; */
+                 /* column-span: all; */ /* Uncomment if you want boxes to span columns */
             }
         }
 
