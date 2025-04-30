@@ -9,7 +9,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration - Copied from index page for consistency
+        // Tailwind CSS Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -83,27 +83,15 @@
 
         /* Layout styles */
         html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
-        body { flex-grow: 1; padding-top: 64px; /* Height of fixed header */ font-family: 'Nunito Sans', sans-serif; color: #34495E; }
-        main { flex-grow: 1; position: relative; } /* Removed width constraints here, applied below */
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-6 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
-        .blog-inline-image-left { @apply float-left w-1/4 sm:w-1/5 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
-        .blog-inline-image-right { @apply float-right w-1/4 sm:w-1/5 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
-
-        .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats */
-
-        /* Ensure certain elements don't break across columns and clear floats */
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4,
-        .blog-content p, .blog-content ul, .blog-content ol, .blog-content .box,
-        .blog-content img.blog-inline-image-left, .blog-content img.blog-inline-image-right,
-        .blog-content .table-wrapper {
-            @apply clear-both;
-            break-inside: avoid;
+        .blog-header-image { @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; } /* Removed top margin */
+        /* UPDATED: Inline images are now block, centered, with margin */
+        .blog-inline-image {
+            @apply block mx-auto my-4 rounded-lg shadow-sm object-contain w-full max-w-[180px]; /* Adjust max-w as needed */
         }
-        .blog-inline-image-left { @apply float-left; }
-        .blog-inline-image-right { @apply float-right; }
-
 
         /* Typography for blog content */
         .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-8 text-center text-stork-title; }
@@ -125,12 +113,32 @@
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
+        /* --- Grid Layout --- */
+        .content-grid {
+            /* Grid layout applied only on medium screens and up */
+        }
+        .grid-section {
+             break-inside: avoid; /* Attempt to keep sections from breaking */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .content-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
+                gap: 2.5rem; /* gap-10 */
+            }
+             /* Ensure elements inside sections don't break weirdly */
+             .grid-section > * {
+                 break-inside: avoid-column;
+             }
+        }
+
         /* --- Navigation Arrows Styles --- */
         .blog-nav {
             position: fixed; top: 50%; transform: translateY(-50%);
             z-index: 40; cursor: pointer;
             background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.75rem; /* p-3 */
+            border-radius: 50%; padding: 0.75rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: background-color 0.2s, opacity 0.3s;
             opacity: 0.7;
@@ -142,37 +150,16 @@
         .blog-nav.hidden { opacity: 0; pointer-events: none; }
 
         /* Responsive adjustments */
-        @media (max-width: 1024px) { /* Adjust arrow position slightly on smaller large screens */
+        @media (max-width: 1024px) {
              #prev-post { left: 10px; }
              #next-post { right: 10px; }
         }
-        @media (max-width: 768px) { /* md breakpoint */
-            .blog-nav { padding: 0.5rem; /* p-2 */ }
+        @media (max-width: 768px) {
+            .blog-nav { padding: 0.5rem; }
             .blog-nav svg { width: 24px; height: 24px; }
         }
-         @media (max-width: 640px) { /* sm breakpoint */
-            .blog-nav { display: none; /* Hide arrows on very small screens, rely on swipe */ }
-        }
-
-        /* Two-column layout for medium screens and up */
-        @media (min-width: 768px) { /* md breakpoint */
-            .blog-content {
-                column-count: 2;
-                column-gap: 2.5rem; /* Adjust gap as needed (e.g., Tailwind's gap-10) */
-            }
-             /* Prevent header image from being part of columns */
-            .blog-header-image {
-                 column-span: all;
-            }
-             /* Ensure floated images still work within columns */
-             .blog-inline-image-left, .blog-inline-image-right {
-                 margin-top: 0.25rem; /* Add a little space above floated images in columns */
-            }
-            /* Boxes should ideally span both columns or sit neatly within one */
-             .box {
-                 break-inside: avoid;
-                 /* column-span: all; */ /* Uncomment if you want boxes to span columns */
-            }
+         @media (max-width: 640px) {
+            .blog-nav { display: none; }
         }
 
     </style>
@@ -209,149 +196,145 @@
 
             <p>Choosing a baby name? Oh, the excitement! It's a big decision, mixing tradition, personal taste, and maybe even a peek at what's trending. If you're expecting a little one in 2025 or just love names, let's dive into the wonderful world of German baby names! We've got the scoop on the reigning champs, the cool new kids on the block, and some blasts from the past making a surprising return.</p>
 
-            <h2>And the Winners Are... Germany's Most Popular Picks!</h2>
+            <div class="content-grid">
 
-            <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
+                <div class="grid-section">
+                    <h2>And the Winners Are... Germany's Most Popular Picks!</h2>
+                    <p>It seems German parents have found some firm favourites! The top spots haven't changed much recently.</p>
+                    <img src="../assets/germanfamily.png"
+                         alt="Happy couple holding their newborn baby"
+                         class="blog-inline-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/180x180/D1E8E2/34495E?text=Family';">
+                    <h3>Top of the Pops: Girls</h3>
+                    <ul>
+                        <li><strong>Emilia:</strong> Still holding strong at number one nationwide! A frequent favourite. ⭐</li>
+                        <li><strong>Sophia/Sofia:</strong> Right behind Emilia, sometimes even sneaking into first place depending on who's counting! These two are neck-and-neck. ❤️</li>
+                        <li><strong>Emma:</strong> Consistently popular and rounding out the top three. ✔️</li>
+                    </ul>
+                    <h3>Top of the Pops: Boys</h3>
+                    <ul>
+                        <li><strong>Noah:</strong> King of the castle! This name has been the top choice for boys for several years running.</li>
+                        <li><strong>Matteo/Matt(h)eo:</strong> Giving Noah a run for his money, sitting comfortably at number two.</li>
+                        <li><strong>Elias:</strong> Another strong contender, frequently landing in the top three.</li>
+                    </ul>
+                    <p><strong>Why the Stability?</strong> It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
+                </div>
 
-            <img src="../assets/germanfamily.png"
-                 alt="Happy couple holding their newborn baby"
-                 class="blog-inline-image-right"
-                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/D1E8E2/34495E?text=Family';">
+                <div class="grid-section">
+                    <h2>Decoding the Vibe: What's Trending in 2025?</h2>
+                    <p>So, what styles are parents loving right now?</p>
+                    <h3>Trend Alert #1: Short, Sweet, and Vowel-tastic!</h3>
+                    <p>Think short, melodic names that roll off the tongue.</p>
+                    <ul>
+                        <li><strong>Girls:</strong> Lots of names ending in '-a' (like Mia, Lina, Ella, Ida) or '-i'/'ie' (Leni, Lilly).</li>
+                        <li><strong>Boys:</strong> Short and sweet wins here too (Luca, Leo, Theo), often featuring soft 'L', 'M', or 'N' sounds (Leon, Emil, Finn).</li>
+                    </ul>
+                    <div class="box">
+                        <span class="box-title">Fun Fact</span>
+                        The letter 'L' was the most common starting letter in 2024!
+                    </div>
+                    <h3>Trend Alert #2: Global Meets Local</h3>
+                    <p>It's a mix! You'll find internationally loved names (Liam, Noah, Emilia) alongside solid German classics.</p>
+                    <ul>
+                        <li><strong>Global Stars:</strong> Emilia, Noah, Sophia, Emma, Liam, Luca.</li>
+                        <li><strong>Biblical & Hebrew Hits:</strong> Noah, Elias, Hannah, Mia, Paul, David.</li>
+                        <li><strong>German Heritage Heroes:</strong> Emil, Paul, Karl, Anton, Oskar, Ida, Frieda, Mathilda, Clara, Leni.</li>
+                    </ul>
+                    <h3>Trend Alert #3: Steady at the Top, Shifting Below</h3>
+                    <p>While the top 3 might seem set in stone, there's always movement just below. Names like Lia/Liah and Liam recently broke into the Top 10, showing things do change!</p>
+                    <h3>Trend Alert #4: Is Unisex the Future?</h3>
+                    <p>Gender-neutral names are getting more attention. Think Noa (yes, different from Noah!), Mika, Charlie, Luca, or minimalist picks like Liv and Mio.</p>
+                </div>
 
-            <h3>Top of the Pops: Girls</h3>
-            <ul>
-                <li><strong>Emilia:</strong> Still holding strong at number one nationwide! A frequent favourite. ⭐</li>
-                <li><strong>Sophia/Sofia:</strong> Right behind Emilia, sometimes even sneaking into first place depending on who's counting! These two are neck-and-neck. ❤️</li>
-                <li><strong>Emma:</strong> Consistently popular and rounding out the top three. ✔️</li>
-            </ul>
+                <div class="grid-section">
+                    <h2>Everything Old is New Again: Grandma & Grandpa Chic!</h2>
+                    <p>Get ready for a surprise – names from your grandparents' era are making a comeback!</p>
+                    <h3>Hello, Retro Revival!</h3>
+                    <p>Dust off the old photo albums, because these names are back:</p>
+                    <ul>
+                        <li><strong>Girls:</strong> Gerda, Erika, Frida, Greta, Lieselotte, Hilda, Käthe, Irma, Wilma.</li>
+                        <li><strong>Boys:</strong> Erwin, Kurt, Friedrich, Heinrich, Erich, Otto, Karl, Anton, Oskar.</li>
+                    </ul>
+                    <div class="box">
+                        <span class="box-title">Did You Know?</span>
+                        Gerda and Erika actually popped up in the Top 500 list recently!
+                    </div>
+                    <div class="box">
+                        <span class="box-title">Saxony: The Retro Hotspot?</span>
+                        This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.
+                    </div>
+                </div>
 
-            <h3>Top of the Pops: Boys</h3>
-            <ul>
-                <li><strong>Noah:</strong> King of the castle! This name has been the top choice for boys for several years running.</li>
-                <li><strong>Matteo/Matt(h)eo:</strong> Giving Noah a run for his money, sitting comfortably at number two.</li>
-                <li><strong>Elias:</strong> Another strong contender, frequently landing in the top three.</li>
-            </ul>
+                 <div class="grid-section">
+                    <h2>On the Up and Up: Names to Watch in 2025!</h2>
+                    <p>Who are the rising stars predicted to climb the charts?</p>
+                     <img src="../assets/crawling.png"
+                         alt="Happy baby crawling towards smiling parents"
+                         class="blog-inline-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/180x180/D1E8E2/34495E?text=Baby+Crawling';">
+                    <h3>Recent Movers and Shakers</h3>
+                    <ul>
+                        <li><strong>Lia/Liah & Liam:</strong> Both broke into the Top 10 recently – definitely ones to watch!</li>
+                        <li><strong>Bielefeld's 2024 Risers (Girls):</strong> Alea, Amelie, Ayla, Aurelia, Dua, Elli, Hailey, Inaya, Luna, Malia.</li>
+                        <li><strong>Bielefeld's 2024 Risers (Boys):</strong> Emilio, Jano, Josef, Leano, Linus, Maleo, Marlo, Milan, Toni, Valentin.</li>
+                        <li><strong>New to the Top 500 (Girls):</strong> Elodie, Rüya, Erika, Liora, Rania, Gerda, Nami, Estelle, Hava, Lima.</li>
+                        <li><strong>New to the Top 500 (Boys):</strong> Troi, Sultan, Marek, Alaz, Said, Dian, Lior, Aziz, Quinn, Tamino.</li>
+                    </ul>
+                    <h3>Expert Predictions: What's Next?</h3>
+                    <ul>
+                        <li>Keep an eye on <strong>Malia, Hailey,</strong> and <strong>Emilio</strong> – they might crack the Top 10 soon!</li>
+                        <li><strong>Luna</strong> is gaining traction (hello, nature names!).</li>
+                        <li>Those retro names (<strong>Gerda, Erika, Kurt, Erwin</strong>) could spread further.</li>
+                        <li>Maybe more floral names like <strong>Viola, Iris,</strong> and <strong>Rose</strong>?</li>
+                    </ul>
+                    <div class="box">
+                        <span class="box-title">Fading Favourites?</span>
+                        Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!
+                    </div>
+                </div>
 
-            <p><strong>Why the Stability?</strong> It seems many parents lean towards names that feel familiar and fashionable, maybe choosing comfort over something totally unique. Makes sense!</p>
+                <div class="grid-section">
+                    <h2>What's in a Name? Meanings Matter!</h2>
+                    <p>Beyond the sound, many parents love knowing the story behind a name.</p>
+                    <ul>
+                        <li><strong>Emilia:</strong> Latin for "rival" or "industrious."</li>
+                        <li><strong>Noah:</strong> Hebrew for "rest" or "comfort."</li>
+                        <li><strong>Sophia/Sofia:</strong> Greek for "wisdom."</li>
+                        <li><strong>Matteo/Mateo:</strong> Hebrew via Italian/Spanish for "gift of God."</li>
+                        <li><strong>Emma:</strong> Germanic for "universal" or "whole."</li>
+                        <li><strong>Elias:</strong> Hebrew for "The Lord is my God."</li>
+                        <li><strong>Mia:</strong> Often linked to Maria, meanings range from "sea of bitterness" to "wished-for child" or "mine."</li>
+                        <li><strong>Leon:</strong> Greek/Latin for "lion."</li>
+                        <li><strong>Lina:</strong> Multiple origins - could mean "tender," "palm tree," or be short for other names.</li>
+                        <li><strong>Theo:</strong> Often short for Theodore ("gift of God") or Theobald ("bold people").</li>
+                        <li><strong>Mohammed:</strong> Arabic for "praised," hugely significant in Islam.</li>
+                    </ul>
+                    <p>Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
+                </div>
 
-            <h2>Decoding the Vibe: What's Trending in 2025?</h2>
-            <p>So, what styles are parents loving right now?</p>
+                <div class="grid-section">
+                    <h2>Location, Location, Location: Regional Differences!</h2>
+                    <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
+                    <h4>Berlin/Brandenburg & Big Cities</h4>
+                    <p>Mohammed is often #1 for boys here, reflecting diversity. Hannah topped the Berlin/Brandenburg list for girls in 2024. Hamburg loves names like Clara, Isa, Mads, and Mattis too.</p>
+                    <h4>Bavaria (South)</h4>
+                    <p>Often leans more traditional. Leon is frequently the top boy's name. Sophia is super popular for girls. You'll hear more names like Felix, Lukas, Maximilian, Ludwig, Katharina, and Theresa here.</p>
+                    <h4>Saxony (East)</h4>
+                    <p>The retro heartland! Mia and Matteo were #1 in 2024. Emil, Oskar, Karl, Frieda, Mathilda, and Clara are also popular.</p>
+                    <h4>North</h4>
+                    <p>Ella is a big hit for girls. Frieda topped the charts in Mecklenburg-Vorpommern recently. Besides the national faves, look out for unique Northern/Scandinavian names like Fiete, Jonte, Lasse, Alva, or Fenna.</p>
+                    <h4>West</h4>
+                    <p>Often mirrors the national average, though Mohammed tends to rank higher than nationwide. Noah, Matteo, Henry, Emilia, Sophia, and Lina are common choices.</p>
+                </div>
 
-            <h3>Trend Alert #1: Short, Sweet, and Vowel-tastic!</h3>
-            <p>Think short, melodic names that roll off the tongue.</p>
-            <ul>
-                <li><strong>Girls:</strong> Lots of names ending in '-a' (like Mia, Lina, Ella, Ida) or '-i'/'ie' (Leni, Lilly).</li>
-                <li><strong>Boys:</strong> Short and sweet wins here too (Luca, Leo, Theo), often featuring soft 'L', 'M', or 'N' sounds (Leon, Emil, Finn).</li>
-            </ul>
-            <div class="box">
-                <span class="box-title">Fun Fact</span>
-                The letter 'L' was the most common starting letter in 2024!
-            </div>
+                 <div class="grid-section md:col-span-2">
+                    <h2>So, What's the Perfect Name for *Your* Little One?</h2>
+                    <p>Phew! That's a lot to take in, right? The German baby name scene in 2025 is a cool mix of steady favourites, trendy short names, and surprising retro comebacks.</p>
+                    <p>Whether you love the chart-toppers like Emilia and Noah, feel drawn to the rising stars like Lia and Emilio, or have a soft spot for a classic like Karl or Gerda, there's plenty of inspiration.</p>
+                    <p>Remember, trends are fun, but the best name is the one you love. Say it out loud, see how it feels, and choose the name that brings a smile to your face. Good luck with your naming adventure!</p>
+                </div>
 
-            <h3>Trend Alert #2: Global Meets Local</h3>
-            <p>It's a mix! You'll find internationally loved names (Liam, Noah, Emilia) alongside solid German classics.</p>
-            <ul>
-                <li><strong>Global Stars:</strong> Emilia, Noah, Sophia, Emma, Liam, Luca.</li>
-                <li><strong>Biblical & Hebrew Hits:</strong> Noah, Elias, Hannah, Mia, Paul, David.</li>
-                <li><strong>German Heritage Heroes:</strong> Emil, Paul, Karl, Anton, Oskar, Ida, Frieda, Mathilda, Clara, Leni.</li>
-            </ul>
-
-            <h3>Trend Alert #3: Steady at the Top, Shifting Below</h3>
-            <p>While the top 3 might seem set in stone, there's always movement just below. Names like Lia/Liah and Liam recently broke into the Top 10, showing things do change!</p>
-
-            <h3>Trend Alert #4: Is Unisex the Future?</h3>
-            <p>Gender-neutral names are getting more attention. Think Noa (yes, different from Noah!), Mika, Charlie, Luca, or minimalist picks like Liv and Mio.</p>
-
-            <h2>Everything Old is New Again: Grandma & Grandpa Chic!</h2>
-            <p>Get ready for a surprise – names from your grandparents' era are making a comeback!</p>
-
-            <h3>Hello, Retro Revival!</h3>
-            <p>Dust off the old photo albums, because these names are back:</p>
-            <ul>
-                <li><strong>Girls:</strong> Gerda, Erika, Frida, Greta, Lieselotte, Hilda, Käthe, Irma, Wilma.</li>
-                <li><strong>Boys:</strong> Erwin, Kurt, Friedrich, Heinrich, Erich, Otto, Karl, Anton, Oskar.</li>
-            </ul>
-            <div class="box">
-                <span class="box-title">Did You Know?</span>
-                Gerda and Erika actually popped up in the Top 500 list recently!
-            </div>
-
-            <div class="box">
-                <span class="box-title">Saxony: The Retro Hotspot?</span>
-                This trend seems particularly strong in Eastern Germany, especially Saxony. Maybe it's local pride, different historical influences, or a bit of nostalgia? Whatever the reason, it's cool to see these names getting a second life.
-            </div>
-
-            <h2>On the Up and Up: Names to Watch in 2025!</h2>
-            <p>Who are the rising stars predicted to climb the charts?</p>
-
-             <img src="../assets/crawling.png"
-                 alt="Happy baby crawling towards smiling parents"
-                 class="blog-inline-image-left"
-                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/D1E8E2/34495E?text=Baby+Crawling';">
-
-            <h3>Recent Movers and Shakers</h3>
-            <ul>
-                <li><strong>Lia/Liah & Liam:</strong> Both broke into the Top 10 recently – definitely ones to watch!</li>
-                <li><strong>Bielefeld's 2024 Risers (Girls):</strong> Alea, Amelie, Ayla, Aurelia, Dua, Elli, Hailey, Inaya, Luna, Malia.</li>
-                <li><strong>Bielefeld's 2024 Risers (Boys):</strong> Emilio, Jano, Josef, Leano, Linus, Maleo, Marlo, Milan, Toni, Valentin.</li>
-                <li><strong>New to the Top 500 (Girls):</strong> Elodie, Rüya, Erika, Liora, Rania, Gerda, Nami, Estelle, Hava, Lima.</li>
-                <li><strong>New to the Top 500 (Boys):</strong> Troi, Sultan, Marek, Alaz, Said, Dian, Lior, Aziz, Quinn, Tamino.</li>
-            </ul>
-
-
-            <h3>Expert Predictions: What's Next?</h3>
-            <ul>
-                <li>Keep an eye on <strong>Malia, Hailey,</strong> and <strong>Emilio</strong> – they might crack the Top 10 soon!</li>
-                <li><strong>Luna</strong> is gaining traction (hello, nature names!).</li>
-                <li>Those retro names (<strong>Gerda, Erika, Kurt, Erwin</strong>) could spread further.</li>
-                <li>Maybe more floral names like <strong>Viola, Iris,</strong> and <strong>Rose</strong>?</li>
-            </ul>
-            <div class="box">
-                <span class="box-title">Fading Favourites?</span>
-                Some names might be gently bowing out of the top spots. Ben has slipped, and Finn's future is a bit uncertain. Sometimes, external events (like the Facebook/Meta thing) can even impact a name's popularity!
-            </div>
-
-            <h2>What's in a Name? Meanings Matter!</h2>
-            <p>Beyond the sound, many parents love knowing the story behind a name.</p>
-            <ul>
-                <li><strong>Emilia:</strong> Latin for "rival" or "industrious."</li>
-                <li><strong>Noah:</strong> Hebrew for "rest" or "comfort."</li>
-                <li><strong>Sophia/Sofia:</strong> Greek for "wisdom."</li>
-                <li><strong>Matteo/Mateo:</strong> Hebrew via Italian/Spanish for "gift of God."</li>
-                <li><strong>Emma:</strong> Germanic for "universal" or "whole."</li>
-                <li><strong>Elias:</strong> Hebrew for "The Lord is my God."</li>
-                <li><strong>Mia:</strong> Often linked to Maria, meanings range from "sea of bitterness" to "wished-for child" or "mine."</li>
-                <li><strong>Leon:</strong> Greek/Latin for "lion."</li>
-                <li><strong>Lina:</strong> Multiple origins - could mean "tender," "palm tree," or be short for other names.</li>
-                <li><strong>Theo:</strong> Often short for Theodore ("gift of God") or Theobald ("bold people").</li>
-                <li><strong>Mohammed:</strong> Arabic for "praised," hugely significant in Islam.</li>
-            </ul>
-            <p>Notice all the biblical/religious names? They still hold a lot of cultural weight and positive vibes for many.</p>
-
-            <h2>Location, Location, Location: Regional Differences!</h2>
-            <p>Germany's a diverse place, and baby names reflect that! What's popular in Bavaria might differ from Berlin.</p>
-
-            <h4>Berlin/Brandenburg & Big Cities</h4>
-            <p>Mohammed is often #1 for boys here, reflecting diversity. Hannah topped the Berlin/Brandenburg list for girls in 2024. Hamburg loves names like Clara, Isa, Mads, and Mattis too.</p>
-
-            <h4>Bavaria (South)</h4>
-            <p>Often leans more traditional. Leon is frequently the top boy's name. Sophia is super popular for girls. You'll hear more names like Felix, Lukas, Maximilian, Ludwig, Katharina, and Theresa here.</p>
-
-            <h4>Saxony (East)</h4>
-            <p>The retro heartland! Mia and Matteo were #1 in 2024. Emil, Oskar, Karl, Frieda, Mathilda, and Clara are also popular.</p>
-
-            <h4>North</h4>
-            <p>Ella is a big hit for girls. Frieda topped the charts in Mecklenburg-Vorpommern recently. Besides the national faves, look out for unique Northern/Scandinavian names like Fiete, Jonte, Lasse, Alva, or Fenna.</p>
-
-            <h4>West</h4>
-            <p>Often mirrors the national average, though Mohammed tends to rank higher than nationwide. Noah, Matteo, Henry, Emilia, Sophia, and Lina are common choices.</p>
-
-            <h2>So, What's the Perfect Name for *Your* Little One?</h2>
-            <p>Phew! That's a lot to take in, right? The German baby name scene in 2025 is a cool mix of steady favourites, trendy short names, and surprising retro comebacks.</p>
-            <p>Whether you love the chart-toppers like Emilia and Noah, feel drawn to the rising stars like Lia and Emilio, or have a soft spot for a classic like Karl or Gerda, there's plenty of inspiration.</p>
-            <p>Remember, trends are fun, but the best name is the one you love. Say it out loud, see how it feels, and choose the name that brings a smile to your face. Good luck with your naming adventure!</p>
-
-        </article>
+            </div> </article>
 
         <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
