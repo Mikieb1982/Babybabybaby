@@ -9,6 +9,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Tailwind CSS Configuration
         tailwind.config = {
             theme: {
                 extend: {
@@ -71,7 +72,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Base styles */
+        /* Basic styles */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
@@ -84,49 +85,74 @@
 
         /* --- Card Flip Animation CSS --- */
         .flip-card {
-            width: 300px; height: 250px; margin-bottom: 1.5rem;
-            border-radius: 0.5rem; position: relative;
-            background-color: transparent; perspective: 1000px;
+            width: 300px; /* Fixed width for consistency */
+            height: 250px; /* Fixed height */
+            margin-bottom: 1.5rem; /* Spacing below card */
+            border-radius: 0.5rem; /* Rounded corners */
+            position: relative; /* Needed for absolute positioning inside */
+            background-color: transparent; /* Ensure container is transparent */
+            perspective: 1000px; /* Adds depth for 3D effect */
         }
         .flip-card-inner {
             width: 100%; height: 100%; border-radius: 0.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            position: relative; transform-style: preserve-3d;
-            transition: transform 0.8s;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* Tailwind shadow-md */
+            position: relative; /* Parent for absolute positioned children */
+            transform-style: preserve-3d; /* Enable 3D transformations */
+            transition: transform 0.8s; /* Smooth flip transition */
         }
         .flip-card-front, .flip-card-back {
              width: 100%; height: 100%; border-radius: 0.5rem;
-             display: flex; flex-direction: column; justify-content: center; align-items: center;
-             text-align: center; position: absolute; top: 0; left: 0;
-             -webkit-backface-visibility: hidden; backface-visibility: hidden;
-             overflow: hidden;
+             display: flex; flex-direction: column; justify-content: center; align-items: center; /* Center content */
+             text-align: center; /* Center text */
+             position: absolute; top: 0; left: 0; /* Overlay front and back */
+             -webkit-backface-visibility: hidden; /* Hide the back side when facing away (Safari) */
+             backface-visibility: hidden; /* Hide the back side when facing away */
+             overflow: hidden; /* Prevent content spill */
         }
         .flip-card-front {
-            background-color: #ffffff; color: #34495E;
-            border: 1px solid #e5e7eb; padding: 0;
+            background-color: #ffffff; /* White background */
+            color: #34495E; /* Default text color */
+            border: 1px solid #e5e7eb; /* Light gray border */
+            padding: 0; /* Remove padding if image fills the front */
         }
         .flip-card-front img {
-            width: 100%; height: 100%; object-fit: cover;
-            border-radius: 0.5rem; display: block;
+            width: 100%; height: 100%; /* Make image fill the container */
+            object-fit: cover; /* Cover the area, might crop */
+            border-radius: 0.5rem; /* Match card rounding */
+            display: block; /* Remove extra space below image */
         }
         .flip-card-back {
-            background-image: url('assets/backtile.png');
+            background-image: url('assets/backtile.png'); /* Background image */
             background-size: cover; background-position: center; background-repeat: no-repeat;
-            color: white;
-            transform: rotateY(180deg);
-            padding: 1rem;
-            position: relative;
+            color: white; /* Text color for contrast */
+            transform: rotateY(180deg); /* Initially rotated away */
+            padding: 1rem; /* Padding for content */
+            position: relative; /* For potential pseudo-elements like overlays */
         }
-        /* Optional overlay example */
-        /* .flip-card-back::before { ... } */
-        /* .flip-card-back > * { ... } */
+        /* Optional: Add a semi-transparent overlay for better text readability */
+        /* .flip-card-back::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); border-radius: 0.5rem; z-index: 0;
+        } */
+        /* Ensure content is above the overlay */
+        /* .flip-card-back > * { position: relative; z-index: 1; } */
 
+        /* Trigger the flip on hover */
         .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
+            transform: rotateY(180deg); /* Rotate the inner container */
         }
         /* --- End of Flip Card CSS --- */
 
     </style>
+
+    <script type="text/javascript">
+     var _iub = _iub || [];
+     _iub.csConfiguration = {"siteId":4012598,"cookiePolicyId":20858973,"lang":"en","storage":{"useSiteId":true}};
+    </script>
+    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4012598.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
+    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
 </head>
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
@@ -143,18 +169,19 @@
                  <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
                  <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
                  <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
-            </nav>
+             </nav>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-8 animate-fade-in-down">
 
         <div class="text-center mb-12">
-              <img src="assets/blog.png" alt="Blog Title"
-                   class="h-auto w-full max-w-md mx-auto mb-4"
-                   onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=BLOG'; this.style.border='1px dashed #ccc';">
-              <p class="text-lg text-stork-text bg-off-white/90 backdrop-blur-sm p-4 rounded-lg inline-block"> Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.
-              </p>
+             <img src="assets/blog.png" alt="Blog Title"
+                  class="h-auto w-full max-w-md mx-auto mb-4"
+                  onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=BLOG'; this.style.border='1px dashed #ccc';">
+             <p class="text-lg text-stork-text bg-off-white/90 backdrop-blur-sm p-4 rounded-lg inline-block">
+                 Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.
+             </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
@@ -166,8 +193,7 @@
                              onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Middle+Names';">
                          </div>
                     <div class="flip-card-back">
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">Choosing Middle Names</h3>
+                        <div> <h3 class="text-lg font-semibold mb-2">Choosing Middle Names</h3>
                             <p class="text-sm mb-4">Find the perfect middle name flow.</p>
                             <a href="blog/middle.html" class="btn bg-white text-stork-accent hover:bg-gray-100 btn-feedback text-sm font-medium">Go to Post</a>
                         </div>
@@ -179,7 +205,7 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                          <img src="assets/uniqueengtile.png" alt="Unique English Names Tile"
-                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Unique+English';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Unique+English';">
                          </div>
                     <div class="flip-card-back">
                          <div>
@@ -195,7 +221,7 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                          <img src="assets/german2025tile.png" alt="German Names 2025 Tile"
-                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=German+2025';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=German+2025';">
                          </div>
                     <div class="flip-card-back">
                         <div>
@@ -211,7 +237,7 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                          <img src="assets/songtile.png" alt="Names from Songs Tile"
-                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Song+Names';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Song+Names';">
                          </div>
                     <div class="flip-card-back">
                         <div>
@@ -227,7 +253,7 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                          <img src="assets/beatlestile.png" alt="Beatles Names Tile"
-                               onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
+                                onerror="this.onerror=null; this.src='https://placehold.co/300x250/cccccc/34495E?text=Beatles+Names';">
                          </div>
                     <div class="flip-card-back">
                         <div>
@@ -243,8 +269,10 @@
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
-    </footer>
+     </footer>
 
 </body>
 </html>
 ```
+
+I've added the scripts just before the closing `</head>` tag in your blog page HTML. Let me know if you need anything el
