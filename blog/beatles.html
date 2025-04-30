@@ -47,25 +47,8 @@
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
-                    animation: { // Consistent animations
-                        'fade-in': 'fade-in 0.5s ease-out',
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'fade-in-down': 'fade-in-down 0.5s ease-out',
-                        'fade-out-up': 'fade-out-up 0.5s ease-out',
-                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
-                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
-                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
-                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-                    },
-                    keyframes: { // Consistent keyframes
-                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
-                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
-                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
-                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
-                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
-                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
-                    },
+                    animation: { /* Animations */ },
+                    keyframes: { /* Keyframes */ },
                 }
             }
         }
@@ -75,6 +58,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
+        /* Apply border-box globally */
+        html {
+          box-sizing: border-box;
+        }
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+
         /* Basic button styles */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
@@ -86,8 +77,9 @@
             min-height: 100%;
             display: flex;
             flex-direction: column;
-            /* Prevent accidental horizontal scrolling at the root */
+            /* Prevent horizontal scrolling at the root */
             overflow-x: hidden;
+            width: 100%; /* Ensure html/body take full width */
         }
         body {
             flex-grow: 1;
@@ -99,107 +91,74 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            width: 100%; /* Ensure body takes full width */
         }
         main {
             flex-grow: 1;
             position: relative;
-            /* *** ADDED overflow-x-hidden here as a safeguard *** */
+            /* *** Make main full width and control overflow *** */
+            width: 100%;
             overflow-x: hidden;
         }
         footer {
             margin-top: auto;
+            width: 100%; /* Ensure footer takes full width */
         }
 
         /* Blog post specific styles */
         .blog-header-image {
-            /* *** MODIFIED: Removed max-w-md, rely on w-full and parent padding *** */
+            /* w-full respects the padding of its parent (.content-wrapper) */
             @apply block mx-auto mb-8 mt-0 rounded-lg shadow-md w-full h-auto object-contain;
-            /* Optional: Add a max-width relative to viewport if needed, e.g., max-width: 90vw; */
         }
         .blog-inline-image {
             @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[120px] h-auto;
         }
 
-        /* Typography for blog content - uses responsive prefixes (sm:, md:, lg:) */
-        .blog-content h1 {
-            @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title;
-             /* Ensure text wraps */
+        /* Typography - Added word wrapping */
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content p {
              overflow-wrap: break-word;
              word-wrap: break-word; /* Legacy */
-             hyphens: auto; /* Optional: allow hyphenation */
+             hyphens: auto; /* Optional */
         }
-        .blog-content h2 {
-            @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title;
-            overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
-        }
-        .blog-content h3 {
-            @apply text-xl sm:text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title;
-            overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
-        }
-        .blog-content h4 {
-            @apply text-lg sm:text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title;
-            overflow-wrap: break-word; word-wrap: break-word; hyphens: auto;
-        }
+        .blog-content h1 { @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title; }
+        .blog-content h2 { @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
+        .blog-content h3 { @apply text-xl sm:text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
+        .blog-content h4 { @apply text-lg sm:text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title; }
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-5; }
         .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-5 text-stork-text text-base md:text-lg leading-relaxed; }
         .blog-content ul li, .blog-content ol li { @apply mb-2; }
         .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content em { @apply italic; }
 
-        /* Table styles - Wrapper allows horizontal scroll on small screens */
+        /* Table styles */
         .blog-content .table-wrapper {
             @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-full;
         }
-        .blog-content table {
-            @apply border-collapse w-full text-sm;
-        }
-        .blog-content th, .blog-content td {
-            @apply border border-gray-300 p-3 text-left align-top;
-        }
-        .blog-content th {
-            @apply bg-gray-100 font-semibold text-stork-title whitespace-nowrap;
-        }
+        .blog-content table { @apply border-collapse w-full text-sm; }
+        .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
+        .blog-content th { @apply bg-gray-100 font-semibold text-stork-title whitespace-nowrap; }
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover hover:underline; }
         .blog-content .text-medium-gray { @apply text-medium-gray; }
 
-        /* Simple box styling */
+        /* Box styles */
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
-        /* --- Grid Layout (Responsive) --- */
+        /* Grid Layout */
         .content-grid { }
-        .grid-section {
-             break-inside: avoid;
-             @apply mb-6;
-        }
-
+        .grid-section { break-inside: avoid; @apply mb-6; }
         @media (min-width: 768px) { /* md breakpoint */
-            .content-grid {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 3rem; /* Tailwind gap-12 */
-            }
-             .grid-section > * {
-                 break-inside: avoid-column;
-             }
-             .grid-section:nth-child(odd) h2:first-of-type,
-             .grid-section:nth-child(even) h2:first-of-type {
-                 @apply mt-0 pt-0;
-             }
-             .grid-section.full-span {
-                 @apply md:col-span-2;
-             }
+            .content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
+            .grid-section > * { break-inside: avoid-column; }
+            .grid-section:nth-child(odd) h2:first-of-type, .grid-section:nth-child(even) h2:first-of-type { @apply mt-0 pt-0; }
+            .grid-section.full-span { @apply md:col-span-2; }
         }
 
-        /* --- Navigation Arrows Styles (Responsive) --- */
+        /* Navigation Arrows Styles */
         .blog-nav {
-            position: fixed; top: 50%; transform: translateY(-50%);
-            z-index: 40; cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%; padding: 0.75rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.2s, opacity 0.3s;
-            opacity: 0.7;
+            position: fixed; top: 50%; transform: translateY(-50%); z-index: 40; cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; padding: 0.75rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: background-color 0.2s, opacity 0.3s; opacity: 0.7;
             @apply focus:outline-none focus:ring-2 focus:ring-stork-accent focus:ring-offset-2;
         }
         .blog-nav:hover { background-color: rgba(255, 255, 255, 0.9); opacity: 1; }
@@ -207,18 +166,9 @@
         #next-post { right: 15px; }
         .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
         .blog-nav.hidden { opacity: 0; pointer-events: none; }
-
-        @media (max-width: 1024px) { /* Below lg */
-             #prev-post { left: 10px; }
-             #next-post { right: 10px; }
-        }
-        @media (max-width: 768px) { /* Below md */
-            .blog-nav { padding: 0.5rem; }
-            .blog-nav svg { width: 24px; height: 24px; }
-        }
-         @media (max-width: 640px) { /* Below sm */
-            .blog-nav { display: none; }
-        }
+        @media (max-width: 1024px) { #prev-post { left: 10px; } #next-post { right: 10px; } }
+        @media (max-width: 768px) { .blog-nav { padding: 0.5rem; } .blog-nav svg { width: 24px; height: 24px; } }
+        @media (max-width: 640px) { .blog-nav { display: none; } }
 
     </style>
 </head>
@@ -227,11 +177,13 @@
 
     <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex flex-wrap justify-between items-center">
-            <a href="../index.html" title="The Stork Name Drop Home" class="z-20 flex-shrink-0 mr-4"> <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20 flex-shrink-0 mr-4">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
-            <nav class="flex flex-wrap space-x-3 sm:space-x-4 md:space-x-6 items-center justify-center flex-grow min-w-0"> <a href="../index.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+            <nav class="flex flex-wrap space-x-3 sm:space-x-4 md:space-x-6 items-center justify-center flex-grow min-w-0">
+                <a href="../index.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
                 <a href="../index.html#generator-controls" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
                 <a href="../blog.html" class="text-xs sm:text-sm md:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
                 <a href="../datasources.html" class="text-xs sm:text-sm md:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data</a>
@@ -240,297 +192,209 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down px-4 sm:px-6 lg:px-8 overflow-x-hidden">
+    <main class="w-full overflow-x-hidden">
+        <div class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 px-4 sm:px-6 lg:px-8 animate-fade-in-down">
 
-        <article class="blog-content">
+            <article class="blog-content">
 
-            <img src="../assets/beatles.png" alt="Beatles Blog Header" class="blog-header-image"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x200/cccccc/34495E?text=Beatles+Header'; this.style.border='1px dashed #ccc'; this.style.aspectRatio='3/1';"> <h1>
-                Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
-            </h1>
+                <img src="../assets/beatles.png" alt="Beatles Blog Header" class="blog-header-image"
+                     onerror="this.onerror=null; this.src='https://placehold.co/600x200/cccccc/34495E?text=Beatles+Header'; this.style.border='1px dashed #ccc'; this.style.aspectRatio='3/1';">
 
-            <p>If there’s one band that soundtracked the world, it’s The Beatles. From Liverpool to Rishikesh, their music crossed continents and generations. And woven into that iconic tapestry of sound? Names! Lots of them. We're talking about girls, guys, places, pets, and even maybe a Maharishi or two.</p>
-            <p>The Fab Four weren't just musical geniuses; they were storytellers. And what's a good story without memorable characters? Sometimes they reached out directly to you, the listener, making songs feel incredibly personal. But other times, they got specific, dropping names that sparked curiosity, tugged at heartstrings, or just sounded right.</p>
-            <p>So, grab your headphones, maybe a cup of tea, and let’s take a magical mystery tour through the names immortalized in Beatles songs. Who were these people (and pets!), and did their fame in vinyl translate to bumps on the baby name charts? Let’s find out!</p>
+                <h1>
+                    Hey Jude, Don't Make it Bad... Name Your Baby Something Fab! A Beatles Name Deep Dive
+                </h1>
 
-            <div class="content-grid">
+                <p>If there’s one band that soundtracked the world, it’s The Beatles. From Liverpool to Rishikesh, their music crossed continents and generations. And woven into that iconic tapestry of sound? Names! Lots of them. We're talking about girls, guys, places, pets, and even maybe a Maharishi or two.</p>
+                <p>The Fab Four weren't just musical geniuses; they were storytellers. And what's a good story without memorable characters? Sometimes they reached out directly to you, the listener, making songs feel incredibly personal. But other times, they got specific, dropping names that sparked curiosity, tugged at heartstrings, or just sounded right.</p>
+                <p>So, grab your headphones, maybe a cup of tea, and let’s take a magical mystery tour through the names immortalized in Beatles songs. Who were these people (and pets!), and did their fame in vinyl translate to bumps on the baby name charts? Let’s find out!</p>
 
-                <div class="grid-section md:col-span-2">
-                    <h2>The Name Game: Who Were They Singing About?</h2>
-                    <p>The Beatles' catalogue is peppered with names, each with its own fascinating backstory. Let's meet some of the most memorable characters:</p>
-                    <img src="../assets/beatlesfamily.png"
-                         alt="Beatles family collage"
-                         class="blog-inline-image"
-                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/D1E8E2/34495E?text=Beatles+Family';">
-                </div>
+                <div class="content-grid">
 
-                <div class="grid-section">
-                    <h3>Eleanor Rigby</h3>
-                    <p>Ah, poor Eleanor. This haunting 1966 classic paints a picture of profound loneliness. Paul McCartney initially toyed with "Daisy Hawkins" before landing on Eleanor Rigby. Where did the name come from? Paul has said "Eleanor" might have been inspired by actress Eleanor Bron (who starred with the band in <em>Help!</em>), and "Rigby" came from a wine shop sign in Bristol (Rigby & Evens Ltd). The song depicts Eleanor picking up rice after a wedding, living in a dream, and keeping a "face in a jar by the door" – a stark image of isolation. She dies alone, buried by the equally lonely Father McKenzie, who darns his socks in the night. Years later, a real Eleanor Rigby gravestone was found near where John and Paul first met, adding a layer of spooky coincidence, though Paul maintains the name wasn't directly inspired by it. The song’s detached, observational style was a departure, focusing on the quiet desperation of ordinary, lonely lives.</p>
-                </div>
-
-                <div class="grid-section">
-                    <h3>Lucy (in the Sky with Diamonds)</h3>
-                    <p>This 1967 psychedelic swirl from <em>Sgt. Pepper</em> immediately sparked speculation. Was "Lucy in the Sky with Diamonds" a coded reference to LSD? The band always denied it. John Lennon consistently stated the inspiration was much more innocent: a nursery school drawing by his three-year-old son, Julian. Julian had drawn his classmate, Lucy O'Donnell, floating amongst stars and titled it "Lucy – in the sky with diamonds". The song's dreamlike, surreal imagery ("cellophane flowers," "newspaper taxis") was heavily influenced by Lewis Carroll's <em>Alice in Wonderland</em>. Paul McCartney described the song's Lucy as a kind of ethereal, almost god-like figure. Fun fact: The name Lucy later achieved actual astronomical heights when paleoanthropologist Donald Johanson, celebrating his discovery of an early hominin fossil while the song played, named her "Lucy". That fossil, in turn, inspired the name of a NASA space mission!</p>
-                </div>
-
-                <div class="grid-section">
-                    <h3>Hey Jude</h3>
-                    <p>Arguably one of the most beloved Beatles anthems, "Hey Jude" (1968) has a touching origin story. Paul McCartney wrote it for John Lennon's young son, Julian, during John and Cynthia Lennon's difficult divorce following John's affair with Yoko Ono. Paul was driving to visit Cynthia and Julian and started singing "Hey Jules, don't make it bad..." wanting to offer comfort. He changed "Jules" to "Jude" simply because it sounded better musically. The song offers encouragement: take a sad situation, acknowledge the pain ("don't carry the world upon your shoulders"), but open yourself up to love and make things better. Interestingly, John Lennon interpreted the song as being directed at him, giving him permission to leave Cynthia for Yoko. Julian himself has expressed a complex "love-hate" relationship with the song, acknowledging the kindness behind it but also its reminder of his parents' painful split.</p>
-                </div>
-
-                <div class="grid-section">
-                    <h3>Michelle</h3>
-                    <p>Ooh là là! This romantic ballad from 1965's <em>Rubber Soul</em> oozes Gallic charm. Paul McCartney had the tune for a while, initially humming faux-French lyrics at parties to emulate the Parisian Left Bank vibe popularised by figures like Juliette Greco. When John suggested turning it into a proper song, Paul sought help with the French lyrics. He asked Jan Vaughan, a French teacher and wife of his friend Ivan Vaughan (who introduced Paul to John!), for a French name and a phrase that rhymed. She came up with "Michelle, ma belle" ("Michelle, my beautiful") and translated "these are words that go together well" into "sont des mots qui vont très bien ensemble". John Lennon contributed the passionate "I love you, I love you, I love you" bridge, inspired by Nina Simone's "I Put a Spell on You". The song paints Michelle simply as beautiful and beloved.</p>
-                </div>
-
-                <div class="grid-section">
-                    <h3>Martha My Dear</h3>
-                    <p>Who was the "silly girl" Paul McCartney was singing to in this cheerful 1968 track from the <em>White Album</em>? None other than his beloved Old English Sheepdog, Martha! Paul bought Martha in 1966, and she was his constant companion during a turbulent time for the band. While Paul explicitly stated the song was for his dog, some read deeper meanings into it, interpreting lines like "don't forget me" or "Help yourself to a bit of what is all around you" as veiled references to his recent breakup with actress Jane Asher and her alleged infidelity. Regardless of subtext, the song captures a feeling of affection and perhaps gentle chiding ("Hold your head up you silly girl, look what you've done"), applicable to a pet or a person.</p>
-                </div>
-
-                 <div class="grid-section">
-                    <h3>Dear Prudence</h3>
-                    <p>Another <em>White Album</em> gem born from the Beatles' 1968 trip to Rishikesh, India, to study Transcendental Meditation with Maharishi Mahesh Yogi. "Prudence" was Prudence Farrow, actress Mia Farrow's sister, who was also on the retreat. Prudence became so intensely focused on meditating that she barely left her bungalow for days. Worried, John and George were tasked with coaxing her out to socialize. John wrote the song as a gentle plea: "Dear Prudence, won't you come out to play? Dear Prudence, greet the brand new day... Open up your eyes, see the sunny skies". It's a beautiful, hypnotic invitation to re-engage with the world, inspired by someone taking their spiritual quest perhaps a little too seriously.</p>
-                </div>
-
-                 <div class="grid-section">
-                    <h3>Lovely Rita</h3>
-                    <p>This jaunty tune from <em>Sgt. Pepper</em> (1967) features another memorable female character. "Rita" is a "meter maid," a term Paul McCartney heard used in America for female traffic wardens, which amused him. He liked the slightly cheeky connotation of "maid" combined with the official "meter". One story suggests the song was inspired by a real traffic warden named Meta Davies who gave Paul a parking ticket outside Abbey Road Studios. Meta claimed Paul asked her name and said it would be good for a song. However, Paul has also denied a direct real-life inspiration, calling it more of a coincidence or fantasy. Either way, the song portrays Rita, the meter maid, as an object of the narrator's quirky affection.</p>
-                </div>
-
-                 <div class="grid-section">
-                    <h3>Sexy Sadie</h3>
-                    <p>Don't let the name fool you – "Sexy Sadie" wasn't about a seductive woman. This biting track from the <em>White Album</em> (1968) was John Lennon's thinly veiled swipe at Maharishi Mahesh Yogi. John felt disillusioned and betrayed after hearing allegations (primarily from "Magic Alex" Mardas) of the Maharishi making inappropriate advances towards Mia Farrow during the India retreat. John originally wanted to call the song "Maharishi," with much more explicit lyrics, but George Harrison persuaded him to change the title to "Sexy Sadie". The finished lyrics, "Sexy Sadie, what have you done? / You made a fool of everyone," still drip with contempt, accusing the figure of deceit.</p>
-                </div>
-
-                 <div class="grid-section">
-                    <h3>Julia</h3>
-                    <p>Perhaps the most tender and personal name song, "Julia" (1968) is John Lennon's ode to his mother, Julia Lennon, who was tragically killed when he was 17. Written in India, using a finger-picking style taught to him by Donovan, the song evokes dreamlike images of his mother ("seashell eyes, windy smile") and his feeling of having lost her twice. It also weaves in a reference to his future wife, Yoko Ono, whose name means "child of the sea" in Japanese, with the line "Oceanchild, calls me". It's the only solo Lennon performance in the Beatles' catalogue, a haunting tribute to the two most important women in his life.</p>
-                </div>
-
-                 <div class="grid-section">
-                    <h3>Penny Lane</h3>
-                    <p>Not a person, but a place that feels like a character. Released as a double A-side with "Strawberry Fields Forever" in 1967, "Penny Lane" is Paul McCartney's nostalgic look back at the sights and sounds of a real street and bus terminus in Liverpool familiar from his and John's childhoods. The lyrics populate the scene with vivid characters: the barber showing photos, the fireman rushing in, the nurse selling poppies, the banker – all drawn from memory. It captures a specific time and place with a blend of realism and dreamlike, slightly psychedelic imagery ("blue suburban skies" mixed with pouring rain).</p>
-                </div>
-
-                <div class="grid-section">
-                     <h3>Sgt. Pepper</h3>
-                     <p>The ultimate conceptual name! For their groundbreaking 1967 album, the Beatles decided to shed their identities and perform as a fictional group: Sgt. Pepper's Lonely Hearts Club Band. The whimsical name apparently came about on a flight when Paul McCartney misheard roadie Mal Evans asking for the salt and pepper ("S" and "P") packets on their meal trays. Sgt. Pepper acts as the album's master of ceremonies, introducing the band and later, "the one and only Billy Shears" (Ringo's persona for "With a Little Help from My Friends").</p>
-                     <p>And the list goes on! Think of Desmond and Molly Jones in "Ob-La-Di, Ob-La-Da," JoJo and Loretta Martin in "Get Back," Mean Mr. Mustard, Polythene Pam, Bungalow Bill, Maxwell Edison... the Beatles certainly knew how to populate their musical world.</p>
-                 </div>
-
-
-                <div class="grid-section full-span">
-                    <h2>Did the Beatles Start a Baby Name Boom?</h2>
-                    <p>We know the Beatles influenced fashion, music, and culture – but did they influence what people named their babies? It's a fascinating question for us name nerds! Let's look at some of the prominent names and see if their appearance in a hit song coincided with a rise on the baby name charts, particularly in the US and UK around the time of the songs' releases.</p>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Song Title</th>
-                                    <th>Release</th>
-                                    <th>Brief Origin/Inspiration</th>
-                                    <th>US Trend Around Release</th>
-                                    <th>UK Trend Around Release</th>
-                                    <th>Beatles Effect?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Michelle</td>
-                                    <td>Michelle</td> <td>1965</td>
-                                    <td>French feel, Paul's party piece, Jan Vaughan's lyrics</td>
-                                    <td>Peaked Top 5 (1968) shortly after song release</td>
-                                    <td>Popularized</td>
-                                    <td class="font-semibold text-green-600">Strong/Likely</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Jude</td>
-                                    <td>Hey Jude</td> <td>1968</td>
-                                    <td>For Julian Lennon during parents' divorce</td>
-                                    <td>Jumped 69% in 1969 after #1 single</td>
-                                    <td>Boosted</td>
-                                    <td class="font-semibold text-green-600">Strong/Likely</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Eleanor</td>
-                                    <td>Eleanor Rigby</td> <td>1966</td>
-                                    <td>Actress E. Bron? Shop name? Gravestone coincidence?</td>
-                                    <td>Name was declining; song released during dip. Recent resurgence unrelated.</td>
-                                    <td>Sometimes seen as dated</td>
-                                    <td>Unclear/Minimal</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Lucy</td>
-                                    <td>Lucy in the Sky with Diamonds</td> <td>1967</td>
-                                    <td>Julian Lennon's drawing of classmate Lucy O'Donnell</td>
-                                    <td>Long-term staple; song released between 19th C peak & late 20th C dip. LSD link?</td>
-                                    <td>Popular</td>
-                                    <td>Unclear/Minimal</td>
-                                </tr>
-                                 <tr>
-                                    <td class="font-medium text-gray-900">Julia</td>
-                                    <td>Julia</td> <td>1968</td>
-                                    <td>John's mother Julia Lennon; Yoko Ono ("Oceanchild")</td>
-                                    <td>Consistently popular; no major spike after song. Major rise later (2001).</td>
-                                    <td>Popular</td>
-                                    <td>No Obvious Effect</td>
-                                </tr>
-                                 <tr>
-                                    <td class="font-medium text-gray-900">Prudence</td>
-                                    <td>Dear Prudence</td> <td>1968</td>
-                                    <td>Prudence Farrow's intense meditation in India</td>
-                                    <td>Remained very rare</td>
-                                    <td>Rare</td>
-                                    <td class="font-semibold text-red-600">None</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Rita</td>
-                                    <td>Lovely Rita</td> <td>1967</td>
-                                    <td>American "meter maid" slang; maybe traffic warden Meta Davies</td>
-                                    <td>Likely declining from 1940s peak when song released; fell off Top 1000 later.</td>
-                                    <td>Less common now</td>
-                                    <td class="font-semibold text-red-600">None/Negative</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Martha</td>
-                                    <td>Martha My Dear</td> <td>1968</td>
-                                    <td>Paul's sheepdog Martha; possible Jane Asher subtext</td>
-                                    <td>Long, slow decline continued after song release. Seen as dated.</td>
-                                    <td>More popular in UK</td>
-                                    <td class="font-semibold text-red-600">None</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-medium text-gray-900">Sadie</td>
-                                    <td>Sexy Sadie</td> <td>1968</td>
-                                    <td>Disillusionment with Maharishi Mahesh Yogi</td>
-                                    <td>Song released at name's absolute lowest point. Later resurgence unrelated.</td>
-                                    <td>Popular now</td>
-                                    <td class="font-semibold text-red-600">None/Negative (Initially?)</td>
-                                </tr>
-                                 <tr>
-                                    <td class="font-medium text-gray-900">Penny</td>
-                                    <td>Penny Lane</td> <td>1967</td>
-                                    <td>Real Liverpool street; diminutive of Penelope</td>
-                                    <td>Already popular (Top 100 in 60s); song likely sustained visibility.</td>
-                                    <td>Popular</td>
-                                    <td>Possible/Sustaining</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="grid-section md:col-span-2">
+                        <h2>The Name Game: Who Were They Singing About?</h2>
+                        <p>The Beatles' catalogue is peppered with names, each with its own fascinating backstory. Let's meet some of the most memorable characters:</p>
+                        <img src="../assets/beatlesfamily.png"
+                             alt="Beatles family collage"
+                             class="blog-inline-image"
+                             onerror="this.onerror=null; this.src='https://placehold.co/120x120/D1E8E2/34495E?text=Beatles+Family';">
                     </div>
-                    <p class="text-center text-sm text-medium-gray mt-2">Note: Inspirations are based on band members' accounts and common interpretations. Trend data is approximate.</p>
-                    <p>So, what does this tell us? It seems the "Beatles Baby Name Effect" was real, but selective!</p>
-                    <ul>
-                        <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts in popularity right after their respective songs became massive hits. The romantic allure of "Michelle" and the uplifting hope of "Hey Jude" likely resonated strongly with expecting parents.</li>
-                        <li><strong>Minimal Impact:</strong> Classic, established names like <strong>Eleanor</strong>, <strong>Lucy</strong>, and <strong>Julia</strong> didn't seem dramatically swayed by their song appearances. "Eleanor Rigby," while iconic, is quite bleak, perhaps not the vibe most parents seek. "Lucy" had the LSD association controversy, and "Julia," while beautiful, is deeply melancholic. These names had their own historical trajectories.</li>
-                        <li><strong>No Boost for the Declining or Rare:</strong> Names already fading from their peak popularity, like <strong>Rita</strong> and <strong>Martha</strong>, weren't revived by their songs. Rita's playful portrayal and Martha's canine connection (and potential relationship drama subtext) didn't reverse their slides. The very rare <strong>Prudence</strong> remained rare, perhaps hampered by the character's withdrawn depiction and the name's prim sound.</li>
-                        <li><strong>Negative Connotations Matter:</strong> <strong>Sadie</strong> was at its lowest point when "Sexy Sadie" came out, and the song's negative portrayal of its subject certainly didn't help matters then. Its modern resurgence is completely separate.</li>
-                        <li><strong>Sustaining Power?:</strong> For <strong>Penny</strong>, already popular when "Penny Lane" charmed the world, the song likely helped keep the cheerful name in the public eye.</li>
-                    </ul>
-                    <p>It shows that while a hit song can definitely put a name on the map or give it a boost, factors like the song's tone, the character's portrayal, and the name's existing popularity and style all play a role in whether it catches on with the baby-naming public. Pop culture influence is powerful, but unpredictable!</p>
-                </div>
 
-                <div class="grid-section full-span">
-                    <h2>More Than Just a Name: Why the Beatles' Choices Resonate</h2>
-                    <p>Why did the Beatles bother using specific names? Why not just sing about "a girl" or "a man"? Their choices show the power a name holds in songwriting.</p>
-                    <ul>
-                        <li><strong>Making Feelings Concrete:</strong> Abstract ideas like loneliness become instantly relatable when attached to "Eleanor Rigby" or "Father McKenzie". A name gives a universal feeling a specific, human face.</li>
-                        <li><strong>Adding Emotional Weight:</strong> Knowing the real stories behind "Julia" (John's mother) or "Hey Jude" (Julian Lennon) adds layers of poignant depth. Even without knowing the backstory, the specificity hints at genuine emotion.</li>
-                        <li><strong>Sketching Characters Quickly:</strong> Names help bring scenes to life. The barber in "Penny Lane," "Lovely Rita," or even the briefly mentioned Vera, Chuck, and Dave in "When I'm Sixty-Four" feel more real because they have names.</li>
-                        <li><strong>Creating Intrigue and Legend:</strong> Names like "Lucy" or "Sexy Sadie" became iconic partly because of the speculation surrounding them. Was Lucy about drugs? Who really was Sadie? The name becomes a hook, drawing listeners into the mystery.</li>
-                        <li><strong>Sounding Good:</strong> Sometimes, it's just about the music! The pleasing sound of "Michelle, ma belle" or the better flow of "Jude" over "Jules" shows that the pure sonic quality of a name matters in a song.</li>
-                    </ul>
-                    <p>The Beatles used names in all these ways – sometimes personal, sometimes fictional, sometimes symbolic, sometimes just for the sound. It highlights how versatile and powerful naming is as a creative tool, capable of anchoring emotion, building stories, creating mystique, and enhancing the music itself.</p>
-                </div>
+                    <div class="grid-section">
+                        <h3>Eleanor Rigby</h3>
+                        <p>Ah, poor Eleanor. This haunting 1966 classic paints a picture of profound loneliness. Paul McCartney initially toyed with "Daisy Hawkins" before landing on Eleanor Rigby. Where did the name come from? Paul has said "Eleanor" might have been inspired by actress Eleanor Bron (who starred with the band in <em>Help!</em>), and "Rigby" came from a wine shop sign in Bristol (Rigby & Evens Ltd). The song depicts Eleanor picking up rice after a wedding, living in a dream, and keeping a "face in a jar by the door" – a stark image of isolation. She dies alone, buried by the equally lonely Father McKenzie, who darns his socks in the night. Years later, a real Eleanor Rigby gravestone was found near where John and Paul first met, adding a layer of spooky coincidence, though Paul maintains the name wasn't directly inspired by it. The song’s detached, observational style was a departure, focusing on the quiet desperation of ordinary, lonely lives.</p>
+                    </div>
 
-                 <div class="grid-section full-span">
-                    <h2>Let It Be (Named Something Great!)</h2>
-                    <p>From Paul's dog Martha to John's mother Julia, from Julian Lennon's classmate Lucy to the fictional meter maid Rita, the names in Beatles songs are a rich collection of stories, inspirations, and happy accidents. They remind us that names are more than just labels; they carry history, evoke feelings, and connect us to people, places, and even moments in time.</p>
-                    <p>Here at The Stork Name Drop, we're fascinated by how names weave themselves into our culture, and the Beatles provide a perfect, enduring example. Their songs not only changed music but also left a subtle, selective imprint on the world of names, sparking trends and keeping certain monikers alive in our collective memory.</p>
-                    <p>Whether you're naming a baby, a pet, or even just a character in a story, finding that perfect name is a creative journey. The Beatles certainly showed us how much meaning and magic a simple name can hold.</p>
-                    <p>Now over to you! What's your favorite Beatles name song? Did any Fab Four tune influence a name choice in your life or family? Share your thoughts in the comments below – we'd love to hear your stories!</p>
-                </div>
+                    <div class="grid-section">
+                        <h3>Lucy (in the Sky with Diamonds)</h3>
+                        <p>This 1967 psychedelic swirl from <em>Sgt. Pepper</em> immediately sparked speculation. Was "Lucy in the Sky with Diamonds" a coded reference to LSD? The band always denied it. John Lennon consistently stated the inspiration was much more innocent: a nursery school drawing by his three-year-old son, Julian. Julian had drawn his classmate, Lucy O'Donnell, floating amongst stars and titled it "Lucy – in the sky with diamonds". The song's dreamlike, surreal imagery ("cellophane flowers," "newspaper taxis") was heavily influenced by Lewis Carroll's <em>Alice in Wonderland</em>. Paul McCartney described the song's Lucy as a kind of ethereal, almost god-like figure. Fun fact: The name Lucy later achieved actual astronomical heights when paleoanthropologist Donald Johanson, celebrating his discovery of an early hominin fossil while the song played, named her "Lucy". That fossil, in turn, inspired the name of a NASA space mission!</p>
+                    </div>
 
-            </div> </article>
+                    <div class="grid-section">
+                        <h3>Hey Jude</h3>
+                        <p>Arguably one of the most beloved Beatles anthems, "Hey Jude" (1968) has a touching origin story. Paul McCartney wrote it for John Lennon's young son, Julian, during John and Cynthia Lennon's difficult divorce following John's affair with Yoko Ono. Paul was driving to visit Cynthia and Julian and started singing "Hey Jules, don't make it bad..." wanting to offer comfort. He changed "Jules" to "Jude" simply because it sounded better musically. The song offers encouragement: take a sad situation, acknowledge the pain ("don't carry the world upon your shoulders"), but open yourself up to love and make things better. Interestingly, John Lennon interpreted the song as being directed at him, giving him permission to leave Cynthia for Yoko. Julian himself has expressed a complex "love-hate" relationship with the song, acknowledging the kindness behind it but also its reminder of his parents' painful split.</p>
+                    </div>
 
-        <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post" title="Previous Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-             </svg>
-         </button>
-         <button id="next-post" class="blog-nav hidden" aria-label="Next Post" title="Next Post">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-             </svg>
-         </button>
+                    <div class="grid-section">
+                        <h3>Michelle</h3>
+                        <p>Ooh là là! This romantic ballad from 1965's <em>Rubber Soul</em> oozes Gallic charm. Paul McCartney had the tune for a while, initially humming faux-French lyrics at parties to emulate the Parisian Left Bank vibe popularised by figures like Juliette Greco. When John suggested turning it into a proper song, Paul sought help with the French lyrics. He asked Jan Vaughan, a French teacher and wife of his friend Ivan Vaughan (who introduced Paul to John!), for a French name and a phrase that rhymed. She came up with "Michelle, ma belle" ("Michelle, my beautiful") and translated "these are words that go together well" into "sont des mots qui vont très bien ensemble". John Lennon contributed the passionate "I love you, I love you, I love you" bridge, inspired by Nina Simone's "I Put a Spell on You". The song paints Michelle simply as beautiful and beloved.</p>
+                    </div>
 
-    </main>
+                    <div class="grid-section">
+                        <h3>Martha My Dear</h3>
+                        <p>Who was the "silly girl" Paul McCartney was singing to in this cheerful 1968 track from the <em>White Album</em>? None other than his beloved Old English Sheepdog, Martha! Paul bought Martha in 1966, and she was his constant companion during a turbulent time for the band. While Paul explicitly stated the song was for his dog, some read deeper meanings into it, interpreting lines like "don't forget me" or "Help yourself to a bit of what is all around you" as veiled references to his recent breakup with actress Jane Asher and her alleged infidelity. Regardless of subtext, the song captures a feeling of affection and perhaps gentle chiding ("Hold your head up you silly girl, look what you've done"), applicable to a pet or a person.</p>
+                    </div>
+
+                     <div class="grid-section">
+                        <h3>Dear Prudence</h3>
+                        <p>Another <em>White Album</em> gem born from the Beatles' 1968 trip to Rishikesh, India, to study Transcendental Meditation with Maharishi Mahesh Yogi. "Prudence" was Prudence Farrow, actress Mia Farrow's sister, who was also on the retreat. Prudence became so intensely focused on meditating that she barely left her bungalow for days. Worried, John and George were tasked with coaxing her out to socialize. John wrote the song as a gentle plea: "Dear Prudence, won't you come out to play? Dear Prudence, greet the brand new day... Open up your eyes, see the sunny skies". It's a beautiful, hypnotic invitation to re-engage with the world, inspired by someone taking their spiritual quest perhaps a little too seriously.</p>
+                    </div>
+
+                     <div class="grid-section">
+                        <h3>Lovely Rita</h3>
+                        <p>This jaunty tune from <em>Sgt. Pepper</em> (1967) features another memorable female character. "Rita" is a "meter maid," a term Paul McCartney heard used in America for female traffic wardens, which amused him. He liked the slightly cheeky connotation of "maid" combined with the official "meter". One story suggests the song was inspired by a real traffic warden named Meta Davies who gave Paul a parking ticket outside Abbey Road Studios. Meta claimed Paul asked her name and said it would be good for a song. However, Paul has also denied a direct real-life inspiration, calling it more of a coincidence or fantasy. Either way, the song portrays Rita, the meter maid, as an object of the narrator's quirky affection.</p>
+                    </div>
+
+                     <div class="grid-section">
+                        <h3>Sexy Sadie</h3>
+                        <p>Don't let the name fool you – "Sexy Sadie" wasn't about a seductive woman. This biting track from the <em>White Album</em> (1968) was John Lennon's thinly veiled swipe at Maharishi Mahesh Yogi. John felt disillusioned and betrayed after hearing allegations (primarily from "Magic Alex" Mardas) of the Maharishi making inappropriate advances towards Mia Farrow during the India retreat. John originally wanted to call the song "Maharishi," with much more explicit lyrics, but George Harrison persuaded him to change the title to "Sexy Sadie". The finished lyrics, "Sexy Sadie, what have you done? / You made a fool of everyone," still drip with contempt, accusing the figure of deceit.</p>
+                    </div>
+
+                     <div class="grid-section">
+                        <h3>Julia</h3>
+                        <p>Perhaps the most tender and personal name song, "Julia" (1968) is John Lennon's ode to his mother, Julia Lennon, who was tragically killed when he was 17. Written in India, using a finger-picking style taught to him by Donovan, the song evokes dreamlike images of his mother ("seashell eyes, windy smile") and his feeling of having lost her twice. It also weaves in a reference to his future wife, Yoko Ono, whose name means "child of the sea" in Japanese, with the line "Oceanchild, calls me". It's the only solo Lennon performance in the Beatles' catalogue, a haunting tribute to the two most important women in his life.</p>
+                    </div>
+
+                     <div class="grid-section">
+                        <h3>Penny Lane</h3>
+                        <p>Not a person, but a place that feels like a character. Released as a double A-side with "Strawberry Fields Forever" in 1967, "Penny Lane" is Paul McCartney's nostalgic look back at the sights and sounds of a real street and bus terminus in Liverpool familiar from his and John's childhoods. The lyrics populate the scene with vivid characters: the barber showing photos, the fireman rushing in, the nurse selling poppies, the banker – all drawn from memory. It captures a specific time and place with a blend of realism and dreamlike, slightly psychedelic imagery ("blue suburban skies" mixed with pouring rain).</p>
+                    </div>
+
+                    <div class="grid-section">
+                         <h3>Sgt. Pepper</h3>
+                         <p>The ultimate conceptual name! For their groundbreaking 1967 album, the Beatles decided to shed their identities and perform as a fictional group: Sgt. Pepper's Lonely Hearts Club Band. The whimsical name apparently came about on a flight when Paul McCartney misheard roadie Mal Evans asking for the salt and pepper ("S" and "P") packets on their meal trays. Sgt. Pepper acts as the album's master of ceremonies, introducing the band and later, "the one and only Billy Shears" (Ringo's persona for "With a Little Help from My Friends").</p>
+                         <p>And the list goes on! Think of Desmond and Molly Jones in "Ob-La-Di, Ob-La-Da," JoJo and Loretta Martin in "Get Back," Mean Mr. Mustard, Polythene Pam, Bungalow Bill, Maxwell Edison... the Beatles certainly knew how to populate their musical world.</p>
+                     </div>
+
+
+                    <div class="grid-section full-span">
+                        <h2>Did the Beatles Start a Baby Name Boom?</h2>
+                        <p>We know the Beatles influenced fashion, music, and culture – but did they influence what people named their babies? It's a fascinating question for us name nerds! Let's look at some of the prominent names and see if their appearance in a hit song coincided with a rise on the baby name charts, particularly in the US and UK around the time of the songs' releases.</p>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Song Title</th>
+                                        <th>Release</th>
+                                        <th>Brief Origin/Inspiration</th>
+                                        <th>US Trend Around Release</th>
+                                        <th>UK Trend Around Release</th>
+                                        <th>Beatles Effect?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Michelle</td> <td>Michelle</td> <td>1965</td> <td>French feel, Paul's party piece, Jan Vaughan's lyrics</td> <td>Peaked Top 5 (1968) shortly after song release</td> <td>Popularized</td> <td class="font-semibold text-green-600">Strong/Likely</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Jude</td> <td>Hey Jude</td> <td>1968</td> <td>For Julian Lennon during parents' divorce</td> <td>Jumped 69% in 1969 after #1 single</td> <td>Boosted</td> <td class="font-semibold text-green-600">Strong/Likely</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Eleanor</td> <td>Eleanor Rigby</td> <td>1966</td> <td>Actress E. Bron? Shop name? Gravestone coincidence?</td> <td>Name was declining; song released during dip. Recent resurgence unrelated.</td> <td>Sometimes seen as dated</td> <td>Unclear/Minimal</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Lucy</td> <td>Lucy in the Sky with Diamonds</td> <td>1967</td> <td>Julian Lennon's drawing of classmate Lucy O'Donnell</td> <td>Long-term staple; song released between 19th C peak & late 20th C dip. LSD link?</td> <td>Popular</td> <td>Unclear/Minimal</td>
+                                    </tr>
+                                     <tr>
+                                        <td class="font-medium text-gray-900">Julia</td> <td>Julia</td> <td>1968</td> <td>John's mother Julia Lennon; Yoko Ono ("Oceanchild")</td> <td>Consistently popular; no major spike after song. Major rise later (2001).</td> <td>Popular</td> <td>No Obvious Effect</td>
+                                    </tr>
+                                     <tr>
+                                        <td class="font-medium text-gray-900">Prudence</td> <td>Dear Prudence</td> <td>1968</td> <td>Prudence Farrow's intense meditation in India</td> <td>Remained very rare</td> <td>Rare</td> <td class="font-semibold text-red-600">None</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Rita</td> <td>Lovely Rita</td> <td>1967</td> <td>American "meter maid" slang; maybe traffic warden Meta Davies</td> <td>Likely declining from 1940s peak when song released; fell off Top 1000 later.</td> <td>Less common now</td> <td class="font-semibold text-red-600">None/Negative</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Martha</td> <td>Martha My Dear</td> <td>1968</td> <td>Paul's sheepdog Martha; possible Jane Asher subtext</td> <td>Long, slow decline continued after song release. Seen as dated.</td> <td>More popular in UK</td> <td class="font-semibold text-red-600">None</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-medium text-gray-900">Sadie</td> <td>Sexy Sadie</td> <td>1968</td> <td>Disillusionment with Maharishi Mahesh Yogi</td> <td>Song released at name's absolute lowest point. Later resurgence unrelated.</td> <td>Popular now</td> <td class="font-semibold text-red-600">None/Negative (Initially?)</td>
+                                    </tr>
+                                     <tr>
+                                        <td class="font-medium text-gray-900">Penny</td> <td>Penny Lane</td> <td>1967</td> <td>Real Liverpool street; diminutive of Penelope</td> <td>Already popular (Top 100 in 60s); song likely sustained visibility.</td> <td>Popular</td> <td>Possible/Sustaining</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-center text-sm text-medium-gray mt-2">Note: Inspirations are based on band members' accounts and common interpretations. Trend data is approximate.</p>
+                        <p>So, what does this tell us? It seems the "Beatles Baby Name Effect" was real, but selective!</p>
+                        <ul>
+                            <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts in popularity right after their respective songs became massive hits...</li>
+                            <li><strong>Minimal Impact:</strong> Classic, established names like <strong>Eleanor</strong>, <strong>Lucy</strong>, and <strong>Julia</strong> didn't seem dramatically swayed...</li>
+                            <li><strong>No Boost for the Declining or Rare:</strong> Names already fading like <strong>Rita</strong> and <strong>Martha</strong>, weren't revived...</li>
+                            <li><strong>Negative Connotations Matter:</strong> <strong>Sadie</strong> was at its lowest point when "Sexy Sadie" came out...</li>
+                            <li><strong>Sustaining Power?:</strong> For <strong>Penny</strong>, already popular, the song likely helped keep the name in the public eye.</li>
+                        </ul>
+                        <p>It shows that while a hit song can definitely put a name on the map... Pop culture influence is powerful, but unpredictable!</p>
+                    </div>
+
+                    <div class="grid-section full-span">
+                        <h2>More Than Just a Name: Why the Beatles' Choices Resonate</h2>
+                        <p>Why did the Beatles bother using specific names? ... Their choices show the power a name holds in songwriting.</p>
+                        <ul>
+                            <li><strong>Making Feelings Concrete:</strong> Abstract ideas like loneliness become instantly relatable...</li>
+                            <li><strong>Adding Emotional Weight:</strong> Knowing the real stories behind "Julia" or "Hey Jude" adds layers of poignant depth...</li>
+                            <li><strong>Sketching Characters Quickly:</strong> Names help bring scenes to life...</li>
+                            <li><strong>Creating Intrigue and Legend:</strong> Names like "Lucy" or "Sexy Sadie" became iconic partly because of the speculation...</li>
+                            <li><strong>Sounding Good:</strong> Sometimes, it's just about the music!...</li>
+                        </ul>
+                        <p>The Beatles used names in all these ways... It highlights how versatile and powerful naming is...</p>
+                    </div>
+
+                     <div class="grid-section full-span">
+                        <h2>Let It Be (Named Something Great!)</h2>
+                        <p>From Paul's dog Martha to John's mother Julia... the names in Beatles songs are a rich collection...</p>
+                        <p>Here at The Stork Name Drop, we're fascinated by how names weave themselves into our culture...</p>
+                        <p>Whether you're naming a baby, a pet, or even just a character in a story... The Beatles certainly showed us how much meaning and magic a simple name can hold.</p>
+                        <p>Now over to you! What's your favorite Beatles name song? ... Share your thoughts in the comments below – we'd love to hear your stories!</p>
+                    </div>
+
+                </div> </article>
+
+            <button id="prev-post" class="blog-nav hidden" aria-label="Previous Post" title="Previous Post">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+             </button>
+             <button id="next-post" class="blog-nav hidden" aria-label="Next Post" title="Next Post">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+             </button>
+
+        </div> </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline text-stork-accent hover:text-stork-accent-hover">Privacy Policy</a> | <a href="../terms.html" class="hover:underline text-stork-accent hover:text-stork-accent-hover">Terms of Service</a>
     </footer>
 
     <script>
+        // Same JS as before for navigation
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Configuration ---
-            const blogPosts = [
-                'middle.html',      // Index 0
-                'uniqueeng.html',   // Index 1
-                'german2025.html',  // Index 2
-                'song.html',        // Index 3
-                'beatles.html'      // Index 4 (This page)
-            ];
-            const currentPostIndex = 4; // This page's index
-            const swipeThreshold = 60; // Pixels
-
-            // --- DOM Elements ---
+            const blogPosts = ['middle.html', 'uniqueeng.html', 'german2025.html', 'song.html', 'beatles.html'];
+            const currentPostIndex = 4;
+            const swipeThreshold = 60;
             const prevButton = document.getElementById('prev-post');
             const nextButton = document.getElementById('next-post');
             const swipeArea = document.body;
-
-            // --- State ---
             let touchStartX = 0;
             let touchEndX = 0;
-
-            // --- Functions ---
-            function navigateNext() {
-                if (currentPostIndex < blogPosts.length - 1) {
-                    window.location.href = blogPosts[currentPostIndex + 1];
-                }
-            }
-            function navigatePrev() {
-                if (currentPostIndex > 0) {
-                    window.location.href = blogPosts[currentPostIndex - 1];
-                }
-            }
+            function navigateNext() { if (currentPostIndex < blogPosts.length - 1) window.location.href = blogPosts[currentPostIndex + 1]; }
+            function navigatePrev() { if (currentPostIndex > 0) window.location.href = blogPosts[currentPostIndex - 1]; }
             function handleTouchStart(event) { touchStartX = event.touches[0].clientX; }
             function handleTouchEnd(event) { touchEndX = event.changedTouches[0].clientX; handleSwipeGesture(); }
-            function handleSwipeGesture() {
-                const deltaX = touchEndX - touchStartX;
-                if (Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) { navigateNext(); } else { navigatePrev(); }
-                }
-                touchStartX = 0; touchEndX = 0;
-            }
-            function updateNavButtonsVisibility() {
-                if (!prevButton || !nextButton) return;
-                prevButton.classList.toggle('hidden', currentPostIndex <= 0);
-                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
-            }
-
-            // --- Initialization ---
+            function handleSwipeGesture() { const deltaX = touchEndX - touchStartX; if (Math.abs(deltaX) > swipeThreshold) { if (deltaX < 0) navigateNext(); else navigatePrev(); } touchStartX = 0; touchEndX = 0; }
+            function updateNavButtonsVisibility() { if (!prevButton || !nextButton) return; prevButton.classList.toggle('hidden', currentPostIndex <= 0); nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1); }
             updateNavButtonsVisibility();
-
-            // --- Event Listeners ---
-            if (swipeArea) {
-                swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
-                swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
-            }
-            if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
-            if (nextButton) { nextButton.addEventListener('click', navigateNext); }
+            if (swipeArea) { swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true }); swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true }); }
+            if (prevButton) prevButton.addEventListener('click', navigatePrev);
+            if (nextButton) nextButton.addEventListener('click', navigateNext);
         });
     </script>
 
