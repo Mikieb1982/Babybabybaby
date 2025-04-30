@@ -77,48 +77,46 @@
             min-height: 100%;
             display: flex;
             flex-direction: column;
-            /* Prevent horizontal scrolling at the root */
             overflow-x: hidden;
-            width: 100%; /* Ensure html/body take full width */
+            width: 100%;
         }
         body {
             flex-grow: 1;
-            padding-top: 64px; /* Adjust if header height changes */
+            padding-top: 64px;
             font-family: 'Nunito Sans', sans-serif;
-            color: #34495E; /* stork-text */
+            color: #34495E;
             background-image: url('../assets/back.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            width: 100%; /* Ensure body takes full width */
+            width: 100%;
         }
         main {
             flex-grow: 1;
             position: relative;
-            /* *** Make main full width and control overflow *** */
             width: 100%;
             overflow-x: hidden;
         }
         footer {
             margin-top: auto;
-            width: 100%; /* Ensure footer takes full width */
+            width: 100%;
         }
 
         /* Blog post specific styles */
         .blog-header-image {
-            /* w-full respects the padding of its parent (.content-wrapper) */
             @apply block mx-auto mb-8 mt-0 rounded-lg shadow-md w-full h-auto object-contain;
         }
         .blog-inline-image {
+            /* Styles for small, centered inline images */
             @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[120px] h-auto;
         }
 
         /* Typography - Added word wrapping */
         .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content p {
              overflow-wrap: break-word;
-             word-wrap: break-word; /* Legacy */
-             hyphens: auto; /* Optional */
+             word-wrap: break-word;
+             hyphens: auto;
         }
         .blog-content h1 { @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 sm:mb-10 text-center text-stork-title; }
         .blog-content h2 { @apply text-2xl sm:text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
@@ -131,9 +129,7 @@
         .blog-content em { @apply italic; }
 
         /* Table styles */
-        .blog-content .table-wrapper {
-            @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-full;
-        }
+        .blog-content .table-wrapper { @apply overflow-x-auto mb-6 shadow-md rounded-lg mx-auto max-w-full; }
         .blog-content table { @apply border-collapse w-full text-sm; }
         .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
         .blog-content th { @apply bg-gray-100 font-semibold text-stork-title whitespace-nowrap; }
@@ -221,63 +217,59 @@
 
                     <div class="grid-section">
                         <h3>Eleanor Rigby</h3>
-                        <p>Ah, poor Eleanor. This haunting 1966 classic paints a picture of profound loneliness. Paul McCartney initially toyed with "Daisy Hawkins" before landing on Eleanor Rigby. Where did the name come from? Paul has said "Eleanor" might have been inspired by actress Eleanor Bron (who starred with the band in <em>Help!</em>), and "Rigby" came from a wine shop sign in Bristol (Rigby & Evens Ltd). The song depicts Eleanor picking up rice after a wedding, living in a dream, and keeping a "face in a jar by the door" – a stark image of isolation. She dies alone, buried by the equally lonely Father McKenzie, who darns his socks in the night. Years later, a real Eleanor Rigby gravestone was found near where John and Paul first met, adding a layer of spooky coincidence, though Paul maintains the name wasn't directly inspired by it. The song’s detached, observational style was a departure, focusing on the quiet desperation of ordinary, lonely lives.</p>
+                        <p>Ah, poor Eleanor. This haunting 1966 classic paints a picture of profound loneliness...</p>
                     </div>
-
                     <div class="grid-section">
                         <h3>Lucy (in the Sky with Diamonds)</h3>
-                        <p>This 1967 psychedelic swirl from <em>Sgt. Pepper</em> immediately sparked speculation. Was "Lucy in the Sky with Diamonds" a coded reference to LSD? The band always denied it. John Lennon consistently stated the inspiration was much more innocent: a nursery school drawing by his three-year-old son, Julian. Julian had drawn his classmate, Lucy O'Donnell, floating amongst stars and titled it "Lucy – in the sky with diamonds". The song's dreamlike, surreal imagery ("cellophane flowers," "newspaper taxis") was heavily influenced by Lewis Carroll's <em>Alice in Wonderland</em>. Paul McCartney described the song's Lucy as a kind of ethereal, almost god-like figure. Fun fact: The name Lucy later achieved actual astronomical heights when paleoanthropologist Donald Johanson, celebrating his discovery of an early hominin fossil while the song played, named her "Lucy". That fossil, in turn, inspired the name of a NASA space mission!</p>
+                        <p>This 1967 psychedelic swirl from <em>Sgt. Pepper</em> immediately sparked speculation...</p>
                     </div>
-
                     <div class="grid-section">
                         <h3>Hey Jude</h3>
-                        <p>Arguably one of the most beloved Beatles anthems, "Hey Jude" (1968) has a touching origin story. Paul McCartney wrote it for John Lennon's young son, Julian, during John and Cynthia Lennon's difficult divorce following John's affair with Yoko Ono. Paul was driving to visit Cynthia and Julian and started singing "Hey Jules, don't make it bad..." wanting to offer comfort. He changed "Jules" to "Jude" simply because it sounded better musically. The song offers encouragement: take a sad situation, acknowledge the pain ("don't carry the world upon your shoulders"), but open yourself up to love and make things better. Interestingly, John Lennon interpreted the song as being directed at him, giving him permission to leave Cynthia for Yoko. Julian himself has expressed a complex "love-hate" relationship with the song, acknowledging the kindness behind it but also its reminder of his parents' painful split.</p>
+                        <p>Arguably one of the most beloved Beatles anthems, "Hey Jude" (1968) has a touching origin story...</p>
                     </div>
-
                     <div class="grid-section">
                         <h3>Michelle</h3>
-                        <p>Ooh là là! This romantic ballad from 1965's <em>Rubber Soul</em> oozes Gallic charm. Paul McCartney had the tune for a while, initially humming faux-French lyrics at parties to emulate the Parisian Left Bank vibe popularised by figures like Juliette Greco. When John suggested turning it into a proper song, Paul sought help with the French lyrics. He asked Jan Vaughan, a French teacher and wife of his friend Ivan Vaughan (who introduced Paul to John!), for a French name and a phrase that rhymed. She came up with "Michelle, ma belle" ("Michelle, my beautiful") and translated "these are words that go together well" into "sont des mots qui vont très bien ensemble". John Lennon contributed the passionate "I love you, I love you, I love you" bridge, inspired by Nina Simone's "I Put a Spell on You". The song paints Michelle simply as beautiful and beloved.</p>
+                        <p>Ooh là là! This romantic ballad from 1965's <em>Rubber Soul</em> oozes Gallic charm...</p>
                     </div>
-
                     <div class="grid-section">
                         <h3>Martha My Dear</h3>
-                        <p>Who was the "silly girl" Paul McCartney was singing to in this cheerful 1968 track from the <em>White Album</em>? None other than his beloved Old English Sheepdog, Martha! Paul bought Martha in 1966, and she was his constant companion during a turbulent time for the band. While Paul explicitly stated the song was for his dog, some read deeper meanings into it, interpreting lines like "don't forget me" or "Help yourself to a bit of what is all around you" as veiled references to his recent breakup with actress Jane Asher and her alleged infidelity. Regardless of subtext, the song captures a feeling of affection and perhaps gentle chiding ("Hold your head up you silly girl, look what you've done"), applicable to a pet or a person.</p>
+                        <p>Who was the "silly girl" Paul McCartney was singing to in this cheerful 1968 track...</p>
                     </div>
-
                      <div class="grid-section">
                         <h3>Dear Prudence</h3>
-                        <p>Another <em>White Album</em> gem born from the Beatles' 1968 trip to Rishikesh, India, to study Transcendental Meditation with Maharishi Mahesh Yogi. "Prudence" was Prudence Farrow, actress Mia Farrow's sister, who was also on the retreat. Prudence became so intensely focused on meditating that she barely left her bungalow for days. Worried, John and George were tasked with coaxing her out to socialize. John wrote the song as a gentle plea: "Dear Prudence, won't you come out to play? Dear Prudence, greet the brand new day... Open up your eyes, see the sunny skies". It's a beautiful, hypnotic invitation to re-engage with the world, inspired by someone taking their spiritual quest perhaps a little too seriously.</p>
+                        <p>Another <em>White Album</em> gem born from the Beatles' 1968 trip to Rishikesh...</p>
                     </div>
-
                      <div class="grid-section">
                         <h3>Lovely Rita</h3>
-                        <p>This jaunty tune from <em>Sgt. Pepper</em> (1967) features another memorable female character. "Rita" is a "meter maid," a term Paul McCartney heard used in America for female traffic wardens, which amused him. He liked the slightly cheeky connotation of "maid" combined with the official "meter". One story suggests the song was inspired by a real traffic warden named Meta Davies who gave Paul a parking ticket outside Abbey Road Studios. Meta claimed Paul asked her name and said it would be good for a song. However, Paul has also denied a direct real-life inspiration, calling it more of a coincidence or fantasy. Either way, the song portrays Rita, the meter maid, as an object of the narrator's quirky affection.</p>
+                        <p>This jaunty tune from <em>Sgt. Pepper</em> (1967) features another memorable female character...</p>
                     </div>
-
                      <div class="grid-section">
                         <h3>Sexy Sadie</h3>
-                        <p>Don't let the name fool you – "Sexy Sadie" wasn't about a seductive woman. This biting track from the <em>White Album</em> (1968) was John Lennon's thinly veiled swipe at Maharishi Mahesh Yogi. John felt disillusioned and betrayed after hearing allegations (primarily from "Magic Alex" Mardas) of the Maharishi making inappropriate advances towards Mia Farrow during the India retreat. John originally wanted to call the song "Maharishi," with much more explicit lyrics, but George Harrison persuaded him to change the title to "Sexy Sadie". The finished lyrics, "Sexy Sadie, what have you done? / You made a fool of everyone," still drip with contempt, accusing the figure of deceit.</p>
+                        <p>Don't let the name fool you – "Sexy Sadie" wasn't about a seductive woman...</p>
                     </div>
-
                      <div class="grid-section">
                         <h3>Julia</h3>
-                        <p>Perhaps the most tender and personal name song, "Julia" (1968) is John Lennon's ode to his mother, Julia Lennon, who was tragically killed when he was 17. Written in India, using a finger-picking style taught to him by Donovan, the song evokes dreamlike images of his mother ("seashell eyes, windy smile") and his feeling of having lost her twice. It also weaves in a reference to his future wife, Yoko Ono, whose name means "child of the sea" in Japanese, with the line "Oceanchild, calls me". It's the only solo Lennon performance in the Beatles' catalogue, a haunting tribute to the two most important women in his life.</p>
+                        <p>Perhaps the most tender and personal name song, "Julia" (1968) is John Lennon's ode to his mother...</p>
                     </div>
-
                      <div class="grid-section">
                         <h3>Penny Lane</h3>
-                        <p>Not a person, but a place that feels like a character. Released as a double A-side with "Strawberry Fields Forever" in 1967, "Penny Lane" is Paul McCartney's nostalgic look back at the sights and sounds of a real street and bus terminus in Liverpool familiar from his and John's childhoods. The lyrics populate the scene with vivid characters: the barber showing photos, the fireman rushing in, the nurse selling poppies, the banker – all drawn from memory. It captures a specific time and place with a blend of realism and dreamlike, slightly psychedelic imagery ("blue suburban skies" mixed with pouring rain).</p>
+                        <p>Not a person, but a place that feels like a character. Released as a double A-side...</p>
                     </div>
-
                     <div class="grid-section">
                          <h3>Sgt. Pepper</h3>
-                         <p>The ultimate conceptual name! For their groundbreaking 1967 album, the Beatles decided to shed their identities and perform as a fictional group: Sgt. Pepper's Lonely Hearts Club Band. The whimsical name apparently came about on a flight when Paul McCartney misheard roadie Mal Evans asking for the salt and pepper ("S" and "P") packets on their meal trays. Sgt. Pepper acts as the album's master of ceremonies, introducing the band and later, "the one and only Billy Shears" (Ringo's persona for "With a Little Help from My Friends").</p>
-                         <p>And the list goes on! Think of Desmond and Molly Jones in "Ob-La-Di, Ob-La-Da," JoJo and Loretta Martin in "Get Back," Mean Mr. Mustard, Polythene Pam, Bungalow Bill, Maxwell Edison... the Beatles certainly knew how to populate their musical world.</p>
+                         <p>The ultimate conceptual name! For their groundbreaking 1967 album...</p>
+                         <p>And the list goes on! Think of Desmond and Molly Jones...</p>
                      </div>
 
 
                     <div class="grid-section full-span">
                         <h2>Did the Beatles Start a Baby Name Boom?</h2>
+
+                        <img src="../assets/beatleschild.png"
+                             alt="Illustration of children inspired by Beatles songs"
+                             class="blog-inline-image"
+                             onerror="this.onerror=null; this.src='https://placehold.co/120x120/cccccc/34495E?text=Beatles+Child';">
+
                         <p>We know the Beatles influenced fashion, music, and culture – but did they influence what people named their babies? It's a fascinating question for us name nerds! Let's look at some of the prominent names and see if their appearance in a hit song coincided with a rise on the baby name charts, particularly in the US and UK around the time of the songs' releases.</p>
                         <div class="table-wrapper">
                             <table>
@@ -329,11 +321,11 @@
                         <p class="text-center text-sm text-medium-gray mt-2">Note: Inspirations are based on band members' accounts and common interpretations. Trend data is approximate.</p>
                         <p>So, what does this tell us? It seems the "Beatles Baby Name Effect" was real, but selective!</p>
                         <ul>
-                            <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts in popularity right after their respective songs became massive hits...</li>
+                            <li><strong>Clear Hits:</strong> Names like <strong>Michelle</strong> and <strong>Jude</strong> saw significant boosts...</li>
                             <li><strong>Minimal Impact:</strong> Classic, established names like <strong>Eleanor</strong>, <strong>Lucy</strong>, and <strong>Julia</strong> didn't seem dramatically swayed...</li>
                             <li><strong>No Boost for the Declining or Rare:</strong> Names already fading like <strong>Rita</strong> and <strong>Martha</strong>, weren't revived...</li>
-                            <li><strong>Negative Connotations Matter:</strong> <strong>Sadie</strong> was at its lowest point when "Sexy Sadie" came out...</li>
-                            <li><strong>Sustaining Power?:</strong> For <strong>Penny</strong>, already popular, the song likely helped keep the name in the public eye.</li>
+                            <li><strong>Negative Connotations Matter:</strong> <strong>Sadie</strong> was at its lowest point...</li>
+                            <li><strong>Sustaining Power?:</strong> For <strong>Penny</strong>, already popular...</li>
                         </ul>
                         <p>It shows that while a hit song can definitely put a name on the map... Pop culture influence is powerful, but unpredictable!</p>
                     </div>
@@ -343,9 +335,9 @@
                         <p>Why did the Beatles bother using specific names? ... Their choices show the power a name holds in songwriting.</p>
                         <ul>
                             <li><strong>Making Feelings Concrete:</strong> Abstract ideas like loneliness become instantly relatable...</li>
-                            <li><strong>Adding Emotional Weight:</strong> Knowing the real stories behind "Julia" or "Hey Jude" adds layers of poignant depth...</li>
+                            <li><strong>Adding Emotional Weight:</strong> Knowing the real stories behind "Julia" or "Hey Jude" adds layers...</li>
                             <li><strong>Sketching Characters Quickly:</strong> Names help bring scenes to life...</li>
-                            <li><strong>Creating Intrigue and Legend:</strong> Names like "Lucy" or "Sexy Sadie" became iconic partly because of the speculation...</li>
+                            <li><strong>Creating Intrigue and Legend:</strong> Names like "Lucy" or "Sexy Sadie" became iconic...</li>
                             <li><strong>Sounding Good:</strong> Sometimes, it's just about the music!...</li>
                         </ul>
                         <p>The Beatles used names in all these ways... It highlights how versatile and powerful naming is...</p>
