@@ -87,19 +87,20 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; } /* Removed top margin */
-        /* UPDATED: Inline images are now block, centered, with margin */
+        .blog-header-image { @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
         .blog-inline-image {
-            @apply block mx-auto my-4 rounded-lg shadow-sm object-contain w-full max-w-[180px]; /* Adjust max-w as needed */
+            @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[180px]; /* Increased vertical margin */
         }
 
         /* Typography for blog content */
-        .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-8 text-center text-stork-title; }
-        .blog-content h2 { @apply text-3xl md:text-4xl font-bold pt-8 mb-6 text-stork-title; }
-        .blog-content h3 { @apply text-2xl md:text-3xl font-bold pt-6 mb-4 text-stork-title; }
-        .blog-content h4 { @apply text-xl md:text-2xl font-bold pt-4 mb-4 text-stork-title; }
+        .blog-content h1 { @apply text-5xl md:text-6xl font-bold mb-10 text-center text-stork-title; } /* Increased bottom margin */
+        /* UPDATED Header Styles */
+        .blog-content h2 { @apply text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; } /* Increased top margin, reduced bottom margin, added border */
+        .blog-content h3 { @apply text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; } /* Increased top margin */
+        .blog-content h4 { @apply text-xl md:text-2xl font-bold mt-6 mb-3 text-stork-title; } /* Increased top margin, reduced bottom margin */
+
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-5 text-stork-text text-base md:text-lg leading-relaxed; } /* Increased bottom margin */
         .blog-content ul li, .blog-content ol li { @apply mb-2; }
         .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
@@ -119,17 +120,23 @@
         }
         .grid-section {
              break-inside: avoid; /* Attempt to keep sections from breaking */
+             @apply mb-6; /* Add some bottom margin to grid sections */
         }
 
         @media (min-width: 768px) { /* md breakpoint */
             .content-grid {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two equal columns */
-                gap: 2.5rem; /* gap-10 */
+                gap: 3rem; /* Increased gap slightly (gap-12) */
             }
              /* Ensure elements inside sections don't break weirdly */
              .grid-section > * {
                  break-inside: avoid-column;
+             }
+             /* Add more top spacing to the first h2 in each column */
+             .grid-section:nth-child(odd) h2:first-of-type,
+             .grid-section:nth-child(even) h2:first-of-type {
+                 @apply mt-0 pt-0; /* Remove top spacing for first h2 in grid sections */
              }
         }
 
