@@ -39,11 +39,11 @@
                         'accent-muted': '#64748b',
                         'accent-muted-light': '#cbd5e1',
                         'off-white': '#f8fafc',
-                        'indigo-50': '#eef2ff', // Adjusted for box
+                        'indigo-50': '#eef2ff',
                         'indigo-100': '#e0e7ff',
-                        'indigo-200': '#c7d2fe', // Adjusted for box border
+                        'indigo-200': '#c7d2fe',
                         'indigo-700': '#4338ca',
-                        'indigo-800': '#3730a3', // Adjusted for box title
+                        'indigo-800': '#3730a3',
                         'amber-100': '#fef3c7',
                         'amber-500': '#f59e0b'
                     },
@@ -87,24 +87,36 @@
         main { flex-grow: 1; position: relative; }
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-xl h-auto object-contain; }
-        /* Adjusted inline image styles for better responsive behavior */
-        .blog-inline-image-left { @apply float-left w-1/3 sm:w-1/4 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[120px] sm:max-w-[150px]; }
-        .blog-inline-image-right { @apply float-right w-1/3 sm:w-1/4 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[120px] sm:max-w-[150px]; }
-        .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats after the article content */
+        /* UPDATED: Reduced max-width for header image */
+        .blog-header-image { @apply mx-auto my-6 rounded-lg shadow-md w-full max-w-lg h-auto object-contain; }
+        /* UPDATED: Reduced max-width for inline images */
+        .blog-inline-image-left { @apply float-left w-1/4 sm:w-1/5 mr-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
+        .blog-inline-image-right { @apply float-right w-1/4 sm:w-1/5 ml-4 mb-2 rounded-lg shadow-sm object-contain max-w-[100px] sm:max-w-[120px]; }
 
-        /* Ensure headings and specific divs clear the floated images */
-        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content .table-wrapper, .blog-content .box { @apply clear-both; }
+        .blog-content::after { content: ""; display: table; clear: both; } /* Clear floats */
 
-        /* UPDATED Typography for blog content */
-        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-8 text-center text-stork-title; } /* Increased size, added margin-bottom */
-        .blog-content h2 { @apply text-3xl md:text-4xl font-bold pt-8 mb-6 text-stork-title; } /* Increased size, bold, added margin-bottom */
-        .blog-content h3 { @apply text-2xl md:text-3xl font-bold pt-6 mb-4 text-stork-title; } /* Increased size, bold, added margin-bottom */
-        .blog-content h4 { @apply text-xl md:text-2xl font-bold pt-4 mb-4 text-stork-title; } /* Increased size, bold, added margin-bottom */
+        /* Ensure certain elements don't break across columns and clear floats */
+        .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4,
+        .blog-content p, .blog-content ul, .blog-content ol, .blog-content .box,
+        .blog-content img.blog-inline-image-left, .blog-content img.blog-inline-image-right,
+        .blog-content .table-wrapper {
+            @apply clear-both; /* Ensure they clear floats */
+            break-inside: avoid; /* Try to prevent breaking inside columns */
+        }
+        /* Allow inline images to float again within columns, but clear them */
+         .blog-inline-image-left { @apply float-left; }
+         .blog-inline-image-right { @apply float-right; }
+
+
+        /* Typography for blog content */
+        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-8 text-center text-stork-title; }
+        .blog-content h2 { @apply text-3xl md:text-4xl font-bold pt-8 mb-6 text-stork-title; }
+        .blog-content h3 { @apply text-2xl md:text-3xl font-bold pt-6 mb-4 text-stork-title; }
+        .blog-content h4 { @apply text-xl md:text-2xl font-bold pt-4 mb-4 text-stork-title; }
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4; }
         .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-4 text-stork-text text-base md:text-lg leading-relaxed; }
         .blog-content ul li, .blog-content ol li { @apply mb-2; }
-        .blog-content strong { @apply font-bold text-stork-title; } /* Changed to font-bold */
+        .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content table { @apply border-collapse w-full mb-6 text-sm; }
         .blog-content th, .blog-content td { @apply border border-gray-300 p-3 text-left align-top; }
         .blog-content th { @apply bg-gray-100 font-semibold text-stork-title; }
@@ -132,7 +144,7 @@
         .blog-nav svg { width: 28px; height: 28px; stroke: #34495E; }
         .blog-nav.hidden { opacity: 0; pointer-events: none; }
 
-        /* Responsive adjustments for navigation arrows */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .blog-nav { padding: 0.5rem; /* p-2 */ }
             #prev-post { left: 10px; }
@@ -141,6 +153,30 @@
         }
          @media (max-width: 640px) {
             .blog-nav { display: none; /* Hide arrows on very small screens, rely on swipe */ }
+        }
+
+        /* NEW: Two-column layout for medium screens and up */
+        @media (min-width: 768px) { /* md breakpoint */
+            .blog-content {
+                column-count: 2;
+                column-gap: 2.5rem; /* Adjust gap as needed (e.g., Tailwind's gap-10) */
+            }
+             /* Prevent header image from being part of columns */
+            .blog-header-image {
+                 column-span: all;
+            }
+             /* Ensure floated images still work within columns, but might look odd */
+             .blog-inline-image-left, .blog-inline-image-right {
+                 margin-top: 0.25rem; /* Add a little space above floated images in columns */
+            }
+            /* Boxes should ideally span both columns or sit neatly within one */
+            /* This might need more specific adjustments depending on content */
+             .box {
+                /* Option 1: Try to keep within one column (default behavior) */
+                 break-inside: avoid;
+                 /* Option 2: Make boxes span columns (uncomment if needed, might cause layout shifts) */
+                 /* column-span: all; */
+            }
         }
 
     </style>
@@ -349,7 +385,6 @@
             ];
 
             // --- !! IMPORTANT: Set the index for THIS specific page !! ---
-            // Make sure this index matches the position of 'german2025.html' in the blogPosts array above.
             const currentPostIndex = 2;
 
             const swipeThreshold = 60; // Minimum pixels swiped to trigger navigation
@@ -364,69 +399,51 @@
             let touchEndX = 0;
 
             // --- Functions ---
-            // Navigate to the next post in the list
             function navigateNext() {
                 if (currentPostIndex < blogPosts.length - 1) {
                     window.location.href = blogPosts[currentPostIndex + 1];
                 }
             }
-            // Navigate to the previous post in the list
             function navigatePrev() {
                 if (currentPostIndex > 0) {
                     window.location.href = blogPosts[currentPostIndex - 1];
                 }
             }
-            // Record the starting X position of a touch
             function handleTouchStart(event) {
-                // Only track single touches
                 if (event.touches.length === 1) {
                     touchStartX = event.touches[0].clientX;
                 }
             }
-            // Record the ending X position and check for swipe
             function handleTouchEnd(event) {
-                 // Only track single touches ending
                 if (event.changedTouches.length === 1) {
                     touchEndX = event.changedTouches[0].clientX;
                     handleSwipeGesture();
                 }
             }
-            // Determine if a swipe occurred and navigate
             function handleSwipeGesture() {
-                // Ensure start touch was recorded
                 if (touchStartX === 0) return;
-
                 const deltaX = touchEndX - touchStartX;
-                // Check if swipe distance is sufficient and predominantly horizontal
                 if (Math.abs(deltaX) > swipeThreshold) {
-                    if (deltaX < 0) { // Swipe left (towards next post)
-                        navigateNext();
-                    } else { // Swipe right (towards previous post)
-                        navigatePrev();
-                    }
+                    if (deltaX < 0) { navigateNext(); }
+                    else { navigatePrev(); }
                 }
-                // Reset coordinates after processing
                 touchStartX = 0;
                 touchEndX = 0;
             }
-            // Show/hide navigation buttons based on current post index
             function updateNavButtonsVisibility() {
-                if (!prevButton || !nextButton) return; // Ensure buttons exist
-                prevButton.classList.toggle('hidden', currentPostIndex <= 0); // Hide prev on first post
-                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1); // Hide next on last post
+                if (!prevButton || !nextButton) return;
+                prevButton.classList.toggle('hidden', currentPostIndex <= 0);
+                nextButton.classList.toggle('hidden', currentPostIndex >= blogPosts.length - 1);
             }
 
             // --- Initialization ---
-            updateNavButtonsVisibility(); // Set initial button visibility
+            updateNavButtonsVisibility();
 
             // --- Event Listeners ---
-            // Add touch listeners for swipe navigation
             if (swipeArea) {
-                // Use passive: true for better scroll performance, but ensure preventDefault isn't needed
                 swipeArea.addEventListener('touchstart', handleTouchStart, { passive: true });
                 swipeArea.addEventListener('touchend', handleTouchEnd, { passive: true });
             }
-            // Add click listeners for button navigation
             if (prevButton) { prevButton.addEventListener('click', navigatePrev); }
             if (nextButton) { nextButton.addEventListener('click', navigateNext); }
         });
