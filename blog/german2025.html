@@ -87,19 +87,21 @@
         main { flex-grow: 1; position: relative; } /* Keep main relative for nav arrows */
 
         /* Blog post specific styles */
-        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-2xl h-auto object-contain; } /* Wider header image */
-        .blog-inline-image { @apply my-4 rounded-lg shadow-sm object-contain w-full max-w-xs mx-auto; } /* Smaller centered inline images */
+        .blog-header-image { @apply mx-auto my-8 rounded-lg shadow-md w-full max-w-3xl h-auto object-contain; } /* Even wider header image */
+        .blog-inline-image { @apply my-6 rounded-lg shadow-sm object-contain w-full max-w-sm mx-auto; } /* Slightly larger centered inline images */
         .blog-content::after { content: ""; display: table; clear: both; }
 
         /* Headings, tables, boxes span columns */
-        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-2; } /* Span columns on md+ */
+        .blog-content h1, .blog-content h2, .blog-content .table-wrapper, .blog-content .box, .blog-content .blog-header-image, .blog-content .blog-inline-image { @apply md:col-span-3; } /* Span 3 columns on md+ */
 
-        .blog-content h1 { @apply text-3xl md:text-4xl mb-6 text-center; } /* Increased margin */
-        .blog-content h2 { @apply text-2xl md:text-3xl pt-8 mb-4 border-b border-gray-300 pb-2; } /* Increased top padding */
-        .blog-content h3 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; }
-        .blog-content h4 { @apply text-lg md:text-xl pt-2 mb-2 font-semibold; }
-        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4 break-inside-avoid-column; } /* Avoid column breaks in paragraphs */
-        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; } /* Avoid column breaks in lists */
+        /* Updated heading styles */
+        .blog-content h1 { @apply text-4xl md:text-5xl mb-8 text-center; } /* Larger font, more margin */
+        .blog-content h2 { @apply text-3xl md:text-4xl pt-10 mb-6 border-b border-gray-300 pb-3; } /* Larger font, more padding/margin */
+        .blog-content h3 { @apply text-2xl md:text-3xl pt-6 mb-4 font-semibold; } /* Larger font, more padding/margin */
+        .blog-content h4 { @apply text-xl md:text-2xl pt-4 mb-3 font-semibold; } /* Larger font, more padding/margin */
+
+        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-4 break-inside-avoid-column; }
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-1 mb-4 text-stork-text text-base md:text-lg leading-relaxed break-inside-avoid-column; }
         .blog-content ul li::marker, .blog-content ol li::marker { @apply text-stork-accent; }
         .blog-content ul li, .blog-content ol li { @apply mb-1; }
         .blog-content strong { @apply font-semibold; }
@@ -111,7 +113,7 @@
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover underline transition duration-200; }
 
         /* Box styling */
-        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm; }
+        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm break-inside-avoid-column; } /* Avoid breaking boxes */
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block text-base; }
 
         /* --- Navigation Arrows Styles --- */
@@ -152,12 +154,12 @@
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-12 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
 
-        <article class="blog-content md:columns-2 md:gap-8">
+        <article class="blog-content md:columns-3 md:gap-10">
             <h1>German Baby Names 2025: What's Hot, What's Not, and What's Making a Comeback!</h1>
 
-            <img src="../assets/germanfamily.png" alt="Happy German family with newborn" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/700x400/f8fafc/6b7280?text=German+Family';">
+            <img src="../assets/germanfamily.png" alt="Happy German family with newborn" class="blog-header-image" onerror="this.onerror=null; this.src='https://placehold.co/900x500/f8fafc/6b7280?text=German+Family';">
 
             <p>Choosing a baby name? Oh, the excitement! It's a big decision, mixing tradition, personal taste, and maybe even a peek at what's trending. If you're expecting a little one in 2025 or just love names, let's dive into the wonderful world of German baby names! We've got the scoop on the reigning champs, the cool new kids on the block, and some blasts from the past making a surprising return.</p>
 
