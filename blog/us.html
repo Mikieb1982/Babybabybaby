@@ -5,39 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>US Baby Names 2025: Fun Trends & Top Picks! - The Stork Name Drop Blog</title>
 
-    <link rel="icon" href="favicon.png" type="image/png"> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Basic Tailwind CSS Configuration (Adapted from example)
+        // Tailwind CSS Configuration (Consistent with blog.html)
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        // Use Nunito Sans as the primary font
                         sans: ['"Nunito Sans"', 'sans-serif'],
-                        serif: ['Georgia', 'serif'], // Fallback serif
+                        serif: ['Georgia', 'serif'],
                     },
                     colors: {
-                        // Define custom colors for consistent branding (from example)
                         'stork-title': '#2C3E50',
                         'stork-text': '#34495E',
                         'stork-accent': '#1ABC9C',
                         'stork-accent-hover': '#16A085',
                         'soft-beige': '#F5F5DC',
-                        'off-white': '#f8fafc', // Background for main content
-                        'indigo-50': '#eef2ff', // For info boxes
-                        'indigo-200': '#c7d2fe', // Border for info boxes
-                        'indigo-700': '#4338ca', // Text for info boxes
-                        'indigo-800': '#3730a3', // Title for info boxes
+                        'dark-text': '#374151', // Added from blog.html just in case
+                        'medium-gray': '#6B7280', // Added from blog.html just in case
+                        'off-white': '#f8fafc',
+                        'indigo-50': '#eef2ff',
+                        'indigo-200': '#c7d2fe',
+                        'indigo-700': '#4338ca',
+                        'indigo-800': '#3730a3',
+                        // Added button/feedback colors from blog.html for consistency if needed later
+                        'button-active': '#60A5FA',
+                        'button-active-hover': '#3B82F6',
+                        'button-inactive-hover-bg': '#F9FAFB',
+                        'button-inactive-hover-border': '#1F2937',
+                        'error-red': '#EF4444',
+                        'save-button': '#34D399',
+                        'save-button-hover': '#059669',
+                        'remove-button': '#F87171',
+                        'remove-button-hover': '#DC2626',
+                        'copy-button': '#9CA3AF',
+                        'copy-button-hover': '#4B5563',
+                        'accent-muted': '#64748b',
+                        'accent-muted-light': '#cbd5e1',
+                        'indigo-100': '#e0e7ff',
+                        'amber-100': '#fef3c7',
+                        'amber-500': '#f59e0b'
                     },
                     animation: {
-                        // Add simple animations (from example)
+                        // Consistent animations
                         'fade-in': 'fade-in 0.5s ease-out',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-down': 'fade-in-down 0.5s ease-out',
+                        'fade-out-up': 'fade-out-up 0.5s ease-out',
+                        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out',
+                        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
+                        'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
+                        'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
                     },
                     keyframes: {
-                        // Define keyframes for animations (from example)
+                        // Consistent keyframes
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'fade-out-up': { 'from': { opacity: '1', transform: 'translateY(0px)' }, 'to': { opacity: '0', transform: 'translateY(-10px)' } },
+                        'slide-in-from-left': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
+                        'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
+                        'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
                     },
                 }
             }
@@ -48,25 +78,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Basic styles adapted from the example */
+        /* Basic styles adapted from blog.html */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+        .btn-feedback { @apply transform active:scale-95; } /* Added from blog.html */
 
-        /* Layout styles */
+        /* Layout styles consistent with blog.html */
         html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
         body {
             flex-grow: 1;
             padding-top: 64px; /* Adjust for fixed header height */
             font-family: 'Nunito Sans', sans-serif;
             color: #34495E; /* Default text color (stork-text) */
-            /* Optional background pattern from example */
-            /* bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed */
-            background-color: #f0f4f8; /* Simple light background fallback */
+            /* Background pattern from blog.html (path relative to blog/ folder) */
+            background-image: url('../assets/back.png');
+            @apply bg-cover bg-center bg-no-repeat bg-fixed;
         }
         main { flex-grow: 1; position: relative; }
 
-        /* Blog post specific styles adapted from the example */
+        /* Blog post specific styles adapted from the German blog example */
         .blog-header-image {
             @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-md h-auto object-contain;
         }
@@ -74,8 +105,8 @@
             @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[120px];
         }
 
-        /* Typography for blog content */
-        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-8 text-center text-stork-title; }
+        /* Typography for blog content (consistent) */
+        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-10 text-center text-stork-title; } /* Adjusted margin */
         .blog-content h2 { @apply text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
         .blog-content h3 { @apply text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
         .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-5; }
@@ -84,47 +115,50 @@
         .blog-content strong { @apply font-bold text-stork-title; }
         .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
 
-        /* Simple box styling for notes/facts */
+        /* Simple box styling for notes/facts (consistent) */
         .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
         .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
 
-        /* Grid Layout (from example) */
+        /* Grid Layout (consistent) */
         .content-grid { }
         .grid-section {
              break-inside: avoid;
-             @apply mb-6; /* Bottom margin for sections */
+             @apply mb-6;
         }
 
         @media (min-width: 768px) { /* md breakpoint */
             .content-grid {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns on medium screens and up */
-                gap: 3rem; /* Equivalent to gap-12 */
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 3rem;
             }
              .grid-section > * {
                  break-inside: avoid-column;
              }
-             /* Remove extra top margin for first h2 in grid columns */
              .grid-section:nth-child(odd) h2:first-of-type,
              .grid-section:nth-child(even) h2:first-of-type {
                  @apply mt-0 pt-0;
              }
         }
     </style>
-</head>
 
-<body class="font-sans text-stork-text overflow-x-hidden pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+    </head>
+<body class="font-sans text-stork-text overflow-x-hidden pt-16">
+
+    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" title="Home" class="z-20">
-                <img src="logo.png" alt="Logo"
+            <a href="../index.html" title="The Stork Name Drop Home" class="z-20">
+                <img src="../assets/logo.png" alt="The Stork Name Drop Logo"
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
             <nav class="flex space-x-4 sm:space-x-6 items-center">
-                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
-                <a href="#" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
-                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
-            </nav>
+                 <a href="../index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                 <a href="../index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
+                 <a href="../blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                 <a href="../datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
+                 <a href="../aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+             </nav>
         </div>
     </header>
 
@@ -133,8 +167,8 @@
         <article class="blog-content">
             <h1>US Baby Names 2025: Fun Trends & Top Picks!</h1>
 
-            <img src="us.png"
-                 alt="Illustration related to US baby names"
+            <img src="../assets/us.png"
+                 alt="Illustration representing US baby names, perhaps a map or flag motif"
                  class="blog-header-image"
                  onerror="this.onerror=null; this.src='https://placehold.co/512x341/A5D8DD/2C3E50?text=US+Baby+Names';">
 
@@ -147,7 +181,7 @@
                     <h2>🏆 The Chart Toppers: 2025's Most Popular US Picks</h2>
                     <p>Wondering which names are currently winning hearts across the U.S.? Based on the latest buzz and Social Security data, these names are sitting pretty at the top. You'll likely hear them quite a bit on the playground!</p>
 
-                    <img src="placeholder_baby.png"
+                    <img src="../assets/placeholder_baby.png"
                          alt="Illustration of a cute baby"
                          class="blog-inline-image"
                          onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Baby';">
@@ -186,7 +220,7 @@
                     <h2>✨ What's Trending? Fun US Naming Vibes for 2025</h2>
                     <p>Beyond the top 10, some really cool trends are bubbling up stateside:</p>
 
-                    <img src="placeholder_trends.png"
+                    <img src="../assets/placeholder_trends.png"
                          alt="Icon representing trends"
                          class="blog-inline-image"
                          onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Trends';">
@@ -213,7 +247,7 @@
                     <h2>🤔 Tips for Tackling "The Name Game"</h2>
                     <p>Choosing <em>the</em> name can feel like a big decision (because it is!), but it can also be fun. Here are a few friendly tips:</p>
 
-                    <img src="placeholder_lightbulb.png"
+                    <img src="../assets/placeholder_lightbulb.png"
                          alt="Icon of a lightbulb for ideas"
                          class="blog-inline-image"
                          onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Tips';">
@@ -233,7 +267,7 @@
 
                      <div class="box">
                         <span class="box-title">Share Your Thoughts!</span>
-                        What names are on your list? Let us know your favorites in the comments below (if comments were enabled)!
+                        What names are on your list? Let us know your favorites! (Maybe add a link to a contact page or social media if applicable).
                      </div>
                 </div>
 
@@ -241,9 +275,9 @@
 
     </main>
 
-    <footer class="text-center py-6 mt-10 bg-gray-100 text-gray-600 text-sm">
-        <p>&copy; 2025 Your Blog Name. All rights reserved.</p>
-        </footer>
+    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="../privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="../terms.html" class="hover:underline">Terms of Service</a>
+    </footer>
 
 </body>
 </html>
