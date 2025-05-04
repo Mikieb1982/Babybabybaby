@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://thestorknamedrop.com/blog.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>weekly</changefreq>
+    <lastmod>2025-05-04</lastmod> <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -23,27 +23,37 @@
   </url>
 
   <url>
-    <loc>https://thestorknamedrop.com/blog/middle.html</loc>
+    <loc>https://thestorknamedrop.com/blog/starwars.html</loc>
+    <lastmod>2025-05-04</lastmod> <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thestorknamedrop.com/blog/us.html</loc>
+    <lastmod>2025-05-04</lastmod> <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thestorknamedrop.com/blog/beatles.html</loc>
     <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-   <url>
-    <loc>https://thestorknamedrop.com/blog/uniqueeng.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-   <url>
-    <loc>https://thestorknamedrop.com/blog/german2025.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-   <url>
+  <url>
     <loc>https://thestorknamedrop.com/blog/song.html</loc>
     <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-   <url>
-    <loc>https://thestorknamedrop.com/blog/beatles.html</loc>
+  <url>
+    <loc>https://thestorknamedrop.com/blog/german2025.html</loc>
+    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thestorknamedrop.com/blog/uniqueeng.html</loc>
+    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thestorknamedrop.com/blog/middle.html</loc>
     <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -60,6 +70,4 @@
   </url>
 
 </urlset>
-```
 
-I've replaced all instances of `https://www.yourdomain.com/` with `https://thestorknamedrop.com/`. Remember to update the `<lastmod>` dates whenever you modify the content of the respective pag
