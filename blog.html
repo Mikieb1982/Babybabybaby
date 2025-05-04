@@ -9,7 +9,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Tailwind CSS Configuration
+        // Tailwind CSS Configuration (Same as provided)
         tailwind.config = {
             theme: {
                 extend: {
@@ -72,30 +72,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 
     <style>
-        /* Basic styles */
+        /* Basic styles (Same as provided) */
         .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
         .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
-        /* Layout styles */
+        /* Layout styles (Same as provided) */
         html, body { min-height: 100%; display: flex; flex-direction: column; }
-        body { flex-grow: 1; padding-top: 64px; /* Adjusted for fixed header height */ font-family: 'Nunito Sans', sans-serif; color: #34495E; }
+        body { flex-grow: 1; padding-top: 64px; font-family: 'Nunito Sans', sans-serif; color: #34495E; }
         main { flex-grow: 1; }
 
-        /* Specific styles for blog cards */
+        /* Specific styles for blog cards (Same as provided) */
         .blog-card {
             @apply group block bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden w-full max-w-sm;
         }
         .blog-card-image {
-            @apply w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105; /* Added hover effect */
+            @apply w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105;
         }
         .blog-card-content {
             @apply p-4;
         }
-        /* UPDATED: Increased font size */
         .blog-card-title {
-            @apply text-xl font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors; /* Changed text-lg to text-xl */
+            @apply text-xl font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors;
         }
         .blog-card-description {
             @apply text-sm text-stork-text mb-3;
@@ -103,7 +102,6 @@
         .blog-card-link {
              @apply text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors;
         }
-
     </style>
 
     <script type="text/javascript">
@@ -202,6 +200,11 @@
                 </div>
             </a>
 
+            <a href="blog/us.html" class="blog-card"> <img src="assets/us.png" alt="US Names 2025 Tile" class="blog-card-image"
+                     onerror="this.onerror=null; this.src='https://placehold.co/300x192/A5D8DD/2C3E50?text=US+Names+2025';"> <div class="blog-card-content">
+                    <h3 class="blog-card-title">US Baby Names 2025</h3> <p class="blog-card-description">Explore top US baby names and trends.</p> <span class="blog-card-link">Read More &rarr;</span>
+                </div>
+            </a>
             </div> </main>
 
     <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
@@ -210,3 +213,4 @@
 
 </body>
 </html>
+
