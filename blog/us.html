@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>US Baby Names 2025: Fun Trends & Top Picks! - The Stork Name Drop Blog</title>
+
+    <link rel="icon" href="favicon.png" type="image/png"> <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Basic Tailwind CSS Configuration (Adapted from example)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        // Use Nunito Sans as the primary font
+                        sans: ['"Nunito Sans"', 'sans-serif'],
+                        serif: ['Georgia', 'serif'], // Fallback serif
+                    },
+                    colors: {
+                        // Define custom colors for consistent branding (from example)
+                        'stork-title': '#2C3E50',
+                        'stork-text': '#34495E',
+                        'stork-accent': '#1ABC9C',
+                        'stork-accent-hover': '#16A085',
+                        'soft-beige': '#F5F5DC',
+                        'off-white': '#f8fafc', // Background for main content
+                        'indigo-50': '#eef2ff', // For info boxes
+                        'indigo-200': '#c7d2fe', // Border for info boxes
+                        'indigo-700': '#4338ca', // Text for info boxes
+                        'indigo-800': '#3730a3', // Title for info boxes
+                    },
+                    animation: {
+                        // Add simple animations (from example)
+                        'fade-in': 'fade-in 0.5s ease-out',
+                        'fade-in-down': 'fade-in-down 0.5s ease-out',
+                    },
+                    keyframes: {
+                        // Define keyframes for animations (from example)
+                        'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        'fade-in-down': { '0%': { opacity: '0', transform: 'translateY(-10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic styles adapted from the example */
+        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
+        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
+
+        /* Layout styles */
+        html, body { min-height: 100%; display: flex; flex-direction: column; overflow-x: hidden; }
+        body {
+            flex-grow: 1;
+            padding-top: 64px; /* Adjust for fixed header height */
+            font-family: 'Nunito Sans', sans-serif;
+            color: #34495E; /* Default text color (stork-text) */
+            /* Optional background pattern from example */
+            /* bg-[url('../assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed */
+            background-color: #f0f4f8; /* Simple light background fallback */
+        }
+        main { flex-grow: 1; position: relative; }
+
+        /* Blog post specific styles adapted from the example */
+        .blog-header-image {
+            @apply mx-auto mb-8 mt-0 rounded-lg shadow-md w-full max-w-md h-auto object-contain;
+        }
+        .blog-inline-image {
+            @apply block mx-auto my-6 rounded-lg shadow-sm object-contain w-full max-w-[120px];
+        }
+
+        /* Typography for blog content */
+        .blog-content h1 { @apply text-4xl md:text-5xl font-bold mb-8 text-center text-stork-title; }
+        .blog-content h2 { @apply text-3xl md:text-4xl font-bold mt-10 mb-5 pb-2 border-b border-gray-300 text-stork-title; }
+        .blog-content h3 { @apply text-2xl md:text-3xl font-bold mt-8 mb-4 text-stork-title; }
+        .blog-content p { @apply text-stork-text text-base md:text-lg leading-relaxed mb-5; }
+        .blog-content ul, .blog-content ol { @apply list-disc pl-6 space-y-2 mb-5 text-stork-text text-base md:text-lg leading-relaxed; }
+        .blog-content ul li, .blog-content ol li { @apply mb-2; }
+        .blog-content strong { @apply font-bold text-stork-title; }
+        .blog-content a { @apply text-stork-accent hover:text-stork-accent-hover transition duration-200; }
+
+        /* Simple box styling for notes/facts */
+        .blog-content .box { @apply bg-indigo-50 border border-indigo-200 rounded-md p-4 my-6 text-sm text-indigo-700; }
+        .blog-content .box-title { @apply font-semibold text-indigo-800 mb-2 block; }
+
+        /* Grid Layout (from example) */
+        .content-grid { }
+        .grid-section {
+             break-inside: avoid;
+             @apply mb-6; /* Bottom margin for sections */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            .content-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns on medium screens and up */
+                gap: 3rem; /* Equivalent to gap-12 */
+            }
+             .grid-section > * {
+                 break-inside: avoid-column;
+             }
+             /* Remove extra top margin for first h2 in grid columns */
+             .grid-section:nth-child(odd) h2:first-of-type,
+             .grid-section:nth-child(even) h2:first-of-type {
+                 @apply mt-0 pt-0;
+             }
+        }
+    </style>
+</head>
+
+<body class="font-sans text-stork-text overflow-x-hidden pt-16"> <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" title="Home" class="z-20">
+                <img src="logo.png" alt="Logo"
+                     class="h-12 w-12 object-contain"
+                     onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+            </a>
+            <nav class="flex space-x-4 sm:space-x-6 items-center">
+                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
+                <a href="#" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a>
+                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down px-4 sm:px-6 lg:px-8">
+
+        <article class="blog-content">
+            <h1>US Baby Names 2025: Fun Trends & Top Picks!</h1>
+
+            <img src="us.png"
+                 alt="Illustration related to US baby names"
+                 class="blog-header-image"
+                 onerror="this.onerror=null; this.src='https://placehold.co/512x341/A5D8DD/2C3E50?text=US+Baby+Names';">
+
+            <p>Hey soon-to-be parents! Congratulations! You're embarking on one of the most exciting adventures – parenthood! And right up there with picking out tiny socks and debating stroller features is the big quest: choosing the perfect name for your little one. It's a mix of excitement, maybe a little pressure, and <em>definitely</em> a lot of scrolling through lists, right?</p>
+            <p>Don't worry, we've got you covered! Let's dive into what's hot, what's classic, and what's just plain cool in the world of baby names for 2025, specifically focusing on trends popular in the US.</p>
+
+            <div class="content-grid">
+
+                <div class="grid-section">
+                    <h2>🏆 The Chart Toppers: 2025's Most Popular US Picks</h2>
+                    <p>Wondering which names are currently winning hearts across the U.S.? Based on the latest buzz and Social Security data, these names are sitting pretty at the top. You'll likely hear them quite a bit on the playground!</p>
+
+                    <img src="placeholder_baby.png"
+                         alt="Illustration of a cute baby"
+                         class="blog-inline-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Baby';">
+
+                    <h3>Top Picks: Girls</h3>
+                    <ul>
+                        <li><strong>Olivia:</strong> Still reigning supreme! A beautiful, classic choice.</li>
+                        <li><strong>Emma:</strong> Timeless, sweet, and always elegant.</li>
+                        <li><strong>Charlotte:</strong> Royal vibes and oh-so-charming.</li>
+                        <li><strong>Amelia:</strong> A lovely name with a gentle strength.</li>
+                        <li><strong>Sophia:</strong> Wise and wonderful, a perennial favorite.</li>
+                        <li><strong>Mia:</strong> Short, sweet, and internationally loved.</li>
+                        <li><strong>Isabella:</strong> Romantic and sophisticated.</li>
+                        <li><strong>Ava:</strong> Glamorous yet simple, a real star.</li>
+                        <li><strong>Evelyn:</strong> Vintage charm meets modern appeal.</li>
+                        <li><strong>Luna:</strong> Magical, celestial, and increasingly popular.</li>
+                    </ul>
+
+                    <h3>Top Picks: Boys</h3>
+                    <ul>
+                        <li><strong>Liam:</strong> Strong, friendly, and holding the top spot!</li>
+                        <li><strong>Noah:</strong> Calm, classic, and universally liked.</li>
+                        <li><strong>Oliver:</strong> A cheerful and charming favorite (pairs nicely with Olivia!).</li>
+                        <li><strong>James:</strong> A regal name that never goes out of style.</li>
+                        <li><strong>Elijah:</strong> Strong biblical roots with a smooth sound.</li>
+                        <li><strong>Mateo:</strong> A stylish name with Spanish flair gaining US popularity.</li>
+                        <li><strong>Theodore:</strong> Dignified yet adorable (Teddy!).</li>
+                        <li><strong>Henry:</strong> Classic, sturdy, and fit for a king (or a cute baby!).</li>
+                        <li><strong>Lucas:</strong> Friendly, approachable, and gaining ground.</li>
+                        <li><strong>William:</strong> A true classic – strong, traditional, and versatile.</li>
+                    </ul>
+                    <p>These names beautifully blend the familiar with the fresh. Whether you love a popular name or prefer something less common, it's fun to see what's trending!</p>
+                </div>
+
+                <div class="grid-section">
+                    <h2>✨ What's Trending? Fun US Naming Vibes for 2025</h2>
+                    <p>Beyond the top 10, some really cool trends are bubbling up stateside:</p>
+
+                    <img src="placeholder_trends.png"
+                         alt="Icon representing trends"
+                         class="blog-inline-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Trends';">
+
+                    <h3>Blast from the Past (Vintage Revival)</h3>
+                    <p>Get ready for names that sound like they stepped out of a black-and-white movie or a cozy old novel! Think <strong>Margot</strong>, <strong>Georgia</strong>, <strong>Arthur</strong>, or <strong>Miller</strong>. They feel familiar yet fresh, perfect for parents who love a timeless feel with a unique twist.</p>
+
+                    <h3>All Are Welcome (Gender-Neutral Choices)</h3>
+                    <p>More and more parents are loving names that work beautifully for any baby. <strong>Avery</strong>, <strong>Riley</strong>, <strong>Charlie</strong>, <strong>Rowan</strong>, and <strong>Kai</strong> are leading the charge. It's all about versatility and breaking down old barriers!</p>
+
+                    <h3>Call of the Wild (Nature-Inspired Names)</h3>
+                    <p>If you love the great outdoors, why not let it inspire your baby's name? <strong>River</strong>, <strong>Meadow</strong>, <strong>Forest</strong>, <strong>Skye</strong>, and <strong>Ocean</strong> are climbing the charts. They evoke peace, beauty, and a connection to the earth.</p>
+
+                    <h3>Short & Sweet</h3>
+                    <p>Sometimes, less is more! Punchy, cute names like <strong>Luna</strong>, <strong>Mia</strong>, <strong>Leo</strong>, <strong>Ezra</strong>, and <strong>Ivy</strong> are easy to say, easy to spell, and pack a lot of charm into just a few letters.</p>
+
+                     <div class="box">
+                        <span class="box-title">Trend Spotting</span>
+                        Keep an eye on how these trends evolve! Naming styles can change quickly.
+                    </div>
+                </div>
+
+                <div class="grid-section">
+                    <h2>🤔 Tips for Tackling "The Name Game"</h2>
+                    <p>Choosing <em>the</em> name can feel like a big decision (because it is!), but it can also be fun. Here are a few friendly tips:</p>
+
+                    <img src="placeholder_lightbulb.png"
+                         alt="Icon of a lightbulb for ideas"
+                         class="blog-inline-image"
+                         onerror="this.onerror=null; this.src='https://placehold.co/120x120/A5D8DD/2C3E50?text=Tips';">
+
+                    <ol>
+                        <li><strong>Meaning Matters (Sometimes!):</strong> Does the name's origin or meaning resonate with you? It's not essential for everyone, but it can add a lovely layer of significance. Maybe "Felix" (meaning lucky) feels right!</li>
+                        <li><strong>The Nickname Test:</strong> Think about potential nicknames. Is Theodore likely to become Theo or Teddy? Are you cool with that? (Bonus points if the nickname is also adorable!)</li>
+                        <li><strong>Say It Loud, Say It Proud:</strong> Practice saying the full name out loud. First name, middle name, last name. Does it flow well? Does it sound good with your last name? Try shouting it across a pretend park – does it work? 😉</li>
+                        <li><strong>Initial Check:</strong> Write down the initials (First, Middle, Last). Do they spell anything awkward or funny? Best to catch potential "A.S.S." situations early!</li>
+                        <li><strong>Trust Your Gut:</strong> Trends are fun, family traditions are important, but ultimately, this is <em>your</em> baby. Choose a name that you love, one that feels right in your heart and sounds sweet when you whisper it to your bump.</li>
+                    </ol>
+                </div>
+
+                <div class="grid-section">
+                     <h2>Final Thoughts</h2>
+                     <p>Choosing a name is a special part of preparing for your baby's arrival. Have fun with it, explore different styles, and know that whatever you choose, it will be perfect because it was chosen with love. Happy naming!</p>
+
+                     <div class="box">
+                        <span class="box-title">Share Your Thoughts!</span>
+                        What names are on your list? Let us know your favorites in the comments below (if comments were enabled)!
+                     </div>
+                </div>
+
+            </div> </article>
+
+    </main>
+
+    <footer class="text-center py-6 mt-10 bg-gray-100 text-gray-600 text-sm">
+        <p>&copy; 2025 Your Blog Name. All rights reserved.</p>
+        </footer>
+
+</body>
+</html>
+
