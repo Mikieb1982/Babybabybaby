@@ -1,231 +1,1443 @@
 [
   {
-    "id": "en1", "name": "William", "language": "english", "gender": "boy", "meaning": "Resolute protector; strong will.", "originNotes": "Germanic roots, English royalty", "pronunciation": "WIL-ee-uhm", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 10
-  },
-  {
-    "id": "en2", "name": "Olivia", "language": "english", "gender": "girl", "meaning": "Olive tree; symbol of peace.", "originNotes": "Latin origin, via Shakespeare", "pronunciation": "oh-LIV-ee-uh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 20
-  },
-  {
-    "id": "en3", "name": "Arthur", "language": "english", "gender": "boy", "meaning": "Bear man, noble strength.", "originNotes": "Celtic/Roman roots, legendary king", "pronunciation": "AR-ther", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 5
-  },
-  {
-    "id": "en4", "name": "Isla", "language": "english", "gender": "girl", "meaning": "Island.", "originNotes": "Scottish river/island name", "pronunciation": "EYE-luh", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 40
-  },
-  {
-    "id": "en5", "name": "Ezra", "language": "english", "gender": "boy", "meaning": "Help.", "originNotes": "Hebrew origin, biblical prophet", "pronunciation": "EZ-ruh", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 60
-  },
-  {
-    "id": "en6", "name": "Luna", "language": "english", "gender": "girl", "meaning": "Moon.", "originNotes": "Latin origin, Roman goddess", "pronunciation": "LOO-nuh", "popularity": "Top 100", "lengthCategory": "short", "styleScore": 70
-  },
-  {
-    "id": "en7", "name": "Caspian", "language": "english", "gender": "boy", "meaning": "From Qazvin (geographical).", "originNotes": "Place name (Caspian Sea), literary", "pronunciation": "KAS-pee-uhn", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 85
-  },
-  {
-    "id": "en8", "name": "Seraphina", "language": "english", "gender": "girl", "meaning": "Fiery ones (angelic).", "originNotes": "Hebrew origin, elegant", "pronunciation": "seh-ruh-FEE-nuh", "popularity": "Unique Find", "lengthCategory": "long", "styleScore": 90
-  },
-  {
-    "id": "en9", "name": "Rowan", "language": "english", "gender": "any", "meaning": "Rowan tree, little redhead.", "originNotes": "Gaelic origin, nature name", "pronunciation": "ROH-uhn", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 55
-  },
-  {
-    "id": "en10", "name": "Theodore", "language": "english", "gender": "boy", "meaning": "Gift of God.", "originNotes": "Greek origin", "pronunciation": "THEE-uh-dor", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 22
-  },
-  {
-    "id": "en11", "name": "Genevieve", "language": "english", "gender": "girl", "meaning": "Family woman.", "originNotes": "Germanic/French origin, patron saint of Paris", "pronunciation": "JEN-uh-veev", "popularity": "Classic", "lengthCategory": "long", "styleScore": 18
-  },
-  {
-    "id": "en12", "name": "Phoenix", "language": "english", "gender": "any", "meaning": "Mythical bird, dark red.", "originNotes": "Greek origin, place name", "pronunciation": "FEE-niks", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 95
-  },
-  {
-    "id": "en13", "name": "Jasper", "language": "english", "gender": "boy", "meaning": "Bringer of treasure.", "originNotes": "Persian origin, gemstone name", "pronunciation": "JAS-per", "popularity": "Rising Trend", "lengthCategory": "medium", "styleScore": 65
-  },
-  {
-    "id": "en14", "name": "Willow", "language": "english", "gender": "girl", "meaning": "Willow tree.", "originNotes": "English nature name", "pronunciation": "WIL-oh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 45
-  },
-  {
-    "id": "en15", "name": "Silas", "language": "english", "gender": "boy", "meaning": "Of the forest.", "originNotes": "Latin origin, biblical", "pronunciation": "SY-luhs", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 50
-  },
-  {
-    "id": "en16", "name": "Aurora", "language": "english", "gender": "girl", "meaning": "Dawn.", "originNotes": "Latin origin, Roman goddess", "pronunciation": "uh-ROR-uh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 35
-  },
-  {
-    "id": "en17", "name": "August", "language": "english", "gender": "boy", "meaning": "Great, magnificent.", "originNotes": "Latin origin, month name", "pronunciation": "AW-guhst", "popularity": "Rising Trend", "lengthCategory": "medium", "styleScore": 48
-  },
-  {
-    "id": "en18", "name": "Juniper", "language": "english", "gender": "any", "meaning": "Juniper berry.", "originNotes": "Latin origin, nature name", "pronunciation": "JOO-nih-per", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 88
-  },
-  {
-    "id": "en19", "name": "Eleanor", "language": "english", "gender": "girl", "meaning": "Bright, shining one.", "originNotes": "Greek origin, via French royalty", "pronunciation": "EL-uh-nor", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 12
-  },
-  {
-    "id": "en20", "name": "Finnian", "language": "english", "gender": "boy", "meaning": "Fair.", "originNotes": "Irish origin, saint's name", "pronunciation": "FIN-ee-uhn", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 72
-  },
-  {
-    "id": "en21", "name": "Penelope", "language": "english", "gender": "girl", "meaning": "Weaver.", "originNotes": "Greek mythology (Odysseus' wife)", "pronunciation": "puh-NEL-uh-pee", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 32
-  },
-  {
-    "id": "en22", "name": "Asher", "language": "english", "gender": "boy", "meaning": "Happy, blessed.", "originNotes": "Hebrew origin, biblical", "pronunciation": "ASH-er", "popularity": "Top 100", "lengthCategory": "short", "styleScore": 25
-  },
-  {
-    "id": "en23", "name": "Violet", "language": "english", "gender": "girl", "meaning": "Purple/blue flower.", "originNotes": "Latin origin, nature name", "pronunciation": "VY-uh-let", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 19
-  },
-  {
-    "id": "en24", "name": "Rhys", "language": "english", "gender": "any", "meaning": "Ardor, enthusiasm.", "originNotes": "Welsh origin, strong unisex choice", "pronunciation": "REES", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 58
-  },
-  {
-    "id": "en25", "name": "Sebastian", "language": "english", "gender": "boy", "meaning": "Venerable, revered.", "originNotes": "Greek origin, popular internationally", "pronunciation": "seh-BASS-chen", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 28
-  },
-  {
-    "id": "en26", "name": "Freya", "language": "english", "gender": "girl", "meaning": "Lady, noblewoman.", "originNotes": "Norse mythology goddess", "pronunciation": "FRAY-uh", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 46
-  },
-  {
-    "id": "en27", "name": "Kai", "language": "english", "gender": "any", "meaning": "Sea (Hawaiian), Willow Tree (Navajo), Keeper of Keys (Germanic).", "originNotes": "Multicultural origins", "pronunciation": "KYE", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 68
-  },
-  {
-    "id": "en28", "name": "Caleb", "language": "english", "gender": "boy", "meaning": "Devotion to God, whole heart.", "originNotes": "Hebrew origin, biblical spy", "pronunciation": "KAY-leb", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 17
-  },
-  {
-    "id": "en29", "name": "Evangeline", "language": "english", "gender": "girl", "meaning": "Bringer of good news.", "originNotes": "Greek origin, literary (Longfellow)", "pronunciation": "ee-VAN-juh-leen", "popularity": "Unique Find", "lengthCategory": "long", "styleScore": 82
-  },
-  {
-    "id": "en30", "name": "Orion", "language": "english", "gender": "boy", "meaning": "Hunter (constellation).", "originNotes": "Greek mythology", "pronunciation": "oh-RYE-uhn", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 76
-  },
-  {
-    "id": "de1", "name": "Maximilian", "language": "german", "gender": "boy", "meaning": "Greatest.", "originNotes": "Latin origin, popular in Germany", "pronunciation": "mak-see-MEE-lee-ahn", "popularity": "Classic", "lengthCategory": "long", "styleScore": 25
-  },
-  {
-    "id": "de2", "name": "Sophie", "language": "german", "gender": "girl", "meaning": "Wisdom.", "originNotes": "Greek origin, international", "pronunciation": "ZO-fee", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 15
-  },
-  {
-    "id": "de3", "name": "Leon", "language": "german", "gender": "boy", "meaning": "Lion.", "originNotes": "Greek origin, short and strong", "pronunciation": "LE-on", "popularity": "Top 100", "lengthCategory": "short", "styleScore": 35
-  },
-  {
-    "id": "de4", "name": "Emilia", "language": "german", "gender": "girl", "meaning": "Rival.", "originNotes": "Latin origin, classic", "pronunciation": "eh-MEE-lee-ah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 30
-  },
-  {
-    "id": "de5", "name": "Finn", "language": "german", "gender": "boy", "meaning": "Fair.", "originNotes": "Irish origin, popular in Germany", "pronunciation": "FIN", "popularity": "Top 100", "lengthCategory": "short", "styleScore": 40
-  },
-  {
-    "id": "de6", "name": "Lina", "language": "german", "gender": "girl", "meaning": "Tender.", "originNotes": "Short form, various origins", "pronunciation": "LEE-nah", "popularity": "Top 100", "lengthCategory": "short", "styleScore": 28
-  },
-  {
-    "id": "de7", "name": "Paul", "language": "german", "gender": "boy", "meaning": "Small, humble.", "originNotes": "Latin origin, biblical", "pronunciation": "POWL", "popularity": "Classic", "lengthCategory": "short", "styleScore": 12
-  },
-  {
-    "id": "de8", "name": "Hannah", "language": "german", "gender": "girl", "meaning": "Grace, favor.", "originNotes": "Hebrew origin, biblical", "pronunciation": "HAH-nah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 10
-  },
-  {
-    "id": "de9", "name": "Felix", "language": "german", "gender": "boy", "meaning": "Lucky, successful.", "originNotes": "Latin origin", "pronunciation": "FE-liks", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 45
-  },
-  {
-    "id": "de10", "name": "Clara", "language": "german", "gender": "girl", "meaning": "Clear, bright.", "originNotes": "Latin origin", "pronunciation": "KLAH-rah", "popularity": "Classic", "lengthCategory": "short", "styleScore": 24
-  },
-  {
-    "id": "de11", "name": "Anton", "language": "german", "gender": "boy", "meaning": "Priceless one.", "originNotes": "Latin origin", "pronunciation": "AN-ton", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 33
-  },
-  {
-    "id": "de12", "name": "Ida", "language": "german", "gender": "girl", "meaning": "Industrious one.", "originNotes": "Germanic origin", "pronunciation": "EE-dah", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 37
-  },
-  {
-    "id": "de13", "name": "Konrad", "language": "german", "gender": "boy", "meaning": "Brave counsel.", "originNotes": "Germanic origin", "pronunciation": "KON-raht", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 19
-  },
-  {
-    "id": "de14", "name": "Greta", "language": "german", "gender": "girl", "meaning": "Pearl.", "originNotes": "German short form of Margaret", "pronunciation": "GRE-tah", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 27
-  },
-  {
-    "id": "de15", "name": "Anselm", "language": "german", "gender": "boy", "meaning": "God's helmet.", "originNotes": "Germanic origin, distinguished", "pronunciation": "AN-zelm", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 75
-  },
-  {
-    "id": "de16", "name": "Lieselotte", "language": "german", "gender": "girl", "meaning": "Combination of Liese (Elizabeth) and Charlotte.", "originNotes": "German compound name", "pronunciation": "LEE-zeh-lot-tuh", "popularity": "Unique Find", "lengthCategory": "long", "styleScore": 80
-  },
-  {
-    "id": "de17", "name": "Elias", "language": "german", "gender": "boy", "meaning": "Yahweh is God.", "originNotes": "Hebrew origin, popular in Germany", "pronunciation": "eh-LEE-ahs", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 29
-  },
-  {
-    "id": "de18", "name": "Johanna", "language": "german", "gender": "girl", "meaning": "God is gracious.", "originNotes": "Hebrew origin, feminine of Johannes", "pronunciation": "yo-HAH-nah", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 16
-  },
-  {
-    "id": "de19", "name": "Oskar", "language": "german", "gender": "boy", "meaning": "God's spear / deer-lover.", "originNotes": "Germanic/Irish origin", "pronunciation": "OS-kar", "popularity": "Classic", "lengthCategory": "short", "styleScore": 21
-  },
-  {
-    "id": "de20", "name": "Mathilda", "language": "german", "gender": "girl", "meaning": "Battle mighty.", "originNotes": "Germanic origin", "pronunciation": "mah-TIL-dah", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 26
-  },
-  {
-    "id": "de21", "name": "Frederik", "language": "german", "gender": "boy", "meaning": "Peaceful ruler.", "originNotes": "Germanic origin, royal connections", "pronunciation": "FRE-deh-rik", "popularity": "Classic", "lengthCategory": "long", "styleScore": 14
-  },
-  {
-    "id": "de22", "name": "Rosalie", "language": "german", "gender": "girl", "meaning": "Rose.", "originNotes": "Latin origin, increasingly popular", "pronunciation": "RO-za-lee", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 64
-  },
-  {
-    "id": "de23", "name": "Hugo", "language": "german", "gender": "boy", "meaning": "Mind, intellect.", "originNotes": "Germanic origin", "pronunciation": "HOO-go", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 38
-  },
-  {
-    "id": "de24", "name": "Alma", "language": "german", "gender": "girl", "meaning": "Nourishing, kind; soul.", "originNotes": "Germanic or Latin/Spanish origin", "pronunciation": "AHL-mah", "popularity": "Balanced", "lengthCategory": "short", "styleScore": 50
-  },
-  {
-    "id": "it1", "name": "Leonardo", "language": "italian", "gender": "boy", "meaning": "Brave lion.", "originNotes": "Germanic roots, Italian Renaissance", "pronunciation": "leh-oh-NAR-doh", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 20
-  },
-  {
-    "id": "it2", "name": "Sofia", "language": "italian", "gender": "girl", "meaning": "Wisdom.", "originNotes": "Greek origin, popular worldwide", "pronunciation": "so-FEE-ah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 10
-  },
-  {
-    "id": "it3", "name": "Francesco", "language": "italian", "gender": "boy", "meaning": "Frenchman, free man.", "originNotes": "Latin origin, associated with St. Francis", "pronunciation": "fran-CHES-ko", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 8
-  },
-  {
-    "id": "it4", "name": "Giulia", "language": "italian", "gender": "girl", "meaning": "Youthful.", "originNotes": "Latin origin, Italian form of Julia", "pronunciation": "JOO-lee-ah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 5
-  },
-  {
-    "id": "it5", "name": "Lorenzo", "language": "italian", "gender": "boy", "meaning": "From Laurentum.", "originNotes": "Latin origin, romantic sound", "pronunciation": "loh-REN-tsoh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 25
-  },
-  {
-    "id": "it6", "name": "Chiara", "language": "italian", "gender": "girl", "meaning": "Clear, bright.", "originNotes": "Italian form of Clara", "pronunciation": "kee-AH-rah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 23
-  },
-  {
-    "id": "it7", "name": "Matteo", "language": "italian", "gender": "boy", "meaning": "Gift of God.", "originNotes": "Italian form of Matthew", "pronunciation": "mat-TEH-oh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 18
-  },
-  {
-    "id": "it8", "name": "Beatrice", "language": "italian", "gender": "girl", "meaning": "She who brings happiness; voyager.", "originNotes": "Latin origin, Dante's muse", "pronunciation": "beh-ah-TREE-cheh", "popularity": "Classic", "lengthCategory": "long", "styleScore": 15
-  },
-  {
-    "id": "it9", "name": "Elio", "language": "italian", "gender": "boy", "meaning": "Sun.", "originNotes": "Italian/Spanish from Greek Helios", "pronunciation": "EH-lee-oh", "popularity": "Unique Find", "lengthCategory": "short", "styleScore": 70
-  },
-  {
-    "id": "it10", "name": "Allegra", "language": "italian", "gender": "girl", "meaning": "Joyful, lively.", "originNotes": "Italian word name, musical connection", "pronunciation": "ah-LEG-rah", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 85
-  },
-  {
-    "id": "it11", "name": "Marco", "language": "italian", "gender": "boy", "meaning": "Warlike.", "originNotes": "Latin origin, related to Mars", "pronunciation": "MAR-ko", "popularity": "Classic", "lengthCategory": "short", "styleScore": 13
-  },
-  {
-    "id": "it12", "name": "Alessia", "language": "italian", "gender": "girl", "meaning": "Defending warrior.", "originNotes": "Italian feminine form of Alexis", "pronunciation": "ah-LESS-ee-ah", "popularity": "Balanced", "lengthCategory": "medium", "styleScore": 44
-  },
-  {
-    "id": "it13", "name": "Riccardo", "language": "italian", "gender": "boy", "meaning": "Powerful ruler.", "originNotes": "Italian form of Richard (Germanic)", "pronunciation": "ree-KAR-doh", "popularity": "Classic", "lengthCategory": "medium", "styleScore": 17
-  },
-  {
-    "id": "it14", "name": "Ginevra", "language": "italian", "gender": "girl", "meaning": "White shadow, white wave.", "originNotes": "Italian form of Guinevere (Welsh)", "pronunciation": "jee-NEV-rah", "popularity": "Rising Trend", "lengthCategory": "medium", "styleScore": 50
-  },
-  {
-    "id": "it15", "name": "Vittorio", "language": "italian", "gender": "boy", "meaning": "Conqueror.", "originNotes": "Italian form of Victor (Latin)", "pronunciation": "veet-TOR-ee-oh", "popularity": "Classic", "lengthCategory": "long", "styleScore": 21
-  },
-  {
-    "id": "it16", "name": "Isabella", "language": "italian", "gender": "girl", "meaning": "Pledged to God.", "originNotes": "Hebrew origin, Italian/Spanish form of Elizabeth", "pronunciation": "ee-zah-BEL-lah", "popularity": "Classic", "lengthCategory": "long", "styleScore": 9
-  },
-  {
-    "id": "it17", "name": "Enzo", "language": "italian", "gender": "boy", "meaning": "Home ruler (short form of Lorenzo/Vincenzo).", "originNotes": "Italian short form, popular", "pronunciation": "EN-zoh", "popularity": "Rising Trend", "lengthCategory": "short", "styleScore": 55
-  },
-  {
-    "id": "it18", "name": "Cosima", "language": "italian", "gender": "girl", "meaning": "Order, decency.", "originNotes": "Italian feminine form of Cosmo (Greek)", "pronunciation": "KO-zee-mah", "popularity": "Unique Find", "lengthCategory": "medium", "styleScore": 88
-  },
-  {
-    "id": "es1", "name": "Mateo", "language": "spanish", "gender": "boy", "meaning": "Gift of God.", "originNotes": "Hebrew origin, popular Hispanic name", "pronunciation": "mah-TEH-oh", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 30
-  },
-  {
-    "id": "es2", "name": "Lucia", "language": "spanish", "gender": "girl", "meaning": "Light.", "originNotes": "Latin origin, classic and beautiful", "pronunciation": "loo-SEE-ah / LOO-thee-ah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 20
-  },
-  {
-    "id": "es3", "name": "Santiago", "language": "spanish", "gender": "boy", "meaning": "Saint James.", "originNotes": "Hebrew/Spanish origin, patron saint of Spain", "pronunciation": "sahn-tee-AH-go", "popularity": "Top 100", "lengthCategory": "long", "styleScore": 12
-  },
-  {
-    "id": "es4", "name": "Valeria", "language": "spanish", "gender": "girl", "meaning": "Strength, health." , "originNotes": "Latin origin, popular in Spanish-speaking countries", "pronunciation": "vah-LEH-ree-ah", "popularity": "Top 100", "lengthCategory": "medium", "styleScore": 26
+    "id": "en1",
+    "name": "William",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Resolute protector; strong will.",
+    "originNotes": "Germanic roots, English royalty. A consistently popular name for centuries.",
+    "pronunciation": "WIL-ee-uhm",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 10,
+    "tags": ["classic", "royal", "strong", "traditional", "germanic"],
+    "related": ["Liam", "Will", "Bill", "Wilhelm", "Guillaume"],
+    "famous_namesakes": "William Shakespeare (playwright), Prince William (Duke of Cambridge), Bill Gates (entrepreneur), William Wordsworth (poet)"
+  },
+  {
+    "id": "en2",
+    "name": "Olivia",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Olive tree; symbol of peace.",
+    "originNotes": "Latin origin, popularized by Shakespeare in 'Twelfth Night'.",
+    "pronunciation": "oh-LIV-ee-uh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 20,
+    "tags": ["classic", "shakespearean", "nature", "popular", "latin"],
+    "related": ["Olive", "Livia", "Liv"],
+    "famous_namesakes": "Olivia Newton-John (singer/actress), Olivia Wilde (actress), Olivia Colman (actress)"
+  },
+  {
+    "id": "en3",
+    "name": "Arthur",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Bear man, noble strength.",
+    "originNotes": "Celtic/Roman roots, legendary king of Britain.",
+    "pronunciation": "AR-ther",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 5,
+    "tags": ["classic", "legendary", "royal", "celtic", "strong"],
+    "related": ["Art", "Artie", "Arturo"],
+    "famous_namesakes": "King Arthur (legendary figure), Arthur Conan Doyle (author), Arthur Miller (playwright)"
+  },
+  {
+    "id": "en4",
+    "name": "Isla",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Island.",
+    "originNotes": "Scottish river/island name. Gained popularity in recent years.",
+    "pronunciation": "EYE-luh",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 40,
+    "tags": ["scottish", "nature", "geographical", "modern classic", "short"],
+    "related": ["Ayla", "Eila"],
+    "famous_namesakes": "Isla Fisher (actress)"
+  },
+  {
+    "id": "en5",
+    "name": "Ezra",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Help.",
+    "originNotes": "Hebrew origin, prominent biblical prophet and scribe.",
+    "pronunciation": "EZ-ruh",
+    "popularity": "Rising Trend",
+    "lengthCategory": "short",
+    "styleScore": 60,
+    "tags": ["biblical", "hebrew", "short", "strong", "vintage"],
+    "related": ["Esdras", "Azra"],
+    "famous_namesakes": "Ezra Pound (poet), Ezra Koenig (musician), Ezra Miller (actor)"
+  },
+  {
+    "id": "en6",
+    "name": "Luna",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Moon.",
+    "originNotes": "Latin origin, Roman goddess of the moon. Popular in literature and recently surged in usage.",
+    "pronunciation": "LOO-nuh",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 70,
+    "tags": ["latin", "mythological", "celestial", "nature", "literary", "popular"],
+    "related": ["Selene", "Diana", "Moon"],
+    "famous_namesakes": "Luna Lovegood (Harry Potter character), Luna Blaise (actress)"
+  },
+  {
+    "id": "en7",
+    "name": "Caspian",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "From Qazvin (geographical).",
+    "originNotes": "Place name (Caspian Sea), popularized by C.S. Lewis' 'Chronicles of Narnia'.",
+    "pronunciation": "KAS-pee-uhn",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 85,
+    "tags": ["literary", "geographical", "nature", "uncommon", "romantic"],
+    "related": ["Cassian", "Cyprian", "Kaspian"],
+    "famous_namesakes": "Prince Caspian (Chronicles of Narnia character)"
+  },
+  {
+    "id": "en8",
+    "name": "Seraphina",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Fiery ones (angelic beings).",
+    "originNotes": "Hebrew origin, referring to a high order of angels. Elegant and uncommon.",
+    "pronunciation": "seh-ruh-FEE-nuh",
+    "popularity": "Unique Find",
+    "lengthCategory": "long",
+    "styleScore": 90,
+    "tags": ["hebrew", "angelic", "elegant", "feminine", "uncommon", "biblical"],
+    "related": ["Seraphim", "Serafina", "Fina"],
+    "famous_namesakes": "Seraphina Affleck (daughter of Ben Affleck and Jennifer Garner)"
+  },
+  {
+    "id": "en9",
+    "name": "Rowan",
+    "language": "english",
+    "gender": "any",
+    "meaning": "Rowan tree, little redhead.",
+    "originNotes": "Gaelic (Irish/Scottish) origin, a nature name with a gentle sound.",
+    "pronunciation": "ROH-uhn",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 55,
+    "tags": ["unisex", "nature", "gaelic", "tree", "gentle", "irish", "scottish"],
+    "related": ["Ronan", "Rowen", "Roan"],
+    "famous_namesakes": "Rowan Atkinson (actor), Rowan Blanchard (actress)"
+  },
+  {
+    "id": "en10",
+    "name": "Theodore",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Gift of God.",
+    "originNotes": "Greek origin, a classic name that has seen a resurgence.",
+    "pronunciation": "THEE-uh-dor",
+    "popularity": "Top 100",
+    "lengthCategory": "long",
+    "styleScore": 22,
+    "tags": ["classic", "greek", "presidential", "vintage", "nickname-rich"],
+    "related": ["Theo", "Teddy", "Dorian", "Feodor"],
+    "famous_namesakes": "Theodore Roosevelt (US President), Dr. Seuss (Theodor Geisel, author), Theodore Dreiser (novelist)"
+  },
+  {
+    "id": "en11",
+    "name": "Genevieve",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Family woman; white wave.",
+    "originNotes": "Germanic/French origin, patron saint of Paris. Elegant and timeless.",
+    "pronunciation": "JEN-uh-veev",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 18,
+    "tags": ["classic", "french", "saint", "elegant", "vintage"],
+    "related": ["Genoveva", "Guinevere", "Jenny", "Evie"],
+    "famous_namesakes": "Saint Genevieve (patron saint of Paris), Genevieve Bujold (actress)"
+  },
+  {
+    "id": "en12",
+    "name": "Phoenix",
+    "language": "english",
+    "gender": "any",
+    "meaning": "Mythical bird of rebirth; dark red.",
+    "originNotes": "Greek origin, symbolizing immortality and renewal. Also a place name.",
+    "pronunciation": "FEE-niks",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 95,
+    "tags": ["unisex", "mythological", "nature", "symbolic", "modern", "greek"],
+    "related": ["Felix", "Nyx"],
+    "famous_namesakes": "Phoenix, Arizona (city), River Phoenix (actor), Joaquin Phoenix (actor)"
+  },
+  {
+    "id": "en13",
+    "name": "Jasper",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Bringer of treasure.",
+    "originNotes": "Persian origin, a gemstone name. Sophisticated and increasingly popular.",
+    "pronunciation": "JAS-per",
+    "popularity": "Rising Trend",
+    "lengthCategory": "medium",
+    "styleScore": 65,
+    "tags": ["persian", "gemstone", "vintage", "sophisticated", "nature"],
+    "related": ["Casper", "Gaspar", "Jesper"],
+    "famous_namesakes": "Jasper Johns (artist), Jasper Fforde (author)"
+  },
+  {
+    "id": "en14",
+    "name": "Willow",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Willow tree; graceful.",
+    "originNotes": "English nature name, associated with grace and elegance.",
+    "pronunciation": "WIL-oh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 45,
+    "tags": ["nature", "tree", "gentle", "graceful", "english", "popular"],
+    "related": ["Willo", "Willa"],
+    "famous_namesakes": "Willow Smith (singer/actress), Willow Rosenberg (Buffy the Vampire Slayer character)"
+  },
+  {
+    "id": "en15",
+    "name": "Silas",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Of the forest; asked for.",
+    "originNotes": "Latin origin (from Silvanus), biblical name (companion of Paul).",
+    "pronunciation": "SY-luhs",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 50,
+    "tags": ["latin", "biblical", "nature", "vintage", "gentle"],
+    "related": ["Silvan", "Silvanus"],
+    "famous_namesakes": "Silas Marner (novel character), Silas Weir Mitchell (actor)"
+  },
+  {
+    "id": "en16",
+    "name": "Aurora",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Dawn.",
+    "originNotes": "Latin origin, Roman goddess of the dawn. Also linked to the Aurora Borealis.",
+    "pronunciation": "uh-ROR-uh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 35,
+    "tags": ["latin", "mythological", "celestial", "nature", "disney", "classic"],
+    "related": ["Rory", "Aura", "Oriana"],
+    "famous_namesakes": "Aurora (Sleeping Beauty), Aurora Aksnes (singer AURORA)"
+  },
+  {
+    "id": "en17",
+    "name": "August",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Great, magnificent.",
+    "originNotes": "Latin origin (Augustus), a month name and a title for Roman emperors.",
+    "pronunciation": "AW-guhst",
+    "popularity": "Rising Trend",
+    "lengthCategory": "medium",
+    "styleScore": 48,
+    "tags": ["latin", "royal", "vintage", "month", "strong", "unisex-leaning-masculine"],
+    "related": ["Augustus", "Gus", "Augustine", "Austin"],
+    "famous_namesakes": "August Wilson (playwright), August Strindberg (playwright), Princess Eugenie's son August Brooksbank"
+  },
+  {
+    "id": "en18",
+    "name": "Juniper",
+    "language": "english",
+    "gender": "any",
+    "meaning": "Juniper berry/tree; young.",
+    "originNotes": "Latin origin, a spirited nature name.",
+    "pronunciation": "JOO-nih-per",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 88,
+    "tags": ["unisex", "nature", "tree", "botanical", "modern", "latin"],
+    "related": ["June", "Juno", "Ginny"],
+    "famous_namesakes": "Juniper (saint), commonly used as a modern nature name"
+  },
+  {
+    "id": "en19",
+    "name": "Eleanor",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Bright, shining one.",
+    "originNotes": "Greek origin (Helen) or Germanic (Aliénor), via French royalty. A timeless classic.",
+    "pronunciation": "EL-uh-nor",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 12,
+    "tags": ["classic", "royal", "vintage", "strong", "elegant", "greek", "french"],
+    "related": ["Eleanora", "Nora", "Nell", "Ellie", "Leonor"],
+    "famous_namesakes": "Eleanor Roosevelt (First Lady of the US), Eleanor of Aquitaine (Queen of France and England)"
+  },
+  {
+    "id": "en20",
+    "name": "Finnian",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Fair.",
+    "originNotes": "Irish origin, saint's name. A more elaborate version of Finn.",
+    "pronunciation": "FIN-ee-uhn",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 72,
+    "tags": ["irish", "saint", "celtic", "gentle", "uncommon"],
+    "related": ["Finn", "Finlay", "Phineas"],
+    "famous_namesakes": "Saint Finnian of Clonard"
+  },
+  {
+    "id": "en21",
+    "name": "Penelope",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Weaver.",
+    "originNotes": "Greek mythology (Odysseus' faithful wife). Classic, charming, and popular.",
+    "pronunciation": "puh-NEL-uh-pee",
+    "popularity": "Top 100",
+    "lengthCategory": "long",
+    "styleScore": 32,
+    "tags": ["greek", "mythological", "classic", "literary", "nickname-rich"],
+    "related": ["Penny", "Nell", "Poppy", "Lola"],
+    "famous_namesakes": "Penelope Cruz (actress), Penelope Wilton (actress)"
+  },
+  {
+    "id": "en22",
+    "name": "Asher",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Happy, blessed.",
+    "originNotes": "Hebrew origin, one of Jacob's sons in the Old Testament.",
+    "pronunciation": "ASH-er",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 25,
+    "tags": ["hebrew", "biblical", "positive", "popular"],
+    "related": ["Ash", "Ashton"],
+    "famous_namesakes": "Asher Roth (rapper), Asher Angel (actor)"
+  },
+  {
+    "id": "en23",
+    "name": "Violet",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Purple/blue flower.",
+    "originNotes": "Latin origin, a classic floral name that has regained popularity.",
+    "pronunciation": "VY-uh-let",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 19,
+    "tags": ["nature", "floral", "color", "vintage", "classic", "latin"],
+    "related": ["Viola", "Violetta", "Lettie"],
+    "famous_namesakes": "Violet Jessop (Titanic survivor), Violet Bonham Carter (politician)"
+  },
+  {
+    "id": "en24",
+    "name": "Rhys",
+    "language": "english",
+    "gender": "any",
+    "meaning": "Ardor, enthusiasm, rashness.",
+    "originNotes": "Welsh origin, a strong and sleek unisex choice.",
+    "pronunciation": "REES",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 58,
+    "tags": ["welsh", "unisex", "strong", "short", "celtic"],
+    "related": ["Reese", "Rhysand"],
+    "famous_namesakes": "Rhys Ifans (actor), Rhys Darby (comedian), Reese Witherspoon (actress, uses different spelling)"
+  },
+  {
+    "id": "en25",
+    "name": "Sebastian",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Venerable, revered.",
+    "originNotes": "Greek origin (from Sebastos), popular internationally, associated with Saint Sebastian.",
+    "pronunciation": "seh-BASS-chen",
+    "popularity": "Top 100",
+    "lengthCategory": "long",
+    "styleScore": 28,
+    "tags": ["greek", "saint", "classic", "literary", "popular", "european"],
+    "related": ["Bastian", "Seb", "Sebastien"],
+    "famous_namesakes": "Saint Sebastian (martyr), Sebastian Vettel (F1 driver), Sebastian Bach (musician)"
+  },
+  {
+    "id": "en26",
+    "name": "Freya",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Lady, noblewoman.",
+    "originNotes": "Norse mythology goddess of love, beauty, and fertility. Strong and feminine.",
+    "pronunciation": "FRAY-uh",
+    "popularity": "Rising Trend",
+    "lengthCategory": "short",
+    "styleScore": 46,
+    "tags": ["norse", "mythological", "goddess", "strong", "feminine", "scandinavian"],
+    "related": ["Freja", "Freyja", "Fraya"],
+    "famous_namesakes": "Freya Allan (actress), Freya Ridings (singer)"
+  },
+  {
+    "id": "en27",
+    "name": "Kai",
+    "language": "english",
+    "gender": "any",
+    "meaning": "Sea (Hawaiian), Willow Tree (Navajo), Keeper of Keys (Germanic), Rejoice (Yoruba).",
+    "originNotes": "Multicultural origins, short, sleek, and popular.",
+    "pronunciation": "KYE",
+    "popularity": "Rising Trend",
+    "lengthCategory": "short",
+    "styleScore": 68,
+    "tags": ["unisex", "multicultural", "nature", "short", "modern", "hawaiian", "welsh"],
+    "related": ["Koa", "Malakai", "Kairi"],
+    "famous_namesakes": "Kai Ryssdal (radio host), Kai Greene (bodybuilder)"
+  },
+  {
+    "id": "en28",
+    "name": "Caleb",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Devotion to God, whole heart, faithful.",
+    "originNotes": "Hebrew origin, one of the twelve spies sent by Moses into Canaan.",
+    "pronunciation": "KAY-leb",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 17,
+    "tags": ["hebrew", "biblical", "classic", "strong"],
+    "related": ["Kaleb", "Cal"],
+    "famous_namesakes": "Caleb Landry Jones (actor), Caleb Followill (musician)"
+  },
+  {
+    "id": "en29",
+    "name": "Evangeline",
+    "language": "english",
+    "gender": "girl",
+    "meaning": "Bringer of good news.",
+    "originNotes": "Greek origin, popularized by Longfellow's epic poem. Romantic and elegant.",
+    "pronunciation": "ee-VAN-juh-leen",
+    "popularity": "Unique Find",
+    "lengthCategory": "long",
+    "styleScore": 82,
+    "tags": ["greek", "literary", "romantic", "elegant", "vintage", "christian"],
+    "related": ["Eva", "Angelina", "Evie", "Lina"],
+    "famous_namesakes": "Evangeline Lilly (actress), Evangeline Booth (Salvation Army General)"
+  },
+  {
+    "id": "en30",
+    "name": "Orion",
+    "language": "english",
+    "gender": "boy",
+    "meaning": "Hunter (constellation).",
+    "originNotes": "Greek mythology, a prominent constellation named after a mythical hunter.",
+    "pronunciation": "oh-RYE-uhn",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 76,
+    "tags": ["greek", "mythological", "celestial", "nature", "strong", "uncommon"],
+    "related": ["Ryan", "Orin"],
+    "famous_namesakes": "Orion (mythological hunter)"
+  },
+  {
+    "id": "de1",
+    "name": "Maximilian",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Greatest.",
+    "originNotes": "Latin origin, popular in Germany and Austria, associated with emperors.",
+    "pronunciation": "mak-see-MEE-lee-ahn",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 25,
+    "tags": ["latin", "classic", "royal", "german", "strong", "long"],
+    "related": ["Max", "Maxim", "Massimiliano"],
+    "famous_namesakes": "Maximilian I (Holy Roman Emperor), Maximilian Schell (actor)"
+  },
+  {
+    "id": "de2",
+    "name": "Sophie",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Wisdom.",
+    "originNotes": "Greek origin, internationally popular classic.",
+    "pronunciation": "ZO-fee (German), SO-fee (English)",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 15,
+    "tags": ["greek", "classic", "international", "wise", "popular"],
+    "related": ["Sophia", "Sofia", "Sophy"],
+    "famous_namesakes": "Sophie Scholl (German anti-Nazi activist), Sophie Turner (actress), Sophie Marceau (actress)"
+  },
+  {
+    "id": "de3",
+    "name": "Leon",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Lion.",
+    "originNotes": "Greek origin, short, strong, and internationally recognized.",
+    "pronunciation": "LE-on",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 35,
+    "tags": ["greek", "strong", "animal", "short", "popular", "international"],
+    "related": ["Leo", "Leonard", "Lionel", "Lev"],
+    "famous_namesakes": "Leon Trotsky (revolutionary), Leon Panetta (US politician), Leon Bridges (musician)"
+  },
+  {
+    "id": "de4",
+    "name": "Emilia",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Rival; to strive or excel.",
+    "originNotes": "Latin origin, classic and elegant, popular in many European countries.",
+    "pronunciation": "eh-MEE-lee-ah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 30,
+    "tags": ["latin", "classic", "elegant", "shakespearean", "popular", "european"],
+    "related": ["Emily", "Amelia", "Emiliana", "Mila"],
+    "famous_namesakes": "Emilia Clarke (actress), Emilia Earhart (aviator, variant spelling)"
+  },
+  {
+    "id": "de5",
+    "name": "Finn",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Fair; from Finland.",
+    "originNotes": "Irish origin (Fionn), popular in Germany and Scandinavia. Also an English surname.",
+    "pronunciation": "FIN",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 40,
+    "tags": ["irish", "celtic", "mythological", "short", "popular", "scandinavian"],
+    "related": ["Finley", "Finnian", "Phineas"],
+    "famous_namesakes": "Finn Wolfhard (actor), Finn Jones (actor), Huckleberry Finn (literary character)"
+  },
+  {
+    "id": "de6",
+    "name": "Lina",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Tender; palm tree (Arabic); pure (Greek).",
+    "originNotes": "Short form, various origins (e.g. Carolina, Angelina). Simple and sweet.",
+    "pronunciation": "LEE-nah",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 28,
+    "tags": ["short", "sweet", "international", "multicultural", "popular"],
+    "related": ["Carolina", "Angelina", "Lena", "Alina"],
+    "famous_namesakes": "Lina Medina (youngest confirmed mother), Lina Morgana (singer)"
+  },
+  {
+    "id": "de7",
+    "name": "Paul",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Small, humble.",
+    "originNotes": "Latin origin, biblical (Apostle Paul). A timeless international classic.",
+    "pronunciation": "POWL (German), PAWL (English)",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 12,
+    "tags": ["latin", "biblical", "classic", "international", "short", "strong"],
+    "related": ["Paulus", "Pablo", "Paolo", "Pavel"],
+    "famous_namesakes": "Paul McCartney (musician), Paul Newman (actor), Pope John Paul II"
+  },
+  {
+    "id": "de8",
+    "name": "Hannah",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Grace, favor.",
+    "originNotes": "Hebrew origin, biblical (mother of Samuel). A popular palindrome name.",
+    "pronunciation": "HAH-nah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 10,
+    "tags": ["hebrew", "biblical", "classic", "palindrome", "popular", "gentle"],
+    "related": ["Anna", "Hanna", "Annelise"],
+    "famous_namesakes": "Hannah Arendt (philosopher), Hannah Montana (TV character), Hannah Simone (actress)"
+  },
+  {
+    "id": "de9",
+    "name": "Felix",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Lucky, successful.",
+    "originNotes": "Latin origin, implies good fortune. Popular in many countries.",
+    "pronunciation": "FE-liks",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 45,
+    "tags": ["latin", "positive", "classic", "international", "charming"],
+    "related": ["Feliz", "Feliciano"],
+    "famous_namesakes": "Felix Mendelssohn (composer), Felix Baumgartner (skydiver), Felix the Cat (cartoon character)"
+  },
+  {
+    "id": "de10",
+    "name": "Clara",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Clear, bright, famous.",
+    "originNotes": "Latin origin, a classic name known for its simplicity and elegance.",
+    "pronunciation": "KLAH-rah",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 24,
+    "tags": ["latin", "classic", "elegant", "simple", "international"],
+    "related": ["Claire", "Clarissa", "Chiara", "Klara"],
+    "famous_namesakes": "Clara Schumann (composer/pianist), Clara Barton (founder of American Red Cross)"
+  },
+  {
+    "id": "de11",
+    "name": "Anton",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Priceless one; praiseworthy.",
+    "originNotes": "Latin origin (Antonius family name). Strong and classic, common in Europe.",
+    "pronunciation": "AN-ton",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 33,
+    "tags": ["latin", "classic", "strong", "european", "short"],
+    "related": ["Anthony", "Antonio", "Antonin"],
+    "famous_namesakes": "Anton Chekhov (playwright), Anton Bruckner (composer), Anton Yelchin (actor)"
+  },
+  {
+    "id": "de12",
+    "name": "Ida",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Industrious one; prosperous.",
+    "originNotes": "Germanic origin. Short, sweet, and vintage, making a comeback.",
+    "pronunciation": "EE-dah",
+    "popularity": "Rising Trend",
+    "lengthCategory": "short",
+    "styleScore": 37,
+    "tags": ["germanic", "vintage", "short", "sweet", "mythological (Mount Ida)"],
+    "related": ["Ada", "Ina"],
+    "famous_namesakes": "Ida Lupino (actress/director), Ida B. Wells (journalist/activist)"
+  },
+  {
+    "id": "de13",
+    "name": "Konrad",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Brave counsel.",
+    "originNotes": "Germanic origin, a traditional name with a strong meaning.",
+    "pronunciation": "KON-raht",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 19,
+    "tags": ["germanic", "classic", "strong", "traditional", "royal"],
+    "related": ["Conrad", "Kurt", "Konni"],
+    "famous_namesakes": "Konrad Adenauer (German Chancellor), Konrad Lorenz (zoologist)"
+  },
+  {
+    "id": "de14",
+    "name": "Greta",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Pearl.",
+    "originNotes": "German short form of Margaret. Chic and classic.",
+    "pronunciation": "GRE-tah",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 27,
+    "tags": ["german", "short", "classic", "chic", "diminutive"],
+    "related": ["Margaret", "Margareta", "Gretchen", "Rita"],
+    "famous_namesakes": "Greta Garbo (actress), Greta Thunberg (activist), Greta Gerwig (director)"
+  },
+  {
+    "id": "de15",
+    "name": "Anselm",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "God's helmet; divine protection.",
+    "originNotes": "Germanic origin, a distinguished and rare saint's name.",
+    "pronunciation": "AN-zelm",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 75,
+    "tags": ["germanic", "saint", "philosophical", "uncommon", "distinguished"],
+    "related": ["Ansel", "Elmo"],
+    "famous_namesakes": "Saint Anselm of Canterbury (philosopher/theologian), Anselm Kiefer (artist)"
+  },
+  {
+    "id": "de16",
+    "name": "Lieselotte",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Combination of Liese (God is my oath) and Charlotte (free man).",
+    "originNotes": "German compound name, charmingly vintage.",
+    "pronunciation": "LEE-zeh-lot-tuh",
+    "popularity": "Unique Find",
+    "lengthCategory": "long",
+    "styleScore": 80,
+    "tags": ["german", "compound", "vintage", "charming", "long", "nickname-rich"],
+    "related": ["Lilo", "Lotte", "Liese", "Charlotte"],
+    "famous_namesakes": "Liselotte Pulver (actress)"
+  },
+  {
+    "id": "de17",
+    "name": "Elias",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Yahweh is God.",
+    "originNotes": "Hebrew origin (Elijah), popular in Germany and other European countries.",
+    "pronunciation": "eh-LEE-ahs",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 29,
+    "tags": ["hebrew", "biblical", "prophet", "popular", "international", "gentle"],
+    "related": ["Elijah", "Eli", "Ilya"],
+    "famous_namesakes": "Elias Canetti (Nobel laureate), Elias Koteas (actor)"
+  },
+  {
+    "id": "de18",
+    "name": "Johanna",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "God is gracious.",
+    "originNotes": "Hebrew origin, feminine form of Johannes (John). Classic and widely used.",
+    "pronunciation": "yo-HAH-nah",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 16,
+    "tags": ["hebrew", "biblical", "classic", "feminine", "international"],
+    "related": ["Joanna", "Joan", "Hanna", "Jana"],
+    "famous_namesakes": "Johanna Spyri (author of 'Heidi'), Johanna von Koczian (actress)"
+  },
+  {
+    "id": "de19",
+    "name": "Oskar",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "God's spear; deer-lover.",
+    "originNotes": "Germanic/Irish origin. Strong and classic, common in Scandinavia and Germany.",
+    "pronunciation": "OS-kar",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 21,
+    "tags": ["germanic", "irish", "classic", "strong", "scandinavian", "literary"],
+    "related": ["Oscar", "Ossi"],
+    "famous_namesakes": "Oskar Schindler (industrialist), Oskar Kokoschka (artist), Oskar Werner (actor)"
+  },
+  {
+    "id": "de20",
+    "name": "Mathilda",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Battle mighty; strength in battle.",
+    "originNotes": "Germanic origin. A vintage name that feels both strong and sweet.",
+    "pronunciation": "mah-TIL-dah",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 26,
+    "tags": ["germanic", "classic", "strong", "vintage", "royal", "literary"],
+    "related": ["Matilda", "Tilda", "Hilda", "Maud"],
+    "famous_namesakes": "Empress Matilda (English royal), Mathilda (Roald Dahl character)"
+  },
+  {
+    "id": "de21",
+    "name": "Frederik",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Peaceful ruler.",
+    "originNotes": "Germanic origin, royal connections in Scandinavia and Germany.",
+    "pronunciation": "FRE-deh-rik",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 14,
+    "tags": ["germanic", "classic", "royal", "peaceful", "scandinavian", "long"],
+    "related": ["Frederick", "Fred", "Friedrich", "Rico"],
+    "famous_namesakes": "Frederik, Crown Prince of Denmark, Frederik Pohl (sci-fi author)"
+  },
+  {
+    "id": "de22",
+    "name": "Rosalie",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Rose.",
+    "originNotes": "Latin origin (Rosalia). Romantic and floral, increasingly popular.",
+    "pronunciation": "RO-za-lee (German), ROZ-uh-lee (English)",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 64,
+    "tags": ["latin", "floral", "romantic", "vintage", "french", "charming"],
+    "related": ["Rose", "Rosa", "Rosalia", "Rosalind"],
+    "famous_namesakes": "Rosalie Hale (Twilight character), Rosalie Crutchley (actress)"
+  },
+  {
+    "id": "de23",
+    "name": "Hugo",
+    "language": "german",
+    "gender": "boy",
+    "meaning": "Mind, intellect, spirit.",
+    "originNotes": "Germanic origin. Short, strong, and internationally recognized.",
+    "pronunciation": "HOO-go (German), HYOO-go (English)",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 38,
+    "tags": ["germanic", "classic", "intellectual", "short", "international", "strong"],
+    "related": ["Hugh", "Ugo"],
+    "famous_namesakes": "Victor Hugo (author), Hugo Weaving (actor), Hugo Boss (fashion designer)"
+  },
+  {
+    "id": "de24",
+    "name": "Alma",
+    "language": "german",
+    "gender": "girl",
+    "meaning": "Nourishing, kind (Latin); soul (Spanish); apple (Hungarian).",
+    "originNotes": "Multiple origins (Latin, Spanish, Hebrew, Germanic). Short, sweet, and vintage.",
+    "pronunciation": "AHL-mah",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 50,
+    "tags": ["latin", "multicultural", "vintage", "short", "sweet", "soulful"],
+    "related": ["Almah", "Elma"],
+    "famous_namesakes": "Alma Mahler (composer/artist), Alma Reville (film editor, wife of Hitchcock)"
+  },
+  {
+    "id": "it1",
+    "name": "Leonardo",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Brave lion.",
+    "originNotes": "Germanic roots, famously associated with Leonardo da Vinci.",
+    "pronunciation": "leh-oh-NAR-doh",
+    "popularity": "Top 100",
+    "lengthCategory": "long",
+    "styleScore": 20,
+    "tags": ["italian", "classic", "renaissance", "artistic", "strong", "popular"],
+    "related": ["Leo", "Leon", "Leonard"],
+    "famous_namesakes": "Leonardo da Vinci (artist/inventor), Leonardo DiCaprio (actor)"
+  },
+  {
+    "id": "it2",
+    "name": "Sofia",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Wisdom.",
+    "originNotes": "Greek origin, popular worldwide, elegant and classic.",
+    "pronunciation": "so-FEE-ah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 10,
+    "tags": ["italian", "greek", "classic", "wise", "popular", "international", "royal"],
+    "related": ["Sophie", "Sophia", "Sonia"],
+    "famous_namesakes": "Sofia Loren (actress), Sofia Coppola (director), Queen Sofia of Spain"
+  },
+  {
+    "id": "it3",
+    "name": "Francesco",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Frenchman, free man.",
+    "originNotes": "Latin origin, associated with St. Francis of Assisi, very popular in Italy.",
+    "pronunciation": "fran-CHES-ko",
+    "popularity": "Top 100",
+    "lengthCategory": "long",
+    "styleScore": 8,
+    "tags": ["italian", "classic", "saint", "popular", "long"],
+    "related": ["Franco", "Francis", "Francisco", "Ciccio"],
+    "famous_namesakes": "St. Francis of Assisi, Pope Francis, Francesco Totti (footballer)"
+  },
+  {
+    "id": "it4",
+    "name": "Giulia",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Youthful; Jove's child.",
+    "originNotes": "Latin origin, Italian form of Julia. Classic and widely loved.",
+    "pronunciation": "JOO-lee-ah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 5,
+    "tags": ["italian", "latin", "classic", "popular", "feminine"],
+    "related": ["Julia", "Juliana", "Giulietta", "Lia"],
+    "famous_namesakes": "Giulia Farnese (Italian noblewoman), Giulia Steingruber (gymnast)"
+  },
+  {
+    "id": "it5",
+    "name": "Lorenzo",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "From Laurentum (ancient Roman city).",
+    "originNotes": "Latin origin, a romantic and classic Italian name.",
+    "pronunciation": "loh-REN-tsoh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 25,
+    "tags": ["italian", "latin", "classic", "romantic", "popular"],
+    "related": ["Enzo", "Lawrence", "Lars", "Renzo"],
+    "famous_namesakes": "Lorenzo de' Medici (Italian statesman), Lorenzo Lamas (actor)"
+  },
+  {
+    "id": "it6",
+    "name": "Chiara",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Clear, bright, famous.",
+    "originNotes": "Italian form of Clara, associated with St. Clare of Assisi.",
+    "pronunciation": "kee-AH-rah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 23,
+    "tags": ["italian", "latin", "classic", "saint", "bright", "popular"],
+    "related": ["Clara", "Claire", "Clarissa", "Chiarina"],
+    "famous_namesakes": "St. Clare of Assisi, Chiara Mastroianni (actress), Chiara Ferragni (fashion influencer)"
+  },
+  {
+    "id": "it7",
+    "name": "Matteo",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Gift of God.",
+    "originNotes": "Italian form of Matthew (Hebrew origin). Popular and classic.",
+    "pronunciation": "mat-TEH-oh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 18,
+    "tags": ["italian", "hebrew", "biblical", "classic", "popular"],
+    "related": ["Matthew", "Mateo", "Mattia", "Teo"],
+    "famous_namesakes": "Matteo Renzi (Italian politician), Matteo Berrettini (tennis player)"
+  },
+  {
+    "id": "it8",
+    "name": "Beatrice",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "She who brings happiness; voyager.",
+    "originNotes": "Latin origin, famously Dante's muse in 'The Divine Comedy'.",
+    "pronunciation": "beh-ah-TREE-cheh",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 15,
+    "tags": ["italian", "latin", "classic", "literary", "romantic", "royal"],
+    "related": ["Beatrix", "Bea", "Trixie", "Bice"],
+    "famous_namesakes": "Beatrice Portinari (Dante's muse), Princess Beatrice of York"
+  },
+  {
+    "id": "it9",
+    "name": "Elio",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Sun.",
+    "originNotes": "Italian/Spanish from Greek Helios (sun god). Short, bright, and uncommon.",
+    "pronunciation": "EH-lee-oh",
+    "popularity": "Unique Find",
+    "lengthCategory": "short",
+    "styleScore": 70,
+    "tags": ["italian", "greek", "mythological", "nature", "short", "bright", "uncommon"],
+    "related": ["Helios", "Elias", "Ilia"],
+    "famous_namesakes": "Elio Germano (actor), Elio de Angelis (F1 driver)"
+  },
+  {
+    "id": "it10",
+    "name": "Allegra",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Joyful, lively.",
+    "originNotes": "Italian word name, also a musical term. Spirited and elegant.",
+    "pronunciation": "ah-LEG-rah",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 85,
+    "tags": ["italian", "word-name", "musical", "joyful", "elegant", "uncommon"],
+    "related": ["Legra", "Allegria"],
+    "famous_namesakes": "Allegra Versace (Italian heiress), Allegra Kent (ballerina)"
+  },
+  {
+    "id": "it11",
+    "name": "Marco",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Warlike (from Mars).",
+    "originNotes": "Latin origin, related to Mars, the Roman god of war. Classic and strong.",
+    "pronunciation": "MAR-ko",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 13,
+    "tags": ["italian", "latin", "classic", "strong", "mythological", "popular"],
+    "related": ["Marcus", "Mark", "Marcelo"],
+    "famous_namesakes": "Marco Polo (explorer), Marco Materazzi (footballer)"
+  },
+  {
+    "id": "it12",
+    "name": "Alessia",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Defending warrior.",
+    "originNotes": "Italian feminine form of Alexis (Greek origin). Graceful and popular.",
+    "pronunciation": "ah-LESS-ee-ah",
+    "popularity": "Balanced",
+    "lengthCategory": "medium",
+    "styleScore": 44,
+    "tags": ["italian", "greek", "feminine", "strong", "graceful", "popular"],
+    "related": ["Alexis", "Alessio", "Alexa", "Sia"],
+    "famous_namesakes": "Alessia Cara (singer), Alessia Marcuzzi (TV presenter)"
+  },
+  {
+    "id": "it13",
+    "name": "Riccardo",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Powerful ruler; brave power.",
+    "originNotes": "Italian form of Richard (Germanic origin). Strong and classic.",
+    "pronunciation": "ree-KAR-doh",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 17,
+    "tags": ["italian", "germanic", "classic", "strong", "royal"],
+    "related": ["Richard", "Ricardo", "Rico", "Ricky"],
+    "famous_namesakes": "Riccardo Muti (conductor), Riccardo Scamarcio (actor)"
+  },
+  {
+    "id": "it14",
+    "name": "Ginevra",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "White shadow, white wave; juniper tree.",
+    "originNotes": "Italian form of Guinevere (Welsh). Elegant and increasingly popular.",
+    "pronunciation": "jee-NEV-rah",
+    "popularity": "Rising Trend",
+    "lengthCategory": "medium",
+    "styleScore": 50,
+    "tags": ["italian", "welsh", "arthurian", "elegant", "romantic", "literary"],
+    "related": ["Guinevere", "Jennifer", "Ginny", "Neva"],
+    "famous_namesakes": "Ginevra de' Benci (subject of da Vinci painting), Ginevra Elkann (film director)"
+  },
+  {
+    "id": "it15",
+    "name": "Vittorio",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Conqueror, victor.",
+    "originNotes": "Italian form of Victor (Latin). Strong and classic.",
+    "pronunciation": "veet-TOR-ee-oh",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 21,
+    "tags": ["italian", "latin", "classic", "strong", "victorious"],
+    "related": ["Victor", "Vito", "Vittore"],
+    "famous_namesakes": "Vittorio De Sica (film director), Vittorio Gassman (actor)"
+  },
+  {
+    "id": "it16",
+    "name": "Isabella",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Pledged to God; God is my oath.",
+    "originNotes": "Hebrew origin, Italian/Spanish form of Elizabeth. Royal and classic.",
+    "pronunciation": "ee-zah-BEL-lah",
+    "popularity": "Classic",
+    "lengthCategory": "long",
+    "styleScore": 9,
+    "tags": ["italian", "hebrew", "biblical", "classic", "royal", "popular", "long"],
+    "related": ["Elizabeth", "Isabel", "Bella", "Isa"],
+    "famous_namesakes": "Isabella Rossellini (actress), Queen Isabella I of Castile"
+  },
+  {
+    "id": "it17",
+    "name": "Enzo",
+    "language": "italian",
+    "gender": "boy",
+    "meaning": "Home ruler (short form of Lorenzo/Vincenzo); giant (Germanic).",
+    "originNotes": "Italian short form, also has Germanic roots. Popular and spirited.",
+    "pronunciation": "EN-zoh",
+    "popularity": "Rising Trend",
+    "lengthCategory": "short",
+    "styleScore": 55,
+    "tags": ["italian", "short", "spirited", "popular", "diminutive", "germanic"],
+    "related": ["Lorenzo", "Vincenzo", "Heinz"],
+    "famous_namesakes": "Enzo Ferrari (founder of Ferrari), Enzo Maresca (football manager)"
+  },
+  {
+    "id": "it18",
+    "name": "Cosima",
+    "language": "italian",
+    "gender": "girl",
+    "meaning": "Order, decency, universe.",
+    "originNotes": "Italian feminine form of Cosmo (Greek). Uncommon and sophisticated.",
+    "pronunciation": "KO-zee-mah",
+    "popularity": "Unique Find",
+    "lengthCategory": "medium",
+    "styleScore": 88,
+    "tags": ["italian", "greek", "sophisticated", "uncommon", "aristocratic"],
+    "related": ["Cosmo", "Cozima"],
+    "famous_namesakes": "Cosima Wagner (daughter of Liszt, wife of Wagner), Cosima von Bülow Pavoncelli"
+  },
+  {
+    "id": "es1",
+    "name": "Mateo",
+    "language": "spanish",
+    "gender": "boy",
+    "meaning": "Gift of God.",
+    "originNotes": "Hebrew origin (Matthew), very popular in Spanish-speaking countries.",
+    "pronunciation": "mah-TEH-oh",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 30,
+    "tags": ["spanish", "hebrew", "biblical", "classic", "popular", "short"],
+    "related": ["Matías", "Matthew", "Teo", "Matteo"],
+    "famous_namesakes": "Mateo Alemán (novelist), Mateo Kovačić (footballer), Mateo Gil (screenwriter)"
+  },
+  {
+    "id": "es2",
+    "name": "Lucia",
+    "language": "spanish",
+    "gender": "girl",
+    "meaning": "Light.",
+    "originNotes": "Latin origin, classic and beautiful, associated with Saint Lucia.",
+    "pronunciation": "loo-SEE-ah (Latin America) / LOO-thee-ah (Spain)",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 20,
+    "tags": ["spanish", "latin", "classic", "saint", "light", "popular", "short"],
+    "related": ["Lucy", "Luciana", "Luz", "Lucila"],
+    "famous_namesakes": "Saint Lucia of Syracuse, Lucía Etxebarria (writer), Lucía Bosé (actress)"
+  },
+  {
+    "id": "es3",
+    "name": "Santiago",
+    "language": "spanish",
+    "gender": "boy",
+    "meaning": "Saint James (contraction of Sant Iago).",
+    "originNotes": "Hebrew/Spanish origin, patron saint of Spain and many other places.",
+    "pronunciation": "sahn-tee-AH-go",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 12,
+    "tags": ["spanish", "hebrew", "biblical", "classic", "patron saint", "geographical", "popular"],
+    "related": ["Diego", "Jaime", "James", "Tiago", "Iago"],
+    "famous_namesakes": "Santiago Calatrava (architect), Santiago Ramón y Cajal (Nobel laureate), Santiago Bernabéu (Real Madrid figure)"
+  },
+  {
+    "id": "es4",
+    "name": "Valeria",
+    "language": "spanish",
+    "gender": "girl",
+    "meaning": "Strength, health.",
+    "originNotes": "Latin origin, popular in Spanish-speaking countries and Eastern Europe.",
+    "pronunciation": "vah-LEH-ree-ah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 26,
+    "tags": ["spanish", "latin", "classic", "strong", "healthy", "popular"],
+    "related": ["Valerie", "Valerio", "Valeriana"],
+    "famous_namesakes": "Valeria Mazza (model), Valeria Golino (actress), Valeria Lukyanova (model)"
+  },
+  {
+    "id": "es5",
+    "name": "Hugo",
+    "language": "spanish",
+    "gender": "boy",
+    "meaning": "Mind, intellect, spirit.",
+    "originNotes": "Germanic origin, popular in Spain and Latin America.",
+    "pronunciation": "OO-go",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 32,
+    "tags": ["spanish", "germanic", "classic", "intellectual", "short", "popular"],
+    "related": ["Hugh", "Ugo"],
+    "famous_namesakes": "Hugo Sánchez (footballer), Hugo Chávez (Venezuelan president)"
+  },
+  {
+    "id": "es6",
+    "name": "Martina",
+    "language": "spanish",
+    "gender": "girl",
+    "meaning": "Warlike (feminine of Martin, from Mars).",
+    "originNotes": "Latin origin, popular in Spanish, Italian, and Slavic countries.",
+    "pronunciation": "mar-TEE-nah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 28,
+    "tags": ["spanish", "latin", "classic", "strong", "feminine", "popular"],
+    "related": ["Martin", "Martine", "Tina"],
+    "famous_namesakes": "Martina Navratilova (tennis player), Martina McBride (singer), Martina Stoessel (actress/singer)"
+  },
+  {
+    "id": "es7",
+    "name": "Javier",
+    "language": "spanish",
+    "gender": "boy",
+    "meaning": "New house.",
+    "originNotes": "Basque origin, associated with Saint Francis Xavier.",
+    "pronunciation": "hah-vee-AIR",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 18,
+    "tags": ["spanish", "basque", "classic", "saint", "popular"],
+    "related": ["Xavier", "Javi"],
+    "famous_namesakes": "Javier Bardem (actor), Javier Sotomayor (high jumper), St. Francis Xavier"
+  },
+  {
+    "id": "es8",
+    "name": "Camila",
+    "language": "spanish",
+    "gender": "girl",
+    "meaning": "Young ceremonial attendant; noble.",
+    "originNotes": "Latin origin, popular in Spanish and Portuguese speaking countries.",
+    "pronunciation": "kah-MEE-lah",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 34,
+    "tags": ["spanish", "latin", "classic", "noble", "popular", "gentle"],
+    "related": ["Camille", "Mila", "Cami"],
+    "famous_namesakes": "Camila Cabello (singer), Camila Alves (model), Camila Mendes (actress)"
+  },
+  {
+    "id": "fr1",
+    "name": "Louis",
+    "language": "french",
+    "gender": "boy",
+    "meaning": "Famous warrior.",
+    "originNotes": "Germanic origin (Chlodowig), a classic French royal name.",
+    "pronunciation": "LOO-ee (French), LOO-iss (English)",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 10,
+    "tags": ["french", "classic", "royal", "strong", "international"],
+    "related": ["Ludovic", "Lewis", "Luigi", "Clovis"],
+    "famous_namesakes": "King Louis XIV of France, Louis Armstrong (musician), Louis Vuitton (designer)"
+  },
+  {
+    "id": "fr2",
+    "name": "Camille",
+    "language": "french",
+    "gender": "any",
+    "meaning": "Young ceremonial attendant; noble.",
+    "originNotes": "Latin origin (Camillus), a popular unisex name in France.",
+    "pronunciation": "ka-MEE-yuh",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 30,
+    "tags": ["french", "unisex", "classic", "latin", "elegant", "popular"],
+    "related": ["Camila", "Camillus", "Milly"],
+    "famous_namesakes": "Camille Pissarro (painter), Camille Claudel (sculptor), Camille Cottin (actress)"
+  },
+  {
+    "id": "fr3",
+    "name": "Gabriel",
+    "language": "french",
+    "gender": "boy",
+    "meaning": "God is my strength.",
+    "originNotes": "Hebrew origin, an archangel in Abrahamic religions. Popular internationally.",
+    "pronunciation": "GA-bree-el (French slightly different)",
+    "popularity": "Top 100",
+    "lengthCategory": "medium",
+    "styleScore": 22,
+    "tags": ["french", "hebrew", "biblical", "angelic", "classic", "popular", "international"],
+    "related": ["Gabrielle", "Gabe", "Gabrio"],
+    "famous_namesakes": "Archangel Gabriel, Gabriel Byrne (actor), Gabriel García Márquez (author)"
+  },
+  {
+    "id": "fr4",
+    "name": "Léa",
+    "language": "french",
+    "gender": "girl",
+    "meaning": "Weary; mistress/ruler (Akkadian); lioness (Hebrew).",
+    "originNotes": "Hebrew origin (Leah), popular in France and other European countries.",
+    "pronunciation": "LAY-ah",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 25,
+    "tags": ["french", "hebrew", "biblical", "classic", "short", "popular"],
+    "related": ["Leah", "Lia", "Leia"],
+    "famous_namesakes": "Léa Seydoux (actress), Lea Salonga (singer)"
+  },
+  {
+    "id": "fr5",
+    "name": "Antoine",
+    "language": "french",
+    "gender": "boy",
+    "meaning": "Priceless one; praiseworthy.",
+    "originNotes": "French form of Anthony (Latin origin). Classic and sophisticated.",
+    "pronunciation": "ahn-TWAHN",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 18,
+    "tags": ["french", "latin", "classic", "sophisticated", "saint"],
+    "related": ["Anthony", "Antonio", "Antonin", "Toine"],
+    "famous_namesakes": "Antoine de Saint-Exupéry (author), Antoine Griezmann (footballer)"
+  },
+  {
+    "id": "fr6",
+    "name": "Chloé",
+    "language": "french",
+    "gender": "girl",
+    "meaning": "Blooming, verdant (young green shoot).",
+    "originNotes": "Greek origin, a popular name in France and English-speaking countries.",
+    "pronunciation": "KLO-ay",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 35,
+    "tags": ["french", "greek", "nature", "spring", "classic", "popular", "feminine"],
+    "related": ["Chloe", "Cloe", "Khloe"],
+    "famous_namesakes": "Chloé (fashion house), Chloë Sevigny (actress), Khloé Kardashian (TV personality)"
+  },
+  {
+    "id": "fr7",
+    "name": "Jules",
+    "language": "french",
+    "gender": "boy",
+    "meaning": "Youthful; Jove's child.",
+    "originNotes": "French form of Julius (Latin origin). Classic and literary.",
+    "pronunciation": "ZHEWL",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 20,
+    "tags": ["french", "latin", "classic", "literary", "short", "unisex-leaning-masculine"],
+    "related": ["Julius", "Julian", "Julie", "Julia"],
+    "famous_namesakes": "Jules Verne (author), Jules Bianchi (F1 driver), Jules Feiffer (cartoonist)"
+  },
+  {
+    "id": "fr8",
+    "name": "Manon",
+    "language": "french",
+    "gender": "girl",
+    "meaning": "Wished-for child; rebellion; bitter (diminutive of Marie).",
+    "originNotes": "French diminutive of Marie (Hebrew origin). Popular and charming.",
+    "pronunciation": "ma-NOHN",
+    "popularity": "Top 100",
+    "lengthCategory": "short",
+    "styleScore": 40,
+    "tags": ["french", "diminutive", "classic", "charming", "literary", "popular"],
+    "related": ["Marie", "Mary", "Marion"],
+    "famous_namesakes": "Manon Lescaut (opera/novel character), Manon Fiorot (MMA fighter)"
+  },
+  {
+    "id": "jp1",
+    "name": "Haruto",
+    "language": "japanese",
+    "gender": "boy",
+    "meaning": "Sunlight, soar/fly (陽翔); Spring, soar/fly (春翔); Clear, soar/fly (晴翔). Meaning depends on kanji.",
+    "originNotes": "Popular Japanese name with various positive meanings based on kanji combinations.",
+    "pronunciation": "HA-roo-toh",
+    "popularity": "Top 100 (Japan)",
+    "lengthCategory": "medium",
+    "styleScore": 30,
+    "tags": ["japanese", "nature", "positive", "popular", "kanji-dependent"],
+    "related": ["Haru", "Hiroto", "Yamato"],
+    "famous_namesakes": "Haruto Shirai (footballer)"
+  },
+  {
+    "id": "jp2",
+    "name": "Sakura",
+    "language": "japanese",
+    "gender": "girl",
+    "meaning": "Cherry blossom (桜).",
+    "originNotes": "A beloved Japanese name symbolizing beauty, renewal, and the transient nature of life.",
+    "pronunciation": "SA-koo-ra",
+    "popularity": "Top 100 (Japan)",
+    "lengthCategory": "medium",
+    "styleScore": 25,
+    "tags": ["japanese", "nature", "floral", "iconic", "beautiful", "spring"],
+    "related": ["Hana", "Momo", "Saki"],
+    "famous_namesakes": "Sakura Ando (actress), Sakura Miyawaki (singer)"
+  },
+  {
+    "id": "jp3",
+    "name": "Ren",
+    "language": "japanese",
+    "gender": "any",
+    "meaning": "Lotus (蓮); Love/romance (恋). Meaning depends on kanji.",
+    "originNotes": "Popular unisex Japanese name with beautiful meanings.",
+    "pronunciation": "REN",
+    "popularity": "Top 100 (Japan)",
+    "lengthCategory": "short",
+    "styleScore": 40,
+    "tags": ["japanese", "unisex", "nature", "floral", "love", "short", "popular", "kanji-dependent"],
+    "related": ["Len", "Rin"],
+    "famous_namesakes": "Ren Osugi (actor), Ren Meguro (singer/actor)"
+  },
+  {
+    "id": "jp4",
+    "name": "Himari",
+    "language": "japanese",
+    "gender": "girl",
+    "meaning": "Good hollyhock (陽葵); Sun, hollyhock (日葵). Meaning depends on kanji.",
+    "originNotes": "Popular Japanese girls' name, often associated with sunshine and flowers.",
+    "pronunciation": "HEE-ma-ree",
+    "popularity": "Top 100 (Japan)",
+    "lengthCategory": "medium",
+    "styleScore": 35,
+    "tags": ["japanese", "nature", "floral", "sunshine", "feminine", "popular", "kanji-dependent"],
+    "related": ["Hikari", "Aoi", "Hinata"],
+    "famous_namesakes": "Often used in fiction, real-life examples less prominent internationally."
+  },
+  {
+    "id": "jp5",
+    "name": "Kenji",
+    "language": "japanese",
+    "gender": "boy",
+    "meaning": "Intelligent second son (研二); Strong, healthy (健二). Meaning depends on kanji.",
+    "originNotes": "Classic Japanese boys' name with strong, positive meanings.",
+    "pronunciation": "KEN-jee",
+    "popularity": "Classic",
+    "lengthCategory": "short",
+    "styleScore": 20,
+    "tags": ["japanese", "classic", "strong", "intelligent", "kanji-dependent"],
+    "related": ["Ken", "Kenzo", "Kenta"],
+    "famous_namesakes": "Kenji Miyazawa (poet/author), Kenji Wu (singer)"
+  },
+  {
+    "id": "jp6",
+    "name": "Yumi",
+    "language": "japanese",
+    "gender": "girl",
+    "meaning": "Beauty (美); Archery bow (弓); Abundant beauty (裕美). Meaning depends on kanji.",
+    "originNotes": "Elegant Japanese girls' name with various beautiful meanings.",
+    "pronunciation": "YOO-mee",
+    "popularity": "Balanced",
+    "lengthCategory": "short",
+    "styleScore": 50,
+    "tags": ["japanese", "feminine", "beautiful", "elegant", "short", "kanji-dependent"],
+    "related": ["Yuna", "Ami", "Miyu"],
+    "famous_namesakes": "Yumi Matsutoya (singer), Yumi Yoshimura (singer, Puffy AmiYumi)"
+  },
+  {
+    "id": "jp7",
+    "name": "Daiki",
+    "language": "japanese",
+    "gender": "boy",
+    "meaning": "Great radiance (大輝); Great tree (大樹); Great nobility (大貴). Meaning depends on kanji.",
+    "originNotes": "Strong and popular Japanese boys' name.",
+    "pronunciation": "DIE-kee",
+    "popularity": "Top 100 (Japan)",
+    "lengthCategory": "short",
+    "styleScore": 38,
+    "tags": ["japanese", "strong", "noble", "radiant", "popular", "kanji-dependent"],
+    "related": ["Dai", "Taiki", "Haruki"],
+    "famous_namesakes": "Daiki Arioka (singer/actor), Daiki Kameda (boxer)"
+  },
+  {
+    "id": "jp8",
+    "name": "Akira",
+    "language": "japanese",
+    "gender": "any",
+    "meaning": "Bright, clear, intelligent (明); Autumn (秋). Meaning depends on kanji.",
+    "originNotes": "Well-known unisex Japanese name, famously used by filmmaker Kurosawa.",
+    "pronunciation": "AH-kee-ra",
+    "popularity": "Classic",
+    "lengthCategory": "medium",
+    "styleScore": 28,
+    "tags": ["japanese", "unisex", "classic", "intelligent", "bright", "artistic", "kanji-dependent"],
+    "related": ["Aki", "Kira"],
+    "famous_namesakes": "Akira Kurosawa (film director), Akira Toriyama (manga artist)"
   }
 ]
 
