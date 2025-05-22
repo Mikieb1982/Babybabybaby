@@ -24,11 +24,13 @@
                         typewriter: ['"Special Elite"', 'monospace'],
                     },
                     colors: {
-                        'stork-title': '#2C3E50',
-                        'stork-text': '#34495E',
-                        'stork-accent': '#1ABC9C',
-                        'stork-accent-hover': '#16A085',
-                        'soft-beige': '#F5F5DC',
+                        'stork-title': '#2C3E50', // Dark Slate Blue
+                        'stork-text': '#34495E',  // Wet Asphalt
+                        'stork-accent': '#1ABC9C', // Turquoise
+                        'stork-accent-hover': '#16A085', // Green Sea
+                        'soft-beige': '#F7F3E9', // A softer beige
+                        'sky-100': '#E0F2FE',    // Light Sky Blue (for gradient)
+                        'indigo-200': '#C7D2FE', // Lighter Indigo (for gradient)
                         'dark-text': '#374151',
                         'medium-gray': '#6B7280',
                         'button-active': '#60A5FA',
@@ -44,7 +46,7 @@
                         'copy-button-hover': '#4B5563',
                         'accent-muted': '#64748b',
                         'accent-muted-light': '#cbd5e1',
-                        'off-white': '#f8fafc',
+                        'off-white': '#f8fafc', // Very light gray, almost white
                         'indigo-100': '#e0e7ff',
                         'indigo-700': '#4338ca',
                         'amber-100': '#fef3c7',
@@ -59,7 +61,8 @@
                         'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
-                        'blink-caret': 'blink-caret .75s step-end infinite'
+                        'blink-caret': 'blink-caret .75s step-end infinite',
+                        'button-icon-hover': 'button-icon-hover 0.3s ease-in-out'
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
@@ -72,6 +75,10 @@
                         'blink-caret': {
                             'from, to': { borderColor: 'transparent' },
                             '50%': { borderColor: '#1ABC9C' } /* Use stork-accent color */
+                        },
+                        'button-icon-hover': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-2px) rotate(5deg)'}
                         }
                     },
                 }
@@ -81,25 +88,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
         /* Basic styles */
-        .btn { @apply px-4 py-2 rounded-md transition duration-200 ease-in-out shadow; }
-        .btn-primary { @apply bg-stork-accent text-white hover:bg-stork-accent-hover font-semibold; }
+        .btn { @apply px-4 py-2 rounded-lg transition duration-200 ease-in-out shadow-md; } /* Slightly larger rounding */
+        .btn-primary {
+            @apply bg-gradient-to-br from-stork-accent to-teal-400 text-white hover:from-stork-accent-hover hover:to-teal-500 font-semibold;
+        }
+        .btn-primary img { @apply group-hover:animate-button-icon-hover; }
+
         .btn-secondary { @apply bg-gray-200 text-stork-text hover:bg-gray-300; }
         .btn-feedback { @apply transform active:scale-95; }
 
         /* Form element styles */
-        select, input[type="text"], input[type="radio"], input[type="range"] {
-             @apply rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+        select, input[type="text"] {
+            @apply rounded-md border-gray-300 shadow-sm focus:border-stork-accent focus:ring focus:ring-stork-accent focus:ring-opacity-50 p-2.5;
         }
-        input[type="radio"] { @apply text-stork-accent focus:ring-stork-accent; }
-        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent; }
-        input[type="range"]::-moz-range-thumb { @apply bg-stork-accent; }
+        input[type="radio"] { @apply h-4 w-4 text-stork-accent focus:ring-stork-accent border-gray-300; }
+        input[type="range"] { @apply w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-stork-accent; }
+        input[type="range"]::-webkit-slider-thumb { @apply bg-stork-accent h-5 w-5 rounded-full shadow-md appearance-none; }
+        input[type="range"]::-moz-range-thumb {  @apply bg-stork-accent h-5 w-5 rounded-full shadow-md appearance-none; }
+
 
         /* Loader */
         .loader {
-            border: 4px solid #f3f3f3; /* Light grey */
+            border: 4px solid #e0f2fe; /* Light sky */
             border-top: 4px solid #1ABC9C; /* Stork Accent */
             border-radius: 50%;
             width: 40px;
@@ -113,72 +127,86 @@
         }
 
         /* Name card styles */
-         .name-card {
-             @apply bg-white p-4 rounded-lg shadow border border-gray-200 mb-4 transition-all duration-300 hover:shadow-md;
-         }
-         /* General style for h3 in card */
-         .name-card h3 {
-             /* min-height: 3.5rem; Ensure space for the name even before typing */
-             margin-bottom: 0.5rem; /* Tailwind mb-2 */
-             @apply text-stork-title font-semibold text-lg;
-         }
-         .name-card p {
-             @apply text-stork-text mb-1 text-sm;
-         }
-         .name-card .tags span {
-             @apply inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded;
-         }
-         .name-card .actions button {
-             @apply text-xs px-2 py-1 rounded mr-2;
-         }
+        .name-card {
+            @apply bg-white p-4 rounded-xl shadow-lg border border-gray-200/50 mb-4 transition-all duration-300 hover:shadow-xl hover:border-stork-accent/50;
+        }
+        .name-card h3 {
+            margin-bottom: 0.5rem;
+            @apply text-stork-title font-semibold text-xl; /* Slightly larger name */
+        }
+        .name-card p {
+            @apply text-stork-text mb-1 text-base; /* Slightly larger details */
+        }
+        .name-card .tags span {
+            @apply inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full; /* Pill shape tags */
+        }
 
-         /* Typewriter Target Styles */
-         #name-typewriter-target {
-             font-family: 'Special Elite', monospace;
-             font-size: 2.5rem; /* Slightly smaller than original for better fit (Tailwind text-4xl) */
-             line-height: 3rem; /* Adjusted line height */
-             color: #2C3E50; /* stork-title color */
-             text-align: center;
-             display: block; /* Ensure it takes full width for centering */
-             overflow: hidden; /* Hide text overflow during typing */
-             white-space: nowrap; /* Keep text on one line */
-             width: 100%; /* Take full width of its container */
-             min-height: 3rem; /* Ensure space is reserved */
-             margin-bottom: 1rem; /* Space below the typed name */
-         }
 
-         #name-typewriter-target.typing::after {
-             content: '|';
-             display: inline-block;
-             animation: blink-caret .75s step-end infinite;
-             margin-left: 5px; /* Adjusted margin for larger font */
-             vertical-align: baseline;
-             color: #1ABC9C; /* Cursor color */
-             font-size: 2.5rem; /* Match font size */
-             line-height: 3rem; /* Match line height */
-         }
+        /* Typewriter Target Styles */
+        #name-typewriter-target {
+            font-family: 'Special Elite', monospace;
+            font-size: 3rem; /* Larger for more impact */
+            line-height: 3.5rem;
+            color: #2C3E50;
+            text-align: center;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            min-height: 3.5rem;
+            margin-bottom: 1.5rem; /* More space below */
+        }
 
-         /* Full height layout */
-         html, body {
-             min-height: 100%;
-             display: flex;
-             flex-direction: column;
-         }
-         body {
-             flex-grow: 1;
-             padding-top: 64px; /* Adjusted for fixed header height */
-             font-family: 'Nunito Sans', sans-serif;
-             color: #34495E; /* Default text color */
-         }
-         main {
-             flex-grow: 1;
-         }
-         /* Ensure letter buttons are styled and spaced */
+        #name-typewriter-target.typing::after {
+            content: '|';
+            display: inline-block;
+            animation: blink-caret .75s step-end infinite;
+            margin-left: 8px;
+            vertical-align: baseline;
+            color: #1ABC9C;
+            font-size: 3rem;
+            line-height: 3.5rem;
+        }
+
+        /* Full height layout */
+        html, body {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            flex-grow: 1;
+            font-family: 'Nunito Sans', sans-serif;
+            color: #34495E;
+        }
+        main {
+            flex-grow: 1;
+        }
+        /* Ensure letter buttons are styled and spaced */
         #first-letter-inputs button {
-            @apply p-2 m-1 border rounded-md text-sm hover:bg-stork-accent hover:text-white transition-colors duration-150;
+            @apply p-2.5 m-1 border border-gray-300 rounded-lg text-sm hover:bg-stork-accent hover:text-white hover:border-stork-accent transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-stork-accent focus:ring-opacity-50;
         }
         #first-letter-inputs button.selected {
-            @apply bg-stork-accent text-white;
+            @apply bg-stork-accent text-white border-stork-accent;
+        }
+        /* Ensure body has top padding if header is fixed */
+        body.has-fixed-header {
+            padding-top: 72px; /* Adjusted for potentially taller header due to padding/logo */
+        }
+        /* Custom scrollbar for a cleaner look (optional) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1ABC9C; /* Stork Accent */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #16A085; /* Stork Accent Hover */
         }
 
     </style>
@@ -193,50 +221,52 @@
 
 </head>
 
-<body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+<body class="font-sans text-stork-text overflow-x-hidden bg-gradient-to-br from-sky-100 to-indigo-200 bg-fixed pt-16 has-fixed-header">
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-8 bg-white/90 backdrop-blur-lg shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" title="The Stork Name Drop Home" class="z-20">
+            <a href="#" title="The Stork Name Drop Home" class="z-20 flex items-center space-x-2">
                 <img src="assets/logo.png" alt="The Stork Name Drop Logo"
-                     class="h-12 w-12 object-contain"
+                     class="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-md"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
+                <span class="hidden sm:inline text-xl font-semibold text-stork-title">Stork Name Drop</span>
             </a>
 
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
-                <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Home</a>
+            <nav class="flex space-x-3 sm:space-x-5 items-center">
+                <a href="#" class="text-sm sm:text-base text-stork-accent font-semibold hover:text-stork-accent-hover transition duration-200">Home</a>
                 <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
-                <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
-                <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About Us</a>
+                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data</a>
+                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
             </nav>
         </div>
     </header>
 
-    <section id="showcase" class="py-6 md:py-10 text-center relative">
+    <section id="showcase" class="py-8 md:py-12 text-center relative">
         <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
-             class="w-full h-auto mb-6 max-w-3xl mx-auto object-contain"
-             onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop'; this.style.border='1px dashed #ccc';">
+             class="w-full h-auto mb-4 max-w-3xl mx-auto object-contain"
+             onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop&font=specialelite&fontsize=60'; this.style.border='1px dashed #ccc';">
+        <p class="text-stork-text text-lg md:text-xl max-w-2xl mx-auto">Discover the perfect name for your little one with our playful generator!</p>
     </section>
 
-    <main class="max-w-3xl mx-auto bg-off-white/90 backdrop-blur-sm p-6 md:p-10 rounded-lg border border-gray-200 shadow-lg my-10 animate-fade-in-down">
+    <main class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl border border-gray-200/70 shadow-xl my-10 animate-fade-in-down">
 
-        <fieldset id="generator-controls" class="space-y-8 mb-12">
-            <legend class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Name Generator Options</legend>
+        <fieldset id="generator-controls" class="space-y-10 mb-12">
+            <legend class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Find Your Name</legend>
 
             <section id="gender-selection">
-                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Gender:</label>
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
-                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2"> <label for="gender-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2"> <label for="gender-boy" class="text-base md:text-lg cursor-pointer">Boy</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2"> <label for="gender-girl" class="text-base md:text-lg cursor-pointer">Girl</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2"> <label for="gender-neutral" class="text-base md:text-lg cursor-pointer">Neutral</label> </div>
+                <label class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Gender Preference:</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3">
+                    <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2.5"> <label for="gender-any" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2.5"> <label for="gender-boy" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Boy</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-girl" name="gender" value="girl" class="mr-2.5"> <label for="gender-girl" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Girl</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="gender-neutral" name="gender" value="neutral" class="mr-2.5"> <label for="gender-neutral" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Neutral</label> </div>
                 </div>
             </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                 <section id="language-selection">
-                    <label for="language-select" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Language/Origin:</label>
-                    <select id="language-select" name="language" class="w-full p-2 text-base border">
+                    <label for="language-select" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Origin:</label>
+                    <select id="language-select" name="language" class="w-full p-3 text-base border">
                         <option value="all">Any Origin</option>
                         <option value="english">English</option>
                         <option value="german">German</option>
@@ -247,76 +277,77 @@
                         </select>
                 </section>
                 <section id="letter-filter">
-                    <label for="first-letter-input" class="block text-lg md:text-xl text-stork-text font-semibold mb-2">Starts with:</label>
-                    <div id="first-letter-inputs" class="flex flex-wrap gap-1">
-                         <span class="text-sm text-gray-500">Select a letter (optional)</span>
+                    <label for="first-letter-input" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Starts with letter:</label>
+                    <div id="first-letter-inputs" class="flex flex-wrap gap-1.5">
+                         <span class="text-sm text-gray-500 p-2">Select a letter (optional)</span>
                     </div>
                     <input type="hidden" id="selected-letter" value="">
                 </section>
             </div>
 
             <section id="length-filter">
-                <label class="block text-lg md:text-xl text-stork-text font-semibold mb-3">Name Length:</label>
-                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
-                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2"> <label for="length-any" class="text-base md:text-lg cursor-pointer">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2"> <label for="length-short" class="text-base md:text-lg cursor-pointer">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2"> <label for="length-medium" class="text-base md:text-lg cursor-pointer">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2"> <label for="length-long" class="text-base md:text-lg cursor-pointer">Long (9+)</label> </div>
+                <label class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Name Length:</label>
+                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3">
+                    <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Any</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Short (3-5)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Medium (6-8)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Long (9+)</label> </div>
                 </div>
             </section>
 
             <section id="style-slider">
-                <div class="flex justify-between items-center mb-2">
-                    <h2 class="text-lg md:text-xl text-stork-text font-semibold">Name Style:</h2>
-                    <span id="slider-feedback" class="text-medium-gray text-sm md:text-base font-medium">Balanced</span>
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-xl md:text-2xl text-stork-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg font-medium bg-gray-100 px-3 py-1 rounded-md">Balanced</span>
                 </div>
                 <div class="flex items-center justify-between text-medium-gray mb-1 text-sm md:text-base">
                     <span>Traditional</span>
                     <span>Unique</span>
                 </div>
-                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-stork-accent">
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full">
             </section>
 
-            <div class="text-center pt-4">
-                <button id="generate-btn" class="btn btn-primary w-auto px-8 py-6 shadow-md btn-feedback flex justify-center items-center mx-auto" disabled>
-                    <img src="assets/drop.png" alt="" class="h-12 w-auto mr-3"> <span class="text-xl font-semibold">Drop a Name!</span>
+            <div class="text-center pt-6">
+                <button id="generate-btn" class="btn btn-primary w-auto px-10 py-4 shadow-lg btn-feedback flex justify-center items-center mx-auto group" disabled>
+                    <img src="assets/drop.png" alt="Drop icon" class="h-8 w-8 sm:h-10 sm:w-10 mr-3 transition-transform duration-300">
+                    <span class="text-xl sm:text-2xl font-bold">Drop a Name!</span>
                 </button>
             </div>
         </fieldset>
 
-         <section id="results-section" class="mt-12 animate-fade-in">
-             <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center border-b pb-3">Generated Name</h2>
-             <div id="results-container" class="min-h-[150px] relative"> <div id="loading-indicator" class="loader" style="display: none;"></div>
-                 <div id="result-display" class="text-stork-text">
-                     <h3 id="name-typewriter-target" class="font-typewriter"></h3>
-                     <div id="name-details" class="text-center mt-2"></div>
-                     <p id="results-placeholder" class="text-center text-medium-gray text-lg italic mt-8">Loading name data...</p>
-                 </div>
-                 <p id="results-message" class="text-center text-medium-gray mt-4 text-base" style="display:none;"></p>
-             </div>
-         </section>
+        <section id="results-section" class="mt-16 animate-fade-in">
+            <h2 class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Your Generated Name</h2>
+            <div id="results-container" class="min-h-[200px] relative p-4 bg-white/50 rounded-xl shadow-inner">
+                <div id="loading-indicator" class="loader" style="display: none;"></div>
+                <div id="result-display" class="text-stork-text">
+                    <h3 id="name-typewriter-target" class="font-typewriter"></h3>
+                    <div id="name-details" class="text-center mt-4 space-y-1"></div>
+                    <p id="results-placeholder" class="text-center text-medium-gray text-xl italic mt-10">Loading name data...</p>
+                </div>
+                <p id="results-message" class="text-center text-medium-gray mt-6 text-lg" style="display:none;"></p>
+            </div>
+        </section>
 
-         <hr class="my-10 border-gray-300">
+        <hr class="my-12 border-gray-300/70">
 
-         <div id="additional-info" class="space-y-10">
-             <section id="related-names-section" class="hidden">
-                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Similar Names</h2>
-                 <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                     </div>
-             </section>
+        <div id="additional-info" class="space-y-12">
+            <section id="related-names-section" class="hidden">
+                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Similar Names You Might Like</h2>
+                <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    </div>
+            </section>
 
-             <section id="famous-namesakes-section" class="hidden">
-                 <h2 class="text-xl md:text-2xl text-stork-title font-semibold mb-4 text-center">Famous Namesakes / Mentions</h2>
-                 <div id="famous-namesakes-container" class="text-stork-text bg-gray-50 p-4 rounded-md border">
-                     <p class="text-center text-medium-gray italic">No information available yet.</p>
-                 </div>
-             </section>
-         </div>
+            <section id="famous-namesakes-section" class="hidden">
+                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Famous Namesakes / Mentions</h2>
+                <div id="famous-namesakes-container" class="text-stork-text bg-sky-50 p-6 rounded-xl border border-sky-200/80 shadow-md">
+                    <p class="text-center text-medium-gray italic">No information available yet.</p>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="impressum.html" class="hover:underline">Impressum</a> | <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:underline">Terms of Service</a>
-     </footer>
+    <footer class="bg-gray-800 text-gray-300 text-center p-6 mt-auto text-sm border-t border-gray-700">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:text-stork-accent hover:underline">Impressum</a> | <a href="#" class="hover:text-stork-accent hover:underline">Privacy Policy</a> | <a href="#" class="hover:text-stork-accent hover:underline">Terms of Service</a> </footer>
 
 
     <script>
@@ -344,128 +375,134 @@
         let dataLoaded = false;
         let currentNameObject = null; // Stores the currently displayed name object
         let typingInterval = null; // To manage the typewriter interval
-        const BASE_URL = './'; // Assuming JSON files are in the same directory or a sub-directory
 
-        // --- Mock Data (Paths to JSON files) ---
-        // Create these JSON files in your project directory.
-        // Example `names.json` (for "Any Origin"):
-        // [
-        //   {"name": "Alex", "gender": "neutral", "origin": "Greek", "meaning": "Defender of mankind", "popularity": 70, "tags": ["classic"], "related": ["Jordan", "Taylor"], "famous_namesakes": "Alex Trebek"},
-        //   {"name": "Seraphina", "gender": "girl", "origin": "Hebrew", "meaning": "Fiery-winged", "popularity": 25, "tags": ["unique", "angelic"], "related": ["Angelina", "Gabriella"], "famous_namesakes": "Seraphina Affleck"}
-        // ]
-        // Example `english_names.json`:
-        // [
-        //   {"name": "William", "gender": "boy", "origin": "English", "meaning": "Resolute protector", "popularity": 90, "tags": ["royal", "traditional"], "related": ["Charles", "Henry"], "famous_namesakes": "William Shakespeare"},
-        //   {"name": "Poppy", "gender": "girl", "origin": "English", "meaning": "Flower name", "popularity": 40, "tags": ["floral", "modern"], "related": ["Daisy", "Lily"], "famous_namesakes": "Poppy Delevingne"}
-        // ]
-        // Create similar files for german_names.json, japanese_names.json, etc.
+        // --- Embedded Mock Data ---
+        const mockNamesAll = [
+            {"name": "Alex", "gender": "neutral", "origin": "Greek", "meaning": "Defender of mankind", "popularity": 70, "tags": ["classic", "unisex"], "related": ["Jordan", "Taylor", "Kai"], "famous_namesakes": "Alex Trebek, Alex Ferguson"},
+            {"name": "Seraphina", "gender": "girl", "origin": "Hebrew", "meaning": "Fiery-winged", "popularity": 25, "tags": ["unique", "angelic", "elegant"], "related": ["Angelina", "Gabriella", "Evangeline"], "famous_namesakes": "Seraphina Affleck (daughter of Ben Affleck and Jennifer Garner)"},
+            {"name": "Mateo", "gender": "boy", "origin": "Spanish", "meaning": "Gift of God", "popularity": 80, "tags": ["classic", "strong", "popular"], "related": ["Leo", "Lucas", "Santiago"], "famous_namesakes": "Mateo Kovacic (footballer), Mateo Alemán (novelist)"},
+            {"name": "Yuki", "gender": "neutral", "origin": "Japanese", "meaning": "Snow; Happiness", "popularity": 40, "tags": ["nature", "gentle", "short"], "related": ["Kenji", "Sakura", "Haru"], "famous_namesakes": "Yuki Kajiura (composer), Yuki Tsunoda (F1 driver)"},
+            {"name": "Isla", "gender": "girl", "origin": "Scottish", "meaning": "Island", "popularity": 85, "tags": ["nature", "trendy", "short"], "related": ["Ava", "Olivia", "Freya"], "famous_namesakes": "Isla Fisher (actress)"},
+            {"name": "Elias", "gender": "boy", "origin": "Hebrew", "meaning": "My God is the Lord", "popularity": 72, "tags": ["biblical", "classic", "gentle"], "related": ["Elijah", "Samuel", "Noah"], "famous_namesakes": "Elias Howe (inventor), Elias Koteas (actor)"}
+        ];
+
+        const mockEnglishNames = [
+            {"name": "William", "gender": "boy", "origin": "English", "meaning": "Resolute protector", "popularity": 90, "tags": ["royal", "traditional", "strong"], "related": ["Charles", "Henry", "James"], "famous_namesakes": "William Shakespeare, Prince William"},
+            {"name": "Poppy", "gender": "girl", "origin": "English", "meaning": "Flower name", "popularity": 40, "tags": ["floral", "modern", "sweet"], "related": ["Daisy", "Lily", "Rosie"], "famous_namesakes": "Poppy Delevingne (model), Poppy Montgomery (actress)"},
+            {"name": "Arthur", "gender": "boy", "origin": "English", "meaning": "Bear man; Noble strength", "popularity": 75, "tags": ["legendary", "classic", "regal"], "related": ["Alfred", "Edward", "George"], "famous_namesakes": "Arthur Conan Doyle, King Arthur"},
+            {"name": "Willow", "gender": "girl", "origin": "English", "meaning": "Slender, graceful", "popularity": 55, "tags": ["nature", "elegant", "bohemian"], "related": ["Hazel", "Summer", "Skye"], "famous_namesakes": "Willow Smith (singer), Willow Shields (actress)"},
+            {"name": "Oliver", "gender": "boy", "origin": "English", "meaning": "Olive tree", "popularity": 92, "tags": ["popular", "classic", "gentle"], "related": ["Oscar", "Leo", "Felix"], "famous_namesakes": "Oliver Cromwell, Oliver Twist (character)"},
+            {"name": "Florence", "gender": "girl", "origin": "English", "meaning": "Flourishing, prosperous", "popularity": 60, "tags": ["vintage", "elegant", "city"], "related": ["Beatrice", "Clara", "Eleanor"], "famous_namesakes": "Florence Nightingale, Florence Welch (singer)"}
+        ];
+
 
         // --- Functions ---
 
-        /**
-         * Shows or hides the loading indicator.
-         * @param {boolean} show - True to show, false to hide.
-         */
         function showLoading(show) {
             if (loadingIndicator) {
                 loadingIndicator.style.display = show ? 'block' : 'none';
             }
         }
 
-        /**
-         * Displays a message in the results area (e.g., "No names found").
-         * @param {string} message - The message to display.
-         * @param {boolean} isError - If true, styles as an error (optional).
-         */
         function showResultsMessage(message, isError = false) {
             if (resultsMessage) {
                 resultsMessage.textContent = message;
                 resultsMessage.style.display = message ? 'block' : 'none';
-                resultsMessage.style.color = isError ? 'var(--error-red, #EF4444)' : 'var(--medium-gray, #6B7280)';
+                resultsMessage.className = isError ? 'text-center text-error-red mt-4 text-base' : 'text-center text-medium-gray mt-4 text-base';
             }
-            if (resultsPlaceholder) resultsPlaceholder.style.display = 'none'; // Hide placeholder if a message is shown
-            if (nameTypewriterTarget) nameTypewriterTarget.textContent = ''; // Clear name display
-            if (nameDetailsContainer) nameDetailsContainer.innerHTML = ''; // Clear details
+            if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
+            if (nameTypewriterTarget) nameTypewriterTarget.textContent = '';
+            if (nameDetailsContainer) nameDetailsContainer.innerHTML = '';
         }
 
-        /**
-         * Fetches name data based on selected language/origin.
-         * @param {string} language - The selected language value (e.g., 'all', 'english').
-         */
         async function loadNameData(language) {
             dataLoaded = false;
             showLoading(true);
-            generateBtn.disabled = true;
-            if (resultsPlaceholder) resultsPlaceholder.textContent = 'Loading name data...';
-            if (resultsPlaceholder) resultsPlaceholder.style.display = 'block';
-            showResultsMessage(''); // Clear previous messages
+            if(generateBtn) generateBtn.disabled = true;
+            if (resultsPlaceholder) {
+                resultsPlaceholder.textContent = 'Loading name data...';
+                resultsPlaceholder.style.display = 'block';
+            }
+            showResultsMessage('');
 
             let filename;
+            let useMockData = false;
+
             switch (language) {
-                case 'english': filename = 'english_names.json'; break;
+                case 'english': nameDatabase = [...mockEnglishNames]; dataLoaded = true; useMockData = true; filename = 'english_names.json (mocked)'; break;
                 case 'german': filename = 'german_names.json'; break;
                 case 'japanese': filename = 'japanese_names.json'; break;
                 case 'spanish': filename = 'spanish_names.json'; break;
                 case 'french': filename = 'french_names.json'; break;
                 case 'italian': filename = 'italian_names.json'; break;
-                case 'all':
-                default:
-                    filename = 'names.json'; // This file should contain names from various origins
-                    break;
+                case 'all': default: nameDatabase = [...mockNamesAll]; dataLoaded = true; useMockData = true; filename = 'names.json (mocked)'; break;
             }
 
-            try {
-                // console.log(`Fetching: ${BASE_URL}${filename}`);
-                const response = await fetch(`${BASE_URL}${filename}?v=${new Date().getTime()}`); // Cache buster
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status} while fetching ${filename}`);
-                }
-                nameDatabase = await response.json();
-                dataLoaded = true;
+            if (useMockData) {
                 if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
-                // console.log(`Loaded ${nameDatabase.length} names from ${filename}`);
-                if (nameDatabase.length === 0) {
-                    showResultsMessage(`No names found in the selected data file (${filename}). Please try another selection or check the data file.`);
-                }
-            } catch (error) {
-                console.error('Error loading name data:', error);
-                showResultsMessage(`Failed to load name data (${filename}). Please try again or check the console. ${error.message}`, true);
-                nameDatabase = []; // Ensure it's empty on error
-            } finally {
+                if (nameDatabase.length === 0) showResultsMessage(`No names found in mock data (${filename}).`);
                 showLoading(false);
-                generateBtn.disabled = !dataLoaded || nameDatabase.length === 0;
+                if(generateBtn) generateBtn.disabled = !(dataLoaded && nameDatabase.length > 0);
                 if (dataLoaded && nameDatabase.length > 0 && resultsPlaceholder) {
                     resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to start.';
                     resultsPlaceholder.style.display = 'block';
-                } else if (!dataLoaded && resultsPlaceholder) {
-                     resultsPlaceholder.textContent = 'Could not load names. Please refresh or select another language.';
-                     resultsPlaceholder.style.display = 'block';
+                }
+                return;
+            }
+
+            let finalUrlToFetch;
+            try {
+                const base = document.baseURI;
+                if (!base) throw new Error("document.baseURI is not available.");
+                const urlObject = new URL(filename, base);
+                urlObject.searchParams.append('v', new Date().getTime());
+                finalUrlToFetch = urlObject.href;
+                const response = await fetch(finalUrlToFetch);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status} ${response.statusText} (URL: ${finalUrlToFetch})`);
+                nameDatabase = await response.json();
+                dataLoaded = true;
+                if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
+                if (nameDatabase.length === 0) showResultsMessage(`No names found in ${filename}.`);
+            } catch (error) {
+                const attemptedUrlForLog = finalUrlToFetch || `(URL construction failed for ${filename})`;
+                console.error(`Error in loadNameData. Lang: ${language}, File: ${filename}, URL: ${attemptedUrlForLog}. Error:`, error);
+                let displayMessage = `Failed to load data for ${language.toUpperCase()} (${filename}). Try 'Any Origin' or 'English'. (Details: ${error.message})`;
+                if (error instanceof TypeError && error.message.toLowerCase().includes("failed to parse url")) {
+                    displayMessage = `Fetch error: Failed to parse URL for "${filename}". (Details: ${error.message})`;
+                } else if (error.message.includes("HTTP error!")) {
+                    displayMessage = `Network error fetching ${filename}: ${error.message}`;
+                }
+                showResultsMessage(displayMessage, true);
+                nameDatabase = [];
+            } finally {
+                showLoading(false);
+                if(generateBtn) generateBtn.disabled = !(dataLoaded && nameDatabase.length > 0);
+                if (dataLoaded && nameDatabase.length > 0 && resultsPlaceholder) {
+                    resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to start.';
+                    resultsPlaceholder.style.display = 'block';
+                } else if (!dataLoaded && resultsPlaceholder && !useMockData) {
+                    resultsPlaceholder.textContent = `Could not load names for ${language.toUpperCase()}. Try 'Any Origin' or 'English'.`;
+                    resultsPlaceholder.style.display = 'block';
                 }
             }
         }
 
-        /**
-         * Populates the alphabet buttons for the first letter filter.
-         */
         function populateLetterButtons() {
             if (!firstLetterInputsContainer) return;
-            firstLetterInputsContainer.innerHTML = ''; // Clear existing (e.g., placeholder span)
+            firstLetterInputsContainer.innerHTML = '';
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
             alphabet.forEach(letter => {
                 const button = document.createElement('button');
-                button.type = 'button'; // Important for forms
+                button.type = 'button';
                 button.textContent = letter;
-                button.classList.add('border', 'p-2', 'rounded', 'hover:bg-stork-accent', 'hover:text-white', 'transition-colors');
                 button.dataset.letter = letter;
                 button.addEventListener('click', () => {
                     const currentSelected = firstLetterInputsContainer.querySelector('button.selected');
-                    if (currentSelected) {
-                        currentSelected.classList.remove('selected', 'bg-stork-accent', 'text-white');
-                    }
-                    if (selectedLetterInput.value === letter) { // Clicked again to deselect
+                    if (currentSelected) currentSelected.classList.remove('selected', 'bg-stork-accent', 'text-white', 'border-stork-accent');
+                    if (selectedLetterInput.value === letter) {
                         selectedLetterInput.value = '';
                     } else {
-                        button.classList.add('selected', 'bg-stork-accent', 'text-white');
+                        button.classList.add('selected', 'bg-stork-accent', 'text-white', 'border-stork-accent');
                         selectedLetterInput.value = letter;
                     }
                 });
@@ -473,9 +510,6 @@
             });
         }
 
-        /**
-         * Updates the feedback text for the style slider.
-         */
         function updateSliderFeedback() {
             if (!styleSlider || !sliderFeedback) return;
             const value = parseInt(styleSlider.value);
@@ -484,20 +518,12 @@
             else sliderFeedback.textContent = 'Unique';
         }
 
-        /**
-         * Animates text typing into a target element.
-         * @param {string} text - The text to type.
-         * @param {HTMLElement} targetElement - The HTML element to type into.
-         * @param {function} [onComplete] - Optional callback when typing finishes.
-         */
         function typewriterEffect(text, targetElement, onComplete) {
             if (!targetElement) return;
-            if (typingInterval) clearInterval(typingInterval); // Clear previous interval
-
+            if (typingInterval) clearInterval(typingInterval);
             let i = 0;
-            targetElement.innerHTML = ''; // Clear previous text
-            targetElement.classList.add('typing'); // Add class for cursor
-
+            targetElement.innerHTML = '';
+            targetElement.classList.add('typing');
             typingInterval = setInterval(() => {
                 if (i < text.length) {
                     targetElement.innerHTML += text.charAt(i);
@@ -505,197 +531,123 @@
                 } else {
                     clearInterval(typingInterval);
                     typingInterval = null;
-                    targetElement.classList.remove('typing'); // Remove cursor class
+                    targetElement.classList.remove('typing');
                     if (onComplete) onComplete();
                 }
-            }, 100); // Adjust typing speed (milliseconds)
+            }, 100);
         }
 
-
-        /**
-         * Displays the generated name and its details.
-         * @param {object} nameObj - The name object.
-         */
         function displayGeneratedName(nameObj) {
             currentNameObject = nameObj;
             if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
-            showResultsMessage(''); // Clear any previous messages like "no names found"
-
-            // Typewriter for the name
+            showResultsMessage('');
             typewriterEffect(nameObj.name, nameTypewriterTarget, () => {
-                // This callback runs after the name is typed
                 if (nameDetailsContainer) {
-                    nameDetailsContainer.innerHTML = ''; // Clear previous details
-
+                    nameDetailsContainer.innerHTML = '';
                     let detailsHTML = '';
-                    if (nameObj.meaning) {
-                        detailsHTML += `<p class="text-lg text-stork-text"><strong>Meaning:</strong> ${nameObj.meaning}</p>`;
-                    }
-                    if (nameObj.origin) {
-                        detailsHTML += `<p class="text-sm text-medium-gray"><strong>Origin:</strong> ${nameObj.origin}</p>`;
-                    }
-                    if (nameObj.gender) {
-                        const genderText = nameObj.gender.charAt(0).toUpperCase() + nameObj.gender.slice(1);
-                        detailsHTML += `<p class="text-sm text-medium-gray"><strong>Gender:</strong> ${genderText}</p>`;
-                    }
+                    if (nameObj.meaning) detailsHTML += `<p class="text-xl text-stork-text"><strong>Meaning:</strong> ${nameObj.meaning}</p>`;
+                    if (nameObj.origin) detailsHTML += `<p class="text-base text-medium-gray"><strong>Origin:</strong> ${nameObj.origin}</p>`;
+                    if (nameObj.gender) detailsHTML += `<p class="text-base text-medium-gray"><strong>Gender:</strong> ${nameObj.gender.charAt(0).toUpperCase() + nameObj.gender.slice(1)}</p>`;
                     if (nameObj.tags && nameObj.tags.length > 0) {
-                        detailsHTML += `<div class="tags mt-2"><strong>Tags:</strong> ${nameObj.tags.map(tag => `<span class="inline-block bg-indigo-100 text-indigo-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">${tag}</span>`).join('')}</div>`;
+                        detailsHTML += `<div class="tags mt-3"><strong>Tags:</strong> ${nameObj.tags.map(tag => `<span class="inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>`;
                     }
                     nameDetailsContainer.innerHTML = detailsHTML;
                 }
 
-                // Populate Related Names
                 if (relatedNamesContainer && relatedNamesSection) {
-                    relatedNamesContainer.innerHTML = ''; // Clear previous
+                    relatedNamesContainer.innerHTML = '';
                     if (nameObj.related && nameObj.related.length > 0) {
                         nameObj.related.forEach(relatedNameStr => {
-                            // Try to find the full object for the related name if it exists in the current database
-                            // This is a simple string match for now.
-                            // For a better approach, related names could be IDs or more structured.
                             const relatedNameObj = nameDatabase.find(n => n.name.toLowerCase() === relatedNameStr.toLowerCase());
-
                             const card = document.createElement('div');
-                            card.className = 'name-card'; // Use existing styles
+                            card.className = 'name-card animate-fade-in';
                             let cardHTML = `<h3>${relatedNameStr}</h3>`;
                             if (relatedNameObj) {
                                 if (relatedNameObj.meaning) cardHTML += `<p><em>${relatedNameObj.meaning}</em></p>`;
                                 if (relatedNameObj.origin) cardHTML += `<p class="text-xs">Origin: ${relatedNameObj.origin}</p>`;
+                                if (relatedNameObj.gender) cardHTML += `<p class="text-xs">Gender: ${relatedNameObj.gender.charAt(0).toUpperCase() + relatedNameObj.gender.slice(1)}</p>`;
                             } else {
-                                cardHTML += `<p class="text-xs italic">More details not available.</p>`;
+                                cardHTML += `<p class="text-xs italic">Details not available.</p>`;
                             }
                             card.innerHTML = cardHTML;
                             relatedNamesContainer.appendChild(card);
                         });
                         relatedNamesSection.classList.remove('hidden');
+                        relatedNamesSection.classList.add('animate-fade-in-down');
                     } else {
                         relatedNamesSection.classList.add('hidden');
                     }
                 }
 
-                // Populate Famous Namesakes
                 if (famousNamesakesContainer && famousNamesakesSection) {
                     if (nameObj.famous_namesakes) {
-                        famousNamesakesContainer.innerHTML = `<p>${nameObj.famous_namesakes}</p>`;
+                        famousNamesakesContainer.innerHTML = `<p class="text-lg">${nameObj.famous_namesakes}</p>`;
                         famousNamesakesSection.classList.remove('hidden');
+                        famousNamesakesSection.classList.add('animate-fade-in-down');
                     } else {
-                        famousNamesakesContainer.innerHTML = `<p class="text-center text-medium-gray italic">No famous namesakes information available for this name.</p>`;
-                        famousNamesakesSection.classList.add('hidden'); // Hide if no info, or keep visible with message
+                        famousNamesakesContainer.innerHTML = `<p class="text-center text-medium-gray italic">No famous namesakes information available.</p>`;
+                        famousNamesakesSection.classList.add('hidden');
                     }
                 }
             });
         }
 
-
-        /**
-         * Handles the generate name button click.
-         * Filters names and selects one to display.
-         */
         function handleGenerateName() {
             if (!dataLoaded || nameDatabase.length === 0) {
-                showResultsMessage('Name data is not loaded or is empty. Please select a language/origin or try again.', true);
+                showResultsMessage('Name data not loaded or empty. Select language/origin or try again.', true);
                 if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
                 return;
             }
-
-            // Get filter values
             const gender = document.querySelector('input[name="gender"]:checked').value;
-            const firstLetter = selectedLetterInput.value.toUpperCase(); // Ensure it's uppercase
+            const firstLetter = selectedLetterInput.value.toUpperCase();
             const lengthCategory = document.querySelector('input[name="length"]:checked').value;
-            const styleValue = parseInt(styleSlider.value); // 0 (Traditional) to 100 (Unique)
-
-            // Filter logic
+            const styleValue = parseInt(styleSlider.value);
             let filteredNames = nameDatabase.filter(name => {
-                // Gender filter
                 if (gender !== 'any' && name.gender !== gender) return false;
-
-                // First letter filter
                 if (firstLetter && !name.name.toUpperCase().startsWith(firstLetter)) return false;
-
-                // Length filter
                 const nameLen = name.name.length;
                 if (lengthCategory === 'short' && (nameLen < 3 || nameLen > 5)) return false;
                 if (lengthCategory === 'medium' && (nameLen < 6 || nameLen > 8)) return false;
                 if (lengthCategory === 'long' && nameLen < 9) return false;
-
-                // Style filter (Popularity: 0 is very unique, 100 is very traditional)
-                // Slider: 0 is Traditional, 100 is Unique
-                // We map slider value to desired popularity ranges.
-                // Lower slider value (Traditional) => higher popularity score
-                // Higher slider value (Unique) => lower popularity score
-                const popularity = name.popularity === undefined ? 50 : name.popularity; // Default to balanced if undefined
-
-                if (styleValue < 33) { // User wants Traditional (slider 0-32)
-                    if (popularity < 70) return false; // Name must be traditional (popularity 70-100)
-                } else if (styleValue > 67) { // User wants Unique (slider 68-100)
-                    if (popularity > 30) return false; // Name must be unique (popularity 0-30)
-                } else { // User wants Balanced (slider 33-67)
-                    if (popularity <= 30 || popularity >= 70) return false; // Name must be balanced (popularity 31-69)
-                }
+                const popularity = name.popularity === undefined ? 50 : name.popularity;
+                if (styleValue < 33 && popularity < 70) return false;
+                if (styleValue > 67 && popularity > 30) return false;
+                if (styleValue >= 33 && styleValue <= 67 && (popularity <= 30 || popularity >= 70)) return false;
                 return true;
             });
 
-            // If selected language is not 'all', further filter by origin to match the selected language
-            // This assumes language files (e.g., english_names.json) only contain names of that origin.
-            // If 'names.json' is used for 'all', and it contains mixed origins, this step is not strictly needed
-            // as the file itself is the "filter". However, if 'names.json' had an 'origin' field for each name,
-            // and a specific language was picked from the dropdown (other than 'all'), you *could* filter here.
-            // For now, the current `loadNameData` handles specific files, so this is more for the `names.json` (all) case
-            // if it were to be filtered by the dropdown's specific language selection (which it currently doesn't do).
-            // The current setup: 'english' loads 'english_names.json', so all names are already "English".
-            // 'all' loads 'names.json', and no further origin filtering is applied from the dropdown.
-
             if (filteredNames.length > 0) {
                 const randomIndex = Math.floor(Math.random() * filteredNames.length);
-                const selectedName = filteredNames[randomIndex];
-                displayGeneratedName(selectedName);
+                displayGeneratedName(filteredNames[randomIndex]);
             } else {
                 showResultsMessage('No names match your criteria. Try broadening your search!');
                 if (nameTypewriterTarget) nameTypewriterTarget.textContent = '';
                 if (nameDetailsContainer) nameDetailsContainer.innerHTML = '';
-                relatedNamesSection.classList.add('hidden');
-                famousNamesakesSection.classList.add('hidden');
+                if(relatedNamesSection) relatedNamesSection.classList.add('hidden');
+                if(famousNamesakesSection) famousNamesakesSection.classList.add('hidden');
             }
         }
 
-
-        // --- Event Listeners & Initialization ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Initial population and setup
             populateLetterButtons();
-            updateSliderFeedback(); // Set initial feedback
-            loadNameData(languageSelect.value || 'all'); // Load default or selected language data
-
-            // Event listener for language selection change
-            if (languageSelect) {
-                languageSelect.addEventListener('change', (e) => {
-                    loadNameData(e.target.value);
-                });
-            }
-
-            // Event listener for style slider
-            if (styleSlider) {
-                styleSlider.addEventListener('input', updateSliderFeedback);
-            }
-
-            // Event listener for the generate button
-            if (generateBtn) {
-                generateBtn.addEventListener('click', handleGenerateName);
-            }
-
-            // Event listener for top navigation link to scroll to generator
+            updateSliderFeedback();
+            loadNameData(languageSelect ? languageSelect.value : 'all');
+            if (languageSelect) languageSelect.addEventListener('change', (e) => loadNameData(e.target.value));
+            if (styleSlider) styleSlider.addEventListener('input', updateSliderFeedback);
+            if (generateBtn) generateBtn.addEventListener('click', handleGenerateName);
             if (topNavGeneratorLink) {
                 topNavGeneratorLink.addEventListener('click', (e) => {
                     e.preventDefault();
                     const generatorSection = document.getElementById('generator-controls');
-                    if (generatorSection) {
-                        generatorSection.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    if (generatorSection) generatorSection.scrollIntoView({ behavior: 'smooth' });
                 });
             }
+            // Initialize Feather Icons if you decide to use them
+            // if (typeof feather !== 'undefined') {
+            //     feather.replace();
+            // }
         });
-
     </script>
 
 </body>
 </html>
-
