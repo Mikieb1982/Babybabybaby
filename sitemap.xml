@@ -1,73 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://thestorknamedrop.com/index.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>monthly</changefreq>
+    <loc>https://www.thestorknamedrop.com/index.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/blog.html</loc>
-    <lastmod>2025-05-04</lastmod> <changefreq>weekly</changefreq>
+    <loc>https://www.thestorknamedrop.com/blog.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/aboutus.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/datasources.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/impressum.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/privacypolicy.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/terms.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thestorknamedrop.com/blog/starwars.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/datasources.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://www.thestorknamedrop.com/blog/us.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/aboutus.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://thestorknamedrop.com/blog/starwars.html</loc>
-    <lastmod>2025-05-04</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.thestorknamedrop.com/blog/beatles.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/blog/us.html</loc>
-    <lastmod>2025-05-04</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.thestorknamedrop.com/blog/song.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/blog/beatles.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.thestorknamedrop.com/blog/german2025.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/blog/song.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.thestorknamedrop.com/blog/uniqueeng.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://thestorknamedrop.com/blog/german2025.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.thestorknamedrop.com/blog/middle.html</loc>
+    <lastmod>2025-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://thestorknamedrop.com/blog/uniqueeng.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thestorknamedrop.com/blog/middle.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://thestorknamedrop.com/privacypolicy.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://thestorknamedrop.com/terms.html</loc>
-    <lastmod>2025-04-29</lastmod> <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
 </urlset>
-

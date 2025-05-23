@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Stork Name Drop - Blog</title>
+    <title>Baby Name Blog - Tips, Trends & Inspiration | The Stork Name Drop</title>
+    <meta name="description" content="Our baby name blog helps expecting parents with choosing a baby name. Discover articles on baby name meanings, unique name origins, baby name trends, and tips for finding the perfect name.">
 
     <link rel="icon" href="assets/logo.png" type="image/png">
 
@@ -16,13 +17,16 @@
                     fontFamily: {
                         sans: ['"Nunito Sans"', 'sans-serif'],
                         serif: ['Georgia', 'serif'],
+                        typewriter: ['"Special Elite"', 'monospace'], // Added typewriter for consistency
                     },
                     colors: {
-                        'stork-title': '#2C3E50',
-                        'stork-text': '#34495E',
-                        'stork-accent': '#1ABC9C',
-                        'stork-accent-hover': '#16A085',
-                        'soft-beige': '#F5F5DC',
+                        'stork-title': '#2C3E50', // Dark Slate Blue
+                        'stork-text': '#34495E',  // Wet Asphalt
+                        'stork-accent': '#1ABC9C', // Turquoise
+                        'stork-accent-hover': '#16A085', // Green Sea
+                        'soft-beige': '#F7F3E9', // A softer beige - updated from F5F5DC
+                        'sky-100': '#E0F2FE',    // Light Sky Blue (for gradient)
+                        'indigo-200': '#C7D2FE', // Lighter Indigo (for gradient)
                         'dark-text': '#374151',
                         'medium-gray': '#6B7280',
                         'button-active': '#60A5FA',
@@ -38,7 +42,7 @@
                         'copy-button-hover': '#4B5563',
                         'accent-muted': '#64748b',
                         'accent-muted-light': '#cbd5e1',
-                        'off-white': '#f8fafc',
+                        'off-white': '#f8fafc', // Very light gray, almost white
                         'indigo-100': '#e0e7ff',
                         'indigo-700': '#4338ca',
                         'amber-100': '#fef3c7',
@@ -53,6 +57,8 @@
                         'slide-out-to-right': 'slide-out-to-right 0.5s ease-out',
                         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
                         'slide-out-to-left': 'slide-out-to-left 0.3s ease-out',
+                        'blink-caret': 'blink-caret .75s step-end infinite', // Added from index.html
+                        'button-icon-hover': 'button-icon-hover 0.3s ease-in-out' // Added from index.html
                     },
                     keyframes: {
                         'fade-in': { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
@@ -62,6 +68,14 @@
                         'slide-out-to-right': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(100%)' } },
                         'slide-in-from-right': { '0%': { transform: 'translateX(100%)' }, '100%': { transform: 'translateX(0)' } },
                         'slide-out-to-left': { 'from': { transform: 'translateX(0)' }, 'to': { transform: 'translateX(-100%)' } },
+                        'blink-caret': { // Added from index.html
+                            'from, to': { borderColor: 'transparent' },
+                            '50%': { borderColor: '#1ABC9C' } 
+                        },
+                        'button-icon-hover': { // Added from index.html
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-2px) rotate(5deg)'}
+                        }
                     },
                 }
             }
@@ -69,7 +83,9 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+    <!-- Added Special Elite font for consistency with index.html, though not directly used in blog.html by default -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&family=Special+Elite&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script> <!-- Added feather icons script for consistency -->
 
     <style>
         /* Basic styles */
@@ -97,10 +113,10 @@
             @apply text-xl font-semibold mb-2 text-stork-title group-hover:text-stork-accent transition-colors;
         }
         .blog-card-description {
-            @apply text-sm text-stork-text mb-3 h-12 overflow-hidden; /* Fixed height for description consistency */
+            @apply text-sm text-stork-text mb-3 h-12 overflow-hidden leading-relaxed; /* Added leading-relaxed, kept h-12 for consistency */
         }
         .blog-card-link {
-             @apply text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors;
+             @apply text-sm font-medium text-stork-accent group-hover:text-stork-accent-hover transition-colors mt-2 inline-block; /* Added margin-top */
         }
         /* Search input styling */
         #blog-search-input {
@@ -116,17 +132,64 @@
     <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "The Stork Name Drop - Baby Name Blog",
+      "url": "https://www.thestorknamedrop.com/blog.html",
+      "description": "Our baby name blog helps expecting parents with choosing a baby name. Discover articles on baby name meanings, unique name origins, baby name trends, and tips for finding the perfect name.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Stork Name Drop",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.thestorknamedrop.com/assets/logo.png"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.thestorknamedrop.com/blog/uniqueeng.html"
+      },
+      "headline": "Unique English Baby Names: Origins & Ideas",
+      "description": "Explore distinctive and less common English baby names. Find unique name ideas with their origins and meanings for expecting parents.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.thestorknamedrop.com/assets/uniqueeng.png"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "The Stork Name Drop"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Stork Name Drop",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.thestorknamedrop.com/assets/logo.png"
+        }
+      },
+      "datePublished": "2025-05-23",
+      "dateModified": "2025-05-23"
+    }
+    </script>
 </head>
 <body class="font-sans text-stork-text overflow-x-hidden bg-[url('assets/back.png')] bg-cover bg-center bg-no-repeat bg-fixed pt-16">
 
-    <header class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
+    <header role="banner" class="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:px-6 bg-white/80 backdrop-blur-md shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" title="The Stork Name Drop Home" class="z-20">
-                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo - a stylized stork carrying a baby."
                      class="h-12 w-12 object-contain"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
             </a>
-            <nav class="flex space-x-4 sm:space-x-6 items-center">
+            <nav role="navigation" class="flex space-x-4 sm:space-x-6 items-center">
                  <a href="index.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Home</a>
                  <a href="index.html#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
                  <a href="blog.html" class="text-sm sm:text-base text-stork-accent font-semibold transition duration-200">Blog</a> <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data Sources</a>
@@ -135,30 +198,38 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-8 animate-fade-in-down">
-
-        <div class="text-center mb-12">
-             <img src="assets/blog.png" alt="Blog Title Image"
-                  class="h-auto w-full max-w-md mx-auto mb-4"
-                  onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=OUR+BLOG'; this.style.border='1px dashed #ccc';">
-             <p class="text-lg text-stork-text bg-off-white/90 backdrop-blur-sm p-4 rounded-lg inline-block shadow">
-                 Explore articles on name meanings, trends, traditions, and more to help you find the perfect name.
-             </p>
-        </div>
-
-        <div class="mb-8 flex justify-center">
-            <input type="text" id="blog-search-input" placeholder="Search articles by title or keyword..."
-                   class="w-full max-w-xl p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-stork-accent focus:border-stork-accent transition-shadow duration-200 focus:shadow-md"
-                   aria-label="Search blog articles">
-        </div>
-
-        <div id="blog-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+    <main role="main" class="container mx-auto px-6 py-8 animate-fade-in-down">
+        <section aria-labelledby="blog-main-title">
+            <div class="text-center mb-12">
+                 <h1 id="blog-main-title" class="sr-only">Baby Name Blog: Tips, Trends & Inspiration for Expecting Parents</h1>
+                 <img src="assets/blog.png" alt="The Stork Name Drop Blog - Baby Name Tips, Trends, and Inspiration for Choosing a Baby Name."
+                      class="h-auto w-full max-w-md mx-auto mb-4"
+                      onerror="this.onerror=null; this.src='https://placehold.co/448x100/f8fafc/2C3E50?text=OUR+BLOG'; this.style.border='1px dashed #ccc';">
+                 <p class="text-lg text-stork-text bg-off-white/90 backdrop-blur-sm p-4 rounded-lg inline-block shadow leading-relaxed">
+                     Explore insightful articles on baby name meanings, unique name origins, current baby name trends, and practical tips for choosing the perfect baby name for your child.
+                 </p>
             </div>
-        <p id="no-results-message" class="text-center text-lg text-stork-text mt-8" style="display: none;">No articles found matching your search.</p>
+        </section>
+
+        <section aria-labelledby="blog-search-heading">
+            <h2 id="blog-search-heading" class="sr-only">Search Blog Articles</h2>
+            <div class="mb-8 flex justify-center">
+                <input type="text" id="blog-search-input" placeholder="Search articles by title or keyword..."
+                       class="w-full max-w-xl p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-stork-accent focus:border-stork-accent transition-shadow duration-200 focus:shadow-md"
+                       aria-label="Search blog articles by title or keyword">
+            </div>
+        </section>
+
+        <section aria-labelledby="blog-articles-heading">
+            <h2 id="blog-articles-heading" class="sr-only">Blog Articles</h2>
+            <div id="blog-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+                </div>
+            <p id="no-results-message" class="text-center text-lg text-stork-text mt-8" style="display: none;" role="status">No articles found matching your search.</p>
+        </section>
 
     </main>
 
-    <footer class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
+    <footer role="contentinfo" class="bg-gray-100/80 backdrop-blur-sm text-center p-4 mt-auto text-sm text-gray-600 border-t">
          © 2025 The Stork Name Drop. All rights reserved. |
          <a href="impressum.html" class="hover:underline">Impressum</a> |
          <a href="privacypolicy.html" class="hover:underline">Privacy Policy</a> |
@@ -178,8 +249,8 @@
                     imgSrc: 'assets/starwars.png',
                     imgAlt: 'Star Wars Helmets and Lightsabers',
                     imgPlaceholder: 'https://placehold.co/300x192/1A202C/FFFFFF?text=Star+Wars+Names',
-                    title: 'Star Wars Inspired Names',
-                    description: 'Top picks for your little Jedi or Sith Lord in 2025.'
+                    title: 'Unique Star Wars Baby Names & Ideas',
+                    description: 'Discover unique Star Wars baby names for your little Jedi or Sith Lord. Explore ideas from a galaxy far, far away.'
                 },
                 {
                     id: 'us',
@@ -187,8 +258,8 @@
                     imgSrc: 'assets/us.png',
                     imgAlt: 'Stylized American Flag',
                     imgPlaceholder: 'https://placehold.co/300x192/A5D8DD/2C3E50?text=US+Names+2025',
-                    title: 'US Baby Names 2025',
-                    description: 'Explore top US baby names and current trends.'
+                    title: 'Popular US Baby Names 2025: Trends & Ideas',
+                    description: 'Explore top US baby names for 2025. Discover popular baby name trends, meanings, and origins for expecting parents.'
                 },
                 {
                     id: 'beatles',
@@ -196,8 +267,8 @@
                     imgSrc: 'assets/beatles.png',
                     imgAlt: 'Abbey Road style silhouette',
                     imgPlaceholder: 'https://placehold.co/300x192/E2E8F0/34495E?text=Beatles+Names',
-                    title: 'Beatles Baby Name Gold',
-                    description: 'A deep dive into names from Fab Four songs and history.'
+                    title: 'Beatles-Inspired Baby Names: Unique Ideas',
+                    description: 'Find unique baby name ideas inspired by The Beatles. A deep dive into names from Fab Four songs, history, and meanings.'
                 },
                 {
                     id: 'song',
@@ -205,8 +276,8 @@
                     imgSrc: 'assets/song.png',
                     imgAlt: 'Musical notes and symbols',
                     imgPlaceholder: 'https://placehold.co/300x192/FBBF24/34495E?text=Song+Inspired+Names',
-                    title: 'Names Inspired by Songs',
-                    description: 'Find beautiful and unique names featured in popular music.'
+                    title: 'Baby Names Inspired by Songs: Ideas & Meanings',
+                    description: 'Find beautiful and unique baby names featured in popular songs. Explore name ideas with their meanings and origins.'
                 },
                 {
                     id: 'german2025',
@@ -214,8 +285,8 @@
                     imgSrc: 'assets/german2025.png',
                     imgAlt: 'German flag colors abstract background',
                     imgPlaceholder: 'https://placehold.co/300x192/FFD700/34495E?text=German+Names+2025',
-                    title: 'German Names 2025',
-                    description: 'Discover the latest trends in German baby names.'
+                    title: 'German Baby Names 2025: Trends & Meanings',
+                    description: 'Discover the latest trends in German baby names for 2025. Explore popular and unique name ideas, origins, and meanings.'
                 },
                 {
                     id: 'uniqueeng',
@@ -223,8 +294,8 @@
                     imgSrc: 'assets/uniqueeng.png',
                     imgAlt: 'Old English calligraphy or quill pen',
                     imgPlaceholder: 'https://placehold.co/300x192/BFDBFE/34495E?text=Unique+English+Names',
-                    title: 'Unique English Names',
-                    description: 'Explore distinctive and less common English baby names.'
+                    title: 'Unique English Baby Names: Origins & Ideas',
+                    description: 'Explore distinctive and less common English baby names. Find unique name ideas with their origins and meanings for expecting parents.'
                 },
                 {
                     id: 'middle',
@@ -232,8 +303,8 @@
                     imgSrc: 'assets/middle.png',
                     imgAlt: 'Abstract flowing lines representing name flow',
                     imgPlaceholder: 'https://placehold.co/300x192/D1FAE5/34495E?text=Middle+Names+Guide',
-                    title: 'Choosing Middle Names',
-                    description: 'Tips and ideas for finding the perfect middle name flow.'
+                    title: 'Choosing a Middle Name: Baby Name Ideas & Tips',
+                    description: 'Tips and ideas for choosing the perfect middle name. Find baby name ideas that flow and complement the first name.'
                 }
                 // Add more blog post objects here if you have more articles
             ];
@@ -260,9 +331,9 @@
                                 <img src="${post.imgSrc}" alt="${post.imgAlt}" class="blog-card-image"
                                      onerror="this.onerror=null; this.src='${post.imgPlaceholder}';">
                                 <div class="blog-card-content">
-                                    <h3 id="blog-title-${post.id}" class="blog-card-title">${post.title}</h3>
+                                    <h3 id="blog-title-${post.id}" class="blog-card-title">${post.title}</h3> 
                                     <p class="blog-card-description">${post.description}</p>
-                                    <span class="blog-card-link">Read More &rarr;</span>
+                                    <span class="blog-card-link" aria-hidden="true">Read More &rarr;</span>
                                 </div>
                             </a>
                         `;

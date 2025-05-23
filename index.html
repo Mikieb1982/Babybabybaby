@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>The Stork Name Drop - Baby Name Generator & Ideas</title>
+    <title>Baby Name Generator & Ideas | The Stork Name Drop</title>
+    <meta name="description" content="Expecting parents? Find perfect baby name ideas with our fun baby name generator. Explore unique names by gender, origin, style, name meanings, and popular baby name trends.">
 
     <link rel="icon" href="assets/logo.png" type="image/png">
 
@@ -128,17 +129,17 @@
 
         /* Name card styles */
         .name-card {
-            @apply bg-white p-4 rounded-xl shadow-lg border border-gray-200/50 mb-4 transition-all duration-300 hover:shadow-xl hover:border-stork-accent/50;
+            @apply bg-white p-4 rounded-xl shadow-lg border border-gray-200/50 mb-4 transition-all duration-300 hover:shadow-xl hover:border-stork-accent; /* Stronger border on hover */
         }
         .name-card h3 {
             margin-bottom: 0.5rem;
             @apply text-stork-title font-semibold text-xl; /* Slightly larger name */
         }
         .name-card p {
-            @apply text-stork-text mb-1 text-base; /* Slightly larger details */
+            @apply text-stork-text mb-1 text-base leading-relaxed; /* Added leading-relaxed */
         }
         .name-card .tags span {
-            @apply inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full; /* Pill shape tags */
+            @apply inline-block bg-teal-100 text-teal-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full; /* Adjusted to teal for theme consistency */
         }
 
 
@@ -184,7 +185,7 @@
         }
         /* Ensure letter buttons are styled and spaced */
         #first-letter-inputs button {
-            @apply p-2.5 m-1 border border-gray-300 rounded-lg text-sm hover:bg-stork-accent hover:text-white hover:border-stork-accent transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-stork-accent focus:ring-opacity-50;
+            @apply p-2.5 m-1 border border-gray-300 rounded-lg text-sm hover:bg-stork-accent hover:text-white hover:border-stork-accent transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-stork-accent focus:ring-opacity-50 hover:scale-105 active:scale-95;
         }
         #first-letter-inputs button.selected {
             @apply bg-stork-accent text-white border-stork-accent;
@@ -219,42 +220,103 @@
     <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The Stork Name Drop",
+      "url": "https://www.thestorknamedrop.com/index.html",
+      "description": "Expecting parents? Find perfect baby name ideas with our fun baby name generator. Explore unique names by gender, origin, style, name meanings, and popular baby name trends.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.thestorknamedrop.com/index.html#generator-controls",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use The Stork Name Drop Baby Name Generator",
+      "description": "Find the perfect baby name by selecting gender, origin, length, and style preferences.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Set Gender Preference",
+          "text": "Choose 'Any', 'Boy', 'Girl', or 'Neutral' for name suggestions."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Select Name Origin",
+          "text": "Pick a language or origin for the names, or choose 'Any Origin'."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Filter by First Letter (Optional)",
+          "text": "Select a starting letter for the baby names."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Choose Name Length",
+          "text": "Specify 'Any', 'Short (3-5 chars)', 'Medium (6-8 chars)', or 'Long (9+ chars)'."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Adjust Name Style",
+          "text": "Use the slider to indicate preference from 'Traditional' to 'Unique' names."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Generate Name",
+          "text": "Click 'Drop a Name!' to see your generated baby name and details like meaning and origin."
+        }
+      ],
+      "image": "https://www.thestorknamedrop.com/assets/logo.png",
+      "author": {
+        "@type": "Organization",
+        "name": "The Stork Name Drop"
+      },
+      "datePublished": "2025-05-23"
+    }
+    </script>
 </head>
 
 <body class="font-sans text-stork-text overflow-x-hidden bg-gradient-to-br from-sky-100 to-indigo-200 bg-fixed pt-16 has-fixed-header">
-    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-8 bg-white/90 backdrop-blur-lg shadow-lg">
+    <header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-8 bg-white/90 backdrop-blur-lg shadow-lg" role="banner">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" title="The Stork Name Drop Home" class="z-20 flex items-center space-x-2">
-                <img src="assets/logo.png" alt="The Stork Name Drop Logo"
+            <a href="index.html" title="The Stork Name Drop Home" class="z-20 flex items-center space-x-2">
+                <img src="assets/logo.png" alt="The Stork Name Drop Logo - a stylized stork carrying a baby."
                      class="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-md"
                      onerror="this.onerror=null; this.src='https://placehold.co/48x48/D1E8E2/34495E?text=Logo';">
                 <span class="hidden sm:inline text-xl font-semibold text-stork-title">Stork Name Drop</span>
             </a>
 
-            <nav class="flex space-x-3 sm:space-x-5 items-center">
-                <a href="#" class="text-sm sm:text-base text-stork-accent font-semibold hover:text-stork-accent-hover transition duration-200">Home</a>
+            <nav role="navigation" class="flex space-x-3 sm:space-x-5 items-center">
+                <a href="index.html" class="text-sm sm:text-base text-stork-accent font-semibold hover:text-stork-accent-hover transition duration-200">Home</a>
                 <a href="#generator-controls" id="top-nav-generator-link" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Generator</a>
-                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
-                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data</a>
-                <a href="#" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
+                <a href="blog.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Blog</a>
+                <a href="datasources.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">Data</a>
+                <a href="aboutus.html" class="text-sm sm:text-base text-stork-text hover:text-stork-accent transition duration-200 font-medium">About</a>
             </nav>
         </div>
     </header>
 
-    <section id="showcase" class="py-8 md:py-12 text-center relative">
-        <img src="assets/indextitle.png" alt="The Stork Name Drop Title"
+    <section id="showcase" class="py-8 md:py-12 text-center relative" aria-labelledby="page-title">
+        <h1 id="page-title" class="sr-only">The Stork Name Drop - Baby Name Generator</h1>
+        <img src="assets/indextitle.png" alt="The Stork Name Drop - Decorative title image for baby name generator"
              class="w-full h-auto mb-4 max-w-3xl mx-auto object-contain"
              onerror="this.onerror=null; this.src='https://placehold.co/1200x200/ffffff00/2C3E50?text=The+Stork+Name+Drop&font=specialelite&fontsize=60'; this.style.border='1px dashed #ccc';">
-        <p class="text-stork-text text-lg md:text-xl max-w-2xl mx-auto">Discover the perfect name for your little one with our playful generator!</p>
+        <p class="text-stork-text text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">Discover perfect baby name ideas for your little one with our playful name generator! Helping expecting parents find unique baby names.</p>
     </section>
 
-    <main class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl border border-gray-200/70 shadow-xl my-10 animate-fade-in-down">
+    <main role="main" class="max-w-4xl mx-auto bg-off-white/95 backdrop-blur-md p-6 sm:p-8 md:p-10 rounded-2xl border border-gray-200/70 shadow-xl my-10 animate-fade-in-down">
 
-        <fieldset id="generator-controls" class="space-y-10 mb-12">
-            <legend class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Find Your Name</legend>
+        <fieldset id="generator-controls" class="space-y-10 mb-12" aria-labelledby="generator-legend">
+            <legend id="generator-legend" class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Find Unique Baby Names</legend>
 
-            <section id="gender-selection">
-                <label class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Gender Preference:</label>
+            <section id="gender-selection" aria-labelledby="gender-selection-label">
+                <h2 id="gender-selection-label" class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Gender Preference:</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3">
                     <div class="flex items-center"> <input type="radio" id="gender-any" name="gender" value="any" checked class="mr-2.5"> <label for="gender-any" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Any</label> </div>
                     <div class="flex items-center"> <input type="radio" id="gender-boy" name="gender" value="boy" class="mr-2.5"> <label for="gender-boy" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Boy</label> </div>
@@ -264,8 +326,9 @@
             </section>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-                <section id="language-selection">
-                    <label for="language-select" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Origin:</label>
+                <section id="language-selection" aria-labelledby="language-selection-label">
+                    <h2 id="language-selection-label" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Origin:</h2>
+                    <label for="language-select" class="sr-only">Select language or origin</label>
                     <select id="language-select" name="language" class="w-full p-3 text-base border">
                         <option value="all">Any Origin</option>
                         <option value="english">English</option>
@@ -276,69 +339,70 @@
                         <option value="italian">Italian</option>
                         </select>
                 </section>
-                <section id="letter-filter">
-                    <label for="first-letter-input" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Starts with letter:</label>
-                    <div id="first-letter-inputs" class="flex flex-wrap gap-1.5">
+                <section id="letter-filter" aria-labelledby="letter-filter-label">
+                    <h2 id="letter-filter-label" class="block text-xl md:text-2xl text-stork-text font-semibold mb-3">Starts with letter:</h2>
+                    <div id="first-letter-inputs" class="flex flex-wrap gap-1.5" role="group" aria-label="Select starting letter">
                          <span class="text-sm text-gray-500 p-2">Select a letter (optional)</span>
                     </div>
-                    <input type="hidden" id="selected-letter" value="">
+                    <input type="hidden" id="selected-letter" value="" aria-hidden="true">
                 </section>
             </div>
 
-            <section id="length-filter">
-                <label class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Name Length:</label>
+            <section id="length-filter" aria-labelledby="length-filter-label">
+                <h2 id="length-filter-label" class="block text-xl md:text-2xl text-stork-text font-semibold mb-4">Name Length:</h2>
                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-3">
                     <div class="flex items-center"> <input type="radio" id="length-any" name="length" value="any" checked class="mr-2.5"> <label for="length-any" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Any</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Short (3-5)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Medium (6-8)</label> </div>
-                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Long (9+)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-short" name="length" value="short" class="mr-2.5"> <label for="length-short" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Short (3-5 char)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-medium" name="length" value="medium" class="mr-2.5"> <label for="length-medium" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Medium (6-8 char)</label> </div>
+                    <div class="flex items-center"> <input type="radio" id="length-long" name="length" value="long" class="mr-2.5"> <label for="length-long" class="text-base md:text-lg cursor-pointer hover:text-stork-accent">Long (9+ char)</label> </div>
                 </div>
             </section>
 
-            <section id="style-slider">
+            <section id="style-slider" aria-labelledby="style-slider-label">
                 <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-xl md:text-2xl text-stork-text font-semibold">Name Style:</h2>
-                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg font-medium bg-gray-100 px-3 py-1 rounded-md">Balanced</span>
+                    <h2 id="style-slider-label" class="text-xl md:text-2xl text-stork-text font-semibold">Name Style:</h2>
+                    <span id="slider-feedback" class="text-medium-gray text-base md:text-lg font-medium bg-gray-100 px-3 py-1 rounded-md" aria-live="polite">Balanced</span>
                 </div>
                 <div class="flex items-center justify-between text-medium-gray mb-1 text-sm md:text-base">
-                    <span>Traditional</span>
-                    <span>Unique</span>
+                    <span aria-hidden="true">Traditional</span>
+                    <span aria-hidden="true">Unique</span>
                 </div>
-                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full">
+                <label for="style-range" class="sr-only">Name style slider: from traditional to unique</label>
+                <input id="style-range" type="range" min="0" max="100" value="50" class="w-full" aria-describedby="slider-feedback">
             </section>
 
             <div class="text-center pt-6">
                 <button id="generate-btn" class="btn btn-primary w-auto px-10 py-4 shadow-lg btn-feedback flex justify-center items-center mx-auto group" disabled>
-                    <img src="assets/drop.png" alt="Drop icon" class="h-8 w-8 sm:h-10 sm:w-10 mr-3 transition-transform duration-300">
+                    <img src="assets/drop.png" alt="" class="h-8 w-8 sm:h-10 sm:w-10 mr-3 transition-transform duration-300">
                     <span class="text-xl sm:text-2xl font-bold">Drop a Name!</span>
                 </button>
             </div>
         </fieldset>
 
-        <section id="results-section" class="mt-16 animate-fade-in">
-            <h2 class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Your Generated Name</h2>
+        <section id="results-section" class="mt-16 animate-fade-in" aria-labelledby="results-heading">
+            <h2 id="results-heading" class="text-3xl md:text-4xl text-stork-title font-semibold mb-8 text-center border-b-2 border-stork-accent/50 pb-4">Your Generated Name</h2>
             <div id="results-container" class="min-h-[200px] relative p-4 bg-white/50 rounded-xl shadow-inner">
-                <div id="loading-indicator" class="loader" style="display: none;"></div>
-                <div id="result-display" class="text-stork-text">
-                    <h3 id="name-typewriter-target" class="font-typewriter"></h3>
-                    <div id="name-details" class="text-center mt-4 space-y-1"></div>
-                    <p id="results-placeholder" class="text-center text-medium-gray text-xl italic mt-10">Loading name data...</p>
+                <div id="loading-indicator" class="loader" style="display: none;" role="status" aria-label="Loading names"></div>
+                <div id="result-display" class="text-stork-text" aria-live="polite">
+                    <h3 id="name-typewriter-target" class="font-typewriter" aria-label="Generated name"></h3>
+                    <div id="name-details" class="text-center mt-4 space-y-1 leading-relaxed"></div>
+                    <p id="results-placeholder" class="text-center text-medium-gray text-xl italic mt-10 leading-relaxed">Searching for baby names...</p>
                 </div>
-                <p id="results-message" class="text-center text-medium-gray mt-6 text-lg" style="display:none;"></p>
+                <p id="results-message" class="text-center text-medium-gray mt-6 text-lg leading-relaxed" style="display:none;" role="alert"></p>
             </div>
         </section>
 
         <hr class="my-12 border-gray-300/70">
 
         <div id="additional-info" class="space-y-12">
-            <section id="related-names-section" class="hidden">
-                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Similar Names You Might Like</h2>
+            <section id="related-names-section" class="hidden" aria-labelledby="related-names-heading">
+                <h2 id="related-names-heading" class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Similar Names You Might Like</h2>
                 <div id="related-names-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     </div>
             </section>
 
-            <section id="famous-namesakes-section" class="hidden">
-                <h2 class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Famous Namesakes / Mentions</h2>
+            <section id="famous-namesakes-section" class="hidden" aria-labelledby="famous-namesakes-heading">
+                <h2 id="famous-namesakes-heading" class="text-2xl md:text-3xl text-stork-title font-semibold mb-6 text-center">Famous Namesakes / Mentions</h2>
                 <div id="famous-namesakes-container" class="text-stork-text bg-sky-50 p-6 rounded-xl border border-sky-200/80 shadow-md">
                     <p class="text-center text-medium-gray italic">No information available yet.</p>
                 </div>
@@ -346,8 +410,8 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-300 text-center p-6 mt-auto text-sm border-t border-gray-700">
-         © 2025 The Stork Name Drop. All rights reserved. | <a href="#" class="hover:text-stork-accent hover:underline">Impressum</a> | <a href="#" class="hover:text-stork-accent hover:underline">Privacy Policy</a> | <a href="#" class="hover:text-stork-accent hover:underline">Terms of Service</a> </footer>
+    <footer role="contentinfo" class="bg-gray-800 text-gray-300 text-center p-6 mt-auto text-sm border-t border-gray-700">
+         © 2025 The Stork Name Drop. All rights reserved. | <a href="impressum.html" class="hover:text-stork-accent hover:underline">Impressum</a> | <a href="privacypolicy.html" class="hover:text-stork-accent hover:underline">Privacy Policy</a> | <a href="terms.html" class="hover:text-stork-accent hover:underline">Terms of Service</a> </footer>
 
 
     <script>
@@ -420,7 +484,7 @@
             showLoading(true);
             if(generateBtn) generateBtn.disabled = true;
             if (resultsPlaceholder) {
-                resultsPlaceholder.textContent = 'Loading name data...';
+                resultsPlaceholder.textContent = 'Searching for baby names...';
                 resultsPlaceholder.style.display = 'block';
             }
             showResultsMessage('');
@@ -440,11 +504,11 @@
 
             if (useMockData) {
                 if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
-                if (nameDatabase.length === 0) showResultsMessage(`No names found in mock data (${filename}).`);
+                if (nameDatabase.length === 0) showResultsMessage(`No names found in mock data (${filename}). Consider choosing another origin or criteria for more baby name ideas.`);
                 showLoading(false);
                 if(generateBtn) generateBtn.disabled = !(dataLoaded && nameDatabase.length > 0);
                 if (dataLoaded && nameDatabase.length > 0 && resultsPlaceholder) {
-                    resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to start.';
+                    resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to generate unique baby names.';
                     resultsPlaceholder.style.display = 'block';
                 }
                 return;
@@ -462,11 +526,11 @@
                 nameDatabase = await response.json();
                 dataLoaded = true;
                 if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
-                if (nameDatabase.length === 0) showResultsMessage(`No names found in ${filename}.`);
+                if (nameDatabase.length === 0) showResultsMessage(`No baby names found in ${filename}. Please try different criteria or origins for more results.`);
             } catch (error) {
                 const attemptedUrlForLog = finalUrlToFetch || `(URL construction failed for ${filename})`;
                 console.error(`Error in loadNameData. Lang: ${language}, File: ${filename}, URL: ${attemptedUrlForLog}. Error:`, error);
-                let displayMessage = `Failed to load data for ${language.toUpperCase()} (${filename}). Try 'Any Origin' or 'English'. (Details: ${error.message})`;
+                let displayMessage = `Failed to load baby name data for ${language.toUpperCase()} (${filename}). Try 'Any Origin' or 'English' for more name ideas. (Details: ${error.message})`;
                 if (error instanceof TypeError && error.message.toLowerCase().includes("failed to parse url")) {
                     displayMessage = `Fetch error: Failed to parse URL for "${filename}". (Details: ${error.message})`;
                 } else if (error.message.includes("HTTP error!")) {
@@ -478,10 +542,10 @@
                 showLoading(false);
                 if(generateBtn) generateBtn.disabled = !(dataLoaded && nameDatabase.length > 0);
                 if (dataLoaded && nameDatabase.length > 0 && resultsPlaceholder) {
-                    resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to start.';
+                    resultsPlaceholder.textContent = 'Ready! Click "Drop a Name!" to generate unique baby names.';
                     resultsPlaceholder.style.display = 'block';
                 } else if (!dataLoaded && resultsPlaceholder && !useMockData) {
-                    resultsPlaceholder.textContent = `Could not load names for ${language.toUpperCase()}. Try 'Any Origin' or 'English'.`;
+                    resultsPlaceholder.textContent = `Could not load baby names for ${language.toUpperCase()}. Try 'Any Origin' or 'English' for more name ideas.`;
                     resultsPlaceholder.style.display = 'block';
                 }
             }
@@ -545,11 +609,11 @@
                 if (nameDetailsContainer) {
                     nameDetailsContainer.innerHTML = '';
                     let detailsHTML = '';
-                    if (nameObj.meaning) detailsHTML += `<p class="text-xl text-stork-text"><strong>Meaning:</strong> ${nameObj.meaning}</p>`;
-                    if (nameObj.origin) detailsHTML += `<p class="text-base text-medium-gray"><strong>Origin:</strong> ${nameObj.origin}</p>`;
-                    if (nameObj.gender) detailsHTML += `<p class="text-base text-medium-gray"><strong>Gender:</strong> ${nameObj.gender.charAt(0).toUpperCase() + nameObj.gender.slice(1)}</p>`;
+                    if (nameObj.meaning) detailsHTML += `<p class="text-xl text-stork-text leading-relaxed"><strong>Meaning:</strong> ${nameObj.meaning}</p>`;
+                    if (nameObj.origin) detailsHTML += `<p class="text-base text-medium-gray leading-snug"><strong>Origin:</strong> ${nameObj.origin}</p>`;
+                    if (nameObj.gender) detailsHTML += `<p class="text-base text-medium-gray leading-snug"><strong>Gender:</strong> ${nameObj.gender.charAt(0).toUpperCase() + nameObj.gender.slice(1)}</p>`;
                     if (nameObj.tags && nameObj.tags.length > 0) {
-                        detailsHTML += `<div class="tags mt-3"><strong>Tags:</strong> ${nameObj.tags.map(tag => `<span class="inline-block bg-indigo-100 text-indigo-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>`;
+                        detailsHTML += `<div class="tags mt-3"><strong>Tags:</strong> ${nameObj.tags.map(tag => `<span class="inline-block bg-teal-100 text-teal-700 text-sm font-semibold mr-2 px-3 py-1 rounded-full">${tag}</span>`).join('')}</div>`;
                     }
                     nameDetailsContainer.innerHTML = detailsHTML;
                 }
@@ -563,11 +627,11 @@
                             card.className = 'name-card animate-fade-in';
                             let cardHTML = `<h3>${relatedNameStr}</h3>`;
                             if (relatedNameObj) {
-                                if (relatedNameObj.meaning) cardHTML += `<p><em>${relatedNameObj.meaning}</em></p>`;
-                                if (relatedNameObj.origin) cardHTML += `<p class="text-xs">Origin: ${relatedNameObj.origin}</p>`;
-                                if (relatedNameObj.gender) cardHTML += `<p class="text-xs">Gender: ${relatedNameObj.gender.charAt(0).toUpperCase() + relatedNameObj.gender.slice(1)}</p>`;
+                                if (relatedNameObj.meaning) cardHTML += `<p class="leading-relaxed"><em>${relatedNameObj.meaning}</em></p>`;
+                                if (relatedNameObj.origin) cardHTML += `<p class="text-xs leading-snug">Origin: ${relatedNameObj.origin}</p>`;
+                                if (relatedNameObj.gender) cardHTML += `<p class="text-xs leading-snug">Gender: ${relatedNameObj.gender.charAt(0).toUpperCase() + relatedNameObj.gender.slice(1)}</p>`;
                             } else {
-                                cardHTML += `<p class="text-xs italic">Details not available.</p>`;
+                                cardHTML += `<p class="text-xs italic leading-snug">Details not available.</p>`;
                             }
                             card.innerHTML = cardHTML;
                             relatedNamesContainer.appendChild(card);
@@ -581,11 +645,11 @@
 
                 if (famousNamesakesContainer && famousNamesakesSection) {
                     if (nameObj.famous_namesakes) {
-                        famousNamesakesContainer.innerHTML = `<p class="text-lg">${nameObj.famous_namesakes}</p>`;
+                        famousNamesakesContainer.innerHTML = `<p class="text-lg leading-relaxed">${nameObj.famous_namesakes}</p>`;
                         famousNamesakesSection.classList.remove('hidden');
                         famousNamesakesSection.classList.add('animate-fade-in-down');
                     } else {
-                        famousNamesakesContainer.innerHTML = `<p class="text-center text-medium-gray italic">No famous namesakes information available.</p>`;
+                        famousNamesakesContainer.innerHTML = `<p class="text-center text-medium-gray italic leading-relaxed">No famous namesakes information available.</p>`;
                         famousNamesakesSection.classList.add('hidden');
                     }
                 }
@@ -594,7 +658,7 @@
 
         function handleGenerateName() {
             if (!dataLoaded || nameDatabase.length === 0) {
-                showResultsMessage('Name data not loaded or empty. Select language/origin or try again.', true);
+                showResultsMessage('Baby name data not loaded or empty. Select language/origin or try again for new name ideas.', true);
                 if (resultsPlaceholder) resultsPlaceholder.style.display = 'none';
                 return;
             }
@@ -620,7 +684,7 @@
                 const randomIndex = Math.floor(Math.random() * filteredNames.length);
                 displayGeneratedName(filteredNames[randomIndex]);
             } else {
-                showResultsMessage('No names match your criteria. Try broadening your search!');
+                showResultsMessage('No baby names match your criteria. Try broadening your search for more name ideas!');
                 if (nameTypewriterTarget) nameTypewriterTarget.textContent = '';
                 if (nameDetailsContainer) nameDetailsContainer.innerHTML = '';
                 if(relatedNamesSection) relatedNamesSection.classList.add('hidden');
